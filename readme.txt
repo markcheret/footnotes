@@ -34,11 +34,11 @@ coming soon
 == Changelog ==
 
 = 1.0.5 =
-The Plugin has been submitted to wordpress.org for review and (hopefully) publication.
+- The Plugin has been submitted to wordpress.org for review and (hopefully) publication.
 - Update: Plugin description for public directories (WordPress.org and GitHub)
 - Feature: the   -footnotes  - WordPress Plugin now has its very own CI
-  - Update: Styling
-  - Update: Settings to support the styling
+- Update: Styling
+- Update: Settings to support the styling
 - Add: Inspirational Screenshots for further development
 - Add: Settings screenshot
 - Update: i18n fine-tuning

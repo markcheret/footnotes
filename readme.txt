@@ -26,12 +26,9 @@ Feel free to contribute and to fix errors or send improvements via GitHub.
 No, this Plugin has been written from scratch. Of course some inspirations on how to do or how to not do things were taken from other plugins.
 
 == Installation ==
-- Download the latest version from WordPress.org
-- in the bottom right there is a `Download ZIP` button
 - Visit your WordPress Admin area
 - Navigate to `Plugins\Add`
-- Select the Tab `Upload`
-- Upload the previously downloaded .zip file and hit `Install`
+- Install the latest version from WordPress.org
 - Activate the Plugin
 
 == Screenshots ==
@@ -42,9 +39,9 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 == Changelog ==
 
 = 1.0.6 =
-- Bugfix: Uninstall function to delete all plugin settings (bugfix)
-- Bugfix: Counter style internal name in the reference container to correctly link to the right footnote on the page above (bugfix)
-- Bugfix: Footnote hover box styling to not wrap the footnote text on mouse over (bugfix)
+- Bugfix: Uninstall function to delete all plugin settings
+- Bugfix: Counter style internal name in the reference container to correctly link to the right footnote on the page above
+- Bugfix: Footnote hover box styling to not wrap the footnote text on mouse over
 - Update: 'footnotes love' text in the page footer if the admin accepts it and set its default value to 'no'
 
 = 1.0.5 =

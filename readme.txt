@@ -13,6 +13,12 @@ footnotes gives you the ability to display decently-formated footnotes on your W
 footnotes aims to be the all-in-one solution that ships with a set of sane defaults
 (those footnotes we know from offline publishing) but also give the user control over how their footnotes are being displayed.
 
+Development of the plugin is an open process. The current version is available on github:
+
+https://github.com/media-competence-institute/footnotes
+
+Feel free to contribute and to fix errors or send improvements via GitHub.
+
 == Frequently Asked Questions ==
 
 = Is your Plugin a copy of footnotes x? =
@@ -37,8 +43,8 @@ coming soon
 - The Plugin has been submitted to wordpress.org for review and (hopefully) publication.
 - Update: Plugin description for public directories (WordPress.org and GitHub)
 - Feature: the   -footnotes  - WordPress Plugin now has its very own CI
-- Update: Styling
-- Update: Settings to support the styling
+  - Update: Styling
+  - Update: Settings to support the styling
 - Add: Inspirational Screenshots for further development
 - Add: Settings screenshot
 - Update: i18n fine-tuning

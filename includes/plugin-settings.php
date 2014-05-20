@@ -29,16 +29,28 @@ function footnotes_plugin_settings_link( $links, $file )
 
 /**
  * reads a option field, filters the values and returns the filtered option array
+ * fallback to default value since 1.0-gamma
  * @since 1.0
  * @param string $p_str_OptionsField
+ * @param array $p_arr_DefaultValues
  * @return array
  */
-function footnotes_filter_options( $p_str_OptionsField )
+function footnotes_filter_options( $p_str_OptionsField, $p_arr_DefaultValues )
 {
 	$l_arr_Options = get_option( $p_str_OptionsField );
 	/* loop through all keys in the array and filters them */
 	foreach ( $l_arr_Options as $l_str_Key => $l_str_Value ) {
-		$l_arr_Options[ $l_str_Key ] = stripcslashes( $l_str_Value );
+		/* removes special chars from the settings value */
+		$l_str_Value = stripcslashes( $l_str_Value );
+		/* check if settings value is not empty, otherwise load the default value, or empty string if no default is defined */
+		if (!empty($l_str_Value)) {
+			$l_arr_Options[ $l_str_Key ] = stripcslashes( $l_str_Value );
+		/* check if default value is defined */
+		} else if (array_key_exists($l_str_Key, $p_arr_DefaultValues)) {
+			$l_arr_Options[ $l_str_Key ] = $p_arr_DefaultValues[$l_str_Key];
+		} else {
+			$l_arr_Options[ $l_str_Key ] = "";
+		}
 	}
 	/* returns the filtered array */
 	return $l_arr_Options;

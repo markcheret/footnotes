@@ -1,11 +1,11 @@
-footnotes
-=========
+![footnotes](https://raw.githubusercontent.com/media-competence-institute/footnotes/master/assets/footnotes.png)
 
 **footnotes** WordPress Plugin
 
 #### this plugin intends to be straight forward and customizable at the same time ####
 
 **footnotes** gives you the ability to display decently-formated footnotes on your WordPress Pages or Posts.
+
 
 The syntax is based on the common DokuWiki syntax for footnotes. So, to include a footnote with the text "with a footnote," you use:
 

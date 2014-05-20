@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-05-16 21:52+0100\n"
-"PO-Revision-Date: 2014-05-16 21:53+0100\n"
+"POT-Creation-Date: 2014-05-16 22:36+0100\n"
+"PO-Revision-Date: 2014-05-16 22:37+0100\n"
 "Last-Translator: SHE <s.herndler@methis.at>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
@@ -18,59 +18,71 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/footnotes_settings.php:298
+#: classes/footnotes_settings.php:308
 msgid "General"
 msgstr "Allgemein"
 
-#: classes/footnotes_settings.php:300 includes/plugin-settings.php:22
+#: classes/footnotes_settings.php:310 includes/plugin-settings.php:22
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: classes/footnotes_settings.php:301
+#: classes/footnotes_settings.php:311
 msgid "References label:"
 msgstr "Überschrift \"Einzelnachweis\":"
 
-#: classes/footnotes_settings.php:302
+#: classes/footnotes_settings.php:312
 msgid "Collapse references by default:"
 msgstr "Verstecke Einzelnachweise standardmäßig:"
 
-#: classes/footnotes_settings.php:303
+#: classes/footnotes_settings.php:313
 msgid "Combine identical footnotes:"
 msgstr "Kombiniere meine Fußnoten:"
 
-#: classes/footnotes_settings.php:344
+#: classes/footnotes_settings.php:314
+msgid "Footnote tag:"
+msgstr "Fußzeile einbinden:"
+
+#: classes/footnotes_settings.php:355
 msgid "Yes"
 msgstr "Ja"
 
-#: classes/footnotes_settings.php:345
+#: classes/footnotes_settings.php:356
 msgid "No"
 msgstr "Nein"
 
-#: classes/footnotes_settings.php:360 classes/footnotes_settings.php:362
+#: classes/footnotes_settings.php:369
+msgid "starts with:"
+msgstr "beginnt mit:"
+
+#: classes/footnotes_settings.php:373
+msgid "ends with:"
+msgstr "endet mit:"
+
+#: classes/footnotes_settings.php:385 classes/footnotes_settings.php:387
 msgid "HowTo"
 msgstr "Hilfe"
 
-#: classes/footnotes_settings.php:373
+#: classes/footnotes_settings.php:398
 msgid "This is a brief introduction in how to use the plugin."
 msgstr "Eine kurze Anleitung für die Verwendung des Plugins."
 
-#: classes/footnotes_settings.php:386
+#: classes/footnotes_settings.php:413
 msgid "Start your footnote with the following shortcode:"
 msgstr "Starten Sie eine Fußnote mit:"
 
-#: classes/footnotes_settings.php:391
+#: classes/footnotes_settings.php:418
 msgid "...and end your footnote with this shortcode:"
 msgstr "...und beenden Sie diese mit:"
 
-#: classes/footnotes_settings.php:397 classes/footnotes_settings.php:400
+#: classes/footnotes_settings.php:424 classes/footnotes_settings.php:427
 msgid "example string"
 msgstr "Beispieltext"
 
-#: classes/footnotes_settings.php:398
+#: classes/footnotes_settings.php:425
 msgid "will be displayed as:"
 msgstr "wird dargestellt als:"
 
-#: classes/footnotes_settings.php:405
+#: classes/footnotes_settings.php:432
 #, php-format
 msgid "If you have any questions, please don't hesitate to %smail us%s."
 msgstr "Bei Fragen können Sie uns gerne eine %se-Mail%s senden."

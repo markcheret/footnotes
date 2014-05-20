@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable tag: 1.0.2
+Stable Tag: 1.0.3
 
 == Description ==
 
@@ -35,6 +35,11 @@ coming soon
 
 == Changelog ==
 
+= 1.0.3 =
+* New setting to use personal starting and ending tag for the footnotes
+* Updated translations for the new setting
+* Updated reading settings and fallback to default values (bugfix)
+
 = 1.0.2 =
 * New setting to collapse the reference container by default
 * Added link behind the footnotes to automatically jump to the reference container
@@ -49,7 +54,7 @@ coming soon
 * Updated translations for EN and DE
 * Changed version number from 3 digits to 2 digits
 
-= 1.0 =
+= 1.0.0 =
 * First development Version of the Plugin
 
 == Feedback ==

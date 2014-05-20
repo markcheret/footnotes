@@ -4,7 +4,7 @@
 	Plugin URI: http://www.herndler.org
 	Description: simple adding footnotes to your pages
 	Author: Mark Cheret, Stefan Herndler
-	Version: 1.0.2
+	Version: 1.0.3
 	Author URI: http://www.cheret.de
 	Text Domain: footnotes
 	Domain Path: /languages
@@ -47,6 +47,11 @@ require_once( dirname( __FILE__ ) . "/includes/scripts.php" );
 /* include script and stylesheet functions */
 require_once( dirname( __FILE__ ) . "/includes/replacer.php" );
 
+/* require plugin class */
+require_once( dirname( __FILE__ ) . "/classes/footnotes.php" );
+/* require plugin settings class */
+require_once( dirname( __FILE__ ) . "/classes/footnotes_settings.php" );
+
 /* calls the wordpress filter function to replace page content before displayed on public pages */
 add_filter( 'the_content', 'footnotes_startReplacing' );
 add_filter( 'the_excerpt', 'footnotes_DummyReplacing' );
@@ -67,11 +72,6 @@ if ( !function_exists( 'is_admin' ) ) {
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
 }
-
-/* require plugin class */
-require_once( dirname( __FILE__ ) . "/classes/footnotes.php" );
-/* require plugin settings class */
-require_once( dirname( __FILE__ ) . "/classes/footnotes_settings.php" );
 
 /* action to locate language and load the wordpress-specific language file */
 add_action( 'plugins_loaded', 'footnotes_load_language' );

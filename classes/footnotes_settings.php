@@ -21,7 +21,9 @@ class Class_FootnotesSettings
 	public static $a_arr_Default_Settings = array(
 		FOOTNOTE_INPUTFIELD_COMBINE_IDENTICAL => 'yes',
 		FOOTNOTE_INPUTFIELD_REFERENCES_LABEL  => 'References',
-		FOOTNOTE_INPUTFIELD_COLLAPSE_REFERENCES => ''
+		FOOTNOTE_INPUTFIELD_COLLAPSE_REFERENCES => '',
+		FOOTNOTE_INPUTFIELD_PLACEHOLDER_START => '((',
+		FOOTNOTE_INPUTFIELD_PLACEHOLDER_END => '))'
 	);
 	/*
 	 * resulting pagehook for adding a new sub menu page to the settings
@@ -45,10 +47,8 @@ class Class_FootnotesSettings
 	 */
 	function __construct()
 	{
-		/* validates the settings of the plugin and replaces them with the default settings if invalid */
-		add_option( FOOTNOTE_SETTINGS_CONTAINER, self::$a_arr_Default_Settings );
 		/* loads and filters the settings for this plugin */
-		$this->a_arr_Options = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER );
+		$this->a_arr_Options = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, self::$a_arr_Default_Settings );
 
 		/* execute class includes on action-even: init, admin_init and admin_menu */
 		add_action( 'init', array( $this, 'LoadScriptsAndStylesheets' ) );
@@ -208,9 +208,11 @@ class Class_FootnotesSettings
 	 * outputs a input type=text
 	 * @param string $p_str_SettingsID [id of the settings field]
 	 * @param string $p_str_ClassName [css class name]
+	 * @param int $p_str_MaxLength [max length for the input value]
+	 * @param string $p_str_Label [label text]
 	 * @since 1.0-beta
 	 */
-	function AddTextbox($p_str_SettingsID, $p_str_ClassName="")
+	function AddTextbox($p_str_SettingsID, $p_str_ClassName="", $p_str_MaxLength=0, $p_str_Label="")
 	{
 		/* collect data for given settings field */
 		$l_arr_Data = $this->LoadSetting( $p_str_SettingsID );
@@ -219,9 +221,17 @@ class Class_FootnotesSettings
 		if (!empty($p_str_ClassName)) {
 			$p_str_ClassName = 'class="' . $p_str_ClassName . '"';
 		}
+		/* optional add a maxlength to the input field */
+		if (!empty($p_str_MaxLength)) {
+			$p_str_MaxLength = ' maxlength="'.$p_str_MaxLength.'"';
+		}
+		/* optional add a label in front of the input field */
+		if (!empty($p_str_Label)) {
+			echo '<label for="'.$l_arr_Data[ "id" ].'">'.$p_str_Label.'</label>';
+		}
 
 		/* outputs an input field type TEXT */
-		echo '<input type="text" '.$p_str_ClassName.' name="'.$l_arr_Data[ "name" ].'" id="'.$l_arr_Data[ "id" ].'" value="'.$l_arr_Data[ "value" ].'"/>';
+		echo '<input type="text" '.$p_str_ClassName.$p_str_MaxLength.' name="'.$l_arr_Data[ "name" ].'" id="'.$l_arr_Data[ "id" ].'" value="'.$l_arr_Data[ "value" ].'"/>';
 	}
 
 	/**
@@ -301,6 +311,7 @@ class Class_FootnotesSettings
 		add_settings_field( 'Register_References_Label', __( "References label:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_References_Label' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_Collapse_References', __( "Collapse references by default:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Collapse_References' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_Combine_Identical', __( "Combine identical footnotes:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Combine_Identical' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
+		add_settings_field( 'Register_Placeholder_Tags', __( "Footnote tag:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Placeholder_Tags' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 	}
 
 	/**
@@ -349,6 +360,20 @@ class Class_FootnotesSettings
 	}
 
 	/**
+	 * outputs the settings fields for the footnote starting and ending tag
+	 * @since 1.0-gamma
+	 */
+	function Register_Placeholder_Tags()
+	{
+		/* add a textbox to the output */
+		$this->AddTextbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START, "", 14,  __( "starts with:", FOOTNOTES_PLUGIN_NAME ));
+		/* small space between the two input fields */
+		echo '&nbsp;&nbsp;&nbsp;';
+		/* add a textbox to the output */
+		$this->AddTextbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END, "", 14,  __( "ends with:", FOOTNOTES_PLUGIN_NAME ));
+	}
+
+	/**
 	 * initialize howto settings tab
 	 * called in class constructor @ admin_init
 	 * @since 1.0
@@ -379,25 +404,27 @@ class Class_FootnotesSettings
 	 */
 	function Register_Howto_Box()
 	{
+		$l_arr_Footnote_StartingTag = $this->LoadSetting(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START);
+		$l_arr_Footnote_EndingTag = $this->LoadSetting(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END);
 		?>
 		<div style="text-align:center;">
 			<div class="footnote_placeholder_box_container">
 				<p>
 					<?php echo __( "Start your footnote with the following shortcode:", FOOTNOTES_PLUGIN_NAME ); ?>
-					<span class="footnote_highlight_placeholder"><?php echo FOOTNOTE_PLACEHOLDER_START; ?></span>
+					<span class="footnote_highlight_placeholder"><?php echo $l_arr_Footnote_StartingTag["value"]; ?></span>
 				</p>
 
 				<p>
 					<?php echo __( "...and end your footnote with this shortcode:", FOOTNOTES_PLUGIN_NAME ); ?>
-					<span class="footnote_highlight_placeholder"><?php echo FOOTNOTE_PLACEHOLDER_END; ?></span>
+					<span class="footnote_highlight_placeholder"><?php echo $l_arr_Footnote_EndingTag["value"]; ?></span>
 				</p>
 
 				<div class="footnote_placeholder_box_example">
 					<p>
-						<span class="footnote_highlight_placeholder"><?php echo FOOTNOTE_PLACEHOLDER_START . __( "example string", FOOTNOTES_PLUGIN_NAME ) . FOOTNOTE_PLACEHOLDER_END; ?></span>
+						<span class="footnote_highlight_placeholder"><?php echo $l_arr_Footnote_StartingTag["value"] . __( "example string", FOOTNOTES_PLUGIN_NAME ) . $l_arr_Footnote_EndingTag["value"]; ?></span>
 						<?php echo __( "will be displayed as:", FOOTNOTES_PLUGIN_NAME ); ?>
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<?php echo footnotes_replaceFootnotes( FOOTNOTE_PLACEHOLDER_START . __( "example string", FOOTNOTES_PLUGIN_NAME ) . FOOTNOTE_PLACEHOLDER_END, true ); ?>
+						<?php echo footnotes_replaceFootnotes( $l_arr_Footnote_StartingTag["value"] . __( "example string", FOOTNOTES_PLUGIN_NAME ) . $l_arr_Footnote_EndingTag["value"], true ); ?>
 					</p>
 				</div>
 

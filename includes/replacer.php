@@ -34,7 +34,7 @@ function footnotes_startReplacing( $p_str_Content )
 	/* stop the output and move it to a buffer instead, defines a callback function */
 	ob_start( "footnotes_replaceFootnotes" );
 	/* load footnote settings */
-	$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER );
+	$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings );
 	/* return unchanged content */
 	return $p_str_Content;
 }
@@ -64,6 +64,7 @@ function footnotes_StopReplacing()
 
 /**
  * replaces all footnotes in the given content
+ * loading settings if not happened yet since 1.0-gamma
  * @since 1.0
  * @param string $p_str_Content
  * @param bool   $p_bool_OutputReferences [default: true]
@@ -73,6 +74,13 @@ function footnotes_replaceFootnotes( $p_str_Content, $p_bool_OutputReferences = 
 {
 	/* get access to the global array */
 	global $g_arr_Footnotes;
+	/* access to the global settings collection */
+	global $g_arr_FootnotesSettings;
+	/* check if settings are already loaded, otherwise load them */
+	if (empty($g_arr_FootnotesSettings)) {
+		/* load footnote settings */
+		$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings );
+	}
 
 	/* replace all footnotes in the content */
 	$p_str_Content = footnotes_getFromString( $p_str_Content );
@@ -89,6 +97,7 @@ function footnotes_replaceFootnotes( $p_str_Content, $p_bool_OutputReferences = 
 
 /**
  * replace all footnotes in the given string and adds them to an array
+ * using a personal starting and ending tag for the footnotes since 1.0-gamma
  * @since 1.0
  * @param string $p_str_Content
  * @return string
@@ -97,32 +106,38 @@ function footnotes_getFromString( $p_str_Content )
 {
 	/* get access to the global array to store footnotes */
 	global $g_arr_Footnotes;
+	/* access to the global settings collection */
+	global $g_arr_FootnotesSettings;
 	/* contains the index for the next footnote on this page */
 	$l_int_FootnoteIndex = 1;
 	/* contains the starting position for the lookup of a footnote */
 	$l_int_PosStart = 0;
 	/* contains the footnote template */
 	$l_str_FootnoteTemplate = file_get_contents( FOOTNOTES_TEMPLATES_DIR . "footnote.html" );
+	/* get footnote starting tag */
+	$l_str_StartingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_START];
+	/*get footnote ending tag */
+	$l_str_EndingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_END];
 
 	/* check for a footnote placeholder in the current page */
 	do {
 		/* get first occurence of a footnote starting tag */
-		$l_int_PosStart = strpos( $p_str_Content, FOOTNOTE_PLACEHOLDER_START, $l_int_PosStart );
+		$l_int_PosStart = strpos( $p_str_Content, $l_str_StartingTag, $l_int_PosStart );
 		/* tag found */
 		if ( $l_int_PosStart !== false ) {
 			/* get first occurence of a footnote ending tag after the starting tag */
-			$l_int_PosEnd = strpos( $p_str_Content, FOOTNOTE_PLACEHOLDER_END, $l_int_PosStart );
+			$l_int_PosEnd = strpos( $p_str_Content, $l_str_EndingTag, $l_int_PosStart );
 			/* tag found */
 			if ( $l_int_PosEnd !== false ) {
 				/* get length of footnote text */
 				$l_int_Length = $l_int_PosEnd - $l_int_PosStart;
 				/* get text inside footnote */
-				$l_str_FootnoteText = substr( $p_str_Content, $l_int_PosStart + strlen( FOOTNOTE_PLACEHOLDER_START ), $l_int_Length - strlen( FOOTNOTE_PLACEHOLDER_START ) );
+				$l_str_FootnoteText = substr( $p_str_Content, $l_int_PosStart + strlen( $l_str_StartingTag ), $l_int_Length - strlen( $l_str_StartingTag ) );
 				/* set replacer for the footnote */
 				$l_str_ReplaceText = str_replace( "[[FOOTNOTE INDEX]]", $l_int_FootnoteIndex, $l_str_FootnoteTemplate );
 				$l_str_ReplaceText = str_replace( "[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText );
 				/* replace footnote in content */
-				$p_str_Content = substr_replace( $p_str_Content, $l_str_ReplaceText, $l_int_PosStart, $l_int_Length + strlen( FOOTNOTE_PLACEHOLDER_END ) );
+				$p_str_Content = substr_replace( $p_str_Content, $l_str_ReplaceText, $l_int_PosStart, $l_int_Length + strlen( $l_str_EndingTag ) );
 				/* set footnote to the output box at the end */
 				$g_arr_Footnotes[ ] = $l_str_FootnoteText;
 				/* increase footnote index */

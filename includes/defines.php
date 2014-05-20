@@ -23,10 +23,8 @@ define( "FOOTNOTE_SETTINGS_LABEL_HOWTO", "footnotes_howto" ); /* internal label 
 define( "FOOTNOTE_INPUTFIELD_COMBINE_IDENTICAL", "footnote_inputfield_combine_identical" ); /* id of input field for the combine identical setting */
 define( "FOOTNOTE_INPUTFIELD_REFERENCES_LABEL", "footnote_inputfield_references_label" ); /* id of input field for the references label setting */
 define( "FOOTNOTE_INPUTFIELD_COLLAPSE_REFERENCES", "footnote_inputfield_collapse_references" ); /* id of input field for the "collapse references" setting */
-
-/* PLUGIN DEFAULT PLACEHOLDER */
-define( "FOOTNOTE_PLACEHOLDER_START", "((" ); /* defines the default start tag for the placeholder */
-define( "FOOTNOTE_PLACEHOLDER_END", "))" ); /* defines the default end tag for the placeholder */
+define( "FOOTNOTE_INPUTFIELD_PLACEHOLDER_START", "footnote_inputfield_placeholder_start"); /* id of input field for the "placeholder starting tag" setting */
+define( "FOOTNOTE_INPUTFIELD_PLACEHOLDER_END", "footnote_inputfield_placeholder_end"); /* id of input field for the "placeholder ending tag" setting */
 
 /* PLUGIN REFERENCES CONTAINER ID */
 define( "FOOTNOTE_REFERENCES_CONTAINER_ID", "footnote_references_container" ); /* id for the div surrounding the footnotes */

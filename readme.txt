@@ -5,6 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Stable Tag: 1.0.1
 
 == Description ==
 
@@ -34,7 +35,7 @@ coming soon
 
 == Changelog ==
 
-= 1.1-alpha =
+= 1.0.1 =
 * Separated functions in different files for a better overview
 * Added a version control to each file / class / function / variable
 * New layout for the settings menu, settings split in tabs and not a list-view

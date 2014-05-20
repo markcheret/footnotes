@@ -4,7 +4,7 @@
 	Plugin URI: http://www.herndler.org
 	Description: simple adding footnotes to your pages
 	Author: Mark Cheret, Stefan Herndler
-	Version: 1.1-alpha
+	Version: 1.0.1
 	Author URI: http://www.cheret.de
 	Text Domain: footnotes
 	Domain Path: /languages

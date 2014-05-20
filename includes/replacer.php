@@ -14,6 +14,12 @@
  */
 $g_arr_Footnotes = array();
 
+/*
+ * collection of all footnotes settings
+ * @since 1.0-beta
+ */
+$g_arr_FootnotesSettings = array();
+
 /**
  * starts listening for footnotes to be replaced
  * output will be buffered and not displayed
@@ -23,7 +29,13 @@ $g_arr_Footnotes = array();
  */
 function footnotes_startReplacing( $p_str_Content )
 {
+	/* access to the global settings collection */
+	global $g_arr_FootnotesSettings;
+	/* stop the output and move it to a buffer instead, defines a callback function */
 	ob_start( "footnotes_replaceFootnotes" );
+	/* load footnote settings */
+	$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER );
+	/* return unchanged content */
 	return $p_str_Content;
 }
 
@@ -35,6 +47,7 @@ function footnotes_startReplacing( $p_str_Content )
  */
 function footnotes_DummyReplacing( $p_str_Content )
 {
+	/* return unchanged content */
 	return $p_str_Content;
 }
 
@@ -45,6 +58,7 @@ function footnotes_DummyReplacing( $p_str_Content )
  */
 function footnotes_StopReplacing()
 {
+	/* calls the callback function defined in ob_start(); */
 	ob_end_flush();
 }
 
@@ -130,6 +144,9 @@ function footnotes_getFromString( $p_str_Content )
 }
 
 /**
+ * looks through all footnotes that has been replaced in the current content and
+ * adds a reference to the footnote at the end of the content
+ * function to collapse the reference container since 1.0-beta
  * @since 1.0
  * @return string
  */
@@ -137,6 +154,8 @@ function footnotes_OutputReferenceContainer()
 {
 	/* get access to the global array to read footnotes */
 	global $g_arr_Footnotes;
+	/* access to the global settings collection */
+	global $g_arr_FootnotesSettings;
 
 	/* no footnotes has been replaced on this page */
 	if ( empty( $g_arr_Footnotes ) ) {
@@ -144,20 +163,22 @@ function footnotes_OutputReferenceContainer()
 		return "";
 	}
 
-	/* read settings */
-	$l_arr_Options = footnote_filter_options( FOOTNOTE_SETTINGS_CONTAINER );
-	/* get setting for combine identical footnotes */
-	$l_str_CombineIdentical = $l_arr_Options[ FOOTNOTE_INPUTFIELD_COMBINE_IDENTICAL ];
+	/* get setting for combine identical footnotes and convert it to boolean */
+	$l_bool_CombineIdentical = footnotes_ConvertToBool($g_arr_FootnotesSettings[ FOOTNOTE_INPUTFIELD_COMBINE_IDENTICAL ]);
 	/* get setting for preferences label */
-	$l_str_ReferencesLabel = $l_arr_Options[ FOOTNOTE_INPUTFIELD_REFERENCES_LABEL ];
-	/* convert it from string to boolean */
-	$l_bool_CombineIdentical = false;
-	if ( $l_str_CombineIdentical == "yes" ) {
-		$l_bool_CombineIdentical = true;
-	}
+	$l_str_ReferencesLabel = $g_arr_FootnotesSettings[ FOOTNOTE_INPUTFIELD_REFERENCES_LABEL ];
+	/* get setting for collapse reference footnotes and convert it to boolean */
+	$l_bool_CollapseReference = footnotes_ConvertToBool($g_arr_FootnotesSettings[ FOOTNOTE_INPUTFIELD_COLLAPSE_REFERENCES ]);
 
-	/* output string */
-	$l_str_Output = '<div class="footnote_container_prepare"><p><span>' . $l_str_ReferencesLabel . '</span></p></div>';
+	/* output string, prepare it with the reference label as headline */
+	$l_str_Output = '<div class="footnote_container_prepare"><p><span onclick="footnote_expand_reference_container();">' . $l_str_ReferencesLabel . '</span></p></div>';
+	/* add a box around the footnotes */
+	$l_str_Output .= '<div id="'.FOOTNOTE_REFERENCES_CONTAINER_ID.'"';
+	/* add class to hide the references by default, if the user wants it */
+	if ($l_bool_CollapseReference) {
+		$l_str_Output .= ' class="footnote_hide_box"';
+	}
+	$l_str_Output .= '>';
 
 	/* contains the footnote template */
 	$l_str_FootnoteTemplate = file_get_contents( FOOTNOTES_TEMPLATES_DIR . "container.html" );
@@ -195,6 +216,17 @@ function footnotes_OutputReferenceContainer()
 		/* add the footnote container to the output */
 		$l_str_Output = $l_str_Output . $l_str_ReplaceText;
 	}
+	/* add closing tag for the div of the references container */
+	$l_str_Output = $l_str_Output . '</div>';
+	/* add a javascript to expand the reference container when clicking on a footnote or the reference label */
+	$l_str_Output .= '
+		<script type="text/javascript">
+			function footnote_expand_reference_container() {
+				jQuery("#'.FOOTNOTE_REFERENCES_CONTAINER_ID.'").show();
+			}
+		</script>
+	';
+
 	/* return the output string */
 	return $l_str_Output;
 }

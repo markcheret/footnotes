@@ -4,7 +4,7 @@
  * User: Stefan
  * Date: 15.05.14
  * Time: 16:21
- * Version: 1.0
+ * Version: 1.0-beta
  * Since: 1.0
  */
 
@@ -33,7 +33,7 @@ function footnotes_plugin_settings_link( $links, $file )
  * @param string $p_str_OptionsField
  * @return array
  */
-function footnote_filter_options( $p_str_OptionsField )
+function footnotes_filter_options( $p_str_OptionsField )
 {
 	$l_arr_Options = get_option( $p_str_OptionsField );
 	/* loop through all keys in the array and filters them */
@@ -42,4 +42,26 @@ function footnote_filter_options( $p_str_OptionsField )
 	}
 	/* returns the filtered array */
 	return $l_arr_Options;
+}
+
+/**
+ * converts a string depending on its value to a boolean
+ * @since 1.0-beta
+ * @param string $p_str_Value
+ * @return bool
+ */
+function footnotes_ConvertToBool($p_str_Value) {
+	/* convert string to lower-case to make it easier */
+	$p_str_Value = strtolower($p_str_Value);
+	/* check if string seems to contain a "true" value */
+	switch($p_str_Value) {
+		case "checked":
+		case "yes":
+		case "true":
+		case "on":
+		case "1":
+			return true;
+	}
+	/* nothing found that says "true", so we return false */
+	return false;
 }

@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.0.1
+Stable tag: 1.0.2
 
 == Description ==
 
@@ -34,6 +34,12 @@ No, this Plugin has been written from scratch.
 coming soon
 
 == Changelog ==
+
+= 1.0.2 =
+* New setting to collapse the reference container by default
+* Added link behind the footnotes to automatically jump to the reference container
+* New function to easy output input fields for the settings page
+* Updated translation for the new setting
 
 = 1.0.1 =
 * Separated functions in different files for a better overview

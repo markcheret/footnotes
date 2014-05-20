@@ -3,7 +3,7 @@
  * User: Stefan
  * Date: 15.05.14
  * Time: 16:21
- * Version: 1.0
+ * Version: 1.0-beta
  * Since: 1.0
  */
 
@@ -33,6 +33,11 @@
 .footnote_container_prepare > p > span {
 	padding-left: 20px !important;
 	text-align:   left !important;
+	cursor: pointer;
+}
+
+.footnote_hide_box {
+	display:none;
 }
 
 /* container for the footnote in the bottom */

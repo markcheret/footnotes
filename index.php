@@ -4,13 +4,13 @@
 	Plugin URI: http://www.herndler.org
 	Description: simple adding footnotes to your pages
 	Author: Mark Cheret, Stefan Herndler
-	Version: 1.0.1
+	Version: 1.0.2
 	Author URI: http://www.cheret.de
 	Text Domain: footnotes
 	Domain Path: /languages
 */
 /*
-	Copyright 2014  Mark Cheret, Stefan Herndler (email : mark@cheret.de | admin@herndler.org)
+	Copyright 2014  Mark Cheret, Stefan Herndler (email : mark@cheret.de | support@herndler.org)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 3, as
@@ -69,9 +69,9 @@ if ( !function_exists( 'is_admin' ) ) {
 }
 
 /* require plugin class */
-require_once( dirname( __FILE__ ) . "/classes/footnote.php" );
+require_once( dirname( __FILE__ ) . "/classes/footnotes.php" );
 /* require plugin settings class */
-require_once( dirname( __FILE__ ) . "/classes/footnote_settings.php" );
+require_once( dirname( __FILE__ ) . "/classes/footnotes_settings.php" );
 
 /* action to locate language and load the wordpress-specific language file */
 add_action( 'plugins_loaded', 'footnotes_load_language' );

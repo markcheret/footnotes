@@ -16,9 +16,9 @@
 function footnotes_add_public_stylesheet()
 {
 	/* register public stylesheet */
-	wp_register_style( 'footnote_public_style', plugins_url( '../css/footnote.css', __FILE__ ) );
+	wp_register_style( 'footnotes_public_style', plugins_url( '../css/footnote.css', __FILE__ ) );
 	/* add public stylesheet */
-	wp_enqueue_style( 'footnote_public_style' );
+	wp_enqueue_style( 'footnotes_public_style' );
 }
 
 /**
@@ -28,7 +28,7 @@ function footnotes_add_public_stylesheet()
 function footnotes_add_settings_stylesheet()
 {
 	/* register settings stylesheet */
-	wp_register_style( 'footnote_settings_style', plugins_url( '../css/settings.css', __FILE__ ) );
+	wp_register_style( 'footnotes_settings_style', plugins_url( '../css/settings.css', __FILE__ ) );
 	/* add settings stylesheet */
-	wp_enqueue_style( 'footnote_settings_style' );
+	wp_enqueue_style( 'footnotes_settings_style' );
 }

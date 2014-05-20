@@ -104,9 +104,9 @@ class Class_FootnotesSettings
 			return;
 		}
 		/* submenu page title */
-		$l_str_PageTitle = 'footnotes';
+		$l_str_PageTitle = '<span style="color: #2bb975; ">foot</span><span style="color: #545f5a; ">notes</span>';
 		/* submenu title */
-		$l_str_MenuTitle = 'footnotes';
+		$l_str_MenuTitle = '<span style="color: #2bb975; ">foot</span><span style="color: #545f5a; ">notes</span>';
 		/* Add a new submenu to the standard Settings panel */
 		$this->a_str_Pagehook = add_options_page( $l_str_PageTitle, $l_str_MenuTitle, 'administrator', FOOTNOTES_SETTINGS_PAGE_ID, array( $this, 'OutputSettingsPage' ) );
 	}
@@ -310,14 +310,14 @@ class Class_FootnotesSettings
 		/* add tab to the tab array */
 		$this->a_arr_SettingsTabs[ FOOTNOTE_SETTINGS_LABEL_GENERAL ] = __( "General", FOOTNOTES_PLUGIN_NAME );
 		/* register settings tab */
-		add_settings_section( $l_str_SectionName, __( "Settings", FOOTNOTES_PLUGIN_NAME ), array( $this, 'RegisterTab_General_Description' ), FOOTNOTE_SETTINGS_LABEL_GENERAL );
+		add_settings_section( $l_str_SectionName, sprintf(__( "%s Settings", FOOTNOTES_PLUGIN_NAME ), '<span style="color: #2bb975; ">foot</span><span style="color: #545f5a; ">notes</span>'), array( $this, 'RegisterTab_General_Description' ), FOOTNOTE_SETTINGS_LABEL_GENERAL );
 		add_settings_field( 'Register_References_Label', __( "References label:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_References_Label' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_Collapse_References', __( "Collapse references by default:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Collapse_References' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_Combine_Identical', __( "Combine identical footnotes:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Combine_Identical' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_Placeholder_Tags', __( "Footnote tag:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Placeholder_Tags' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_CounterStyle', __( "Counter style:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_CounterStyle' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_SearchExcerpt', __( "Allow footnotes on Summarized Posts:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_SearchExcerpt' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
-		add_settings_field( 'Register_LoveAndShare', sprintf(__( "Tell the world you're using %sfootnotes%s:", FOOTNOTES_PLUGIN_NAME ), '<span style="color:#ff524b">', '</span>'), array( $this, 'Register_LoveAndShare' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
+		add_settings_field( 'Register_LoveAndShare', sprintf(__( "Tell the world you're using %sfoot%snotes%s:", FOOTNOTES_PLUGIN_NAME ), '<span style="color: #2bb975; ">', '</span><span style="color: #545f5a; ">', '</span>'), array( $this, 'Register_LoveAndShare' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 	}
 
 	/**
@@ -484,7 +484,7 @@ class Class_FootnotesSettings
 				</div>
 
 				<p>
-					<?php echo sprintf( __( "If you have any questions, please don't hesitate to %smail us%s.", FOOTNOTES_PLUGIN_NAME ), '<a href="mailto:support@herndler.org" class="footnote_plugin">', '</a>' ); ?>
+					<?php echo sprintf( __( "If you have any questions, please don't hesitate to %se-mail%s us.", FOOTNOTES_PLUGIN_NAME ), '<a href="mailto:mci@cheret.co.uk" class="footnote_plugin">', '</a>' ); ?>
 				</p>
 			</div>
 		</div>

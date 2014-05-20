@@ -19,7 +19,7 @@ footnotes aims to be the all-in-one solution that ships with a set of sane defau
 
 It's relatively simple. Check out [the manual](https://github.com/markcheret/footnotes#footnotes).
 
-= Is your Plugin a copy of footnotes x? =
+= Is your Plugina copy of footnotes x? =
 
 No, this Plugin has been written from scratch. Of course some inspirations were taken from other plugins.
 
@@ -86,5 +86,5 @@ The Plugin has been submitted to wordpress.org for review and (hopefully) public
 * First development Version of the Plugin
 
 == Upgrade Notice ==
-To upgrade our plugin is simple. Just update the plugin within your WordPress installation.
+to upgrade our plugin is simple. Just update the plugin within your WordPress installation.
 To cross-upgrade from other footnotes plugins, there will be a migration assistant in the future

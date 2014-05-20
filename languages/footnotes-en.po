@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: footnotes\n"
+"POT-Creation-Date: 2014-05-15 21:40+0100\n"
+"PO-Revision-Date: 2014-05-15 21:40+0100\n"
+"Last-Translator: SHE <s.herndler@methis.at>\n"
+"Language-Team: SHE <s.herndler@methis.at>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:214 settings.class.php:170 settings.class.php:216
+msgid "Settings"
+msgstr "Settings"
+
+#: settings.class.php:175 settings.class.php:193
+msgid "Save"
+msgstr "Save"
+
+#: settings.class.php:217
+msgid "General Information"
+msgstr "General Information"
+
+#: settings.class.php:225
+msgid "References label:"
+msgstr "References label:"
+
+#: settings.class.php:234
+msgid "Combine identical footnotes:"
+msgstr "Combine identical footnotes:"
+
+#: settings.class.php:237
+msgid "Yes"
+msgstr "Yes"
+
+#: settings.class.php:238
+msgid "No"
+msgstr "No"
+
+#: settings.class.php:257
+msgid "Start your footnote with the following shortcode:"
+msgstr "Start your footnote with the following shortcode:"
+
+#: settings.class.php:261
+msgid "...and end your footnote with this shortcode:"
+msgstr "...and end your footnote with this shortcode:"
+
+#: settings.class.php:268 settings.class.php:271
+msgid "example string"
+msgstr "example string"
+
+#: settings.class.php:269
+msgid "will be displayed as:"
+msgstr "will be displayed as:"
+
+#: settings.class.php:277
+#, php-format
+msgid "If you have any questions, please don't hesitate to %smail us%s."
+msgstr "If you have any questions, please don't hesitate to %smail us%s."
+
+#~ msgid ""
+#~ "Insert the following shortcode where you want your footnotes to be "
+#~ "displayed:"
+#~ msgstr ""
+#~ "Insert the following shortcode where you want your footnotes to be "
+#~ "displayed:"
+
+#~ msgid "The plugin replaces this shortcode automatically with your footnotes"
+#~ msgstr ""
+#~ "The plugin replaces this shortcode automatically with your footnotes"

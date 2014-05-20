@@ -1,0 +1,60 @@
+/**
+ * Created by Stefan on 15.05.14.
+ */
+
+/* overwrite some styling for labels */
+label {
+	min-width: 160px !important;
+}
+
+/* overwrite some styling for inputs [type=text] and select-boxes */
+input[type=text], select {
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	margin-left: 12px !important;
+}
+
+a.footnote_plugin {
+	text-decoration: underline;
+	cursor: pointer;
+	color: #202020;
+}
+
+/* settings container */
+.footnote_plugin_container {
+	display: block !important;
+	width: 100% !important;
+	padding-bottom: 18px !important;
+}
+
+/* setting with 25% width */
+.footnote_plugin_25 {
+	width: 24% !important;
+}
+
+/* setting with half width */
+.footnote_plugin_50 {
+	width: 49% !important;
+}
+/* setting with 75% width */
+.footnote_plugin_75 {
+	width: 74% !important;
+}
+/* setting with full width */
+.footnote_plugin_100 {
+	width: 99% !important;
+}
+
+/* container for the box holding the placeholder tags at the end */
+.footnote_placeholder_box_container {
+	text-align: center;
+	width: auto;
+	display: inline-block;
+}
+
+/* highlight the placeholders */
+span.footnote_highlight_placeholder {
+	font-weight: bold;
+	padding-left: 8px;
+	padding-right: 8px;
+}

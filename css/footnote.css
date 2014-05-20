@@ -1,0 +1,111 @@
+/**
+ * Created by Stefan on 15.05.14.
+ */
+
+/* container before the footnote appears at the bottom to get a space between footnote and content */
+.footnote_container_prepare {
+	display: block;
+	padding-top: 24px;
+}
+.footnote_container_prepare > p {
+	font-size: 1.5em;
+	margin-top: 1em;
+	margin-bottom: 0.25em;
+	padding: 0;
+	line-height: 1.3;
+	font-weight: normal;
+	overflow: hidden;
+	border-bottom: 1px solid #aaaaaa;
+	display: block;
+	-webkit-margin-before: 0.83em;
+	-webkit-margin-after: 0.83em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+.footnote_container_prepare > p > span {
+
+}
+
+/* container for the footnote in the bottom */
+.footnote_plugin_container {
+	display: block;
+	width: 100%;
+	padding-bottom: 14px;
+}
+
+/* footnote (bottom) index */
+.footnote_plugin_index {
+	float: left;
+	min-width: 40px;
+	white-space: nowrap;
+	text-align: right;
+}
+
+/* footnote (bottom) text */
+.footnote_plugin_text {
+	float: left;
+	padding-left: 16px;
+}
+
+/* footnote (bottom) link to the footnote implementation */
+.footnote_plugin_link {
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+}
+.footnote_plugin_link:hover {
+	color: #4777ff;
+	text-decoration: none;
+}
+
+/* footnote (bottom) styling end tag */
+.footnote_plugin_end {
+	clear: left;
+}
+
+/* tooltip */
+a.footnote_plugin_tooltip {
+	outline: none;
+	color: #4777ff;
+	text-decoration: none;
+	cursor: pointer;
+}
+a.footnote_plugin_tooltip strong {
+	line-height: 30px;
+}
+a.footnote_plugin_tooltip:hover {
+	text-decoration: none;
+}
+a.footnote_plugin_tooltip span {
+	z-index: 10;
+	display: none;
+	padding: 14px 20px;
+	margin-top: -30px;
+	margin-left: 28px;
+	/*width: 240px;*/
+	line-height: 16px;
+}
+a.footnote_plugin_tooltip:hover span {
+	display: inline;
+	position: absolute;
+	color: #474747;
+	border: 1px solid #ddccaa;
+	background: #fffaf0;
+}
+.callout {
+	z-index: 20;
+	position: absolute;
+	top: 30px;
+	border: 0;
+	left: -12px;
+}
+
+/*CSS3 extras*/
+a.footnote_plugin_tooltip span {
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-box-shadow: 5px 5px 8px #cccccc;
+	-webkit-box-shadow: 5px 5px 8px #cccccc;
+	box-shadow: 5px 5px 8px #cccccc;
+}

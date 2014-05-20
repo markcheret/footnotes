@@ -42,10 +42,10 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 == Changelog ==
 
 = 1.0.6 =
-- Update: uninstall function to delete all plugin settings (bugfix)
-- Update: counter style internal name in the reference container to correctly link to the right footnote on the page above (bugfix)
-- Update: footnote hover box styling to not wrap the footnote text on mouse over (bugfix)
-- Change: 'Love Me' text in the page footer if admin excepts it and set its default value to 'no'
+- Bugfix: Uninstall function to delete all plugin settings (bugfix)
+- Bugfix: Counter style internal name in the reference container to correctly link to the right footnote on the page above (bugfix)
+- Bugfix: Footnote hover box styling to not wrap the footnote text on mouse over (bugfix)
+- Update: 'footnotes love' text in the page footer if the admin accepts it and set its default value to 'no'
 
 = 1.0.5 =
 - The Plugin has been submitted to wordpress.org for review and (hopefully) publication.

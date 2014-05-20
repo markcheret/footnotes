@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
 "POT-Creation-Date: 2014-05-20 17:59+0100\n"
-"PO-Revision-Date: 2014-05-20 21:36+0100\n"
+"PO-Revision-Date: 2014-05-20 21:49+0100\n"
 "Last-Translator: Mark Cheret <mark@cheret.de>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
@@ -130,7 +130,7 @@ msgstr "Einstellungen"
 #: includes/replacer.php:109
 #, php-format
 msgid "Hey there, I'm using the awesome WordPress Plugin called %s"
-msgstr "Hey Community, ich verwende nun das WordPress Plugin %s"
+msgstr "Diese Seite verwendet das %s Plugin"
 
 #: includes/uninstall.php:26
 msgid "You must be logged in to run this script."

@@ -4,7 +4,7 @@
 	Plugin URI: https://github.com/media-competence-institute/footnotes
 	Description: simple adding footnotes to your pages
 	Author: Mark Cheret, Stefan Herndler
-	Version: 1.0.4
+	Version: 1.0.5
 	Author URI: https://github.com/media-competence-institute/footnotes
 	Text Domain: footnotes
 	Domain Path: /languages

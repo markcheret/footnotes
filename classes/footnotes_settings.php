@@ -4,7 +4,7 @@
  * User: Stefan
  * Date: 15.05.14
  * Time: 16:21
- * Version: 1.0-beta
+ * Version: 1.0.6
  * Since: 1.0
  */
 
@@ -16,6 +16,7 @@ class Class_FootnotesSettings
 {
 	/*
 	 * attribute for default settings value
+	 * updated default value for 'FOOTNOTE_INPUTFIELD_LOVE' to default: 'no' in version 1.0.6
 	 * @since 1.0
 	 */
 	public static $a_arr_Default_Settings = array(
@@ -25,7 +26,7 @@ class Class_FootnotesSettings
 		FOOTNOTE_INPUTFIELD_PLACEHOLDER_START => '((',
 		FOOTNOTE_INPUTFIELD_PLACEHOLDER_END => '))',
 		FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT => 'yes',
-		FOOTNOTE_INPUTFIELD_LOVE => 'yes',
+		FOOTNOTE_INPUTFIELD_LOVE => 'no',
 		FOOTNOTE_INPUTFIELD_COUNTER_STYLE => 'arabic_plain'
 	);
 	/*

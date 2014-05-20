@@ -3,7 +3,7 @@
  * User: Stefan
  * Date: 15.05.14
  * Time: 16:21
- * Version: 1.0-beta
+ * Version: 1.0.6
  * Since: 1.0
  */
 
@@ -105,12 +105,17 @@
 	cursor: default;
 }
 
+/*
+ * added width and white-space styling in version 1.0.6
+ */
 .footnote_plugin_tooltip:hover span, .footnote_plugin_tooltip span:hover {
 	display:    inline !important;
 	position:   absolute !important;
 	color:      #474747 !important;
 	border:     1px solid #ddccaa !important;
 	background: #fffaf0 !important;
+	width: auto;
+	white-space: nowrap;
 }
 
 .callout {

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-05-19 09:15+0100\n"
-"PO-Revision-Date: 2014-05-19 09:15+0100\n"
+"POT-Creation-Date: 2014-05-20 17:59+0100\n"
+"PO-Revision-Date: 2014-05-20 17:59+0100\n"
 "Last-Translator: Mark Cheret <mark@cheret.de>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en\n"
@@ -18,107 +18,107 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/footnotes_settings.php:311
+#: classes/footnotes_settings.php:312
 msgid "General"
 msgstr "General"
 
-#: classes/footnotes_settings.php:313
+#: classes/footnotes_settings.php:314
 #, php-format
 msgid "%s Settings"
 msgstr "%s Settings"
 
-#: classes/footnotes_settings.php:314
+#: classes/footnotes_settings.php:315
 msgid "References label:"
 msgstr "References label:"
 
-#: classes/footnotes_settings.php:315
+#: classes/footnotes_settings.php:316
 msgid "Collapse references by default:"
 msgstr "Collapse references by default:"
 
-#: classes/footnotes_settings.php:316
+#: classes/footnotes_settings.php:317
 msgid "Combine identical footnotes:"
 msgstr "Combine identical footnotes:"
 
-#: classes/footnotes_settings.php:317
+#: classes/footnotes_settings.php:318
 msgid "Footnote tag:"
 msgstr "Footnote tag:"
 
-#: classes/footnotes_settings.php:318
+#: classes/footnotes_settings.php:319
 msgid "Counter style:"
 msgstr "Counter style:"
 
-#: classes/footnotes_settings.php:319
+#: classes/footnotes_settings.php:320
 msgid "Allow footnotes on Summarized Posts:"
 msgstr "Allow footnotes on Summarized Posts:"
 
-#: classes/footnotes_settings.php:320
+#: classes/footnotes_settings.php:321
 #, php-format
 msgid "Tell the world you're using %sfoot%snotes%s:"
 msgstr "Tell the world you're using %sfoot%snotes%s:"
 
-#: classes/footnotes_settings.php:361 classes/footnotes_settings.php:409
-#: classes/footnotes_settings.php:424
+#: classes/footnotes_settings.php:362 classes/footnotes_settings.php:410
+#: classes/footnotes_settings.php:425
 msgid "Yes"
 msgstr "Yes"
 
-#: classes/footnotes_settings.php:362 classes/footnotes_settings.php:410
-#: classes/footnotes_settings.php:425
+#: classes/footnotes_settings.php:363 classes/footnotes_settings.php:411
+#: classes/footnotes_settings.php:426
 msgid "No"
 msgstr "No"
 
-#: classes/footnotes_settings.php:375
+#: classes/footnotes_settings.php:376
 msgid "starts with:"
 msgstr "starts with:"
 
-#: classes/footnotes_settings.php:379
+#: classes/footnotes_settings.php:380
 msgid "ends with:"
 msgstr "ends with:"
 
-#: classes/footnotes_settings.php:391
+#: classes/footnotes_settings.php:392
 msgid "Arabic Numbers - Plain"
 msgstr "Arabic Numbers - Plain"
 
-#: classes/footnotes_settings.php:392
+#: classes/footnotes_settings.php:393
 msgid "Arabic Numbers - Leading 0"
 msgstr "Arabic Numbers - Leading 0"
 
-#: classes/footnotes_settings.php:393
+#: classes/footnotes_settings.php:394
 msgid "Latin Character - lower case"
 msgstr "Latin Character - lower case"
 
-#: classes/footnotes_settings.php:394
+#: classes/footnotes_settings.php:395
 msgid "Latin Character - upper case"
 msgstr "Latin Character - upper case"
 
-#: classes/footnotes_settings.php:395
+#: classes/footnotes_settings.php:396
 msgid "Roman Numerals"
 msgstr "Roman Numerals"
 
-#: classes/footnotes_settings.php:440 classes/footnotes_settings.php:442
+#: classes/footnotes_settings.php:441 classes/footnotes_settings.php:443
 msgid "HowTo"
 msgstr "HowTo"
 
-#: classes/footnotes_settings.php:453
+#: classes/footnotes_settings.php:454
 msgid "This is a brief introduction in how to use the plugin."
 msgstr "This is a brief introduction in how to use the plugin."
 
-#: classes/footnotes_settings.php:468
+#: classes/footnotes_settings.php:469
 msgid "Start your footnote with the following shortcode:"
 msgstr "Start your footnote with the following shortcode:"
 
-#: classes/footnotes_settings.php:473
+#: classes/footnotes_settings.php:474
 msgid "...and end your footnote with this shortcode:"
 msgstr "...and end your footnote with this shortcode:"
 
-#: classes/footnotes_settings.php:479 classes/footnotes_settings.php:482
+#: classes/footnotes_settings.php:480 classes/footnotes_settings.php:483
 msgid "example string"
 msgstr "example string"
 
-#: classes/footnotes_settings.php:480
+#: classes/footnotes_settings.php:481
 msgid "will be displayed as:"
 msgstr "will be displayed as:"
 
-#: classes/footnotes_settings.php:487
+#: classes/footnotes_settings.php:488
 #, php-format
 msgid "If you have any questions, please don't hesitate to %se-mail%s us."
 msgstr "If you have any questions, please don't hesitate to %se-mail%s us."
@@ -127,16 +127,16 @@ msgstr "If you have any questions, please don't hesitate to %se-mail%s us."
 msgid "Settings"
 msgstr "Settings"
 
-#: includes/replacer.php:104
+#: includes/replacer.php:109
 #, php-format
-msgid "Hey there, I'm using the awesome WordPress Plugin called %sfootnotes%s"
-msgstr "Hey there, I'm using the awesome WordPress Plugin called %sfootnotes%s"
+msgid "Hey there, I'm using the awesome WordPress Plugin called %s"
+msgstr "Hey there, I'm using the awesome WordPress Plugin called %s"
 
-#: includes/uninstall.php:20
+#: includes/uninstall.php:26
 msgid "You must be logged in to run this script."
 msgstr "You must be logged in to run this script."
 
-#: includes/uninstall.php:25
+#: includes/uninstall.php:31
 msgid "You do not have permission to run this script."
 msgstr "You do not have permission to run this script."
 

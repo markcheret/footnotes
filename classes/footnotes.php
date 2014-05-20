@@ -4,7 +4,7 @@
  * User: Stefan
  * Date: 15.05.14
  * Time: 16:21
- * Version: 1.0
+ * Version: 1.0.6
  * Since: 1.0
  */
 
@@ -42,7 +42,7 @@ class Class_Footnotes
 		/* register hook for deactivating the plugin */
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 		/* register hook for uninstalling the plugin */
-		register_uninstall_hook( __FILE__, array( __CLASS__, 'uninstall' ) );
+		register_uninstall_hook( __FILE__, array( $this, 'uninstall' ) );
 	}
 
 	/**
@@ -65,11 +65,12 @@ class Class_Footnotes
 
 	/**
 	 * uninstalls the plugin
+	 * updated file path in version 1.0.6
 	 * @since 1.0
 	 */
 	function uninstall()
 	{
-		require_once( PLUGIN_DIR . '/includes/uninstall.php' );
+		require_once( dirname(__FILE__) . '/../includes/uninstall.php' );
 	}
 
 	/**

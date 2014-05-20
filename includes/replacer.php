@@ -4,7 +4,7 @@
  * User: Stefan
  * Date: 15.05.14
  * Time: 16:21
- * Version: 1.0
+ * Version: 1.0.6
  * Since: 1.0
  */
 
@@ -99,9 +99,14 @@ function footnotes_StopReplacing()
  */
 function footnotes_LoveAndShareMe()
 {
+	/*
+	 * updated url to wordpress.org plugin page instead of the github page
+	 * also updated the font-style and translation the string "footnotes"
+	 * in version 1.0.6
+	 */
 	echo '
 		<div style="text-align:center; color:#acacac;">'.
-		sprintf(__("Hey there, I'm using the awesome WordPress Plugin called %sfootnotes%s", FOOTNOTES_PLUGIN_NAME), '<a href="https://github.com/media-competence-institute/footnotes" target="_blank">', '</a>').
+		sprintf(__("Hey there, I'm using the awesome WordPress Plugin called %s", FOOTNOTES_PLUGIN_NAME), '<a href="http://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration: none;"><span style="color: #2bb975;">foot</span><span style="color: #545f5a;">notes</span></a>').
 		'</div>'
 	;
 }
@@ -270,7 +275,10 @@ function footnotes_OutputReferenceContainer()
 		}
 
 		/* add the footnote to the output box */
-		$l_str_ReplaceText = str_replace( "[[FOOTNOTE INDEX SHORT]]", $l_str_FirstFootnoteIndex, $l_str_FootnoteTemplate );
+		/*
+		 * added function to convert the counter style in the reference container (bugfix for the link to the footnote) in version 1.0.6
+		 */
+		$l_str_ReplaceText = str_replace( "[[FOOTNOTE INDEX SHORT]]", footnote_convert_index($l_str_FirstFootnoteIndex,$l_str_CounterStyle), $l_str_FootnoteTemplate );
 		$l_str_ReplaceText = str_replace( "[[FOOTNOTE INDEX]]", $l_str_FootnoteIndex, $l_str_ReplaceText );
 		$l_str_ReplaceText = str_replace( "[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText );
 		/* add the footnote container to the output */

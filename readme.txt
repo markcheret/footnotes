@@ -15,16 +15,12 @@ footnotes aims to be the all-in-one solution that ships with a set of sane defau
 
 == Frequently Asked Questions ==
 
-= How do I use this Plugin? =
+= Is your Plugin a copy of footnotes x? =
 
-It's relatively simple. Check out [the manual](https://github.com/markcheret/footnotes#footnotes).
-
-= Is your Plugina copy of footnotes x? =
-
-No, this Plugin has been written from scratch. Of course some inspirations were taken from other plugins.
+No, this Plugin has been written from scratch. Of course some inspirations on how to do or how to not do things were taken from other plugins.
 
 == Installation ==
-- Download the latest version from GitHub (https://github.com/media-competence-institute/footnotes)
+- Download the latest version from WordPress.org
 - in the bottom right there is a `Download ZIP` button
 - Visit your WordPress Admin area
 - Navigate to `Plugins\Add`

@@ -1,60 +1,69 @@
 /**
- * Created by Stefan on 15.05.14.
+ * Created by Stefan Herndler.
+ * User: Stefan
+ * Date: 15.05.14
+ * Time: 16:21
+ * Version: 1.0
+ * Since: 1.0
  */
-
-/* overwrite some styling for labels */
-label {
-	min-width: 160px !important;
-}
 
 /* overwrite some styling for inputs [type=text] and select-boxes */
 input[type=text], select {
-	padding-left: 8px !important;
+	padding-left:  8px !important;
 	padding-right: 8px !important;
-	margin-left: 12px !important;
+	margin-left:   12px !important;
 }
 
+/* overwrite link layout on the settings page */
 a.footnote_plugin {
-	text-decoration: underline;
-	cursor: pointer;
-	color: #202020;
-}
-
-/* settings container */
-.footnote_plugin_container {
-	display: block !important;
-	width: 100% !important;
-	padding-bottom: 18px !important;
+	text-decoration: underline !important;
+	cursor:          pointer !important;
+	color:           #202020 !important;
 }
 
 /* setting with 25% width */
 .footnote_plugin_25 {
-	width: 24% !important;
+	width: 25% !important;
 }
 
 /* setting with half width */
 .footnote_plugin_50 {
-	width: 49% !important;
+	width: 50% !important;
 }
+
 /* setting with 75% width */
 .footnote_plugin_75 {
-	width: 74% !important;
+	width: 75% !important;
 }
+
 /* setting with full width */
 .footnote_plugin_100 {
-	width: 99% !important;
+	width: 100% !important;
 }
 
 /* container for the box holding the placeholder tags at the end */
 .footnote_placeholder_box_container {
-	text-align: center;
-	width: auto;
-	display: inline-block;
+	text-align: center !important;
+	/*width:       auto;
+	display:     inline-block;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: -210px;*/
 }
 
 /* highlight the placeholders */
 span.footnote_highlight_placeholder {
-	font-weight: bold;
-	padding-left: 8px;
-	padding-right: 8px;
+	font-weight:   bold !important;
+	padding-left:  8px !important;
+	padding-right: 8px !important;
+}
+
+.footnote_placeholder_box_example {
+	border:         2px solid #ff524b !important;
+	border-radius:  4px !important;
+	padding-top:    16px !important;
+	padding-bottom: 16px !important;
+	width:          50% !important;
+	display:        block !important;
+	margin:         20px auto !important;
 }

@@ -1,111 +1,126 @@
 /**
- * Created by Stefan on 15.05.14.
+ * Created by Stefan Herndler.
+ * User: Stefan
+ * Date: 15.05.14
+ * Time: 16:21
+ * Version: 1.0
+ * Since: 1.0
  */
 
 /* container before the footnote appears at the bottom to get a space between footnote and content */
 .footnote_container_prepare {
-	display: block;
-	padding-top: 24px;
+	display:     block !important;
+	padding-top: 24px !important;
 }
-.footnote_container_prepare > p {
-	font-size: 1.5em;
-	margin-top: 1em;
-	margin-bottom: 0.25em;
-	padding: 0;
-	line-height: 1.3;
-	font-weight: normal;
-	overflow: hidden;
-	border-bottom: 1px solid #aaaaaa;
-	display: block;
-	-webkit-margin-before: 0.83em;
-	-webkit-margin-after: 0.83em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-}
-.footnote_container_prepare > p > span {
 
+.footnote_container_prepare > p {
+	font-size:             1.5em !important;
+	margin-top:            1em !important;
+	margin-bottom:         0.25em !important;
+	padding:               0 !important;
+	line-height:           1.3 !important;
+	font-weight:           normal !important;
+	overflow:              hidden !important;
+	border-bottom:         1px solid #aaaaaa !important;
+	display:               block !important;
+	-webkit-margin-before: 0.83em !important;
+	-webkit-margin-after:  0.83em !important;
+	-webkit-margin-start:  0px !important;
+	-webkit-margin-end:    0px !important;
+	text-align:            left !important;
+}
+
+.footnote_container_prepare > p > span {
+	padding-left: 20px !important;
+	text-align:   left !important;
 }
 
 /* container for the footnote in the bottom */
 .footnote_plugin_container {
-	display: block;
-	width: 100%;
-	padding-bottom: 14px;
+	display:        block !important;
+	width:          100% !important;
+	padding-bottom: 14px !important;
 }
 
 /* footnote (bottom) index */
 .footnote_plugin_index {
-	float: left;
-	min-width: 40px;
-	white-space: nowrap;
-	text-align: right;
+	float:       left !important;
+	min-width:   40px !important;
+	white-space: nowrap !important;
+	text-align:  right !important;
 }
 
 /* footnote (bottom) text */
 .footnote_plugin_text {
-	float: left;
-	padding-left: 16px;
+	float:        left !important;
+	padding-left: 16px !important;
 }
 
 /* footnote (bottom) link to the footnote implementation */
 .footnote_plugin_link {
-	outline: none;
-	text-decoration: none;
-	cursor: pointer;
+	outline:         none !important;
+	text-decoration: none !important;
+	cursor:          pointer !important;
 }
+
 .footnote_plugin_link:hover {
-	color: #4777ff;
-	text-decoration: none;
+	color:           #4777ff !important;
+	text-decoration: none !important;
 }
 
 /* footnote (bottom) styling end tag */
 .footnote_plugin_end {
-	clear: left;
+	clear: left !important;
 }
 
 /* tooltip */
 a.footnote_plugin_tooltip {
-	outline: none;
-	color: #4777ff;
-	text-decoration: none;
-	cursor: pointer;
+	outline:         none !important;
+	color:           #4777ff !important;
+	text-decoration: none !important;
+	cursor:          pointer !important;
 }
+
 a.footnote_plugin_tooltip strong {
-	line-height: 30px;
+	line-height: 30px !important;
 }
+
 a.footnote_plugin_tooltip:hover {
-	text-decoration: none;
+	text-decoration: none !important;
 }
+
 a.footnote_plugin_tooltip span {
-	z-index: 10;
-	display: none;
-	padding: 14px 20px;
-	margin-top: -30px;
-	margin-left: 28px;
+	z-index:     10 !important;
+	display:     none !important;
+	padding:     14px 20px !important;
+	margin-top:  -30px !important;
+	margin-left: 28px !important;
 	/*width: 240px;*/
-	line-height: 16px;
+	line-height: 16px !important;
 }
+
 a.footnote_plugin_tooltip:hover span {
-	display: inline;
-	position: absolute;
-	color: #474747;
-	border: 1px solid #ddccaa;
-	background: #fffaf0;
+	display:    inline !important;
+	position:   absolute !important;
+	color:      #474747 !important;
+	border:     1px solid #ddccaa !important;
+	background: #fffaf0 !important;
 }
+
 .callout {
-	z-index: 20;
-	position: absolute;
-	top: 30px;
-	border: 0;
-	left: -12px;
+	z-index:  20 !important;
+	position: absolute !important;
+	top:      30px !important;
+	border:   0 !important;
+	left:     -12px !important;
 }
 
 /*CSS3 extras*/
 a.footnote_plugin_tooltip span {
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-box-shadow: 5px 5px 8px #cccccc;
-	-webkit-box-shadow: 5px 5px 8px #cccccc;
-	box-shadow: 5px 5px 8px #cccccc;
+	border-radius:         4px !important;
+	-moz-border-radius:    4px !important;
+	-webkit-border-radius: 4px !important;
+	-moz-box-shadow:       5px 5px 8px #cccccc !important;
+	-webkit-box-shadow:    5px 5px 8px #cccccc !important;
+	box-shadow:            5px 5px 8px #cccccc !important;
 }

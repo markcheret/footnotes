@@ -34,7 +34,15 @@ coming soon
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.1-alpha =
+* Separated functions in different files for a better overview
+* Added a version control to each file / class / function / variable
+* New layout for the settings menu, settings split in tabs and not a list-view
+* Replacing footnotes in widget texts will show the reference container at the end of the page (bugfix)
+* Updated translations for EN and DE
+* Changed version number from 3 digits to 2 digits
+
+= 1.0 =
 * First development Version of the Plugin
 
 == Feedback ==

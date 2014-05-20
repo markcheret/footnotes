@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-05-15 21:40+0100\n"
-"PO-Revision-Date: 2014-05-15 21:40+0100\n"
+"POT-Creation-Date: 2014-05-16 20:06+0100\n"
+"PO-Revision-Date: 2014-05-16 20:07+0100\n"
 "Last-Translator: SHE <s.herndler@methis.at>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
@@ -18,54 +18,72 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: functions.php:214 settings.class.php:170 settings.class.php:216
+#: classes/footnote_settings.php:213
+msgid "General"
+msgstr "Allgemein"
+
+#: classes/footnote_settings.php:215 includes/plugin-settings.php:22
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: settings.class.php:175 settings.class.php:193
-msgid "Save"
-msgstr "Speichern"
-
-#: settings.class.php:217
-msgid "General Information"
-msgstr "Allgemeine Informationen"
-
-#: settings.class.php:225
+#: classes/footnote_settings.php:216
 msgid "References label:"
 msgstr "Überschrift \"Einzelnachweis\":"
 
-#: settings.class.php:234
+#: classes/footnote_settings.php:217
 msgid "Combine identical footnotes:"
 msgstr "Kombiniere meine Fußnoten:"
 
-#: settings.class.php:237
+#: classes/footnote_settings.php:260
 msgid "Yes"
 msgstr "Ja"
 
-#: settings.class.php:238
+#: classes/footnote_settings.php:261
 msgid "No"
 msgstr "Nein"
 
-#: settings.class.php:257
+#: classes/footnote_settings.php:282 classes/footnote_settings.php:284
+msgid "HowTo"
+msgstr "Hilfe"
+
+#: classes/footnote_settings.php:295
+msgid "This is a brief introduction in how to use the plugin."
+msgstr "Eine kurze Anleitung für die Verwendung des Plugins."
+
+#: classes/footnote_settings.php:308
 msgid "Start your footnote with the following shortcode:"
 msgstr "Starten Sie eine Fußnote mit:"
 
-#: settings.class.php:261
+#: classes/footnote_settings.php:313
 msgid "...and end your footnote with this shortcode:"
 msgstr "...und beenden Sie diese mit:"
 
-#: settings.class.php:268 settings.class.php:271
+#: classes/footnote_settings.php:320 classes/footnote_settings.php:323
 msgid "example string"
 msgstr "Beispieltext"
 
-#: settings.class.php:269
+#: classes/footnote_settings.php:321
 msgid "will be displayed as:"
 msgstr "wird dargestellt als:"
 
-#: settings.class.php:277
+#: classes/footnote_settings.php:329
 #, php-format
 msgid "If you have any questions, please don't hesitate to %smail us%s."
 msgstr "Bei Fragen können Sie uns gerne eine %se-Mail%s senden."
+
+#: includes/uninstall.php:20
+msgid "You must be logged in to run this script."
+msgstr "Sie müssen angemeldet sein um diese Funktion ausführen zu können."
+
+#: includes/uninstall.php:25
+msgid "You do not have permission to run this script."
+msgstr "Sie haben nicht die Berechtigung diese Funktion auszuführen."
+
+#~ msgid "Save"
+#~ msgstr "Speichern"
+
+#~ msgid "General Information"
+#~ msgstr "Allgemeine Informationen"
 
 #~ msgid ""
 #~ "Insert the following shortcode where you want your footnotes to be "

@@ -25,6 +25,9 @@ define( "FOOTNOTE_INPUTFIELD_REFERENCES_LABEL", "footnote_inputfield_references_
 define( "FOOTNOTE_INPUTFIELD_COLLAPSE_REFERENCES", "footnote_inputfield_collapse_references" ); /* id of input field for the "collapse references" setting */
 define( "FOOTNOTE_INPUTFIELD_PLACEHOLDER_START", "footnote_inputfield_placeholder_start"); /* id of input field for the "placeholder starting tag" setting */
 define( "FOOTNOTE_INPUTFIELD_PLACEHOLDER_END", "footnote_inputfield_placeholder_end"); /* id of input field for the "placeholder ending tag" setting */
+define( "FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT", "footnote_inputfield_search_in_excerpt"); /* id of input field for the "allow footnotes in the excerpt" setting */
+define( "FOOTNOTE_INPUTFIELD_LOVE", "footnote_inputfield_love"); /* id of input field for "love and share this plugin" setting */
+define( "FOOTNOTE_INPUTFIELD_COUNTER_STYLE", "footnote_inputfield_counter_style"); /* id of input field for "counter style of footnote index" setting */
 
 /* PLUGIN REFERENCES CONTAINER ID */
 define( "FOOTNOTE_REFERENCES_CONTAINER_ID", "footnote_references_container" ); /* id for the div surrounding the footnotes */

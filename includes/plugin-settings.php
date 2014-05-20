@@ -33,15 +33,20 @@ function footnotes_plugin_settings_link( $links, $file )
  * @since 1.0
  * @param string $p_str_OptionsField
  * @param array $p_arr_DefaultValues
+ * @param bool $p_bool_ConvertHtmlChars
  * @return array
  */
-function footnotes_filter_options( $p_str_OptionsField, $p_arr_DefaultValues )
+function footnotes_filter_options( $p_str_OptionsField, $p_arr_DefaultValues, $p_bool_ConvertHtmlChars=true )
 {
 	$l_arr_Options = get_option( $p_str_OptionsField );
 	/* loop through all keys in the array and filters them */
 	foreach ( $l_arr_Options as $l_str_Key => $l_str_Value ) {
 		/* removes special chars from the settings value */
 		$l_str_Value = stripcslashes( $l_str_Value );
+		/* if set, convert html special chars */
+		if ($p_bool_ConvertHtmlChars) {
+			$l_str_Value = htmlspecialchars( $l_str_Value );
+		}
 		/* check if settings value is not empty, otherwise load the default value, or empty string if no default is defined */
 		if (!empty($l_str_Value)) {
 			$l_arr_Options[ $l_str_Key ] = stripcslashes( $l_str_Value );

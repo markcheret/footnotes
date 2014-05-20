@@ -23,7 +23,10 @@ class Class_FootnotesSettings
 		FOOTNOTE_INPUTFIELD_REFERENCES_LABEL  => 'References',
 		FOOTNOTE_INPUTFIELD_COLLAPSE_REFERENCES => '',
 		FOOTNOTE_INPUTFIELD_PLACEHOLDER_START => '((',
-		FOOTNOTE_INPUTFIELD_PLACEHOLDER_END => '))'
+		FOOTNOTE_INPUTFIELD_PLACEHOLDER_END => '))',
+		FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT => 'yes',
+		FOOTNOTE_INPUTFIELD_LOVE => 'yes',
+		FOOTNOTE_INPUTFIELD_COUNTER_STYLE => 'arabic_plain'
 	);
 	/*
 	 * resulting pagehook for adding a new sub menu page to the settings
@@ -48,7 +51,7 @@ class Class_FootnotesSettings
 	function __construct()
 	{
 		/* loads and filters the settings for this plugin */
-		$this->a_arr_Options = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, self::$a_arr_Default_Settings );
+		$this->a_arr_Options = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, self::$a_arr_Default_Settings, true );
 
 		/* execute class includes on action-even: init, admin_init and admin_menu */
 		add_action( 'init', array( $this, 'LoadScriptsAndStylesheets' ) );
@@ -312,6 +315,9 @@ class Class_FootnotesSettings
 		add_settings_field( 'Register_Collapse_References', __( "Collapse references by default:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Collapse_References' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_Combine_Identical', __( "Combine identical footnotes:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Combine_Identical' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 		add_settings_field( 'Register_Placeholder_Tags', __( "Footnote tag:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_Placeholder_Tags' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
+		add_settings_field( 'Register_CounterStyle', __( "Counter style:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_CounterStyle' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
+		add_settings_field( 'Register_SearchExcerpt', __( "Allow footnotes on Summarized Posts:", FOOTNOTES_PLUGIN_NAME ), array( $this, 'Register_SearchExcerpt' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
+		add_settings_field( 'Register_LoveAndShare', sprintf(__( "Tell the world you're using %sfootnotes%s:", FOOTNOTES_PLUGIN_NAME ), '<span style="color:#ff524b">', '</span>'), array( $this, 'Register_LoveAndShare' ), FOOTNOTE_SETTINGS_LABEL_GENERAL, $l_str_SectionName );
 	}
 
 	/**
@@ -374,6 +380,55 @@ class Class_FootnotesSettings
 	}
 
 	/**
+	 * outouts the settings field for the counter style
+	 * @since 1.0-gamma
+	 */
+	function Register_CounterStyle()
+	{
+		$l_str_Space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+		/* get array with option elements */
+		$l_arr_Options = array(
+			"arabic_plain" => __( "Arabic Numbers - Plain", FOOTNOTES_PLUGIN_NAME ) .$l_str_Space. "1, 2, 3, 4, 5, ...",
+			"arabic_leading" => __( "Arabic Numbers - Leading 0", FOOTNOTES_PLUGIN_NAME ) .$l_str_Space. "01, 02, 03, 04, 05, ...",
+			"latin_low" => __( "Latin Character - lower case", FOOTNOTES_PLUGIN_NAME ) .$l_str_Space. "a, b, c, d, e, ...",
+			"latin_high" => __( "Latin Character - upper case", FOOTNOTES_PLUGIN_NAME ) .$l_str_Space. "A, B, C, D, E, ...",
+			"romanic" => __( "Roman Numerals", FOOTNOTES_PLUGIN_NAME ) .$l_str_Space. "I, II, III, IV, V, ..."
+		);
+		/* add a select box to the output */
+		$this->AddSelectbox(FOOTNOTE_INPUTFIELD_COUNTER_STYLE, $l_arr_Options, "footnote_plugin_50");
+	}
+
+	/**
+	 * outputs the settings field for "allow searching in summarized posts"
+	 * @since 1.0-gamma
+	 */
+	function Register_SearchExcerpt()
+	{
+		/* get array with option elements */
+		$l_arr_Options = array(
+			"yes" => __( "Yes", FOOTNOTES_PLUGIN_NAME ),
+			"no" => __( "No", FOOTNOTES_PLUGIN_NAME )
+		);
+		/* add a select box to the output */
+		$this->AddSelectbox(FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT, $l_arr_Options, "footnote_plugin_25");
+	}
+
+	/**
+	 * outputs the settings field for "love and share this plugin"
+	 * @since 1.0-gamma
+	 */
+	function Register_LoveAndShare()
+	{
+		/* get array with option elements */
+		$l_arr_Options = array(
+			"yes" => __( "Yes", FOOTNOTES_PLUGIN_NAME ),
+			"no" => __( "No", FOOTNOTES_PLUGIN_NAME )
+		);
+		/* add a select box to the output */
+		$this->AddSelectbox(FOOTNOTE_INPUTFIELD_LOVE, $l_arr_Options, "footnote_plugin_25");
+	}
+
+	/**
 	 * initialize howto settings tab
 	 * called in class constructor @ admin_init
 	 * @since 1.0
@@ -424,7 +479,7 @@ class Class_FootnotesSettings
 						<span class="footnote_highlight_placeholder"><?php echo $l_arr_Footnote_StartingTag["value"] . __( "example string", FOOTNOTES_PLUGIN_NAME ) . $l_arr_Footnote_EndingTag["value"]; ?></span>
 						<?php echo __( "will be displayed as:", FOOTNOTES_PLUGIN_NAME ); ?>
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<?php echo footnotes_replaceFootnotes( $l_arr_Footnote_StartingTag["value"] . __( "example string", FOOTNOTES_PLUGIN_NAME ) . $l_arr_Footnote_EndingTag["value"], true ); ?>
+						<?php echo footnotes_replaceFootnotes( $l_arr_Footnote_StartingTag["value"] . __( "example string", FOOTNOTES_PLUGIN_NAME ) . $l_arr_Footnote_EndingTag["value"], true, true ); ?>
 					</p>
 				</div>
 

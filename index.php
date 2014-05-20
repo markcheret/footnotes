@@ -1,11 +1,11 @@
 <?php
 /*
 	Plugin Name: footnotes
-	Plugin URI: http://www.herndler.org
+	Plugin URI: https://github.com/media-competence-institute/footnotes
 	Description: simple adding footnotes to your pages
 	Author: Mark Cheret, Stefan Herndler
-	Version: 1.0.3
-	Author URI: http://www.cheret.de
+	Version: 1.0.4
+	Author URI: https://github.com/media-competence-institute/footnotes
 	Text Domain: footnotes
 	Domain Path: /languages
 */
@@ -45,6 +45,8 @@ require_once( dirname( __FILE__ ) . "/includes/plugin-settings.php" );
 /* include script and stylesheet functions */
 require_once( dirname( __FILE__ ) . "/includes/scripts.php" );
 /* include script and stylesheet functions */
+require_once( dirname( __FILE__ ) . "/includes/convert.php" );
+/* include script and stylesheet functions */
 require_once( dirname( __FILE__ ) . "/includes/replacer.php" );
 
 /* require plugin class */
@@ -52,16 +54,8 @@ require_once( dirname( __FILE__ ) . "/classes/footnotes.php" );
 /* require plugin settings class */
 require_once( dirname( __FILE__ ) . "/classes/footnotes_settings.php" );
 
-/* calls the wordpress filter function to replace page content before displayed on public pages */
-add_filter( 'the_content', 'footnotes_startReplacing' );
-add_filter( 'the_excerpt', 'footnotes_DummyReplacing' );
-
-/* calls the wordpress filter function to replace widget text before displayed on public pages */
-add_filter( 'widget_title', 'footnotes_DummyReplacing' );
-add_filter( 'widget_text', 'footnotes_DummyReplacing' );
-
-/* calls the wordpress action to display the footer */
-add_action( 'get_footer', 'footnotes_StopReplacing' );
+/* register functions for the footnote replacement */
+footnotes_RegisterReplacementFunctions();
 
 /* adds javascript and stylesheets to the public page */
 add_action( 'wp_enqueue_scripts', 'footnotes_add_public_stylesheet' );

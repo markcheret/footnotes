@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.0.3
+Stable Tag: 1.0.4
 
 == Description ==
 
@@ -34,6 +34,22 @@ No, this Plugin has been written from scratch.
 coming soon
 
 == Changelog ==
+
+= 1.0.4 =
+* Updated replacing function when footnote is a link (bugfix)
+* Footnote hover box remains until cursor leaves footnote or hover box
+* Links in the footnote hover box are click able
+* New setting to allow footnotes on Summarized Posts
+* New setting to tell the world you're using footnotes plugin
+* New setting for the counter style of the footnote index
+** Arabic Numbers (1, 2, 3, 4, 5, ...)
+** Arabic Numbers leading 0 (01, 02, 03, 04, 05, ...)
+** Latin Characters lower-case (a, b, c, d, e, ...)
+** Latin Characters upper-case (A, B, C, D, E, ...)
+** Roman Numerals (I, II, III, IV, V, ...)
+* Adding a link to the WordPress plugin in the footer if the WP-admin accepts it
+* Updated translations for the new settings
+* re-changed the version number to have 3 digits
 
 = 1.0.3 =
 * New setting to use personal starting and ending tag for the footnotes

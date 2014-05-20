@@ -79,32 +79,33 @@
 }
 
 /* tooltip */
-a.footnote_plugin_tooltip {
+.footnote_plugin_tooltip {
 	outline:         none !important;
 	color:           #4777ff !important;
 	text-decoration: none !important;
 	cursor:          pointer !important;
 }
 
-a.footnote_plugin_tooltip strong {
+.footnote_plugin_tooltip strong {
 	line-height: 30px !important;
 }
 
-a.footnote_plugin_tooltip:hover {
+.footnote_plugin_tooltip:hover {
 	text-decoration: none !important;
 }
 
-a.footnote_plugin_tooltip span {
+.footnote_plugin_tooltip span {
 	z-index:     10 !important;
 	display:     none !important;
 	padding:     14px 20px !important;
 	margin-top:  -30px !important;
-	margin-left: 28px !important;
+	/*margin-left: 28px !important;*/
 	/*width: 240px;*/
 	line-height: 16px !important;
+	cursor: default;
 }
 
-a.footnote_plugin_tooltip:hover span {
+.footnote_plugin_tooltip:hover span, .footnote_plugin_tooltip span:hover {
 	display:    inline !important;
 	position:   absolute !important;
 	color:      #474747 !important;
@@ -121,7 +122,7 @@ a.footnote_plugin_tooltip:hover span {
 }
 
 /*CSS3 extras*/
-a.footnote_plugin_tooltip span {
+.footnote_plugin_tooltip span {
 	border-radius:         4px !important;
 	-moz-border-radius:    4px !important;
 	-webkit-border-radius: 4px !important;

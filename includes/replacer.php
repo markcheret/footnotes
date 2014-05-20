@@ -21,6 +21,41 @@ $g_arr_Footnotes = array();
 $g_arr_FootnotesSettings = array();
 
 /**
+ * register all functions needed for the replacement in the wordpress core
+ * @since 1.0-gamma
+ */
+function footnotes_RegisterReplacementFunctions() {
+	/* access to the global settings collection */
+	global $g_arr_FootnotesSettings;
+	/* load footnote settings */
+	$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, false );
+	/* get setting for accepting footnotes in the excerpt and convert it to boolean */
+	$l_bool_SearchExcerpt = footnotes_ConvertToBool($g_arr_FootnotesSettings[ FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT ]);
+
+	/* calls the wordpress filter function to replace page content before displayed on public pages */
+	add_filter( 'the_content', 'footnotes_startReplacing' );
+	/* search in the excerpt only if activated */
+	if ($l_bool_SearchExcerpt) {
+		add_filter( 'the_excerpt', 'footnotes_DummyReplacing' );
+	}
+
+	/* calls the wordpress filter function to replace widget text before displayed on public pages */
+	add_filter( 'widget_title', 'footnotes_DummyReplacing' );
+	add_filter( 'widget_text', 'footnotes_DummyReplacing' );
+
+	/* calls the wordpress action to display the footer */
+	add_action( 'get_footer', 'footnotes_StopReplacing' );
+
+	/* get setting for love and share this plugin and convert it to boolean */
+	$l_bool_LoveMe = footnotes_ConvertToBool($g_arr_FootnotesSettings[ FOOTNOTE_INPUTFIELD_LOVE ]);
+	/* check if the admin allows to add a link to the footer */
+	if ($l_bool_LoveMe) {
+		/* calls the wordpress action to hook to the footer */
+		add_filter('wp_footer', 'footnotes_LoveAndShareMe', 0);
+	}
+}
+
+/**
  * starts listening for footnotes to be replaced
  * output will be buffered and not displayed
  * @since 1.0
@@ -29,12 +64,8 @@ $g_arr_FootnotesSettings = array();
  */
 function footnotes_startReplacing( $p_str_Content )
 {
-	/* access to the global settings collection */
-	global $g_arr_FootnotesSettings;
 	/* stop the output and move it to a buffer instead, defines a callback function */
 	ob_start( "footnotes_replaceFootnotes" );
-	/* load footnote settings */
-	$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings );
 	/* return unchanged content */
 	return $p_str_Content;
 }
@@ -63,25 +94,35 @@ function footnotes_StopReplacing()
 }
 
 /**
+ * outputs a link to love and share this awesome plugin
+ * @since 1.0-gamma
+ */
+function footnotes_LoveAndShareMe()
+{
+	echo '
+		<div style="text-align:center; color:#acacac;">'.
+		sprintf(__("Hey there, I'm using the awesome WordPress Plugin called %sfootnotes%s", FOOTNOTES_PLUGIN_NAME), '<a href="https://github.com/media-competence-institute/footnotes" target="_blank">', '</a>').
+		'</div>'
+	;
+}
+
+/**
  * replaces all footnotes in the given content
  * loading settings if not happened yet since 1.0-gamma
  * @since 1.0
  * @param string $p_str_Content
  * @param bool   $p_bool_OutputReferences [default: true]
+ * @param bool $p_bool_ReplaceHtmlChars [ default: false]
  * @return string
  */
-function footnotes_replaceFootnotes( $p_str_Content, $p_bool_OutputReferences = true )
+function footnotes_replaceFootnotes( $p_str_Content, $p_bool_OutputReferences = true, $p_bool_ReplaceHtmlChars = false )
 {
 	/* get access to the global array */
 	global $g_arr_Footnotes;
 	/* access to the global settings collection */
 	global $g_arr_FootnotesSettings;
-	/* check if settings are already loaded, otherwise load them */
-	if (empty($g_arr_FootnotesSettings)) {
-		/* load footnote settings */
-		$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings );
-	}
-
+	/* load footnote settings */
+	$g_arr_FootnotesSettings = footnotes_filter_options( FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, $p_bool_ReplaceHtmlChars );
 	/* replace all footnotes in the content */
 	$p_str_Content = footnotes_getFromString( $p_str_Content );
 
@@ -118,6 +159,8 @@ function footnotes_getFromString( $p_str_Content )
 	$l_str_StartingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_START];
 	/*get footnote ending tag */
 	$l_str_EndingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_END];
+	/*get footnote counter style */
+	$l_str_CounterStyle = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_COUNTER_STYLE];
 
 	/* check for a footnote placeholder in the current page */
 	do {
@@ -134,7 +177,7 @@ function footnotes_getFromString( $p_str_Content )
 				/* get text inside footnote */
 				$l_str_FootnoteText = substr( $p_str_Content, $l_int_PosStart + strlen( $l_str_StartingTag ), $l_int_Length - strlen( $l_str_StartingTag ) );
 				/* set replacer for the footnote */
-				$l_str_ReplaceText = str_replace( "[[FOOTNOTE INDEX]]", $l_int_FootnoteIndex, $l_str_FootnoteTemplate );
+				$l_str_ReplaceText = str_replace( "[[FOOTNOTE INDEX]]", footnote_convert_index($l_int_FootnoteIndex,$l_str_CounterStyle), $l_str_FootnoteTemplate );
 				$l_str_ReplaceText = str_replace( "[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText );
 				/* replace footnote in content */
 				$p_str_Content = substr_replace( $p_str_Content, $l_str_ReplaceText, $l_int_PosStart, $l_int_Length + strlen( $l_str_EndingTag ) );
@@ -184,9 +227,11 @@ function footnotes_OutputReferenceContainer()
 	$l_str_ReferencesLabel = $g_arr_FootnotesSettings[ FOOTNOTE_INPUTFIELD_REFERENCES_LABEL ];
 	/* get setting for collapse reference footnotes and convert it to boolean */
 	$l_bool_CollapseReference = footnotes_ConvertToBool($g_arr_FootnotesSettings[ FOOTNOTE_INPUTFIELD_COLLAPSE_REFERENCES ]);
+	/*get footnote counter style */
+	$l_str_CounterStyle = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_COUNTER_STYLE];
 
 	/* output string, prepare it with the reference label as headline */
-	$l_str_Output = '<div class="footnote_container_prepare"><p><span onclick="footnote_expand_reference_container();">' . $l_str_ReferencesLabel . '</span></p></div>';
+	$l_str_Output = '<div class="footnote_container_prepare"><p><span onclick="footnote_expand_reference_container(\"\");">' . $l_str_ReferencesLabel . '</span></p></div>';
 	/* add a box around the footnotes */
 	$l_str_Output .= '<div id="'.FOOTNOTE_REFERENCES_CONTAINER_ID.'"';
 	/* add class to hide the references by default, if the user wants it */
@@ -208,7 +253,7 @@ function footnotes_OutputReferenceContainer()
 		}
 		/* get footnote index */
 		$l_str_FirstFootnoteIndex = ( $l_str_Index + 1 );
-		$l_str_FootnoteIndex = ( $l_str_Index + 1 );
+		$l_str_FootnoteIndex = footnote_convert_index(( $l_str_Index + 1 ),$l_str_CounterStyle);
 
 		/* check if it isn't the last footnote in the array */
 		if ( $l_str_FirstFootnoteIndex < count( $g_arr_Footnotes ) && $l_bool_CombineIdentical ) {
@@ -219,7 +264,7 @@ function footnotes_OutputReferenceContainer()
 					/* set the further footnote as empty so it won't be displayed later */
 					$g_arr_Footnotes[ $l_str_CheckIndex ] = "";
 					/* add the footnote index to the actual index */
-					$l_str_FootnoteIndex .= ", " . ( $l_str_CheckIndex + 1 );
+					$l_str_FootnoteIndex .= ", " . footnote_convert_index(( $l_str_CheckIndex + 1 ),$l_str_CounterStyle);
 				}
 			}
 		}
@@ -236,8 +281,11 @@ function footnotes_OutputReferenceContainer()
 	/* add a javascript to expand the reference container when clicking on a footnote or the reference label */
 	$l_str_Output .= '
 		<script type="text/javascript">
-			function footnote_expand_reference_container() {
+			function footnote_expand_reference_container(p_str_ID) {
 				jQuery("#'.FOOTNOTE_REFERENCES_CONTAINER_ID.'").show();
+				if (p_str_ID.length > 0) {
+					jQuery(p_str_ID).focus();
+				}
 			}
 		</script>
 	';

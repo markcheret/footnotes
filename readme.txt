@@ -38,7 +38,7 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
-= next version =
+= 1.1.0 =
 - Update: Global styling for the public plugin name
 - Update: Easier usage of the public plugin name in translations
 - Update: New Layout for the settings page to group similar settings to get a better overview

@@ -38,6 +38,14 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
+= next version =
+- Update: Global styling for the public plugin name
+- Update: Easier usage of the public plugin name in translations
+- Update: New Layout for the settings page to group similar settings to get a better overview
+- Update: Display settings submit button only if there is at least 1 editable setting in the current tab
+- Add: setting where the reference container appears on public pages (needs some corrections!)
+- Bugfix: displays only one reference container in front of the footer on category pages
+
 = 1.0.6 =
 - Bugfix: Uninstall function to delete all plugin settings
 - Bugfix: Counter style internal name in the reference container to correctly link to the right footnote on the page above

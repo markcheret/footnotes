@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 
 == Description ==
 
@@ -13,7 +13,7 @@ footnotes gives you the ability to display decently-formated footnotes on your W
 footnotes aims to be the all-in-one solution that ships with a set of sane defaults
 (those footnotes we know from offline publishing) but also give the user control over how their footnotes are being displayed.
 
-Currently footnotes displays all footnote texts found within the customizable shortcodes below the footer of your website as a styled list of references with backlinks to the actual footnote. In future releases of the plugin, you can decide, where the reference list is displayed.
+footnotes displays all footnote texts found within the customizable shortcodes below the footer of your website as a styled list of references with backlinks to the actual footnote. In future releases of the plugin, you can decide, where the reference list is displayed.
 
 Development of the plugin is an open process. The current version is available on github:
 https://github.com/media-competence-institute/footnotes

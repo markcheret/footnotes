@@ -43,6 +43,8 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 - Update: Setting where the reference container appears on public pages can also be set to the widget area
 - Add: link to the wordpress.org support page in the plugin main page
 - Update: Changed plugin URL from GitHub to WordPress
+- Bugfix: uninstall function to really remove all settings done in the settings page
+- Bugfix: load default settings after plugin is installed
 
 = 1.1.0 =
 - Update: Global styling for the public plugin name

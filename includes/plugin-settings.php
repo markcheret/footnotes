@@ -44,6 +44,10 @@ function footnotes_plugin_settings_link($links, $file)
 function footnotes_filter_options($p_str_OptionsField, $p_arr_DefaultValues, $p_bool_ConvertHtmlChars = true)
 {
     $l_arr_Options = get_option($p_str_OptionsField);
+	/* if no settings set yet return default values */
+	if (empty($l_arr_Options)) {
+		return $p_arr_DefaultValues;
+	}
     /* loop through all keys in the array and filters them */
     foreach ($l_arr_Options as $l_str_Key => $l_str_Value) {
         /* removes special chars from the settings value */

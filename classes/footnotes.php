@@ -36,13 +36,6 @@ class Class_Footnotes
         add_action('init', array($this, 'init'));
         add_action('admin_init', array($this, 'admin_init'));
         add_action('admin_menu', array($this, 'admin_menu'));
-
-        /* register hook for activating the plugin */
-        register_activation_hook(__FILE__, array($this, 'activate'));
-        /* register hook for deactivating the plugin */
-        register_deactivation_hook(__FILE__, array($this, 'deactivate'));
-        /* register hook for uninstalling the plugin */
-        register_uninstall_hook(__FILE__, array($this, 'uninstall'));
     }
 
     /**
@@ -70,7 +63,21 @@ class Class_Footnotes
      */
     function uninstall()
     {
-        require_once(dirname(__FILE__) . '/../includes/uninstall.php');
+		/* uninstalling the plugin is only allowed for logged in users */
+		if (!is_user_logged_in()) {
+			wp_die(__('You must be logged in to run this script.', FOOTNOTES_PLUGIN_NAME));
+		}
+
+		/* current user needs the permission to (un)install plugins */
+		if (!current_user_can('install_plugins')) {
+			wp_die(__('You do not have permission to run this script.', FOOTNOTES_PLUGIN_NAME));
+		}
+
+		/*
+		 * delete the settings container in the database
+		 * @since 1.0.6
+		 */
+		delete_option(FOOTNOTE_SETTINGS_CONTAINER);
     }
 
     /**

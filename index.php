@@ -67,6 +67,14 @@ if (!function_exists('is_admin')) {
     exit();
 }
 
+/* register hook for activating the plugin */
+register_activation_hook(__FILE__, array('Class_Footnotes', 'activate'));
+/* register hook for deactivating the plugin */
+register_deactivation_hook(__FILE__, array('Class_Footnotes', 'deactivate'));
+/* register hook for uninstalling the plugin */
+register_uninstall_hook(__FILE__, array('Class_Footnotes', 'uninstall'));
+
+
 /* action to locate language and load the wordpress-specific language file */
 add_action('plugins_loaded', 'footnotes_load_language');
 

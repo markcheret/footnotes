@@ -251,6 +251,16 @@ class Class_FootnotesSettings
         echo '<br/><br/>';
     }
 
+	/**
+	 * outputs a simple text
+	 * @param string $p_str_Text
+	 * @since 1.1.1
+	 */
+	function AddText($p_str_Text)
+	{
+		echo '<span>' . $p_str_Text . '</span>';
+	}
+
     /**
      * outputs a label for a specific input/select box
      * @param string $p_str_SettingsID
@@ -272,10 +282,11 @@ class Class_FootnotesSettings
      * @param string $p_str_SettingsID [id of the settings field]
      * @param string $p_str_ClassName [css class name]
      * @param int $p_str_MaxLength [max length for the input value]
+	 * @param bool $p_bool_Readonly [input is readonly] in version 1.1.1
      * @since 1.0-beta
      * removed optional paremter for a label in version 1.0.7
      */
-    function AddTextbox($p_str_SettingsID, $p_str_ClassName = "", $p_str_MaxLength = 0)
+    function AddTextbox($p_str_SettingsID, $p_str_ClassName = "", $p_str_MaxLength = 0, $p_bool_Readonly = false)
     {
         /* collect data for given settings field */
         $l_arr_Data = $this->LoadSetting($p_str_SettingsID);
@@ -288,8 +299,12 @@ class Class_FootnotesSettings
         if (!empty($p_str_MaxLength)) {
             $p_str_MaxLength = ' maxlength="' . $p_str_MaxLength . '"';
         }
+
+		if ($p_bool_Readonly) {
+			$p_bool_Readonly = ' readonly="readonly"';
+		}
         /* outputs an input field type TEXT */
-        echo '<input type="text" ' . $p_str_ClassName . $p_str_MaxLength . ' name="' . $l_arr_Data["name"] . '" id="' . $l_arr_Data["id"] . '" value="' . $l_arr_Data["value"] . '"/>';
+        echo '<input type="text" ' . $p_str_ClassName . $p_str_MaxLength . $p_bool_Readonly . ' name="' . $l_arr_Data["name"] . '" id="' . $l_arr_Data["id"] . '" value="' . $l_arr_Data["value"] . '"/>';
     }
 
     /**
@@ -469,6 +484,11 @@ class Class_FootnotesSettings
         );
         $this->AddLabel(FOOTNOTE_INPUTFIELD_LOVE, sprintf(__("Tell the world you're using %s:", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME));
         $this->AddSelectbox(FOOTNOTE_INPUTFIELD_LOVE, $l_arr_Options, "footnote_plugin_50");
+		$this->AddNewline();
+
+		/* no 'love me' on specific pages */
+		$this->AddLabel("", sprintf(__("Don't tell the world you're using %s on specific pages by adding the following short code:", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME));
+		$this->AddText(FOOTNOTES_NO_SLUGME_PLUG);
     }
 
     /**

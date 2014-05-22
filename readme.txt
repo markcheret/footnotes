@@ -15,9 +15,11 @@ footnotes aims to be the all-in-one solution that ships with a set of sane defau
 
 footnotes displays all footnote texts found within the customizable shortcodes below the footer of your website as a styled list of references with backlinks to the actual footnote. In future releases of the plugin, you can decide, where the reference list is displayed.
 
-Development of the plugin is an open process. The current version is available on github:
+The current version is available on wordpress.org:
+http://downloads.wordpress.org/plugin/footnotes.zip
+
+Development of the plugin is an open process. Latest code is available on wordpress.org, please report feature requests and bugs on GitHub:
 https://github.com/media-competence-institute/footnotes
-Feel free to contribute and to fix errors or send improvements via GitHub.
 
 == Frequently Asked Questions ==
 

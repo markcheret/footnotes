@@ -41,6 +41,7 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 = 1.1.1 =
 - Feature: Short code to not display the 'love me' slug on specific pages ( short code = [[no footnotes: love]] )
 - Update: Setting where the reference container appears on public pages can also be set to the widget area
+- Add: link to the wordpress.org support page in the plugin main page
 
 = 1.1.0 =
 - Update: Global styling for the public plugin name

@@ -18,9 +18,14 @@
  */
 function footnotes_plugin_settings_link($links, $file)
 {
-    /* add link to the /forms.contact plugin's settings page */
-    $settings_link = '<a href="' . admin_url('options-general.php?page=' . FOOTNOTES_SETTINGS_PAGE_ID) . '">' . __('Settings', FOOTNOTES_PLUGIN_NAME) . '</a>';
-    array_unshift($links, $settings_link);
+    /* add link to the footnotes plugin settings page */
+    $l_str_SettingsLink = '<a href="' . admin_url('options-general.php?page=' . FOOTNOTES_SETTINGS_PAGE_ID) . '">' . __('Settings', FOOTNOTES_PLUGIN_NAME) . '</a>';
+	/* add link to the footnotes plugin support page on wordpress.org */
+	$l_str_SupportLink = '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">' . __('Support', FOOTNOTES_PLUGIN_NAME) . '</a>';
+
+	/* add defined links to the plugin main page */
+	$links[] = $l_str_SupportLink;
+	$links[] = $l_str_SettingsLink;
 
     /* return new links */
     return $links;

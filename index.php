@@ -1,7 +1,7 @@
 <?php
 /*
 	Plugin Name: footnotes
-	Plugin URI: https://github.com/media-competence-institute/footnotes
+	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
 	Author: media competence institute
 	Version: 1.1.1

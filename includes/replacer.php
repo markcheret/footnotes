@@ -4,7 +4,7 @@
  * User: Stefan
  * Date: 15.05.14
  * Time: 16:21
- * Version: 1.0.7
+ * Version: 1.1.1
  * Since: 1.0
  */
 
@@ -25,6 +25,12 @@ $g_arr_FootnotesSettings = array();
  * @since 1.0.7
  */
 $g_bool_FootnotesReplacementStarted = false;
+
+/*
+ * flag to know íf the user wants to have NO 'love me' slug on the current page
+ * @since 1.1.1
+ */
+$g_bool_NoLoveMeSlugOnCurrentPage = false;
 
 /**
  * register all functions needed for the replacement in the wordpress core
@@ -49,7 +55,7 @@ function footnotes_RegisterReplacementFunctions()
     add_filter('widget_text', 'footnotes_Replacer_WidgetText');
 
     /* adds the love and share me slug to the footer */
-    add_filter('wp_footer', 'footnotes_LoveAndShareMe');
+    add_action('wp_footer', 'footnotes_LoveAndShareMe');
 
 }
 
@@ -162,6 +168,7 @@ function footnotes_LoveAndShareMe()
 {
     /* access to the global settings collection */
     global $g_arr_FootnotesSettings;
+	global $g_bool_NoLoveMeSlugOnCurrentPage;
     /*
      * updated url to wordpress.org plugin page instead of the github page
      * also updated the font-style and translation the string "footnotes"
@@ -174,7 +181,7 @@ function footnotes_LoveAndShareMe()
     /* get setting for love and share this plugin and convert it to boolean */
     $l_bool_LoveMe = footnotes_ConvertToBool($g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_LOVE]);
     /* check if the admin allows to add a link to the footer */
-    if ($l_bool_LoveMe) {
+    if ($l_bool_LoveMe && !$g_bool_NoLoveMeSlugOnCurrentPage) {
         echo '
 		<div style="text-align:center; color:#acacac;">' .
             sprintf(__("Hey there, I'm using the awesome WordPress Plugin called %s", FOOTNOTES_PLUGIN_NAME), '<a href="http://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration: none;">' . FOOTNOTES_PLUGIN_PUBLIC_NAME . '</a>') .
@@ -208,6 +215,17 @@ function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = t
         /* free all found footnotes if reference container will be displayed */
         $g_arr_Footnotes = array();
     }
+
+	/*
+	 * checks if the user doesn't want to have a 'love me' on current page
+	 * @since 1.1.1
+	 */
+	if (strpos($p_str_Content, FOOTNOTES_NO_SLUGME_PLUG) !== false) {
+		global $g_bool_NoLoveMeSlugOnCurrentPage;
+		$g_bool_NoLoveMeSlugOnCurrentPage = true;
+		$p_str_Content = str_replace(FOOTNOTES_NO_SLUGME_PLUG, "", $p_str_Content);
+	}
+
     /* return the replaced content */
     return $p_str_Content;
 }

@@ -47,3 +47,9 @@ define("FOOTNOTE_REFERENCES_CONTAINER_ID", "footnote_references_container"); /* 
 define("FOOTNOTES_PLUGIN_DIR_NAME", "footnotes");
 define("FOOTNOTES_LANGUAGE_DIR", dirname(__FILE__) . "/../languages/");
 define("FOOTNOTES_TEMPLATES_DIR", dirname(__FILE__) . "/../templates/");
+
+/*
+ * PLUGIN PLACEHOLDER TO NOT DISPLAY THE 'LOVE ME' SLUG
+ * @since 1.1.1
+ */
+define("FOOTNOTES_NO_SLUGME_PLUG", "[[no footnotes: love]]");

@@ -403,7 +403,8 @@ class Class_FootnotesSettings
          */
         $l_arr_Options = array(
             "footer" => __("in the footer", FOOTNOTES_PLUGIN_NAME),
-            "post_end" => __("at the end of the post", FOOTNOTES_PLUGIN_NAME)
+            "post_end" => __("at the end of the post", FOOTNOTES_PLUGIN_NAME),
+			"widget" => __("in the widget area", FOOTNOTES_PLUGIN_NAME)
         );
         $this->AddLabel(FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE, __("Where shall the reference container appear:", FOOTNOTES_PLUGIN_NAME));
         $this->AddSelectbox(FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE, $l_arr_Options, "footnote_plugin_50");

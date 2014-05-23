@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
 	Author: media competence institute
-	Version: 1.1.1
+	Version: 1.1.2
 	Author URI: http://cheret.co.uk/mci
 	Text Domain: footnotes
 	Domain Path: /languages

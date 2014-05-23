@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable tag: 1.1.1
+Stable Tag: 1.1.1
 
 == Description ==
 
@@ -41,7 +41,7 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 == Changelog ==
 
 = 1.1.2 =
-- Update: Moved footnotes 'love' settings in a separate container
+- Update: Moved footnotes 'love' settings to a separate container
 
 = 1.1.1 =
 - Feature: Short code to not display the 'love me' slug on specific pages ( short code = [[no footnotes: love]] )

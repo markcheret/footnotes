@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: Aricura, mark.cheret
-Tags: footnote, footnotes, smart, bibliography, formatting, notes, Post, posts, reference, referencing
+Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later

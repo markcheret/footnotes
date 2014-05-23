@@ -382,8 +382,9 @@ class Class_FootnotesSettings
         /* register settings tab */
         add_settings_section("Footnote_Secion_Settings_General", sprintf(__("%s Settings", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME), array($this, 'RegisterTab_General_Description'), FOOTNOTE_SETTINGS_LABEL_GENERAL);
         add_meta_box('Register_MetaBox_ReferenceContainer', __("References Container", FOOTNOTES_PLUGIN_NAME), array($this, 'Register_MetaBox_ReferenceContainer'), FOOTNOTE_SETTINGS_LABEL_GENERAL, 'main');
-        add_meta_box('Register_MetaBox_FootnoteStyling', __("Footnotes styling", FOOTNOTES_PLUGIN_NAME), array($this, 'Register_MetaBox_FootnoteStyling'), FOOTNOTE_SETTINGS_LABEL_GENERAL, 'main');
-        add_meta_box('Register_MetaBox_Other', __("Other", FOOTNOTES_PLUGIN_NAME), array($this, 'Register_MetaBox_Other'), FOOTNOTE_SETTINGS_LABEL_GENERAL, 'main');
+        add_meta_box('Register_MetaBox_FootnoteStyling', sprintf(__("%s styling", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME), array($this, 'Register_MetaBox_FootnoteStyling'), FOOTNOTE_SETTINGS_LABEL_GENERAL, 'main');
+		add_meta_box('Register_MetaBox_Love', FOOTNOTES_PLUGIN_PUBLIC_NAME . '&nbsp;<span style="color:#ff6d3b; font-weight:bold;">&hearts;</span>', array($this, 'Register_MetaBox_Love'), FOOTNOTE_SETTINGS_LABEL_GENERAL, 'main');
+		add_meta_box('Register_MetaBox_Other', __("Other", FOOTNOTES_PLUGIN_NAME), array($this, 'Register_MetaBox_Other'), FOOTNOTE_SETTINGS_LABEL_GENERAL, 'main');
     }
 
     /**
@@ -462,6 +463,27 @@ class Class_FootnotesSettings
         $this->AddSelectbox(FOOTNOTE_INPUTFIELD_COUNTER_STYLE, $l_arr_Options, "footnote_plugin_50");
     }
 
+	/**
+	 * outputs other footnotes settings that doesn't match a special category
+	 * @since 1.0.7
+	 */
+	function Register_MetaBox_Love()
+	{
+		/* setting for 'love and share this plugin in my footer' */
+		$l_arr_Options = array(
+			"yes" => __("Yes", FOOTNOTES_PLUGIN_NAME),
+			"no" => __("No", FOOTNOTES_PLUGIN_NAME)
+		);
+		$this->AddLabel(FOOTNOTE_INPUTFIELD_LOVE, sprintf(__("Tell the world you're using %s:", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME));
+		$this->AddSelectbox(FOOTNOTE_INPUTFIELD_LOVE, $l_arr_Options, "footnote_plugin_50");
+		$this->AddNewline();
+
+		/* no 'love me' on specific pages */
+		$this->AddText(sprintf(__("Don't tell the world you're using %s on specific pages by adding the following short code:", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME));
+		$this->AddText("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+		$this->AddText(FOOTNOTES_NO_SLUGME_PLUG);
+	}
+
     /**
      * outputs other footnotes settings that doesn't match a special category
      * @since 1.0.7
@@ -475,20 +497,6 @@ class Class_FootnotesSettings
         );
         $this->AddLabel(FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT, __('Allow footnotes on Summarized Posts:', FOOTNOTES_PLUGIN_NAME));
         $this->AddSelectbox(FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT, $l_arr_Options, "footnote_plugin_50");
-        $this->AddNewline();
-
-        /* setting for 'love and share this plugin in my footer' */
-        $l_arr_Options = array(
-            "yes" => __("Yes", FOOTNOTES_PLUGIN_NAME),
-            "no" => __("No", FOOTNOTES_PLUGIN_NAME)
-        );
-        $this->AddLabel(FOOTNOTE_INPUTFIELD_LOVE, sprintf(__("Tell the world you're using %s:", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME));
-        $this->AddSelectbox(FOOTNOTE_INPUTFIELD_LOVE, $l_arr_Options, "footnote_plugin_50");
-		$this->AddNewline();
-
-		/* no 'love me' on specific pages */
-		$this->AddLabel("", sprintf(__("Don't tell the world you're using %s on specific pages by adding the following short code:", FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME));
-		$this->AddText(FOOTNOTES_NO_SLUGME_PLUG);
     }
 
     /**

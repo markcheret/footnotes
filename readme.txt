@@ -40,6 +40,9 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
+= 1.1.2 =
+- Update: Moved footnotes 'love' settings in a separate container
+
 = 1.1.1 =
 - Feature: Short code to not display the 'love me' slug on specific pages ( short code = [[no footnotes: love]] )
 - Update: Setting where the reference container appears on public pages can also be set to the widget area

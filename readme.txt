@@ -30,13 +30,17 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 == Installation ==
 - Visit your WordPress Admin area
 - Navigate to `Plugins\Add`
-- Install the latest version from WordPress.org
+- Search for **footnotes** and find this Plugin among others
+- Install the latest version of the **footnotes** Plugin from WordPress.org
 - Activate the Plugin
 
 == Screenshots ==
-1. find the footnotes plugin in the Settings Menu
-2. an overview of the currently possible settings in footnotes
-3. the HowTo section in the footnotes settings
+1. Find the footnotes plugin in the Settings Menu
+2. Settings for the *References Container*
+3. Settings for **footnotes** styling
+4. Settings for **footnotes** love
+5. Other Settings
+6. The HowTo section in the **footnotes** settings
 
 == Changelog ==
 
@@ -50,8 +54,8 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 - Experimental: User defined short code for defining footnotes
 - Experimental: Plugin Widget to define where the reference container should appear when set to "widget area"
 - Update: Moved footnotes 'love' settings to a separate container
-- Bugfix: Setting for the position of the "reference container" works for the options "footer", "end of post" and "widget area"
 - Update: Translation for new settings and for the Widget description
+- Bugfix: Setting for the position of the "reference container" works for the options "footer", "end of post" and "widget area"
 
 = 1.1.1 =
 - Feature: Short code to not display the 'love me' slug on specific pages ( short code = [[no footnotes: love]] )

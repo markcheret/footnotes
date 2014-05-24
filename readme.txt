@@ -28,8 +28,8 @@ This is an example. Please note, that you can customize the shortcode you want t
 
 1. Your awesome text((with an awesome footnote))
 2. Your awesome text[ref]with an awesome footnote[/ref]
-3. Your awesome text<fn>with an awesome footnote</fn>
-4. Your awesome text `custom-shortcode` with an awesome footnote `custom-shortcode)
+3. Your awesome text`<fn>`with an awesome footnote`</fn>`
+4. Your awesome text `custom-shortcode` with an awesome footnote `custom-shortcode`)
 
 The current version is available on wordpress.org:
 http://downloads.wordpress.org/plugin/footnotes.zip

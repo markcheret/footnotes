@@ -46,7 +46,8 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 - Add: Pre defined footnote short codes and possibility for a user defined short code
 - Add: Plugin Widget to define where the reference container shall appear when set to "widget area"
 - Update: Translation for new settings and for the Widget description
-- Add: New button in the WYSIWYG editor and in the plain text editor to easily implement the footnotes tag (icon for WYSIWYG-button missing!!!)
+- Add: New button in the WYSIWYG editor and in the plain text editor to easily implement the footnotes tag
+- Add: Icon for the WYSIWYG-editor button
 
 = 1.1.1 =
 - Feature: Short code to not display the 'love me' slug on specific pages ( short code = [[no footnotes: love]] )

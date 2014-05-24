@@ -15,8 +15,8 @@
         init : function(ed, url) {
             ed.addButton('footnotes', {
                 title : 'Footnotes',
-                cmd : 'footnotes'
-                //image : url + '/dropcap.jpg' TODO: add icon here
+                cmd : 'footnotes',
+                image : url + '/../img/fn-wysiwyg.png'
             });
 
             ed.addCommand('footnotes', function() {

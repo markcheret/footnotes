@@ -47,6 +47,8 @@ require_once(dirname(__FILE__) . "/includes/scripts.php");
 /* include script and stylesheet functions */
 require_once(dirname(__FILE__) . "/includes/convert.php");
 /* include script and stylesheet functions */
+require_once(dirname(__FILE__) . "/includes/wysiwyg-editor.php");
+/* include script and stylesheet functions */
 require_once(dirname(__FILE__) . "/includes/replacer.php");
 
 /* require plugin class */
@@ -62,6 +64,25 @@ footnotes_RegisterReplacementFunctions();
 /* adds javascript and stylesheets to the public page */
 add_action('wp_enqueue_scripts', 'footnotes_add_public_stylesheet');
 
+/* defines the callback function for the editor buttons */
+add_action('wp_ajax_nopriv_footnotes_getTags', 'footnotes_wysiwyg_ajax_callback' );
+add_action('wp_ajax_footnotes_getTags', 'footnotes_wysiwyg_ajax_callback' );
+/* add new button to the WYSIWYG - editor */
+add_filter('mce_buttons', 'footnotes_wysiwyg_editor_functions');
+add_filter( "mce_external_plugins", "footnotes_wysiwyg_editor_buttons" );
+/* add new button to the plain text editor */
+add_action( 'admin_print_footer_scripts', 'footnotes_text_editor_buttons' );
+
+/* action to locate language and load the wordpress-specific language file */
+add_action('plugins_loaded', 'footnotes_load_language');
+
+/* add link to the settings page in plugin main page */
+$l_str_plugin_file = FOOTNOTES_PLUGIN_DIR_NAME . '/index.php';
+add_filter("plugin_action_links_{$l_str_plugin_file}", 'footnotes_plugin_settings_link', 10, 2);
+
+/* register footnotes widget */
+add_action('widgets_init', create_function('', 'return register_widget("Class_FootnotesWidget");'));
+
 /* only admin is allowed to execute the plugin settings */
 if (!function_exists('is_admin')) {
     header('Status: 403 Forbidden');
@@ -75,17 +96,6 @@ register_activation_hook(__FILE__, array('Class_Footnotes', 'activate'));
 register_deactivation_hook(__FILE__, array('Class_Footnotes', 'deactivate'));
 /* register hook for uninstalling the plugin */
 register_uninstall_hook(__FILE__, array('Class_Footnotes', 'uninstall'));
-
-
-/* action to locate language and load the wordpress-specific language file */
-add_action('plugins_loaded', 'footnotes_load_language');
-
-/* add link to the settings page in plugin main page */
-$l_str_plugin_file = FOOTNOTES_PLUGIN_DIR_NAME . '/index.php';
-add_filter("plugin_action_links_{$l_str_plugin_file}", 'footnotes_plugin_settings_link', 10, 2);
-
-/* register footnotes widget */
-add_action('widgets_init', create_function('', 'return register_widget("Class_FootnotesWidget");'));
 
 /* initialize an object of the plugin class */
 global $g_obj_FootnotesPlugin;

@@ -15,13 +15,21 @@ Stable Tag: 1.2.0
 = Main Features =
 - Fully customizable **footnotes** shortcode
 - Decide, where your **footnotes** are displayed (position of the *Reference Container*)
-- Responsive Reference Container
+- Responsive *Reference Container*
 - Mouse-Over Box with clickable links displays your **footnotes** text
 - Automatic numbering of your **footnotes**
 - Choose from a list of symbols to represent your **footnotes**
 - Display the **footnotes** *Reference Container* inside a Widget
 - Button in both the Visual and the Text editor
   - Add **footnotes** into your Page / Post with ease of use by selecting your text and clicking the button
+  
+= Example Usage =
+This is an example. Please note, that you can customize the shortcode you want to use.
+
+1. Your awesome text((with an awesome footnote))
+2. Your awesome text[ref]with an awesome footnote[/ref]
+3. Your awesome text<fn>with an awesome footnote</fn>
+4. Your awesome text `custom-shortcode` with an awesome footnote `custom-shortcode)
 
 The current version is available on wordpress.org:
 http://downloads.wordpress.org/plugin/footnotes.zip

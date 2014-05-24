@@ -66,7 +66,7 @@
                 author : 'media competence institute',
                 authorurl : 'http://cheret.co.uk/mci',
                 infourl : 'http://wordpress.org/plugins/footnotes/',
-                version : "1.1.2"
+                version : "1.2.0"
             };
         }
     });

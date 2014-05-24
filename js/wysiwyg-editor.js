@@ -6,7 +6,7 @@
     tinymce.create('tinymce.plugins.Footnotes', {
         /**
          * Initializes the plugin, this will be executed after the plugin has been created.
-         * This call is done before the editor instance has finished it's initialization so use the onInit event
+         * This call is done before the editor instance has finished its initialization so use the onInit event
          * of the editor instance to intercept that event.
          *
          * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
@@ -14,7 +14,7 @@
          */
         init : function(ed, url) {
             ed.addButton('footnotes', {
-                title : 'Footnotes',
+                title : 'footnotes',
                 cmd : 'footnotes',
                 image : url + '/../img/fn-wysiwyg.png'
             });
@@ -62,7 +62,7 @@
          */
         getInfo : function() {
             return {
-                longname : 'Insert Footnotes tag',
+                longname : 'insert footnotes tag',
                 author : 'media competence institute',
                 authorurl : 'http://cheret.co.uk/mci',
                 infourl : 'http://wordpress.org/plugins/footnotes/',

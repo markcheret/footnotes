@@ -21,12 +21,6 @@ $g_arr_Footnotes = array();
 $g_arr_FootnotesSettings = array();
 
 /*
- * flag to know if the replacement already started for the current page
- * @since 1.0.7
- */
-$g_bool_FootnotesReplacementStarted = false;
-
-/*
  * flag to know íf the user wants to have NO 'love me' slug on the current page
  * @since 1.1.1
  */
@@ -43,8 +37,6 @@ function footnotes_RegisterReplacementFunctions()
     /* load footnote settings */
     $g_arr_FootnotesSettings = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, false);
 
-    /* starts listening to the output for replacement */
-    add_action('wp_head', 'footnotes_startReplacing');
     /* stops listening to the output and replaces the footnotes */
     add_action('get_footer', 'footnotes_StopReplacing');
 
@@ -70,14 +62,9 @@ function footnotes_Replacer_Content($p_str_Content)
     /* access to the global settings collection */
     global $g_arr_FootnotesSettings;
     /* get setting for 'display reference container position' */
-    $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT];
-    /* check if reference container should be displayed at the end of a post */
-    if ($l_str_ReferenceContainerPosition == "post_end") {
-        footnotes_StopReplacing();
-        footnotes_startReplacing();
-    }
+    $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE];
     /* returns content */
-    return $p_str_Content;
+    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false);
 }
 
 /**
@@ -94,8 +81,7 @@ function footnotes_Replacer_Excerpt($p_str_Content)
     $l_bool_SearchExcerpt = footnotes_ConvertToBool($g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT]);
     /* search in the excerpt only if activated */
     if ($l_bool_SearchExcerpt) {
-        footnotes_StopReplacing();
-        footnotes_startReplacing();
+        return footnotes_replaceFootnotes($p_str_Content, false);
     }
     /* returns content */
     return $p_str_Content;
@@ -121,27 +107,12 @@ function footnotes_Replacer_WidgetTitle($p_str_Content)
  */
 function footnotes_Replacer_WidgetText($p_str_Content)
 {
+    /* access to the global settings collection */
+    global $g_arr_FootnotesSettings;
+    /* get setting for 'display reference container position' */
+    $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE];
     /* returns content */
-    return $p_str_Content;
-}
-
-/**
- * starts listening for footnotes to be replaced
- * output will be buffered and not displayed
- * @since 1.0
- * added flag to only start 'stopping output' once in version 1.0.7
- */
-function footnotes_startReplacing()
-{
-    /* global access to the replacement flag */
-    global $g_bool_FootnotesReplacementStarted;
-    /* stop output if flag is not set yet */
-    if (!$g_bool_FootnotesReplacementStarted) {
-        /* stop the output and move it to a buffer instead, defines a callback function */
-        ob_start("footnotes_replaceFootnotes");
-        /* set flag to only start stopping the output once */
-        $g_bool_FootnotesReplacementStarted = true;
-    }
+    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false);
 }
 
 /**
@@ -152,12 +123,7 @@ function footnotes_startReplacing()
  */
 function footnotes_StopReplacing()
 {
-    /* global access to the replacement flag */
-    global $g_bool_FootnotesReplacementStarted;
-    /* un-set the flag as soon as the replacement function stops and the content will be displayed */
-    $g_bool_FootnotesReplacementStarted = false;
-    /* calls the callback function defined in ob_start(); */
-    ob_end_flush();
+    echo footnotes_OutputReferenceContainer();
 }
 
 /**
@@ -200,22 +166,18 @@ function footnotes_LoveAndShareMe()
  */
 function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = true, $p_bool_ReplaceHtmlChars = false)
 {
-    /* get access to the global array */
-    global $g_arr_Footnotes;
     /* access to the global settings collection */
     global $g_arr_FootnotesSettings;
     /* load footnote settings */
     $g_arr_FootnotesSettings = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, $p_bool_ReplaceHtmlChars);
+
     /* replace all footnotes in the content */
     $p_str_Content = footnotes_getFromString($p_str_Content);
 
     /* add the reference list if set */
     if ($p_bool_OutputReferences) {
         $p_str_Content = $p_str_Content . footnotes_OutputReferenceContainer();
-        /* free all found footnotes if reference container will be displayed */
-        $g_arr_Footnotes = array();
     }
-
 	/*
 	 * checks if the user doesn't want to have a 'love me' on current page
 	 * @since 1.1.1
@@ -244,7 +206,7 @@ function footnotes_getFromString($p_str_Content)
     /* access to the global settings collection */
     global $g_arr_FootnotesSettings;
     /* contains the index for the next footnote on this page */
-    $l_int_FootnoteIndex = 1;
+    $l_int_FootnoteIndex = count($g_arr_Footnotes) + 1;
     /* contains the starting position for the lookup of a footnote */
     $l_int_PosStart = 0;
     /* contains the footnote template */
@@ -273,6 +235,7 @@ function footnotes_getFromString($p_str_Content)
                 /* set replacer for the footnote */
                 $l_str_ReplaceText = str_replace("[[FOOTNOTE INDEX]]", footnote_convert_index($l_int_FootnoteIndex, $l_str_CounterStyle), $l_str_FootnoteTemplate);
                 $l_str_ReplaceText = str_replace("[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText);
+                $l_str_ReplaceText = preg_replace('@[\s]{2,}@',' ',$l_str_ReplaceText);
                 /* replace footnote in content */
                 $p_str_Content = substr_replace($p_str_Content, $l_str_ReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));
                 /* set footnote to the output box at the end */
@@ -370,6 +333,7 @@ function footnotes_OutputReferenceContainer()
         $l_str_ReplaceText = str_replace("[[FOOTNOTE INDEX SHORT]]", footnote_convert_index($l_str_FirstFootnoteIndex, $l_str_CounterStyle), $l_str_FootnoteTemplate);
         $l_str_ReplaceText = str_replace("[[FOOTNOTE INDEX]]", $l_str_FootnoteIndex, $l_str_ReplaceText);
         $l_str_ReplaceText = str_replace("[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText);
+        $l_str_ReplaceText = preg_replace('@[\s]{2,}@',' ',$l_str_ReplaceText);
         /* add the footnote container to the output */
         $l_str_Output = $l_str_Output . $l_str_ReplaceText;
     }
@@ -386,6 +350,9 @@ function footnotes_OutputReferenceContainer()
 			}
 		</script>
 	';
+
+    /* free all found footnotes if reference container will be displayed */
+    $g_arr_Footnotes = array();
 
     /* return the output string */
     return $l_str_Output;

@@ -61,3 +61,5 @@ define("FOOTNOTES_TEMPLATES_DIR", dirname(__FILE__) . "/../templates/");
  * @since 1.1.1
  */
 define("FOOTNOTES_NO_SLUGME_PLUG", "[[no footnotes: love]]");
+
+define("FOOTNOTES_REFERENCE_CONTAINER_POSITION", "[[footnotes reference container position]]");

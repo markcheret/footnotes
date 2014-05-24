@@ -53,6 +53,8 @@ require_once(dirname(__FILE__) . "/includes/replacer.php");
 require_once(dirname(__FILE__) . "/classes/footnotes.php");
 /* require plugin settings class */
 require_once(dirname(__FILE__) . "/classes/footnotes_settings.php");
+/* require plugin widget class */
+require_once(dirname(__FILE__) . "/classes/footnotes_widget.php");
 
 /* register functions for the footnote replacement */
 footnotes_RegisterReplacementFunctions();
@@ -81,6 +83,9 @@ add_action('plugins_loaded', 'footnotes_load_language');
 /* add link to the settings page in plugin main page */
 $l_str_plugin_file = FOOTNOTES_PLUGIN_DIR_NAME . '/index.php';
 add_filter("plugin_action_links_{$l_str_plugin_file}", 'footnotes_plugin_settings_link', 10, 2);
+
+/* register footnotes widget */
+add_action('widgets_init', create_function('', 'return register_widget("Class_FootnotesWidget");'));
 
 /* initialize an object of the plugin class */
 global $g_obj_FootnotesPlugin;

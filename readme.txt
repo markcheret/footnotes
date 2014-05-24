@@ -42,8 +42,10 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 = 1.1.2 =
 - Update: Moved footnotes 'love' settings to a separate container
-- Bugfix: Setting for the position of the "reference container" works for the options "footer" and "end of post"
+- Bugfix: Setting for the position of the "reference container" works for the options "footer", "end of post" and "widget area"
 - Add: Pre defined footnote short codes and possibility for a user defined short code
+- Add: Plugin Widget to define where the reference container shall appear when set to "widget area"
+- Update: Translation for new settings and for the Widget description
 
 = 1.1.1 =
 - Feature: Short code to not display the 'love me' slug on specific pages ( short code = [[no footnotes: love]] )

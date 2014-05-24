@@ -472,9 +472,9 @@ class Class_FootnotesSettings
 
         /* setting for 'footnote tag starts with' */
         $l_arr_Options = array(
-            "((" => __("((", FOOTNOTES_PLUGIN_NAME),
-            "<fn>" => htmlspecialchars(__("<fn>", FOOTNOTES_PLUGIN_NAME)),
-            "[ref]" => __("[ref]", FOOTNOTES_PLUGIN_NAME),
+            "((" => "((",
+            "<fn>" => htmlspecialchars("<fn>"),
+            "[ref]" => "[ref]",
             "userdefined" => __('user defined', FOOTNOTES_PLUGIN_NAME)
         );
         $this->AddLabel(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START, __("Footnote tag starts with:", FOOTNOTES_PLUGIN_NAME));
@@ -482,9 +482,9 @@ class Class_FootnotesSettings
 
         /* setting for 'footnote tag ends with' */
         $l_arr_Options = array(
-            "))" => __("))", FOOTNOTES_PLUGIN_NAME),
-            "</fn>" => htmlspecialchars(__("</fn>", FOOTNOTES_PLUGIN_NAME)),
-            "[/ref]" => __("[/ref]", FOOTNOTES_PLUGIN_NAME),
+            "))" => "))",
+            "</fn>" => htmlspecialchars("</fn>"),
+            "[/ref]" => "[/ref]",
             "userdefined" => __('user defined', FOOTNOTES_PLUGIN_NAME)
         );
         $this->AddLabel(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END, __("and ends with:", FOOTNOTES_PLUGIN_NAME) . '&nbsp;&nbsp;&nbsp;', 'text-align: right;');

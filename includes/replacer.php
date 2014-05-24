@@ -123,7 +123,14 @@ function footnotes_Replacer_WidgetText($p_str_Content)
  */
 function footnotes_StopReplacing()
 {
-    echo footnotes_OutputReferenceContainer();
+    /* access to the global settings collection */
+    global $g_arr_FootnotesSettings;
+    /* get setting for 'display reference container position' */
+    $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE];
+
+    if ($l_str_ReferenceContainerPosition == "footer") {
+        echo footnotes_OutputReferenceContainer();
+    }
 }
 
 /**

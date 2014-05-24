@@ -43,8 +43,9 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 = 1.2.0 =
 - Feature: New button in the WYSIWYG editor and in the plain text editor to easily implement the footnotes tag
 - Feature: Icon for the WYSIWYG-editor button
-- Feature: Pre defined footnote short codes and **experimental setting** for a user defined short code
-- Feature: Plugin Widget to define where the reference container shall appear when set to "widget area"
+- Feature: Pre defined footnote short codes
+- Experimental: User defined short code for defining footnotes
+- Experimental: Plugin Widget to define where the reference container should appear when set to "widget area"
 - Update: Moved footnotes 'love' settings to a separate container
 - Bugfix: Setting for the position of the "reference container" works for the options "footer", "end of post" and "widget area"
 - Update: Translation for new settings and for the Widget description

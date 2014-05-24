@@ -218,6 +218,13 @@ function footnotes_getFromString($p_str_Content)
     /*get footnote counter style */
     $l_str_CounterStyle = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_COUNTER_STYLE];
 
+    if ($l_str_StartingTag == "userdefined" || $l_str_EndingTag == "userdefined") {
+        /* get user defined footnote starting tag */
+        $l_str_StartingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED];
+        /*get user defined footnote ending tag */
+        $l_str_EndingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED];
+    }
+
     /* check for a footnote placeholder in the current page */
     do {
         /* get first occurence of a footnote starting tag */

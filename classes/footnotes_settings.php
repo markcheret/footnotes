@@ -28,7 +28,9 @@ class Class_FootnotesSettings
         FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT => 'yes',
         FOOTNOTE_INPUTFIELD_LOVE => 'no',
         FOOTNOTE_INPUTFIELD_COUNTER_STYLE => 'arabic_plain',
-        FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE => 'post_end'
+        FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE => 'post_end',
+        FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED => '',
+        FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED => ''
     );
     /*
      * resulting pagehook for adding a new sub menu page to the settings
@@ -187,7 +189,29 @@ class Class_FootnotesSettings
                 $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
                 // postboxes setup
                 postboxes.add_postbox_toggles('<?php echo $this->a_str_Pagehook; ?>');
+
+                jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START); ?>').on('change', function() {
+                    var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
+                    jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END); ?> option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
+                    footnotes_Display_UserDefined_Placeholders();
+                });
+                jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END); ?>').on('change', function() {
+                    var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
+                    jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START); ?> option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
+                    footnotes_Display_UserDefined_Placeholders();
+                });
+                footnotes_Display_UserDefined_Placeholders();
             });
+
+            function footnotes_Display_UserDefined_Placeholders() {
+                if (jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START); ?>').val() == "userdefined") {
+                    jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED); ?>').show();
+                    jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED); ?>').show();
+                } else {
+                    jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED); ?>').hide();
+                    jQuery('#<?php echo $this->getFieldID(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED); ?>').hide();
+                }
+            }
         </script>
     <?php
     }
@@ -227,8 +251,8 @@ class Class_FootnotesSettings
      */
     protected function getFieldID($p_str_FieldID)
     {
-        return sprintf('%s[%s]', FOOTNOTE_SETTINGS_CONTAINER, $p_str_FieldID);
-        //return sprintf( '%s', $p_str_FieldID );
+        //return sprintf('%s[%s]', FOOTNOTE_SETTINGS_CONTAINER, $p_str_FieldID);
+        return sprintf( '%s', $p_str_FieldID );
     }
 
     /**
@@ -283,10 +307,11 @@ class Class_FootnotesSettings
      * @param string $p_str_ClassName [css class name]
      * @param int $p_str_MaxLength [max length for the input value]
 	 * @param bool $p_bool_Readonly [input is readonly] in version 1.1.1
+     * @param bool $p_bool_Hidden [input is hidden by default] in version 1.1.2
      * @since 1.0-beta
      * removed optional paremter for a label in version 1.0.7
      */
-    function AddTextbox($p_str_SettingsID, $p_str_ClassName = "", $p_str_MaxLength = 0, $p_bool_Readonly = false)
+    function AddTextbox($p_str_SettingsID, $p_str_ClassName = "", $p_str_MaxLength = 0, $p_bool_Readonly = false, $p_bool_Hidden = false)
     {
         /* collect data for given settings field */
         $l_arr_Data = $this->LoadSetting($p_str_SettingsID);
@@ -303,8 +328,11 @@ class Class_FootnotesSettings
 		if ($p_bool_Readonly) {
 			$p_bool_Readonly = ' readonly="readonly"';
 		}
+        if ($p_bool_Hidden) {
+            $p_bool_Hidden = ' style="display:none;"';
+        }
         /* outputs an input field type TEXT */
-        echo '<input type="text" ' . $p_str_ClassName . $p_str_MaxLength . $p_bool_Readonly . ' name="' . $l_arr_Data["name"] . '" id="' . $l_arr_Data["id"] . '" value="' . $l_arr_Data["value"] . '"/>';
+        echo '<input type="text" ' . $p_str_ClassName . $p_str_MaxLength . $p_bool_Readonly . $p_bool_Hidden . ' name="' . $l_arr_Data["name"] . '" id="' . $l_arr_Data["id"] . '" value="' . $l_arr_Data["value"] . '"/>';
     }
 
     /**
@@ -441,13 +469,33 @@ class Class_FootnotesSettings
         $this->AddSelectbox(FOOTNOTE_INPUTFIELD_COMBINE_IDENTICAL, $l_arr_Options, "footnote_plugin_50");
         $this->AddNewline();
 
+
         /* setting for 'footnote tag starts with' */
+        $l_arr_Options = array(
+            "((" => __("((", FOOTNOTES_PLUGIN_NAME),
+            "<fn>" => htmlspecialchars(__("<fn>", FOOTNOTES_PLUGIN_NAME)),
+            "[ref]" => __("[ref]", FOOTNOTES_PLUGIN_NAME),
+            "userdefined" => __('user defined', FOOTNOTES_PLUGIN_NAME)
+        );
         $this->AddLabel(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START, __("Footnote tag starts with:", FOOTNOTES_PLUGIN_NAME));
-        $this->AddTextbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START, "footnote_plugin_15", 14);
+        $this->AddSelectbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START, $l_arr_Options, "footnote_plugin_15");
 
         /* setting for 'footnote tag ends with' */
+        $l_arr_Options = array(
+            "))" => __("))", FOOTNOTES_PLUGIN_NAME),
+            "</fn>" => htmlspecialchars(__("</fn>", FOOTNOTES_PLUGIN_NAME)),
+            "[/ref]" => __("[/ref]", FOOTNOTES_PLUGIN_NAME),
+            "userdefined" => __('user defined', FOOTNOTES_PLUGIN_NAME)
+        );
         $this->AddLabel(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END, __("and ends with:", FOOTNOTES_PLUGIN_NAME) . '&nbsp;&nbsp;&nbsp;', 'text-align: right;');
-        $this->AddTextbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END, "footnote_plugin_15", 14);
+        $this->AddSelectbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END, $l_arr_Options, "footnote_plugin_15");
+        $this->AddNewline();
+
+        /* user defined setting for 'footnote start and end tag' */
+        $this->AddLabel(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED, "");
+        $this->AddTextbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED, "footnote_plugin_15", 14, false, true);
+        $this->AddLabel(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED, "");
+        $this->AddTextbox(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED, "footnote_plugin_15", 14, false, true);
         $this->AddNewline();
 
         /* setting for 'footnotes counter style' */

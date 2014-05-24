@@ -40,6 +40,14 @@ define("FOOTNOTE_INPUTFIELD_COUNTER_STYLE", "footnote_inputfield_counter_style")
  */
 define("FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE", "footnote_inputfield_reference_container_place");
 
+/*
+ * id of input field for 'user defined placeholder start and end tag
+ * @since 1.1.2
+ */
+define("FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED", "footnote_inputfield_placeholder_start_user_defined");
+define("FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED", "footnote_inputfield_placeholder_end_user_defined");
+
+
 /* PLUGIN REFERENCES CONTAINER ID */
 define("FOOTNOTE_REFERENCES_CONTAINER_ID", "footnote_references_container"); /* id for the div surrounding the footnotes */
 

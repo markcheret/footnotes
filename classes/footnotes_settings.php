@@ -581,6 +581,11 @@ class Class_FootnotesSettings
     {
         $l_arr_Footnote_StartingTag = $this->LoadSetting(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START);
         $l_arr_Footnote_EndingTag = $this->LoadSetting(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END);
+
+        if ($l_arr_Footnote_StartingTag["value"] == "userdefined" || $l_arr_Footnote_EndingTag["value"] == "userdefined") {
+            $l_arr_Footnote_StartingTag = $this->LoadSetting(FOOTNOTE_INPUTFIELD_PLACEHOLDER_START_USERDEFINED);
+            $l_arr_Footnote_EndingTag = $this->LoadSetting(FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED);
+        }
         ?>
         <div style="text-align:center;">
             <div class="footnote_placeholder_box_container">

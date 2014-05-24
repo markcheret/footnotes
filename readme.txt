@@ -9,11 +9,19 @@ Stable Tag: 1.2.0
 
 == Description ==
 
-footnotes gives you the ability to display decently-formated footnotes on your WordPress Pages or Posts.
-footnotes aims to be the all-in-one solution that ships with a set of sane defaults
-(those footnotes we know from offline publishing) but also give the user control over how their footnotes are being displayed.
+**footnotes** aims to be the all-in-one solution that ships with a set of sane defaults but also give the user control over how their footnotes are being displayed.
+**footnotes** gives you the ability to display decently-formated footnotes on your WordPress Pages or Posts (those footnotes we know from offline publishing).
 
-footnotes displays all footnote texts found within the customizable shortcodes below the footer of your website as a styled list of references with backlinks to the actual footnote. In future releases of the plugin, you can decide, where the reference list is displayed.
+= Main Features =
+- Fully customizable **footnotes** shortcode
+- Decide, where your **footnotes** are displayed (position of the Reference Container)
+- Responsive Reference Container
+- Mouse-Over Box with clickable links
+- Automatic numbering of your **footnotes**
+- Choose from a list of symbols to represent your **footnotes**
+- Button in both the Visual and the Text editor
+  - Add **footnotes** into your Page / Post with ease of use by selecting your text and clicking the button
+- Display **footnotes** inside a Widget
 
 The current version is available on wordpress.org:
 http://downloads.wordpress.org/plugin/footnotes.zip
@@ -41,6 +49,7 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 4. Settings for **footnotes** love
 5. Other Settings
 6. The HowTo section in the **footnotes** settings
+7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
 

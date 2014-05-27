@@ -91,7 +91,7 @@ function footnotes_wysiwyg_ajax_callback() {
     require_once(dirname(__FILE__) . '/../includes/plugin-settings.php');
 
     /* load footnote settings */
-    $g_arr_FootnotesSettings = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, false);
+    $g_arr_FootnotesSettings = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, true);
 
     /* get footnote starting tag */
     $l_str_StartingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_START];

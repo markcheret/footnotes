@@ -232,6 +232,9 @@ function footnotes_getFromString($p_str_Content)
         $l_str_EndingTag = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_PLACEHOLDER_END_USERDEFINED];
     }
 
+	/* decode html special chars */
+	$p_str_Content = htmlspecialchars_decode($p_str_Content);
+
     /* check for a footnote placeholder in the current page */
     do {
         /* get first occurence of a footnote starting tag */

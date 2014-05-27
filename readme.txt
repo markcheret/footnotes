@@ -61,6 +61,9 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
+= 1.2.2 =
+- Bugfix: WYSIWYG editor and plain text editor buttons insert footnote short code correctly (also if defined like html tag)
+
 = 1.2.1 =
 - Bugfix: HowTo example will be displayed correctly if a user defined short code is set
 

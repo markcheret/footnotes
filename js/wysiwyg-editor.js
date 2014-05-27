@@ -31,7 +31,7 @@
                         var l_arr_Tags = JSON.parse(data);
                         var return_text = l_arr_Tags['start'] + ed.selection.getContent() + l_arr_Tags['end'];
                         console.log(return_text);
-                        ed.execCommand('mceInsertContent', 0, return_text);
+                        ed.execCommand('insertHTML', true, return_text);
                     },
                     error: function(MLHttpRequest, textStatus, errorThrown){
                         console.log("Error: " + errorThrown);

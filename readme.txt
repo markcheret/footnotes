@@ -64,6 +64,7 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 = 1.2.2 =
 - Bugfix: WYSIWYG editor and plain text editor buttons insert footnote short code correctly (also if defined like html tag)
 - Feature: The admin can decide which "I love footnotes" text (or not text) will be displayed in the footer
+- Add: Buttons next to the reference label to expand/collapse the reference container if set to "collapse by default"
 
 = 1.2.1 =
 - Bugfix: HowTo example will be displayed correctly if a user defined short code is set

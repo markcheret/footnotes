@@ -47,7 +47,7 @@
     text-align: left !important;
 }
 
-.footnote_container_prepare > p > span {
+.footnote_container_prepare > p > span:first-child {
     padding-left: 20px !important;
     text-align: left !important;
     cursor: pointer;

@@ -317,8 +317,18 @@ function footnotes_OutputReferenceContainer()
     /*get footnote counter style */
     $l_str_CounterStyle = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_COUNTER_STYLE];
 
+	/*
+	 * add expand/collapse buttons to the reference label if collapsed by default
+	 * @since 1.2.2
+	 */
+	$l_str_CollapseButtons = "";
+	if ($l_bool_CollapseReference) {
+		$l_str_CollapseButtons = '&nbsp;&nbsp;&nbsp;[ <a style="cursor:pointer;" onclick="footnote_expand_reference_container();">+</a> ] ' .
+			' [ <a style="cursor:pointer;" onclick="footnote_collapse_reference_container();">-</a> ]';
+	}
+
     /* output string, prepare it with the reference label as headline */
-    $l_str_Output = '<div class="footnote_container_prepare"><p><span onclick="footnote_expand_reference_container(\"\");">' . $l_str_ReferencesLabel . '</span></p></div>';
+    $l_str_Output = '<div class="footnote_container_prepare"><p><span onclick="footnote_expand_reference_container();">' . $l_str_ReferencesLabel . '</span>' .$l_str_CollapseButtons . '</p></div>';
     /* add a box around the footnotes */
     $l_str_Output .= '<div id="' . FOOTNOTE_REFERENCES_CONTAINER_ID . '"';
     /* add class to hide the references by default, if the user wants it */
@@ -377,6 +387,9 @@ function footnotes_OutputReferenceContainer()
 				if (p_str_ID.length > 0) {
 					jQuery(p_str_ID).focus();
 				}
+			}
+			function footnote_collapse_reference_container() {
+				jQuery("#' . FOOTNOTE_REFERENCES_CONTAINER_ID . '").hide();
 			}
 		</script>
 	';

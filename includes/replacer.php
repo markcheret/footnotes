@@ -152,13 +152,26 @@ function footnotes_LoveAndShareMe()
      * @since 1.0.7
      */
     /* get setting for love and share this plugin and convert it to boolean */
-    $l_bool_LoveMe = footnotes_ConvertToBool($g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_LOVE]);
+    $l_str_LoveMeText = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_LOVE];
     /* check if the admin allows to add a link to the footer */
-    if ($l_bool_LoveMe && !$g_bool_NoLoveMeSlugOnCurrentPage) {
-        echo '
-		<div style="text-align:center; color:#acacac;">' .
-            sprintf(__("Hey there, I'm using the awesome WordPress Plugin called %s", FOOTNOTES_PLUGIN_NAME), '<a href="http://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration: none;">' . FOOTNOTES_PLUGIN_PUBLIC_NAME . '</a>') .
-            '</div>';
+    if (!empty($l_str_LoveMeText) && strtolower($l_str_LoveMeText) != "no" && !$g_bool_NoLoveMeSlugOnCurrentPage) {
+		if (strtolower($l_str_LoveMeText) == "random") {
+			$l_str_LoveMeText = "text-" . rand(1,3);
+		}
+
+		switch ($l_str_LoveMeText) {
+			case "text-1":
+				$l_str_LoveMeText = sprintf(__('I %s %s', FOOTNOTES_PLUGIN_NAME), FOOTNOTES_LOVE_SYMBOL, FOOTNOTES_PLUGIN_PUBLIC_NAME_LINKED);
+				break;
+			case "text-2":
+				$l_str_LoveMeText = sprintf(__('this site uses the awesome %s Plugin', FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME_LINKED);
+				break;
+			case "text-3":
+			default:
+				$l_str_LoveMeText = sprintf(__('extra smooth %s', FOOTNOTES_PLUGIN_NAME), FOOTNOTES_PLUGIN_PUBLIC_NAME_LINKED);
+				break;
+		}
+		echo '<div style="text-align:center; color:#acacac;">' . $l_str_LoveMeText . '</div>';
     }
 }
 

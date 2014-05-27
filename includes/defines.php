@@ -14,6 +14,18 @@
  */
 define("FOOTNOTES_PLUGIN_PUBLIC_NAME", '<span class="footnote_tag_styling footnote_tag_styling_1">foot</span><span class="footnote_tag_styling footnote_tag_styling_2">notes</span>');
 
+/*
+ * PLUGIN LOVE SYMBOL WITH STYLING
+ * @since 1.2.2
+ */
+define("FOOTNOTES_LOVE_SYMBOL", '<span style="color:#ff6d3b; font-weight:bold;">&hearts;</span>');
+
+/*
+ * PLUGIN PUBLIC NAME WITH LINK
+ * @since 1.2.2
+ */
+define("FOOTNOTES_PLUGIN_PUBLIC_NAME_LINKED", '<a href="http://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration:none;">' . FOOTNOTES_PLUGIN_PUBLIC_NAME . '</a>');
+
 /* GENERAL PLUGIN CONSTANTS */
 define("FOOTNOTES_PLUGIN_NAME", "footnotes"); /* plugin's internal name */
 define("FOOTNOTE_SETTINGS_CONTAINER", "footnotes_storage"); /* database container where all footnote settings are stored */

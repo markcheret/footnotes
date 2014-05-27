@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-05-24 14:35+0100\n"
-"PO-Revision-Date: 2014-05-24 14:35+0100\n"
+"POT-Creation-Date: 2014-05-27 21:03+0100\n"
+"PO-Revision-Date: 2014-05-27 21:03+0100\n"
 "Last-Translator: Stefan Herndler <support@herndler.org>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en\n"
@@ -72,13 +72,11 @@ msgstr "in the widget area"
 msgid "Where shall the reference container appear:"
 msgstr "Where shall the reference container appear:"
 
-#: classes/footnotes_settings.php:465 classes/footnotes_settings.php:522
-#: classes/footnotes_settings.php:543
+#: classes/footnotes_settings.php:465 classes/footnotes_settings.php:546
 msgid "Yes"
 msgstr "Yes"
 
-#: classes/footnotes_settings.php:466 classes/footnotes_settings.php:523
-#: classes/footnotes_settings.php:544
+#: classes/footnotes_settings.php:466 classes/footnotes_settings.php:547
 msgid "No"
 msgstr "No"
 
@@ -122,12 +120,36 @@ msgstr "Roman Numerals"
 msgid "Counter style:"
 msgstr "Counter style:"
 
+#: classes/footnotes_settings.php:522 includes/replacer.php:164
+#, php-format
+msgid "I %s %s"
+msgstr "I %s %s"
+
+#: classes/footnotes_settings.php:523 includes/replacer.php:167
+#, php-format
+msgid "this site uses the awesome %s Plugin"
+msgstr "this site uses the awesome %s Plugin"
+
+#: classes/footnotes_settings.php:524 includes/replacer.php:171
+#, php-format
+msgid "extra smooth %s"
+msgstr "extra smooth %s"
+
 #: classes/footnotes_settings.php:525
+msgid "random text"
+msgstr "random text"
+
+#: classes/footnotes_settings.php:526
+#, php-format
+msgid "Don't display a %s %s text in my footer."
+msgstr "Don't display a %s %s text in my footer."
+
+#: classes/footnotes_settings.php:528
 #, php-format
 msgid "Tell the world you're using %s:"
 msgstr "Tell the world you're using %s:"
 
-#: classes/footnotes_settings.php:530
+#: classes/footnotes_settings.php:533
 #, php-format
 msgid ""
 "Don't tell the world you're using %s on specific pages by adding the "
@@ -136,35 +158,35 @@ msgstr ""
 "Don't tell the world you're using %s on specific pages by adding the "
 "following short code:"
 
-#: classes/footnotes_settings.php:546
+#: classes/footnotes_settings.php:549
 msgid "Allow footnotes on Summarized Posts:"
 msgstr "Allow footnotes on Summarized Posts:"
 
-#: classes/footnotes_settings.php:559
+#: classes/footnotes_settings.php:562
 msgid "HowTo"
 msgstr "HowTo"
 
-#: classes/footnotes_settings.php:562
+#: classes/footnotes_settings.php:565
 msgid "Brief introduction in how to use the plugin"
 msgstr "Brief introduction in how to use the plugin"
 
-#: classes/footnotes_settings.php:588
+#: classes/footnotes_settings.php:596
 msgid "Start your footnote with the following shortcode:"
 msgstr "Start your footnote with the following shortcode:"
 
-#: classes/footnotes_settings.php:594
+#: classes/footnotes_settings.php:602
 msgid "...and end your footnote with this shortcode:"
 msgstr "...and end your footnote with this shortcode:"
 
-#: classes/footnotes_settings.php:602 classes/footnotes_settings.php:605
+#: classes/footnotes_settings.php:610 classes/footnotes_settings.php:613
 msgid "example string"
 msgstr "example string"
 
-#: classes/footnotes_settings.php:603
+#: classes/footnotes_settings.php:611
 msgid "will be displayed as:"
 msgstr "will be displayed as:"
 
-#: classes/footnotes_settings.php:610
+#: classes/footnotes_settings.php:618
 #, php-format
 msgid "If you have any questions, please don't hesitate to %se-mail%s us."
 msgstr "If you have any questions, please don't hesitate to %se-mail%s us."
@@ -177,11 +199,6 @@ msgstr ""
 "The widget defines the position of the reference container if set to "
 "\"widget area\"."
 
-#: classes/footnotes_widget.php:17
-#, php-format
-msgid "%s Widget"
-msgstr "%s Widget"
-
 #: includes/plugin-settings.php:22
 msgid "Settings"
 msgstr "Settings"
@@ -190,10 +207,11 @@ msgstr "Settings"
 msgid "Support"
 msgstr "Support"
 
-#: includes/replacer.php:160
-#, php-format
-msgid "Hey there, I'm using the awesome WordPress Plugin called %s"
-msgstr "Hey there, I'm using the awesome %s Plugin"
+#~ msgid "%s Widget"
+#~ msgstr "%s Widget"
+
+#~ msgid "Hey there, I'm using the awesome WordPress Plugin called %s"
+#~ msgstr "Hey there, I'm using the awesome %s Plugin"
 
 #~ msgid "(("
 #~ msgstr "(("

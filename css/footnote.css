@@ -31,11 +31,10 @@
 }
 
 .footnote_container_prepare > p {
-    font-size: 1.5em !important;
+	line-height: 1.3 !important;
     margin-top: 1em !important;
     margin-bottom: 0.25em !important;
     padding: 0 !important;
-    line-height: 1.3 !important;
     font-weight: normal !important;
     overflow: hidden !important;
     border-bottom: 1px solid #aaaaaa !important;
@@ -45,12 +44,17 @@
     -webkit-margin-start: 0px !important;
     -webkit-margin-end: 0px !important;
     text-align: left !important;
+	vertical-align: middle;
 }
 
 .footnote_container_prepare > p > span:first-child {
     padding-left: 20px !important;
     text-align: left !important;
     cursor: pointer;
+	font-size: 1.5em !important;
+}
+
+.footnote_container_prepare > p > span:last-child {
 }
 
 .footnote_hide_box {

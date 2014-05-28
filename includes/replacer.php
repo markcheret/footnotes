@@ -64,7 +64,7 @@ function footnotes_Replacer_Content($p_str_Content)
     /* get setting for 'display reference container position' */
     $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE];
     /* returns content */
-    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false);
+    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false, false, true);
 }
 
 /**
@@ -81,7 +81,7 @@ function footnotes_Replacer_Excerpt($p_str_Content)
     $l_bool_SearchExcerpt = footnotes_ConvertToBool($g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT]);
     /* search in the excerpt only if activated */
     if ($l_bool_SearchExcerpt) {
-        return footnotes_replaceFootnotes($p_str_Content, false);
+        return footnotes_replaceFootnotes($p_str_Content, false, false, true);
     }
     /* returns content */
     return $p_str_Content;
@@ -112,7 +112,7 @@ function footnotes_Replacer_WidgetText($p_str_Content)
     /* get setting for 'display reference container position' */
     $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE];
     /* returns content */
-    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false);
+    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false, false, false);
 }
 
 /**
@@ -181,18 +181,19 @@ function footnotes_LoveAndShareMe()
  * @since 1.0
  * @param string $p_str_Content
  * @param bool $p_bool_OutputReferences [default: true]
- * @param bool $p_bool_ReplaceHtmlChars [ default: false]
+ * @param bool $p_bool_ReplaceHtmlCharsSettings [ default: false]
+ * @param bool $p_bool_ReplaceHtmlCharsContent [ default: false]
  * @return string
  */
-function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = true, $p_bool_ReplaceHtmlChars = false)
+function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = true, $p_bool_ReplaceHtmlCharsSettings = false, $p_bool_ReplaceHtmlCharsContent = false)
 {
     /* access to the global settings collection */
     global $g_arr_FootnotesSettings;
     /* load footnote settings */
-    $g_arr_FootnotesSettings = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, $p_bool_ReplaceHtmlChars);
+    $g_arr_FootnotesSettings = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, $p_bool_ReplaceHtmlCharsSettings);
 
     /* replace all footnotes in the content */
-    $p_str_Content = footnotes_getFromString($p_str_Content);
+    $p_str_Content = footnotes_getFromString($p_str_Content, $p_bool_ReplaceHtmlCharsContent);
 
     /* add the reference list if set */
     if ($p_bool_OutputReferences) {
@@ -217,9 +218,10 @@ function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = t
  * using a personal starting and ending tag for the footnotes since 1.0-gamma
  * @since 1.0
  * @param string $p_str_Content
+ * @param bool $p_bool_ConvertHtmlChars
  * @return string
  */
-function footnotes_getFromString($p_str_Content)
+function footnotes_getFromString($p_str_Content, $p_bool_ConvertHtmlChars = true)
 {
     /* get access to the global array to store footnotes */
     global $g_arr_Footnotes;
@@ -246,8 +248,10 @@ function footnotes_getFromString($p_str_Content)
     }
 
 	/* decode html special chars */
-	$l_str_StartingTag = htmlspecialchars($l_str_StartingTag);
-	$l_str_EndingTag = htmlspecialchars($l_str_EndingTag);
+	if ($p_bool_ConvertHtmlChars) {
+		$l_str_StartingTag = htmlspecialchars($l_str_StartingTag);
+		$l_str_EndingTag = htmlspecialchars($l_str_EndingTag);
+	}
 
     /* check for a footnote placeholder in the current page */
     do {
@@ -324,12 +328,11 @@ function footnotes_OutputReferenceContainer()
 	 */
 	$l_str_CollapseButtons = "";
 	if ($l_bool_CollapseReference) {
-		$l_str_CollapseButtons = '&nbsp;&nbsp;&nbsp;[ <a style="cursor:pointer;" onclick="footnote_expand_reference_container();">+</a> ] ' .
-			' [ <a style="cursor:pointer;" onclick="footnote_collapse_reference_container();">-</a> ]';
+		$l_str_CollapseButtons = '&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]';
 	}
 
     /* output string, prepare it with the reference label as headline */
-    $l_str_Output = '<div class="footnote_container_prepare"><p><span onclick="footnote_expand_reference_container();">' . $l_str_ReferencesLabel . '</span>' .$l_str_CollapseButtons . '</p></div>';
+    $l_str_Output = '<div class="footnote_container_prepare"><p><span onclick="footnote_expand_reference_container();">' . $l_str_ReferencesLabel . '</span><span>' .$l_str_CollapseButtons . '</span></p></div>';
     /* add a box around the footnotes */
     $l_str_Output .= '<div id="' . FOOTNOTE_REFERENCES_CONTAINER_ID . '"';
     /* add class to hide the references by default, if the user wants it */
@@ -389,8 +392,15 @@ function footnotes_OutputReferenceContainer()
 					jQuery(p_str_ID).focus();
 				}
 			}
-			function footnote_collapse_reference_container() {
-				jQuery("#' . FOOTNOTE_REFERENCES_CONTAINER_ID . '").hide();
+			function footnote_expand_collapse_reference_container() {
+				var l_obj_ReferenceContainer = jQuery("#' . FOOTNOTE_REFERENCES_CONTAINER_ID . '");
+				if (l_obj_ReferenceContainer.is(":hidden")) {
+					l_obj_ReferenceContainer.show();
+					jQuery("#footnote_reference_container_collapse_button").text("-");
+				} else {
+					l_obj_ReferenceContainer.hide();
+					jQuery("#footnote_reference_container_collapse_button").text("+");
+				}
 			}
 		</script>
 	';

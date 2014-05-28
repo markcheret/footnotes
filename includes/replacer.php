@@ -246,7 +246,8 @@ function footnotes_getFromString($p_str_Content)
     }
 
 	/* decode html special chars */
-	$p_str_Content = htmlspecialchars_decode($p_str_Content);
+	$l_str_StartingTag = htmlspecialchars($l_str_StartingTag);
+	$l_str_EndingTag = htmlspecialchars($l_str_EndingTag);
 
     /* check for a footnote placeholder in the current page */
     do {

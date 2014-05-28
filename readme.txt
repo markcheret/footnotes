@@ -22,7 +22,7 @@ Stable Tag: 1.2.1
 - Display the **footnotes** *Reference Container* inside a Widget
 - Button in both the Visual and the Text editor
   - Add **footnotes** into your Page / Post with ease of use by selecting your text and clicking the button
-  
+
 = Example Usage =
 This is an example. Please note, that you can customize the shortcode you want to use.
 
@@ -65,6 +65,7 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 - Bugfix: WYSIWYG editor and plain text editor buttons insert footnote short code correctly (also if defined like html tag)
 - Feature: The admin can decide which "I love footnotes" text (or not text) will be displayed in the footer
 - Add: Buttons next to the reference label to expand/collapse the reference container if set to "collapse by default"
+- Bugfix: Replace footnote short code
 
 = 1.2.1 =
 - Bugfix: HowTo example will be displayed correctly if a user defined short code is set

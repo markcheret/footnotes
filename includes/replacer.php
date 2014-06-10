@@ -64,7 +64,7 @@ function footnotes_Replacer_Content($p_str_Content)
     /* get setting for 'display reference container position' */
     $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE];
     /* returns content */
-    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false, false, true);
+    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false, false);
 }
 
 /**
@@ -81,7 +81,7 @@ function footnotes_Replacer_Excerpt($p_str_Content)
     $l_bool_SearchExcerpt = footnotes_ConvertToBool($g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_SEARCH_IN_EXCERPT]);
     /* search in the excerpt only if activated */
     if ($l_bool_SearchExcerpt) {
-        return footnotes_replaceFootnotes($p_str_Content, false, false, true);
+        return footnotes_replaceFootnotes($p_str_Content, false, false);
     }
     /* returns content */
     return $p_str_Content;
@@ -112,7 +112,7 @@ function footnotes_Replacer_WidgetText($p_str_Content)
     /* get setting for 'display reference container position' */
     $l_str_ReferenceContainerPosition = $g_arr_FootnotesSettings[FOOTNOTE_INPUTFIELD_REFERENCE_CONTAINER_PLACE];
     /* returns content */
-    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false, false, false);
+    return footnotes_replaceFootnotes($p_str_Content, $l_str_ReferenceContainerPosition == "post_end" ? true : false, false);
 }
 
 /**
@@ -182,10 +182,9 @@ function footnotes_LoveAndShareMe()
  * @param string $p_str_Content
  * @param bool $p_bool_OutputReferences [default: true]
  * @param bool $p_bool_ReplaceHtmlCharsSettings [ default: false]
- * @param bool $p_bool_ReplaceHtmlCharsContent [ default: false]
  * @return string
  */
-function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = true, $p_bool_ReplaceHtmlCharsSettings = false, $p_bool_ReplaceHtmlCharsContent = false)
+function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = true, $p_bool_ReplaceHtmlCharsSettings = false)
 {
     /* access to the global settings collection */
     global $g_arr_FootnotesSettings;
@@ -193,7 +192,8 @@ function footnotes_replaceFootnotes($p_str_Content, $p_bool_OutputReferences = t
     $g_arr_FootnotesSettings = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, Class_FootnotesSettings::$a_arr_Default_Settings, $p_bool_ReplaceHtmlCharsSettings);
 
     /* replace all footnotes in the content */
-    $p_str_Content = footnotes_getFromString($p_str_Content, $p_bool_ReplaceHtmlCharsContent);
+    $p_str_Content = footnotes_getFromString($p_str_Content, true);
+	$p_str_Content = footnotes_getFromString($p_str_Content, false);
 
     /* add the reference list if set */
     if ($p_bool_OutputReferences) {

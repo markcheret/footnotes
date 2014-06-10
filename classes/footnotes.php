@@ -42,7 +42,7 @@ class Class_Footnotes
      * activates the plugin
      * @since 1.0
      */
-    function activate()
+    static function activate()
     {
         // unused
     }
@@ -51,7 +51,7 @@ class Class_Footnotes
      * deactivates the plugin
      * @since 1.0
      */
-    function deactivate()
+	static function deactivate()
     {
         // unused
     }
@@ -61,7 +61,7 @@ class Class_Footnotes
      * updated file path in version 1.0.6
      * @since 1.0
      */
-    function uninstall()
+	static function uninstall()
     {
 		/* uninstalling the plugin is only allowed for logged in users */
 		if (!is_user_logged_in()) {

@@ -137,7 +137,7 @@ class Class_FootnotesSettings
         settings_fields($l_str_tab);
         /* outputs the settings field of the current active tab */
         do_settings_sections($l_str_tab);
-        do_meta_boxes($l_str_tab, 'main');
+        do_meta_boxes($l_str_tab, 'main', NULL);
         /* adds a submit button to the current page */
         /*
          * add submit button only if there are some settings on the current page

@@ -90,7 +90,7 @@
 }
 
 .footnote_plugin_link:hover {
-    color: #4777ff !important;
+    /*color: #4777ff !important;*/
     text-decoration: none !important;
 }
 
@@ -102,7 +102,7 @@
 /* tooltip */
 .footnote_plugin_tooltip {
     outline: none !important;
-    color: #4777ff !important;
+    /*color: #4777ff !important;*/
     text-decoration: none !important;
     cursor: pointer !important;
 }

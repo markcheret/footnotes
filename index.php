@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
 	Author: media competence institute
-	Version: 1.2.2
+	Version: 1.2.3
 	Author URI: http://cheret.co.uk/mci
 	Text Domain: footnotes
 	Domain Path: /languages
@@ -34,7 +34,6 @@
  * Version: 1.1.1
  * Since: 1.0
  */
-
 
 /* include constants */
 require_once(dirname(__FILE__) . "/includes/defines.php");
@@ -83,6 +82,11 @@ add_filter("plugin_action_links_{$l_str_plugin_file}", 'footnotes_plugin_setting
 /* register footnotes widget */
 add_action('widgets_init', create_function('', 'return register_widget("Class_FootnotesWidget");'));
 
+/* register hook for activating the plugin */
+register_activation_hook(__FILE__, array('Class_Footnotes', 'activate'));
+/* register hook for deactivating the plugin */
+register_deactivation_hook(__FILE__, array('Class_Footnotes', 'deactivate'));
+
 /* only admin is allowed to execute the plugin settings */
 if (!function_exists('is_admin')) {
     header('Status: 403 Forbidden');
@@ -90,10 +94,6 @@ if (!function_exists('is_admin')) {
     exit();
 }
 
-/* register hook for activating the plugin */
-register_activation_hook(__FILE__, array('Class_Footnotes', 'activate'));
-/* register hook for deactivating the plugin */
-register_deactivation_hook(__FILE__, array('Class_Footnotes', 'deactivate'));
 /* register hook for uninstalling the plugin */
 register_uninstall_hook(__FILE__, array('Class_Footnotes', 'uninstall'));
 

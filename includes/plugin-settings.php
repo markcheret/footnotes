@@ -66,6 +66,14 @@ function footnotes_filter_options($p_str_OptionsField, $p_arr_DefaultValues, $p_
             $l_arr_Options[$l_str_Key] = "";
         }
     }
+
+	// check if each key from the default values exist in return array
+	foreach($p_arr_DefaultValues as $l_str_Key => $l_str_Value) {
+		// if key not exists, add it with its default value
+		if (!array_key_exists($l_str_Key, $l_arr_Options)) {
+			$l_arr_Options[$l_str_Key] = $l_str_Value;
+		}
+	}
     /* returns the filtered array */
     return $l_arr_Options;
 }

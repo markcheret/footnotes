@@ -14,7 +14,7 @@ class Class_FootnotesWidget extends WP_Widget {
     function Class_FootnotesWidget() {
         $widget_ops = array( 'classname' => 'Class_FootnotesWidget', 'description' => __('The widget defines the position of the reference container if set to "widget area".', FOOTNOTES_PLUGIN_NAME) );
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'footnotes_widget' );
-        $this->WP_Widget( 'footnotes_widget', FOOTNOTES_PLUGIN_PUBLIC_NAME, $widget_ops, $control_ops );
+        $this->WP_Widget( 'footnotes_widget', FOOTNOTES_PLUGIN_NAME, $widget_ops, $control_ops );
     }
 
     /**

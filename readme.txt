@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.2.2
+Stable Tag: 1.2.3
 
 == Description ==
 
@@ -63,6 +63,14 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.2.3 =
+- Bugfix: Removed 'Warning output' of Plugins activation and deactivation function (thanks to Piet Bos, Spain)
+- Bugfix: Added missing meta boxes parameter on Settings page (thanks to Piet Bos, Spain)
+- Bugfix: Removed Widget text formatting
+- Bugfix: Load default settings value of setting doesn't exist yet (first usage)
+- Bugfix: Replacement of footnotes tag on public pages with html special characters in the content
+- Feature: Footnotes tag color is set to the default link color depending on the current Theme (thanks to Daniel Formo, Norway)
 
 = 1.2.2 =
 - Bugfix: WYSIWYG editor and plain text editor buttons insert footnote short code correctly (also if defined like html tag)

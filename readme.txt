@@ -65,11 +65,11 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 == Changelog ==
 
 = 1.2.4 =
-- Bugfix: CSS stylesheets will only be added in FootNotes settings page, nowhere else (thanks to Piet Bos, Spain)
+- Bugfix: CSS stylesheets will only be added in FootNotes settings page, nowhere else (thanks to Piet Bos, China)
 
 = 1.2.3 =
-- Bugfix: Removed 'Warning output' of Plugins activation and deactivation function (thanks to Piet Bos, Spain)
-- Bugfix: Added missing meta boxes parameter on Settings page (thanks to Piet Bos, Spain)
+- Bugfix: Removed 'Warning output' of Plugins activation and deactivation function (thanks to Piet Bos, China)
+- Bugfix: Added missing meta boxes parameter on Settings page (thanks to Piet Bos, China)
 - Bugfix: Removed Widget text formatting
 - Bugfix: Load default settings value of setting doesn't exist yet (first usage)
 - Bugfix: Replacement of footnotes tag on public pages with html special characters in the content

@@ -361,7 +361,7 @@ function footnotes_OutputReferenceContainer()
             /* get all footnotes that I haven't passed yet */
             for ($l_str_CheckIndex = $l_str_FirstFootnoteIndex; $l_str_CheckIndex < count($g_arr_Footnotes); $l_str_CheckIndex++) {
                 /* check if a further footnote is the same as the actual one */
-                if ($l_str_FootnoteText == $g_arr_Footnotes[$l_str_CheckIndex]) {
+                if ($l_str_FootnoteText == $g_arr_Footnotes[$l_str_CheckIndex] && !empty($g_arr_Footnotes[$l_str_CheckIndex])) {
                     /* set the further footnote as empty so it won't be displayed later */
                     $g_arr_Footnotes[$l_str_CheckIndex] = "";
                     /* add the footnote index to the actual index */

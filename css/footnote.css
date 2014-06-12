@@ -70,16 +70,18 @@
 
 /* footnote (bottom) index */
 .footnote_plugin_index {
-    float: left !important;
+    /*float: left !important;*/
     min-width: 40px !important;
     white-space: nowrap !important;
     text-align: right !important;
+	display: inline-block;
 }
 
 /* footnote (bottom) text */
 .footnote_plugin_text {
-    float: left !important;
+    /*float: left !important;*/
     padding-left: 16px !important;
+	display: inline-block;
 }
 
 /* footnote (bottom) link to the footnote implementation */
@@ -96,12 +98,12 @@
 
 /* footnote (bottom) styling end tag */
 .footnote_plugin_end {
-    clear: left !important;
+    /*clear: left !important;*/
 }
 
 /* tooltip */
-.footnote_plugin_tooltip {
-    outline: none !important;
+.footnote_plugin_tooltip, .footnote_plugin_tooltip a {
+    /*outline: none !important;*/
     /*color: #4777ff !important;*/
     text-decoration: none !important;
     cursor: pointer !important;

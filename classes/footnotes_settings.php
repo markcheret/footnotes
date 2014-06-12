@@ -57,13 +57,8 @@ class Class_FootnotesSettings
         /* loads and filters the settings for this plugin */
         $this->a_arr_Options = footnotes_filter_options(FOOTNOTE_SETTINGS_CONTAINER, self::$a_arr_Default_Settings, true);
 
-		/* register public stylesheet */
-		wp_register_style('footnote_public_style', plugins_url('../css/footnote.css', __FILE__));
-		/* add public stylesheet */
-		wp_enqueue_style('footnote_public_style');
-
         /* execute class includes on action-even: init, admin_init and admin_menu */
-        //add_action('init', array($this, 'LoadScriptsAndStylesheets'));
+        add_action('init', array($this, 'LoadScriptsAndStylesheets'));
         add_action('admin_init', array($this, 'RegisterSettings'));
 
         add_action('admin_init', array($this, 'RegisterTab_General'));
@@ -79,18 +74,10 @@ class Class_FootnotesSettings
      */
     function LoadScriptsAndStylesheets()
     {
-        /* add the jQuery plugin (already registered by WP) */
-        wp_enqueue_script('jquery');
-        /* register public stylesheet */
-        //wp_register_style('footnote_public_style', plugins_url('../css/footnote.css', __FILE__));
-        /* add public stylesheet */
-        //wp_enqueue_style('footnote_public_style');
-        /* register settings stylesheet */
-        wp_register_style('footnote_settings_style', plugins_url('../css/settings.css', __FILE__));
-        /* add settings stylesheet */
-        wp_enqueue_style('footnote_settings_style');
-        /* Needed to allow metabox layout and close functionality */
-        wp_enqueue_script('postbox');
+		/* register public stylesheet */
+		wp_register_style('footnote_public_style', plugins_url('../css/footnote.css', __FILE__));
+		/* add public stylesheet */
+		wp_enqueue_style('footnote_public_style');
     }
 
     /**
@@ -131,7 +118,14 @@ class Class_FootnotesSettings
      */
     function OutputSettingsPage()
     {
-		$this->LoadScriptsAndStylesheets();
+		/* add the jQuery plugin (already registered by WP) */
+		wp_enqueue_script('jquery');
+		/* register settings stylesheet */
+		wp_register_style('footnote_settings_style', plugins_url('../css/settings.css', __FILE__));
+		/* add settings stylesheet */
+		wp_enqueue_style('footnote_settings_style');
+		/* Needed to allow metabox layout and close functionality */
+		wp_enqueue_script('postbox');
         /* gets active tag, or if nothing set the "general" tab will be set to active */
         $l_str_tab = isset($_GET['tab']) ? $_GET['tab'] : FOOTNOTE_SETTINGS_LABEL_GENERAL;
         /* outputs all tabs */

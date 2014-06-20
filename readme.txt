@@ -66,8 +66,8 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 = 1.2.4 =
 - Bugfix: CSS stylesheets will only be added in FootNotes settings page, nowhere else (thanks to Piet Bos, China)
-- Bugfix: Styling of the reference container when the footnote text was too long (thanks to Willem Braak, ???)
-- Bugfix: Added a Link to the footnote text in the reference container back to the footnote index in the page content (thanks to Willem Braak, ???)
+- Bugfix: Styling of the reference container when the footnote text was too long (thanks to Willem Braak, undisclosed location)
+- Bugfix: Added a Link to the footnote text in the reference container back to the footnote index in the page content (thanks to Willem Braak, undisclosed location)
 
 = 1.2.3 =
 - Bugfix: Removed 'Warning output' of Plugins activation and deactivation function (thanks to Piet Bos, China)

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
 "POT-Creation-Date: 2014-05-27 21:03+0100\n"
-"PO-Revision-Date: 2014-05-27 21:03+0100\n"
-"Last-Translator: Stefan Herndler <support@herndler.org>\n"
+"PO-Revision-Date: 2014-06-20 12:42+0100\n"
+"Last-Translator: Mark Cheret <mark@cheret.de>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "in the widget area"
 
 #: classes/footnotes_settings.php:453
 msgid "Where shall the reference container appear:"
-msgstr "Where shall the reference container appear:"
+msgstr "Where should the reference container appear:"
 
 #: classes/footnotes_settings.php:465 classes/footnotes_settings.php:546
 msgid "Yes"

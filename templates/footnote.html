@@ -1,6 +1,22 @@
-<sup class="footnote_plugin_tooltip" onclick="footnote_expand_reference_container('#footnote_plugin_reference_[[FOOTNOTE INDEX]]');">
-    <a href="#footnote_plugin_reference_[[FOOTNOTE INDEX]]" name="footnote_plugin_tooltip_[[FOOTNOTE INDEX]]">[[FOOTNOTE INDEX]])</a>
-	<span>
-		[[FOOTNOTE TEXT]]
-	</span>
-</sup>
+<a href="#footnote_plugin_reference_[[FOOTNOTE INDEX]]"
+   name="footnote_plugin_tooltip_[[FOOTNOTE INDEX]]"
+   id="footnote_plugin_tooltip_[[FOOTNOTE INDEX]]"
+   class="footnote_plugin_tooltip_text"
+   onclick="footnote_expand_reference_container('#footnote_plugin_reference_[[FOOTNOTE INDEX]]');">
+	<sup>[[FOOTNOTE INDEX]])</sup>
+</a>
+<div class="tooltip" id="footnote_plugin_tooltip_text_[[FOOTNOTE INDEX]]">
+	[[FOOTNOTE TEXT]]
+</div>
+
+<script type="text/javascript">
+	jQuery("#footnote_plugin_tooltip_[[FOOTNOTE INDEX]]").tooltip({
+		tip: "#footnote_plugin_tooltip_text_[[FOOTNOTE INDEX]]",
+		effect: "fade",
+		fadeOutSpeed: 100,
+		predelay: 400,
+		position: "top right",
+		relative: true,
+		offset: [10, 10]
+	});
+</script>

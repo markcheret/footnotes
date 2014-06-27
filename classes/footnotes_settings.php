@@ -126,6 +126,8 @@ class Class_FootnotesSettings
 		wp_enqueue_style('footnote_settings_style');
 		/* Needed to allow metabox layout and close functionality */
 		wp_enqueue_script('postbox');
+		/* add jquery tools to public page */
+		wp_enqueue_script('footnotes_public_script', plugins_url('../js/jquery.tools.min.js', __FILE__), array());
         /* gets active tag, or if nothing set the "general" tab will be set to active */
         $l_str_tab = isset($_GET['tab']) ? $_GET['tab'] : FOOTNOTE_SETTINGS_LABEL_GENERAL;
         /* outputs all tabs */

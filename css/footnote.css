@@ -102,59 +102,18 @@
 }
 
 /* tooltip */
-.footnote_plugin_tooltip, .footnote_plugin_tooltip a {
-    /*outline: none !important;*/
-    /*color: #4777ff !important;*/
-    text-decoration: none !important;
-    cursor: pointer !important;
-}
-
-.footnote_plugin_tooltip strong {
-    line-height: 30px !important;
-}
-
-.footnote_plugin_tooltip:hover {
+.footnote_plugin_tooltip_text {
     text-decoration: none !important;
 }
 
-.footnote_plugin_tooltip span {
-    z-index: 10 !important;
-    display: none !important;
-    padding: 14px 20px !important;
-    margin-top: -30px !important;
-    /*margin-left: 28px !important;*/
-    /*width: 240px;*/
-    line-height: 16px !important;
-    cursor: default;
-}
-
-/*
- * added width and white-space styling in version 1.0.6
- */
-.footnote_plugin_tooltip:hover span, .footnote_plugin_tooltip span:hover {
-    display: inline !important;
-    position: absolute !important;
-    color: #474747 !important;
-    border: 1px solid #ddccaa !important;
-    background: #fffaf0 !important;
-    width: auto;
-    white-space: nowrap;
-}
-
-.callout {
-    z-index: 20 !important;
-    position: absolute !important;
-    top: 30px !important;
-    border: 0 !important;
-    left: -12px !important;
-}
-
-/*CSS3 extras*/
-.footnote_plugin_tooltip span {
-    border-radius: 4px !important;
-    -moz-border-radius: 4px !important;
-    -webkit-border-radius: 4px !important;
-    -moz-box-shadow: 5px 5px 8px #cccccc !important;
-    -webkit-box-shadow: 5px 5px 8px #cccccc !important;
-    box-shadow: 5px 5px 8px #cccccc !important;
+/* tooltip styling */
+.tooltip {
+	display: none;
+	background-color: #fff7a7;
+	border: 1px solid #cccc99;
+	border-radius: 3px;
+	padding: 12px;
+	font-size: 13px;
+	-moz-box-shadow: 2px 2px 11px #666;
+	-webkit-box-shadow: 2px 2px 11px #666;
 }

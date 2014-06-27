@@ -19,6 +19,10 @@ function footnotes_add_public_stylesheet()
     wp_register_style('footnotes_public_style', plugins_url('../css/footnote.css', __FILE__));
     /* add public stylesheet */
     wp_enqueue_style('footnotes_public_style');
+	/* add the jQuery plugin (already registered by WP) */
+	wp_enqueue_script('jquery');
+	/* add jquery tools to public page */
+	wp_enqueue_script('footnotes_public_script', plugins_url('../js/jquery.tools.min.js', __FILE__), array());
 }
 
 /**

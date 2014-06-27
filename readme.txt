@@ -64,6 +64,9 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
+= 1.2.5 =
+- Bugfix: New styling of the mouse-over box to stay in screen (thanks to Jori, France and Manuel345, undisclosed location)
+
 = 1.2.4 =
 - Bugfix: CSS stylesheets will only be added in FootNotes settings page, nowhere else (thanks to Piet Bos, China)
 - Bugfix: Styling of the reference container when the footnote text was too long (thanks to Willem Braak, undisclosed location)

@@ -7,11 +7,6 @@
  * Since: 1.0
  */
 
-/* overwrite some styling for inputs [type=text] and select-boxes */
-input[type=text], input[type=checkbox], input[type=password], textarea, select {
-    /*margin-left:   12px !important;*/
-}
-
 input[type=text], input[type=password], textarea, select {
     padding-left: 8px !important;
     padding-right: 8px !important;

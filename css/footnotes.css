@@ -1,0 +1,25 @@
+/**
+ * Created by Stefan Herndler.
+ * User: Stefan
+ * Date: 15.05.14
+ * Time: 16:21
+ * Version: 1.0.7
+ * Since: 1.0
+ */
+
+/*
+ * styling for the 'footnotes' tag
+ * @since 1.0.7
+*/
+.footnote_tag_styling, .footnote_tag_styling:hover {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.footnote_tag_styling_1 {
+    color: #2bb975;
+}
+
+.footnote_tag_styling_2 {
+    color: #545f5a;
+}

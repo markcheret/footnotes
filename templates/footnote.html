@@ -5,13 +5,14 @@
    onclick="footnote_expand_reference_container('#footnote_plugin_reference_[[FOOTNOTE INDEX]]');">
 	<sup>[[FOOTNOTE INDEX]])</sup>
 </a>
-<div class="tooltip" id="footnote_plugin_tooltip_text_[[FOOTNOTE INDEX]]">
+<span class="footnote_tooltip" id="footnote_plugin_tooltip_text_[[FOOTNOTE INDEX]]">
 	[[FOOTNOTE TEXT]]
-</div>
+</span>
 
 <script type="text/javascript">
 	jQuery("#footnote_plugin_tooltip_[[FOOTNOTE INDEX]]").tooltip({
 		tip: "#footnote_plugin_tooltip_text_[[FOOTNOTE INDEX]]",
+		tipClass: "footnote_tooltip",
 		effect: "fade",
 		fadeOutSpeed: 100,
 		predelay: 400,

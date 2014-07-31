@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
 	Author: media competence institute
-	Version: 1.2.5
+	Version: 1.3.0
 	Author URI: http://cheret.co.uk/mci
 	Text Domain: footnotes
 	Domain Path: /languages
@@ -35,72 +35,36 @@
  * Since: 1.0
  */
 
-/* include constants */
+// include constants
 require_once(dirname(__FILE__) . "/includes/defines.php");
-/* include language functions */
+// include language functions
 require_once(dirname(__FILE__) . "/includes/language.php");
-/* include storage functions and global plugin functions */
+// include storage functions and global plugin functions
 require_once(dirname(__FILE__) . "/includes/plugin-settings.php");
-/* include script and stylesheet functions */
-require_once(dirname(__FILE__) . "/includes/scripts.php");
-/* include script and stylesheet functions */
-require_once(dirname(__FILE__) . "/includes/convert.php");
-/* include script and stylesheet functions */
-require_once(dirname(__FILE__) . "/includes/wysiwyg-editor.php");
-/* include script and stylesheet functions */
-require_once(dirname(__FILE__) . "/includes/replacer.php");
 
-/* require plugin class */
-require_once(dirname(__FILE__) . "/classes/footnotes.php");
-/* require plugin settings class */
-require_once(dirname(__FILE__) . "/classes/footnotes_settings.php");
-/* require plugin widget class */
-require_once(dirname(__FILE__) . "/classes/footnotes_widget.php");
+// require plugin class
+require_once(dirname( __FILE__ ) . "/classes/footnotes.php");
 
-/* register functions for the footnote replacement */
-footnotes_RegisterReplacementFunctions();
 
-/* adds javascript and stylesheets to the public page */
-add_action('wp_enqueue_scripts', 'footnotes_add_public_stylesheet');
+// initialize an object of the plugin class
+global $g_obj_MCI_Footnotes;
+// if object isn't initialized yet, initialize it now
+if (empty($g_obj_MCI_Footnotes)) {
+	$g_obj_MCI_Footnotes = new MCI_Footnotes();
+}
 
-/* defines the callback function for the editor buttons */
-add_action('wp_ajax_nopriv_footnotes_getTags', 'footnotes_wysiwyg_ajax_callback' );
-add_action('wp_ajax_footnotes_getTags', 'footnotes_wysiwyg_ajax_callback' );
-/* add new button to the WYSIWYG - editor */
-add_filter('mce_buttons', 'footnotes_wysiwyg_editor_functions');
-add_filter( "mce_external_plugins", "footnotes_wysiwyg_editor_buttons" );
-/* add new button to the plain text editor */
-add_action( 'admin_print_footer_scripts', 'footnotes_text_editor_buttons' );
+// register hook for activating the plugin
+register_activation_hook(__FILE__, array('MCI_Footnotes', 'activate'));
+// register hook for deactivating the plugin
+register_deactivation_hook(__FILE__, array('MCI_Footnotes', 'deactivate'));
 
-/* action to locate language and load the wordpress-specific language file */
-add_action('plugins_loaded', 'footnotes_load_language');
-
-/* add link to the settings page in plugin main page */
-$l_str_plugin_file = FOOTNOTES_PLUGIN_DIR_NAME . '/index.php';
-add_filter("plugin_action_links_{$l_str_plugin_file}", 'footnotes_plugin_settings_link', 10, 2);
-
-/* register footnotes widget */
-add_action('widgets_init', create_function('', 'return register_widget("Class_FootnotesWidget");'));
-
-/* register hook for activating the plugin */
-register_activation_hook(__FILE__, array('Class_Footnotes', 'activate'));
-/* register hook for deactivating the plugin */
-register_deactivation_hook(__FILE__, array('Class_Footnotes', 'deactivate'));
-
-/* only admin is allowed to execute the plugin settings */
+// only admin is allowed to execute the following functions
 if (!function_exists('is_admin')) {
     header('Status: 403 Forbidden');
     header('HTTP/1.1 403 Forbidden');
     exit();
 }
 
-/* register hook for uninstalling the plugin */
-register_uninstall_hook(__FILE__, array('Class_Footnotes', 'uninstall'));
+// register hook for uninstalling the plugin
+register_uninstall_hook(__FILE__, array('MCI_Footnotes', 'uninstall'));
 
-/* initialize an object of the plugin class */
-global $g_obj_FootnotesPlugin;
-
-/* if object isn't initialized yet, initialize it now */
-if (empty($g_obj_FootnotesPlugin)) {
-    $g_obj_FootnotesPlugin = new Class_Footnotes();
-}

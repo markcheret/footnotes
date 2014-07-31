@@ -64,6 +64,13 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
+= 1.3.0 =
+- Bugfix: Changed tooltip class to be unique
+- Bugfix: Changed superscript styling to not manipulate the line height
+- Bugfix: Changed styling of the footnotes text in the reference container to avoid line breaks
+- Updated: Reformatted code
+- Added: new settings tab for custom CSS settings
+
 = 1.2.5 =
 - Bugfix: New styling of the mouse-over box to stay in screen (thanks to Jori, France and Manuel345, undisclosed location)
 

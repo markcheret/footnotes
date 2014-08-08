@@ -201,6 +201,10 @@ class MCI_Footnotes_Task {
 		$l_str_EndingTag = $this->a_arr_Settings[FOOTNOTES_INPUT_PLACEHOLDER_END];
 		// get footnote counter style
 		$l_str_CounterStyle = $this->a_arr_Settings[FOOTNOTES_INPUT_COUNTER_STYLE];
+		// get footnote layout before index
+		$l_str_BeforeIndex = $this->a_arr_Settings[FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE];
+		// get footnote layout after index
+		$l_str_AfterIndex = $this->a_arr_Settings[FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER];
 
 		if ($l_str_StartingTag == "userdefined" || $l_str_EndingTag == "userdefined") {
 			// get user defined footnote starting tag
@@ -237,6 +241,8 @@ class MCI_Footnotes_Task {
 			// set replacing string for the footnote
 			$l_str_ReplaceText = str_replace("[[FOOTNOTE INDEX]]", MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, $l_str_CounterStyle), $l_str_FootnoteTemplate);
 			$l_str_ReplaceText = str_replace("[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText);
+			$l_str_ReplaceText = str_replace("[[FOOTNOTE BEFORE]]", $l_str_BeforeIndex, $l_str_ReplaceText);
+			$l_str_ReplaceText = str_replace("[[FOOTNOTE AFTER]]", $l_str_AfterIndex, $l_str_ReplaceText);
 			$l_str_ReplaceText = preg_replace('@[\s]{2,}@',' ',$l_str_ReplaceText);
 			// replace footnote in content
 			$p_str_Content = substr_replace($p_str_Content, $l_str_ReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));

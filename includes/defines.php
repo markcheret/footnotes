@@ -51,7 +51,8 @@ define("FOOTNOTES_INPUT_REFERENCE_CONTAINER_PLACE", "footnote_inputfield_referen
 define("FOOTNOTES_INPUT_PLACEHOLDER_START_USERDEFINED", "footnote_inputfield_placeholder_start_user_defined"); // id of input field for 'user defined placeholder start tag
 define("FOOTNOTES_INPUT_PLACEHOLDER_END_USERDEFINED", "footnote_inputfield_placeholder_end_user_defined"); // id of input field for 'user defined placeholder end tag
 define("FOOTNOTES_INPUT_CUSTOM_CSS", "footnote_inputfield_custom_css"); // if of input field for 'custom css' setting
-
+define("FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE", "footnote_inputfield_custom_styling_before"); // if of input field for 'footnotes styling before' setting
+define("FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER", "footnote_inputfield_custom_styling_after"); // if of input field for 'footnotes styling after' setting
 
 // PLUGIN REFERENCES CONTAINER ID
 define("FOOTNOTES_REFERENCES_CONTAINER_ID", "footnote_references_container"); // id for the div surrounding the footnotes

@@ -57,7 +57,9 @@ function MCI_Footnotes_getOptions($p_bool_ConvertHtmlChars = true) {
 	);
 	// default settings for the 'custom' settings container
 	$l_arr_Default_Custom = array(
-		FOOTNOTES_INPUT_CUSTOM_CSS => ''
+		FOOTNOTES_INPUT_CUSTOM_CSS => '',
+		FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE => '',
+		FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER => ')'
 	);
 
     $l_arr_General = MCI_Footnotes_ValidateOptions(get_option(FOOTNOTES_SETTINGS_CONTAINER), $l_arr_Default_General, $p_bool_ConvertHtmlChars);

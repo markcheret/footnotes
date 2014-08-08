@@ -25,7 +25,7 @@ class MCI_Footnotes_Tab_Custom extends MCI_Footnotes_Admin {
 	 */
 	public function __construct(&$p_arr_Tabs) {
 		// add tab to the tab array
-		$p_arr_Tabs[FOOTNOTES_SETTINGS_TAB_CUSTOM] = __("Custom CSS", FOOTNOTES_PLUGIN_NAME);
+		$p_arr_Tabs[FOOTNOTES_SETTINGS_TAB_CUSTOM] = __("Customize", FOOTNOTES_PLUGIN_NAME);
 		// register settings tab
 		add_settings_section(
 			"MCI_Footnotes_Settings_Section_Custom",
@@ -33,9 +33,17 @@ class MCI_Footnotes_Tab_Custom extends MCI_Footnotes_Admin {
 			array($this, 'Description'),
 			FOOTNOTES_SETTINGS_TAB_CUSTOM
 		);
-		// help
+		// styling
 		add_meta_box(
-			'MCI_Footnotes_Tab_HowTo_Custom',
+			'MCI_Footnotes_Tab_Custom_Styling',
+			__("Layout", FOOTNOTES_PLUGIN_NAME),
+			array($this, 'Styling'),
+			FOOTNOTES_SETTINGS_TAB_CUSTOM,
+			'main'
+		);
+		// custom css
+		add_meta_box(
+			'MCI_Footnotes_Tab_Custom_Customize',
 			__("Add custom CSS to the public page", FOOTNOTES_PLUGIN_NAME),
 			array($this, 'CSS'),
 			FOOTNOTES_SETTINGS_TAB_CUSTOM,
@@ -52,6 +60,22 @@ class MCI_Footnotes_Tab_Custom extends MCI_Footnotes_Admin {
 	}
 
 	/**
+	 * footnotes layout before and after the index in text
+	 * @since 1.3.1
+	 */
+	public function Styling() {
+		// setting for 'before footnotes'
+		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE, __("Before Footnotes:", FOOTNOTES_PLUGIN_NAME));
+		$this->AddTextbox(FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE, "footnote_plugin_50");
+		$this->AddNewline();
+		// setting for 'after footnotes'
+		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER, __("After Footnotes:", FOOTNOTES_PLUGIN_NAME));
+		$this->AddTextbox(FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER, "footnote_plugin_50");
+		$this->AddNewline();
+	}
+
+	/**
+	 * customize css box for public page
 	 * @since 1.3
 	 */
 	public function CSS() {

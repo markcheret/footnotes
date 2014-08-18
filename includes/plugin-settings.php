@@ -93,8 +93,8 @@ function MCI_Footnotes_ValidateOptions($p_arr_Options, $p_arr_Default, $p_bool_C
 		if (!empty($l_str_Value)) {
 			$p_arr_Options[$l_str_Key] = $l_str_Value;
 			// check if default value is defined
-		} else if (array_key_exists($l_str_Key, $p_arr_Default)) {
-			$p_arr_Options[$l_str_Key] = $p_arr_Default[$l_str_Key];
+		//} else if (array_key_exists($l_str_Key, $p_arr_Default)) {
+		//	$p_arr_Options[$l_str_Key] = $p_arr_Default[$l_str_Key];
 		} else {
 			$p_arr_Options[$l_str_Key] = "";
 		}

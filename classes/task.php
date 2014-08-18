@@ -218,6 +218,10 @@ class MCI_Footnotes_Task {
 			$l_str_StartingTag = htmlspecialchars($l_str_StartingTag);
 			$l_str_EndingTag = htmlspecialchars($l_str_EndingTag);
 		}
+		// if footnotes short code is empty, return the content without changes
+		if (empty($l_str_StartingTag) || empty($l_str_EndingTag)) {
+			return $p_str_Content;
+		}
 
 		// check for a footnote placeholder in the current page
 		do {

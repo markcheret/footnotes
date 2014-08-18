@@ -66,7 +66,7 @@ class MCI_Footnotes_Tab_HowTo extends MCI_Footnotes_Admin {
 			$l_arr_Footnote_StartingTag = $this->LoadSetting(FOOTNOTES_INPUT_PLACEHOLDER_START_USERDEFINED);
 			$l_arr_Footnote_EndingTag = $this->LoadSetting(FOOTNOTES_INPUT_PLACEHOLDER_END_USERDEFINED);
 		}
-		$l_str_Example = $l_arr_Footnote_StartingTag["value"] . __("example string", FOOTNOTES_PLUGIN_NAME) . $l_arr_Footnote_EndingTag["value"];
+		$l_str_Example = "Hello" . $l_arr_Footnote_StartingTag["value"] . __("example string", FOOTNOTES_PLUGIN_NAME) . $l_arr_Footnote_EndingTag["value"] . " World!";
 		?>
 		<div style="text-align:center;">
 			<div class="footnote_placeholder_box_container">

@@ -36,8 +36,8 @@ class MCI_Footnotes_Tab_Custom extends MCI_Footnotes_Admin {
 		// styling
 		add_meta_box(
 			'MCI_Footnotes_Tab_Custom_Styling',
-			__("Layout", FOOTNOTES_PLUGIN_NAME),
-			array($this, 'Styling'),
+			__("Superscript layout", FOOTNOTES_PLUGIN_NAME),
+			array($this, 'Superscript'),
 			FOOTNOTES_SETTINGS_TAB_CUSTOM,
 			'main'
 		);
@@ -63,13 +63,13 @@ class MCI_Footnotes_Tab_Custom extends MCI_Footnotes_Admin {
 	 * footnotes layout before and after the index in text
 	 * @since 1.3.1
 	 */
-	public function Styling() {
+	public function Superscript() {
 		// setting for 'before footnotes'
-		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE, __("Before Footnotes:", FOOTNOTES_PLUGIN_NAME));
+		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE, __("Before Footnotes index:", FOOTNOTES_PLUGIN_NAME));
 		$this->AddTextbox(FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE, "footnote_plugin_50");
 		$this->AddNewline();
 		// setting for 'after footnotes'
-		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER, __("After Footnotes:", FOOTNOTES_PLUGIN_NAME));
+		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER, __("After Footnotes index:", FOOTNOTES_PLUGIN_NAME));
 		$this->AddTextbox(FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER, "footnote_plugin_50");
 		$this->AddNewline();
 	}

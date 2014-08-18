@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.3.0
+Stable Tag: 1.3.1
 
 == Description ==
 
@@ -63,6 +63,11 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.3.1 =
+- Bugfix: Allow settings to be empty
+- Bugfix: Removed space between the hyperlink and superscript in the footnotes index
+- Added: Setting to customize the text before and after the footnotes index in superscript
 
 = 1.3.0 =
 - Bugfix: Changed tooltip class to be unique

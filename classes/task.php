@@ -60,6 +60,8 @@ class MCI_Footnotes_Task {
 		?>
 		<style type="text/css" media="screen"><?php echo $this->a_arr_Settings[FOOTNOTES_INPUT_CUSTOM_CSS]; ?></style>
 		<?php
+		// reset stored footnotes when displaying the header
+		self::$a_arr_Footnotes = array();
 	}
 
 	/**
@@ -108,7 +110,7 @@ class MCI_Footnotes_Task {
 	 */
 	public function WidgetText($p_str_Content) {
 		// returns content
-		return $this->exec( $p_str_Content, $this->a_arr_Settings[FOOTNOTES_INPUT_REFERENCE_CONTAINER_PLACE] == "post_end" ? true : false);
+		return $this->exec($p_str_Content, $this->a_arr_Settings[FOOTNOTES_INPUT_REFERENCE_CONTAINER_PLACE] == "post_end" ? true : false);
 	}
 
 	/**

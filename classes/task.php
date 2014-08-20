@@ -237,8 +237,7 @@ class MCI_Footnotes_Task {
 			$l_int_PosEnd = strpos($p_str_Content, $l_str_EndingTag, $l_int_PosStart);
 			// tag not found
 			if ($l_int_PosEnd === false) {
-				$l_int_PosStart++;
-				continue;
+				break;
 			}
 			// get length of footnote text
 			$l_int_Length = $l_int_PosEnd - $l_int_PosStart;
@@ -252,12 +251,15 @@ class MCI_Footnotes_Task {
 			$l_str_ReplaceText = preg_replace('@[\s]{2,}@',' ',$l_str_ReplaceText);
 			// replace footnote in content
 			$p_str_Content = substr_replace($p_str_Content, $l_str_ReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));
-			// set footnote to the output box at the end
-			self::$a_arr_Footnotes[] = $l_str_FootnoteText;
-			// increase footnote index
-			$l_int_FootnoteIndex++;
+			// add footnote only if not empty
+			if (!empty($l_str_FootnoteText)) {
+				// set footnote to the output box at the end
+				self::$a_arr_Footnotes[] = $l_str_FootnoteText;
+				// increase footnote index
+				$l_int_FootnoteIndex++;
+			}
 			// add offset to the new starting position
-			$l_int_PosStart += ($l_int_PosEnd - $l_int_PosStart);
+			$l_int_PosStart += $l_int_Length + strlen($l_str_EndingTag);
 		} while (true);
 
 		// return content

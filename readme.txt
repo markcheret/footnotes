@@ -64,6 +64,10 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
+= 1.3.2 =
+- Bugfix: More security recognizing Footnotes on public pages (e.g. ignoring empty Footnote short codes)
+- Bugfix: Clear old Footnotes before lookup new public page (only if no reference container displayed before)
+
 = 1.3.1 =
 - Bugfix: Allow settings to be empty
 - Bugfix: Removed space between the hyperlink and superscript in the footnotes index

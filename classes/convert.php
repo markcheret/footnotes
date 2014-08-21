@@ -147,6 +147,26 @@ class MCI_Footnotes_Convert {
 		// nothing found that says "true", so we return false */
 		return false;
 	}
+
+	/**
+	 * @since 1.3.2
+	 * @param int $p_int_Index [default: -1 = all arrows, otherwise the arrow with the specified index]
+	 * @return array|string
+	 */
+	public static function getArrow($p_int_Index = -1) {
+		// define all possible arrows
+		$l_arr_Arrows = array("&#8593;", "&#8613;", "&#8607;", "&#8617;", "&#8626;", "&#8629;", "&#8657;", "&#8673;", "&#8679;", "&#65514;");
+		// convert index to an integer
+		if (!is_int($p_int_Index)) {
+			$p_int_Index = intval($p_int_Index);
+		}
+		// return the whole arrow array
+		if ($p_int_Index < 0 || $p_int_Index > count($l_arr_Arrows)) {
+			return $l_arr_Arrows;
+		}
+		// return a single arrow
+		return $l_arr_Arrows[$p_int_Index];
+	}
 } // class MCI_Footnotes_Convert
 
 endif;

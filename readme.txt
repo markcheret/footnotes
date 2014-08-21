@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 3.9.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.3.1
+Stable Tag: 1.3.2
 
 == Description ==
 
@@ -67,6 +67,9 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 = 1.3.2 =
 - Bugfix: More security recognizing Footnotes on public pages (e.g. ignoring empty Footnote short codes)
 - Bugfix: Clear old Footnotes before lookup new public page (only if no reference container displayed before)
+- Updated: language EN and DE
+- Added: Setting to customize the hyperlink symbol in der reference container for each footnote reference
+- Added: Setting to enter a user defined hyperlink symbol
 
 = 1.3.1 =
 - Bugfix: Allow settings to be empty

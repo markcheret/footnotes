@@ -50,9 +50,11 @@ define("FOOTNOTES_INPUT_COUNTER_STYLE", "footnote_inputfield_counter_style"); //
 define("FOOTNOTES_INPUT_REFERENCE_CONTAINER_PLACE", "footnote_inputfield_reference_container_place"); // id of input field "placement of reference container" setting
 define("FOOTNOTES_INPUT_PLACEHOLDER_START_USERDEFINED", "footnote_inputfield_placeholder_start_user_defined"); // id of input field for 'user defined placeholder start tag
 define("FOOTNOTES_INPUT_PLACEHOLDER_END_USERDEFINED", "footnote_inputfield_placeholder_end_user_defined"); // id of input field for 'user defined placeholder end tag
-define("FOOTNOTES_INPUT_CUSTOM_CSS", "footnote_inputfield_custom_css"); // if of input field for 'custom css' setting
-define("FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE", "footnote_inputfield_custom_styling_before"); // if of input field for 'footnotes styling before' setting
-define("FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER", "footnote_inputfield_custom_styling_after"); // if of input field for 'footnotes styling after' setting
+define("FOOTNOTES_INPUT_CUSTOM_CSS", "footnote_inputfield_custom_css"); // id of input field for 'custom css' setting
+define("FOOTNOTES_INPUT_CUSTOM_STYLING_BEFORE", "footnote_inputfield_custom_styling_before"); // id of input field for 'footnotes styling before' setting
+define("FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER", "footnote_inputfield_custom_styling_after"); // id of input field for 'footnotes styling after' setting
+define("FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL", "footnote_inputfield_custom_hyperlink_symbol"); // id of input field for 'footnotes hyperlink symbol' setting
+define("FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL_USER", "footnote_inputfield_custom_hyperlink_symbol_user"); // id of input field for 'footnotes hyperlink symbol' user-defined setting
 
 // PLUGIN REFERENCES CONTAINER ID
 define("FOOTNOTES_REFERENCES_CONTAINER_ID", "footnote_references_container"); // id for the div surrounding the footnotes

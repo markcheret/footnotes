@@ -357,6 +357,9 @@ class MCI_Footnotes_Admin {
         $l_str_Output = '<select ' . $p_str_ClassName . ' name="' . $l_arr_Data["name"] . '" id="' . $l_arr_Data["id"] . '">';
         // loop through all array keys
         foreach ($p_arr_Options as $l_str_Value => $l_str_Caption) {
+			if (!is_string($l_str_Value)) {
+				$l_str_Value = (string)$l_str_Value;
+			}
             // add key as option value
             $l_str_Output .= '<option value="' . $l_str_Value . '"';
             // check if option value is set and has to be pre-selected

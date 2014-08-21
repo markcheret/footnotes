@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-05-27 21:03+0100\n"
-"PO-Revision-Date: 2014-06-20 12:42+0100\n"
-"Last-Translator: Mark Cheret <mark@cheret.de>\n"
+"POT-Creation-Date: 2014-08-21 10:24+0100\n"
+"PO-Revision-Date: 2014-08-21 10:29+0100\n"
+"Last-Translator: Stefan Herndler <s.herndler@methis.at>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -18,138 +18,204 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/footnotes.php:68
+#: classes/footnotes.php:79
 msgid "You must be logged in to run this script."
 msgstr "You must be logged in to run this script."
 
-#: classes/footnotes.php:73
+#: classes/footnotes.php:84
 msgid "You do not have permission to run this script."
 msgstr "You do not have permission to run this script."
 
-#: classes/footnotes_settings.php:409
+#: classes/tab_custom.php:28
+msgid "Customize"
+msgstr "Customize"
+
+#: classes/tab_custom.php:39
+msgid "Superscript layout"
+msgstr "Superscript layout"
+
+#: classes/tab_custom.php:47
+msgid "Hyperlink symbol in the Reference container"
+msgstr "Hyperlink symbol in the Reference container"
+
+#: classes/tab_custom.php:55
+msgid "Add custom CSS to the public page"
+msgstr "Add custom CSS to the public page"
+
+#: classes/tab_custom.php:76
+msgid "Before Footnotes index:"
+msgstr "Before Footnotes index:"
+
+#: classes/tab_custom.php:80
+msgid "After Footnotes index:"
+msgstr "After Footnotes index:"
+
+#: classes/tab_custom.php:93
+msgid "Hyperlink symbol:"
+msgstr "Hyperlink symbol:"
+
+#: classes/tab_custom.php:97
+msgid "or enter a user defined symbol:"
+msgstr "or enter a user defined symbol:"
+
+#: classes/tab_custom.php:100
+msgid "if set it overrides the hyperlink symbol above"
+msgstr "if set it overrides the hyperlink symbol above"
+
+#: classes/tab_custom.php:110
+msgid "Add custom CSS:"
+msgstr "Add custom CSS:"
+
+#: classes/tab_custom.php:114
+msgid ""
+"Available CSS classes to customize the footnotes and the reference container:"
+msgstr ""
+"Available CSS classes to customize the footnotes and the reference container:"
+
+#: classes/tab_custom.php:117
+msgid "inline footnotes"
+msgstr "inline footnotes"
+
+#: classes/tab_custom.php:118
+msgid "inline footnotes, mouse over highlight box"
+msgstr "inline footnotes, mouse over highlight box"
+
+#: classes/tab_custom.php:120
+msgid "reference container footnotes index"
+msgstr "reference container footnotes index"
+
+#: classes/tab_custom.php:121
+msgid "reference container footnotes linked arrow"
+msgstr "reference container footnotes linked arrow"
+
+#: classes/tab_custom.php:122
+msgid "reference container footnotes text"
+msgstr "reference container footnotes text"
+
+#: classes/tab_general.php:28
 msgid "General"
 msgstr "General"
 
-#: classes/footnotes_settings.php:411
+#: classes/tab_general.php:32
 #, php-format
 msgid "%s Settings"
 msgstr "%s Settings"
 
-#: classes/footnotes_settings.php:412
+#: classes/tab_general.php:39
 msgid "References Container"
 msgstr "References Container"
 
-#: classes/footnotes_settings.php:413
+#: classes/tab_general.php:47
 #, php-format
 msgid "%s styling"
 msgstr "%s styling"
 
-#: classes/footnotes_settings.php:415
+#: classes/tab_general.php:63
 msgid "Other"
 msgstr "Other"
 
-#: classes/footnotes_settings.php:435
+#: classes/tab_general.php:84
 msgid "References label:"
 msgstr "References label:"
 
-#: classes/footnotes_settings.php:440
+#: classes/tab_general.php:88
 msgid "Collapse references by default:"
 msgstr "Collapse references by default:"
 
-#: classes/footnotes_settings.php:449
+#: classes/tab_general.php:94
 msgid "in the footer"
 msgstr "in the footer"
 
-#: classes/footnotes_settings.php:450
+#: classes/tab_general.php:95
 msgid "at the end of the post"
 msgstr "at the end of the post"
 
-#: classes/footnotes_settings.php:451
+#: classes/tab_general.php:96
 msgid "in the widget area"
 msgstr "in the widget area"
 
-#: classes/footnotes_settings.php:453
+#: classes/tab_general.php:98
 msgid "Where shall the reference container appear:"
 msgstr "Where should the reference container appear:"
 
-#: classes/footnotes_settings.php:465 classes/footnotes_settings.php:546
+#: classes/tab_general.php:109 classes/tab_general.php:182
 msgid "Yes"
 msgstr "Yes"
 
-#: classes/footnotes_settings.php:466 classes/footnotes_settings.php:547
+#: classes/tab_general.php:110 classes/tab_general.php:183
 msgid "No"
 msgstr "No"
 
-#: classes/footnotes_settings.php:468
+#: classes/tab_general.php:112
 msgid "Combine identical footnotes:"
 msgstr "Combine identical footnotes:"
 
-#: classes/footnotes_settings.php:478 classes/footnotes_settings.php:488
+#: classes/tab_general.php:120 classes/tab_general.php:129
 msgid "user defined"
 msgstr "user defined"
 
-#: classes/footnotes_settings.php:480
+#: classes/tab_general.php:122
 msgid "Footnote tag starts with:"
 msgstr "Footnote tag starts with:"
 
-#: classes/footnotes_settings.php:490
+#: classes/tab_general.php:131
 msgid "and ends with:"
 msgstr "and ends with:"
 
-#: classes/footnotes_settings.php:504
+#: classes/tab_general.php:143
 msgid "Arabic Numbers - Plain"
 msgstr "Arabic Numbers - Plain"
 
-#: classes/footnotes_settings.php:505
+#: classes/tab_general.php:144
 msgid "Arabic Numbers - Leading 0"
 msgstr "Arabic Numbers - Leading 0"
 
-#: classes/footnotes_settings.php:506
+#: classes/tab_general.php:145
 msgid "Latin Character - lower case"
 msgstr "Latin Character - lower case"
 
-#: classes/footnotes_settings.php:507
+#: classes/tab_general.php:146
 msgid "Latin Character - upper case"
 msgstr "Latin Character - upper case"
 
-#: classes/footnotes_settings.php:508
+#: classes/tab_general.php:147
 msgid "Roman Numerals"
 msgstr "Roman Numerals"
 
-#: classes/footnotes_settings.php:510
+#: classes/tab_general.php:149
 msgid "Counter style:"
 msgstr "Counter style:"
 
-#: classes/footnotes_settings.php:522 includes/replacer.php:164
+#: classes/tab_general.php:160 classes/task.php:143
 #, php-format
 msgid "I %s %s"
 msgstr "I %s %s"
 
-#: classes/footnotes_settings.php:523 includes/replacer.php:167
+#: classes/tab_general.php:161 classes/task.php:146
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr "this site uses the awesome %s Plugin"
 
-#: classes/footnotes_settings.php:524 includes/replacer.php:171
+#: classes/tab_general.php:162 classes/task.php:150
 #, php-format
 msgid "extra smooth %s"
 msgstr "extra smooth %s"
 
-#: classes/footnotes_settings.php:525
+#: classes/tab_general.php:163
 msgid "random text"
 msgstr "random text"
 
-#: classes/footnotes_settings.php:526
+#: classes/tab_general.php:164
 #, php-format
 msgid "Don't display a %s %s text in my footer."
 msgstr "Don't display a %s %s text in my footer."
 
-#: classes/footnotes_settings.php:528
+#: classes/tab_general.php:166
 #, php-format
 msgid "Tell the world you're using %s:"
 msgstr "Tell the world you're using %s:"
 
-#: classes/footnotes_settings.php:533
+#: classes/tab_general.php:170
 #, php-format
 msgid ""
 "Don't tell the world you're using %s on specific pages by adding the "
@@ -158,40 +224,40 @@ msgstr ""
 "Don't tell the world you're using %s on specific pages by adding the "
 "following short code:"
 
-#: classes/footnotes_settings.php:549
+#: classes/tab_general.php:185
 msgid "Allow footnotes on Summarized Posts:"
 msgstr "Allow footnotes on Summarized Posts:"
 
-#: classes/footnotes_settings.php:562
-msgid "HowTo"
-msgstr "HowTo"
+#: classes/tab_howto.php:28
+msgid "How to"
+msgstr "How to"
 
-#: classes/footnotes_settings.php:565
+#: classes/tab_howto.php:39
 msgid "Brief introduction in how to use the plugin"
 msgstr "Brief introduction in how to use the plugin"
 
-#: classes/footnotes_settings.php:596
-msgid "Start your footnote with the following shortcode:"
-msgstr "Start your footnote with the following shortcode:"
-
-#: classes/footnotes_settings.php:602
-msgid "...and end your footnote with this shortcode:"
-msgstr "...and end your footnote with this shortcode:"
-
-#: classes/footnotes_settings.php:610 classes/footnotes_settings.php:613
+#: classes/tab_howto.php:69
 msgid "example string"
 msgstr "example string"
 
-#: classes/footnotes_settings.php:611
+#: classes/tab_howto.php:74
+msgid "Start your footnote with the following shortcode:"
+msgstr "Start your footnote with the following shortcode:"
+
+#: classes/tab_howto.php:80
+msgid "...and end your footnote with this shortcode:"
+msgstr "...and end your footnote with this shortcode:"
+
+#: classes/tab_howto.php:88
 msgid "will be displayed as:"
 msgstr "will be displayed as:"
 
-#: classes/footnotes_settings.php:618
+#: classes/tab_howto.php:94
 #, php-format
 msgid "If you have any questions, please don't hesitate to %se-mail%s us."
 msgstr "If you have any questions, please don't hesitate to %se-mail%s us."
 
-#: classes/footnotes_widget.php:15 classes/footnotes_widget.php:25
+#: classes/widget.php:25 classes/widget.php:43
 msgid ""
 "The widget defines the position of the reference container if set to "
 "\"widget area\"."
@@ -199,13 +265,16 @@ msgstr ""
 "The widget defines the position of the reference container if set to "
 "\"widget area\"."
 
-#: includes/plugin-settings.php:22
+#: includes/plugin-settings.php:24
 msgid "Settings"
 msgstr "Settings"
 
-#: includes/plugin-settings.php:24
+#: includes/plugin-settings.php:26
 msgid "Support"
 msgstr "Support"
+
+#~ msgid "HowTo"
+#~ msgstr "HowTo"
 
 #~ msgid "%s Widget"
 #~ msgstr "%s Widget"

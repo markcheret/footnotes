@@ -288,6 +288,20 @@ class MCI_Footnotes_Task {
 		$l_bool_CollapseReference = MCI_Footnotes_Convert::toBool($this->a_arr_Settings[FOOTNOTES_INPUT_COLLAPSE_REFERENCES]);
 		// get footnote counter style
 		$l_str_CounterStyle = $this->a_arr_Settings[FOOTNOTES_INPUT_COUNTER_STYLE];
+		// get hyperlink symbol index
+		$l_int_HyperlinkSymbolIndex = $this->a_arr_Settings[FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL];
+		// get html arrow
+		$l_str_HyperlinkSymbol = MCI_Footnotes_Convert::getArrow($l_int_HyperlinkSymbolIndex);
+		// set html arrow to the first one if invalid index defined
+		if (is_array($l_str_HyperlinkSymbol)) {
+			$l_str_HyperlinkSymbol = MCI_Footnotes_Convert::getArrow(0);
+		}
+		// get user defined hyperlink symbol
+		$l_int_HyperlinkSymbol_UserDefined = $this->a_arr_Settings[FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL_USER];
+		if (!empty($l_int_HyperlinkSymbol_UserDefined)) {
+			// override hyperlink symbol with user defined symbol
+			$l_str_HyperlinkSymbol = $l_int_HyperlinkSymbol_UserDefined;
+		}
 
 		// add expand/collapse buttons to the reference label if collapsed by default
 		// @since 1.2.2
@@ -339,6 +353,7 @@ class MCI_Footnotes_Task {
 			// added function to convert the counter style in the reference container (bugfix for the link to the footnote) in version 1.0.6
 			$l_str_ReplaceText = str_replace("[[FOOTNOTE INDEX SHORT]]", MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, $l_str_CounterStyle), $l_str_FootnoteTemplate);
 			$l_str_ReplaceText = str_replace("[[FOOTNOTE INDEX]]", $l_str_FootnoteIndex, $l_str_ReplaceText);
+			$l_str_ReplaceText = str_replace("[[HYPERLINK SYMBOL]]", $l_str_HyperlinkSymbol, $l_str_ReplaceText);
 			$l_str_ReplaceText = str_replace("[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText);
 			$l_str_ReplaceText = preg_replace('@[\s]{2,}@',' ',$l_str_ReplaceText);
 			// add the footnote container to the output

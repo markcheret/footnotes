@@ -33,11 +33,19 @@ class MCI_Footnotes_Tab_Custom extends MCI_Footnotes_Admin {
 			array($this, 'Description'),
 			FOOTNOTES_SETTINGS_TAB_CUSTOM
 		);
-		// styling
+		// superscript
 		add_meta_box(
-			'MCI_Footnotes_Tab_Custom_Styling',
+			'MCI_Footnotes_Tab_Custom_Superscript',
 			__("Superscript layout", FOOTNOTES_PLUGIN_NAME),
 			array($this, 'Superscript'),
+			FOOTNOTES_SETTINGS_TAB_CUSTOM,
+			'main'
+		);
+		// symbol hyperlink to footnotes index
+		add_meta_box(
+			'MCI_Footnotes_Tab_Custom_HyperlinkSymbol',
+			__("Hyperlink symbol in the Reference container", FOOTNOTES_PLUGIN_NAME),
+			array($this, 'HyperlinkSymbol'),
 			FOOTNOTES_SETTINGS_TAB_CUSTOM,
 			'main'
 		);
@@ -72,6 +80,24 @@ class MCI_Footnotes_Tab_Custom extends MCI_Footnotes_Admin {
 		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER, __("After Footnotes index:", FOOTNOTES_PLUGIN_NAME));
 		$this->AddTextbox(FOOTNOTES_INPUT_CUSTOM_STYLING_AFTER, "footnote_plugin_50");
 		$this->AddNewline();
+	}
+
+	/**
+	 * layout of the hyperlink symbol to jump to the footnotes index inside post
+	 * @since 1.3.2
+	 * @return void
+	 */
+	public function HyperlinkSymbol() {
+		// load convert class
+		require_once(dirname(__FILE__) . "/convert.php");
+		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL, __("Hyperlink symbol:", FOOTNOTES_PLUGIN_NAME));
+		$this->AddSelect(FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL, MCI_Footnotes_Convert::getArrow(), "footnote_plugin_15");
+		$this->AddNewline();
+
+		$this->AddLabel(FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL_USER, __("or enter a user defined symbol:", FOOTNOTES_PLUGIN_NAME));
+		$this->AddTextbox(FOOTNOTES_INPUT_CUSTOM_HYPERLINK_SYMBOL_USER, "footnote_plugin_15");
+		$this->AddText("&nbsp;&nbsp;&nbsp;");
+		$this->AddText("<i>" . __("if set it overrides the hyperlink symbol above", FOOTNOTES_PLUGIN_NAME) . "</i>");
 	}
 
 	/**

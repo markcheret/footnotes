@@ -2,7 +2,8 @@
 Contributors: Aricura, mark.cheret
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 3.9.1
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ
+Tested up to: 3.9.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Stable Tag: 1.3.2
@@ -18,6 +19,7 @@ Cheers for the review, folks!
 = Main Features =
 - Fully customizable **footnotes** shortcode
 - Decide, where your **footnotes** are displayed (position of the *Reference Container*)
+- Add custom CSS to style the appeareance of the **footnotes**
 - Responsive *Reference Container*
 - Mouse-Over Box with clickable links displays your **footnotes** text
 - Automatic numbering of your **footnotes**
@@ -67,21 +69,22 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 = 1.3.2 =
 - Bugfix: More security recognizing Footnotes on public pages (e.g. ignoring empty Footnote short codes)
 - Bugfix: Clear old Footnotes before lookup new public page (only if no reference container displayed before)
-- Updated: language EN and DE
-- Added: Setting to customize the hyperlink symbol in der reference container for each footnote reference
-- Added: Setting to enter a user defined hyperlink symbol
+- Update: language EN and DE
+- Add: Setting to customize the hyperlink symbol in der reference container for each footnote reference
+- Add: Setting to enter a user defined hyperlink symbol
+- 
 
 = 1.3.1 =
 - Bugfix: Allow settings to be empty
 - Bugfix: Removed space between the hyperlink and superscript in the footnotes index
-- Added: Setting to customize the text before and after the footnotes index in superscript
+- Add: Setting to customize the text before and after the footnotes index in superscript
 
 = 1.3.0 =
 - Bugfix: Changed tooltip class to be unique
 - Bugfix: Changed superscript styling to not manipulate the line height
 - Bugfix: Changed styling of the footnotes text in the reference container to avoid line breaks
-- Updated: Reformatted code
-- Added: new settings tab for custom CSS settings
+- Update: Reformatted code
+- Add: new settings tab for custom CSS settings
 
 = 1.2.5 =
 - Bugfix: New styling of the mouse-over box to stay in screen (thanks to Jori, France and Manuel345, undisclosed location)

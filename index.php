@@ -3,14 +3,14 @@
 	Plugin Name: footnotes
 	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
-	Author: media competence institute
-	Version: 1.3.2
-	Author URI: http://cheret.co.uk/mci
+	Author: ManFisher Medien ManuFaktur
+	Version: 1.3.3
+	Author URI: http://manfisher.net/plugins/footnotes/
 	Text Domain: footnotes
 	Domain Path: /languages
 */
 /*
-	Copyright 2014  Mark Cheret, Stefan Herndler (email : mark@cheret.de | support@herndler.org)
+	Copyright 2014  Mark Cheret, Stefan Herndler (email : info@manfisher.eu | support@herndler.org)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 3, as

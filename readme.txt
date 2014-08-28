@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 3.9.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.3.3
+Stable Tag: 1.3.4
 
 == Description ==
 
@@ -65,6 +65,10 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.3.4 =
+- Bugfix: Settings access permission vor sub-sites
+- Bugfix: Setting 'combine identical footnotes' working as it should
 
 = 1.3.3 =
 - Update: Changed the Author name from a fictitious entity towards a real registered company

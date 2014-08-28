@@ -340,9 +340,9 @@ class MCI_Footnotes_Task {
 				// get all footnotes that I haven't passed yet
 				for ($l_str_CheckIndex = $l_str_FirstFootnoteIndex; $l_str_CheckIndex < count(self::$a_arr_Footnotes); $l_str_CheckIndex++) {
 					// check if a further footnote is the same as the actual one
-					if ($l_str_FootnoteText == self::$a_arr_Footnotes[$l_str_CheckIndex] && !empty($g_arr_Footnotes[$l_str_CheckIndex])) {
+					if ($l_str_FootnoteText == self::$a_arr_Footnotes[$l_str_CheckIndex]) {
 						// set the further footnote as empty so it won't be displayed later
-						$g_arr_Footnotes[$l_str_CheckIndex] = "";
+						self::$a_arr_Footnotes[$l_str_CheckIndex] = "";
 						// add the footnote index to the actual index
 						$l_str_FootnoteIndex .= ", " . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), $l_str_CounterStyle);
 					}
@@ -357,10 +357,10 @@ class MCI_Footnotes_Task {
 			$l_str_ReplaceText = str_replace("[[FOOTNOTE TEXT]]", $l_str_FootnoteText, $l_str_ReplaceText);
 			$l_str_ReplaceText = preg_replace('@[\s]{2,}@',' ',$l_str_ReplaceText);
 			// add the footnote container to the output
-			$l_str_Output = $l_str_Output . $l_str_ReplaceText;
+			$l_str_Output .= $l_str_ReplaceText;
 		}
 		// add closing tag for the div of the references container
-		$l_str_Output = $l_str_Output . '</div>';
+		$l_str_Output .= '</div>';
 		// add a javascript to expand the reference container when clicking on a footnote or the reference label
 		$l_str_Output .= '
 			<script type="text/javascript">

@@ -31,12 +31,6 @@ class MCI_Footnotes {
      * @since 1.0
      */
     public function __construct() {
-        // load settings only if current WordPress user is admin
-        if (is_admin()) {
-			// load plugin settings
-			require_once(dirname( __FILE__ ) . "/admin.php");
-            $this->a_obj_Admin = new MCI_Footnotes_Admin();
-        }
 		// load plugin widget
 		require_once(dirname( __FILE__ ) . "/widget.php");
 		// register footnotes widget
@@ -51,6 +45,15 @@ class MCI_Footnotes {
 		$this->a_obj_Task = new MCI_Footnotes_Task();
 		$this->a_obj_Task->Register();
     }
+
+	/**
+	 * draw the dashboard setting
+	 */
+	public function generateLayout() {
+		// load plugin settings
+		require_once(dirname( __FILE__ ) . "/admin.php");
+		$this->a_obj_Admin = new MCI_Footnotes_Admin();
+	}
 
     /**
      * activates the plugin

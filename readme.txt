@@ -48,6 +48,12 @@ https://github.com/media-competence-institute/footnotes
 
 No, this Plugin has been written from scratch. Of course some inspirations on how to do or how to not do things were taken from other plugins.
 
+= Your Plugin is awesome! How do I convert my footnotes if I used one of the other footnotes plugins out there? =
+
+1. For anyone interested in converting from the FD Footnotes plugin:
+Visit this swift write-up from a **footnotes** user by the name of **Southwest**: http://wordpress.org/support/topic/how-to-make-this-footnote-style?replies=6#post-5946306
+2. From what we've researched, all other footnotes Plugins use open and close shortcodes, which can be left as is. In the **footnotes** settings menu, you can setup **footnotes** to use the existing (=previously used) shortcodes. Too easy? Yippy Ki-Yey!
+
 == Installation ==
 - Visit your WordPress Admin area
 - Navigate to `Plugins\Add`

@@ -72,6 +72,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 1.4.0 =
+- Feature: WPML Config XML file for easy multi language string translation (WPML String Translation Support File)
+
 = 1.3.4 =
 - Bugfix: Settings access permission vor sub-sites
 - Bugfix: Setting 'combine identical footnotes' working as it should

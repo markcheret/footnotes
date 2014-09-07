@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.3.4
+Stable Tag: 1.4.0
 
 == Description ==
 
@@ -74,6 +74,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 1.4.0 =
 - Feature: WPML Config XML file for easy multi language string translation (WPML String Translation Support File)
+- Update: Changed e-Mail support address to the WordPress support forum
+- Update: Language EN and DE
+- Add: Tab for Plugin Diagnostics
+- Add: Donate link to the installed Plugin overview page
+- Add: Donate button to the "HowTo" tab
 
 = 1.3.4 =
 - Bugfix: Settings access permission vor sub-sites

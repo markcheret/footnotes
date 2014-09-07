@@ -36,7 +36,7 @@ define("FOOTNOTES_SETTINGS_PAGE_ID", "footnotes"); // plugins setting page inter
 define("FOOTNOTES_SETTINGS_TAB_GENERAL", "footnotes_general_settings"); // internal label for the plugins general settings tab
 define("FOOTNOTES_SETTINGS_TAB_CUSTOM", "footnotes_custom_settings"); // internal label for the plugins custom settings tab
 define("FOOTNOTES_SETTINGS_TAB_HOWTO", "footnotes_howto_settings"); // internal label for the plugins how to tab
-
+define("FOOTNOTES_SETTINGS_TAB_DIAGNOSTICS", "footnotes_diagnostics_settings"); // internal label for the plugins diagnostics tab
 
 // PLUGIN SETTINGS INPUT FIELDS
 define("FOOTNOTES_INPUT_COMBINE_IDENTICAL", "footnote_inputfield_combine_identical"); // id of input field for the combine identical setting

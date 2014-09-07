@@ -63,6 +63,9 @@ class MCI_Footnotes_Admin {
 		// load tab 'how to'
 		require_once(dirname( __FILE__ ) . "/tab_howto.php");
 		new MCI_Footnotes_Tab_HowTo($this->a_arr_SettingsTabs);
+		// load tab 'diagnostics'
+		require_once(dirname( __FILE__ ) . "/tab_diagnostics.php");
+		new MCI_Footnotes_Tab_Diagnostics($this->a_arr_SettingsTabs);
     }
 
     /**
@@ -116,7 +119,7 @@ class MCI_Footnotes_Admin {
         do_settings_sections(self::$a_str_ActiveTab);
         do_meta_boxes(self::$a_str_ActiveTab, 'main', NULL);
         // adds a submit button to the current page
-        if (self::$a_str_ActiveTab != FOOTNOTES_SETTINGS_TAB_HOWTO) {
+        if (self::$a_str_ActiveTab != FOOTNOTES_SETTINGS_TAB_HOWTO && self::$a_str_ActiveTab != FOOTNOTES_SETTINGS_TAB_DIAGNOSTICS) {
             submit_button();
         }
         echo '</form>';

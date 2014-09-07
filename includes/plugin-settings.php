@@ -21,13 +21,16 @@ add_filter("plugin_action_links_{$l_str_plugin_file}", 'MCI_Footnotes_PluginLink
  */
 function MCI_Footnotes_PluginLinks($p_arr_Links, $p_str_File) {
     // add link to the footnotes plugin settings page
-    $l_str_SettingsLink = '<a href="' . admin_url('options-general.php?page=' . FOOTNOTES_SETTINGS_PAGE_ID) . '">' . __('Settings', FOOTNOTES_PLUGIN_NAME) . '</a>';
+    $l_str_Settings = '<a href="' . admin_url('options-general.php?page=' . FOOTNOTES_SETTINGS_PAGE_ID) . '">' . __('Settings', FOOTNOTES_PLUGIN_NAME) . '</a>';
 	// add link to the footnotes plugin support page on wordpress.org
-	$l_str_SupportLink = '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">' . __('Support', FOOTNOTES_PLUGIN_NAME) . '</a>';
+	$l_str_Support = '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">' . __('Support', FOOTNOTES_PLUGIN_NAME) . '</a>';
+	// add link to Donate
+	$l_str_Donate = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">' . __('Donate', FOOTNOTES_PLUGIN_NAME) . '</a>';
 
 	// add defined links to the plugin main page
-	$p_arr_Links[] = $l_str_SupportLink;
-	$p_arr_Links[] = $l_str_SettingsLink;
+	$p_arr_Links[] = $l_str_Support;
+	$p_arr_Links[] = $l_str_Settings;
+	$p_arr_Links[] = $l_str_Donate;
 
     // return new links
     return $p_arr_Links;

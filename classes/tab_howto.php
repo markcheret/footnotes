@@ -41,6 +41,14 @@ class MCI_Footnotes_Tab_HowTo extends MCI_Footnotes_Admin {
 			FOOTNOTES_SETTINGS_TAB_HOWTO,
 			'main'
 		);
+		// donate
+		add_meta_box(
+			'MCI_Footnotes_Tab_HowTo_Donate',
+			__("Help us to improve our Plugin.", FOOTNOTES_PLUGIN_NAME),
+			array($this, 'Donate'),
+			FOOTNOTES_SETTINGS_TAB_HOWTO,
+			'main'
+		);
 	}
 
 	/**
@@ -91,11 +99,20 @@ class MCI_Footnotes_Tab_HowTo extends MCI_Footnotes_Admin {
 					</p>
 				</div>
 				<p>
-					<?php echo sprintf(__("If you have any questions, please don't hesitate to %se-mail%s us.", FOOTNOTES_PLUGIN_NAME), '<a href="mailto:mci@cheret.co.uk" class="footnote_plugin">', '</a>'); ?>
+					<?php echo sprintf(__("For further information please check out our %ssupport forum%s on WordPress.org.", FOOTNOTES_PLUGIN_NAME), '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>'); ?>
 				</p>
 			</div>
 		</div>
 	<?php
+	}
+
+	/**
+	 * outputs the diagnostics
+	 * @since 1.4.0
+	 */
+	public function Donate() {
+		$l_str_Url = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ";
+		echo '<input type="button" class="button button-primary" value="'.__('Donate now',FOOTNOTES_PLUGIN_NAME).'" onclick="window.open(\''.$l_str_Url.'\');" />';
 	}
 } // class MCI_Footnotes_Tab_HowTo
 

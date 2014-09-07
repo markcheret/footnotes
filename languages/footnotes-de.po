@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-08-21 10:29+0100\n"
-"PO-Revision-Date: 2014-08-21 10:35+0100\n"
+"POT-Creation-Date: 2014-09-07 03:43+0100\n"
+"PO-Revision-Date: 2014-09-07 03:46+0100\n"
 "Last-Translator: Stefan Herndler <s.herndler@methis.at>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/footnotes.php:79
+#: classes/footnotes.php:82
 msgid "You must be logged in to run this script."
 msgstr "Sie müssen angemeldet sein um diese Funktion ausführen zu können."
 
-#: classes/footnotes.php:84
+#: classes/footnotes.php:87
 msgid "You do not have permission to run this script."
 msgstr "Sie haben nicht die Berechtigung diese Funktion auszuführen."
 
@@ -92,6 +92,42 @@ msgstr "Einzelnachweiß - Symbol für den Link"
 #: classes/tab_custom.php:122
 msgid "reference container footnotes text"
 msgstr "Einzelnachweis - Fußnote"
+
+#: classes/tab_diagnostics.php:27
+msgid "Diagnostics"
+msgstr "Diagnose"
+
+#: classes/tab_diagnostics.php:38
+msgid "Displays information about the web server, PHP and WordPress."
+msgstr "Ausgabe von Informationen bezgl. des Webservers, PHP und WordPress."
+
+#: classes/tab_diagnostics.php:65
+msgid "Server name"
+msgstr "Servername"
+
+#: classes/tab_diagnostics.php:71
+msgid "PHP version"
+msgstr "PHP Version"
+
+#: classes/tab_diagnostics.php:77
+msgid "Max execution time"
+msgstr "max. Ausführungsdauer"
+
+#: classes/tab_diagnostics.php:78
+msgid "seconds"
+msgstr "Sekunden"
+
+#: classes/tab_diagnostics.php:83
+msgid "Memory limit"
+msgstr "Speicherlimitierung"
+
+#: classes/tab_diagnostics.php:89
+msgid "PHP extensions"
+msgstr "PHP Erweiterungen"
+
+#: classes/tab_diagnostics.php:102
+msgid "WordPress version"
+msgstr "WordPress Version"
 
 #: classes/tab_general.php:28
 msgid "General"
@@ -237,26 +273,38 @@ msgstr "Hilfe"
 msgid "Brief introduction in how to use the plugin"
 msgstr "Kurze Anleitung für die Verwendung des Plugins."
 
-#: classes/tab_howto.php:69
+#: classes/tab_howto.php:47
+msgid "Help us to improve our Plugin."
+msgstr "Helfen Sie bei der weiteren Entwicklung des Plugins."
+
+#: classes/tab_howto.php:77
 msgid "example string"
 msgstr "Beispieltext"
 
-#: classes/tab_howto.php:74
+#: classes/tab_howto.php:82
 msgid "Start your footnote with the following shortcode:"
 msgstr "Starten Sie eine Fußnote mit:"
 
-#: classes/tab_howto.php:80
+#: classes/tab_howto.php:88
 msgid "...and end your footnote with this shortcode:"
 msgstr "...und beenden Sie diese mit:"
 
-#: classes/tab_howto.php:88
+#: classes/tab_howto.php:96
 msgid "will be displayed as:"
 msgstr "wird dargestellt als:"
 
-#: classes/tab_howto.php:94
+#: classes/tab_howto.php:102
 #, php-format
-msgid "If you have any questions, please don't hesitate to %se-mail%s us."
-msgstr "Bei Fragen können Sie uns gerne eine %se-Mail%s senden."
+msgid ""
+"For further information please check out our %ssupport forum%s on WordPress."
+"org."
+msgstr ""
+"Für mehr Informationen besuchen Sie unser %sSupport Forum%s auf WordPress."
+"org."
+
+#: classes/tab_howto.php:115
+msgid "Donate now"
+msgstr "Jetzt spenden"
 
 #: classes/widget.php:25 classes/widget.php:43
 msgid ""
@@ -273,6 +321,13 @@ msgstr "Einstellungen"
 #: includes/plugin-settings.php:26
 msgid "Support"
 msgstr "Support"
+
+#: includes/plugin-settings.php:28
+msgid "Donate"
+msgstr "Spenden"
+
+#~ msgid "If you have any questions, please don't hesitate to %se-mail%s us."
+#~ msgstr "Bei Fragen können Sie uns gerne eine %se-Mail%s senden."
 
 #~ msgid "HowTo"
 #~ msgstr "Hilfe"

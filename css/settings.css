@@ -8,71 +8,41 @@
  */
 
 input[type=text], input[type=password], textarea, select {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	width: 80% !important;
+}
+
+textarea {
+	height: 250px;
 }
 
 label {
-    width: 20% !important;
-    display: inline-block;
+	display: inline-block;
 }
 
-/*
- * layout for the meta box container
- * @since 1.0.7
-*/
 .postbox > h3 {
-    height: 32px !important;
-    line-height: 32px !important;
+	height: 32px !important;
+	line-height: 32px !important;
 }
 
 .postbox > h3 > span {
-    padding-left: 10px;
+	padding-left: 10px;
 }
 
-/* overwrite link layout on the settings page */
-a.footnote_plugin {
-    text-decoration: underline !important;
-    cursor: pointer !important;
-    color: #202020 !important;
+.postbox > .inside > table {
+	border: none !important;
 }
 
-/* setting with 15% width */
-.footnote_plugin_15 {
-    width: 15% !important;
+.postbox > .inside >table > tbody > tr > td:first-child {
+	width: 15% !important;
+	font-weight: bold !important;
 }
 
-/* setting with 25% width */
-.footnote_plugin_25 {
-    width: 25% !important;
-}
-
-/* setting with half width */
-.footnote_plugin_50 {
-    width: 50% !important;
-}
-
-/* setting with 75% width */
-.footnote_plugin_75 {
-    width: 75% !important;
-}
-
-/* setting with full width */
-.footnote_plugin_100 {
-    width: 100% !important;
-}
-
-/* container for the box holding the placeholder tags at the end */
 .footnote_placeholder_box_container {
     text-align: center !important;
-    /*width:       auto;
-    display:     inline-block;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: -210px;*/
 }
 
-/* highlight the placeholders */
 span.footnote_highlight_placeholder {
     font-weight: bold !important;
     padding-left: 8px !important;
@@ -87,4 +57,5 @@ span.footnote_highlight_placeholder {
     width: 50% !important;
     display: block !important;
     margin: 20px auto !important;
+	text-align: center !important;
 }

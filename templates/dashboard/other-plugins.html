@@ -1,0 +1,42 @@
+<div class="plugin-card">
+	<div class="plugin-card-top">
+		<div>
+			<h4><a href="" target="_blank" class="thickbox" id="[[name]]-url">[[title]]</a></h4>
+		</div>
+		<div class="action-links">
+			<ul class="plugin-action-buttons">
+				<li><a class="install-now button" href="" id="[[name]]-website">Website</a></li>
+			</ul>
+		</div>
+		<div>
+			<p id="[[name]]-description"></p>
+		</div>
+	</div>
+	<div class="plugin-card-bottom">
+		<div class="column-updated"><p id="[[name]]-version"></p></div>
+	</div>
+</div>
+<script type="text/javascript">
+	jQuery.ajax({
+		type: 'POST',
+		url: '/wp-admin/admin-ajax.php',
+		data: {
+			action: 'footnotes_getPluginInfo',
+			plugin: '[[name]]'
+		},
+		dataType: 'json',
+		success: function (data, textStatus, XMLHttpRequest) {
+			if (data.error) {
+				alert(data.error);
+			} else {
+				jQuery("#[[name]]-url").attr("href", data.PluginUrl);
+				jQuery("#[[name]]-website").attr("href", data.PluginUrl);
+				jQuery("#[[name]]-description").text(data.PluginDescription);
+				jQuery("#[[name]]-version").text("Version: " + data.PluginVersion);
+			}
+		},
+		error: function (MLHttpRequest, textStatus, errorThrown) {
+			console.log(textStatus);
+		}
+	});
+</script>

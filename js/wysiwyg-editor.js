@@ -24,8 +24,7 @@
                     type: 'POST',
                     url: '/wp-admin/admin-ajax.php',
                     data: {
-                        action: 'footnotes_getTags',
-                        data: ''
+                        action: 'footnotes_getTags'
                     },
                     success: function(data, textStatus, XMLHttpRequest){
                         var l_arr_Tags = JSON.parse(data);
@@ -62,15 +61,15 @@
          */
         getInfo : function() {
             return {
-                longname : 'insert footnotes tag',
-                author : 'media competence institute',
-                authorurl : 'http://cheret.co.uk/mci',
+                longname : 'Inserts the Footnotes short code.',
+                author : 'ManFisher Medien ManuFaktur',
+                authorurl : 'http://http://manfisher.net/',
                 infourl : 'http://wordpress.org/plugins/footnotes/',
-                version : "1.2.0"
+                version : "1.5.0"
             };
         }
     });
 
     // Register plugin
-    tinymce.PluginManager.add( 'footnotes', tinymce.plugins.Footnotes );
+    tinymce.PluginManager.add('footnotes', tinymce.plugins.Footnotes);
 })();

@@ -1,0 +1,26 @@
+<div class="footnote_container_prepare">
+	<p><span onclick="footnote_expand_reference_container();">[[label]]</span><span>[[buttons]]</span></p>
+</div>
+<div id="[[id]]" class="[[class]]">
+	<table class="footnote-reference-container">
+		<tbody>
+		[[content]]
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+	function footnote_expand_reference_container() {
+		jQuery("#[[id]]").show();
+	}
+	function footnote_expand_collapse_reference_container() {
+		var l_obj_ReferenceContainer = jQuery("#[[id]]");
+		if (l_obj_ReferenceContainer.is(":hidden")) {
+			l_obj_ReferenceContainer.show();
+			jQuery("#footnote_reference_container_collapse_button").text("-");
+		} else {
+			l_obj_ReferenceContainer.hide();
+			jQuery("#footnote_reference_container_collapse_button").text("+");
+		}
+	}
+</script>

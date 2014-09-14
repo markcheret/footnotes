@@ -39,46 +39,28 @@
 .footnote_container_prepare > p > span:last-child {
 }
 
-/* container for the footnote in the bottom */
-.footnote_plugin_container {
-	display: block !important;
-	width: 100% !important;
-	padding-bottom: 14px !important;
-}
-
-/* footnote (bottom) index */
-.footnote_plugin_index {
-	/*float: left !important;*/
-	min-width: 40px !important;
-	white-space: nowrap !important;
-	text-align: right !important;
-	display: inline-block;
-}
-
-/* footnote (bottom) text */
-.footnote_plugin_text {
-	/*float: left !important;*/
-	padding-left: 16px !important;
-	display: inline;
-}
-
-/* footnote (bottom) link to the footnote implementation */
-.footnote_plugin_link {
-	outline: none !important;
-	text-decoration: none !important;
-	cursor: pointer !important;
-}
-
-.footnote_plugin_link:hover {
-	/*color: #4777ff !important;*/
-	text-decoration: none !important;
-}
-
-/* footnote (bottom) styling end tag */
-.footnote_plugin_end {
-	/*clear: left !important;*/
-}
-
 .footnote_hide_box {
 	display: none;
+}
+
+.footnote-reference-container {
+	width: 100%;
+	border: none;
+}
+
+.footnote-reference-container > tbody > tr > td:first-child {
+	white-space: nowrap;
+	padding-right: 5px;
+	text-align: left;
+}
+
+.footnote-reference-container > tbody > tr > td:nth-child(2) {
+	white-space: nowrap;
+	padding-right: 5px;
+	text-align: left;
+}
+
+.footnote-reference-container > tbody > tr > td:last-child {
+	width: 99%;
+	text-align: left;
 }

@@ -1,0 +1,14 @@
+<a href="#footnote_plugin_reference_[[index]]" name="footnote_plugin_tooltip_[[index]]" id="footnote_plugin_tooltip_[[index]]" class="footnote_plugin_tooltip_text" onclick="footnote_expand_reference_container();"><sup>[[before]][[index]][[after]]</sup></a>
+<span class="footnote_tooltip" id="footnote_plugin_tooltip_text_[[index]]">[[text]]</span>
+<script type="text/javascript">
+	jQuery("#footnote_plugin_tooltip_[[index]]").tooltip({
+		tip: "#footnote_plugin_tooltip_text_[[index]]",
+		tipClass: "footnote_tooltip",
+		effect: "fade",
+		fadeOutSpeed: 100,
+		predelay: 400,
+		position: "top right",
+		relative: true,
+		offset: [10, 10]
+	});
+</script>

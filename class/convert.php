@@ -1,27 +1,29 @@
 <?php
 /**
- * Created by Stefan Herndler.
- * User: Stefan
- * Date: 30.07.14 11:45
- * Version: 1.0
- * Since: 1.3
+ * Includes the Convert Class.
+ *
+ * @filesource
+ * @author Stefan Herndler
+ * @since 1.5.0 12.09.14 10:56
  */
 
-// define class only once
-if (!class_exists("MCI_Footnotes_Convert")) :
 
 /**
- * Class MCI_Footnotes_Convert
- * @since 1.3
+ * Converts data types and Footnotes specific values.
+ *
+ * @author Stefan Herndler
+ * @since 1.5.0
  */
 class MCI_Footnotes_Convert {
 
 	/**
-	 * converts a integer into the user-defined counter style for the footnotes
-	 * @since 1.0-gamma
-	 * @param int $p_int_Index
-	 * @param string $p_str_ConvertStyle [counter style]
-	 * @return string
+	 * Converts a integer into the user-defined counter style for the footnotes.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.0
+	 * @param int $p_int_Index Index to be converted.
+	 * @param string $p_str_ConvertStyle Style of the new/converted Index.
+	 * @return string Converted Index as string in the defined counter style.
 	 */
 	public static function Index($p_int_Index, $p_str_ConvertStyle = "arabic_plain") {
 		switch ($p_str_ConvertStyle) {
@@ -40,20 +42,16 @@ class MCI_Footnotes_Convert {
 	}
 
 	/**
-	 * converts a integer into latin ascii characters, either lower or upper-case
-	 * function available from A to ZZ ( means 676 footnotes at 1 page possible)
+	 * Converts an integer into latin ascii characters, either lower or upper-case.
+	 * Function available from A to ZZ ( means 676 footnotes at 1 page possible).
+	 *
+	 * @author Stefan Herndler
 	 * @since 1.0-gamma
-	 * @param int $p_int_Value
-	 * @param bool $p_bool_UpperCase
+	 * @param int $p_int_Value Value/Index to be converted.
+	 * @param bool $p_bool_UpperCase True to convert the value to upper case letter, otherwise to lower case.
 	 * @return string
 	 */
 	private static function toLatin($p_int_Value, $p_bool_UpperCase) {
-		// decimal value of the starting ascii character
-		$l_int_StartingASCII = 65 - 1; // = A
-		// if lower-case, change decimal to lower-case "a"
-		if (!$p_bool_UpperCase) {
-			$l_int_StartingASCII = 97 - 1; // = a
-		}
 		// output string
 		$l_str_Return = "";
 		$l_int_Offset = 0;
@@ -65,19 +63,24 @@ class MCI_Footnotes_Convert {
 		}
 		// if offset set (more then Z), then add a new letter in front
 		if ($l_int_Offset > 0) {
-			$l_str_Return = chr($l_int_Offset + $l_int_StartingASCII);
+			$l_str_Return = chr($l_int_Offset + 64);
 		}
 		// add the origin letter
-		$l_str_Return .= chr($p_int_Value + $l_int_StartingASCII);
+		$l_str_Return .= chr($p_int_Value + 64);
 		// return the latin character representing the integer
-		return $l_str_Return;
+		if ($p_bool_UpperCase) {
+			return strtoupper($l_str_Return);
+		}
+		return strtolower($l_str_Return);
 	}
 
 	/**
-	 * converts a integer to a leading-0 integer
+	 * Converts an integer to a leading-0 integer.
+	 *
+	 * @author Stefan Herndler
 	 * @since 1.0-gamma
-	 * @param int $p_int_Value
-	 * @return string
+	 * @param int $p_int_Value Value/Index to be converted.
+	 * @return string Value with a leading zero.
 	 */
 	private static function toArabicLeading($p_int_Value) {
 		// add a leading 0 if number lower then 10
@@ -88,9 +91,11 @@ class MCI_Footnotes_Convert {
 	}
 
 	/**
-	 * converts a arabic integer value into a romanic letter value
+	 * Converts an integer to a romanic letter.
+	 *
+	 * @author Stefan Herndler
 	 * @since 1.0-gamma
-	 * @param int $p_int_Value
+	 * @param int $p_int_Value Value/Index to be converted.
 	 * @return string
 	 */
 	private static function toRomanic($p_int_Value) {
@@ -127,15 +132,17 @@ class MCI_Footnotes_Convert {
 	}
 
 	/**
-	 * converts a string depending on its value to a boolean
+	 * Converts a string depending on its value to a boolean.
+	 *
+	 * @author Stefan Herndler
 	 * @since 1.0-beta
-	 * @param string $p_str_Value
-	 * @return bool
+	 * @param string $p_str_Value String to be converted to boolean.
+	 * @return bool Boolean representing the string.
 	 */
 	public static function toBool($p_str_Value) {
-		// convert string to lower-case to make it easier */
+		// convert string to lower-case to make it easier
 		$p_str_Value = strtolower($p_str_Value);
-		// check if string seems to contain a "true" value */
+		// check if string seems to contain a "true" value
 		switch ($p_str_Value) {
 			case "checked":
 			case "yes":
@@ -144,14 +151,17 @@ class MCI_Footnotes_Convert {
 			case "1":
 				return true;
 		}
-		// nothing found that says "true", so we return false */
+		// nothing found that says "true", so we return false
 		return false;
 	}
 
 	/**
+	 * Get a html Array short code depending on Arrow-Array key index.
+	 *
+	 * @author Stefan Herndler
 	 * @since 1.3.2
-	 * @param int $p_int_Index [default: -1 = all arrows, otherwise the arrow with the specified index]
-	 * @return array|string
+	 * @param int $p_int_Index Index representing the Arrow. If empty all Arrows are specified.
+	 * @return array|string Array of all Arrows if Index is empty otherwise html tag of a specific arrow.
 	 */
 	public static function getArrow($p_int_Index = -1) {
 		// define all possible arrows
@@ -167,6 +177,4 @@ class MCI_Footnotes_Convert {
 		// return a single arrow
 		return $l_arr_Arrows[$p_int_Index];
 	}
-} // class MCI_Footnotes_Convert
-
-endif;
+}

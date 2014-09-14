@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
 	Author: ManFisher Medien ManuFaktur
-	Version: 1.4.0
+	Version: 1.5.0
 	Author URI: http://manfisher.net/plugins/footnotes/
 	Text Domain: footnotes
 	Domain Path: /languages
@@ -25,48 +25,20 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
 /**
- * Created by Stefan Herndler.
- * User: Stefan
- * Date: 15.05.14
- * Time: 16:21
- * Version: 1.1.1
- * Since: 1.0
+ * @filesource
+ * @author Stefan Herndler
+ * @since 0.0.1
  */
 
-// include constants
-require_once(dirname(__FILE__) . "/includes/defines.php");
-// include language functions
-require_once(dirname(__FILE__) . "/includes/language.php");
-// include storage functions and global plugin functions
-require_once(dirname(__FILE__) . "/includes/plugin-settings.php");
+// Get all common classes and functions
+require_once(dirname(__FILE__) . "/includes.php");
 
-// require plugin class
-require_once(dirname( __FILE__ ) . "/classes/footnotes.php");
+// add Plugin Links to the "installed plugins" page
+$l_str_plugin_file = 'footnotes/index.php';
+add_filter("plugin_action_links_{$l_str_plugin_file}", array("MCI_Footnotes_Hooks", "PluginLinks"), 10, 2);
 
-
-// initialize an object of the plugin class
-global $g_obj_MCI_Footnotes;
-// if object isn't initialized yet, initialize it now
-if (empty($g_obj_MCI_Footnotes)) {
-	$g_obj_MCI_Footnotes = new MCI_Footnotes();
-}
-// generate the settings page in the dashboard settings
-$g_obj_MCI_Footnotes->generateLayout();
-
-// register hook for activating the plugin
-register_activation_hook(__FILE__, array('MCI_Footnotes', 'activate'));
-// register hook for deactivating the plugin
-register_deactivation_hook(__FILE__, array('MCI_Footnotes', 'deactivate'));
-
-// only admin is allowed to execute the following functions
-if (!function_exists('is_admin')) {
-    header('Status: 403 Forbidden');
-    header('HTTP/1.1 403 Forbidden');
-    exit();
-}
-
-// register hook for uninstalling the plugin
-register_uninstall_hook(__FILE__, array('MCI_Footnotes', 'uninstall'));
-
+// initialize the Plugin
+$g_obj_MCI_Footnotes = new MCI_Footnotes();
+// run the Plugin
+$g_obj_MCI_Footnotes->run();

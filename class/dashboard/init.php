@@ -113,7 +113,7 @@ class MCI_Footnotes_Layout_Init {
 			'manage_options', // capability
 			self::C_STR_MAIN_MENU_SLUG, // menu slug
 			array($this, "displayOtherPlugins"), // function
-			'', // icon url
+			plugins_url('footnotes/img/main-menu.png'), // icon url
 			81 // position
 		);
 		$this->registerSubPages();

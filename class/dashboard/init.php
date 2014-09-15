@@ -32,7 +32,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const C_STR_MAIN_MENU_TITLE = "ManFisher Plugins";
+	const C_STR_MAIN_MENU_TITLE = "ManFisher";
 
 	/**
 	 *
@@ -145,7 +145,6 @@ class MCI_Footnotes_Layout_Init {
 			array("name" => "identity", "title" => "Identity"),
 			array("name" => "google-keyword-suggest", "title" => "Google Keyword Suggest"),
 			array("name" => "competition", "title" => "competition"),
-			array("name" => "formscontact", "title" => "/forms.contact"),
 			array("name" => "footnotes", "title" => "Footnotes")
 		);
 

@@ -141,6 +141,23 @@ class MCI_Footnotes_Layout_Init {
 	 * @since 1.5.0
 	 */
 	public function displayOtherPlugins() {
+		printf("<br/>");
+		printf("<h3>%s</h3>", __('Take a look on other Plugins we have developed.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
+		printf('<em><a href="http://manfisher.net/" target="_blank">visit ManFisher Medien ManuFaktur</a></em>');
+		printf("<br/><br/>");
+/*
+		// collect plugin list as JSON
+		$l_arr_Response = wp_remote_get("http://herndler.org/wordpress/plugins/get.json");
+		// check if response is valid
+		if (is_wp_error($l_arr_Response)) {
+			printf(__("Error loading other WordPress Plugins from Manfisher. Sorry!", MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
+			return;
+		}
+		// get the body of the response
+		$l_str_Response = $l_arr_Response["body"];
+		// convert the body to a json string
+		$l_arr_Plugins = json_decode($l_str_Response, true);
+*/
 		$l_arr_Plugins = array(
 			array("name" => "identity", "title" => "Identity"),
 			array("name" => "google-keyword-suggest", "title" => "Google Keyword Suggest"),
@@ -151,9 +168,7 @@ class MCI_Footnotes_Layout_Init {
 		// load template file
 		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "other-plugins");
 
-		echo sprintf("<br/><h3>%s</h3><br/>", __('Take a look on other Plugins we have developed.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
-
-		echo '<div id="the-list">';
+		printf('<div id="the-list">');
 		// iterate through each Plugin
 		foreach($l_arr_Plugins as $l_arr_PluginInfo) {
 			// replace Plugin information
@@ -168,7 +183,7 @@ class MCI_Footnotes_Layout_Init {
 			// reload template
 			$l_obj_Template->reload();
 		}
-		echo '</div>';
+		printf('</div>');
 	}
 
 	/**

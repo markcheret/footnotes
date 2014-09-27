@@ -7,6 +7,11 @@
  * @since 1.5.0 14.09.14 17:30
  */
 
+/**
+ *
+ * @author Stefan Herndler
+ * @since 1.5.0
+ */
 class MCI_Footnotes_WYSIWYG {
 
 	public static function registerHooks() {
@@ -41,7 +46,7 @@ class MCI_Footnotes_WYSIWYG {
 	 */
 	public static function newPlainTextEditorButton() {
 		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "editor-button");
-		$l_obj_Template->getContent();
+		echo $l_obj_Template->getContent();
 	}
 
 	/**

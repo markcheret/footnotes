@@ -30,19 +30,29 @@ class MCI_Footnotes_Language {
 	 * @since 1.5.0
 	 */
 	public static function loadTextDomain() {
-		$l_str_LanguagePath = dirname(__FILE__) . "/../languages/" . MCI_Footnotes_Config::C_STR_PLUGIN_NAME - "-";
 		// language file with localization exists
-		$l_bool_DomainLoaded = load_textdomain(MCI_Footnotes_Config::C_STR_PLUGIN_NAME, $l_str_LanguagePath . apply_filters('plugin_locale', get_locale(), MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . '.mo');
-		if (!empty($l_bool_DomainLoaded)) {
+		if (self::load(apply_filters('plugin_locale', get_locale()))) {
 			return;
 		}
 		// language file without localization exists
-		$l_bool_DomainLoaded = load_textdomain(MCI_Footnotes_Config::C_STR_PLUGIN_NAME, $l_str_LanguagePath . self::getLanguageCode() . '.mo');
-		if (!empty($l_bool_DomainLoaded)) {
+		if (self::load(self::getLanguageCode())) {
 			return;
 		}
 		// fallback to english
-		load_textdomain(MCI_Footnotes_Config::C_STR_PLUGIN_NAME, $l_str_LanguagePath . '-en.mo');
+		self::load("en");
+	}
+
+	/**
+	 * Loads a specific text domain.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.1
+	 * @param string $p_str_LanguageCode Language Code to load a specific text domain.
+	 * @return bool
+	 */
+	private static function load($p_str_LanguageCode) {
+		return load_textdomain(MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
+			dirname(__FILE__) . "/../languages/" . MCI_Footnotes_Config::C_STR_PLUGIN_NAME . "-" . $p_str_LanguageCode . '.mo');
 	}
 
 	/**
@@ -54,7 +64,7 @@ class MCI_Footnotes_Language {
 	 */
 	private static function getLanguageCode() {
 		// read current WordPress language
-		$l_str_locale = apply_filters('plugin_locale', get_locale(), MCI_Footnotes_Config::C_STR_PLUGIN_NAME);
+		$l_str_locale = apply_filters('plugin_locale', get_locale());
 		// check if WordPress language has a localization (e.g. "en_US" or "de_AT")
 		if (strpos($l_str_locale, "_") !== false) {
 			// remove localization code

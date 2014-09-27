@@ -73,11 +73,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 1.5.0 =
-- Update: Refactored the whole source code
 - Add: Grouped the Plugin Settings into a new Menu Page called "ManFisher Plugins"
-- Update: Moved the Diagnostics Sections to into a new Sub Page called "Diagnostics"
 - Add: Sub Page to list all other Plugins of the Contributors
+- Add: Hyperlink to manfisher.eu in the "other plugins" page
+- Update: Refactored the whole source code
+- Update: Moved the Diagnostics Sections to into a new Sub Page called "Diagnostics"
 - Bugfix: Line up Footnotes with multiple lines in the Reference container
+- Bugfix: Load text domain
+- Bugfix: Display the Footnotes button in the plain text editor of posts/pages
 
 = 1.4.0 =
 - Feature: WPML Config XML file for easy multi language string translation (WPML String Translation Support File)

@@ -12,7 +12,7 @@
 - Add current WordPress Theme (Name, Version, Author, Url)
 
 
-== Footnotes ==
+== Footnotes Features ==
 - Add public css file to the "How to" tab
 - Add setting to customize the mouse-over box
 - Add setting to disable the mouse-over box
@@ -20,3 +20,13 @@
 - Abbreviate the mouse-over text if more than XXX characters (ending with "...")
 - Performance of the task so PHP won't throw an error when there are more than 120? Footnotes
   - Maybe increase PHP max execution time while processing the Footnotes task
+- different background for every odd table row
+
+- Offer a set of pre-defined styles for the footnotes.Reference.Container
+There should be 2 pre-defined styles for the footnotes.Reference.Container and the ability to customize or add templates.
+the currently used one should be one of those templates and pre-defined styles offered but not the default setting.
+
+== Footnotes Bugs ==
+- Excerpt No doesn't work
+- Reference Container table no border
+- Table first collumn max 10%

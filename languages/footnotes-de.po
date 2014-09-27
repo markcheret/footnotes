@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-09-07 03:43+0100\n"
-"PO-Revision-Date: 2014-09-07 03:46+0100\n"
-"Last-Translator: Stefan Herndler <s.herndler@methis.at>\n"
+"POT-Creation-Date: 2014-09-27 14:00+0100\n"
+"PO-Revision-Date: 2014-09-27 14:01+0100\n"
+"Last-Translator: Mark Cheret <mark@cheret.de>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -18,241 +18,208 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/footnotes.php:82
-msgid "You must be logged in to run this script."
-msgstr "Sie müssen angemeldet sein um diese Funktion ausführen zu können."
+#: class/dashboard/init.php:145
+msgid "Take a look on other Plugins we have developed."
+msgstr "Sehen Sie sich unsere weiteren WordPress Plugins an"
 
-#: classes/footnotes.php:87
-msgid "You do not have permission to run this script."
-msgstr "Sie haben nicht die Berechtigung diese Funktion auszuführen."
+#: class/dashboard/layout.php:237
+#, fuzzy
+msgid "Settings saved"
+msgstr "Einstellungen"
 
-#: classes/tab_custom.php:28
-msgid "Customize"
-msgstr "Personalisieren"
-
-#: classes/tab_custom.php:39
-msgid "Superscript layout"
-msgstr "Layout des Fußnoten Index"
-
-#: classes/tab_custom.php:47
-msgid "Hyperlink symbol in the Reference container"
-msgstr "Einzelnachweis - Symbol für den Link zur Fußnote im Text"
-
-#: classes/tab_custom.php:55
-msgid "Add custom CSS to the public page"
-msgstr "Benutzerdefinierten CSS Code zu den veröffentlichten Seiten hinzufügen"
-
-#: classes/tab_custom.php:76
-msgid "Before Footnotes index:"
-msgstr "Vor dem Fußnoten Index:"
-
-#: classes/tab_custom.php:80
-msgid "After Footnotes index:"
-msgstr "Nach dem Fußnoten Index:"
-
-#: classes/tab_custom.php:93
-msgid "Hyperlink symbol:"
-msgstr "Symbol für den Link:"
-
-#: classes/tab_custom.php:97
-msgid "or enter a user defined symbol:"
-msgstr "oder definiere ein eigenes Symbol:"
-
-#: classes/tab_custom.php:100
-msgid "if set it overrides the hyperlink symbol above"
-msgstr "wenn gesetzt wird das oben definierte Symbol überschrieben"
-
-#: classes/tab_custom.php:110
-msgid "Add custom CSS:"
-msgstr "Benutzerdefinierter CSS Code:"
-
-#: classes/tab_custom.php:114
-msgid ""
-"Available CSS classes to customize the footnotes and the reference container:"
-msgstr ""
-"Verfügbare CSS Klassen um die Fußnoten und den Einzelnachweis zu "
-"personalisieren:"
-
-#: classes/tab_custom.php:117
-msgid "inline footnotes"
-msgstr "Fußnoten Index im veröffneltichten Text"
-
-#: classes/tab_custom.php:118
-msgid "inline footnotes, mouse over highlight box"
-msgstr "Popup der Fußnote im veröffentlichten Text"
-
-#: classes/tab_custom.php:120
-msgid "reference container footnotes index"
-msgstr "Einzelnachweis - Fußnote Index"
-
-#: classes/tab_custom.php:121
-msgid "reference container footnotes linked arrow"
-msgstr "Einzelnachweiß - Symbol für den Link"
-
-#: classes/tab_custom.php:122
-msgid "reference container footnotes text"
-msgstr "Einzelnachweis - Fußnote"
-
-#: classes/tab_diagnostics.php:27
+#: class/dashboard/subpage-diagnostics.php:48
+#: class/dashboard/subpage-diagnostics.php:60
 msgid "Diagnostics"
 msgstr "Diagnose"
 
-#: classes/tab_diagnostics.php:38
-msgid "Displays information about the web server, PHP and WordPress."
+#: class/dashboard/subpage-diagnostics.php:73
+#, fuzzy
+msgid "Displays information about the web server, PHP and WordPress"
 msgstr "Ausgabe von Informationen bezgl. des Webservers, PHP und WordPress."
 
-#: classes/tab_diagnostics.php:65
+#: class/dashboard/subpage-diagnostics.php:106
 msgid "Server name"
 msgstr "Servername"
 
-#: classes/tab_diagnostics.php:71
+#: class/dashboard/subpage-diagnostics.php:109
 msgid "PHP version"
 msgstr "PHP Version"
 
-#: classes/tab_diagnostics.php:77
+#: class/dashboard/subpage-diagnostics.php:112
 msgid "Max execution time"
 msgstr "max. Ausführungsdauer"
 
-#: classes/tab_diagnostics.php:78
+#: class/dashboard/subpage-diagnostics.php:113
 msgid "seconds"
 msgstr "Sekunden"
 
-#: classes/tab_diagnostics.php:83
+#: class/dashboard/subpage-diagnostics.php:115
 msgid "Memory limit"
 msgstr "Speicherlimitierung"
 
-#: classes/tab_diagnostics.php:89
+#: class/dashboard/subpage-diagnostics.php:118
 msgid "PHP extensions"
 msgstr "PHP Erweiterungen"
 
-#: classes/tab_diagnostics.php:102
+#: class/dashboard/subpage-diagnostics.php:121
 msgid "WordPress version"
 msgstr "WordPress Version"
 
-#: classes/tab_general.php:28
-msgid "General"
-msgstr "Allgemein"
+#: class/dashboard/subpage-main.php:60 class/hooks.php:82
+msgid "Settings"
+msgstr "Einstellungen"
 
-#: classes/tab_general.php:32
-#, php-format
-msgid "%s Settings"
-msgstr "%s Einstellungen"
+#: class/dashboard/subpage-main.php:61
+msgid "Customize"
+msgstr "Personalisieren"
 
-#: classes/tab_general.php:39
+#: class/dashboard/subpage-main.php:62
+msgid "How to"
+msgstr "Hilfe"
+
+#: class/dashboard/subpage-main.php:75
 msgid "References Container"
 msgstr "Einzelnachweise"
 
-#: classes/tab_general.php:47
+#: class/dashboard/subpage-main.php:76
 #, php-format
 msgid "%s styling"
 msgstr "%s Design"
 
-#: classes/tab_general.php:63
+#: class/dashboard/subpage-main.php:78
 msgid "Other"
 msgstr "Andere"
 
-#: classes/tab_general.php:84
-msgid "References label:"
-msgstr "Überschrift \"Einzelnachweis\":"
+#: class/dashboard/subpage-main.php:80
+msgid "Superscript layout"
+msgstr "Layout des Fußnoten Index"
 
-#: classes/tab_general.php:88
-msgid "Collapse references by default:"
-msgstr "Verstecke Einzelnachweise standardmäßig:"
+#: class/dashboard/subpage-main.php:81
+msgid "Hyperlink symbol in the Reference container"
+msgstr "Einzelnachweis - Symbol für den Link zur Fußnote im Text"
 
-#: classes/tab_general.php:94
+#: class/dashboard/subpage-main.php:82
+msgid "Add custom CSS to the public page"
+msgstr "Benutzerdefinierten CSS Code zu den veröffentlichten Seiten hinzufügen"
+
+#: class/dashboard/subpage-main.php:84
+msgid "Brief introduction in how to use the plugin"
+msgstr "Kurze Anleitung für die Verwendung des Plugins."
+
+#: class/dashboard/subpage-main.php:85
+#, fuzzy
+msgid "Help us to improve our Plugin"
+msgstr "Helfen Sie bei der weiteren Entwicklung des Plugins."
+
+#: class/dashboard/subpage-main.php:98
 msgid "in the footer"
 msgstr "am Ende der Seite"
 
-#: classes/tab_general.php:95
+#: class/dashboard/subpage-main.php:99
 msgid "at the end of the post"
 msgstr "nach einem Beitrag"
 
-#: classes/tab_general.php:96
+#: class/dashboard/subpage-main.php:100
 msgid "in the widget area"
 msgstr "im Widget"
 
-#: classes/tab_general.php:98
-msgid "Where shall the reference container appear:"
+#: class/dashboard/subpage-main.php:108
+#, fuzzy
+msgid "References label"
+msgstr "Überschrift \"Einzelnachweis\":"
+
+#: class/dashboard/subpage-main.php:111
+#, fuzzy
+msgid "Collapse references by default"
+msgstr "Verstecke Einzelnachweise standardmäßig:"
+
+#: class/dashboard/subpage-main.php:114
+#, fuzzy
+msgid "Where shall the reference container appear"
 msgstr "Positionierung der Einzelnachweise:"
 
-#: classes/tab_general.php:109 classes/tab_general.php:182
+#: class/dashboard/subpage-main.php:133 class/dashboard/subpage-main.php:233
 msgid "Yes"
 msgstr "Ja"
 
-#: classes/tab_general.php:110 classes/tab_general.php:183
+#: class/dashboard/subpage-main.php:134 class/dashboard/subpage-main.php:234
 msgid "No"
 msgstr "Nein"
 
-#: classes/tab_general.php:112
-msgid "Combine identical footnotes:"
-msgstr "Kombiniere meine Fußnoten:"
-
-#: classes/tab_general.php:120 classes/tab_general.php:129
+#: class/dashboard/subpage-main.php:141 class/dashboard/subpage-main.php:148
 msgid "user defined"
 msgstr "benutzerdefiniert"
 
-#: classes/tab_general.php:122
-msgid "Footnote tag starts with:"
-msgstr "Fußnoten starten mit:"
-
-#: classes/tab_general.php:131
-msgid "and ends with:"
-msgstr "und endet mit:"
-
-#: classes/tab_general.php:143
+#: class/dashboard/subpage-main.php:152
 msgid "Arabic Numbers - Plain"
 msgstr "arabische Ziffern"
 
-#: classes/tab_general.php:144
+#: class/dashboard/subpage-main.php:153
 msgid "Arabic Numbers - Leading 0"
 msgstr "arabisch Ziffern - führende Null"
 
-#: classes/tab_general.php:145
+#: class/dashboard/subpage-main.php:154
 msgid "Latin Character - lower case"
 msgstr "alphabetisch - Kleinschreibung"
 
-#: classes/tab_general.php:146
+#: class/dashboard/subpage-main.php:155
 msgid "Latin Character - upper case"
 msgstr "alphabetisch - Großschreibung"
 
-#: classes/tab_general.php:147
+#: class/dashboard/subpage-main.php:156
 msgid "Roman Numerals"
 msgstr "Römische Ziffern"
 
-#: classes/tab_general.php:149
-msgid "Counter style:"
+#: class/dashboard/subpage-main.php:164
+#, fuzzy
+msgid "Combine identical footnotes"
+msgstr "Kombiniere meine Fußnoten:"
+
+#: class/dashboard/subpage-main.php:167
+#, fuzzy
+msgid "Footnote tag starts with"
+msgstr "Fußzeile einbinden:"
+
+#: class/dashboard/subpage-main.php:170
+#, fuzzy
+msgid "and ends with"
+msgstr "endet mit:"
+
+#: class/dashboard/subpage-main.php:179
+#, fuzzy
+msgid "Counter style"
 msgstr "Fußnoten Zähler:"
 
-#: classes/tab_general.php:160 classes/task.php:143
+#: class/dashboard/subpage-main.php:201 class/task.php:112
 #, php-format
 msgid "I %s %s"
 msgstr "Ich %s %s"
 
-#: classes/tab_general.php:161 classes/task.php:146
+#: class/dashboard/subpage-main.php:202 class/task.php:115
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr "Diese Seite verwendet das Plugin %s"
 
-#: classes/tab_general.php:162 classes/task.php:150
+#: class/dashboard/subpage-main.php:203 class/task.php:119
 #, php-format
 msgid "extra smooth %s"
 msgstr "besonders feine %s"
 
-#: classes/tab_general.php:163
+#: class/dashboard/subpage-main.php:204
 msgid "random text"
 msgstr "zufälliger Text"
 
-#: classes/tab_general.php:164
+#: class/dashboard/subpage-main.php:205
 #, php-format
 msgid "Don't display a %s %s text in my footer."
 msgstr "Verstecke %s %s am Ende meiner Seite."
 
-#: classes/tab_general.php:166
-#, php-format
-msgid "Tell the world you're using %s:"
-msgstr "Teile der Welt mit, dass du %s verwendest:"
+#: class/dashboard/subpage-main.php:213
+#, fuzzy, php-format
+msgid "Tell the world you're using %s"
+msgstr "Teile der Welt mit, dass du %sfoot%snotes%s verwendest:"
 
-#: classes/tab_general.php:170
+#: class/dashboard/subpage-main.php:216
 #, php-format
 msgid ""
 "Don't tell the world you're using %s on specific pages by adding the "
@@ -261,39 +228,85 @@ msgstr ""
 "Platzhalter um der Welt an einzelnen Seiten nicht mitzuteilen, dass Sie %s "
 "verwenden:"
 
-#: classes/tab_general.php:185
-msgid "Allow footnotes on Summarized Posts:"
+#: class/dashboard/subpage-main.php:242
+#, fuzzy
+msgid "Allow footnotes on Summarized Posts"
 msgstr "Erlaube Fußnoten in Zusammenfassungen:"
 
-#: classes/tab_howto.php:28
-msgid "How to"
-msgstr "Hilfe"
+#: class/dashboard/subpage-main.php:262
+#, fuzzy
+msgid "Before Footnotes index"
+msgstr "Kombiniere meine Fußnoten:"
 
-#: classes/tab_howto.php:39
-msgid "Brief introduction in how to use the plugin"
-msgstr "Kurze Anleitung für die Verwendung des Plugins."
+#: class/dashboard/subpage-main.php:265
+#, fuzzy
+msgid "After Footnotes index"
+msgstr "Kombiniere meine Fußnoten:"
 
-#: classes/tab_howto.php:47
-msgid "Help us to improve our Plugin."
-msgstr "Helfen Sie bei der weiteren Entwicklung des Plugins."
+#: class/dashboard/subpage-main.php:285
+#, fuzzy
+msgid "Hyperlink symbol"
+msgstr "Symbol für den Link:"
 
-#: classes/tab_howto.php:77
+#: class/dashboard/subpage-main.php:288
+msgid "or enter a user defined symbol"
+msgstr "oder definieren Sie ein eigenes Symbol:"
+
+#: class/dashboard/subpage-main.php:290
+msgid "if set it overrides the hyperlink symbol above"
+msgstr "wenn gesetzt wird das oben definierte Symbol überschrieben"
+
+#: class/dashboard/subpage-main.php:309
+#, fuzzy
+msgid "Add custom CSS"
+msgstr "Benutzerdefinierter CSS Code:"
+
+#: class/dashboard/subpage-main.php:312
+#, fuzzy
+msgid ""
+"Available CSS classes to customize the footnotes and the reference container"
+msgstr ""
+"Verfügbare CSS Klassen um die Fußnoten und den Einzelnachweis zu "
+"personalisieren:"
+
+#: class/dashboard/subpage-main.php:315
+msgid "inline footnotes"
+msgstr "Fußnoten Index im veröffneltichten Text"
+
+#: class/dashboard/subpage-main.php:318
+msgid "inline footnotes, mouse over highlight box"
+msgstr "Popup der Fußnote im veröffentlichten Text"
+
+#: class/dashboard/subpage-main.php:321
+msgid "reference container footnotes index"
+msgstr "Einzelnachweis - Fußnote Index"
+
+#: class/dashboard/subpage-main.php:324
+msgid "reference container footnotes linked arrow"
+msgstr "Einzelnachweiß - Symbol für den Link"
+
+#: class/dashboard/subpage-main.php:327
+msgid "reference container footnotes text"
+msgstr "Einzelnachweis - Fußnote"
+
+#: class/dashboard/subpage-main.php:351
 msgid "example string"
 msgstr "Beispieltext"
 
-#: classes/tab_howto.php:82
-msgid "Start your footnote with the following shortcode:"
+#: class/dashboard/subpage-main.php:358
+#, fuzzy
+msgid "Start your footnote with the following short code:"
 msgstr "Starten Sie eine Fußnote mit:"
 
-#: classes/tab_howto.php:88
-msgid "...and end your footnote with this shortcode:"
-msgstr "...und beenden Sie diese mit:"
+#: class/dashboard/subpage-main.php:361
+msgid "...and end your footnote with this short code:"
+msgstr "...und beenden Sie diesen mit:"
 
-#: classes/tab_howto.php:96
+#: class/dashboard/subpage-main.php:365
 msgid "will be displayed as:"
 msgstr "wird dargestellt als:"
 
-#: classes/tab_howto.php:102
+#: class/dashboard/subpage-main.php:368
 #, php-format
 msgid ""
 "For further information please check out our %ssupport forum%s on WordPress."
@@ -302,11 +315,28 @@ msgstr ""
 "Für mehr Informationen besuchen Sie unser %sSupport Forum%s auf WordPress."
 "org."
 
-#: classes/tab_howto.php:115
+#: class/dashboard/subpage-main.php:387
 msgid "Donate now"
 msgstr "Jetzt spenden"
 
-#: classes/widget.php:25 classes/widget.php:43
+#: class/hooks.php:59
+msgid "You must be logged in to run this script."
+msgstr "Sie müssen angemeldet sein um diese Funktion ausführen zu können."
+
+#: class/hooks.php:63
+msgid "You do not have permission to run this script."
+msgstr "Sie haben nicht die Berechtigung diese Funktion auszuführen."
+
+#: class/hooks.php:80
+msgid "Support"
+msgstr "Support"
+
+#: class/hooks.php:84
+msgid "Donate"
+msgstr "Spenden"
+
+#: class/widgets/reference-container.php:49
+#: class/widgets/reference-container.php:61
 msgid ""
 "The widget defines the position of the reference container if set to "
 "\"widget area\"."
@@ -314,17 +344,11 @@ msgstr ""
 "Das Widget definiert die Position der Einzelnachweise wenn \"im Widget\" "
 "eingestellt ist."
 
-#: includes/plugin-settings.php:24
-msgid "Settings"
-msgstr "Einstellungen"
+#~ msgid "General"
+#~ msgstr "Allgemein"
 
-#: includes/plugin-settings.php:26
-msgid "Support"
-msgstr "Support"
-
-#: includes/plugin-settings.php:28
-msgid "Donate"
-msgstr "Spenden"
+#~ msgid "%s Settings"
+#~ msgstr "%s Einstellungen"
 
 #~ msgid "If you have any questions, please don't hesitate to %se-mail%s us."
 #~ msgstr "Bei Fragen können Sie uns gerne eine %se-Mail%s senden."

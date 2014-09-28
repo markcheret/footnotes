@@ -53,15 +53,14 @@ class MCI_Footnotes_Task {
 		add_action('wp_footer', array($this, "Love"));
 
 		// replace footnotes in the content of the page/post
-		add_filter('the_content', array($this, "Content"));
+		add_filter('the_content', array($this, "Content"), 10);
 
-		// search for footnotes in the excerpt only if enabled
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT))) {
-			add_filter('the_excerpt', array($this, "Excerpt"));
-		}
+		// search for footnotes in the excerpt
+		add_filter('the_excerpt', array($this, "Excerpt"), 1);
+		add_filter('get_the_excerpt', array($this, "Excerpt"), 1);
 
 		// replace footnotes in the content of a widget
-		add_filter('widget_text', array($this, "WidgetText"));
+		add_filter('widget_text', array($this, "WidgetText"), 99);
 	}
 
 	/**
@@ -144,7 +143,7 @@ class MCI_Footnotes_Task {
 	 * @return string Content with replaced footnotes.
 	 */
 	public function Excerpt($p_str_Content) {
-		return $this->exec($p_str_Content, false);
+		return $this->exec($p_str_Content, false, !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT)));
 	}
 
 	/**
@@ -168,13 +167,14 @@ class MCI_Footnotes_Task {
 	 * @since 1.5.0
 	 * @param string $p_str_Content Any string that may contain footnotes to be replaced.
 	 * @param bool $p_bool_OutputReferences Appends the Reference Container to the output if set to true, default true.
+	 * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
 	 * @return string
 	 */
-	public function exec($p_str_Content, $p_bool_OutputReferences = true) {
+	public function exec($p_str_Content, $p_bool_OutputReferences = true, $p_bool_HideFootnotesText = false) {
 		// replace all footnotes in the content, settings are converted to html characters
-		$p_str_Content = $this->search($p_str_Content, true);
+		$p_str_Content = $this->search($p_str_Content, true, $p_bool_HideFootnotesText);
 		// replace all footnotes in the content, settings are NOT converted to html characters
-		$p_str_Content = $this->search($p_str_Content, false);
+		$p_str_Content = $this->search($p_str_Content, false, $p_bool_HideFootnotesText);
 
 		// append the reference container
 		if ($p_bool_OutputReferences) {
@@ -197,9 +197,10 @@ class MCI_Footnotes_Task {
 	 * @since 1.5.0
 	 * @param string $p_str_Content Content to be searched for footnotes.
 	 * @param bool $p_bool_ConvertHtmlChars html encode settings, default true.
+	 * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
 	 * @return string
 	 */
-	public function search($p_str_Content, $p_bool_ConvertHtmlChars = true) {
+	public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
 		// contains the index for the next footnote on this page
 		$l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
 		// contains the starting position for the lookup of a footnote
@@ -221,8 +222,12 @@ class MCI_Footnotes_Task {
 			return $p_str_Content;
 		}
 
-		// load template file
-		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote");
+		if (!$p_bool_HideFootnotesText) {
+			// load template file
+			$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote");
+		} else {
+			$l_obj_Template = null;
+		}
 
 		// search footnotes short codes in the content
 		do {
@@ -242,19 +247,25 @@ class MCI_Footnotes_Task {
 			$l_int_Length = $l_int_PosEnd - $l_int_PosStart;
 			// get footnote text
 			$l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
-			// fill the footnotes template
-			$l_obj_Template->replace(
-				array(
-					"index" => MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-					"text" => $l_str_FootnoteText,
-					"before" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
-					"after" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER)
-				)
-			);
+			// Text to be displayed instead of the footnote
+			$l_str_FootnoteReplaceText = "";
+			// display the footnote as mouse-over box
+			if (!$p_bool_HideFootnotesText) {
+				// fill the footnotes template
+				$l_obj_Template->replace(
+					array(
+						"index" => MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+						"text" => $l_str_FootnoteText,
+						"before" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
+						"after" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER)
+					)
+				);
+				$l_str_FootnoteReplaceText = $l_obj_Template->getContent();
+				// reset the template
+				$l_obj_Template->reload();
+			}
 			// replace the footnote with the template
-			$p_str_Content = substr_replace($p_str_Content, $l_obj_Template->getContent(), $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));
-			// reset the template
-			$l_obj_Template->reload();
+			$p_str_Content = substr_replace($p_str_Content, $l_str_FootnoteReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));
 			// add footnote only if not empty
 			if (!empty($l_str_FootnoteText)) {
 				// set footnote to the output box at the end

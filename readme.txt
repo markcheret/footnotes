@@ -72,6 +72,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 1.5.1 =
+
+- Bugfix: Broken Settings link in the Plugin listing
+- Bugfix: Translation overhaul for German
+
 = 1.5.0 =
 - Add: Grouped the Plugin Settings into a new Menu Page called "ManFisher Plugins"
 - Add: Sub Page to list all other Plugins of the Contributors

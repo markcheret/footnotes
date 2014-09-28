@@ -177,4 +177,37 @@ class MCI_Footnotes_Convert {
 		// return a single arrow
 		return $l_arr_Arrows[$p_int_Index];
 	}
+
+	/**
+	 * Displays a Variable.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.0
+	 * @param mixed $p_mixed_Value
+	 */
+	public static function debug($p_mixed_Value) {
+		if (empty($p_mixed_Value)) {
+			var_dump($p_mixed_Value);
+
+		} else if (is_array($p_mixed_Value)) {
+			printf("<pre>");
+			print_r($p_mixed_Value);
+			printf("</pre>");
+
+		} else if (is_object($p_mixed_Value)) {
+			printf("<pre>");
+			print_r($p_mixed_Value);
+			printf("</pre>");
+
+		} else if (is_numeric($p_mixed_Value) || is_int($p_mixed_Value)) {
+			echo $p_mixed_Value;
+
+		} else if (is_date($p_mixed_Value)) {
+			echo $p_mixed_Value;
+
+		} else {
+			echo $p_mixed_Value;
+		}
+		echo "<br/>";
+	}
 }

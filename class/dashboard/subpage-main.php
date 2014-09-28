@@ -136,14 +136,14 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 		// options for the start of the footnotes short code
 		$l_arr_ShortCodeStart = array(
 			"((" => "((",
-			"<fn>" => htmlspecialchars("<fn>"),
+			htmlspecialchars("<fn>") => htmlspecialchars("<fn>"),
 			"[ref]" => "[ref]",
 			"userdefined" => __('user defined', MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
 		);
 		// options for the end of the footnotes short code
 		$l_arr_ShortCodeEnd = array(
 			"))" => "))",
-			"</fn>" => htmlspecialchars("</fn>"),
+			htmlspecialchars("</fn>") => htmlspecialchars("</fn>"),
 			"[/ref]" => "[/ref]",
 			"userdefined" => __('user defined', MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
 		);

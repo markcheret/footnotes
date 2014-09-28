@@ -79,7 +79,7 @@ class MCI_Footnotes_Hooks {
 		// append link to the WordPress Plugin page
 		$p_arr_Links[] = sprintf('<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __('Support', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
 		// append link to the Settings page
-		$p_arr_Links[] = sprintf('<a href="%s">%s</a>', admin_url('options-general.php?page=mfmmf-footnotes'), __('Settings', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
+		$p_arr_Links[] = sprintf('<a href="%s">%s</a>', admin_url('admin.php?page=mfmmf-footnotes'), __('Settings', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
 		// append link to the PlayPal Donate function
 		$p_arr_Links[] = sprintf('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __('Donate', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
 		// return new links

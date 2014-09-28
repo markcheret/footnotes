@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-09-27 14:00+0100\n"
-"PO-Revision-Date: 2014-09-27 14:01+0100\n"
+"POT-Creation-Date: 2014-09-28 21:42+0100\n"
+"PO-Revision-Date: 2014-09-28 21:42+0100\n"
 "Last-Translator: Mark Cheret <mark@cheret.de>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
@@ -23,9 +23,8 @@ msgid "Take a look on other Plugins we have developed."
 msgstr "Sehen Sie sich unsere weiteren WordPress Plugins an"
 
 #: class/dashboard/layout.php:237
-#, fuzzy
 msgid "Settings saved"
-msgstr "Einstellungen"
+msgstr "Einstellungen gespeichert"
 
 #: class/dashboard/subpage-diagnostics.php:48
 #: class/dashboard/subpage-diagnostics.php:60
@@ -33,9 +32,8 @@ msgid "Diagnostics"
 msgstr "Diagnose"
 
 #: class/dashboard/subpage-diagnostics.php:73
-#, fuzzy
 msgid "Displays information about the web server, PHP and WordPress"
-msgstr "Ausgabe von Informationen bezgl. des Webservers, PHP und WordPress."
+msgstr "Ausgabe von Informationen bezgl. des Webservers, PHP und WordPress"
 
 #: class/dashboard/subpage-diagnostics.php:106
 msgid "Server name"
@@ -107,7 +105,6 @@ msgid "Brief introduction in how to use the plugin"
 msgstr "Kurze Anleitung für die Verwendung des Plugins."
 
 #: class/dashboard/subpage-main.php:85
-#, fuzzy
 msgid "Help us to improve our Plugin"
 msgstr "Helfen Sie bei der weiteren Entwicklung des Plugins."
 
@@ -124,17 +121,14 @@ msgid "in the widget area"
 msgstr "im Widget"
 
 #: class/dashboard/subpage-main.php:108
-#, fuzzy
 msgid "References label"
 msgstr "Überschrift \"Einzelnachweis\":"
 
 #: class/dashboard/subpage-main.php:111
-#, fuzzy
 msgid "Collapse references by default"
-msgstr "Verstecke Einzelnachweise standardmäßig:"
+msgstr "Zeige Einzelnachweise zunächst zusammengeklappt:"
 
 #: class/dashboard/subpage-main.php:114
-#, fuzzy
 msgid "Where shall the reference container appear"
 msgstr "Positionierung der Einzelnachweise:"
 
@@ -171,36 +165,32 @@ msgid "Roman Numerals"
 msgstr "Römische Ziffern"
 
 #: class/dashboard/subpage-main.php:164
-#, fuzzy
 msgid "Combine identical footnotes"
-msgstr "Kombiniere meine Fußnoten:"
+msgstr "Kombiniere identische Fußnoten:"
 
 #: class/dashboard/subpage-main.php:167
-#, fuzzy
 msgid "Footnote tag starts with"
-msgstr "Fußzeile einbinden:"
+msgstr "Start-Shortcode:"
 
 #: class/dashboard/subpage-main.php:170
-#, fuzzy
 msgid "and ends with"
 msgstr "endet mit:"
 
 #: class/dashboard/subpage-main.php:179
-#, fuzzy
 msgid "Counter style"
 msgstr "Fußnoten Zähler:"
 
-#: class/dashboard/subpage-main.php:201 class/task.php:112
+#: class/dashboard/subpage-main.php:201 class/task.php:111
 #, php-format
 msgid "I %s %s"
 msgstr "Ich %s %s"
 
-#: class/dashboard/subpage-main.php:202 class/task.php:115
+#: class/dashboard/subpage-main.php:202 class/task.php:114
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr "Diese Seite verwendet das Plugin %s"
 
-#: class/dashboard/subpage-main.php:203 class/task.php:119
+#: class/dashboard/subpage-main.php:203 class/task.php:118
 #, php-format
 msgid "extra smooth %s"
 msgstr "besonders feine %s"
@@ -215,9 +205,9 @@ msgid "Don't display a %s %s text in my footer."
 msgstr "Verstecke %s %s am Ende meiner Seite."
 
 #: class/dashboard/subpage-main.php:213
-#, fuzzy, php-format
+#, php-format
 msgid "Tell the world you're using %s"
-msgstr "Teile der Welt mit, dass du %sfoot%snotes%s verwendest:"
+msgstr "Teilen Sie der Welt mit, dass Sie %s verwenden:"
 
 #: class/dashboard/subpage-main.php:216
 #, php-format
@@ -229,24 +219,20 @@ msgstr ""
 "verwenden:"
 
 #: class/dashboard/subpage-main.php:242
-#, fuzzy
 msgid "Allow footnotes on Summarized Posts"
 msgstr "Erlaube Fußnoten in Zusammenfassungen:"
 
 #: class/dashboard/subpage-main.php:262
-#, fuzzy
 msgid "Before Footnotes index"
-msgstr "Kombiniere meine Fußnoten:"
+msgstr "Symbol nach Fußnoten:"
 
 #: class/dashboard/subpage-main.php:265
-#, fuzzy
 msgid "After Footnotes index"
-msgstr "Kombiniere meine Fußnoten:"
+msgstr "Symbole nach Fußnoten:"
 
 #: class/dashboard/subpage-main.php:285
-#, fuzzy
 msgid "Hyperlink symbol"
-msgstr "Symbol für den Link:"
+msgstr "Symbol für den Hyperlink:"
 
 #: class/dashboard/subpage-main.php:288
 msgid "or enter a user defined symbol"
@@ -254,15 +240,13 @@ msgstr "oder definieren Sie ein eigenes Symbol:"
 
 #: class/dashboard/subpage-main.php:290
 msgid "if set it overrides the hyperlink symbol above"
-msgstr "wenn gesetzt wird das oben definierte Symbol überschrieben"
+msgstr "wenn gesetzt, wird das oben definierte Symbol überschrieben"
 
 #: class/dashboard/subpage-main.php:309
-#, fuzzy
 msgid "Add custom CSS"
 msgstr "Benutzerdefinierter CSS Code:"
 
 #: class/dashboard/subpage-main.php:312
-#, fuzzy
 msgid ""
 "Available CSS classes to customize the footnotes and the reference container"
 msgstr ""
@@ -294,9 +278,8 @@ msgid "example string"
 msgstr "Beispieltext"
 
 #: class/dashboard/subpage-main.php:358
-#, fuzzy
 msgid "Start your footnote with the following short code:"
-msgstr "Starten Sie eine Fußnote mit:"
+msgstr "Starten Sie eine Fußnote mit dem folgenden Shortcode:"
 
 #: class/dashboard/subpage-main.php:361
 msgid "...and end your footnote with this short code:"

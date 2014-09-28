@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-09-27 13:59+0100\n"
-"PO-Revision-Date: 2014-09-27 14:00+0100\n"
+"POT-Creation-Date: 2014-09-28 21:35+0100\n"
+"PO-Revision-Date: 2014-09-28 21:36+0100\n"
 "Last-Translator: Mark Cheret <mark@cheret.de>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en\n"
@@ -180,17 +180,17 @@ msgstr "and ends with"
 msgid "Counter style"
 msgstr "Counter style"
 
-#: class/dashboard/subpage-main.php:201 class/task.php:112
+#: class/dashboard/subpage-main.php:201 class/task.php:111
 #, php-format
 msgid "I %s %s"
 msgstr "I %s %s"
 
-#: class/dashboard/subpage-main.php:202 class/task.php:115
+#: class/dashboard/subpage-main.php:202 class/task.php:114
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr "this site uses the awesome %s Plugin"
 
-#: class/dashboard/subpage-main.php:203 class/task.php:119
+#: class/dashboard/subpage-main.php:203 class/task.php:118
 #, php-format
 msgid "extra smooth %s"
 msgstr "extra smooth %s"

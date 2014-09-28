@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.5.0
+Stable Tag: 1.5.1
 
 == Description ==
 
@@ -62,7 +62,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Activate the Plugin
 
 == Screenshots ==
-1. Find the footnotes plugin in the Settings Menu
+1. Find the footnotes plugin settings in the newly added "ManFisher" Menu
 2. Settings for the *References Container*
 3. Settings for **footnotes** styling
 4. Settings for **footnotes** love
@@ -71,6 +71,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.5.1 =
+
+- Bugfix: Broken Settings link in the Plugin listing
+- Bugfix: Translation overhaul for German
 
 = 1.5.0 =
 - Add: Grouped the Plugin Settings into a new Menu Page called "ManFisher Plugins"

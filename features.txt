@@ -28,5 +28,3 @@ the currently used one should be one of those templates and pre-defined styles o
 
 == Footnotes Bugs ==
 - Excerpt No doesn't work
-- Reference Container table no border
-- Table first collumn max 10%

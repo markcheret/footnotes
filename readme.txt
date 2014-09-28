@@ -62,7 +62,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Activate the Plugin
 
 == Screenshots ==
-1. Find the footnotes plugin in the Settings Menu
+1. Find the footnotes plugin settings in the newly added "ManFisher" Menu
 2. Settings for the *References Container*
 3. Settings for **footnotes** styling
 4. Settings for **footnotes** love

@@ -216,6 +216,8 @@ abstract class MCI_Footnotes_LayoutEngine {
 		$l_bool_SettingsUpdated = false;
 		if (array_key_exists("save-settings", $_POST)) {
 			if ($_POST["save-settings"] == "save") {
+				unset($_POST["save-settings"]);
+				unset($_POST["submit"]);
 				$l_bool_SettingsUpdated = $this->saveSettings();
 			}
 		}
@@ -239,7 +241,7 @@ abstract class MCI_Footnotes_LayoutEngine {
 
 		// form to submit the active section
 		echo '<!--suppress HtmlUnknownTarget --><form method="post" action="">';
-		settings_fields($l_arr_ActiveSection["container"]);
+		//settings_fields($l_arr_ActiveSection["container"]);
 		echo '<input type="hidden" name="save-settings" value="save" />';
 		// outputs the settings field of the active section
 		do_settings_sections($l_arr_ActiveSection["id"]);
@@ -270,19 +272,12 @@ abstract class MCI_Footnotes_LayoutEngine {
 	 * @return bool
 	 */
 	private function saveSettings() {
-		// get only Footnotes settings
-		$l_arr_Settings = array();
-		foreach($_POST as $l_str_SettingsName => $l_str_Value) {
-			if (substr($l_str_SettingsName, 0, 8) == "footnote") {
-				$l_arr_Settings[$l_str_SettingsName] = $l_str_Value;
-			}
-		}
 		// get current section
 		reset($this->a_arr_Sections);
 		$l_str_ActiveSectionID = isset($_GET['t']) ? $_GET['t'] : key($this->a_arr_Sections);
 		$l_arr_ActiveSection = $this->a_arr_Sections[$l_str_ActiveSectionID];
 		// update settings
-		return MCI_Footnotes_Settings::instance()->saveOptions($l_arr_ActiveSection["container"], $l_arr_Settings);
+		return MCI_Footnotes_Settings::instance()->saveOptions($l_arr_ActiveSection["container"], $_POST);
 	}
 
 	/**

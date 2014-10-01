@@ -78,6 +78,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 			$this->addMetaBox("settings", "other", __("Other", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Other"),
 
 			$this->addMetaBox("customize", "superscript", __("Superscript layout", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript"),
+			$this->addMetaBox("customize", "mouse-over-box", __("Mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
 			$this->addMetaBox("customize", "hyperlink-arrow", __("Hyperlink symbol in the Reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "HyperlinkArrow"),
 			$this->addMetaBox("customize", "custom-css", __("Add custom CSS to the public page", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
 
@@ -264,6 +265,31 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
 				"label-after" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER, __("After Footnotes index", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 				"after" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER)
+			)
+		);
+		// display template with replaced placeholders
+		echo $l_obj_Template->getContent();
+	}
+
+	/**
+	 * Displays all settings for the footnotes mouse-over box.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.2
+	 */
+	public function MouseOverBox() {
+		// options for the Footnotes to be replaced in excerpt
+		$l_arr_Enabled = array(
+			"yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+		);
+		// load template file
+		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "customize-mouse-over-box");
+		// replace all placeholders
+		$l_obj_Template->replace(
+			array(
+				"label-enable" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, __("Enable the mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, $l_arr_Enabled),
 			)
 		);
 		// display template with replaced placeholders

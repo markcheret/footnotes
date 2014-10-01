@@ -200,13 +200,13 @@ class MCI_Footnotes_Convert {
 			printf("</pre>");
 
 		} else if (is_numeric($p_mixed_Value) || is_int($p_mixed_Value)) {
-			echo $p_mixed_Value;
+			var_dump($p_mixed_Value);
 
 		} else if (is_date($p_mixed_Value)) {
-			echo $p_mixed_Value;
+			var_dump($p_mixed_Value);
 
 		} else {
-			echo $p_mixed_Value;
+			var_dump($p_mixed_Value);
 		}
 		echo "<br/>";
 	}

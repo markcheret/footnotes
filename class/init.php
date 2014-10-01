@@ -105,12 +105,7 @@ class MCI_Footnotes {
 	 * @since 1.5.0
 	 */
 	public function registerPublicStyling() {
-		wp_register_style('mci_footnotes_css_general', plugins_url('../css/footnotes.css', __FILE__));
-		wp_register_style('mci_footnotes_css_tooltip', plugins_url('../css/tooltip.css', __FILE__));
-		wp_register_style('mci_footnotes_css_reference_container', plugins_url('../css/reference_container.css', __FILE__));
-
-		wp_enqueue_style('mci_footnotes_css_general');
-		wp_enqueue_style('mci_footnotes_css_tooltip');
-		wp_enqueue_style('mci_footnotes_css_reference_container');
+		wp_register_style('mci_footnotes_css_public', plugins_url('../css/public.css', __FILE__));
+		wp_enqueue_style('mci_footnotes_css_public');
 	}
 }

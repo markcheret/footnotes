@@ -26,8 +26,11 @@
 		},
 		dataType: 'json',
 		success: function (data, textStatus, XMLHttpRequest) {
-			if (data.error) {
-				alert(data.error);
+			if (data == null) {
+				jQuery("#[[name]]-description").text("No response received.");
+			} else if (data.error) {
+				console.log(data.error);
+				jQuery("#[[name]]-description").text(data.error);
 			} else {
 				jQuery("#[[name]]-url").attr("href", data.PluginUrl);
 				jQuery("#[[name]]-website").attr("href", data.PluginUrl);

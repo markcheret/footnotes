@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-09-28 21:35+0100\n"
-"PO-Revision-Date: 2014-09-28 21:36+0100\n"
+"POT-Creation-Date: 2014-10-01 22:55+0100\n"
+"PO-Revision-Date: 2014-10-01 22:55+0100\n"
 "Last-Translator: Mark Cheret <mark@cheret.de>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: class/dashboard/init.php:145
+#: class/dashboard/init.php:151
 msgid "Take a look on other Plugins we have developed."
 msgstr "Take a look at other Plugins we have developed."
 
-#: class/dashboard/layout.php:237
+#: class/dashboard/layout.php:239
 msgid "Settings saved"
 msgstr "Settings saved"
 
@@ -35,33 +35,37 @@ msgstr "Diagnostics"
 msgid "Displays information about the web server, PHP and WordPress"
 msgstr "Displays information about the web server, PHP and WordPress"
 
-#: class/dashboard/subpage-diagnostics.php:106
+#: class/dashboard/subpage-diagnostics.php:110
 msgid "Server name"
 msgstr "Server name"
 
-#: class/dashboard/subpage-diagnostics.php:109
+#: class/dashboard/subpage-diagnostics.php:113
 msgid "PHP version"
 msgstr "PHP version"
 
-#: class/dashboard/subpage-diagnostics.php:112
+#: class/dashboard/subpage-diagnostics.php:116
 msgid "Max execution time"
 msgstr "Max execution time"
 
-#: class/dashboard/subpage-diagnostics.php:113
+#: class/dashboard/subpage-diagnostics.php:117
 msgid "seconds"
 msgstr "seconds"
 
-#: class/dashboard/subpage-diagnostics.php:115
+#: class/dashboard/subpage-diagnostics.php:119
 msgid "Memory limit"
 msgstr "Memory limit"
 
-#: class/dashboard/subpage-diagnostics.php:118
+#: class/dashboard/subpage-diagnostics.php:122
 msgid "PHP extensions"
 msgstr "PHP extensions"
 
-#: class/dashboard/subpage-diagnostics.php:121
+#: class/dashboard/subpage-diagnostics.php:125
 msgid "WordPress version"
 msgstr "WordPress version"
+
+#: class/dashboard/subpage-diagnostics.php:128
+msgid "Active Theme"
+msgstr "Active Theme"
 
 #: class/dashboard/subpage-main.php:60 class/hooks.php:82
 msgid "Settings"
@@ -93,123 +97,129 @@ msgid "Superscript layout"
 msgstr "Superscript layout"
 
 #: class/dashboard/subpage-main.php:81
+msgid "Mouse-over box"
+msgstr "Mouse-over box"
+
+#: class/dashboard/subpage-main.php:82
 msgid "Hyperlink symbol in the Reference container"
 msgstr "Hyperlink symbol in the Reference container"
 
-#: class/dashboard/subpage-main.php:82
+#: class/dashboard/subpage-main.php:83
 msgid "Add custom CSS to the public page"
 msgstr "Add custom CSS to the public page"
 
-#: class/dashboard/subpage-main.php:84
+#: class/dashboard/subpage-main.php:85
 msgid "Brief introduction in how to use the plugin"
 msgstr "Brief introduction in how to use the plugin"
 
-#: class/dashboard/subpage-main.php:85
+#: class/dashboard/subpage-main.php:86
 msgid "Help us to improve our Plugin"
 msgstr "Help us to improve our Plugin"
 
-#: class/dashboard/subpage-main.php:98
+#: class/dashboard/subpage-main.php:99
 msgid "in the footer"
 msgstr "in the footer"
 
-#: class/dashboard/subpage-main.php:99
+#: class/dashboard/subpage-main.php:100
 msgid "at the end of the post"
 msgstr "at the end of the post"
 
-#: class/dashboard/subpage-main.php:100
+#: class/dashboard/subpage-main.php:101
 msgid "in the widget area"
 msgstr "in the widget area"
 
-#: class/dashboard/subpage-main.php:108
+#: class/dashboard/subpage-main.php:109
 msgid "References label"
 msgstr "References label"
 
-#: class/dashboard/subpage-main.php:111
+#: class/dashboard/subpage-main.php:112
 msgid "Collapse references by default"
 msgstr "Collapse references by default"
 
-#: class/dashboard/subpage-main.php:114
+#: class/dashboard/subpage-main.php:115
 msgid "Where shall the reference container appear"
 msgstr "Where shall the reference container appear"
 
-#: class/dashboard/subpage-main.php:133 class/dashboard/subpage-main.php:233
+#: class/dashboard/subpage-main.php:134 class/dashboard/subpage-main.php:234
+#: class/dashboard/subpage-main.php:283
 msgid "Yes"
 msgstr "Yes"
 
-#: class/dashboard/subpage-main.php:134 class/dashboard/subpage-main.php:234
+#: class/dashboard/subpage-main.php:135 class/dashboard/subpage-main.php:235
+#: class/dashboard/subpage-main.php:284
 msgid "No"
 msgstr "No"
 
-#: class/dashboard/subpage-main.php:141 class/dashboard/subpage-main.php:148
+#: class/dashboard/subpage-main.php:142 class/dashboard/subpage-main.php:149
 msgid "user defined"
 msgstr "user defined"
 
-#: class/dashboard/subpage-main.php:152
+#: class/dashboard/subpage-main.php:153
 msgid "Arabic Numbers - Plain"
 msgstr "Arabic Numbers - Plain"
 
-#: class/dashboard/subpage-main.php:153
+#: class/dashboard/subpage-main.php:154
 msgid "Arabic Numbers - Leading 0"
 msgstr "Arabic Numbers - Leading 0"
 
-#: class/dashboard/subpage-main.php:154
+#: class/dashboard/subpage-main.php:155
 msgid "Latin Character - lower case"
 msgstr "Latin Character - lower case"
 
-#: class/dashboard/subpage-main.php:155
+#: class/dashboard/subpage-main.php:156
 msgid "Latin Character - upper case"
 msgstr "Latin Character - upper case"
 
-#: class/dashboard/subpage-main.php:156
+#: class/dashboard/subpage-main.php:157
 msgid "Roman Numerals"
 msgstr "Roman Numerals"
 
-#: class/dashboard/subpage-main.php:164
+#: class/dashboard/subpage-main.php:165
 msgid "Combine identical footnotes"
 msgstr "Combine identical footnotes"
 
-#: class/dashboard/subpage-main.php:167
+#: class/dashboard/subpage-main.php:168
 msgid "Footnote tag starts with"
 msgstr "Footnote tag starts with"
 
-#: class/dashboard/subpage-main.php:170
+#: class/dashboard/subpage-main.php:171
 msgid "and ends with"
 msgstr "and ends with"
 
-#: class/dashboard/subpage-main.php:179
+#: class/dashboard/subpage-main.php:180
 msgid "Counter style"
 msgstr "Counter style"
 
-#: class/dashboard/subpage-main.php:201 class/task.php:111
+#: class/dashboard/subpage-main.php:202 class/task.php:116
 #, php-format
 msgid "I %s %s"
 msgstr "I %s %s"
 
-#: class/dashboard/subpage-main.php:202 class/task.php:114
+#: class/dashboard/subpage-main.php:203 class/task.php:119
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr "this site uses the awesome %s Plugin"
 
-#: class/dashboard/subpage-main.php:203 class/task.php:118
+#: class/dashboard/subpage-main.php:204 class/task.php:123
 #, php-format
 msgid "extra smooth %s"
 msgstr "extra smooth %s"
 
-#: class/dashboard/subpage-main.php:204
+#: class/dashboard/subpage-main.php:205
 msgid "random text"
 msgstr "random text"
 
-#: class/dashboard/subpage-main.php:205
+#: class/dashboard/subpage-main.php:206
 #, php-format
 msgid "Don't display a %s %s text in my footer."
 msgstr "Don't display a %s %s text in my footer."
 
-#: class/dashboard/subpage-main.php:213
+#: class/dashboard/subpage-main.php:214
 #, php-format
 msgid "Tell the world you're using %s"
 msgstr "Tell the world you're using %s"
 
-#: class/dashboard/subpage-main.php:216
+#: class/dashboard/subpage-main.php:217
 #, php-format
 msgid ""
 "Don't tell the world you're using %s on specific pages by adding the "
@@ -218,77 +228,81 @@ msgstr ""
 "Don't tell the world you're using %s on specific pages by adding the "
 "following short code:"
 
-#: class/dashboard/subpage-main.php:242
+#: class/dashboard/subpage-main.php:243
 msgid "Allow footnotes on Summarized Posts"
 msgstr "Allow footnotes on Summarized Posts"
 
-#: class/dashboard/subpage-main.php:262
+#: class/dashboard/subpage-main.php:263
 msgid "Before Footnotes index"
 msgstr "Before Footnotes index"
 
-#: class/dashboard/subpage-main.php:265
+#: class/dashboard/subpage-main.php:266
 msgid "After Footnotes index"
 msgstr "After Footnotes index"
 
-#: class/dashboard/subpage-main.php:285
+#: class/dashboard/subpage-main.php:291
+msgid "Enable the mouse-over box"
+msgstr "Enable the mouse-over box"
+
+#: class/dashboard/subpage-main.php:311
 msgid "Hyperlink symbol"
 msgstr "Hyperlink symbol"
 
-#: class/dashboard/subpage-main.php:288
+#: class/dashboard/subpage-main.php:314
 msgid "or enter a user defined symbol"
 msgstr "or enter a user defined symbol"
 
-#: class/dashboard/subpage-main.php:290
+#: class/dashboard/subpage-main.php:316
 msgid "if set it overrides the hyperlink symbol above"
 msgstr "if set it overrides the hyperlink symbol above"
 
-#: class/dashboard/subpage-main.php:309
+#: class/dashboard/subpage-main.php:335
 msgid "Add custom CSS"
 msgstr "Add custom CSS"
 
-#: class/dashboard/subpage-main.php:312
+#: class/dashboard/subpage-main.php:338
 msgid ""
 "Available CSS classes to customize the footnotes and the reference container"
 msgstr ""
 "Available CSS classes to customize the footnotes and the reference container"
 
-#: class/dashboard/subpage-main.php:315
+#: class/dashboard/subpage-main.php:341
 msgid "inline footnotes"
 msgstr "inline footnotes"
 
-#: class/dashboard/subpage-main.php:318
+#: class/dashboard/subpage-main.php:344
 msgid "inline footnotes, mouse over highlight box"
 msgstr "inline footnotes, mouse over highlight box"
 
-#: class/dashboard/subpage-main.php:321
+#: class/dashboard/subpage-main.php:347
 msgid "reference container footnotes index"
 msgstr "reference container footnotes index"
 
-#: class/dashboard/subpage-main.php:324
+#: class/dashboard/subpage-main.php:350
 msgid "reference container footnotes linked arrow"
 msgstr "reference container footnotes linked arrow"
 
-#: class/dashboard/subpage-main.php:327
+#: class/dashboard/subpage-main.php:353
 msgid "reference container footnotes text"
 msgstr "reference container footnotes text"
 
-#: class/dashboard/subpage-main.php:351
+#: class/dashboard/subpage-main.php:377
 msgid "example string"
 msgstr "example string"
 
-#: class/dashboard/subpage-main.php:358
+#: class/dashboard/subpage-main.php:384
 msgid "Start your footnote with the following short code:"
 msgstr "Start your footnote with the following short code:"
 
-#: class/dashboard/subpage-main.php:361
+#: class/dashboard/subpage-main.php:387
 msgid "...and end your footnote with this short code:"
 msgstr "...and end your footnote with this short code:"
 
-#: class/dashboard/subpage-main.php:365
+#: class/dashboard/subpage-main.php:391
 msgid "will be displayed as:"
 msgstr "will be displayed as:"
 
-#: class/dashboard/subpage-main.php:368
+#: class/dashboard/subpage-main.php:394
 #, php-format
 msgid ""
 "For further information please check out our %ssupport forum%s on WordPress."
@@ -297,7 +311,7 @@ msgstr ""
 "For further information please check out our %ssupport forum%s on WordPress."
 "org."
 
-#: class/dashboard/subpage-main.php:387
+#: class/dashboard/subpage-main.php:413
 msgid "Donate now"
 msgstr "Donate now"
 

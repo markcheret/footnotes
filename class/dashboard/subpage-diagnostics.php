@@ -90,6 +90,10 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_LayoutEngine {
 			}
 			$l_str_PhpExtensions .= $l_str_Extension . ' ' . phpversion($l_str_Extension);
 		}
+
+		/** @var WP_Theme $l_obj_CurrentTheme */
+		$l_obj_CurrentTheme = wp_get_theme();
+
 		$l_str_WordPressPlugins = "";
 		// iterate through each installed WordPress Plugin
 		foreach (get_plugins() as $l_arr_Plugin) {
@@ -120,6 +124,9 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_LayoutEngine {
 
 				"label-wordpress" => __("WordPress version", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 				"wordpress" => $wp_version,
+
+				"label-theme" => __("Active Theme", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+				"theme" => $l_obj_CurrentTheme->get("Name") . " " . $l_obj_CurrentTheme->get("Version") . ", " . $l_obj_CurrentTheme->get("Author"). " [" . $l_obj_CurrentTheme->get("AuthorURI") . "]",
 
 				"plugins" => $l_str_WordPressPlugins
 			)

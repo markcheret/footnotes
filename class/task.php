@@ -42,25 +42,23 @@ class MCI_Footnotes_Task {
 	 */
 	public function registerHooks() {
 		// append custom css to the header
-		add_action('wp_head', array($this, "Header"));
+		add_filter('wp_head', array($this, "Header"));
 
-		// append the reference container to the footer if enabled
-		if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "footer") {
-			add_action('get_footer', array($this, "Footer"));
-		}
+		// append the reference container to the footer
+		add_filter('get_footer', array($this, "Footer"));
 
 		// append the love and share me slug to the footer
-		add_action('wp_footer', array($this, "Love"));
+		add_filter('wp_footer', array($this, "Love"));
 
 		// replace footnotes in the content of the page/post
-		add_filter('the_content', array($this, "Content"), 10);
+		add_filter('the_content', array($this, "Content"), PHP_INT_MAX);
 
 		// search for footnotes in the excerpt
-		add_filter('the_excerpt', array($this, "Excerpt"), 1);
-		add_filter('get_the_excerpt', array($this, "Excerpt"), 1);
+		add_filter('the_excerpt', array($this, "Excerpt"), PHP_INT_MAX);
+		add_filter('get_the_excerpt', array($this, "Excerpt"), PHP_INT_MAX);
 
 		// replace footnotes in the content of a widget
-		add_filter('widget_text', array($this, "WidgetText"), 99);
+		add_filter('widget_text', array($this, "WidgetText"), PHP_INT_MAX);
 	}
 
 	/**
@@ -75,6 +73,7 @@ class MCI_Footnotes_Task {
 		<?php
 		// reset stored footnotes when displaying the header
 		self::$a_arr_Footnotes = array();
+		//ob_start();
 	}
 
 	/**
@@ -84,7 +83,9 @@ class MCI_Footnotes_Task {
 	 * @since 1.5.0
 	 */
 	public function Footer() {
-		echo $this->ReferenceContainer();
+		if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "footer") {
+			echo $this->ReferenceContainer();
+		}
 	}
 
 	/**
@@ -94,6 +95,10 @@ class MCI_Footnotes_Task {
 	 * @since 1.5.0
 	 */
 	public function Love() {
+		/*$l_str_Content = ob_get_contents();
+		$l_str_Content = $this->exec($l_str_Content, false);
+		ob_end_clean();
+		echo $l_str_Content;*/
 		// get setting for love and share this plugin
 		$l_str_LoveMeIndex = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE);
 		// check if the admin allows to add a link to the footer
@@ -159,7 +164,6 @@ class MCI_Footnotes_Task {
 		return $this->exec($p_str_Content, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "post_end" ? true : false);
 	}
 
-
 	/**
 	 * Replaces all footnotes that occur in the given content.
 	 *
@@ -170,7 +174,7 @@ class MCI_Footnotes_Task {
 	 * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
 	 * @return string
 	 */
-	public function exec($p_str_Content, $p_bool_OutputReferences = true, $p_bool_HideFootnotesText = false) {
+	public function exec($p_str_Content, $p_bool_OutputReferences = false, $p_bool_HideFootnotesText = false) {
 		// replace all footnotes in the content, settings are converted to html characters
 		$p_str_Content = $this->search($p_str_Content, true, $p_bool_HideFootnotesText);
 		// replace all footnotes in the content, settings are NOT converted to html characters
@@ -225,8 +229,10 @@ class MCI_Footnotes_Task {
 		if (!$p_bool_HideFootnotesText) {
 			// load template file
 			$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote");
+			$l_obj_TemplateTooltip = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "tooltip");
 		} else {
 			$l_obj_Template = null;
+			$l_obj_TemplateTooltip = null;
 		}
 
 		// search footnotes short codes in the content
@@ -251,11 +257,12 @@ class MCI_Footnotes_Task {
 			$l_str_FootnoteReplaceText = "";
 			// display the footnote as mouse-over box
 			if (!$p_bool_HideFootnotesText) {
+				$l_str_Index = MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 				// fill the footnotes template
 				$l_obj_Template->replace(
 					array(
-						"index" => MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-						"text" => $l_str_FootnoteText,
+						"index" => $l_str_Index,
+						"text" => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_FootnoteText : "",
 						"before" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
 						"after" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER)
 					)
@@ -263,6 +270,11 @@ class MCI_Footnotes_Task {
 				$l_str_FootnoteReplaceText = $l_obj_Template->getContent();
 				// reset the template
 				$l_obj_Template->reload();
+				if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED))) {
+					$l_obj_TemplateTooltip->replace(array("index" => $l_str_Index));
+					$l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
+					$l_obj_TemplateTooltip->reload();
+				}
 			}
 			// replace the footnote with the template
 			$p_str_Content = substr_replace($p_str_Content, $l_str_FootnoteReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));

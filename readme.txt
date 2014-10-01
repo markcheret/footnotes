@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.5.1
+Stable Tag: 1.5.2
 
 == Description ==
 
@@ -72,8 +72,18 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 1.5.1 =
+= 1.5.2 =
+- Add: Setting to enable/disable the mouse-over box
+- Add: Current WordPress Theme to the Diagnostics sub page
+- Add: ManFisher note in the "other Plugins" sub page
+- Update: Removed unnecessary hidden inputs from the Settings page
+- Update: Merged public CSS files to reduce the output and improve the performance
+- Update: Translations (EN and DE)
+- Bugfix: Removed the 'trim' function to allow whitespaces at the beginning and end of each setting
+- Bugfix: Convert the footnotes short code to HTML special chars when adding them into the page/post editor (visual and text)
+- Bugfix: Detailed error messages if other Plugins can't be loaded. Also added empty strings as default values to avoid 'undefined'
 
+= 1.5.1 =
 - Bugfix: Broken Settings link in the Plugin listing
 - Bugfix: Translation overhaul for German
 

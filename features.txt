@@ -8,14 +8,9 @@
 - Add last updated timestamp
 
 
-== Diagnostics ==
-- Add current WordPress Theme (Name, Version, Author, Url)
-
-
 == Footnotes Features ==
 - Add public css file to the "How to" tab
 - Add setting to customize the mouse-over box
-- Add setting to disable the mouse-over box
 - Display the mouse-over box to the left if near the right margin
 - Abbreviate the mouse-over text if more than XXX characters (ending with "...")
 - Performance of the task so PHP won't throw an error when there are more than 120? Footnotes

@@ -141,10 +141,14 @@ class MCI_Footnotes_Layout_Init {
 	 * @since 1.5.0
 	 */
 	public function displayOtherPlugins() {
-		printf("<br/>");
-		printf("<h3>%s</h3>", __('Take a look on other Plugins we have developed.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
+		printf("<br/><br/>");
+		// load template file
+		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "manfisher");
+		echo $l_obj_Template->getContent();
+
 		printf('<em><a href="http://manfisher.net/" target="_blank">visit ManFisher Medien ManuFaktur</a></em>');
 		printf("<br/><br/>");
+		printf("<h3>%s</h3>", __('Take a look on other Plugins we have developed.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
 /*
 		// collect plugin list as JSON
 		$l_arr_Response = wp_remote_get("http://herndler.org/wordpress/plugins/get.json");
@@ -204,22 +208,30 @@ class MCI_Footnotes_Layout_Init {
 		$l_arr_Response = wp_remote_get($l_str_Url);
 		// check if response is valid
 		if (is_wp_error($l_arr_Response)) {
-			echo json_encode(array("error" => "Can't get Plugin information."));
+			echo json_encode(array("error" => "Error receiving Plugin Information from WordPress."));
+			exit;
+		}
+		if (!array_key_exists("body", $l_arr_Response)) {
+			echo json_encode(array("error" => "Error reading WordPress API response message."));
 			exit;
 		}
 		// get the body of the response
 		$l_str_Response = $l_arr_Response["body"];
 		// get plugin object
 		$l_arr_Plugin = json_decode($l_str_Response, true);
+		if (empty($l_arr_Plugin)) {
+			echo json_encode(array("error" => "Error reading Plugin meta information."));
+			exit;
+		}
 
 		// return Plugin information as JSON encoded string
 		echo json_encode(
 			array(
 				"error" => "",
 				"PluginImage" => "",
-				"PluginDescription" => html_entity_decode($l_arr_Plugin["short_description"]),
-				"PluginUrl" => $l_arr_Plugin["homepage"],
-				"PluginVersion" => $l_arr_Plugin["version"]
+				"PluginDescription" => array_key_exists("short_description", $l_arr_Plugin) ? html_entity_decode($l_arr_Plugin["short_description"]) : "Error reading Plugin information",
+				"PluginUrl" => array_key_exists("homepage", $l_arr_Plugin) ? $l_arr_Plugin["homepage"] : "",
+				"PluginVersion" => array_key_exists("version", $l_arr_Plugin) ? $l_arr_Plugin["version"] : "---"
 			)
 		);
 		exit;

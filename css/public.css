@@ -1,10 +1,48 @@
 /**
  * Created by Stefan Herndler.
  * User: Stefan
- * Date: 30.07.14 11:25
- * Version: 1.0
- * Since: 1.3
+ * Date: 15.05.14
+ * Time: 16:21
+ * Version: 1.0.7
+ * Since: 1.0
  */
+
+/* styling for the 'footnotes' tag */
+.footnote_tag_styling, .footnote_tag_styling:hover {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.footnote_tag_styling_1 {
+    color: #2bb975;
+}
+
+.footnote_tag_styling_2 {
+    color: #545f5a;
+}
+
+/* tooltip */
+.footnote_plugin_tooltip_text {
+	text-decoration: none !important;
+}
+
+.footnote_plugin_tooltip_text > sup {
+	vertical-align: top !important;
+	position: relative !important;
+	top: -0.1em !important;
+}
+
+/* tooltip styling */
+.footnote_tooltip {
+	display: none;
+	background-color: #fff7a7;
+	border: 1px solid #cccc99;
+	border-radius: 3px;
+	padding: 12px;
+	font-size: 13px;
+	-moz-box-shadow: 2px 2px 11px #666;
+	-webkit-box-shadow: 2px 2px 11px #666;
+}
 
 /* container before the footnote appears at the bottom to get a space between footnote and content */
 .footnote_container_prepare {

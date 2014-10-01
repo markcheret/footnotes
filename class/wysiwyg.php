@@ -77,7 +77,7 @@ class MCI_Footnotes_WYSIWYG {
 			$l_str_StartingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED);
 			$l_str_EndingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED);
 		}
-		echo json_encode(array("start" => $l_str_StartingTag, "end" => $l_str_EndingTag));
+		echo json_encode(array("start" => htmlspecialchars($l_str_StartingTag), "end" => htmlspecialchars($l_str_EndingTag)));
 		exit;
 	}
 }

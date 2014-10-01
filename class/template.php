@@ -60,14 +60,15 @@ class MCI_Footnotes_Template {
 	 * @since 1.5.0
 	 * @param string $p_str_FileType Template file type (take a look on the Class constants).
 	 * @param string $p_str_FileName Template file name inside the Template directory without the file extension.
+	 * @param string $p_str_Extension Optional Template file extension (default: html)
 	 */
-	public function __construct($p_str_FileType, $p_str_FileName) {
+	public function __construct($p_str_FileType, $p_str_FileName, $p_str_Extension = "html") {
 		// no template file type and/or file name set
 		if (empty($p_str_FileType) || empty($p_str_FileName)) {
 			return;
 		}
 		// get absolute path to the specified template file
-		$l_str_TemplateFile = dirname(__FILE__) . "/../templates/" . $p_str_FileType . "/" . $p_str_FileName . ".html";
+		$l_str_TemplateFile = dirname(__FILE__) . "/../templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
 		// Template file does not exist
 		if (!file_exists($l_str_TemplateFile)) {
 			return;

@@ -136,6 +136,15 @@ class MCI_Footnotes_Settings {
 	const C_STR_FOOTNOTES_STYLING_AFTER = "footnote_inputfield_custom_styling_after";
 
 	/**
+	 * Settings Container Key for the mouse-over box to be enabled.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.2
+	 * @var string
+	 */
+	const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED = "footnote_inputfield_custom_mouse_over_box_enabled";
+
+	/**
 	 * Settings Container Key for the Hyperlink arrow.
 	 *
 	 * @author Stefan Herndler
@@ -204,6 +213,7 @@ class MCI_Footnotes_Settings {
 		"footnotes_storage_custom" => array(
 			self::C_STR_FOOTNOTES_STYLING_BEFORE => '',
 			self::C_STR_FOOTNOTES_STYLING_AFTER => ')',
+			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
 			self::C_STR_HYPERLINK_ARROW => '&#8593;',
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 			self::C_STR_CUSTOM_CSS => ''
@@ -301,7 +311,7 @@ class MCI_Footnotes_Settings {
 		// iterate through each setting in the container
 		foreach($l_arr_Options as $l_str_Key => $l_str_Value) {
 			// remove all whitespace at the beginning and end of a setting
-			$l_str_Value = trim($l_str_Value);
+			//$l_str_Value = trim($l_str_Value);
 			// write the sanitized value back to the setting container
 			$l_arr_Options[$l_str_Key] = $l_str_Value;
 		}

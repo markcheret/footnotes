@@ -42,6 +42,7 @@ http://downloads.wordpress.org/plugin/footnotes.zip
 
 = Support =
 Please report feature requests, bugs and other support related questions in the WordPress Forums at https://wordpress.org/support/plugin/footnotes
+
 Speak your mind, unload your burdens. Notice how we screwed up big time? Bring it to our attention in the above mentioned WordPress Forums. Be polite, though :)
 
 = Development =
@@ -63,6 +64,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 2. Take a deep breath
 3. Donate whatever amount you think is appropriate here: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ
 4. Enjoy how you just made a bunch of young folks even more enthusiastic about developing useful stuff
+5. Now it's time to empty that glass in one go
 
 == Installation ==
 - Visit your WordPress Admin area

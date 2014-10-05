@@ -86,6 +86,10 @@
 	border: none;
 }
 
+.footnote-reference-container > tbody > tr > td {
+    vertical-align: top;
+}
+
 .footnote-reference-container > tbody > tr > td:first-child {
 	white-space: nowrap;
 	padding-right: 5px;

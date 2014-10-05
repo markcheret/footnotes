@@ -23,4 +23,14 @@
 			jQuery("#footnote_reference_container_collapse_button").text("+");
 		}
 	}
+
+    function footnote_moveToAnchor(p_str_TargetID) {
+        var l_obj_Target = jQuery("#" + p_str_TargetID);
+        if( l_obj_Target.length ) {
+            event.preventDefault();
+            jQuery('html, body').animate({
+                scrollTop: l_obj_Target.offset().top - window.innerHeight/2
+            }, 1000);
+        }
+    }
 </script>

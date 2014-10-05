@@ -146,7 +146,7 @@ class MCI_Footnotes_Layout_Init {
 		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "manfisher");
 		echo $l_obj_Template->getContent();
 
-		printf('<em><a href="http://manfisher.net/" target="_blank">visit ManFisher Medien ManuFaktur</a></em>');
+		printf('<em>visit <a href="http://manfisher.net/" target="_blank">ManFisher Medien ManuFaktur</a> or <a href="http://herndler.org" target="_blank">herndler.org</a></em>');
 		printf("<br/><br/>");
 		printf("<h3>%s</h3>", __('Take a look on other Plugins we have developed.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
 /*

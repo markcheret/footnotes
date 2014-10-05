@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.5.2
+Stable Tag: 1.5.3
 
 == Description ==
 
@@ -83,6 +83,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.5.3 =
+- Add: Developer's homepage to the 'other Plugins' list
+- Update: Smoothy scroll to an anchor using Javascript
+- Bugfix: Set the vertical align for each cell in the Reference container to TOP
 
 = 1.5.2 =
 - Add: Setting to enable/disable the mouse-over box

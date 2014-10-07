@@ -14,7 +14,7 @@
  * @since  1.5.0
  * @param string $p_str_Directory Absolute Directory path to lookup for *.php files
  */
-function requirePhpFiles($p_str_Directory) {
+function MCI_Footnotes_requirePhpFiles($p_str_Directory) {
 	// append slash at the end of the Directory if not exist
 	if (substr($p_str_Directory, -1) != "/") {
 		$p_str_Directory .= "/";
@@ -32,6 +32,6 @@ function requirePhpFiles($p_str_Directory) {
 	}
 }
 
-requirePhpFiles(dirname(__FILE__) . "/class");
-requirePhpFiles(dirname(__FILE__) . "/class/dashboard");
-requirePhpFiles(dirname(__FILE__) . "/class/widgets");
+MCI_Footnotes_requirePhpFiles(dirname(__FILE__) . "/class");
+MCI_Footnotes_requirePhpFiles(dirname(__FILE__) . "/class/dashboard");
+MCI_Footnotes_requirePhpFiles(dirname(__FILE__) . "/class/widgets");

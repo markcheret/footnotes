@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.5.3
+Stable Tag: 1.5.4
 
 == Description ==
 
@@ -83,6 +83,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.5.4 =
+- Add: Setting to enable an excerpt of the Footnotes mouse-over box text (default: disabled)
+- Add: Setting to define the maximum length of the excerpt displayed in the mouse-over box (default: 150 characters)
+- Update: Detail information about other Plugins from ManFisher (rating, downloads, last updated, Author name/url)
+- Update: Receiving list of other Plugins from the Developer Team from an external server
+- Update: Translations (EN and DE)
+- Bugfix: Removed hard coded position of the 'ManFisher' main menu page (avoid errors with other Plugins)
+- Bugfix: Changed function name (includes.php) to be unique (avoid errors with other Plugins)
+- Bugfix: Try to replace each appearance of Footnotes in the current Post object loaded from the WordPress database
 
 = 1.5.3 =
 - Add: Developer's homepage to the 'other Plugins' list

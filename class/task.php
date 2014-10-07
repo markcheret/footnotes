@@ -59,6 +59,9 @@ class MCI_Footnotes_Task {
 
 		// replace footnotes in the content of a widget
 		add_filter('widget_text', array($this, "WidgetText"), PHP_INT_MAX);
+
+        // replace footnotes in the Post object after receiving it from the database
+        add_action('the_post', array($this, "manipulatePostObject"));
 	}
 
 	/**
@@ -164,6 +167,19 @@ class MCI_Footnotes_Task {
 		return $this->exec($p_str_Content, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "post_end" ? true : false);
 	}
 
+    /**
+     * Replaces footnotes in each Content var of the current Post object.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.4
+     * @param WP_Post $p_obj_Post
+     */
+    public function manipulatePostObject(&$p_obj_Post) {
+        $p_obj_Post->post_content = $this->exec($p_obj_Post->post_content);
+        $p_obj_Post->post_content_filtered = $this->exec($p_obj_Post->post_content_filtered);
+        $p_obj_Post->post_excerpt = $this->exec($p_obj_Post->post_excerpt);
+    }
+
 	/**
 	 * Replaces all footnotes that occur in the given content.
 	 *
@@ -258,11 +274,25 @@ class MCI_Footnotes_Task {
 			// display the footnote as mouse-over box
 			if (!$p_bool_HideFootnotesText) {
 				$l_str_Index = MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+
+                // display only an excerpt of the footnotes text if enabled
+				$l_str_ExcerptText = $l_str_FootnoteText;
+                $l_bool_EnableExcerpt = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED));
+                $l_int_MaxLength = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH));
+                if ($l_bool_EnableExcerpt) {
+                    $l_str_FootnoteText = strip_tags($l_str_FootnoteText);
+                    if (is_int($l_int_MaxLength) && strlen($l_str_FootnoteText) > $l_int_MaxLength) {
+                        $l_str_ExcerptText = substr($l_str_FootnoteText, 0, $l_int_MaxLength);
+                        $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
+                        $l_str_ExcerptText .= " ..." . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a href="" onclick="footnote_moveToAnchor(\'footnote_plugin_reference_'.$l_str_Index.'\');">', '</a>');
+                    }
+                }
+
 				// fill the footnotes template
 				$l_obj_Template->replace(
 					array(
 						"index" => $l_str_Index,
-						"text" => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_FootnoteText : "",
+						"text" => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
 						"before" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
 						"after" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER)
 					)

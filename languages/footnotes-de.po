@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-10-01 22:55+0100\n"
-"PO-Revision-Date: 2014-10-01 22:56+0100\n"
-"Last-Translator: Mark Cheret <mark@cheret.de>\n"
+"POT-Creation-Date: 2014-10-07 13:02+0100\n"
+"PO-Revision-Date: 2014-10-07 13:02+0100\n"
+"Last-Translator: Stefan Herndler <support@herndler.org>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -21,6 +21,30 @@ msgstr ""
 #: class/dashboard/init.php:151
 msgid "Take a look on other Plugins we have developed."
 msgstr "Sehen Sie sich unsere weiteren WordPress Plugins an"
+
+#: class/dashboard/init.php:157
+msgid "Error loading other WordPress Plugins from Manfisher. Sorry!"
+msgstr "Fehler beim Laden anderer WordPress Plugins von ManFisher!"
+
+#: class/dashboard/init.php:178
+msgid "Install now"
+msgstr "Installieren"
+
+#: class/dashboard/init.php:179
+msgid "More Details"
+msgstr "weitere Details"
+
+#: class/dashboard/init.php:180
+msgid "Last Updated"
+msgstr "zuletzt aktualisiert"
+
+#: class/dashboard/init.php:235
+msgid "rating based on"
+msgstr "Bewertung basierend auf"
+
+#: class/dashboard/init.php:235
+msgid "ratings"
+msgstr "Bewertungen"
 
 #: class/dashboard/layout.php:239
 msgid "Settings saved"
@@ -44,26 +68,30 @@ msgid "PHP version"
 msgstr "PHP Version"
 
 #: class/dashboard/subpage-diagnostics.php:116
+msgid "User agent"
+msgstr "User Agent"
+
+#: class/dashboard/subpage-diagnostics.php:119
 msgid "Max execution time"
 msgstr "max. Ausführungsdauer"
 
-#: class/dashboard/subpage-diagnostics.php:117
+#: class/dashboard/subpage-diagnostics.php:120
 msgid "seconds"
 msgstr "Sekunden"
 
-#: class/dashboard/subpage-diagnostics.php:119
+#: class/dashboard/subpage-diagnostics.php:122
 msgid "Memory limit"
 msgstr "Speicherlimitierung"
 
-#: class/dashboard/subpage-diagnostics.php:122
+#: class/dashboard/subpage-diagnostics.php:125
 msgid "PHP extensions"
 msgstr "PHP Erweiterungen"
 
-#: class/dashboard/subpage-diagnostics.php:125
+#: class/dashboard/subpage-diagnostics.php:128
 msgid "WordPress version"
 msgstr "WordPress Version"
 
-#: class/dashboard/subpage-diagnostics.php:128
+#: class/dashboard/subpage-diagnostics.php:131
 msgid "Active Theme"
 msgstr "Aktuelles Theme"
 
@@ -130,15 +158,15 @@ msgstr "im Widget"
 
 #: class/dashboard/subpage-main.php:109
 msgid "References label"
-msgstr "Überschrift \"Einzelnachweis\":"
+msgstr "Überschrift für den Einzelnachweis"
 
 #: class/dashboard/subpage-main.php:112
 msgid "Collapse references by default"
-msgstr "Zeige Einzelnachweise zunächst zusammengeklappt:"
+msgstr "Zeige Einzelnachweise zunächst zusammengeklappt"
 
 #: class/dashboard/subpage-main.php:115
 msgid "Where shall the reference container appear"
-msgstr "Positionierung der Einzelnachweise:"
+msgstr "Positionierung der Einzelnachweise"
 
 #: class/dashboard/subpage-main.php:134 class/dashboard/subpage-main.php:234
 #: class/dashboard/subpage-main.php:283
@@ -176,19 +204,19 @@ msgstr "Römische Ziffern"
 
 #: class/dashboard/subpage-main.php:165
 msgid "Combine identical footnotes"
-msgstr "Kombiniere identische Fußnoten:"
+msgstr "Kombiniere identische Fußnoten"
 
 #: class/dashboard/subpage-main.php:168
 msgid "Footnote tag starts with"
-msgstr "Start-Shortcode:"
+msgstr "Start-Shortcode"
 
 #: class/dashboard/subpage-main.php:171
 msgid "and ends with"
-msgstr "endet mit:"
+msgstr "endet mit"
 
 #: class/dashboard/subpage-main.php:180
 msgid "Counter style"
-msgstr "Fußnoten Zähler:"
+msgstr "Fußnoten Zähler"
 
 #: class/dashboard/subpage-main.php:202 class/task.php:116
 #, php-format
@@ -217,7 +245,7 @@ msgstr "Verstecke %s %s am Ende meiner Seite."
 #: class/dashboard/subpage-main.php:214
 #, php-format
 msgid "Tell the world you're using %s"
-msgstr "Teilen Sie der Welt mit, dass Sie %s verwenden:"
+msgstr "Teilen Sie der Welt mit, dass Sie %s verwenden"
 
 #: class/dashboard/subpage-main.php:217
 #, php-format
@@ -230,80 +258,88 @@ msgstr ""
 
 #: class/dashboard/subpage-main.php:243
 msgid "Allow footnotes on Summarized Posts"
-msgstr "Erlaube Fußnoten in Zusammenfassungen:"
+msgstr "Erlaube Fußnoten in Zusammenfassungen"
 
 #: class/dashboard/subpage-main.php:263
 msgid "Before Footnotes index"
-msgstr "Symbol nach Fußnoten:"
+msgstr "Symbol nach Fußnoten"
 
 #: class/dashboard/subpage-main.php:266
 msgid "After Footnotes index"
-msgstr "Symbole nach Fußnoten:"
+msgstr "Symbole nach Fußnoten"
 
 #: class/dashboard/subpage-main.php:291
 msgid "Enable the mouse-over box"
 msgstr "Aktiviere das Tooltip Popup Fenster"
 
-#: class/dashboard/subpage-main.php:311
+#: class/dashboard/subpage-main.php:293
+msgid "Display only an excerpt"
+msgstr "Zeigt nur eine Zusammenfassung"
+
+#: class/dashboard/subpage-main.php:295
+msgid "Maximum characters for the excerpt"
+msgstr "Maximale Zeichenlänge der Zusammenfasung"
+
+#: class/dashboard/subpage-main.php:315
 msgid "Hyperlink symbol"
-msgstr "Symbol für den Hyperlink:"
+msgstr "Symbol für den Hyperlink"
 
-#: class/dashboard/subpage-main.php:314
+#: class/dashboard/subpage-main.php:318
 msgid "or enter a user defined symbol"
-msgstr "oder definieren Sie ein eigenes Symbol:"
+msgstr "oder definieren Sie ein eigenes Symbol"
 
-#: class/dashboard/subpage-main.php:316
+#: class/dashboard/subpage-main.php:320
 msgid "if set it overrides the hyperlink symbol above"
 msgstr "wenn gesetzt, wird das oben definierte Symbol überschrieben"
 
-#: class/dashboard/subpage-main.php:335
+#: class/dashboard/subpage-main.php:339
 msgid "Add custom CSS"
-msgstr "Benutzerdefinierter CSS Code:"
+msgstr "Benutzerdefinierter CSS Code"
 
-#: class/dashboard/subpage-main.php:338
+#: class/dashboard/subpage-main.php:342
 msgid ""
 "Available CSS classes to customize the footnotes and the reference container"
 msgstr ""
 "Verfügbare CSS Klassen um die Fußnoten und den Einzelnachweis zu "
-"personalisieren:"
+"personalisieren"
 
-#: class/dashboard/subpage-main.php:341
+#: class/dashboard/subpage-main.php:345
 msgid "inline footnotes"
 msgstr "Fußnoten Index im veröffneltichten Text"
 
-#: class/dashboard/subpage-main.php:344
+#: class/dashboard/subpage-main.php:348
 msgid "inline footnotes, mouse over highlight box"
 msgstr "Popup der Fußnote im veröffentlichten Text"
 
-#: class/dashboard/subpage-main.php:347
+#: class/dashboard/subpage-main.php:351
 msgid "reference container footnotes index"
 msgstr "Einzelnachweis - Fußnote Index"
 
-#: class/dashboard/subpage-main.php:350
+#: class/dashboard/subpage-main.php:354
 msgid "reference container footnotes linked arrow"
 msgstr "Einzelnachweiß - Symbol für den Link"
 
-#: class/dashboard/subpage-main.php:353
+#: class/dashboard/subpage-main.php:357
 msgid "reference container footnotes text"
 msgstr "Einzelnachweis - Fußnote"
 
-#: class/dashboard/subpage-main.php:377
+#: class/dashboard/subpage-main.php:381
 msgid "example string"
 msgstr "Beispieltext"
 
-#: class/dashboard/subpage-main.php:384
+#: class/dashboard/subpage-main.php:388
 msgid "Start your footnote with the following short code:"
 msgstr "Starten Sie eine Fußnote mit dem folgenden Shortcode:"
 
-#: class/dashboard/subpage-main.php:387
+#: class/dashboard/subpage-main.php:391
 msgid "...and end your footnote with this short code:"
 msgstr "...und beenden Sie diesen mit:"
 
-#: class/dashboard/subpage-main.php:391
+#: class/dashboard/subpage-main.php:395
 msgid "will be displayed as:"
 msgstr "wird dargestellt als:"
 
-#: class/dashboard/subpage-main.php:394
+#: class/dashboard/subpage-main.php:398
 #, php-format
 msgid ""
 "For further information please check out our %ssupport forum%s on WordPress."
@@ -312,7 +348,7 @@ msgstr ""
 "Für mehr Informationen besuchen Sie unser %sSupport Forum%s auf WordPress."
 "org."
 
-#: class/dashboard/subpage-main.php:413
+#: class/dashboard/subpage-main.php:417
 msgid "Donate now"
 msgstr "Jetzt spenden"
 
@@ -331,6 +367,11 @@ msgstr "Support"
 #: class/hooks.php:84
 msgid "Donate"
 msgstr "Spenden"
+
+#: class/task.php:271
+#, php-format
+msgid "%scontinue%s"
+msgstr "%sweiter lesen%s"
 
 #: class/widgets/reference-container.php:49
 #: class/widgets/reference-container.php:61

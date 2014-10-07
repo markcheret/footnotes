@@ -84,6 +84,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 1.5.4 =
+- Add: Setting to enable an excerpt of the Footnotes mouse-over box text (default: disabled)
+- Add: Setting to define the maximum length of the excerpt displayed in the mouse-over box (default: 150 characters)
+- Update: Detail information about other Plugins from ManFisher (rating, downloads, last updated, Author name/url)
+- Update: Receiving list of other Plugins from the Developer Team from an external server
+- Update: Translations (EN and DE)
+- Bugfix: Removed hard coded position of the 'ManFisher' main menu page (avoid errors with other Plugins)
+- Bugfix: Changed function name (includes.php) to be unique (avoid errors with other Plugins)
+- Bugfix: Try to replace each appearance of Footnotes in the current Post object loaded from the WordPress database
+
 = 1.5.3 =
 - Add: Developer's homepage to the 'other Plugins' list
 - Update: Smoothy scroll to an anchor using Javascript

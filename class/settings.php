@@ -144,6 +144,24 @@ class MCI_Footnotes_Settings {
 	 */
 	const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED = "footnote_inputfield_custom_mouse_over_box_enabled";
 
+    /**
+     * Settings Container Key for the mouse-over box to display only an excerpt.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.4
+     * @var string
+     */
+    const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = "footnote_inputfield_custom_mouse_over_box_excerpt_enabled";
+
+    /**
+     * Settings Container Key for the mouse-over box to define the max. length of the enabled expert.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.4
+     * @var string
+     */
+    const C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = "footnote_inputfield_custom_mouse_over_box_excerpt_length";
+
 	/**
 	 * Settings Container Key for the Hyperlink arrow.
 	 *
@@ -214,6 +232,8 @@ class MCI_Footnotes_Settings {
 			self::C_STR_FOOTNOTES_STYLING_BEFORE => '',
 			self::C_STR_FOOTNOTES_STYLING_AFTER => ')',
 			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
+            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'no',
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 150,
 			self::C_STR_HYPERLINK_ARROW => '&#8593;',
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 			self::C_STR_CUSTOM_CSS => ''

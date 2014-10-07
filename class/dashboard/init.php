@@ -162,20 +162,34 @@ class MCI_Footnotes_Layout_Init {
 		// convert the body to a json string
 		$l_arr_Plugins = json_decode($l_str_Response, true);
 
+        $l_str_Server = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://" . $_SERVER["SERVER_NAME"];
+
 		// load template file
 		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "other-plugins");
 
 		printf('<div id="the-list">');
 		// iterate through each Plugin
 		foreach($l_arr_Plugins as $l_arr_PluginInfo) {
-			// replace Plugin information
+            $l_str_InstallButton = '<a class="install-now button" href="'.$l_str_Server.'/wp-admin/update.php?action=install-plugin&plugin='.$l_arr_PluginInfo["name"].'&_wpnonce=e7a5c90faf" aria-label="Install '.$l_arr_PluginInfo["title"].' now">'.__("Install now", MCI_Footnotes_Config::C_STR_PLUGIN_NAME).'</a>';
+            $l_str_AlreadyInstalled = '<span class="button button-disabled" title="'.__("This Plugin is already installed and up to date.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME).'">'.__("Installed", MCI_Footnotes_Config::C_STR_PLUGIN_NAME).'</span>';
+            $l_bool_isPluginInstalled = false;
+            // iterate through each installed WordPress Plugin
+            foreach (get_plugins() as $l_arr_Plugin) {
+                if (strtolower($l_arr_PluginInfo["title"]) == strtolower($l_arr_Plugin["Name"])) {
+                    $l_bool_isPluginInstalled = true;
+                    break;
+                }
+            }
+
+            // replace Plugin information
 			$l_obj_Template->replace(
 				array(
-                    "server" => ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://" . $_SERVER["SERVER_NAME"],
+                    "server" => $l_str_Server,
 					"plugin-name" => $l_arr_PluginInfo["name"],
 					"plugin-title" => $l_arr_PluginInfo["title"],
-                    "plugin-icon" => "http://plugins.svn.wordpress.org/" . $l_arr_PluginInfo["name"] ."/assets/icon-256x256.png",
-                    "install-label" => __("Install now", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                    "plugin-icon" => strlen($l_arr_PluginInfo["img"]) > 0 ? "http://plugins.svn.wordpress.org/" . $l_arr_PluginInfo["name"] ."/assets/" . $l_arr_PluginInfo["img"] : "",
+
+                    "install-link" => !$l_bool_isPluginInstalled ? $l_str_InstallButton : $l_str_AlreadyInstalled,
                     "more-details-label" => __("More Details", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                     "last-updated-label" => __("Last Updated", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
 				)

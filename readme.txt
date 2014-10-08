@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.5.4
+Stable Tag: 1.5.5
 
 == Description ==
 
@@ -83,6 +83,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.5.5 =
+- Add: Expert mode setting
+- Add: Activation and Deactivation of WordPress hooks to look for Footnotes (expert mode)
+- Add: WordPress hooks: 'the_title' and 'widget_title' (default: disabled) to search for Footnote short codes
+- Bugfix: Default value for the WordPress hook the_post to be disabled (adds Footnotes twice to the Reference container)
+- Bugfix: Activation, Deactivation and Uninstall hook class name
+- Bugfix: Add submenu pages only once for each ManFisher WordPress Plugin
+- Bugfix: Display the Reference container in the Footer correctly
 
 = 1.5.4 =
 - Add: Setting to enable an excerpt of the Footnotes mouse-over box text (default: disabled)

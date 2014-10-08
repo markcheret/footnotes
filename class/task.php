@@ -42,26 +42,32 @@ class MCI_Footnotes_Task {
 	 */
 	public function registerHooks() {
 		// append custom css to the header
-		add_filter('wp_head', array($this, "Header"));
-
-		// append the reference container to the footer
-		add_filter('get_footer', array($this, "Footer"));
+		add_filter('wp_head', array($this, "wp_head"), PHP_INT_MAX);
 
 		// append the love and share me slug to the footer
-		add_filter('wp_footer', array($this, "Love"));
+		add_filter('wp_footer', array($this, "wp_footer"), PHP_INT_MAX);
 
-		// replace footnotes in the content of the page/post
-		add_filter('the_content', array($this, "Content"), PHP_INT_MAX);
-
-		// search for footnotes in the excerpt
-		add_filter('the_excerpt', array($this, "Excerpt"), PHP_INT_MAX);
-		add_filter('get_the_excerpt', array($this, "Excerpt"), PHP_INT_MAX);
-
-		// replace footnotes in the content of a widget
-		add_filter('widget_text', array($this, "WidgetText"), PHP_INT_MAX);
-
-        // replace footnotes in the Post object after receiving it from the database
-        add_action('the_post', array($this, "manipulatePostObject"));
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE))) {
+            add_filter('the_title', array($this, "the_title"), PHP_INT_MAX);
+        }
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
+            add_filter('the_content', array($this, "the_content"), PHP_INT_MAX);
+        }
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
+             add_filter('the_excerpt', array($this, "the_excerpt"), PHP_INT_MAX);
+        }
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE))) {
+            add_filter('widget_title', array($this, "widget_title"), PHP_INT_MAX);
+        }
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
+            add_filter('widget_text', array($this, "widget_text"), PHP_INT_MAX);
+        }
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST))) {
+            add_filter('the_post', array($this, "the_post"), PHP_INT_MAX);
+        }
+        // reset stored footnotes when displaying the header
+        self::$a_arr_Footnotes = array();
+        self::$a_bool_AllowLoveMe = true;
 	}
 
 	/**
@@ -70,25 +76,10 @@ class MCI_Footnotes_Task {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public function Header() {
+	public function wp_head() {
 		?>
 		<style type="text/css" media="screen"><?php echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS) ?></style>
 		<?php
-		// reset stored footnotes when displaying the header
-		self::$a_arr_Footnotes = array();
-		//ob_start();
-	}
-
-	/**
-	 * Displays the Reference Container if set to the footer.
-	 *
-	 * @author Stefan Herndler
-	 * @since 1.5.0
-	 */
-	public function Footer() {
-		if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "footer") {
-			echo $this->ReferenceContainer();
-		}
 	}
 
 	/**
@@ -97,11 +88,10 @@ class MCI_Footnotes_Task {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public function Love() {
-		/*$l_str_Content = ob_get_contents();
-		$l_str_Content = $this->exec($l_str_Content, false);
-		ob_end_clean();
-		echo $l_str_Content;*/
+	public function wp_footer() {
+        if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "footer") {
+            echo $this->ReferenceContainer();
+        }
 		// get setting for love and share this plugin
 		$l_str_LoveMeIndex = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE);
 		// check if the admin allows to add a link to the footer
@@ -129,6 +119,19 @@ class MCI_Footnotes_Task {
 		echo sprintf('<div style="text-align:center; color:#acacac;">%s</div>', $l_str_LoveMeText);
 	}
 
+    /**
+     * Replaces footnotes in the post/page title.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.0
+     * @param string $p_str_Content Widget content.
+     * @return string Content with replaced footnotes.
+     */
+    public function the_title($p_str_Content) {
+        // appends the reference container if set to "post_end"
+        return $this->exec($p_str_Content, false);
+    }
+
 	/**
 	 * Replaces footnotes in the content of the current page/post.
 	 *
@@ -137,7 +140,7 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Page/Post content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function Content($p_str_Content) {
+	public function the_content($p_str_Content) {
 		// appends the reference container if set to "post_end"
 		return $this->exec($p_str_Content, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "post_end" ? true : false);
 	}
@@ -150,9 +153,22 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Page/Post content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function Excerpt($p_str_Content) {
+	public function the_excerpt($p_str_Content) {
 		return $this->exec($p_str_Content, false, !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT)));
 	}
+
+    /**
+     * Replaces footnotes in the widget title.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.0
+     * @param string $p_str_Content Widget content.
+     * @return string Content with replaced footnotes.
+     */
+    public function widget_title($p_str_Content) {
+        // appends the reference container if set to "post_end"
+        return $this->exec($p_str_Content, false);
+    }
 
 	/**
 	 * Replaces footnotes in the content of the current widget.
@@ -162,7 +178,7 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Widget content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function WidgetText($p_str_Content) {
+	public function widget_text($p_str_Content) {
 		// appends the reference container if set to "post_end"
 		return $this->exec($p_str_Content, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "post_end" ? true : false);
 	}
@@ -174,7 +190,7 @@ class MCI_Footnotes_Task {
      * @since 1.5.4
      * @param WP_Post $p_obj_Post
      */
-    public function manipulatePostObject(&$p_obj_Post) {
+    public function the_post(&$p_obj_Post) {
         $p_obj_Post->post_content = $this->exec($p_obj_Post->post_content);
         $p_obj_Post->post_content_filtered = $this->exec($p_obj_Post->post_content_filtered);
         $p_obj_Post->post_excerpt = $this->exec($p_obj_Post->post_excerpt);

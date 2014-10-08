@@ -116,17 +116,17 @@ abstract class MCI_Footnotes_LayoutEngine {
 	 * @since  1.5.0
 	 */
 	public function registerSubPage() {
-		global $submenu;
-		// iterate through each sub menu
-		foreach($submenu as $l_arr_SubMenu) {
-			// iterate through each sub menu attribute
-			foreach($l_arr_SubMenu as $l_str_Attribute) {
-				// sub menu already added, stop
-				if ($l_str_Attribute == MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->getSubPageSlug()) {
-					return;
-				}
-			}
-		}
+        global $submenu;
+        // any sub menu for our main menu exists
+        if (array_key_exists(plugin_basename(MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG), $submenu)) {
+            // iterate through all sub menu entries of the ManFisher main menu
+            foreach($submenu[plugin_basename(MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG)] as $l_arr_SubMenu) {
+                if ($l_arr_SubMenu[2] == plugin_basename(MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->getSubPageSlug())) {
+                    // remove that sub menu and add it again to move it to the bottom
+                    remove_submenu_page(MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG, MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG .$this->getSubPageSlug());
+                }
+            }
+        }
 
 		$this->a_str_SubPageHook = add_submenu_page(
 			MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG, // parent slug
@@ -301,12 +301,8 @@ abstract class MCI_Footnotes_LayoutEngine {
 	protected function LoadSetting($p_str_SettingKeyName) {
 		// get current section
 		reset($this->a_arr_Sections);
-		$l_str_ActiveSectionID = isset($_GET['t']) ? $_GET['t'] : key($this->a_arr_Sections);
-		$l_arr_ActiveSection = $this->a_arr_Sections[$l_str_ActiveSectionID];
-
 		$p_arr_Return = array();
 		$p_arr_Return["id"] = sprintf('%s', $p_str_SettingKeyName);
-		//$p_arr_Return["name"] = sprintf('%s[%s]', MCI_Footnotes_Settings::instance()->getContainer($l_arr_ActiveSection["container"]), $p_str_SettingKeyName);
 		$p_arr_Return["name"] = sprintf('%s', $p_str_SettingKeyName);
 		$p_arr_Return["value"] = esc_attr(MCI_Footnotes_Settings::instance()->get($p_str_SettingKeyName));
 		return $p_arr_Return;

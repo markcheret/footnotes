@@ -117,6 +117,15 @@ class MCI_Footnotes_Settings {
 	 */
 	const C_BOOL_FOOTNOTES_IN_EXCERPT = "footnote_inputfield_search_in_excerpt";
 
+    /**
+     * Settings Container Key for the Expert mode.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     * @var string
+     */
+    const C_BOOL_FOOTNOTES_EXPERT_MODE = "footnote_inputfield_enable_expert_mode";
+
 	/**
 	 * Settings Container Key for the styling before the footnotes index.
 	 *
@@ -189,6 +198,60 @@ class MCI_Footnotes_Settings {
 	 */
 	const C_STR_CUSTOM_CSS = "footnote_inputfield_custom_css";
 
+    /**
+     * Settings Container Key the activation of the_title hook.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     * @var string
+     */
+    const C_BOOL_EXPERT_LOOKUP_THE_TITLE = "footnote_inputfield_expert_lookup_the_title";
+
+    /**
+     * Settings Container Key the activation of the_content hook.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     * @var string
+     */
+    const C_BOOL_EXPERT_LOOKUP_THE_CONTENT = "footnote_inputfield_expert_lookup_the_content";
+
+    /**
+     * Settings Container Key the activation of the_excerpt hook.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     * @var string
+     */
+    const C_BOOL_EXPERT_LOOKUP_THE_EXCERPT = "footnote_inputfield_expert_lookup_the_excerpt";
+
+    /**
+     * Settings Container Key the activation of widget_title hook.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     * @var string
+     */
+    const C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE = "footnote_inputfield_expert_lookup_widget_title";
+
+    /**
+     * Settings Container Key the activation of widget_text hook.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     * @var string
+     */
+    const C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT = "footnote_inputfield_expert_lookup_widget_text";
+
+    /**
+     * Settings Container Key the activation of the_post hook.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     * @var string
+     */
+    const C_BOOL_EXPERT_LOOKUP_THE_POST = "footnote_inputfield_expert_lookup_the_post";
+
 	/**
 	 * Stores a singleton reference of this class.
 	 *
@@ -205,7 +268,7 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.0
 	 * @var array
 	 */
-	private $a_arr_Container = array("footnotes_storage", "footnotes_storage_custom");
+	private $a_arr_Container = array("footnotes_storage", "footnotes_storage_custom", "footnotes_storage_expert");
 
 	/**
 	 * Contains all Default Settings for each Settings Container.
@@ -226,7 +289,8 @@ class MCI_Footnotes_Settings {
 			self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
 			self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
 			self::C_STR_FOOTNOTES_LOVE => 'no',
-			self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'yes'
+			self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'yes',
+            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'no'
 		),
 		"footnotes_storage_custom" => array(
 			self::C_STR_FOOTNOTES_STYLING_BEFORE => '',
@@ -237,7 +301,15 @@ class MCI_Footnotes_Settings {
 			self::C_STR_HYPERLINK_ARROW => '&#8593;',
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 			self::C_STR_CUSTOM_CSS => ''
-		)
+		),
+        "footnotes_storage_expert" => array(
+            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
+            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_THE_POST => ''
+        )
 	);
 
 	/**

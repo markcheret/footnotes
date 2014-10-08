@@ -113,6 +113,9 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_LayoutEngine {
 				"label-php" => __("PHP version", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 				"php" => phpversion(),
 
+                "label-user-agent" => __("User agent", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "user-agent" => $_SERVER["HTTP_USER_AGENT"],
+
 				"label-max-execution-time" => __("Max execution time", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 				"max-execution-time" => ini_get('max_execution_time') . ' ' . __('seconds', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 

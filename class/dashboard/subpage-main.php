@@ -56,11 +56,14 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 	 * @return array
 	 */
 	protected function getSections() {
-		return array(
-			$this->addSection("settings", __("Settings", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 0, true),
-			$this->addSection("customize", __("Customize", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1, true),
-			$this->addSection("how-to", __("How to", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), null, false)
-		);
+        $l_arr_Tabs = array();
+        $l_arr_Tabs[] = $this->addSection("settings", __("Settings", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 0, true);
+        $l_arr_Tabs[] = $this->addSection("customize", __("Customize", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1, true);
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE))) {
+            $l_arr_Tabs[] = $this->addSection("expert", __("Expert mode", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 2, true);
+        }
+        $l_arr_Tabs[] = $this->addSection("how-to", __("How to", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), null, false);
+		return $l_arr_Tabs;
 	}
 
 	/**
@@ -81,6 +84,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 			$this->addMetaBox("customize", "mouse-over-box", __("Mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
 			$this->addMetaBox("customize", "hyperlink-arrow", __("Hyperlink symbol in the Reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "HyperlinkArrow"),
 			$this->addMetaBox("customize", "custom-css", __("Add custom CSS to the public page", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
+
+            $this->addMetaBox("expert", "lookup", __("WordPress hooks to look for Footnote short codes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "lookupHooks"),
 
 			$this->addMetaBox("how-to", "help", __("Brief introduction in how to use the plugin", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Help"),
 			$this->addMetaBox("how-to", "donate", __("Help us to improve our Plugin", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Donate")
@@ -230,7 +235,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 	 */
 	public function Other() {
 		// options for the Footnotes to be replaced in excerpt
-		$l_arr_Excerpt = array(
+		$l_arr_Enabled = array(
 			"yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 			"no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
 		);
@@ -241,7 +246,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 		$l_obj_Template->replace(
 			array(
 				"label-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, __("Allow footnotes on Summarized Posts", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-				"excerpt" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, $l_arr_Excerpt)
+				"excerpt" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, $l_arr_Enabled),
+                "label-expert-mode" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE, __("Enable the Expert mode", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "expert-mode" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE, $l_arr_Enabled)
 			)
 		);
 		// display template with replaced placeholders
@@ -290,6 +297,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 			array(
 				"label-enable" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, __("Enable the mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 				"enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, $l_arr_Enabled),
+                "label-activate-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED, __("Display only an excerpt", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "activate-excerpt" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED, $l_arr_Enabled),
+                "label-excerpt-length" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH, __("Maximum characters for the excerpt", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "excerpt-length" => $this->addTextBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH)
 			)
 		);
 		// display template with replaced placeholders
@@ -356,6 +367,51 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 		// display template with replaced placeholders
 		echo $l_obj_Template->getContent();
 	}
+
+    /**
+     * Displays available Hooks to look for Footnote short codes.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.5
+     */
+    public function lookupHooks() {
+// load template file
+        $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "expert-lookup");
+        // replace all placeholders
+        $l_obj_Template->replace(
+            array(
+                "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "head-url" => __("WordPress documentation", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-the-title" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE, "the_title"),
+                "the-title" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE),
+                "url-the-title" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/the_title",
+
+                "label-the-content" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT, "the_content"),
+                "the-content" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT),
+                "url-the-content" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/the_content",
+
+                "label-the-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT, "the_excerpt"),
+                "the-excerpt" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT),
+                "url-the-excerpt" => "http://codex.wordpress.org/Function_Reference/the_excerpt",
+
+                "label-widget-title" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE, "widget_title"),
+                "widget-title" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE),
+                "url-widget-title" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/widget_title",
+
+                "label-widget-text" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT, "widget_text"),
+                "widget-text" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT),
+                "url-widget-text" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text",
+
+                "label-post-object" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST, "the_post"),
+                "post-object" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST),
+                "url-post-object" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/the_post"
+            )
+        );
+        // display template with replaced placeholders
+        echo $l_obj_Template->getContent();
+    }
 
 	/**
 	 * Displays a short introduction of the Plugin.

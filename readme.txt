@@ -84,6 +84,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 1.5.6 =
+- Update: Translation file names
+- Update: Translation EN and DE
+
 = 1.5.5 =
 - Add: Expert mode setting
 - Add: Activation and Deactivation of WordPress hooks to look for Footnotes (expert mode)

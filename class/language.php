@@ -24,7 +24,7 @@ class MCI_Footnotes_Language {
 	}
 
 	/**
-	 * Loads the text domain for current WordPress language if exists. Otherwise fallback "en" will be loaded.
+	 * Loads the text domain for current WordPress language if exists. Otherwise fallback "en_GB" will be loaded.
 	 *
 	 * @author Stefan Herndler
 	 * @since 1.5.0
@@ -34,12 +34,8 @@ class MCI_Footnotes_Language {
 		if (self::load(apply_filters('plugin_locale', get_locale()))) {
 			return;
 		}
-		// language file without localization exists
-		if (self::load(self::getLanguageCode())) {
-			return;
-		}
 		// fallback to english
-		self::load("en");
+		self::load("en_GB");
 	}
 
 	/**
@@ -52,27 +48,6 @@ class MCI_Footnotes_Language {
 	 */
 	private static function load($p_str_LanguageCode) {
 		return load_textdomain(MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
-			dirname(__FILE__) . "/../languages/" . MCI_Footnotes_Config::C_STR_PLUGIN_NAME . "-" . $p_str_LanguageCode . '.mo');
-	}
-
-	/**
-	 * Returns the Language Code of the WordPress language. (only "en" from "en_US")
-	 *
-	 * @author Stefan Herndler
-	 * @since 1.5.0
-	 * @return string
-	 */
-	private static function getLanguageCode() {
-		// read current WordPress language
-		$l_str_locale = apply_filters('plugin_locale', get_locale());
-		// check if WordPress language has a localization (e.g. "en_US" or "de_AT")
-		if (strpos($l_str_locale, "_") !== false) {
-			// remove localization code
-			$l_arr_languageCode = explode("_", $l_str_locale);
-			$l_str_languageCode = $l_arr_languageCode[0];
-			return $l_str_languageCode;
-		}
-		// return language code lowercase
-		return strtolower($l_str_locale);
+			dirname(__FILE__) . "/../languages/" . $p_str_LanguageCode . '.mo');
 	}
 }

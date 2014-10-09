@@ -85,6 +85,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 1.5.6 =
+- Add: .pot file to enable Translations to everybody
 - Update: Translation file names
 - Update: Translation EN and DE
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
-"POT-Creation-Date: 2014-10-09 08:31+0100\n"
-"PO-Revision-Date: 2014-10-09 08:43+0100\n"
+"POT-Creation-Date: 2014-10-11 14:25+0100\n"
+"PO-Revision-Date: 2014-10-11 14:25+0100\n"
 "Last-Translator: Stefan Herndler <support@herndler.org>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: de\n"
@@ -54,7 +54,7 @@ msgstr "Bewertung basierend auf"
 msgid "ratings"
 msgstr "Bewertungen"
 
-#: class/dashboard/layout.php:239
+#: class/dashboard/layout.php:243
 msgid "Settings saved"
 msgstr "Einstellungen gespeichert"
 
@@ -234,17 +234,17 @@ msgstr "endet mit"
 msgid "Counter style"
 msgstr "Fußnoten Zähler"
 
-#: class/dashboard/subpage-main.php:207 class/task.php:109
+#: class/dashboard/subpage-main.php:207 class/task.php:140
 #, php-format
 msgid "I %s %s"
 msgstr "Ich %s %s"
 
-#: class/dashboard/subpage-main.php:208 class/task.php:112
+#: class/dashboard/subpage-main.php:208 class/task.php:143
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr "Diese Seite verwendet das Plugin %s"
 
-#: class/dashboard/subpage-main.php:209 class/task.php:116
+#: class/dashboard/subpage-main.php:209 class/task.php:147
 #, php-format
 msgid "extra smooth %s"
 msgstr "besonders feine %s"
@@ -292,86 +292,143 @@ msgstr "Symbole nach Fußnoten"
 msgid "Enable the mouse-over box"
 msgstr "Aktiviere das Tooltip Popup Fenster"
 
-#: class/dashboard/subpage-main.php:300
+#: class/dashboard/subpage-main.php:301
 msgid "Display only an excerpt"
 msgstr "Zeigt nur eine Zusammenfassung"
 
-#: class/dashboard/subpage-main.php:302
+#: class/dashboard/subpage-main.php:304
 msgid "Maximum characters for the excerpt"
 msgstr "Maximale Zeichenlänge der Zusammenfasung"
 
-#: class/dashboard/subpage-main.php:322
+#: class/dashboard/subpage-main.php:307
+msgid "Color"
+msgstr "Schriftfarbe"
+
+#: class/dashboard/subpage-main.php:309
+msgid "Empty color will use the default color defined by your current theme."
+msgstr ""
+"Lassen Sie die Farbe leer um die Standard Schriftfarbe Ihres Themes zu "
+"verwenden."
+
+#: class/dashboard/subpage-main.php:311
+msgid "Background color"
+msgstr "Hintergrundfarbe"
+
+#: class/dashboard/subpage-main.php:313
+msgid ""
+"Empty color will use the default background-color defined by your current "
+"theme."
+msgstr ""
+"Lassen Sie die Farbe leer um die Standard Hintergrundfabe Ihres Themes zu "
+"verwenden."
+
+#: class/dashboard/subpage-main.php:315
+msgid "Border width (px)"
+msgstr "Rand Breite (px)"
+
+#: class/dashboard/subpage-main.php:317
+msgid "Set the width to 0px to hide the border."
+msgstr "Setzen Sie die Breite auf 0px um einen Rand zu verbergen."
+
+#: class/dashboard/subpage-main.php:319
+msgid "Border color"
+msgstr "Rand Farbe"
+
+#: class/dashboard/subpage-main.php:321
+msgid ""
+"Empty color will use the default border-color defined by your current theme."
+msgstr ""
+"Lassen Sie die Farbe leer um die Standardfarbe Ihres Themes für den Rand zu "
+"verwenden."
+
+#: class/dashboard/subpage-main.php:323
+msgid "Border radius (px)"
+msgstr "Rand Radius (px)"
+
+#: class/dashboard/subpage-main.php:325
+msgid "Set the radius to 0px to avoid a radius."
+msgstr "Setzen Sie den Radius auf 0px um einen Radius zu verhindern."
+
+#: class/dashboard/subpage-main.php:327
+msgid "Max. width (px)"
+msgstr "Max. Breite (px)"
+
+#: class/dashboard/subpage-main.php:329
+msgid "Set the max-width to 0px to disable this setting."
+msgstr "Setzen Sie die max. Breite auf 0px um keine max. Breite zu verwenden."
+
+#: class/dashboard/subpage-main.php:348
 msgid "Hyperlink symbol"
 msgstr "Symbol für den Hyperlink"
 
-#: class/dashboard/subpage-main.php:325
+#: class/dashboard/subpage-main.php:351
 msgid "or enter a user defined symbol"
 msgstr "oder definieren Sie ein eigenes Symbol"
 
-#: class/dashboard/subpage-main.php:327
+#: class/dashboard/subpage-main.php:353
 msgid "if set it overrides the hyperlink symbol above"
 msgstr "wenn gesetzt, wird das oben definierte Symbol überschrieben"
 
-#: class/dashboard/subpage-main.php:346
+#: class/dashboard/subpage-main.php:372
 msgid "Add custom CSS"
 msgstr "Benutzerdefinierter CSS Code"
 
-#: class/dashboard/subpage-main.php:349
+#: class/dashboard/subpage-main.php:375
 msgid ""
 "Available CSS classes to customize the footnotes and the reference container"
 msgstr ""
 "Verfügbare CSS Klassen um die Fußnoten und den Einzelnachweis zu "
 "personalisieren"
 
-#: class/dashboard/subpage-main.php:352
-msgid "inline footnotes"
-msgstr "Fußnoten Index im veröffneltichten Text"
+#: class/dashboard/subpage-main.php:378
+msgid "superscript, Footnotes index"
+msgstr "Fußnote Index im Text"
 
-#: class/dashboard/subpage-main.php:355
-msgid "inline footnotes, mouse over highlight box"
-msgstr "Popup der Fußnote im veröffentlichten Text"
+#: class/dashboard/subpage-main.php:381
+msgid "mouse-over box, tooltip for each superscript"
+msgstr "Tooltip Box für jede Fußnote"
 
-#: class/dashboard/subpage-main.php:358
-msgid "reference container footnotes index"
-msgstr "Einzelnachweis - Fußnote Index"
+#: class/dashboard/subpage-main.php:384
+msgid "1st column of the Reference Container, Footnotes index"
+msgstr "erste Spalte des Einzelnachweis, Fußnote Index"
 
-#: class/dashboard/subpage-main.php:361
-msgid "reference container footnotes linked arrow"
-msgstr "Einzelnachweiß - Symbol für den Link"
+#: class/dashboard/subpage-main.php:387
+msgid "2nd column of the Reference Container, Arrow / Hyperlink"
+msgstr "zweite Spalte des Einzelnachweis, Pfeil / Link"
 
-#: class/dashboard/subpage-main.php:364
-msgid "reference container footnotes text"
-msgstr "Einzelnachweis - Fußnote"
+#: class/dashboard/subpage-main.php:390
+msgid "3rd column of the Reference Container, Footnote text"
+msgstr "dritte Spalte des Einzelnachweis Fußnote Text"
 
-#: class/dashboard/subpage-main.php:383
+#: class/dashboard/subpage-main.php:409
 msgid "WordPress hook function name"
 msgstr "WordPress hook Name"
 
-#: class/dashboard/subpage-main.php:384
+#: class/dashboard/subpage-main.php:410
 msgid "Activate"
 msgstr "Aktivieren"
 
-#: class/dashboard/subpage-main.php:385
+#: class/dashboard/subpage-main.php:411
 msgid "WordPress documentation"
 msgstr "WordPress Dokumentation"
 
-#: class/dashboard/subpage-main.php:433
+#: class/dashboard/subpage-main.php:459
 msgid "example string"
 msgstr "Beispieltext"
 
-#: class/dashboard/subpage-main.php:440
+#: class/dashboard/subpage-main.php:466
 msgid "Start your footnote with the following short code:"
 msgstr "Starten Sie eine Fußnote mit dem folgenden Shortcode:"
 
-#: class/dashboard/subpage-main.php:443
+#: class/dashboard/subpage-main.php:469
 msgid "...and end your footnote with this short code:"
 msgstr "...und beenden Sie diesen mit:"
 
-#: class/dashboard/subpage-main.php:447
+#: class/dashboard/subpage-main.php:473
 msgid "will be displayed as:"
 msgstr "wird dargestellt als:"
 
-#: class/dashboard/subpage-main.php:450
+#: class/dashboard/subpage-main.php:476
 #, php-format
 msgid ""
 "For further information please check out our %ssupport forum%s on WordPress."
@@ -380,7 +437,7 @@ msgstr ""
 "Für mehr Informationen besuchen Sie unser %sSupport Forum%s auf WordPress."
 "org."
 
-#: class/dashboard/subpage-main.php:469
+#: class/dashboard/subpage-main.php:495
 msgid "Donate now"
 msgstr "Jetzt spenden"
 
@@ -400,7 +457,7 @@ msgstr "Support"
 msgid "Donate"
 msgstr "Spenden"
 
-#: class/task.php:303
+#: class/task.php:356
 #, php-format
 msgid "%scontinue%s"
 msgstr "%sweiter lesen%s"
@@ -413,6 +470,15 @@ msgid ""
 msgstr ""
 "Das Widget definiert die Position der Einzelnachweise wenn \"im Widget\" "
 "eingestellt ist."
+
+#~ msgid "inline footnotes"
+#~ msgstr "Fußnoten Index im veröffneltichten Text"
+
+#~ msgid "inline footnotes, mouse over highlight box"
+#~ msgstr "Popup der Fußnote im veröffentlichten Text"
+
+#~ msgid "reference container footnotes linked arrow"
+#~ msgstr "Einzelnachweiß - Symbol für den Link"
 
 #~ msgid "General"
 #~ msgstr "Allgemein"

@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.5.5
+Stable Tag: 1.5.6
 
 == Description ==
 
@@ -85,9 +85,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 1.5.6 =
-- Add: .pot file to enable Translations to everybody
+- **IMPORTANT**: We have changed the html tag for the superscript. Please check and update your custom CSS.
+- Add: .pot file to enable Translations for everybody
+- Add: Settings to customize the mouse-over box (color, background color, border, max. width)
 - Update: Translation file names
 - Update: Translation EN and DE
+- Update: Styling of the superscript (need to check custom CSS code for the superscript)
+- Update: Description of CSS classes for the 'customize CSS' text area
+- Bugfix: Removed 'a' tag around the superscript for Footnotes inside the content to avoid page reloads (empty href attribute)
+- Bugfix: Avoid Settings fallback to its default value after submit an empty value for a setting
+- Bugfix: Enable multiple WP_Post objects for the_post hook
 
 = 1.5.5 =
 - Add: Expert mode setting

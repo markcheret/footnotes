@@ -1,7 +1,6 @@
 
+
 == Footnotes Features ==
-- Add setting to customize the mouse-over box
-- Display the mouse-over box to the left if near the right margin
 - Performance of the task so PHP won't throw an error when there are more than 120? Footnotes
   - Maybe increase PHP max execution time while processing the Footnotes task
 - different background for every odd table row
@@ -10,5 +9,18 @@
 There should be 2 pre-defined styles for the footnotes.Reference.Container and the ability to customize or add templates.
 the currently used one should be one of those templates and pre-defined styles offered but not the default setting.
 
+
 == Footnotes Bugs ==
 - Excerpt No doesn't work
+
+
+== edit mouse-over box (placeholders in .html file and replace before echo ==
+- background color (css)
+- border width (css)
+- border color (css)
+- border radius (css)
+- box shadow (css)
+- max width (css) (majhul)
+- font size (css)
+- position (js)
+- right to left (js?)

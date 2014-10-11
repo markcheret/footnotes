@@ -7,7 +7,7 @@
  * Since: 1.0
  */
 
-/* styling for the 'footnotes' tag */
+/* Footnotes */
 .footnote_tag_styling, .footnote_tag_styling:hover {
     text-decoration: none;
     font-weight: normal;
@@ -21,19 +21,16 @@
     color: #545f5a;
 }
 
-/* tooltip */
+/* superscript */
 .footnote_plugin_tooltip_text {
-	text-decoration: none !important;
-}
-
-.footnote_plugin_tooltip_text > sup {
 	vertical-align: top !important;
 	position: relative !important;
 	top: -0.1em !important;
+    cursor: pointer;
 }
 
-/* tooltip styling */
-.footnote_tooltip {
+/* tooltip */
+/*.footnote_tooltip {
 	display: none;
 	background-color: #fff7a7;
 	border: 1px solid #cccc99;
@@ -42,9 +39,9 @@
 	font-size: 13px;
 	-moz-box-shadow: 2px 2px 11px #666;
 	-webkit-box-shadow: 2px 2px 11px #666;
-}
+}*/
 
-/* container before the footnote appears at the bottom to get a space between footnote and content */
+/* reference container label */
 .footnote_container_prepare {
 	display: block !important;
 	padding-top: 24px !important;
@@ -74,35 +71,34 @@
 	font-size: 1.5em !important;
 }
 
-.footnote_container_prepare > p > span:last-child {
-}
-
-.footnote_hide_box {
-	display: none;
-}
-
+/* reference container */
 .footnote-reference-container {
 	width: 100%;
 	border: none;
 }
 
-.footnote-reference-container > tbody > tr > td {
+/* index */
+.footnote_plugin_index {
     vertical-align: top;
-}
-
-.footnote-reference-container > tbody > tr > td:first-child {
 	white-space: nowrap;
 	padding-right: 5px;
 	text-align: left;
+    border:none !important;
+    max-width:10% !important;
 }
 
-.footnote-reference-container > tbody > tr > td:nth-child(2) {
+/* arrow */
+.footnote_plugin_link {
+    vertical-align: top;
 	white-space: nowrap;
 	padding-right: 5px;
 	text-align: left;
+    cursor: pointer;
 }
 
-.footnote-reference-container > tbody > tr > td:last-child {
+/* text */
+.footnote_plugin_text {
+    vertical-align: top;
 	width: 99%;
 	text-align: left;
 }

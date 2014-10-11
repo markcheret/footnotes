@@ -77,8 +77,39 @@ class MCI_Footnotes_Task {
 	 * @since 1.5.0
 	 */
 	public function wp_head() {
+        $l_str_Color = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR);
+        $l_str_Background = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND);
+        $l_int_BorderWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH);
+        $l_str_BorderColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR);
+        $l_int_BorderRadius = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS);
+        $l_int_MaxWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH);
 		?>
-		<style type="text/css" media="screen"><?php echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS) ?></style>
+		<style type="text/css" media="screen">
+            <?php
+            echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
+            echo '.footnote_tooltip { display: none; padding: 12px; font-size: 13px; -moz-box-shadow: 2px 2px 11px #666; -webkit-box-shadow: 2px 2px 11px #666;';
+            if (!empty($l_str_Color)) {
+                echo ' color: ' . $l_str_Color . ';';
+            }
+            if (!empty($l_str_Background)) {
+                echo ' background-color: ' . $l_str_Background . ';';
+            }
+            if (!empty($l_int_BorderWidth) && intval($l_int_BorderWidth) > 0) {
+                echo ' border-width: ' . $l_int_BorderWidth . 'px;';
+                echo ' border-style: solid;';
+            }
+            if (!empty($l_str_BorderColor)) {
+                echo ' border-color: ' . $l_str_BorderColor . ';';
+            }
+            if (!empty($l_int_BorderRadius) && intval($l_int_BorderRadius) > 0) {
+                echo ' border-radius: ' . $l_int_BorderRadius . 'px;';
+            }
+            if (!empty($l_int_MaxWidth) && intval($l_int_MaxWidth) > 0) {
+                echo ' max-width: ' . $l_int_MaxWidth . 'px;';
+            }
+            echo '}';
+            ?>
+        </style>
 		<?php
 	}
 
@@ -188,12 +219,34 @@ class MCI_Footnotes_Task {
      *
      * @author Stefan Herndler
      * @since 1.5.4
-     * @param WP_Post $p_obj_Post
+     * @param array|WP_Post $p_mixed_Posts
      */
-    public function the_post(&$p_obj_Post) {
+    public function the_post(&$p_mixed_Posts) {
+        // single WP_Post object received
+        if (!is_array($p_mixed_Posts)) {
+            $p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
+            return;
+        }
+        // array of WP_Post objects received
+        for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
+            $p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
+        }
+    }
+
+    /**
+     * Replace all Footnotes in a WP_Post object.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @param WP_Post $p_obj_Post
+     * @return WP_Post
+     */
+    private function replacePostObject($p_obj_Post) {
+        //MCI_Footnotes_Convert::debug($p_obj_Post);
         $p_obj_Post->post_content = $this->exec($p_obj_Post->post_content);
         $p_obj_Post->post_content_filtered = $this->exec($p_obj_Post->post_content_filtered);
         $p_obj_Post->post_excerpt = $this->exec($p_obj_Post->post_excerpt);
+        return $p_obj_Post;
     }
 
 	/**
@@ -410,9 +463,9 @@ class MCI_Footnotes_Task {
 		$l_obj_TemplateContainer->replace(
 			array(
 				"label" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
-				"buttons" => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? '&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]' : '',
+				"button-style" => !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
 				"id" => "footnote_references_container",
-				"class" =>  MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'footnote_hide_box' : '',
+				"style" =>  MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
 				"content" => $l_str_Body
 			)
 		);

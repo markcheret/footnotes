@@ -297,11 +297,37 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 			array(
 				"label-enable" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, __("Enable the mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 				"enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, $l_arr_Enabled),
+
                 "label-activate-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED, __("Display only an excerpt", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "activate-excerpt" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED, $l_arr_Enabled),
+
                 "label-excerpt-length" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH, __("Maximum characters for the excerpt", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "excerpt-length" => $this->addTextBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH)
-			)
+                "excerpt-length" => $this->addTextBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH),
+
+                "label-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR, __("Color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR),
+                "notice-color" => __("Empty color will use the default color defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-background" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND, __("Background color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "background" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND),
+                "notice-background" => __("Empty color will use the default background-color defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-border-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH, __("Border width (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "border-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH, 0, 4),
+                "notice-border-width" => __("Set the width to 0px to hide the border.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-border-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR, __("Border color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "border-color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR),
+                "notice-border-color" => __("Empty color will use the default border-color defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-border-radius" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS, __("Border radius (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "border-radius" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS, 0, 20),
+                "notice-border-radius" => __("Set the radius to 0px to avoid a radius.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Max. width (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
+                "notice-max-width" => __("Set the max-width to 0px to disable this setting.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+            )
 		);
 		// display template with replaced placeholders
 		echo $l_obj_Template->getContent();
@@ -349,19 +375,19 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 				"headline" => $this->addText(__("Available CSS classes to customize the footnotes and the reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 
 				"label-class-1" => ".footnote_plugin_tooltip_text",
-				"class-1" => $this->addText(__("inline footnotes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"class-1" => $this->addText(__("superscript, Footnotes index", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 
 				"label-class-2" => ".footnote_tooltip",
-				"class-2" => $this->addText(__("inline footnotes, mouse over highlight box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"class-2" => $this->addText(__("mouse-over box, tooltip for each superscript", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 
 				"label-class-3" => ".footnote_plugin_index",
-				"class-3" => $this->addText(__("reference container footnotes index", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"class-3" => $this->addText(__("1st column of the Reference Container, Footnotes index", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 
 				"label-class-4" => ".footnote_plugin_link",
-				"class-4" => $this->addText(__("reference container footnotes linked arrow", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"class-4" => $this->addText(__("2nd column of the Reference Container, Arrow / Hyperlink", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 
 				"label-class-5" => ".footnote_plugin_text",
-				"class-5" => $this->addText(__("reference container footnotes text", MCI_Footnotes_Config::C_STR_PLUGIN_NAME))
+				"class-5" => $this->addText(__("3rd column of the Reference Container, Footnote text", MCI_Footnotes_Config::C_STR_PLUGIN_NAME))
 			)
 		);
 		// display template with replaced placeholders
@@ -375,7 +401,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 1.5.5
      */
     public function lookupHooks() {
-// load template file
+        // load template file
         $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "expert-lookup");
         // replace all placeholders
         $l_obj_Template->replace(

@@ -1,7 +1,7 @@
 <div class="footnote_container_prepare">
-	<p><span onclick="footnote_expand_reference_container();">[[label]]</span><span>[[buttons]]</span></p>
+	<p><span onclick="footnote_expand_reference_container();">[[label]]</span><span style="[[button-style]]">&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]</span></p>
 </div>
-<div id="[[id]]" class="[[class]]">
+<div id="[[id]]" style="[[style]]">
 	<table class="footnote-reference-container">
 		<tbody>
 		[[content]]
@@ -12,15 +12,17 @@
 <script type="text/javascript">
 	function footnote_expand_reference_container() {
 		jQuery("#[[id]]").show();
+        jQuery("#footnote_reference_container_collapse_button").text("-");
 	}
+    function footnote_collapse_reference_container() {
+        jQuery("#[[id]]").hide();
+        jQuery("#footnote_reference_container_collapse_button").text("+");
+    }
 	function footnote_expand_collapse_reference_container() {
-		var l_obj_ReferenceContainer = jQuery("#[[id]]");
-		if (l_obj_ReferenceContainer.is(":hidden")) {
-			l_obj_ReferenceContainer.show();
-			jQuery("#footnote_reference_container_collapse_button").text("-");
+		if (jQuery("#[[id]]").is(":hidden")) {
+            footnote_expand_reference_container();
 		} else {
-			l_obj_ReferenceContainer.hide();
-			jQuery("#footnote_reference_container_collapse_button").text("+");
+            footnote_collapse_reference_container();
 		}
 	}
 

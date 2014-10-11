@@ -171,6 +171,60 @@ class MCI_Footnotes_Settings {
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = "footnote_inputfield_custom_mouse_over_box_excerpt_length";
 
+    /**
+     * Settings Container Key for the mouse-over box to define the color.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @var string
+     */
+    const C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR = "footnote_inputfield_custom_mouse_over_box_color";
+
+    /**
+     * Settings Container Key for the mouse-over box to define the background color.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @var string
+     */
+    const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = "footnote_inputfield_custom_mouse_over_box_background";
+
+    /**
+     * Settings Container Key for the mouse-over box to define the border width.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @var string
+     */
+    const C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH = "footnote_inputfield_custom_mouse_over_box_border_width";
+
+    /**
+     * Settings Container Key for the mouse-over box to define the border color.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @var string
+     */
+    const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR = "footnote_inputfield_custom_mouse_over_box_border_color";
+
+    /**
+     * Settings Container Key for the mouse-over box to define the border radius.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @var string
+     */
+    const C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS = "footnote_inputfield_custom_mouse_over_box_border_radius";
+
+    /**
+     * Settings Container Key for the mouse-over box to define the max width.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @var string
+     */
+    const C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = "footnote_inputfield_custom_mouse_over_box_max_width";
+
 	/**
 	 * Settings Container Key for the Hyperlink arrow.
 	 *
@@ -298,6 +352,12 @@ class MCI_Footnotes_Settings {
 			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
             self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'no',
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 150,
+            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
+            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#fff7a7',
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
+            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 3,
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 0,
 			self::C_STR_HYPERLINK_ARROW => '&#8593;',
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 			self::C_STR_CUSTOM_CSS => ''
@@ -358,6 +418,18 @@ class MCI_Footnotes_Settings {
 	public function getContainer($p_int_Index) {
 		return $this->a_arr_Container[$p_int_Index];
 	}
+
+    /**
+     * Returns the default values of a specific Settings Container.
+     *
+     * @author Stefan Herndler
+     * @since 1.5.6
+     * @param int $p_int_Index Settings Container Aray Key Index.
+     * @return array
+     */
+    public function getDefaults($p_int_Index) {
+        return $this->a_arr_Default[$this->a_arr_Container[$p_int_Index]];
+    }
 
 	/**
 	 * Loads all Settings from each Settings container.

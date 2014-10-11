@@ -193,6 +193,10 @@ abstract class MCI_Footnotes_LayoutEngine {
 		wp_enqueue_script('jquery');
 		// enable meta boxes layout and close functionality
 		wp_enqueue_script('postbox');
+        // add WordPress color picker layout
+        wp_enqueue_style('wp-color-picker');
+        // add WordPress color picker function
+        wp_enqueue_script('wp-color-picker');
 		// register stylesheet
 		wp_register_style('mci-footnotes-admin-styles', plugins_url('../../css/settings.css', __FILE__));
 		// add stylesheet to the output
@@ -258,6 +262,7 @@ abstract class MCI_Footnotes_LayoutEngine {
 		// output special javascript for the expand/collapse function of the meta boxes
 		echo '<script type="text/javascript">';
 		echo "jQuery(document).ready(function ($) {";
+        echo 'jQuery(".mfmmf-color-picker").wpColorPicker();';
 		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
 		echo "postboxes.add_postbox_toggles('" . $this->a_str_SubPageHook . "');";
 		echo "});";
@@ -272,12 +277,24 @@ abstract class MCI_Footnotes_LayoutEngine {
 	 * @return bool
 	 */
 	private function saveSettings() {
+        $l_arr_newSettings = array();
 		// get current section
 		reset($this->a_arr_Sections);
 		$l_str_ActiveSectionID = isset($_GET['t']) ? $_GET['t'] : key($this->a_arr_Sections);
 		$l_arr_ActiveSection = $this->a_arr_Sections[$l_str_ActiveSectionID];
+
+        // iterate through each value that has to be in the specific contaienr
+        foreach(MCI_Footnotes_Settings::instance()->getDefaults($l_arr_ActiveSection["container"]) as $l_str_Key => $l_mixed_Value) {
+            // setting is available in the POST array, use it
+            if (array_key_exists($l_str_Key, $_POST)) {
+                $l_arr_newSettings[$l_str_Key] = $_POST[$l_str_Key];
+            } else {
+                // setting is not defined in the POST array, define it to avoid the Default value
+                $l_arr_newSettings[$l_str_Key] = "";
+            }
+        }
 		// update settings
-		return MCI_Footnotes_Settings::instance()->saveOptions($l_arr_ActiveSection["container"], $_POST);
+		return MCI_Footnotes_Settings::instance()->saveOptions($l_arr_ActiveSection["container"], $l_arr_newSettings);
 	}
 
 	/**
@@ -436,5 +453,37 @@ abstract class MCI_Footnotes_LayoutEngine {
 		return sprintf('<textarea name="%s" id="%s">%s</textarea>',
 			$l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"]);
 	}
+
+    /**
+     * Returns the html tag for an input [type = text] with color selection class.
+     *
+     * @author Stefan Herndler
+     * @since  1.5.6
+     * @param string $p_str_SettingName Name of the Settings key to pre load the input field.
+     * @return string
+     */
+    protected function addColorSelection($p_str_SettingName) {
+        // collect data for given settings field
+        $l_arr_Data = $this->LoadSetting($p_str_SettingName);
+        return sprintf('<input type="text" name="%s" id="%s" class="mfmmf-color-picker" value="%s"/>',
+            $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"]);
+    }
+
+    /**
+     * Returns the html tag for an input [type = num].
+     *
+     * @author Stefan Herndler
+     * @since  1.5.0
+     * @param string $p_str_SettingName Name of the Settings key to pre load the input field.
+     * @param int $p_in_Min Minimum value.
+     * @param int $p_int_Max Maximum value.
+     * @return string
+     */
+    protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max) {
+        // collect data for given settings field
+        $l_arr_Data = $this->LoadSetting($p_str_SettingName);
+        return sprintf('<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
+            $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"], $p_in_Min, $p_int_Max);
+    }
 
 } // end of class

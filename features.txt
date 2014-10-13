@@ -1,7 +1,7 @@
 
 
 == Footnotes Features ==
-- Performance of the task so PHP won't throw an error when there are more than 120? Footnotes
+- Performance of the task so PHP won't throw an error when there are more than 120? Footnotes on a single page
   - Maybe increase PHP max execution time while processing the Footnotes task
 - different background for every odd table row
 
@@ -11,16 +11,4 @@ the currently used one should be one of those templates and pre-defined styles o
 
 
 == Footnotes Bugs ==
-- Excerpt No doesn't work
-
-
-== edit mouse-over box (placeholders in .html file and replace before echo ==
-- background color (css)
-- border width (css)
-- border color (css)
-- border radius (css)
-- box shadow (css)
-- max width (css) (majhul)
-- font size (css)
-- position (js)
-- right to left (js?)
+- Setting "Excerpt No" doesn't work

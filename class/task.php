@@ -370,7 +370,16 @@ class MCI_Footnotes_Task {
 				// reset the template
 				$l_obj_Template->reload();
 				if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED))) {
-					$l_obj_TemplateTooltip->replace(array("index" => $l_str_Index));
+					$l_int_OffsetY = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
+					$l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
+					$l_obj_TemplateTooltip->replace(
+						array(
+							"index" => $l_str_Index,
+							"position" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
+							"offset-y" => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
+							"offset-x" => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0
+						)
+					);
 					$l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
 					$l_obj_TemplateTooltip->reload();
 				}

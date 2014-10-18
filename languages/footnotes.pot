@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
-"POT-Creation-Date: 2014-10-18 12:39+0100\n"
-"PO-Revision-Date: 2014-10-18 12:40+0100\n"
+"POT-Creation-Date: 2014-10-18 20:59+0100\n"
+"PO-Revision-Date: 2014-10-18 20:59+0100\n"
 "Last-Translator: Stefan Herndler <support@herndler.org>\n"
 "Language-Team: enter your name <enter@your.email>\n"
 "Language: en_GB\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-Basepath: ..\n"
@@ -235,17 +235,17 @@ msgstr ""
 msgid "Counter style"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:207 class/task.php:149
+#: class/dashboard/subpage-main.php:207 class/task.php:154
 #, php-format
 msgid "I %s %s"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:208 class/task.php:152
+#: class/dashboard/subpage-main.php:208 class/task.php:157
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:209 class/task.php:156
+#: class/dashboard/subpage-main.php:209 class/task.php:161
 #, php-format
 msgid "extra smooth %s"
 msgstr ""
@@ -402,83 +402,92 @@ msgstr ""
 msgid "Set the max-width to 0px to disable this setting."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:370
-msgid "Hyperlink symbol"
+#: class/dashboard/subpage-main.php:353
+msgid "Box shadow color"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:373
-msgid "or enter a user defined symbol"
+#: class/dashboard/subpage-main.php:355
+msgid ""
+"Empty color will use the default box shadow defined by your current theme."
 msgstr ""
 
 #: class/dashboard/subpage-main.php:375
+msgid "Hyperlink symbol"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:378
+msgid "or enter a user defined symbol"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:380
 msgid "if set it overrides the hyperlink symbol above"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:394
+#: class/dashboard/subpage-main.php:399
 msgid "Add custom CSS"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:397
+#: class/dashboard/subpage-main.php:402
 msgid ""
 "Available CSS classes to customize the footnotes and the reference container"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:400
+#: class/dashboard/subpage-main.php:405
 msgid "superscript, Footnotes index"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:403
+#: class/dashboard/subpage-main.php:408
 msgid "mouse-over box, tooltip for each superscript"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:406
+#: class/dashboard/subpage-main.php:411
 msgid "1st column of the Reference Container, Footnotes index"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:409
+#: class/dashboard/subpage-main.php:414
 msgid "2nd column of the Reference Container, Arrow / Hyperlink"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:412
+#: class/dashboard/subpage-main.php:417
 msgid "3rd column of the Reference Container, Footnote text"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:431
+#: class/dashboard/subpage-main.php:436
 msgid "WordPress hook function name"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:432
+#: class/dashboard/subpage-main.php:437
 msgid "Activate"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:433
+#: class/dashboard/subpage-main.php:438
 msgid "WordPress documentation"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:481
+#: class/dashboard/subpage-main.php:486
 msgid "example string"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:488
+#: class/dashboard/subpage-main.php:493
 msgid "Start your footnote with the following short code:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:491
+#: class/dashboard/subpage-main.php:496
 msgid "...and end your footnote with this short code:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:495
+#: class/dashboard/subpage-main.php:500
 msgid "will be displayed as:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:498
+#: class/dashboard/subpage-main.php:503
 #, php-format
 msgid ""
 "For further information please check out our %ssupport forum%s on WordPress."
 "org."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:519
+#: class/dashboard/subpage-main.php:524
 msgid "Donate now"
 msgstr ""
 
@@ -498,7 +507,7 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: class/task.php:365
+#: class/task.php:370
 #, php-format
 msgid "%scontinue%s"
 msgstr ""

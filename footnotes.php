@@ -35,7 +35,7 @@
 require_once(dirname(__FILE__) . "/includes.php");
 
 // add Plugin Links to the "installed plugins" page
-$l_str_plugin_file = 'footnotes/index.php';
+$l_str_plugin_file = 'footnotes/footnotes.php';
 add_filter("plugin_action_links_{$l_str_plugin_file}", array("MCI_Footnotes_Hooks", "PluginLinks"), 10, 2);
 
 // initialize the Plugin

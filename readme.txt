@@ -84,6 +84,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 1.5.8 =
+- **IMPORTANT**: Improved performance. You need to Activate the Plugin again. (Settings won't change!)
+- Add: Translation: United States
+- Add: Translation: Austria
+- Add: Translation: Spanish (many thanks to Pablo L.)
+- Update: Translations (de_DE and en_GB)
+- Update: Changed Plugins init file name to improve performance (Re-activation of the Plugin is required)
+- Bugfix: Avoid multiple IDs for footnotes when multiple reference containers are displayed
+
 = 1.5.7 =
 - Add: Setting to define the positioning of the mouse-over box
 - Add: Setting to define an offset for the mouse-over box (precise positioning)

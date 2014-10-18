@@ -45,14 +45,10 @@ class MCI_Footnotes {
 		// initialize the Plugin Task
 		$this->initializeTask();
 
-		// Register all Public Stylesheets
-		add_action('init', array($this, 'registerPublicStyling'));
-		// Register all Public Scripts
-		add_action('init', array($this, 'registerPublicScripts'));
-		// Enqueue all Public Stylesheets
-		add_action('wp_enqueue_scripts', array($this, 'registerPublicStyling'));
-		// Enqueue all Public Scripts
-		add_action('wp_enqueue_scripts', array($this, 'registerPublicScripts'));
+		// Register all Public Stylesheets and Scripts
+		add_action('init', array($this, 'registerPublic'));
+		// Enqueue all Public Stylesheets and Scripts
+		add_action('wp_enqueue_scripts', array($this, 'registerPublic'));
 	}
 
 	/**
@@ -87,25 +83,15 @@ class MCI_Footnotes {
 	}
 
 	/**
-	 * Registers and enqueue scripts to the public pages.
+	 * Registers and enqueue scripts and stylesheets to the public pages.
 	 *
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public function registerPublicScripts() {
+	public function registerPublic() {
+		wp_enqueue_style('mci-footnotes-css-public', plugins_url('../css/public.css', __FILE__));
 		// add the jQuery plugin (already registered by WordPress)
 		wp_enqueue_script('jquery');
-		wp_enqueue_script('mci_footnotes_js_jquery_tools', plugins_url('../js/jquery.tools.min.js', __FILE__), array());
-	}
-
-	/**
-	 * Registers and enqueue stylesheets to the public pages.
-	 *
-	 * @author Stefan Herndler
-	 * @since 1.5.0
-	 */
-	public function registerPublicStyling() {
-		wp_register_style('mci_footnotes_css_public', plugins_url('../css/public.css', __FILE__));
-		wp_enqueue_style('mci_footnotes_css_public');
+		wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
 	}
 }

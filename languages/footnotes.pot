@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: footnotes\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
-"POT-Creation-Date: 2014-10-11 14:21+0100\n"
-"PO-Revision-Date: 2014-10-11 14:21+0100\n"
+"POT-Creation-Date: 2014-10-18 12:39+0100\n"
+"PO-Revision-Date: 2014-10-18 12:40+0100\n"
 "Last-Translator: Stefan Herndler <support@herndler.org>\n"
 "Language-Team: enter your name <enter@your.email>\n"
 "Language: en_GB\n"
@@ -55,7 +55,7 @@ msgstr ""
 msgid "ratings"
 msgstr ""
 
-#: class/dashboard/layout.php:243
+#: class/dashboard/layout.php:241
 msgid "Settings saved"
 msgstr ""
 
@@ -235,17 +235,17 @@ msgstr ""
 msgid "Counter style"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:207 class/task.php:140
+#: class/dashboard/subpage-main.php:207 class/task.php:149
 #, php-format
 msgid "I %s %s"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:208 class/task.php:143
+#: class/dashboard/subpage-main.php:208 class/task.php:152
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:209 class/task.php:147
+#: class/dashboard/subpage-main.php:209 class/task.php:156
 #, php-format
 msgid "extra smooth %s"
 msgstr ""
@@ -287,146 +287,198 @@ msgstr ""
 msgid "After Footnotes index"
 msgstr ""
 
+#: class/dashboard/subpage-main.php:295
+msgid "top left"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:296
+msgid "top center"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:297
+msgid "top right"
+msgstr ""
+
 #: class/dashboard/subpage-main.php:298
-msgid "Enable the mouse-over box"
+msgid "center right"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:299
+msgid "bottom right"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:300
+msgid "bottom center"
 msgstr ""
 
 #: class/dashboard/subpage-main.php:301
-msgid "Display only an excerpt"
+msgid "bottom left"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:304
-msgid "Maximum characters for the excerpt"
-msgstr ""
-
-#: class/dashboard/subpage-main.php:307
-msgid "Color"
+#: class/dashboard/subpage-main.php:302
+msgid "center left"
 msgstr ""
 
 #: class/dashboard/subpage-main.php:309
+msgid "Enable the mouse-over box"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:312
+msgid "Display only an excerpt"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:315
+msgid "Maximum characters for the excerpt"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:318
+msgid "Position"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:321
+msgid "Offset X (px)"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:323
+msgid "Offset (X axis) in px (may be negative)"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:325
+msgid "Offset Y (px)"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:327
+msgid "Offset (Y axis) in px (may be negative)"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:329
+msgid "Color"
+msgstr ""
+
+#: class/dashboard/subpage-main.php:331
 msgid "Empty color will use the default color defined by your current theme."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:311
+#: class/dashboard/subpage-main.php:333
 msgid "Background color"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:313
+#: class/dashboard/subpage-main.php:335
 msgid ""
 "Empty color will use the default background-color defined by your current "
 "theme."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:315
+#: class/dashboard/subpage-main.php:337
 msgid "Border width (px)"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:317
+#: class/dashboard/subpage-main.php:339
 msgid "Set the width to 0px to hide the border."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:319
+#: class/dashboard/subpage-main.php:341
 msgid "Border color"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:321
+#: class/dashboard/subpage-main.php:343
 msgid ""
 "Empty color will use the default border-color defined by your current theme."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:323
+#: class/dashboard/subpage-main.php:345
 msgid "Border radius (px)"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:325
+#: class/dashboard/subpage-main.php:347
 msgid "Set the radius to 0px to avoid a radius."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:327
+#: class/dashboard/subpage-main.php:349
 msgid "Max. width (px)"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:329
+#: class/dashboard/subpage-main.php:351
 msgid "Set the max-width to 0px to disable this setting."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:348
+#: class/dashboard/subpage-main.php:370
 msgid "Hyperlink symbol"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:351
+#: class/dashboard/subpage-main.php:373
 msgid "or enter a user defined symbol"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:353
+#: class/dashboard/subpage-main.php:375
 msgid "if set it overrides the hyperlink symbol above"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:372
+#: class/dashboard/subpage-main.php:394
 msgid "Add custom CSS"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:375
+#: class/dashboard/subpage-main.php:397
 msgid ""
 "Available CSS classes to customize the footnotes and the reference container"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:378
+#: class/dashboard/subpage-main.php:400
 msgid "superscript, Footnotes index"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:381
+#: class/dashboard/subpage-main.php:403
 msgid "mouse-over box, tooltip for each superscript"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:384
+#: class/dashboard/subpage-main.php:406
 msgid "1st column of the Reference Container, Footnotes index"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:387
+#: class/dashboard/subpage-main.php:409
 msgid "2nd column of the Reference Container, Arrow / Hyperlink"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:390
+#: class/dashboard/subpage-main.php:412
 msgid "3rd column of the Reference Container, Footnote text"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:409
+#: class/dashboard/subpage-main.php:431
 msgid "WordPress hook function name"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:410
+#: class/dashboard/subpage-main.php:432
 msgid "Activate"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:411
+#: class/dashboard/subpage-main.php:433
 msgid "WordPress documentation"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:459
+#: class/dashboard/subpage-main.php:481
 msgid "example string"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:466
+#: class/dashboard/subpage-main.php:488
 msgid "Start your footnote with the following short code:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:469
+#: class/dashboard/subpage-main.php:491
 msgid "...and end your footnote with this short code:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:473
+#: class/dashboard/subpage-main.php:495
 msgid "will be displayed as:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:476
+#: class/dashboard/subpage-main.php:498
 #, php-format
 msgid ""
 "For further information please check out our %ssupport forum%s on WordPress."
 "org."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:495
+#: class/dashboard/subpage-main.php:519
 msgid "Donate now"
 msgstr ""
 
@@ -446,7 +498,7 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: class/task.php:356
+#: class/task.php:365
 #, php-format
 msgid "%scontinue%s"
 msgstr ""

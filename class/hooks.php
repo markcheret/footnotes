@@ -22,9 +22,9 @@ class MCI_Footnotes_Hooks {
 	 * @since 1.5.0
 	 */
 	public static function registerHooks() {
-		register_activation_hook(dirname(__FILE__) . "/../index.php", array("MCI_Footnotes_Hooks", "activatePlugin"));
-		register_deactivation_hook(dirname(__FILE__) . "/../index.php", array("MCI_Footnotes_Hooks", "deactivatePlugin"));
-		register_uninstall_hook(dirname(__FILE__) . "/../index.php", array("MCI_Footnotes_Hooks", "uninstallPlugin"));
+		register_activation_hook(dirname(__FILE__) . "/../footnotes.php", array("MCI_Footnotes_Hooks", "activatePlugin"));
+		register_deactivation_hook(dirname(__FILE__) . "/../footnotes.php", array("MCI_Footnotes_Hooks", "deactivatePlugin"));
+		register_uninstall_hook(dirname(__FILE__) . "/../footnotes.php", array("MCI_Footnotes_Hooks", "uninstallPlugin"));
 	}
 
 	/**

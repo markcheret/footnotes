@@ -25,12 +25,11 @@
             footnote_collapse_reference_container();
 		}
 	}
-
     function footnote_moveToAnchor(p_str_TargetID) {
         footnote_expand_reference_container();
         var l_obj_Target = jQuery("#" + p_str_TargetID);
-        if( l_obj_Target.length ) {
-            event.preventDefault();
+        if(l_obj_Target.length) {
+            //event.preventDefault();
             jQuery('html, body').animate({
                 scrollTop: l_obj_Target.offset().top - window.innerHeight/2
             }, 1000);

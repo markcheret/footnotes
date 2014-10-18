@@ -35,6 +35,15 @@ class MCI_Footnotes_Task {
 	public static $a_bool_AllowLoveMe = true;
 
 	/**
+	 * Prefix for the Footnote html element ID.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.8
+	 * @var string
+	 */
+	public static $a_str_Prefix = "";
+
+	/**
 	 * Register WordPress Hooks to replace Footnotes in the content of a public page.
 	 *
 	 * @author Stefan Herndler
@@ -360,6 +369,7 @@ class MCI_Footnotes_Task {
 				// fill the footnotes template
 				$l_obj_Template->replace(
 					array(
+						"id" => self::$a_str_Prefix . $l_str_Index,
 						"index" => $l_str_Index,
 						"text" => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
 						"before" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
@@ -374,7 +384,7 @@ class MCI_Footnotes_Task {
 					$l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
 					$l_obj_TemplateTooltip->replace(
 						array(
-							"index" => $l_str_Index,
+							"id" => self::$a_str_Prefix . $l_str_Index,
 							"position" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
 							"offset-y" => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
 							"offset-x" => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0
@@ -458,7 +468,7 @@ class MCI_Footnotes_Task {
 			$l_obj_Template->replace(
 				array(
 					"index" => $l_str_FootnoteIndex,
-					"index-int" => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+					"id" => self::$a_str_Prefix . MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
 					"arrow" => $l_str_Arrow,
 					"text" => $l_str_FootnoteText
 				)
@@ -481,6 +491,7 @@ class MCI_Footnotes_Task {
 
 		// free all found footnotes if reference container will be displayed
 		self::$a_arr_Footnotes = array();
+		self::$a_str_Prefix = rand(1000, 9999) . "_";
 		return $l_obj_TemplateContainer->getContent();
 	}
 }

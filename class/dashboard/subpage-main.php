@@ -348,8 +348,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Max. width (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
-                "notice-max-width" => __("Set the max-width to 0px to disable this setting.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
-            )
+                "notice-max-width" => __("Set the max-width to 0px to disable this setting.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-box-shadow-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR, __("Box shadow color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "box-shadow-color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR),
+                "notice-box-shadow-color" => __("Empty color will use the default box shadow defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+			)
 		);
 		// display template with replaced placeholders
 		echo $l_obj_Template->getContent();

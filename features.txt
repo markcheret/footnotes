@@ -12,3 +12,9 @@ the currently used one should be one of those templates and pre-defined styles o
 
 == Footnotes Bugs ==
 - Setting "Excerpt No" doesn't work
+
+
+== TODO ==
+ - Statistics: How many Footnotes in each post/page
+ - Convert from other Footnote Plugins (e.g. ' ((' from Civil Footnotes)
+ - Anonymous stats to the developers

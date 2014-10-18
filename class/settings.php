@@ -253,6 +253,15 @@ class MCI_Footnotes_Settings {
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = "footnote_inputfield_custom_mouse_over_box_max_width";
 
 	/**
+	 * Settings Container Key for the mouse-over box to define the box-shadow color.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.8
+	 * @var string
+	 */
+	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR = "footnote_inputfield_custom_mouse_over_box_shadow_color";
+
+	/**
 	 * Settings Container Key for the Hyperlink arrow.
 	 *
 	 * @author Stefan Herndler
@@ -388,6 +397,7 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 3,
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 0,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
 			self::C_STR_HYPERLINK_ARROW => '&#8593;',
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 			self::C_STR_CUSTOM_CSS => ''

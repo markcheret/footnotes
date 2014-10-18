@@ -3,10 +3,10 @@ Contributors: Aricura, mark.cheret
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ
-Tested up to: 4.0
+Tested up to: 4.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.5.7
+Stable Tag: 1.6.0
 
 == Description ==
 
@@ -84,13 +84,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 1.5.8 =
+= 1.6.0 =
 - **IMPORTANT**: Improved performance. You need to Activate the Plugin again. (Settings won't change!)
+- Add: Setting to customize the mouse-over box shadow
 - Add: Translation: United States
 - Add: Translation: Austria
 - Add: Translation: Spanish (many thanks to Pablo L.)
 - Update: Translations (de_DE and en_GB)
 - Update: Changed Plugins init file name to improve performance (Re-activation of the Plugin is required)
+- Update: ManFisher note styling
+- Update: Tested with latest nightly build of WordPress 4.1
 - Bugfix: Avoid multiple IDs for footnotes when multiple reference containers are displayed
 
 = 1.5.7 =

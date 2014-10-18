@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
 	Author: ManFisher Medien ManuFaktur
-	Version: 1.5.6
+	Version: 1.6.0
 	Author URI: http://manfisher.net/plugins/footnotes/
 	Text Domain: footnotes
 	Domain Path: /languages
@@ -35,7 +35,7 @@
 require_once(dirname(__FILE__) . "/includes.php");
 
 // add Plugin Links to the "installed plugins" page
-$l_str_plugin_file = 'footnotes/index.php';
+$l_str_plugin_file = 'footnotes/footnotes.php';
 add_filter("plugin_action_links_{$l_str_plugin_file}", array("MCI_Footnotes_Hooks", "PluginLinks"), 10, 2);
 
 // initialize the Plugin

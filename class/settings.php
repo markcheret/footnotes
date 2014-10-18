@@ -171,6 +171,33 @@ class MCI_Footnotes_Settings {
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = "footnote_inputfield_custom_mouse_over_box_excerpt_length";
 
+	/**
+	 * Settings Container Key for the mouse-over box to define the positioning.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.7
+	 * @var string
+	 */
+	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION = "footnote_inputfield_custom_mouse_over_box_position";
+
+	/**
+	 * Settings Container Key for the mouse-over box to define the offset (x).
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.7
+	 * @var string
+	 */
+	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X = "footnote_inputfield_custom_mouse_over_box_offset_x";
+
+	/**
+	 * Settings Container Key for the mouse-over box to define the offset (y).
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.7
+	 * @var string
+	 */
+	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y = "footnote_inputfield_custom_mouse_over_box_offset_y";
+
     /**
      * Settings Container Key for the mouse-over box to define the color.
      *
@@ -224,6 +251,15 @@ class MCI_Footnotes_Settings {
      * @var string
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = "footnote_inputfield_custom_mouse_over_box_max_width";
+
+	/**
+	 * Settings Container Key for the mouse-over box to define the box-shadow color.
+	 *
+	 * @author Stefan Herndler
+	 * @since 1.5.8
+	 * @var string
+	 */
+	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR = "footnote_inputfield_custom_mouse_over_box_shadow_color";
 
 	/**
 	 * Settings Container Key for the Hyperlink arrow.
@@ -352,12 +388,16 @@ class MCI_Footnotes_Settings {
 			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
             self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'no',
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 150,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION => 'top right',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X => 10,
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => 10,
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#fff7a7',
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 3,
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 0,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
 			self::C_STR_HYPERLINK_ARROW => '&#8593;',
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 			self::C_STR_CUSTOM_CSS => ''

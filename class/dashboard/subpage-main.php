@@ -290,6 +290,17 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 			"yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 			"no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
 		);
+		// options for the Mouse-over box position
+		$l_arr_Position = array(
+			"top left" => __("top left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"top center" => __("top center", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"top right" => __("top right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"center right" => __("center right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"bottom right" => __("bottom right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"bottom center" => __("bottom center", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"bottom left" => __("bottom left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"center left" => __("center left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+		);
 		// load template file
 		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "customize-mouse-over-box");
 		// replace all placeholders
@@ -304,7 +315,18 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-excerpt-length" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH, __("Maximum characters for the excerpt", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "excerpt-length" => $this->addTextBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH),
 
-                "label-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR, __("Color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION, __("Position", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION, $l_arr_Position),
+
+				"label-offset-x" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X, __("Offset X (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"offset-x" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X, -50, 50),
+				"notice-offset-x" => __("Offset (X axis) in px (may be negative)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+				"label-offset-y" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y, __("Offset Y (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"offset-y" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y, -50, 50),
+				"notice-offset-y" => __("Offset (Y axis) in px (may be negative)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+				"label-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR, __("Color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR),
                 "notice-color" => __("Empty color will use the default color defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
@@ -326,8 +348,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Max. width (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
-                "notice-max-width" => __("Set the max-width to 0px to disable this setting.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
-            )
+                "notice-max-width" => __("Set the max-width to 0px to disable this setting.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-box-shadow-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR, __("Box shadow color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "box-shadow-color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR),
+                "notice-box-shadow-color" => __("Empty color will use the default box shadow defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+			)
 		);
 		// display template with replaced placeholders
 		echo $l_obj_Template->getContent();
@@ -476,6 +503,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 				"information" => sprintf(__("For further information please check out our %ssupport forum%s on WordPress.org.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>')
 			)
 		);
+		// call wp_head function to get the Styling of the mouse-over box
+		$g_obj_MCI_Footnotes->a_obj_Task->wp_head();
 		// display template with replaced placeholders
 		echo $l_obj_Template->getContent();
 	}

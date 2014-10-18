@@ -189,8 +189,6 @@ abstract class MCI_Footnotes_LayoutEngine {
 	 * @since  1.5.0
 	 */
 	private function appendScripts() {
-		// add jQuery to the sub menu page
-		wp_enqueue_script('jquery');
 		// enable meta boxes layout and close functionality
 		wp_enqueue_script('postbox');
         // add WordPress color picker layout

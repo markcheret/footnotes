@@ -2,7 +2,7 @@
 Contributors: Aricura, mark.cheret
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BYSY26N8L8VJC
 Tested up to: 4.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -62,7 +62,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = I'm happy with how the Plugin works =
 1. Pour a glass of your favourite beverage
 2. Take a deep breath
-3. Donate whatever amount you think is appropriate here: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ
+3. Donate whatever amount you think is appropriate here: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BYSY26N8L8VJC
 4. Enjoy how you just made a bunch of young folks even more enthusiastic about developing useful stuff
 5. Now it's time to empty that glass in one go
 

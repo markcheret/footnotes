@@ -363,9 +363,9 @@ class MCI_Footnotes_Task {
                 $l_bool_EnableExcerpt = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED));
                 $l_int_MaxLength = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH));
                 if ($l_bool_EnableExcerpt) {
-                    $l_str_FootnoteText = strip_tags($l_str_FootnoteText);
-                    if (is_int($l_int_MaxLength) && strlen($l_str_FootnoteText) > $l_int_MaxLength) {
-                        $l_str_ExcerptText = substr($l_str_FootnoteText, 0, $l_int_MaxLength);
+                    $l_str_DummyText = strip_tags($l_str_FootnoteText);
+                    if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
+                        $l_str_ExcerptText = substr($l_str_DummyText, 0, $l_int_MaxLength);
                         $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
                         $l_str_ExcerptText .= " ..." . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a href="" onclick="footnote_moveToAnchor(\'footnote_plugin_reference_'.$l_str_Index.'\');">', '</a>');
                     }

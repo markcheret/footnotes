@@ -29,18 +29,6 @@
     cursor: pointer;
 }
 
-/* tooltip */
-/*.footnote_tooltip {
-	display: none;
-	background-color: #fff7a7;
-	border: 1px solid #cccc99;
-	border-radius: 3px;
-	padding: 12px;
-	font-size: 13px;
-	-moz-box-shadow: 2px 2px 11px #666;
-	-webkit-box-shadow: 2px 2px 11px #666;
-}*/
-
 /* reference container label */
 .footnote_container_prepare {
 	display: block !important;

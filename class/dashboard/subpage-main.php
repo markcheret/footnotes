@@ -62,7 +62,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE))) {
             $l_arr_Tabs[] = $this->addSection("expert", __("Expert mode", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 2, true);
         }
-        $l_arr_Tabs[] = $this->addSection("how-to", __("How to", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), null, false);
+        $l_arr_Tabs[] = $this->addSection("how-to", __("Preview", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), null, false);
 		return $l_arr_Tabs;
 	}
 
@@ -483,7 +483,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 			$l_arr_Footnote_StartingTag = $this->LoadSetting(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED);
 			$l_arr_Footnote_EndingTag = $this->LoadSetting(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED);
 		}
-		$l_str_Example = "Hello" . $l_arr_Footnote_StartingTag["value"] . __("example string", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . $l_arr_Footnote_EndingTag["value"] . " World!";
+		$l_str_Example = "Hello" . $l_arr_Footnote_StartingTag["value"] .
+		                 "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,".
+		                 " sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.".
+		                 " Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,".
+		                 " consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.".
+		                 " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+		                 . $l_arr_Footnote_EndingTag["value"] . " World!";
 
 		// load template file
 		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "how-to-help");
@@ -497,7 +503,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 				"end" => $l_arr_Footnote_EndingTag["value"],
 
 				"example-code" => $l_str_Example,
-				"example-string" => __("will be displayed as:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+				"example-string" => "<br/>" . __("will be displayed as:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 				"example" => $g_obj_MCI_Footnotes->a_obj_Task->exec($l_str_Example, true),
 
 				"information" => sprintf(__("For further information please check out our %ssupport forum%s on WordPress.org.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>')

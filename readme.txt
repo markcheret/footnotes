@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.6.1
+Stable Tag: 1.6.2
 
 == Description ==
 
@@ -83,6 +83,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.6.2 =
+- Update: Changed the Preview tab
+- Bugfix: Html tags has been removed in the Reference container when the excerpt mode is enabled
 
 = 1.6.1 =
 - Update: Translations

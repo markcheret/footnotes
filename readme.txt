@@ -10,6 +10,10 @@ Stable Tag: 1.6.2
 
 == Description ==
 
+HELP WANTED! Dear fine footnotes community. Unpredicted challenges in the lives of the footnotes team currently make it impossible to further the development of the plugin.
+We are proud of you and what we could give you. Turns out our plugin's ships with some kinks, we'd like to address. We therefor need you as a developer to have a look at our code and the forum and help in solving these issues.
+I'm willing to pay you for helping our users out. This plugin's got about 10% market share in all footnotes related plugins, so we serve a significant part of the community. Please get in touch and assist. Thank you.
+
 Featured on wpmudev: http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/
 Cheers for the review, folks!
 

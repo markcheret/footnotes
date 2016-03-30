@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
 	Author: ManFisher Medien ManuFaktur
-	Version: 1.6.2
+	Version: 1.6.3
 	Author URI: http://manfisher.net/plugins/footnotes/
 	Text Domain: footnotes
 	Domain Path: /languages

@@ -22,7 +22,7 @@
             ed.addCommand('footnotes', function() {
                 jQuery.ajax({
                     type: 'POST',
-                    url: '/wp-admin/admin-ajax.php',
+                    url: './admin-ajax.php',
                     data: {
                         action: 'footnotes_getTags'
                     },

@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tested up to: 4.4.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.6.2
+Stable Tag: 1.6.3
 
 == Description ==
 

@@ -1,0 +1,61 @@
+/**
+ * Created by Stefan Herndler.
+ * User: Stefan
+ * Date: 15.05.14
+ * Time: 16:21
+ * Version: 1.0-beta
+ * Since: 1.0
+ */
+
+input[type=text], input[type=password], textarea, select {
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	width: 80% !important;
+}
+
+textarea {
+	height: 250px;
+}
+
+label {
+	display: inline-block;
+}
+
+.postbox > h3 {
+	height: 32px !important;
+	line-height: 32px !important;
+}
+
+.postbox > h3 > span {
+	padding-left: 10px;
+}
+
+.postbox > .inside > table {
+	border: none !important;
+}
+
+.postbox > .inside >table > tbody > tr > td:first-child {
+	width: 15% !important;
+	font-weight: bold !important;
+}
+
+.footnote_placeholder_box_container {
+    text-align: center !important;
+}
+
+span.footnote_highlight_placeholder {
+    font-weight: bold !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.footnote_placeholder_box_example {
+    border: 2px solid #2bb975 !important;
+    border-radius: 4px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    width: 50% !important;
+    display: block !important;
+    margin: 20px auto !important;
+	text-align: center !important;
+}

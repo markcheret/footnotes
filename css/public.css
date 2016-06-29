@@ -1,0 +1,92 @@
+/**
+ * Created by Stefan Herndler.
+ * User: Stefan
+ * Date: 15.05.14
+ * Time: 16:21
+ * Version: 1.0.7
+ * Since: 1.0
+ */
+
+/* Footnotes */
+.footnote_tag_styling, .footnote_tag_styling:hover {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.footnote_tag_styling_1 {
+    color: #2bb975;
+}
+
+.footnote_tag_styling_2 {
+    color: #545f5a;
+}
+
+/* superscript */
+.footnote_plugin_tooltip_text {
+	vertical-align: top !important;
+	position: relative !important;
+	top: -0.1em !important;
+    cursor: pointer;
+}
+
+/* reference container label */
+.footnote_container_prepare {
+	display: block !important;
+	padding-top: 24px !important;
+}
+
+.footnote_container_prepare > p {
+	line-height: 1.3 !important;
+	margin-top: 1em !important;
+	margin-bottom: 0.25em !important;
+	padding: 0 !important;
+	font-weight: normal !important;
+	overflow: hidden !important;
+	border-bottom: 1px solid #aaaaaa !important;
+	display: block !important;
+	-webkit-margin-before: 0.83em !important;
+	-webkit-margin-after: 0.83em !important;
+	-webkit-margin-start: 0px !important;
+	-webkit-margin-end: 0px !important;
+	text-align: left !important;
+	vertical-align: middle;
+}
+
+.footnote_container_prepare > p > span:first-child {
+	padding-left: 20px !important;
+	text-align: left !important;
+	cursor: pointer;
+	font-size: 1.5em !important;
+}
+
+/* reference container */
+.footnote-reference-container {
+	width: 100%;
+	border: none;
+}
+
+/* index */
+.footnote_plugin_index {
+    vertical-align: top;
+	white-space: nowrap;
+	padding-right: 5px;
+	text-align: left;
+    border:none !important;
+    max-width:10% !important;
+}
+
+/* arrow */
+.footnote_plugin_link {
+    vertical-align: top;
+	white-space: nowrap;
+	padding-right: 5px;
+	text-align: left;
+    cursor: pointer;
+}
+
+/* text */
+.footnote_plugin_text {
+    vertical-align: top;
+	width: 99%;
+	text-align: left;
+}

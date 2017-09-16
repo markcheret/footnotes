@@ -1,9 +1,9 @@
 === footnotes ===
-Contributors: Aricura, mark.cheret
+Contributors: Aricura, mark.cheret, ericakfranz
 Tags: footnote, bibliography, formatting, notes, post, reference
 Requires at least: 3.9
-Tested up to: 4.5.3
-Stable Tag: 2.0
+Tested up to: 4.8.1
+Stable Tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,7 +79,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-=
+= 1.6.5 =
+* Bugfix: Check if quicktags script is available before loading custom QTag button. This fixes a JS error which may have interfered with other functionality on custom post type edit screens.
 
 = 1.6.4 =
 

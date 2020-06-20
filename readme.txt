@@ -2,10 +2,10 @@
 Contributors: dartiss, mark.cheret
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.2.2
+Tested up to: 5.4.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.6.4
+Stable Tag: 1.6.5
 
 == Description ==
 
@@ -78,6 +78,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 1.6.5 =
+- Update: Fix for deprecated PHP function create_function() (man thanks to Felipe Lavín Z.)
+- Update: The CSS had been modified in order to show the tooltip numbers a little less higher than text
+- Bugfix: Fixed error on demo in backend
 
 = 1.6.4 =
 - Bugfix: The deprecated WP_Widget elements have been replaced

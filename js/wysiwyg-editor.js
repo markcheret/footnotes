@@ -61,8 +61,8 @@
         getInfo : function() {
             return {
                 longname : 'Inserts the Footnotes short code.',
-                author : 'Mark Cheret',
-                authorurl : 'http://cheret.de',
+                author : 'ManFisher Medien ManuFaktur',
+                authorurl : 'http://http://manfisher.net/',
                 infourl : 'http://wordpress.org/plugins/footnotes/',
                 version : "1.5.0"
             };

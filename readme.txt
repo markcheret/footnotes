@@ -2,10 +2,11 @@
 Contributors: dartiss, mark.cheret
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.4.2
+Tested up to: 5.5
+Requires PHP: 5.6
+Stable Tag: 1.6.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 1.6.5
 
 == Description ==
 

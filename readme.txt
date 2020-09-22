@@ -1,5 +1,5 @@
-=== Plugin Name ===
-Contributors: dartiss, mark.cheret
+=== footnotes ===
+Contributors: dartiss, mark.cheret, lolzim
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.5

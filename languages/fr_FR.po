@@ -269,7 +269,7 @@ msgid ""
 "Don't tell the world you're using %s on specific pages by adding the "
 "following short code:"
 msgstr ""
-"Ne pas dire au monde que vous utilisez %s sur uen page spécifique en ajoutant le "
+"Ne pas dire au monde que vous utilisez %s sur une page spécifique en ajoutant le "
 "short code suivant:"
 
 #: class/dashboard/subpage-main.php:248

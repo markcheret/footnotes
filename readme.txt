@@ -81,7 +81,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.0 =
-- Major contributions taken from WordPress user pewgeuges:
+- Major contributions taken from WordPress user pewgeuges, all details here https://github.com/media-competence-institute/footnotes/blob/master/README.md:
 - **symbol for backlinks** removed
 - hyperlink moved to the reference number
 - Upgrade jQuery library

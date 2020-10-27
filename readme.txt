@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: dartiss, mark.cheret, lolzim
+Contributors: mark.cheret, lolzim, pewgeuges, dartiss
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.5

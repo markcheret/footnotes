@@ -6,6 +6,13 @@
  * Version: 1.0.7
  * Since: 1.0
  */
+/*
+ * On the basis of version 1.6.5
+ * v1.6.6 unchanged.
+ * bug fixes prior to v1.7.0-beta of 2020-10-26T0547+0100
+ * Support Forum bug fixes from 2020-10-26T0622+0100 on.
+ * Last modified: 2020-10-26T0651+0100
+ */
 
 /* Footnotes */
 .footnote_tag_styling, .footnote_tag_styling:hover {
@@ -26,7 +33,8 @@
 	vertical-align: top !important;
 	position: relative !important;
 	top: 0.4em !important;
-    cursor: pointer;
+	cursor: pointer;
+	z-index: 1;
 }
 
 /* reference container label */
@@ -75,18 +83,33 @@
     max-width:10% !important;
 }
 
-/* arrow */
-.footnote_plugin_link {
-    vertical-align: top;
-	white-space: nowrap;
-	padding-right: 5px;
-	text-align: left;
-    cursor: pointer;
-}
-
 /* text */
 .footnote_plugin_text {
     vertical-align: top;
 	width: 99%;
 	text-align: left;
+}
+
+@media print {
+	.footnote_tooltip {
+		display: none;
+	}
+}
+.footnote_tooltip {
+	text-align: left;
+	z-index: 99;
+}
+.footnote_plugin_index {
+	width: 9px;
+	cursor: pointer;
+	color: #000099;
+	border: none;
+}
+.footnote_plugin_text {
+	border: none;
+}
+/*fix for https://wordpress.org/support/topic/box-around-c-references-container/#post-13579381 */
+
+.footnote_plugin_text a {
+	color: #000099;
 }

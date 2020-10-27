@@ -80,6 +80,23 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0 =
+- Major contributions taken from WordPress user pewgeuges:
+- **symbol for backlinks** removed
+- hyperlink moved to the reference number
+- Upgrade jQuery library
+- Account for disruptive PHP change
+- footnote links script independent
+- Get the “Continue reading” link to work in the mouse-over box
+- Debug printed posts and pages
+- Fix display of combined identical notes
+- Adjusted scrolling time and offset
+- Margins around footnotes
+- Mouse-over box display timing
+
+= 1.6.6 =
+- Beginning of translation to French
+
 = 1.6.5 =
 - Update: Fix for deprecated PHP function create_function() (man thanks to Felipe Lavín Z.)
 - Update: The CSS had been modified in order to show the tooltip numbers a little less higher than text

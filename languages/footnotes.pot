@@ -1,11 +1,9 @@
 # Copyright (C) 2014 
-# This file is distributed under the same license as the  package.
+# This file is distributed under the same license as the package.
 msgid ""
-msgstr ""
-"Project-Id-Version: footnotes\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
+msgstr "Project-Id-Version: footnotes\nReport-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
 "POT-Creation-Date: 2014-10-18 20:59+0100\n"
-"PO-Revision-Date: 2014-10-18 20:59+0100\n"
+"PO-Revision-Date: 2020-10-25T2214+0100\n"
 "Last-Translator: Stefan Herndler <support@herndler.org>\n"
 "Language-Team: enter your name <enter@your.email>\n"
 "Language: en_GB\n"
@@ -18,6 +16,8 @@ msgstr ""
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
+
+
 
 #: class/dashboard/init.php:151
 msgid "Take a look on other Plugins we have developed."
@@ -266,9 +266,7 @@ msgstr ""
 
 #: class/dashboard/subpage-main.php:222
 #, php-format
-msgid ""
-"Don't tell the world you're using %s on specific pages by adding the "
-"following short code:"
+msgid "Don't tell the world you're using %s on specific pages by adding the following short code:"
 msgstr ""
 
 #: class/dashboard/subpage-main.php:248
@@ -364,9 +362,7 @@ msgid "Background color"
 msgstr ""
 
 #: class/dashboard/subpage-main.php:335
-msgid ""
-"Empty color will use the default background-color defined by your current "
-"theme."
+msgid "Empty color will use the default background-color defined by your current theme."
 msgstr ""
 
 #: class/dashboard/subpage-main.php:337
@@ -382,8 +378,7 @@ msgid "Border color"
 msgstr ""
 
 #: class/dashboard/subpage-main.php:343
-msgid ""
-"Empty color will use the default border-color defined by your current theme."
+msgid "Empty color will use the default border-color defined by your current theme."
 msgstr ""
 
 #: class/dashboard/subpage-main.php:345
@@ -407,87 +402,63 @@ msgid "Box shadow color"
 msgstr ""
 
 #: class/dashboard/subpage-main.php:355
-msgid ""
-"Empty color will use the default box shadow defined by your current theme."
+msgid "Empty color will use the default box shadow defined by your current theme."
 msgstr ""
 
 #: class/dashboard/subpage-main.php:375
-msgid "Hyperlink symbol"
-msgstr ""
-
-#: class/dashboard/subpage-main.php:378
-msgid "or enter a user defined symbol"
-msgstr ""
-
-#: class/dashboard/subpage-main.php:380
-msgid "if set it overrides the hyperlink symbol above"
-msgstr ""
-
-#: class/dashboard/subpage-main.php:399
 msgid "Add custom CSS"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:402
-msgid ""
-"Available CSS classes to customize the footnotes and the reference container"
+#: class/dashboard/subpage-main.php:378
+msgid "Available CSS classes to customize the footnotes and the reference container"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:405
+#: class/dashboard/subpage-main.php:381
 msgid "superscript, Footnotes index"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:408
+#: class/dashboard/subpage-main.php:384
 msgid "mouse-over box, tooltip for each superscript"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:411
+#: class/dashboard/subpage-main.php:387
 msgid "1st column of the Reference Container, Footnotes index"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:414
-msgid "2nd column of the Reference Container, Arrow / Hyperlink"
+#: class/dashboard/subpage-main.php:390
+msgid "2nd column of the Reference Container, Footnote text"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:417
-msgid "3rd column of the Reference Container, Footnote text"
-msgstr ""
-
-#: class/dashboard/subpage-main.php:436
+#: class/dashboard/subpage-main.php:409
 msgid "WordPress hook function name"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:437
+#: class/dashboard/subpage-main.php:410
 msgid "Activate"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:438
+#: class/dashboard/subpage-main.php:411
 msgid "WordPress documentation"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:486
-msgid "example string"
-msgstr ""
-
-#: class/dashboard/subpage-main.php:493
+#: class/dashboard/subpage-main.php:472
 msgid "Start your footnote with the following short code:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:496
+#: class/dashboard/subpage-main.php:475
 msgid "...and end your footnote with this short code:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:500
+#: class/dashboard/subpage-main.php:479
 msgid "will be displayed as:"
 msgstr ""
 
-#: class/dashboard/subpage-main.php:503
+#: class/dashboard/subpage-main.php:482
 #, php-format
-msgid ""
-"For further information please check out our %ssupport forum%s on WordPress."
-"org."
+msgid "For further information please check out our %ssupport forum%s on WordPress.org."
 msgstr ""
 
-#: class/dashboard/subpage-main.php:524
+#: class/dashboard/subpage-main.php:503
 msgid "Donate now"
 msgstr ""
 
@@ -514,7 +485,5 @@ msgstr ""
 
 #: class/widgets/reference-container.php:49
 #: class/widgets/reference-container.php:61
-msgid ""
-"The widget defines the position of the reference container if set to "
-"\"widget area\"."
+msgid "The widget defines the position of the reference container if set to \"widget area\"."
 msgstr ""

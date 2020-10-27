@@ -31,7 +31,12 @@ class MCI_Footnotes_Language {
 	 */
 	public static function loadTextDomain() {
 		// language file with localization exists
-		if (self::load(apply_filters('plugin_locale', get_locale()))) {
+		if (self::load(apply_filters('plugin_locale', get_locale(), ''))) {
+			// added 3rd (empty) parameter as a PHP-related bug fix thanks to MatKus (@matkus) in
+			// <https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/>
+			// <https://www.php.net/manual/en/migration71.incompatible.php>
+			// "Fatal error: Uncaught ArgumentCountError: Too few arguments […]"
+			// 2020-10-26T1609+0100
 			return;
 		}
 		// fallback to english

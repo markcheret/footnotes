@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 1.6.6
+Stable Tag: 2.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,6 +79,23 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.0 =
+- Major contributions taken from WordPress user pewgeuges:
+- **symbol for backlinks** removed
+- hyperlink moved to the reference number
+- Upgrade jQuery library
+- Account for disruptive PHP change
+- footnote links script independent
+- Get the “Continue reading” link to work in the mouse-over box
+- Debug printed posts and pages
+- Fix display of combined identical notes
+- Adjusted scrolling time and offset
+- Margins around footnotes
+- Mouse-over box display timing
+
+= 1.6.6 =
+- Beginning of translation to French
 
 = 1.6.5 =
 - Update: Fix for deprecated PHP function create_function() (man thanks to Felipe Lavín Z.)

@@ -34,10 +34,11 @@
 	cursor: pointer;
 	z-index: 1;
 }
-.footnote_plugin_tooltip_text a {
+.footnote_plugin_tooltip_text {
+	display: inline-block;
 	text-decoration: none;
 }
-.footnote_plugin_tooltip_text a:hover {
+.footnote_plugin_tooltip_text:hover {
 	text-decoration: underline;
 }
 
@@ -138,7 +139,7 @@ span.footnote_tooltip {
 	.footnote_tooltip {
 		display: none;
 	}
-	.footnote_plugin_tooltip_text a {
+	.footnote_plugin_tooltip_text {
 		color: inherit;
 	}
 	.footnote_plugin_index a {

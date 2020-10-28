@@ -9,7 +9,7 @@
  
 /*
  * Revised on the basis of version 1.6.5 (v1.6.6 unchanged).
- * Last modified: 2020-10-27T1249+0100
+ * Last modified: 2020-10-28T0301+0100
  */
  
 /* Footnotes */
@@ -112,7 +112,7 @@ span.footnote_tooltip {
 	width: 90%;
 }
 .footnote_plugin_text a {
-	color: #000099;
+	color: inherit;
 }
 
 /* index */
@@ -120,5 +120,5 @@ span.footnote_tooltip {
 	padding-right: 5px;
     min-width: 50px;
 	cursor: pointer;
-	color: #000099;
+	color: inherit;
 }

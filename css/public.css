@@ -8,13 +8,13 @@
  */
  
 /*
- * Revised on the basis of version 1.6.5 (v1.6.6 unchanged).
- * Last modified: 2020-10-28T0301+0100
+ * Last modified: 2020-10-28T1452+0100
  */
  
-/* Footnotes */
+/* footnotes */
 
-.footnote_tag_styling, .footnote_tag_styling:hover {
+.footnote_tag_styling,
+.footnote_tag_styling:hover {
     text-decoration: none;
     font-weight: normal;
 }
@@ -34,6 +34,12 @@
 	cursor: pointer;
 	z-index: 1;
 }
+.footnote_plugin_tooltip_text a {
+	text-decoration: none;
+}
+.footnote_plugin_tooltip_text a:hover {
+	text-decoration: underline;
+}
 
 /* tooltip infobox content */
 
@@ -45,15 +51,10 @@ span.footnote_tooltip {
 .continue {
 	font-style: italic;
 	color: green;
-	text-decoration: underline;
 }
 .continue:hover {
 	color: blue;
-}
-@media print {
-	.footnote_tooltip {
-		display: none;
-	}
+	text-decoration: underline;
 }
 
 /* reference container label */
@@ -107,18 +108,40 @@ span.footnote_tooltip {
 	vertical-align: top;
 }
 
-/* text */
-.footnote_plugin_text {
-	width: 90%;
-}
-.footnote_plugin_text a {
-	color: inherit;
-}
-
 /* index */
 .footnote_plugin_index {
 	padding-right: 5px;
     min-width: 50px;
 	cursor: pointer;
-	color: inherit;
+}
+.footnote_plugin_index a {
+	text-decoration: none;
+}
+.footnote_plugin_index a:hover {
+	text-decoration: underline;
+}
+
+/* text */
+.footnote_plugin_text {
+	width: 90%;
+}
+.footnote_plugin_text a {
+	text-decoration: none;
+}
+.footnote_plugin_text a:hover {
+	text-decoration: underline;
+}
+
+/* printing style */
+
+@media print {
+	.footnote_tooltip {
+		display: none;
+	}
+	.footnote_plugin_tooltip_text a {
+		color: inherit;
+	}
+	.footnote_plugin_index a {
+		color: inherit;
+	}
 }

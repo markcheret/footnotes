@@ -83,6 +83,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.0.2 =
 Bugfix: Dashboard: Available CSS selectors, last item display
 Bugfix: Footnote anchor and ID color to default on screen, to inherit in print
+Bugfix: Disabled underline in footnote anchors, underline only on hover
 
 = 2.0.1 =
 - Bugfix: Restored expand/collapse button of reference container
@@ -100,7 +101,7 @@ Bugfix: Footnote anchor and ID color to default on screen, to inherit in print
 - Debug printed posts and pages
 - Fix display of combined identical notes
 - Adjusted scrolling time and offset
-- Margins around footnotes
+- No margins around footnotes
 - Mouse-over box display timing
 
 = 1.6.6 =

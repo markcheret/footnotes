@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.0
+Stable Tag: 2.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,7 +80,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.0 =
+= 2.0.1 =
+- Bugfix: Restored expand/collapse button of reference container
+- Bugfix: Fixed public.css
+- Update: Language fr_FR along with es_ES, de_AT, de_DE, en_GB, en_US for 2.0
+
+= 2.0.0 =
 - Major contributions taken from WordPress user pewgeuges, all details here https://github.com/media-competence-institute/footnotes/blob/master/README.md:
 - **symbol for backlinks** removed
 - hyperlink moved to the reference number

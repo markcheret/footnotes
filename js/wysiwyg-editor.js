@@ -61,10 +61,10 @@
         getInfo : function() {
             return {
                 longname : 'Inserts the Footnotes short code.',
-                author : 'ManFisher Medien ManuFaktur',
-                authorurl : 'http://http://manfisher.net/',
+                author : 'Mark Cheret',
+                authorurl : 'https://cheret.de',
                 infourl : 'http://wordpress.org/plugins/footnotes/',
-                version : "1.5.0"
+                version : "2.0.0"
             };
         }
     });

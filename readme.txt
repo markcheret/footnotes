@@ -81,8 +81,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.0.2 =
-Bugfix: Dashboard: Available CSS selectors, last item display
-Bugfix: Footnote anchor and ID color to default on screen, to inherit in print
+- Bugfix: Dashboard: Available CSS selectors, last item display
+- Bugfix: Footnote anchor and ID color to default on screen, to inherit in print
+- Bugfix: Disabled underline in footnote anchors, underline only on hover
 
 = 2.0.1 =
 - Bugfix: Restored expand/collapse button of reference container
@@ -91,17 +92,17 @@ Bugfix: Footnote anchor and ID color to default on screen, to inherit in print
 
 = 2.0.0 =
 - Major contributions taken from WordPress user pewgeuges, all details here https://github.com/media-competence-institute/footnotes/blob/master/README.md:
-- **symbol for backlinks** removed
-- hyperlink moved to the reference number
-- Upgrade jQuery library
-- Account for disruptive PHP change
-- footnote links script independent
-- Get the “Continue reading” link to work in the mouse-over box
-- Debug printed posts and pages
-- Fix display of combined identical notes
-- Adjusted scrolling time and offset
-- Margins around footnotes
-- Mouse-over box display timing
+- Update: **symbol for backlinks** removed
+- Update: hyperlink moved to the reference number
+- Update: Upgrade jQuery library
+- Update: Account for disruptive PHP change
+- Bugfix: footnote links script independent
+- Bugfix: Get the “Continue reading” link to work in the mouse-over box
+- Bugfix: Debug printed posts and pages
+- Bugfix: Display of combined identical notes
+- Update: Adjusted scrolling time and offset
+- Bugfix: No margins around footnotes
+- Bugfix: Mouse-over box display timing
 
 = 1.6.6 =
 - Beginning of translation to French

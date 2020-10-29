@@ -6,7 +6,7 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:58
  */
-
+// Last modified: 2020-10-29T0805+0100
 
 /**
  * Handles each Template file for the Plugin Frontend (e.g. Settings Dashboard, Public pages, ...).
@@ -76,6 +76,8 @@ class MCI_Footnotes_Template {
 		// get Template file content
 		$this->a_str_OriginalContent = str_replace("\n", "", file_get_contents($l_str_TemplateFile));
 		$this->a_str_OriginalContent = str_replace("\r", "", $this->a_str_OriginalContent);
+		$this->a_str_OriginalContent = str_replace("\t", " ", $this->a_str_OriginalContent);
+		$this->a_str_OriginalContent = str_replace("  ", " ", $this->a_str_OriginalContent);
 		$this->reload();
 	}
 

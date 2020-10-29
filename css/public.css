@@ -1,17 +1,14 @@
 /**
  * Created by Stefan Herndler.
  * User: Stefan
- * Date: 15.05.14
- * Time: 16:21
- * Version: 1.0.7
+ * Created-Date: 15.05.14
+ * Created-Time: 16:21
  * Since: 1.0
+ * Version: 2.0.3
+ * Last modified: 2020-10-29T1343+0100
  */
  
-/*
- * Last modified: 2020-10-28T1452+0100
- */
- 
-/* footnotes */
+/* footnote tags */
 
 .footnote_tag_styling,
 .footnote_tag_styling:hover {
@@ -42,7 +39,7 @@
 	text-decoration: underline;
 }
 
-/* tooltip infobox content */
+/* tooltip infobox */
 
 span.footnote_tooltip {
 	font-size: inherit;
@@ -58,13 +55,21 @@ span.footnote_tooltip {
 	text-decoration: underline;
 }
 
-/* reference container label */
+/* reference container */
 
+.footnote-reference-container {
+	width: 100%;
+	border: none;
+}
 .footnote_container_prepare {
 	display: block !important;
 	padding-top: 24px !important;
 }
+#footnote_references_container td {
+	padding: none;
+}
 
+/* label */
 .footnote_container_prepare > p {
 	line-height: 1.3 !important;
 	margin-top: 1em !important;
@@ -81,11 +86,14 @@ span.footnote_tooltip {
 	text-align: left !important;
 	vertical-align: middle;
 }
-
 .footnote_container_prepare > p > span:first-child {
-	padding-left: 20px !important;
 	text-align: left !important;
 	font-size: 1.5em !important;
+}
+
+/* collapse button */
+#footnote_reference_container_collapse_button {
+	cursor: pointer;
 }
 .footnote_container_prepare > p > span:last-child a {
 	text-decoration: none;
@@ -95,48 +103,60 @@ span.footnote_tooltip {
 	color: #008800;
 }
 
-/* reference container */
-
-.footnote-reference-container {
-	width: 100%;
-	border: none;
-}
-
+/* footnotes */
 .footnote_plugin_index,
 .footnote_plugin_text {
 	border:none !important;
 	text-align: left;
 	vertical-align: top;
 }
-
-/* index */
-.footnote_plugin_index {
-	padding-right: 5px;
-    min-width: 50px;
-	cursor: pointer;
-}
-.footnote_plugin_index a {
-	text-decoration: none;
-}
-.footnote_plugin_index a:hover {
-	text-decoration: underline;
-}
-
-/* text */
-.footnote_plugin_text {
-	width: 90%;
-}
+.footnote_plugin_index a,
 .footnote_plugin_text a {
 	text-decoration: none;
 }
+.footnote_plugin_index a:hover,
 .footnote_plugin_text a:hover {
-	text-decoration: underline;
+	text-decoration: underline !important;
+}
+.footnote_plugin_index {
+	cursor: pointer;
+	overflow-wrap: unset;
+	word-wrap: unset;
+	word-wrap: normal !important;
+	word-break: unset;
+	word-break: keep-all !important;
+	white-space: nowrap;
+	max-width: 140px;
+	overflow: hidden;
+}
+@media only screen and (max-width: 768px) {
+	.footnote_plugin_index {
+		max-width: 100px;
+	}
 }
 
 /* printing style */
 
+.footnote_container_overall_wrapper {
+	page-break-inside: avoid;
+}
+.footnote_container_prepare {
+	page-break-after: avoid;
+}
+table.footnote_reference_container td {
+	display: block;
+}
+table.footnote_reference_container {
+	page-break-before: avoid;
+	page-break-inside: auto;
+}
+table.footnote_reference_container tr {
+	page-break-before: auto;
+}
 @media print {
-	.footnote_tooltip {
+	.footnote_tooltip,
+	.footnote_reference_container_collapse_button_outfit,
+	.footnote_plugin_index_arrow {
 		display: none;
 	}
 	.footnote_plugin_tooltip_text {
@@ -144,5 +164,9 @@ span.footnote_tooltip {
 	}
 	.footnote_plugin_index a {
 		color: inherit;
+		text-decoration: none !important;
+	}
+	div.post-meta-edit-link-wrapper { /*hides the Edit button in WP2020*/
+		display: none;  /*(added as a service)*/
 	}
 }

@@ -5,17 +5,10 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0
+ * 
  */
 /*
-Customization:  2020-06-23T0613+0200 custom styles, fixed print output [now in public.css]
-Customization:  2020-09-09T2140+0200 raised scroll level, shorter scroll time [reference-container.html]
-Customization:  2020-09-09T2140+0200 changed parameters off dashboard [tooltip.html]
-Debugging:      2020-09-09T2140+0200 fixed missing or wrong links #0#
-Usability:      2020-09-09T2140+0200 voided $a_str_Prefix #1#
-Usability:      2020-09-09T2140+0200 added line breaks #2#
-Translation:    2020-09-10T2104+0200 fix infobox text and missing setting #0#
-Upgrade v1.6.5: 2020-10-23T0252+0200 #3#
-Last modified:  2020-10-23T0611+0200
+Last modified: 2020-10-29T1402+0100
 */
 // If called directly, abort:
 defined( 'ABSPATH' ) or die;
@@ -316,6 +309,10 @@ class MCI_Footnotes_Task {
      * @return string
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
+		// prepare prepending post ID to make footnote IDs unique wrt archive view:
+		$id_underscore = get_the_id();
+		$id_underscore .= '_';
+		self::$a_str_Prefix = $id_underscore;
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
         // contains the starting position for the lookup of a footnote
@@ -350,7 +347,6 @@ class MCI_Footnotes_Task {
         do {
             // get first occurrence of the footnote short code [start]
             $i_int_len_Content = strlen($p_str_Content);
-            // #3# upgrade v1.6.5:
             if ($l_int_PosStart > $i_int_len_Content) $l_int_PosStart = $i_int_len_Content;
             $l_int_PosStart = strpos($p_str_Content, $l_str_StartingTag, $l_int_PosStart);
             // no short code found, stop here
@@ -382,12 +378,6 @@ class MCI_Footnotes_Task {
                     if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
                         $l_str_ExcerptText = substr($l_str_DummyText, 0, $l_int_MaxLength);
                         $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
-                        // #0#
-                        // col 48: replaced space with no-break space.
-                        // col 54: replaced three dots with horizontal ellipsis (&hellip;): “use the single Unicode …, and not three dots” <https://developer.mozilla.org/en-US/docs/Mozilla/Localization/Localization_content_best_practices>
-                        // col 139: added class.
-                        // col 162: added fragment id, or the footnote won’t work if JS is disabled.
-                        // col 294: added the random prefix for consistency, even if disabled.
                         $l_str_ExcerptText .= '&nbsp;&#x2026; ' . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a class="continue" href="#footnote_plugin_reference_' . self::$a_str_Prefix.$l_str_Index . '" onclick="footnote_moveToAnchor(\'footnote_plugin_reference_' . self::$a_str_Prefix . $l_str_Index . '\');">', '</a>');
                     }
                 }
@@ -500,7 +490,7 @@ class MCI_Footnotes_Task {
                     "text" => $l_str_FootnoteText
                 )
             );
-            // #2# added line breaks for source code legibility:
+            // extra line breaks for page source legibility:
             $footnote_item_temp = $l_obj_Template->getContent();
             $footnote_item_temp .= "\r\n\r\n";
             $l_str_Body .= $footnote_item_temp;
@@ -522,8 +512,6 @@ class MCI_Footnotes_Task {
         // free all found footnotes if reference container will be displayed
         self::$a_arr_Footnotes = array();
         
-        // #1# Disabled the random prefix preventing fn refs from being shared.
-        //self::$a_str_Prefix = rand(1000, 9999) . "_";
         return $l_obj_TemplateContainer->getContent();
     }
 }

@@ -7,7 +7,7 @@
  * @since 1.5.0
  * 
  * Edited for v2.0.0 and following.
- * Last modified   2020-11-01T0342+0100
+ * Last modified   2020-11-01T1945+0100
  */
 
 // If called directly, abort:
@@ -375,8 +375,9 @@ class MCI_Footnotes_Task {
                     $l_str_DummyText = strip_tags($l_str_FootnoteText);
                     if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
                         $l_str_ExcerptText = substr($l_str_DummyText, 0, $l_int_MaxLength);
-                        $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
-                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a class="continue" href="#footnote_plugin_reference_' . self::$a_str_Prefix.$l_str_Index . '" onclick="footnote_moveToAnchor(\'footnote_plugin_reference_' . self::$a_str_Prefix . $l_str_Index . '\');">', '</a>');
+						$l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
+						// Removed hyperlink navigation on user request, but left <a> element for style.
+                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a class="continue" onclick="footnote_moveToAnchor(\'footnote_plugin_reference_' . self::$a_str_Prefix . $l_str_Index . '\');">', '</a>');
                     }
                 }
 

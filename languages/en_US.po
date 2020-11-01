@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: footnotes\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
 "POT-Creation-Date: 2014-10-18 20:59+0100\n"
-"PO-Revision-Date: 2020-11-01T0622+0100\n"
-"Last-Translator: <pewgeuges@gmail.com>\n"
+"PO-Revision-Date: 2020-11-01T1641+0100\n"
+"Last-Translator: @pewgeuges\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -106,352 +106,367 @@ msgstr "WordPress version"
 msgid "Active Theme"
 msgstr "Active Theme"
 
-#: class/dashboard/subpage-main.php:60 class/hooks.php:82
+#: class/dashboard/subpage-main.php:62 class/hooks.php:82
 msgid "Settings"
 msgstr "Settings"
 
-#: class/dashboard/subpage-main.php:61
+#: class/dashboard/subpage-main.php:63
 msgid "Customize"
 msgstr "Customize"
 
-#: class/dashboard/subpage-main.php:63
-msgid "Expert mode"
-msgstr "Expert mode"
-
 #: class/dashboard/subpage-main.php:65
+msgid "Expert mode"
+msgstr "Expert Mode"
+
+#: class/dashboard/subpage-main.php:67
 msgid "How to"
-msgstr "How to"
+msgstr "Quick Start"
 
-#: class/dashboard/subpage-main.php:78
+#: class/dashboard/subpage-main.php:84
 msgid "References Container"
-msgstr "References Container"
+msgstr "Reference container"
 
-#: class/dashboard/subpage-main.php:79
-#, php-format
+#: class/dashboard/subpage-main.php:85
 msgid "Footnotes styling"
 msgstr "Footnotes main settings"
 
-#: class/dashboard/subpage-main.php:81
+#: class/dashboard/subpage-main.php:88
 msgid "Other"
 msgstr "Other settings"
 
-#: class/dashboard/subpage-main.php:83
+#: class/dashboard/subpage-main.php:91
+msgid "Hyperlink symbol in the Reference container"
+msgstr "Symbol clarifying the backlink functionality of the footnote number in the reference container"
+
+#: class/dashboard/subpage-main.php:92
 msgid "Superscript layout"
 msgstr "Around the inline footnote referrers"
 
-#: class/dashboard/subpage-main.php:84
+#: class/dashboard/subpage-main.php:93
 msgid "Mouse-over box"
 msgstr "Mouse-over box"
 
-#: class/dashboard/subpage-main.php:86
+#: class/dashboard/subpage-main.php:94
 msgid "Add custom CSS to the public page"
 msgstr "Add custom CSS to the public page"
 
-#: class/dashboard/subpage-main.php:88
+#: class/dashboard/subpage-main.php:96
 msgid "WordPress hooks to look for Footnote short codes"
 msgstr "WordPress hooks to look for footnote short codes"
 
-#: class/dashboard/subpage-main.php:90
+#: class/dashboard/subpage-main.php:98
 msgid "Brief introduction in how to use the plugin"
 msgstr "Brief introduction in how to use the plugin"
 
-#: class/dashboard/subpage-main.php:91
+#: class/dashboard/subpage-main.php:99
 msgid "Help us to improve our Plugin"
 msgstr "Help us to improve our plugin"
 
-#: class/dashboard/subpage-main.php:104
+#: class/dashboard/subpage-main.php:112
 msgid "in the footer"
 msgstr "in the footer"
 
-#: class/dashboard/subpage-main.php:105
+#: class/dashboard/subpage-main.php:113
 msgid "at the end of the post"
 msgstr "at the end of the page"
 
-#: class/dashboard/subpage-main.php:106
+#: class/dashboard/subpage-main.php:114
 msgid "in the widget area"
 msgstr "in the widget area"
 
-#: class/dashboard/subpage-main.php:114
+#: class/dashboard/subpage-main.php:122
 msgid "References label"
 msgstr "Heading"
 
-#: class/dashboard/subpage-main.php:117
+#: class/dashboard/subpage-main.php:125
 msgid "Collapse references by default"
 msgstr "Collapse by default"
 
-#: class/dashboard/subpage-main.php:120
+#: class/dashboard/subpage-main.php:128
 msgid "Where shall the reference container appear"
 msgstr "Position"
 
-#: class/dashboard/subpage-main.php:139 class/dashboard/subpage-main.php:239
-#: class/dashboard/subpage-main.php:290
+#: class/dashboard/subpage-main.php:147 class/dashboard/subpage-main.php:247
+#: class/dashboard/subpage-main.php:298
 msgid "Yes"
 msgstr "Yes"
 
-#: class/dashboard/subpage-main.php:140 class/dashboard/subpage-main.php:240
-#: class/dashboard/subpage-main.php:291
+#: class/dashboard/subpage-main.php:148 class/dashboard/subpage-main.php:248
+#: class/dashboard/subpage-main.php:299
 msgid "No"
 msgstr "No"
 
-#: class/dashboard/subpage-main.php:147 class/dashboard/subpage-main.php:154
+#: class/dashboard/subpage-main.php:155 class/dashboard/subpage-main.php:162
 msgid "user defined"
 msgstr "user defined"
 
-#: class/dashboard/subpage-main.php:158
+#: class/dashboard/subpage-main.php:166
 msgid "Arabic Numbers - Plain"
 msgstr "Plain Arabic Numbers"
 
-#: class/dashboard/subpage-main.php:159
+#: class/dashboard/subpage-main.php:167
 msgid "Arabic Numbers - Leading 0"
 msgstr "Zero-padded Arabic Numbers"
 
-#: class/dashboard/subpage-main.php:160
+#: class/dashboard/subpage-main.php:168
 msgid "Latin Character - lower case"
 msgstr "Lowercase Latin letters"
 
-#: class/dashboard/subpage-main.php:161
+#: class/dashboard/subpage-main.php:169
 msgid "Latin Character - upper case"
 msgstr "Uppercase Latin letters"
 
-#: class/dashboard/subpage-main.php:162
+#: class/dashboard/subpage-main.php:170
 msgid "Roman Numerals"
 msgstr "Roman Numerals"
 
-#: class/dashboard/subpage-main.php:170
+#: class/dashboard/subpage-main.php:178
 msgid "Combine identical footnotes"
 msgstr "Combine identical footnotes"
 
-#: class/dashboard/subpage-main.php:173
+#: class/dashboard/subpage-main.php:181
 msgid "Footnote tag starts with"
 msgstr "Footnote start tag short code"
 
-#: class/dashboard/subpage-main.php:176
+#: class/dashboard/subpage-main.php:184
 msgid "and ends with"
 msgstr "Footnote end tag short code"
 
-#: class/dashboard/subpage-main.php:185
+#: class/dashboard/subpage-main.php:193
 msgid "Counter style"
 msgstr "Counter style"
 
-#: class/dashboard/subpage-main.php:207 class/task.php:154
+#: class/dashboard/subpage-main.php:215 class/task.php:154
 #, php-format
 msgid "I %s %s"
 msgstr "I %s %s"
 
-#: class/dashboard/subpage-main.php:208 class/task.php:157
+#: class/dashboard/subpage-main.php:216 class/task.php:157
 #, php-format
 msgid "this site uses the awesome %s Plugin"
 msgstr "This site uses the awesome %s Plugin."
 
-#: class/dashboard/subpage-main.php:209 class/task.php:161
+#: class/dashboard/subpage-main.php:217 class/task.php:161
 #, php-format
 msgid "extra smooth %s"
 msgstr "%s"
 
-#: class/dashboard/subpage-main.php:210
+#: class/dashboard/subpage-main.php:218
 msgid "random text"
 msgstr "random-driven display of either variant"
 
-#: class/dashboard/subpage-main.php:211
+#: class/dashboard/subpage-main.php:219
 #, php-format
 msgid "Don't display a %s %s text in my footer."
 msgstr "no display of any “%s %s” mention in the footer"
 
-#: class/dashboard/subpage-main.php:219
+#: class/dashboard/subpage-main.php:227
 #, php-format
 msgid "Tell the world you're using %s"
 msgstr "Tell the world you're using %s"
 
-#: class/dashboard/subpage-main.php:222
+#: class/dashboard/subpage-main.php:230
 #, php-format
 msgid "Don't tell the world you're using %s on specific pages by adding the following short code:"
 msgstr "Shortcode to inhibit the display of the %s mention on specific pages:"
 
-#: class/dashboard/subpage-main.php:248
+#: class/dashboard/subpage-main.php:256
 msgid "Allow footnotes on Summarized Posts"
 msgstr "Display footnotes in abstracts too"
 
-#: class/dashboard/subpage-main.php:250
+#: class/dashboard/subpage-main.php:258
 msgid "Enable the Expert mode"
 msgstr "Enable the Expert mode"
 
-#: class/dashboard/subpage-main.php:270
+#: class/dashboard/subpage-main.php:278
 msgid "Before Footnotes index"
 msgstr "Before the footnote referrer"
 
-#: class/dashboard/subpage-main.php:273
+#: class/dashboard/subpage-main.php:281
 msgid "After Footnotes index"
 msgstr "After the footnote referrer"
 
-#: class/dashboard/subpage-main.php:295
+#: class/dashboard/subpage-main.php:303
 msgid "top left"
 msgstr "top left"
 
-#: class/dashboard/subpage-main.php:296
+#: class/dashboard/subpage-main.php:304
 msgid "top center"
 msgstr "center top"
 
-#: class/dashboard/subpage-main.php:297
+#: class/dashboard/subpage-main.php:305
 msgid "top right"
 msgstr "top right"
 
-#: class/dashboard/subpage-main.php:298
+#: class/dashboard/subpage-main.php:306
 msgid "center right"
 msgstr "center right"
 
-#: class/dashboard/subpage-main.php:299
+#: class/dashboard/subpage-main.php:307
 msgid "bottom right"
 msgstr "bottom right"
 
-#: class/dashboard/subpage-main.php:300
+#: class/dashboard/subpage-main.php:308
 msgid "bottom center"
 msgstr "center bottom"
 
-#: class/dashboard/subpage-main.php:301
+#: class/dashboard/subpage-main.php:309
 msgid "bottom left"
 msgstr "bottom left"
 
-#: class/dashboard/subpage-main.php:302
+#: class/dashboard/subpage-main.php:310
 msgid "center left"
 msgstr "center left"
 
-#: class/dashboard/subpage-main.php:309
+#: class/dashboard/subpage-main.php:317
 msgid "Enable the mouse-over box"
 msgstr "Enable the tooltip infobox"
 
-#: class/dashboard/subpage-main.php:312
+#: class/dashboard/subpage-main.php:320
 msgid "Display only an excerpt"
 msgstr "Truncate the note in the infobox"
 
-#: class/dashboard/subpage-main.php:315
+#: class/dashboard/subpage-main.php:323
 msgid "Maximum characters for the excerpt"
 msgstr "Maximum number of characters"
 
-#: class/dashboard/subpage-main.php:318
+#: class/dashboard/subpage-main.php:326
 msgid "Position"
 msgstr "Position"
 
-#: class/dashboard/subpage-main.php:321
+#: class/dashboard/subpage-main.php:329
 msgid "Offset X (px)"
 msgstr "Horizontal offset"
 
-#: class/dashboard/subpage-main.php:323
+#: class/dashboard/subpage-main.php:331
 msgid "Offset (X axis) in px (may be negative)"
 msgstr "pixels; negative value for a leftwards offset"
 
-#: class/dashboard/subpage-main.php:325
+#: class/dashboard/subpage-main.php:333
 msgid "Offset Y (px)"
 msgstr "Vertical offset downwards"
 
-#: class/dashboard/subpage-main.php:327
+#: class/dashboard/subpage-main.php:335
 msgid "Offset (Y axis) in px (may be negative)"
 msgstr "pixels; negative value for a upwards offset"
 
-#: class/dashboard/subpage-main.php:329
+#: class/dashboard/subpage-main.php:337
 msgid "Color"
 msgstr "Text color"
 
-#: class/dashboard/subpage-main.php:331
+#: class/dashboard/subpage-main.php:339
 msgid "Empty color will use the default color of the current theme."
 msgstr "Leave empty to use the current theme’s default text color."
 
-#: class/dashboard/subpage-main.php:333
+#: class/dashboard/subpage-main.php:341
 msgid "Background color"
 msgstr "Background color"
 
-#: class/dashboard/subpage-main.php:335
+#: class/dashboard/subpage-main.php:343
 msgid "Empty color will use the default background-color of the current theme."
 msgstr "Leave empty to use the current theme’s default background color."
 
-#: class/dashboard/subpage-main.php:337
+#: class/dashboard/subpage-main.php:345
 msgid "Border width (px)"
 msgstr "Border width"
 
-#: class/dashboard/subpage-main.php:339
+#: class/dashboard/subpage-main.php:347
 msgid "Set the width to 0px to hide the border."
 msgstr "pixels; 0 for borderless"
 
-#: class/dashboard/subpage-main.php:341
+#: class/dashboard/subpage-main.php:349
 msgid "Border color"
 msgstr "Border color"
 
-#: class/dashboard/subpage-main.php:343
+#: class/dashboard/subpage-main.php:351
 msgid "Empty color will use the default border-color of the current theme."
 msgstr "Leave empty to use the current theme’s default border color."
 
-#: class/dashboard/subpage-main.php:345
+#: class/dashboard/subpage-main.php:353
 msgid "Border radius (px)"
 msgstr "Rounded corner radius"
 
-#: class/dashboard/subpage-main.php:347
+#: class/dashboard/subpage-main.php:355
 msgid "Set the radius to 0px to avoid a radius."
 msgstr "pixels; 0 for sharp corners"
 
-#: class/dashboard/subpage-main.php:349
+#: class/dashboard/subpage-main.php:357
 msgid "Max. width (px)"
 msgstr "Maximum width"
 
-#: class/dashboard/subpage-main.php:351
+#: class/dashboard/subpage-main.php:359
 msgid "Set the max-width to 0px to disable this setting."
 msgstr "pixels; 0 to disable this setting"
 
-#: class/dashboard/subpage-main.php:353
+#: class/dashboard/subpage-main.php:361
 msgid "Box shadow color"
 msgstr "Box shadow color"
 
-#: class/dashboard/subpage-main.php:355
+#: class/dashboard/subpage-main.php:363
 msgid "Empty color will use the default box shadow of the current theme."
 msgstr "Leave empty to use the current theme’s default box shadow color."
 
-#: class/dashboard/subpage-main.php:375
+#: class/dashboard/subpage-main.php:387
+msgid "Hyperlink symbol"
+msgstr "Choose symbol"
+
+#: class/dashboard/subpage-main.php:390
+msgid "or enter a user defined symbol"
+msgstr "or enter a user defined symbol"
+
+#: class/dashboard/subpage-main.php:392
+msgid "if set it overrides the hyperlink symbol above"
+msgstr "When set, this overrides the symbol above; enter space to display no symbol."
+
+#: class/dashboard/subpage-main.php:411
 msgid "Add custom CSS"
 msgstr "Add custom CSS"
 
-#: class/dashboard/subpage-main.php:378
+#: class/dashboard/subpage-main.php:414
 msgid "Available CSS classes to customize the footnotes and the reference container"
 msgstr "Available CSS classes to customize the footnotes and the reference container"
 
-#: class/dashboard/subpage-main.php:381
+#: class/dashboard/subpage-main.php:417
 msgid "superscript, Footnotes index"
 msgstr "&lt;sup&gt; element of the superscript footnote referrer"
 
-#: class/dashboard/subpage-main.php:384
+#: class/dashboard/subpage-main.php:420
 msgid "mouse-over box, tooltip for each superscript"
 msgstr "&lt;span&gt; element of the tooltip infobox"
 
-#: class/dashboard/subpage-main.php:387
+#: class/dashboard/subpage-main.php:423
 msgid "1st column of the Reference Container, Footnotes index"
 msgstr "&lt;td&gt; element in the 1ˢᵗ column of the notes container: ID with backlink"
 
-#: class/dashboard/subpage-main.php:390
+#: class/dashboard/subpage-main.php:426
 msgid "2nd column of the Reference Container, Footnote text"
 msgstr "&lt;td&gt; element in the 2ⁿᵈ column of the notes container: footnote text"
 
-#: class/dashboard/subpage-main.php:409
+#: class/dashboard/subpage-main.php:445
 msgid "WordPress hook function name"
 msgstr "WordPress hook name"
 
-#: class/dashboard/subpage-main.php:410
+#: class/dashboard/subpage-main.php:446
 msgid "Activate"
 msgstr "Activate"
 
-#: class/dashboard/subpage-main.php:411
+#: class/dashboard/subpage-main.php:447
 msgid "WordPress documentation"
 msgstr "WordPress documentation"
 
-#: class/dashboard/subpage-main.php:472
+#: class/dashboard/subpage-main.php:508
 msgid "Start your footnote with the following short code:"
 msgstr "Start your footnote with the following short code:"
 
-#: class/dashboard/subpage-main.php:475
+#: class/dashboard/subpage-main.php:511
 msgid "...and end your footnote with this short code:"
 msgstr "...and end your footnote with this short code:"
 
-#: class/dashboard/subpage-main.php:479
+#: class/dashboard/subpage-main.php:515
 msgid "will be displayed as:"
 msgstr "That will display as:"
 
-#: class/dashboard/subpage-main.php:482
+#: class/dashboard/subpage-main.php:518
 #, php-format
 msgid "For further information please check out our %ssupport forum%s on WordPress.org."
 msgstr "For further information please check out our %ssupport forum%s on WordPress.org."

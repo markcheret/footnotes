@@ -1,10 +1,12 @@
 # Copyright (C) 2014 
 # This file is distributed under the same license as the package.
 msgid ""
-msgstr "Project-Id-Version: footnotes\nReport-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
+msgstr ""
+"Project-Id-Version: footnotes\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
 "POT-Creation-Date: 2014-10-18 20:59+0100\n"
-"PO-Revision-Date: 2020-10-25T2209+0100\n"
-"Last-Translator: Stefan Herndler <support@herndler.org>\n"
+"PO-Revision-Date: 2020-11-01T0622+0100\n"
+"Last-Translator: <pewgeuges@gmail.com>\n"
 "Language-Team: Pablo Laguna <pablolaguna@vera.com.uy>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
@@ -126,8 +128,8 @@ msgstr "Sección de notas"
 
 #: class/dashboard/subpage-main.php:79
 #, php-format
-msgid "%s styling"
-msgstr "Apariencia de %s"
+msgid "Footnotes styling"
+msgstr "Ajustes básicos"
 
 #: class/dashboard/subpage-main.php:81
 msgid "Other"
@@ -339,11 +341,11 @@ msgstr "en pixels; valor negativo para desplazar a la izquierda"
 
 #: class/dashboard/subpage-main.php:325
 msgid "Offset Y (px)"
-msgstr "Desplazamiento vertical"
+msgstr "Desplazamiento vertical hacia abajo"
 
 #: class/dashboard/subpage-main.php:327
 msgid "Offset (Y axis) in px (may be negative)"
-msgstr "en pixels; valor negativo para desplazar hacia abajo"
+msgstr "en pixels; valor negativo para desplazar hacia arriba"
 
 #: class/dashboard/subpage-main.php:329
 msgid "Color"

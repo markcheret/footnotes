@@ -5,6 +5,8 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
+ * 
+ * Edited for v2.0.4   2020-11-01T0509+0100
  */
 
 /**
@@ -72,17 +74,23 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @author Stefan Herndler
      * @since  1.5.0
      * @return array
+     * 
+     * Edited for v2.0.4 to reflect changes in display since WPv5.5
+     * Details in class/config.php
      */
     protected function getMetaBoxes() {
         return array(
+            // Change string "%s styling" to "Footnotes styling":
+            $this->addMetaBox("settings", "styling", __("Footnotes styling", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Styling"),
             $this->addMetaBox("settings", "reference-container", __("References Container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "ReferenceContainer"),
-            $this->addMetaBox("settings", "styling", sprintf(__("%s styling", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME), "Styling"),
-            $this->addMetaBox("settings", "love", MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, "Love"),
+            // Leave intact since this is not localized:
+            $this->addMetaBox("settings", "love", MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, "Love"),
             $this->addMetaBox("settings", "other", __("Other", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Other"),
 
+            // This is restored to meet user demand for arrow symbol semantics:
+            $this->addMetaBox("customize", "hyperlink-arrow", __("Hyperlink symbol in the Reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "HyperlinkArrow"),
             $this->addMetaBox("customize", "superscript", __("Superscript layout", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript"),
             $this->addMetaBox("customize", "mouse-over-box", __("Mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
-
             $this->addMetaBox("customize", "custom-css", __("Add custom CSS to the public page", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
 
             $this->addMetaBox("expert", "lookup", __("WordPress hooks to look for Footnote short codes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "lookupHooks"),
@@ -354,6 +362,34 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "box-shadow-color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR),
                 "notice-box-shadow-color" => __("Empty color will use the default box shadow defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
+            )
+        );
+        // display template with replaced placeholders
+        echo $l_obj_Template->getContent();
+    }
+
+    /**
+     * Displays all settings for the prepended symbol
+     *
+     * @author Stefan Herndler
+     * @since 1.5.0
+     * 
+     * Edited heading for v2.0.4
+     * The former 'hyperlink arrow' became 'prepended arrow' in v2.0.3 after
+     * a user complaint about missing backlinking semantics of the footnote number.
+     */
+    public function HyperlinkArrow() {
+        // load template file
+        $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "customize-hyperlink-arrow");
+        // replace all placeholders
+        $l_obj_Template->replace(
+            array(
+                "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, __("Hyperlink symbol", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "symbol" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::getArrow()),
+
+                "label-user-defined" => $this->addLabel(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED, __("or enter a user defined symbol", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "user-defined" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED),
+                "comment" => __("if set it overrides the hyperlink symbol above", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
             )
         );
         // display template with replaced placeholders

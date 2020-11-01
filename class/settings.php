@@ -5,6 +5,8 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:43
+ * 
+ * Edited for v2.0.4   2020-11-01T0333+0100
  */
 
 
@@ -372,7 +374,10 @@ class MCI_Footnotes_Settings {
 			self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
 			self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => '',
 			self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
-			self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => 'yes',
+			// Identical footnotes should not be combined by default 
+			// as long as the feature raises criticism for malfunctioning:
+			// <https://wordpress.org/support/topic/too-many-errors-18/>
+			self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => '',
 			self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
 			self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
 			self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',

@@ -6,10 +6,10 @@
  * @author Stefan Herndler
  * @since 1.5.0
  * 
+ * Edited for v2.0.0 and following.
+ * Last modified   2020-11-01T0342+0100
  */
-/*
-Last modified: 2020-10-29T1402+0100
-*/
+
 // If called directly, abort:
 defined( 'ABSPATH' ) or die;
 
@@ -309,10 +309,8 @@ class MCI_Footnotes_Task {
      * @return string
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
-		// prepare prepending post ID to make footnote IDs unique wrt archive view:
-		$id_underscore = get_the_id();
-		$id_underscore .= '_';
-		self::$a_str_Prefix = $id_underscore;
+        // prepare prepending post ID to make footnote IDs unique wrt archive view:
+        self::$a_str_Prefix = get_the_id() . '_';
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
         // contains the starting position for the lookup of a footnote

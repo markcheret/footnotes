@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.3
+Stable Tag: 2.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,9 +80,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0.4 =
+- Update: Restored arrow settings to customize or disable the now prepended arrow symbol
+- Bugfix: Reference container: layout: removed inconvenient left/right cellpadding
+- Bugfix: Tooltip infobox: improved layout with inherited font size by lower line height
+- Bugfix: Tooltip infobox: 'Continue reading' button: disabled default underline
+- Bugfix: Fixed display of 2 dashboard headings
+
 = 2.0.3 =
 - Bugfix: Layout: Self-adjusting width of ID column but hidden overflow
-- Update: Prepended transitional up arrow to backlinking footnote numbers
+- Update: Prepended transitional up arrow to backlinking footnote numbers after a user complaint about missing backlinking semantics of the footnote number
 - Bugfix: Fragment IDs: Prepended post ID to footnote number
 - Bugfix: Feed plugin version in style sheet query string for cache busting
 - Bugfix: Print style: Hide reference collapse button when printing

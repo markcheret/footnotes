@@ -1,10 +1,12 @@
 # Copyright (C) 2014 
 # This file is distributed under the same license as the package.
 msgid ""
-msgstr "Project-Id-Version: footnotes\nReport-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
+msgstr ""
+"Project-Id-Version: footnotes\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
 "POT-Creation-Date: 2014-10-18 20:59+0100\n"
-"PO-Revision-Date: 2020-10-25T2214+0100\n"
-"Last-Translator: Stefan Herndler <support@herndler.org>\n"
+"PO-Revision-Date: 2020-11-01T0622+0100\n"
+"Last-Translator: <pewgeuges@gmail.com>\n"
 "Language-Team: enter your name <enter@your.email>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -126,7 +128,7 @@ msgstr ""
 
 #: class/dashboard/subpage-main.php:79
 #, php-format
-msgid "%s styling"
+msgid "Footnotes styling"
 msgstr ""
 
 #: class/dashboard/subpage-main.php:81

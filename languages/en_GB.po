@@ -1,10 +1,12 @@
 # Copyright (C) 2014 
 # This file is distributed under the same license as the package.
 msgid ""
-msgstr "Project-Id-Version: footnotes\nReport-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
+msgstr ""
+"Project-Id-Version: footnotes\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
 "POT-Creation-Date: 2014-10-18 20:58+0100\n"
-"PO-Revision-Date: 2020-10-26T2229+0100\n"
-"Last-Translator: Stefan Herndler <support@herndler.org>\n"
+"PO-Revision-Date: 2020-11-01T0622+0100\n"
+"Last-Translator: <pewgeuges@gmail.com>\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -126,12 +128,12 @@ msgstr "References Container"
 
 #: class/dashboard/subpage-main.php:79
 #, php-format
-msgid "%s styling"
-msgstr "%s styling"
+msgid "Footnotes styling"
+msgstr "Footnotes main settings"
 
 #: class/dashboard/subpage-main.php:81
 msgid "Other"
-msgstr "Other"
+msgstr "Other settings"
 
 #: class/dashboard/subpage-main.php:83
 msgid "Superscript layout"
@@ -339,11 +341,11 @@ msgstr "pixels; negative value for a leftwards offset"
 
 #: class/dashboard/subpage-main.php:325
 msgid "Offset Y (px)"
-msgstr "Vertical offset"
+msgstr "Vertical offset downwards"
 
 #: class/dashboard/subpage-main.php:327
 msgid "Offset (Y axis) in px (may be negative)"
-msgstr "pixels; negative value for a downwards offset"
+msgstr "pixels; negative value for a upwards offset"
 
 #: class/dashboard/subpage-main.php:329
 msgid "Color"
@@ -391,7 +393,7 @@ msgstr "Maximum width"
 
 #: class/dashboard/subpage-main.php:351
 msgid "Set the max-width to 0px to disable this setting."
-msgstr "pixels; 0 for limiting the width only by the window edge"
+msgstr "pixels; 0 to disable this setting"
 
 #: class/dashboard/subpage-main.php:353
 msgid "Box shadow color"

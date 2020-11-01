@@ -8,9 +8,10 @@
  * @author Stefan Herndler
  * @since 1.5.0 12.09.14 10:56
  * 
- * Edited for v2.0.0: Added jQueryUI following @vonpiernik   2020-10-26T1907+0100
+ * Edited for v2.0.0: Added jQueryUI from CDN   2020-10-26T1907+0100
  * Edited for v2.0.3: Added style sheet versioning   2020-10-29T1413+0100
  * Edited for v2.0.4: Enqueuing settings.css   2020-11-01T0317+0100
+ * Edited for v2.0.4: Added jQuery UI from WordPress   2020-11-01T1902+0100
  */
 
 
@@ -95,25 +96,29 @@ class MCI_Footnotes {
      * @author Stefan Herndler
      * @since 1.5.0
      * 
-     * Updated for v2.0.0 by adding jQueryUI following vonpiernik (@vonpiernik).
-     * See <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>
+     * Updated for v2.0.4 by adding jQueryUI from WordPress following @check2020de:
+	 * <https://wordpress.org/support/topic/gdpr-issue-with-jquery/>
+     * See <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
      * 
      * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.
      */
     public function registerPublic() {
+		
+		// add the jQuery plugin (already registered by WordPress)
+		wp_enqueue_script('jquery');
+		
+        // Add jQueryUI: 'no need to enqueue -core, because dependancies are set'
+		wp_enqueue_script( 'jquery-ui-widget' );
+		wp_enqueue_script( 'jquery-ui-mouse' );
+		wp_enqueue_script( 'jquery-ui-accordion' );
+		wp_enqueue_script( 'jquery-ui-autocomplete' );
+		wp_enqueue_script( 'jquery-ui-slider' );
         
-        // Add jQueryUI:
-        wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, true );
-        wp_enqueue_script( 'jQueryUI' );
+        // Add jQuery tools:
+        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
         
         // IMPORTANT: up-to-date plugin version number for cache busting.
         wp_enqueue_style('mci-footnotes-css-public',   plugins_url('../css/public.css',   __FILE__), '', '2.0.4');
         wp_enqueue_style('mci-footnotes-css-settings', plugins_url('../css/settings.css', __FILE__), '', '2.0.4');
-        
-        // add the jQuery plugin (already registered by WordPress)
-        wp_enqueue_script('jquery');
-        
-        // Finish adding jQueryUI:
-        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), ['jQueryUI']);
     }
 }

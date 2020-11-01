@@ -82,6 +82,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.4 =
 - Update: Restored arrow settings to customize or disable the now prepended arrow symbol
+- Update: Added jQuery UI from WordPress
 - Bugfix: Reference container: layout: removed inconvenient left/right cellpadding
 - Bugfix: Tooltip infobox: improved layout with inherited font size by lower line height
 - Bugfix: Tooltip infobox: 'Continue reading' button: disabled default underline

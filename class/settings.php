@@ -407,13 +407,15 @@ class MCI_Footnotes_Settings {
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 			self::C_STR_CUSTOM_CSS => ''
 		),
+		// These should all be enabled by default.
+		// See <https://wordpress.org/support/topic/more-feature-ideas/>
         "footnotes_storage_expert" => array(
-            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
+            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_THE_POST => ''
+            self::C_BOOL_EXPERT_LOOKUP_THE_POST => 'yes'
         )
 	);
 

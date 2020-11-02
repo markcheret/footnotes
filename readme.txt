@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.4
+Stable Tag: 2.0.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,6 +79,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.0.5 =
+- Bugfix: Input boxes on public pages
+- Bugfix: Get references container close to content, not below all other features
+- Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues
+- Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
+- Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal
 
 = 2.0.4 =
 - Update: Restored arrow settings to customize or disable the now prepended arrow symbol

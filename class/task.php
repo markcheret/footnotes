@@ -7,7 +7,8 @@
  * @since 1.5.0
  * 
  * Edited for v2.0.0 and following.
- * Last modified   2020-11-01T1945+0100
+ * 
+ * Last modified   2020-11-02T1147+0100
  */
 
 // If called directly, abort:
@@ -53,31 +54,40 @@ class MCI_Footnotes_Task {
      *
      * @author Stefan Herndler
      * @since 1.5.0
+	 * 
+	 * Edited for v2.0.5   2020-11-02T0330+0100
+	 * 
+	 * Explicitly set all priority to default "10" instead of lowest "PHP_INT_MAX", 
+	 * especially for the_content, or footnotes won’t display beneath the content but 
+	 * below other features added by other plugins.
+	 * Although the default, 10 seems to suffice.
+	 * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
+	 * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
      */
     public function registerHooks() {
         // append custom css to the header
-        add_filter('wp_head', array($this, "wp_head"), PHP_INT_MAX);
+        add_filter('wp_head', array($this, "wp_head"), 10);
 
         // append the love and share me slug to the footer
-        add_filter('wp_footer', array($this, "wp_footer"), PHP_INT_MAX);
+        add_filter('wp_footer', array($this, "wp_footer"), 10);
 
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE))) {
-            add_filter('the_title', array($this, "the_title"), PHP_INT_MAX);
+            add_filter('the_title', array($this, "the_title"), 10);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
-            add_filter('the_content', array($this, "the_content"), PHP_INT_MAX);
+            add_filter('the_content', array($this, "the_content"), 10);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
-             add_filter('the_excerpt', array($this, "the_excerpt"), PHP_INT_MAX);
+             add_filter('the_excerpt', array($this, "the_excerpt"), 10);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE))) {
-            add_filter('widget_title', array($this, "widget_title"), PHP_INT_MAX);
+            add_filter('widget_title', array($this, "widget_title"), 10);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
-            add_filter('widget_text', array($this, "widget_text"), PHP_INT_MAX);
+            add_filter('widget_text', array($this, "widget_text"), 10);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST))) {
-            add_filter('the_post', array($this, "the_post"), PHP_INT_MAX);
+            add_filter('the_post', array($this, "the_post"), 10);
         }
         // reset stored footnotes when displaying the header
         self::$a_arr_Footnotes = array();

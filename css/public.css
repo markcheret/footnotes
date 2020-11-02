@@ -4,8 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.0.4
- * Last modified: 2020-11-01T0536+0100
+ * Version: 2.0.5
+ *
+ * Last modified: 2020-11-02T2050+0100
  */
  
  
@@ -63,6 +64,7 @@ span.footnote_tooltip {
     font-style: italic;
     color: green;
     text-decoration: none !important;
+    cursor: pointer;
 }
 .continue:hover {
     color: blue;
@@ -147,6 +149,9 @@ span.footnote_tooltip {
     .footnote_plugin_index {
         max-width: 100px;
     }
+}
+.footnote_plugin_text {
+	width: unset;        /*unset width of text column to fix site issues*/
 }
 
 /* Footnotes printing style rules

@@ -1,0 +1,190 @@
+/**
+ * Created by Stefan Herndler.
+ * User: Stefan
+ * Created-Date: 15.05.14
+ * Created-Time: 16:21
+ * Since: 1.0
+ * Version: 2.0.6
+ *
+ * Last modified: 2020-11-04T0437+0100
+ */
+ 
+ 
+/* MCI Footnotes logo
+ *
+ * The classes with 'heading' fix display in dashboard
+ * See class/config.php and css/settings.css
+ */
+
+.footnotes_logo,
+.footnotes_logo:hover,
+.footnotes_logo_heading {
+    text-decoration: none;
+    font-weight: normal;
+}
+.footnotes_logo_part1,
+.footnotes_logo_part1_heading {
+    color: #2bb975;
+}
+.footnotes_logo_part2,
+.footnotes_logo_part2_heading {
+    color: #545f5a;
+}
+
+/* Inline footnote referrers
+ * aka superscript footnote anchors
+ *
+ * Class footnote_plugin_tooltip_text is the referrer and surroundings
+ */
+
+.footnote_plugin_tooltip_text {
+    cursor: pointer;
+    z-index: 1;
+}
+.footnote_plugin_tooltip_text {
+    display: inline-block;
+    text-decoration: none;
+}
+.footnote_plugin_tooltip_text:hover {
+    text-decoration: underline;
+}
+
+/* tooltip infobox */
+
+span.footnote_tooltip {
+    font-size: inherit;
+    text-align: left;
+    line-height: 1.2em;
+    z-index: 99;
+}
+.continue {
+    font-style: italic;
+    color: green;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+.continue:hover {
+    color: blue;
+    text-decoration: underline !important;
+}
+
+/* Footnotes reference container
+ */
+
+/* label */
+.footnote_container_prepare {
+    display: block !important;
+    padding-top: 24px !important;
+    margin-bottom: -5px;
+}
+.footnote_container_prepare > p {
+    line-height: 1.3 !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.25em !important;
+    padding: 0 !important;
+    font-weight: normal !important;
+    overflow: hidden !important;
+    border-bottom: 1px solid #aaaaaa !important;
+    display: block !important;
+    -webkit-margin-before: 0.83em !important;
+    -webkit-margin-after: 0.83em !important;
+    -webkit-margin-start: 0px !important;
+    -webkit-margin-end: 0px !important;
+    text-align: left !important;
+    vertical-align: middle;
+}
+.footnote_container_prepare > p > span:first-child {
+    text-align: left !important;
+    font-size: 1.5em !important;
+}
+
+/* collapse button */
+#footnote_reference_container_collapse_button {
+    cursor: pointer;
+}
+.footnote_container_prepare > p > span:last-child a {
+    text-decoration: none;
+}
+.footnote_container_prepare > p > span:last-child a:hover {
+    text-decoration: underline;
+    color: #008800;
+}
+
+/* Table starts here */
+.footnote-reference-container {
+    width: 100%;
+    border: none;
+}
+
+/* footnotes
+ * class footnote_plugin_link is for backcompat.
+ * Used in reference-container-body.html
+ * See <https://wordpress.org/support/topic/change-the-position-5/#post-13617988>
+.footnote_plugin_link,  */
+.footnote_plugin_index,
+.footnote_plugin_text {
+    border:none !important;
+    text-align: left !important;
+    vertical-align: top !important;
+    padding: 10px 5px 5px 0 !important;
+}
+.footnote_plugin_index a,
+.footnote_plugin_text a {
+    text-decoration: none !important;
+}
+.footnote_plugin_index:hover,
+.footnote_plugin_text a:hover {
+    text-decoration: underline !important;
+}
+.footnote_plugin_index {
+    cursor: pointer;
+    overflow-wrap: unset;
+    word-wrap: unset;
+    word-wrap: normal !important;
+    word-break: unset;
+    word-break: keep-all !important;
+    max-width: 140px;
+    width: 1px;          /*auto-extending column to fit widest*/
+    white-space: nowrap;
+    overflow: hidden;
+}
+.footnote_plugin_text {
+    width: unset;        /*unset width of text column to fix site issues*/
+}
+
+/* Responsive*/
+@media only screen and (max-width: 768px) {
+    .footnote_plugin_index {
+        max-width: 100px;
+    }
+}
+
+/* Footnotes printing style rules
+ *
+ * Printing a table, browsers tend to avoid page breaks,
+ * but it takes a wrapper to avoid a page break before the table.
+ *
+ * UI elements (button, arrows) and link styling are removed.
+ */
+
+.footnote_container_overall_wrapper {
+    page-break-inside: avoid;
+}
+
+@media print {
+    .footnote_tooltip,
+    .footnote_reference_container_collapse_button_outfit,
+    .footnote_plugin_index_arrow {
+        display: none;
+    }
+    .footnote_plugin_tooltip_text {
+        color: inherit;
+    }
+    .footnote_plugin_index a {
+        color: inherit;
+        text-decoration: none !important;
+    }
+    div.post-meta-edit-link-wrapper { /* Edit button in WP2020*/
+        display: none;  /*(added as a service)*/
+    }
+}

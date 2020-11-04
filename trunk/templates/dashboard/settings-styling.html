@@ -1,0 +1,56 @@
+<table class="widefat fixed">
+	<tbody>
+	<tr>
+		<td>[[label-identical]]</td>
+		<td>[[identical]]</td>
+	</tr>
+	<tr>
+		<td>[[label-short-code-start]]</td>
+		<td>[[short-code-start]]</td>
+	</tr>
+	<tr>
+		<td>[[label-short-code-end]]</td>
+		<td>[[short-code-end]]</td>
+	</tr>
+	<tr>
+		<td>[[label-short-code-start-user]]</td>
+		<td>[[short-code-start-user]]</td>
+	</tr>
+	<tr>
+		<td>[[label-short-code-end-user]]</td>
+		<td>[[short-code-end-user]]</td>
+	</tr>
+	<tr>
+		<td>[[label-counter-style]]</td>
+		<td>[[counter-style]]</td>
+	</tr>
+	</tbody>
+</table>
+<script type="text/javascript">
+	var l_obj_ShortCodeStart = jQuery("#[[short-code-start-id]]");
+	var l_obj_ShortCodeEnd = jQuery("#[[short-code-end-id]]");
+	var l_obj_ShortCodeStartUserDefined = jQuery("#[[short-code-start-user-id]]");
+	var l_obj_ShortCodeEndUserDefined = jQuery("#[[short-code-end-user-id]]");
+
+	function footnotes_Display_UserDefined_Placeholders() {
+		if (l_obj_ShortCodeStart.val() == "userdefined") {
+			l_obj_ShortCodeStartUserDefined.parent().parent().show();
+			l_obj_ShortCodeEndUserDefined.parent().parent().show();
+		} else {
+			l_obj_ShortCodeStartUserDefined.parent().parent().hide();
+			l_obj_ShortCodeEndUserDefined.parent().parent().hide();
+		}
+	}
+	footnotes_Display_UserDefined_Placeholders();
+
+	l_obj_ShortCodeStart.on('change', function() {
+		var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
+		jQuery('#[[short-code-end-id]] option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
+		footnotes_Display_UserDefined_Placeholders();
+	});
+	l_obj_ShortCodeEnd.on('change', function() {
+		var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
+		jQuery('#[[short-code-start-id]] option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
+		footnotes_Display_UserDefined_Placeholders();
+	});
+</script>

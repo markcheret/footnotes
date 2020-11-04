@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.5
+Stable Tag: 2.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,7 +80,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0.6 =
+- Bugfix: Rolled back priority fix at the expense of reference container position
+- Bugfix: Support for infinite scroll / autoload
+- Bugfix: Public style sheet: Footnote referrers: deleted vertical align tweaks for cross-theme and user agent compatibility
+- Bugfix: Public style sheet: Reference container: auto-extending column to fit widest, to fix display with short note texts
+- Bugfix: Public style sheet: Reference container: IDs: slightly increased left padding
+
 = 2.0.5 =
+- Bugfix: Layout: Fixed reference container position through priority level (10)
 - Bugfix: Input boxes on public pages
 - Bugfix: Get references container close to content, not below all other features
 - Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues

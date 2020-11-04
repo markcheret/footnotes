@@ -8,7 +8,7 @@
  * 
  * Edited for v2.0.0 and following.
  * 
- * Last modified   2020-11-02T1147+0100
+ * Last modified   2020-11-04T0505+0100
  */
 
 // If called directly, abort:
@@ -56,38 +56,44 @@ class MCI_Footnotes_Task {
      * @since 1.5.0
 	 * 
 	 * Edited for v2.0.5   2020-11-02T0330+0100
+	 * Edited for v2.0.6   2020-11-04T0504+0100
 	 * 
-	 * Explicitly set all priority to default "10" instead of lowest "PHP_INT_MAX", 
-	 * especially for the_content, or footnotes won’t display beneath the content but 
-	 * below other features added by other plugins.
+	 * Explicitly setting all priority to default "10" instead of lowest "PHP_INT_MAX", 
+	 * especially for the_content, makes the footnotes reference container display
+	 * beneath the content and above other features added by other plugins.
 	 * Although the default, 10 seems to suffice.
 	 * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
 	 * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
+	 * 
+	 * Still need to assess priority levels, see bug reported in:
+	 * <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
+	 * 
+	 * Rolled back in v2.0.6.
      */
     public function registerHooks() {
         // append custom css to the header
-        add_filter('wp_head', array($this, "wp_head"), 10);
+        add_filter('wp_head', array($this, "wp_head"),PHP_INT_MAX);
 
         // append the love and share me slug to the footer
-        add_filter('wp_footer', array($this, "wp_footer"), 10);
+        add_filter('wp_footer', array($this, "wp_footer"),PHP_INT_MAX);
 
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE))) {
-            add_filter('the_title', array($this, "the_title"), 10);
+            add_filter('the_title', array($this, "the_title"),PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
-            add_filter('the_content', array($this, "the_content"), 10);
+            add_filter('the_content', array($this, "the_content"),PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
-             add_filter('the_excerpt', array($this, "the_excerpt"), 10);
+             add_filter('the_excerpt', array($this, "the_excerpt"),PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE))) {
-            add_filter('widget_title', array($this, "widget_title"), 10);
+            add_filter('widget_title', array($this, "widget_title"),PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
-            add_filter('widget_text', array($this, "widget_text"), 10);
+            add_filter('widget_text', array($this, "widget_text"),PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST))) {
-            add_filter('the_post', array($this, "the_post"), 10);
+            add_filter('the_post', array($this, "the_post"),PHP_INT_MAX);
         }
         // reset stored footnotes when displaying the header
         self::$a_arr_Footnotes = array();
@@ -443,6 +449,11 @@ class MCI_Footnotes_Task {
      * @author Stefan Herndler
      * @since 1.5.0
      * @return string
+	 * 
+	 * Edited for v2.0.6: appended post ID to support autoload / infinite scroll.
+	 * Requested by @docteurfitness: <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+	 * Related request: <https://wordpress.org/support/topic/infinite-scroll-does-not-work-anymore-in-wp-5-5/>
+	 * 2020-11-04T0358+0100
      */
     public function ReferenceContainer() {
         // no footnotes has been replaced on this page
@@ -512,7 +523,7 @@ class MCI_Footnotes_Task {
             array(
                 "label" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
                 "button-style" => !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
-                "id" => "footnote_references_container",
+                "id" => "footnote_references_container_" . get_the_id(),
                 "style" =>  MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
                 "content" => $l_str_Body
             )

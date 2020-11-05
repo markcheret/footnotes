@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
-**footnotes** is now continually improved. Please feel free to check our current release candidate v2.0.5rc1, available at the bottom of the [Advanced view](https://wordpress.org/plugins/footnotes/advanced/).
+**footnotes** is now continually improved. Please feel free to check our current release candidate available at the bottom of the [Advanced view](https://wordpress.org/plugins/footnotes/advanced/).
 
 Featured on wpmudev: http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/
 Cheers for the review, folks!

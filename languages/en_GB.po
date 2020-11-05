@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: footnotes\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/footnotes\n"
 "POT-Creation-Date: 2014-10-18 20:58+0100\n"
-"PO-Revision-Date: 2020-11-01T1640+0100\n"
+"PO-Revision-Date: 2020-11-04T2152+0100\n"
 "Last-Translator: @pewgeuges\n"
 "Language-Team: SHE <s.herndler@methis.at>\n"
 "Language: en_GB\n"
@@ -348,7 +348,7 @@ msgstr "Vertical offset downwards"
 
 #: class/dashboard/subpage-main.php:335
 msgid "Offset (Y axis) in px (may be negative)"
-msgstr "pixels; negative value for a upwards offset"
+msgstr "pixels; negative value for an upwards offset"
 
 #: class/dashboard/subpage-main.php:337
 msgid "Color"

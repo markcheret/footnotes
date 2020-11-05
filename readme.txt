@@ -80,11 +80,28 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0.5rc0 =
+- Update: Autoload / infinite scroll support added thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+- Bugfix: Settings style sheet unenqueued to fix input boxes on public pages (enqueued for 2.0.4)
+- Bugfix: Public style sheet: Footnote referrers: deleted vertical align tweaks for cross-theme and user agent compatibility
+- Bugfix: Public style sheet: Reference container: auto-extending column to fit widest, to fix display with short note texts
+- Bugfix: Public style sheet: Reference container: IDs: slightly increased left padding
+- Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues
+- Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
+- Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal
+- Update: Tooltip infobox: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
+- Bugfix: Reference container: collapse button fully clickable, not sign only
+- Bugfix: Reference container: collapse button 'collapse' with minus sign not hyphen-minus
+- Bugfix: Translations: Spelling error in en_GB and en_US
+
 = 2.0.4 =
 - Update: Restored arrow settings to customize or disable the now prepended arrow symbol
+- Update: GDPR: Added jQuery UI from WordPress instead of third party
+- Bugfix: UX: Removed hyperlink addresses from referrers and backlinks wrt browsing history
 - Bugfix: Reference container: layout: removed inconvenient left/right cellpadding
 - Bugfix: Tooltip infobox: improved layout with inherited font size by lower line height
 - Bugfix: Tooltip infobox: 'Continue reading' button: disabled default underline
+- Bugfix: Translations: reviewed all locales (en, de, es, fr), synced ref line # with edited code
 - Bugfix: Fixed display of 2 dashboard headings
 
 = 2.0.3 =

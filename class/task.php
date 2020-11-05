@@ -7,7 +7,11 @@
  * @since 1.5.0
  * 
  * Edited for v2.0.0 and following.
- * Last modified   2020-11-01T0342+0100
+ * 
+ * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
+ * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+ * 
+ * Last modified   2020-11-05T0232+0100
  */
 
 // If called directly, abort:
@@ -53,6 +57,18 @@ class MCI_Footnotes_Task {
      *
      * @author Stefan Herndler
      * @since 1.5.0
+     * 
+     * Edited for v2.0.5   2020-11-02T0330+0100   2020-11-04T2006+0100
+     * 
+     * Explicitly setting all priority to (default) "10" instead of lowest "PHP_INT_MAX", 
+     * especially for the_content, makes the footnotes reference container display
+     * beneath the content and above other features added by other plugins.
+     * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
+     * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
+     * 
+     * But then, the blog engine calls this plugin in the editor, as reported in:
+     * <https://wordpress.org/support/topic/blogs-all-messed-up/>
+     * <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
      */
     public function registerHooks() {
         // append custom css to the header
@@ -309,8 +325,9 @@ class MCI_Footnotes_Task {
      * @return string
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
-        // prepare prepending post ID to make footnote IDs unique wrt archive view:
-        self::$a_str_Prefix = get_the_id() . '_';
+        // post ID to make everything unique wrt archive view and infinite scroll
+        global $l_int_PostID;
+        $l_int_PostID = get_the_id();
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
         // contains the starting position for the lookup of a footnote
@@ -376,29 +393,35 @@ class MCI_Footnotes_Task {
                     if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
                         $l_str_ExcerptText = substr($l_str_DummyText, 0, $l_int_MaxLength);
                         $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
-                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a class="continue" href="#footnote_plugin_reference_' . self::$a_str_Prefix.$l_str_Index . '" onclick="footnote_moveToAnchor(\'footnote_plugin_reference_' . self::$a_str_Prefix . $l_str_Index . '\');">', '</a>');
+                        // Removed hyperlink navigation on user request, but left <a> element for style.
+                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a class="continue" onclick="footnote_moveToAnchor_' . $l_int_PostID . '(\'footnote_plugin_reference_' . $l_int_PostID . '_' . $l_str_Index . '\');">', '</a>');
                     }
                 }
 
-                // fill the footnotes template
+                // fill the footnotes template  templates/public/footnote.html
                 $l_obj_Template->replace(
                     array(
-                        "id" => self::$a_str_Prefix . $l_str_Index,
-                        "index" => $l_str_Index,
-                        "text" => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
-                        "before" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
-                        "after" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER)
+                        "post_id" => $l_int_PostID,
+                        "id"      => $l_str_Index,
+                        "before"  => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
+                        "index"   => $l_str_Index,
+                        "after"   => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
+                        "text"    => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
                     )
                 );
                 $l_str_FootnoteReplaceText = $l_obj_Template->getContent();
+                
                 // reset the template
                 $l_obj_Template->reload();
                 if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED))) {
                     $l_int_OffsetY = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
                     $l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
+                    
+                    // fill in the tooltip template  templates/public/tooltip.html
                     $l_obj_TemplateTooltip->replace(
                         array(
-                            "id" => self::$a_str_Prefix . $l_str_Index,
+                            "post_id"  => $l_int_PostID,
+                            "id"       => $l_str_Index,
                             "position" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
                             "offset-y" => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
                             "offset-x" => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0
@@ -479,13 +502,14 @@ class MCI_Footnotes_Task {
                     }
                 }
             }
-            // replace all placeholders in the template
+            // replace all placeholders in the template  templates/public/reference-container-body.html
             $l_obj_Template->replace(
                 array(
-                    "index" => $l_str_FootnoteIndex,
-                    "id" => self::$a_str_Prefix . MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-                    "arrow" => $l_str_Arrow,
-                    "text" => $l_str_FootnoteText
+                    "post_id" => $l_int_PostID,
+                    "id"      => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "arrow"   => $l_str_Arrow,
+                    "index"   => $l_str_FootnoteIndex,
+                    "text"    => $l_str_FootnoteText
                 )
             );
             // extra line breaks for page source legibility:
@@ -495,15 +519,15 @@ class MCI_Footnotes_Task {
             $l_obj_Template->reload();
         }
 
-        // load template file
+        // load template file  templates/public/reference-container.html
         $l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
         $l_obj_TemplateContainer->replace(
             array(
-                "label" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
+                "post_id"      => $l_int_PostID,
+                "label"        => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
                 "button-style" => !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
-                "id" => "footnote_references_container",
-                "style" =>  MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
-                "content" => $l_str_Body
+                "style"        =>  MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
+                "content"      => $l_str_Body
             )
         );
 

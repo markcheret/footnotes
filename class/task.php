@@ -11,7 +11,7 @@
  * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  * 
- * Last modified   2020-11-05T0232+0100
+ * Last modified   2020-11-05T0524+0100
  */
 
 // If called directly, abort:
@@ -457,6 +457,9 @@ class MCI_Footnotes_Task {
      * @return string
      */
     public function ReferenceContainer() {
+        // post ID to make everything unique wrt archive view and infinite scroll
+        global $l_int_PostID;
+        $l_int_PostID = get_the_id();
         // no footnotes has been replaced on this page
         if (empty(self::$a_arr_Footnotes)) {
             return "";

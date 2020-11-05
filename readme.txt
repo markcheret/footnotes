@@ -4,13 +4,11 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.4
+Stable Tag: 2.0.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
-
-**footnotes** is now continually improved. Please feel free to check our current release candidate v2.0.5rc1, available at the bottom of the [Advanced view](https://wordpress.org/plugins/footnotes/advanced/).
 
 Featured on wpmudev: http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/
 Cheers for the review, folks!
@@ -82,19 +80,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.0.5rc1 =
-- Update: Autoload / infinite scroll support added thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
-- Bugfix: Settings style sheet unenqueued to fix input boxes on public pages (enqueued for 2.0.4)
-- Bugfix: Public style sheet: Footnote referrers: deleted vertical align tweaks for cross-theme and user agent compatibility
-- Bugfix: Public style sheet: Reference container: auto-extending column to fit widest, to fix display with short note texts
-- Bugfix: Public style sheet: Reference container: IDs: slightly increased left padding
+= 2.0.5 =
+- Bugfix: Input boxes on public pages
+- Bugfix: Get references container close to content, not below all other features
 - Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues
 - Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
 - Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal
-- Update: Tooltip infobox: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
-- Bugfix: Reference container: collapse button fully clickable, not sign only
-- Bugfix: Reference container: collapse button 'collapse' with minus sign not hyphen-minus
-- Bugfix: Translations: Spelling error in en_GB and en_US
 
 = 2.0.4 =
 - Update: Restored arrow settings to customize or disable the now prepended arrow symbol
@@ -103,7 +94,6 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: layout: removed inconvenient left/right cellpadding
 - Bugfix: Tooltip infobox: improved layout with inherited font size by lower line height
 - Bugfix: Tooltip infobox: 'Continue reading' button: disabled default underline
-- Bugfix: Translations: reviewed all locales (en, de, es, fr), synced ref line # with edited code
 - Bugfix: Fixed display of 2 dashboard headings
 
 = 2.0.3 =

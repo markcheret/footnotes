@@ -12,7 +12,7 @@
  * Edited for v2.0.3: Added style sheet versioning   2020-10-29T1413+0100
  * Edited for v2.0.4: Added jQuery UI from WordPress   2020-11-01T1902+0100
  * 
- * Last modified:   2020-11-05T0638+0100
+ * Last modified:   2020-11-02T2003+0100
  */
 
 
@@ -70,8 +70,8 @@ class MCI_Footnotes {
 	 * 
 	 * Contributed by Felipe Lavín Z.   Thankfully acknowledged.
 	 * 
-	 * create_function() was deprecated in PHP 7.2:
-	 * <https://wordpress.org/support/topic/deprecated-in-php-7-2-function-create_function-is-deprecated/>
+	 * Deprecated in PHP 7.2
+	 * See <https://wordpress.org/support/topic/deprecated-in-php-7-2-function-create_function-is-deprecated/>
 	 * See also: <https://wordpress.org/support/topic/deprecated-function-create_function-14/>
      */
     public function initializeWidgets() {
@@ -126,6 +126,6 @@ class MCI_Footnotes {
         wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
         
         // IMPORTANT: up-to-date plugin version number for cache busting.
-        wp_enqueue_style('mci-footnotes-css-public',   plugins_url('../css/public.css',   __FILE__), '', '2.0.5rc1');
+        wp_enqueue_style('mci-footnotes-css-public',   plugins_url('../css/public.css',   __FILE__), '', '2.0.5');
     }
 }

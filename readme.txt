@@ -10,6 +10,8 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
+**footnotes** is now continually improved. Please feel free to check our current release candidate v2.0.5rc1, available at the bottom of the [Advanced view](https://wordpress.org/plugins/footnotes/advanced/).
+
 Featured on wpmudev: http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/
 Cheers for the review, folks!
 
@@ -80,7 +82,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.0.5rc0 =
+= 2.0.5rc1 =
 - Update: Autoload / infinite scroll support added thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
 - Bugfix: Settings style sheet unenqueued to fix input boxes on public pages (enqueued for 2.0.4)
 - Bugfix: Public style sheet: Footnote referrers: deleted vertical align tweaks for cross-theme and user agent compatibility

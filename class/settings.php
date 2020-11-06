@@ -6,13 +6,15 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:43
  * 
- * Edited for v2.0.4   2020-11-02T2115+0100
+ * Edited for:
+ * v2.0.4   2020-11-02T2115+0100
+ * v2.0.7   2020-11-06T0321+0100
  */
 
 
 /**
  * The class loads all Settings from each WordPress Settings container.
- * It a Setting is not defined yet the default value will be used.
+ * It a Setting is not defined yet, the default value will be used.
  * Each Setting will be validated and sanitized when loaded from the container.
  *
  * @author Stefan Herndler
@@ -165,7 +167,7 @@ class MCI_Footnotes_Settings {
     const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = "footnote_inputfield_custom_mouse_over_box_excerpt_enabled";
 
     /**
-     * Settings Container Key for the mouse-over box to define the max. length of the enabled expert.
+     * Settings Container Key for the mouse-over box to define the max. length of the enabled excerpt.
      *
      * @author Stefan Herndler
      * @since 1.5.4
@@ -388,34 +390,63 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'no'
         ),
         "footnotes_storage_custom" => array(
-            self::C_STR_FOOTNOTES_STYLING_BEFORE => '',
-            self::C_STR_FOOTNOTES_STYLING_AFTER => ')',
-            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
-            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'no',
-            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 150,
-            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION => 'top right',
-            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X => 10,
-            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => 10,
-            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
-            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#fff7a7',
+			
+			// The default footnote referrer surroundings should be square brackets:
+			// * as in English typesetting;
+			// * for better UX thanks to a more button-like appearance;
+			// * for stylistic consistency with the expand-collapse button
+			self::C_STR_FOOTNOTES_STYLING_BEFORE => '[',
+			self::C_STR_FOOTNOTES_STYLING_AFTER => ']',
+			
+			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
+			
+			// The mouse over content truncation should be enabled by default
+			// to raise awareness of the functionality and to prevent the screen
+			// from being filled at mouse-over, and to allow the Continue reading:
+			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
+			
+			// The truncation length is raised from 150 to 200 chars:
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 200,
+			
+			// The default position should not be lateral because of the risk
+			// the box gets squeezed between note anchor at line end and window edge,
+			// and top because reading at the bottom of the window is more likely:
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION => 'top center',
+			
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X => 0,
+			// The vertical offset must be negative for the box not to cover 
+			// the current line of text (web coordinates origin is top left):
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
+			
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
+			// The mouse over box shouldn’t feature a colored background 
+			// by default, due to diverging user preferences. White is neutral:
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#ffffff',
+			
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
-            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
-            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 3,
-            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 0,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
+			
+			// The mouse over box corners mustn’t be rounded as that is outdated:
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
+			
+			// The width should be limited to start with, for the box to have shape:
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
+			
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
             self::C_STR_HYPERLINK_ARROW => '&#8593;',
             self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
             self::C_STR_CUSTOM_CSS => ''
         ),
-        // These should all be enabled by default.
+		// We might wish to enable all these by default, but 
+		// in titles, footnotes are functionally pointless in WordPress.
         // See <https://wordpress.org/support/topic/more-feature-ideas/>
         "footnotes_storage_expert" => array(
-            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
             self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_THE_POST => 'yes'
+            self::C_BOOL_EXPERT_LOOKUP_THE_POST => ''
         )
     );
 

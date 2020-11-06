@@ -80,6 +80,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0.7d0 =
+- Update: Added backwards compatible support for legacy arrow and index placeholders in template
+- Update: Set all hooks defaults back to legacy as in titles, footnotes are functionally pointless
+
 = 2.0.6 =
 - Update: Autoload / infinite scroll support thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
 - Bugfix: Layout: Footnote referrers: deleted vertical align tweaks for cross-theme and user agent compatibility

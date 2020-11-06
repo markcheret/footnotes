@@ -11,7 +11,7 @@
  * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  * 
- * Last modified   2020-11-05T0524+0100
+ * Last modified   2020-11-06T0425+0100
  */
 
 // If called directly, abort:
@@ -491,11 +491,12 @@ class MCI_Footnotes_Task {
             // generate content of footnote index cell
 			$l_str_FirstFootnoteIndex = ($l_str_Index + 1);
 			// wrap each index # in a white-space:nowrap span
-			$l_str_FootnoteIndex  = '<span class="footnote_index_item">';
+			$l_str_FootnoteArrowIndex  = '<span class="footnote_index_item">';
 			// wrap the arrow in a @media print { display:hidden } span
-			$l_str_FootnoteIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
-			// get the index
-            $l_str_FootnoteIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+			$l_str_FootnoteArrowIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
+			// get the index; add support for legacy index placeholder:
+            $l_str_FootnoteArrowIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+            $l_str_FootnoteIndex       = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
             // check if it isn't the last footnote in the array
             if ($l_str_FirstFootnoteIndex < count(self::$a_arr_Footnotes) && MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
@@ -506,20 +507,24 @@ class MCI_Footnotes_Task {
                         // set the further footnote as empty so it won't be displayed later
                         self::$a_arr_Footnotes[$l_str_CheckIndex] = "";
                         // add the footnote index to the actual index
-                        $l_str_FootnoteIndex .= ',</span> <span class="footnote_index_item">' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+                        $l_str_FootnoteArrowIndex .= ',</span> <span class="footnote_index_item">' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+                        $l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
                     }
                 }
             }
             
-            $l_str_FootnoteIndex .= '</span>';
+            $l_str_FootnoteArrowIndex .= '</span>';
             
-            // replace all placeholders in the template  templates/public/reference-container-body.html
+			// replace all placeholders in the template  templates/public/reference-container-body.html
+			// The individual arrow and index placeholders are for backcompat
             $l_obj_Template->replace(
                 array(
-                    "post_id" => $l_int_PostID,
-                    "id"      => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-                    "index"   => $l_str_FootnoteIndex,
-                    "text"    => $l_str_FootnoteText
+                    "post_id"     => $l_int_PostID,
+                    "id"          => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "arrow"       => $l_str_Arrow,
+                    "index"       => $l_str_FootnoteIndex,
+                    "arrow-index" => $l_str_FootnoteArrowIndex,
+                    "text"        => $l_str_FootnoteText
                 )
             );
             // extra line breaks for page source legibility:

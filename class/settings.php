@@ -8,7 +8,7 @@
  * 
  * Edited for:
  * v2.0.4   2020-11-02T2115+0100
- * v2.0.7   2020-11-06T0321+0100
+ * v2.0.7   2020-11-06T1342+0100
  */
 
 
@@ -437,16 +437,17 @@ class MCI_Footnotes_Settings {
             self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
             self::C_STR_CUSTOM_CSS => ''
         ),
-		// We might wish to enable all these by default, but 
-		// in titles, footnotes are functionally pointless in WordPress.
+		// These should all be enabled by default to prevent users from
+		// thinking at first that the feature is broken in post titles.
         // See <https://wordpress.org/support/topic/more-feature-ideas/>
+		// In titles, footnotes are functionally pointless in WordPress.
         "footnotes_storage_expert" => array(
-            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
+            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_THE_POST => ''
+            self::C_BOOL_EXPERT_LOOKUP_THE_POST => ''//NEVER ENABLE THIS HOOK!!!!!
         )
     );
 

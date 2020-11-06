@@ -11,7 +11,7 @@
  * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  * 
- * Last modified   2020-11-06T1344+0100
+ * Last modified   2020-11-06T1516+0100
  */
 
 // If called directly, abort:
@@ -65,31 +65,34 @@ class MCI_Footnotes_Task {
      * beneath the content and above other features added by other plugins.
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
+	 * 
+	 * But this change is suspected to cause issues and needs to be assessed!
+	 * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
      */
     public function registerHooks() {
         // append custom css to the header
-        add_filter('wp_head', array($this, "wp_head"), 10);
+        add_filter('wp_head', array($this, "wp_head"), PHP_INT_MAX);
 
         // append the love and share me slug to the footer
-        add_filter('wp_footer', array($this, "wp_footer"), 10);
+        add_filter('wp_footer', array($this, "wp_footer"), PHP_INT_MAX);
 
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE))) {
-            add_filter('the_title', array($this, "the_title"), 10);
+            add_filter('the_title', array($this, "the_title"), PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
-            add_filter('the_content', array($this, "the_content"), 10);
+            add_filter('the_content', array($this, "the_content"), PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
-             add_filter('the_excerpt', array($this, "the_excerpt"), 10);
+             add_filter('the_excerpt', array($this, "the_excerpt"), PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE))) {
-            add_filter('widget_title', array($this, "widget_title"), 10);
+            add_filter('widget_title', array($this, "widget_title"), PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
-            add_filter('widget_text', array($this, "widget_text"), 10);
+            add_filter('widget_text', array($this, "widget_text"), PHP_INT_MAX);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST))) {
-            add_filter('the_post', array($this, "the_post"), 10);
+            add_filter('the_post', array($this, "the_post"), PHP_INT_MAX);
         }
         // reset stored footnotes when displaying the header
         self::$a_arr_Footnotes = array();

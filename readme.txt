@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.7
+Stable Tag: 2.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,8 +80,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0.8 =
+- BUGFIX: Priority level back to PHP_INT_MAX (need to get in touch with other plugins)
+
 = 2.0.7 =
 - BUGFIX: Disabled hook "the_post" **Any related code in the plugin shall disappear next**
+- Update: Set priority level back to 10 assuming it is unproblematic
 - Update: Added backwards compatible support for legacy arrow and index placeholders in template
 - Update: Settings defaults adjusted for better and more up-to-date tooltip layout
 
@@ -96,6 +100,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: UI: Reference container: Collapse button fully clickable, not sign only
 - Bugfix: UI: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
 - Update: UX: Tooltip: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
+- BUGFIX: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility)
 
 = 2.0.5 =
 - Bugfix: Get references container close to content, not below all other features, by priority level 10

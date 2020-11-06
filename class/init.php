@@ -12,7 +12,7 @@
  * Edited for v2.0.3: Added style sheet versioning   2020-10-29T1413+0100
  * Edited for v2.0.4: Added jQuery UI from WordPress   2020-11-01T1902+0100
  * 
- * Last modified:   2020-11-06T1355+0100
+ * Last modified:   2020-11-06T1511+0100
  */
 
 
@@ -130,7 +130,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.0.7'
+            '2.0.8'
         );
     }
     

@@ -1,0 +1,28 @@
+MCI Footnotes WordPress plugin
+
+NOTE FOR WEBMASTERS
+
+Added: 2020-11-06T0424+0100
+Last modified: 2020-11-06T0431+0100
+
+About the public templates
+
+
+Template "reference-container-body.html"
+
+class/task.php(481)
+css/public.css
+
+Supported placeholders:
+
+[[post_id]]     makes the footnote ID unique for infinite scroll
+[[id]]          footnote number (1-based integer)
+
+[[arrow]]       symbol alone, for backwards compatibility
+[[index]]       footnote index alone (or comma-separated enumeration) for backwards compatibility
+
+[[arrow-index]] new compound string starting with the arrow hidden in print
+                  wrapping each index in a no-break span, example:
+                  
+                  <span class="footnote_index_item"><span class="footnote_index_arrow">&#8593;&#x200A;</span>4,</span> <span class="footnote_index_item">5,</span> <span class="footnote_index_item">6,</span> <span class="footnote_index_item">7,</span> <span class="footnote_index_item">8,</span> <span class="footnote_index_item">9,</span> <span class="footnote_index_item">10,</span>
+[[text]]        

@@ -11,7 +11,7 @@
  * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  * 
- * Last modified   2020-11-05T0524+0100
+ * Last modified   2020-11-06T1516+0100
  */
 
 // If called directly, abort:
@@ -58,17 +58,16 @@ class MCI_Footnotes_Task {
      * @author Stefan Herndler
      * @since 1.5.0
      * 
-     * Edited for v2.0.5   2020-11-02T0330+0100   2020-11-04T2006+0100
+     * Edited for v2.0.5 through v2.0.7   2020-11-02T0330+0100..2020-11-06T1344+0100
      * 
      * Explicitly setting all priority to (default) "10" instead of lowest "PHP_INT_MAX", 
      * especially for the_content, makes the footnotes reference container display
      * beneath the content and above other features added by other plugins.
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
-     * 
-     * But then, the blog engine calls this plugin in the editor, as reported in:
-     * <https://wordpress.org/support/topic/blogs-all-messed-up/>
-     * <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
+	 * 
+	 * But this change is suspected to cause issues and needs to be assessed!
+	 * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
      */
     public function registerHooks() {
         // append custom css to the header
@@ -488,9 +487,15 @@ class MCI_Footnotes_Task {
             if (empty($l_str_FootnoteText)) {
                 continue;
             }
-            // get footnote index
-            $l_str_FirstFootnoteIndex = ($l_str_Index + 1);
-            $l_str_FootnoteIndex = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+            // generate content of footnote index cell
+			$l_str_FirstFootnoteIndex = ($l_str_Index + 1);
+			// wrap each index # in a white-space:nowrap span
+			$l_str_FootnoteArrowIndex  = '<span class="footnote_index_item">';
+			// wrap the arrow in a @media print { display:hidden } span
+			$l_str_FootnoteArrowIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
+			// get the index; add support for legacy index placeholder:
+            $l_str_FootnoteArrowIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+            $l_str_FootnoteIndex       = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
             // check if it isn't the last footnote in the array
             if ($l_str_FirstFootnoteIndex < count(self::$a_arr_Footnotes) && MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
@@ -501,18 +506,24 @@ class MCI_Footnotes_Task {
                         // set the further footnote as empty so it won't be displayed later
                         self::$a_arr_Footnotes[$l_str_CheckIndex] = "";
                         // add the footnote index to the actual index
-                        $l_str_FootnoteIndex .= ", " . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+                        $l_str_FootnoteArrowIndex .= ',</span> <span class="footnote_index_item">' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+                        $l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
                     }
                 }
             }
-            // replace all placeholders in the template  templates/public/reference-container-body.html
+            
+            $l_str_FootnoteArrowIndex .= '</span>';
+            
+			// replace all placeholders in the template  templates/public/reference-container-body.html
+			// The individual arrow and index placeholders are for backcompat
             $l_obj_Template->replace(
                 array(
-                    "post_id" => $l_int_PostID,
-                    "id"      => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-                    "arrow"   => $l_str_Arrow,
-                    "index"   => $l_str_FootnoteIndex,
-                    "text"    => $l_str_FootnoteText
+                    "post_id"     => $l_int_PostID,
+                    "id"          => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "arrow"       => $l_str_Arrow,
+                    "index"       => $l_str_FootnoteIndex,
+                    "arrow-index" => $l_str_FootnoteArrowIndex,
+                    "text"        => $l_str_FootnoteText
                 )
             );
             // extra line breaks for page source legibility:

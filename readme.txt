@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0.9d1 =
+- Bugfix: Re-added jQuery UI from third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100
+
 = 2.0.9d0 =
 - Bugfix: Layout: Footnote referrers: more efficiently disable underline unless hovered
 

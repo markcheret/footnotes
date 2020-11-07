@@ -2,16 +2,16 @@
 /**
  * Includes the main Class of the Plugin.
  * 
- * ***********************************************************************************************
- * IMPORTANT: In registerPublic() line 134: keep plugin version # up to date for cache busting.  *
- * ***********************************************************************************************
+ * ******************************************************************************************************
+ * IMPORTANT: In registerPublic() line 134: Please keep plugin version # up to date for cache busting.  *
+ * ******************************************************************************************************
  *
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 12.09.14 10:56
  * 
  * Edited for v1.6.5: Replaced deprecated function create_function()
- * Edited for v2.0.0: Added jQueryUI from CDN   2020-10-26T1907+0100
+ * Edited for v2.0.0: Added jQueryUI from Cloudflare   2020-10-26T1907+0100
  * Edited for v2.0.3: Added style sheet versioning   2020-10-29T1413+0100
  * Edited for v2.0.4: Added jQuery UI from WordPress   2020-11-01T1902+0100
  * 
@@ -108,7 +108,8 @@ class MCI_Footnotes {
      * @author Stefan Herndler
      * @since 1.5.0
      * 
-     * Updated for v2.0.4 by adding jQueryUI from WordPress following @check2020de:
+     * Updated for v2.0.0 adding jQuery UI
+     * Updated for v2.0.4 by adding jQuery UI from WordPress following @check2020de:
      * <https://wordpress.org/support/topic/gdpr-issue-with-jquery/>
      * See <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
      * 
@@ -116,24 +117,40 @@ class MCI_Footnotes {
      */
     public function registerPublic() {
         
-        // add the jQuery plugin (already registered by WordPress)
+        ###  SCRIPTS
+        
+        // add the jQuery plugin registered by WordPress
         wp_enqueue_script( 'jquery' );
-        // Add jQueryUI: 'no need to enqueue -core, because dependencies are set'
+        
+        // Add the jQuery UI libraries registered by WordPress:
+        // 'no need to enqueue -core, because dependencies are set'
+        // Source: <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
         wp_enqueue_script( 'jquery-ui-widget' );
         wp_enqueue_script( 'jquery-ui-mouse' );
         wp_enqueue_script( 'jquery-ui-accordion' );
         wp_enqueue_script( 'jquery-ui-autocomplete' );
         wp_enqueue_script( 'jquery-ui-slider' );
         
+        // Should that not work, fetch jQuery UI from cdnjs.cloudflare.com:
+        // Add jQuery UI following @vonpiernik:
+        // <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>:
+        // This was enabled in Footnotes v2.0.0 through v2.0.3.
+        // Re-added for 2.0.9d1 to look whether it can fix a broken tooltip display.   2020-11-07T1601+0100
+        wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, true );
+        wp_enqueue_script( 'jQueryUI' );
+
         // Add jQuery tools:
         wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
         
-        // IMPORTANT: up-to-date plugin version number for cache busting:
+        
+        ###  STYLES
+        
+        // IMPORTANT: up-to-date plugin version number NEEDED for cache busting:
         wp_enqueue_style(
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.0.9d0'
+            '2.0.9d1'
         );
     }
     

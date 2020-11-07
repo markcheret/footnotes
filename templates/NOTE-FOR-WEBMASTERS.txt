@@ -1,6 +1,7 @@
 MCI Footnotes WordPress plugin
 
 NOTE FOR WEBMASTERS
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Added: 2020-11-06T0424+0100
 Last modified: 2020-11-06T0431+0100
@@ -8,12 +9,17 @@ Last modified: 2020-11-06T0431+0100
 About the public templates
 
 
-Template "reference-container-body.html"
+## Template "reference-container-body.html"
+   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+  > class/task.php(481)
+  > css/public.css
 
-class/task.php(481)
-css/public.css
+* Elements:
 
-Supported placeholders:
+<a>    Present for styling. 
+
+
+* Supported placeholders:
 
 [[post_id]]     makes the footnote ID unique for infinite scroll
 [[id]]          footnote number (1-based integer)

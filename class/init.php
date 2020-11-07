@@ -2,17 +2,20 @@
 /**
  * Includes the main Class of the Plugin.
  * 
- * IMPORTANT: In registerPublic(), keep plugin version # up to date for cache busting.
+ * ***********************************************************************************************
+ * IMPORTANT: In registerPublic() line 134: keep plugin version # up to date for cache busting.  *
+ * ***********************************************************************************************
  *
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 12.09.14 10:56
  * 
+ * Edited for v1.6.5: Replaced deprecated function create_function()
  * Edited for v2.0.0: Added jQueryUI from CDN   2020-10-26T1907+0100
  * Edited for v2.0.3: Added style sheet versioning   2020-10-29T1413+0100
  * Edited for v2.0.4: Added jQuery UI from WordPress   2020-11-01T1902+0100
  * 
- * Last modified:   2020-11-06T1511+0100
+ * Continual update of version number.
  */
 
 
@@ -130,7 +133,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.0.8'
+            '2.0.9d0'
         );
     }
     

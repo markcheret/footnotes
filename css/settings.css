@@ -4,8 +4,8 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.0.4
- * Last modified: 2020-11-01T0415+0100
+ * Version: 2.0.9
+ * Last modified: 2020-11-06T2321+0100
  */
 
 
@@ -41,7 +41,6 @@
 input[type=text], input[type=password], textarea, select {
     padding-left: 8px !important;
     padding-right: 8px !important;
-    width: 80% !important;
 }
 
 textarea {

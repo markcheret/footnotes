@@ -116,34 +116,35 @@ class MCI_Footnotes {
      * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.
      */
     public function registerPublic() {
-        
+
         ###  SCRIPTS
-        
+
         // add the jQuery plugin registered by WordPress
         wp_enqueue_script( 'jquery' );
-        
-//        // Add jQuery Tools:
-//        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
-//        
-//        // Add the jQuery UI libraries registered by WordPress:
-//        // 'no need to enqueue -core, because dependencies are set'
-//        // Source: <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
-//        wp_enqueue_script( 'jquery-ui-widget' );
-//        wp_enqueue_script( 'jquery-ui-mouse' );
-//        wp_enqueue_script( 'jquery-ui-accordion' );
-//        wp_enqueue_script( 'jquery-ui-autocomplete' );
-//        wp_enqueue_script( 'jquery-ui-slider' );
-        
+
+        // Add jQuery Tools:
+        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
+
+        // Add the jQuery UI libraries registered by WordPress:
+        // 'no need to enqueue -core, because dependencies are set'
+        // Source: <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
+        wp_enqueue_script( 'jquery-ui-widget' );
+        wp_enqueue_script( 'jquery-ui-mouse' );
+        wp_enqueue_script( 'jquery-ui-accordion' );
+        wp_enqueue_script( 'jquery-ui-autocomplete' );
+        wp_enqueue_script( 'jquery-ui-slider' );
+
+
         // Should that not work, fetch jQuery UI from cdnjs.cloudflare.com:
         // Add jQuery UI following @vonpiernik:
         // <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>:
         // This was enabled in Footnotes v2.0.0 through v2.0.3.
         // Re-added for 2.0.9d1 to look whether it can fix a broken tooltip display.   2020-11-07T1601+0100
-        wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, true );
-        wp_enqueue_script( 'jQueryUI' );
+        //wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, true );
+        //wp_enqueue_script( 'jQueryUI' );
 
         // Add jQuery Tools and finish adding jQueryUI:   2020-11-08T1638+0100
-        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), ['jQueryUI']);
+        //wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), ['jQueryUI']);
 
         
         ###  STYLES
@@ -153,7 +154,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.0.9d3'
+            '2.1.0'
         );
     }
     

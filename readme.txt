@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.8
+Stable Tag: 2.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,20 +80,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.0.9d3 =
-- BUGFIX: DISABLED the_post HOOK  2020-11-08T1839+0100
-
-= 2.0.9d2 =
-- Bugfix: Layout: Footnote referrers: disabled bottom border   2020-11-08T1632+0100
-- Bugfix: Libraries: Correct jQuery UI from third party, disabled from WordPress   2020-11-08T1641+0100
-- Update: Accessibility: added 'speaker-mute' class to reference container, to meet user needs
-
-= 2.0.9d1 =
-- Bugfix: Libraries: Re-added jQuery UI from third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100
-- Bugfix: Settings layout: removed 80% width rule for input, text areas, select boxes, on user request
-
-= 2.0.9d0 =
-- Bugfix: Layout: Footnote referrers: more efficiently disable underline unless hovered
+= 2.1.0 =
+- Add: UI: Tooltip: made 'Continue reading' button label customizable
+- Bugfix: Layout: Footnote referrers: disabled bottom border for theme compatibility
+- Update: Accessibility: added 'speaker-mute' class to reference container
+- Bugfix: Settings layout: added named selectors to limit applicability of styles
+- UPDATE: DISABLED the_post hook, the plugin stopped supporting this hook
 
 = 2.0.8 =
 - BUGFIX: Priority level back to PHP_INT_MAX (need to get in touch with other plugins)

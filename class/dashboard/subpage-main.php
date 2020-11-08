@@ -6,7 +6,9 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  * 
- * Edited for v2.0.4   2020-11-01T0509+0100
+ * Edited for:
+ * v2.0.4   2020-11-01T0509+0100
+ * v2.1.0   2020-11-08T2148+0100
  */
 
 /**
@@ -119,6 +121,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         // replace all placeholders
         $l_obj_Template->replace(
             array(
+                "label-readon" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL, __("‘Read on’ button label", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "readon" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL),
+
                 "label-name" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME, __("References label", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "name" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
 
@@ -465,10 +470,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-widget-text" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT, "widget_text"),
                 "widget-text" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT),
                 "url-widget-text" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text",
-
-                "label-post-object" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST, "the_post"),
-                "post-object" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST),
-                "url-post-object" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/the_post"
             )
         );
         // display template with replaced placeholders

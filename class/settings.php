@@ -9,6 +9,7 @@
  * Edited for:
  * v2.0.4   2020-11-02T2115+0100
  * v2.0.7   2020-11-06T1342+0100
+ * v2.1.0   2020-11-08T2149+0100
  */
 
 
@@ -21,6 +22,16 @@
  * @since 1.5.0
  */
 class MCI_Footnotes_Settings {
+
+    /**
+     * Settings Container Key for the label of the 'Read on' button in truncated tooltips
+     *
+     * @since 2.0.9
+     * @var string
+	 * 
+	 * 2020-11-08T2106+0100
+     */
+    const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = "footnote_inputfield_readon_label";
 
     /**
      * Settings Container Key for the label of the reference container.
@@ -338,15 +349,6 @@ class MCI_Footnotes_Settings {
     const C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT = "footnote_inputfield_expert_lookup_widget_text";
 
     /**
-     * Settings Container Key the activation of the_post hook.
-     *
-     * @author Stefan Herndler
-     * @since 1.5.5
-     * @var string
-     */
-    const C_BOOL_EXPERT_LOOKUP_THE_POST = "footnote_inputfield_expert_lookup_the_post";
-
-    /**
      * Stores a singleton reference of this class.
      *
      * @author Stefan Herndler
@@ -373,6 +375,7 @@ class MCI_Footnotes_Settings {
      */
     private $a_arr_Default = array(
         "footnotes_storage" => array(
+            self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL => 'Continue reading',
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
             self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => '',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
@@ -447,7 +450,6 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_THE_POST => ''//NEVER ENABLE THIS HOOK!!!!!
         )
     );
 

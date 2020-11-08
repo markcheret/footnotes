@@ -12,8 +12,9 @@
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  * 
  * Edited for v2.0.9: DISABLED the_post HOOK  2020-11-08T1839+0100
+ * Edited for v2.1.0: Promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
  * 
- * Last modified   2020-11-08T1850+0100
+ * Last modified   2020-11-08T2146+0100
  */
 
 // If called directly, abort:
@@ -257,17 +258,17 @@ class MCI_Footnotes_Task {
      * @since 1.5.4
      * @param array|WP_Post $p_mixed_Posts
      */
-    public function the_post(&$p_mixed_Posts) {
-        // single WP_Post object received
-        if (!is_array($p_mixed_Posts)) {
-            $p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
-            return;
-        }
-        // array of WP_Post objects received
-        for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
-            $p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
-        }
-    }
+//    public function the_post(&$p_mixed_Posts) {
+//        // single WP_Post object received
+//        if (!is_array($p_mixed_Posts)) {
+//            $p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
+//            return;
+//        }
+//        // array of WP_Post objects received
+//        for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
+//            $p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
+//        }
+//    }
 
     /**
      * Replace all Footnotes in a WP_Post object.
@@ -395,7 +396,7 @@ class MCI_Footnotes_Task {
                         $l_str_ExcerptText = substr($l_str_DummyText, 0, $l_int_MaxLength);
                         $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
                         // Removed hyperlink navigation on user request, but left <a> element for style.
-                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a class="continue" onclick="footnote_moveToAnchor_' . $l_int_PostID . '(\'footnote_plugin_reference_' . $l_int_PostID . '_' . $l_str_Index . '\');">', '</a>');
+                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . '<a class="continue" onclick="footnote_moveToAnchor_' . $l_int_PostID . '(\'footnote_plugin_reference_' . $l_int_PostID . '_' . $l_str_Index . '\');">' . MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL) . '</a>';
                     }
                 }
 

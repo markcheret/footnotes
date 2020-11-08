@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.0.9d1
+ * Version: 2.1.0
  *
- * Last modified: 2020-11-07T1608+0100
+ * Last modified: 2020-11-08T2150+0100
  */
 
 
@@ -39,9 +39,15 @@
 }
 
 
-input[type=text], input[type=password], textarea, select {
+#footnote_inputfield_placeholder_start_user_defined,
+#footnote_inputfield_placeholder_end_user_defined,
+#footnote_inputfield_readon_label,
+#footnote_inputfield_references_label,
+#footnote_inputfield_custom_css
+/*input[type=text], input[type=password], textarea, select*/ {
     padding-left: 8px !important;
     padding-right: 8px !important;
+    width: 80% !important;
 }
 
 textarea {

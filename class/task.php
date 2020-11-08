@@ -11,7 +11,10 @@
  * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  * 
- * Last modified   2020-11-05T0524+0100
+ * Edited for v2.0.9: DISABLED the_post HOOK  2020-11-08T1839+0100
+ * Edited for v2.1.0: Promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
+ * 
+ * Last modified   2020-11-08T2146+0100
  */
 
 // If called directly, abort:
@@ -58,7 +61,7 @@ class MCI_Footnotes_Task {
      * @author Stefan Herndler
      * @since 1.5.0
      * 
-     * Edited for v2.0.5   2020-11-02T0330+0100   2020-11-04T2006+0100
+     * Edited for v2.0.5 through v2.0.7   2020-11-02T0330+0100..2020-11-06T1344+0100
      * 
      * Explicitly setting all priority to (default) "10" instead of lowest "PHP_INT_MAX", 
      * especially for the_content, makes the footnotes reference container display
@@ -66,9 +69,8 @@ class MCI_Footnotes_Task {
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
      * 
-     * But then, the blog engine calls this plugin in the editor, as reported in:
-     * <https://wordpress.org/support/topic/blogs-all-messed-up/>
-     * <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
+     * But this change is suspected to cause issues and needs to be assessed!
+     * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
      */
     public function registerHooks() {
         // append custom css to the header
@@ -92,9 +94,9 @@ class MCI_Footnotes_Task {
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
             add_filter('widget_text', array($this, "widget_text"), PHP_INT_MAX);
         }
-        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST))) {
-            add_filter('the_post', array($this, "the_post"), PHP_INT_MAX);
-        }
+        // DISABLED the_post HOOK  2020-11-08T1839+0100
+        //
+        //
         // reset stored footnotes when displaying the header
         self::$a_arr_Footnotes = array();
         self::$a_bool_AllowLoveMe = true;
@@ -256,17 +258,17 @@ class MCI_Footnotes_Task {
      * @since 1.5.4
      * @param array|WP_Post $p_mixed_Posts
      */
-    public function the_post(&$p_mixed_Posts) {
-        // single WP_Post object received
-        if (!is_array($p_mixed_Posts)) {
-            $p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
-            return;
-        }
-        // array of WP_Post objects received
-        for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
-            $p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
-        }
-    }
+//    public function the_post(&$p_mixed_Posts) {
+//        // single WP_Post object received
+//        if (!is_array($p_mixed_Posts)) {
+//            $p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
+//            return;
+//        }
+//        // array of WP_Post objects received
+//        for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
+//            $p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
+//        }
+//    }
 
     /**
      * Replace all Footnotes in a WP_Post object.
@@ -394,7 +396,7 @@ class MCI_Footnotes_Task {
                         $l_str_ExcerptText = substr($l_str_DummyText, 0, $l_int_MaxLength);
                         $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
                         // Removed hyperlink navigation on user request, but left <a> element for style.
-                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . sprintf(__("%scontinue%s", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a class="continue" onclick="footnote_moveToAnchor_' . $l_int_PostID . '(\'footnote_plugin_reference_' . $l_int_PostID . '_' . $l_str_Index . '\');">', '</a>');
+                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . '<a class="continue" onclick="footnote_moveToAnchor_' . $l_int_PostID . '(\'footnote_plugin_reference_' . $l_int_PostID . '_' . $l_str_Index . '\');">' . MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL) . '</a>';
                     }
                 }
 
@@ -488,9 +490,15 @@ class MCI_Footnotes_Task {
             if (empty($l_str_FootnoteText)) {
                 continue;
             }
-            // get footnote index
+            // generate content of footnote index cell
             $l_str_FirstFootnoteIndex = ($l_str_Index + 1);
-            $l_str_FootnoteIndex = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+            // wrap each index # in a white-space:nowrap span
+            $l_str_FootnoteArrowIndex  = '<span class="footnote_index_item">';
+            // wrap the arrow in a @media print { display:hidden } span
+            $l_str_FootnoteArrowIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
+            // get the index; add support for legacy index placeholder:
+            $l_str_FootnoteArrowIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+            $l_str_FootnoteIndex       = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
             // check if it isn't the last footnote in the array
             if ($l_str_FirstFootnoteIndex < count(self::$a_arr_Footnotes) && MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
@@ -501,18 +509,24 @@ class MCI_Footnotes_Task {
                         // set the further footnote as empty so it won't be displayed later
                         self::$a_arr_Footnotes[$l_str_CheckIndex] = "";
                         // add the footnote index to the actual index
-                        $l_str_FootnoteIndex .= ", " . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+                        $l_str_FootnoteArrowIndex .= ',</span> <span class="footnote_index_item">' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+                        $l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
                     }
                 }
             }
+            
+            $l_str_FootnoteArrowIndex .= '</span>';
+            
             // replace all placeholders in the template  templates/public/reference-container-body.html
+            // The individual arrow and index placeholders are for backcompat
             $l_obj_Template->replace(
                 array(
-                    "post_id" => $l_int_PostID,
-                    "id"      => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-                    "arrow"   => $l_str_Arrow,
-                    "index"   => $l_str_FootnoteIndex,
-                    "text"    => $l_str_FootnoteText
+                    "post_id"     => $l_int_PostID,
+                    "id"          => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "arrow"       => $l_str_Arrow,
+                    "index"       => $l_str_FootnoteIndex,
+                    "arrow-index" => $l_str_FootnoteArrowIndex,
+                    "text"        => $l_str_FootnoteText
                 )
             );
             // extra line breaks for page source legibility:

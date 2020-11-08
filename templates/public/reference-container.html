@@ -1,21 +1,30 @@
-<div class="footnote_container_overall_wrapper">
-    <div class="footnote_container_prepare">
-        <p><span 
+<div 
+    class="speaker-mute footnote_container_wrapper"
+    >
+    <div 
+        class="footnote_container_prepare"
+        ><p
+			><span 
                 onclick="footnote_expand_reference_container_[[post_id]]();"
             >[[label]]</span
             ><span 
                 class="footnote_reference_container_collapse_button"
                 style="[[button-style]]"
                 onclick="footnote_expand_collapse_reference_container_[[post_id]]();"
-            >&nbsp;&nbsp;&nbsp;[<a 
+            >[<a 
                 id="footnote_reference_container_collapse_button_[[post_id]]" 
-            > + </a
+            >+</a
             >]</span
             ></p
+		></div
+	>
+    <div 
+        id="footnote_references_container_[[post_id]]" 
+        style="[[style]]"
+    >
+        <table 
+            class="footnote-reference-container"
         >
-    </div>
-    <div id="footnote_references_container_[[post_id]]" style="[[style]]">
-        <table class="footnote-reference-container">
             <tbody>
                 [[content]]
             </tbody>
@@ -25,11 +34,11 @@
 <script type="text/javascript">
     function footnote_expand_reference_container_[[post_id]]() {
         jQuery('#footnote_references_container_[[post_id]]').show();
-        jQuery('#footnote_reference_container_collapse_button_[[post_id]]').text(' − ');
+        jQuery('#footnote_reference_container_collapse_button_[[post_id]]').text('−');
     }
     function footnote_collapse_reference_container_[[post_id]]() {
         jQuery('#footnote_references_container_[[post_id]]').hide();
-        jQuery('#footnote_reference_container_collapse_button_[[post_id]]').text(' + ');
+        jQuery('#footnote_reference_container_collapse_button_[[post_id]]').text('+');
     }
     function footnote_expand_collapse_reference_container_[[post_id]]() {
         if (jQuery('#footnote_references_container_[[post_id]]').is(':hidden')) {
@@ -47,5 +56,5 @@
             },
             380);/*speed*/
         }
-    }
+	}
 </script>

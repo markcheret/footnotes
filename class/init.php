@@ -153,7 +153,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.0.9d2'
+            '2.0.9d3'
         );
     }
     

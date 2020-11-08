@@ -11,7 +11,9 @@
  * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  * 
- * Last modified   2020-11-06T1516+0100
+ * Edited for v2.0.9: DISABLED the_post HOOK  2020-11-08T1839+0100
+ * 
+ * Last modified   2020-11-08T1850+0100
  */
 
 // If called directly, abort:
@@ -65,9 +67,9 @@ class MCI_Footnotes_Task {
      * beneath the content and above other features added by other plugins.
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
-	 * 
-	 * But this change is suspected to cause issues and needs to be assessed!
-	 * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
+     * 
+     * But this change is suspected to cause issues and needs to be assessed!
+     * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
      */
     public function registerHooks() {
         // append custom css to the header
@@ -91,9 +93,9 @@ class MCI_Footnotes_Task {
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
             add_filter('widget_text', array($this, "widget_text"), PHP_INT_MAX);
         }
-        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_POST))) {
-            add_filter('the_post', array($this, "the_post"), PHP_INT_MAX);
-        }
+        // DISABLED the_post HOOK  2020-11-08T1839+0100
+        //
+        //
         // reset stored footnotes when displaying the header
         self::$a_arr_Footnotes = array();
         self::$a_bool_AllowLoveMe = true;
@@ -488,12 +490,12 @@ class MCI_Footnotes_Task {
                 continue;
             }
             // generate content of footnote index cell
-			$l_str_FirstFootnoteIndex = ($l_str_Index + 1);
-			// wrap each index # in a white-space:nowrap span
-			$l_str_FootnoteArrowIndex  = '<span class="footnote_index_item">';
-			// wrap the arrow in a @media print { display:hidden } span
-			$l_str_FootnoteArrowIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
-			// get the index; add support for legacy index placeholder:
+            $l_str_FirstFootnoteIndex = ($l_str_Index + 1);
+            // wrap each index # in a white-space:nowrap span
+            $l_str_FootnoteArrowIndex  = '<span class="footnote_index_item">';
+            // wrap the arrow in a @media print { display:hidden } span
+            $l_str_FootnoteArrowIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
+            // get the index; add support for legacy index placeholder:
             $l_str_FootnoteArrowIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
             $l_str_FootnoteIndex       = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
@@ -514,8 +516,8 @@ class MCI_Footnotes_Task {
             
             $l_str_FootnoteArrowIndex .= '</span>';
             
-			// replace all placeholders in the template  templates/public/reference-container-body.html
-			// The individual arrow and index placeholders are for backcompat
+            // replace all placeholders in the template  templates/public/reference-container-body.html
+            // The individual arrow and index placeholders are for backcompat
             $l_obj_Template->replace(
                 array(
                     "post_id"     => $l_int_PostID,

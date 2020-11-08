@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.0.9d1
+ * Version: 2.0.9d2
  *
- * Last modified: 2020-11-07T1608+0100
+ * Last modified: 2020-11-08T1627+0100
  */
  
  
@@ -31,28 +31,31 @@
     color: #545f5a;
 }
 
-/* Inline footnote referrers
+/*
+ * Inline footnote referrers
  * aka superscript footnote anchors
  *
  * referrer and surroundings:
- * .footnote_referrer            = enclosing <a>
- * .footnote_plugin_tooltip_text = inner <sup>
+ *  .footnote_referrer            = enclosing <a>
+ *  .footnote_plugin_tooltip_text = inner <sup>
  */
 
-.footnote_referrer,
-.footnote_plugin_tooltip_text {
-    text-decoration: none !important;
-    cursor: pointer;
-    z-index: 1;
-}
-.footnote_referrer:hover,
+ .footnote_referrer,
+ .main-content .footnote_referrer,
+ .footnote_plugin_tooltip_text {
+	 text-decoration: none !important;
+	 border-bottom: none !important;
+	 cursor: pointer;
+	 z-index: 1;
+ }
+ .footnote_referrer:hover,
 .footnote_plugin_tooltip_text:hover {
     text-decoration: underline;
     font-weight: inherit;
 }
 
-/* tooltip infobox */
-
+/* tooltip infobox
+ */
 span.footnote_tooltip {
     font-size: inherit;
     text-align: left;
@@ -70,10 +73,12 @@ span.footnote_tooltip {
     text-decoration: underline !important;
 }
 
-/* Footnotes reference container
+/*
+ * Footnote references container
  */
 
-/* label */
+/* label
+ */
 .footnote_container_prepare {
     display: block !important;
     padding-top: 24px !important;
@@ -100,22 +105,21 @@ span.footnote_tooltip {
     font-size: 1.5em !important;
 }
 
-/* collapse button */
-/* fully clickable, not sign only */
+/* collapse button
+/* fully clickable, not sign only
+ */
 .footnote_reference_container_collapse_button {
     cursor: pointer;
-    font-size: 1.2em !important;
     padding-left: .5em;
+	font-size: 1.3em !important;
+	vertical-align: 2px;
 }
 .footnote_container_prepare > p > span:last-child a {
     text-decoration: none !important;
 }
-.footnote_container_prepare > p > span:last-child a:hover {
-    text-decoration: underline !important;
-    color: #008800;
-}
 
-/* Table starts here */
+/* table
+ */
 .footnote-reference-container {
     width: 100%;
     border: none;
@@ -125,7 +129,8 @@ span.footnote_tooltip {
  * class footnote_plugin_link is for backcompat.
  * Used in reference-container-body.html
  * See <https://wordpress.org/support/topic/change-the-position-5/#post-13617988>
-.footnote_plugin_link,  */
+ */
+.footnote_plugin_link,
 .footnote_plugin_index,
 .footnote_plugin_text {
     border:none !important;
@@ -166,7 +171,8 @@ span.footnote_tooltip {
     }
 }
 
-/* Footnotes printing style rules
+/*
+ * Footnotes printing style rules
  *
  * Printing a table, browsers tend to avoid page breaks,
  * but it takes a wrapper to avoid a page break before the table.

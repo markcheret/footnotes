@@ -122,14 +122,17 @@ class MCI_Footnotes {
         // add the jQuery plugin registered by WordPress
         wp_enqueue_script( 'jquery' );
         
-        // Add the jQuery UI libraries registered by WordPress:
-        // 'no need to enqueue -core, because dependencies are set'
-        // Source: <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
-        wp_enqueue_script( 'jquery-ui-widget' );
-        wp_enqueue_script( 'jquery-ui-mouse' );
-        wp_enqueue_script( 'jquery-ui-accordion' );
-        wp_enqueue_script( 'jquery-ui-autocomplete' );
-        wp_enqueue_script( 'jquery-ui-slider' );
+//        // Add jQuery Tools:
+//        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
+//        
+//        // Add the jQuery UI libraries registered by WordPress:
+//        // 'no need to enqueue -core, because dependencies are set'
+//        // Source: <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
+//        wp_enqueue_script( 'jquery-ui-widget' );
+//        wp_enqueue_script( 'jquery-ui-mouse' );
+//        wp_enqueue_script( 'jquery-ui-accordion' );
+//        wp_enqueue_script( 'jquery-ui-autocomplete' );
+//        wp_enqueue_script( 'jquery-ui-slider' );
         
         // Should that not work, fetch jQuery UI from cdnjs.cloudflare.com:
         // Add jQuery UI following @vonpiernik:
@@ -139,9 +142,9 @@ class MCI_Footnotes {
         wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, true );
         wp_enqueue_script( 'jQueryUI' );
 
-        // Add jQuery tools:
-        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
-        
+        // Add jQuery Tools and finish adding jQueryUI:   2020-11-08T1638+0100
+        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), ['jQueryUI']);
+
         
         ###  STYLES
         
@@ -150,7 +153,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.0.9d1'
+            '2.0.9d2'
         );
     }
     

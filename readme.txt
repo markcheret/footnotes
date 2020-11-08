@@ -80,8 +80,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.0.9d2 =
+- Bugfix: Layout: Footnote referrers: disabled bottom border   2020-11-08T1632+0100
+- Bugfix: Libraries: Correct jQuery UI from third party, disabled from WordPress   2020-11-08T1641+0100
+- Update: Accessibility: added 'speaker-mute' class to reference container
+
 = 2.0.9d1 =
-- Bugfix: Re-added jQuery UI from third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100
+- Bugfix: Libraries: Re-added jQuery UI from third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100
+- Bugfix: Settings layout: removed 80% width rule for input, text areas, select boxes
 
 = 2.0.9d0 =
 - Bugfix: Layout: Footnote referrers: more efficiently disable underline unless hovered

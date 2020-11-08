@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d0
+- Bugfix: Libraries: Switched jQuery UI to third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100/2020-11-08T2242+0100
+
 = 2.1.0 =
 - Add: UI: Tooltip: made 'Continue reading' button label customizable
 - Bugfix: Layout: Footnote referrers: disabled bottom border for theme compatibility

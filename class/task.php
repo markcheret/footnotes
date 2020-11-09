@@ -258,17 +258,17 @@ class MCI_Footnotes_Task {
      * @since 1.5.4
      * @param array|WP_Post $p_mixed_Posts
      */
-//    public function the_post(&$p_mixed_Posts) {
-//        // single WP_Post object received
-//        if (!is_array($p_mixed_Posts)) {
-//            $p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
-//            return;
-//        }
-//        // array of WP_Post objects received
-//        for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
-//            $p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
-//        }
-//    }
+    public function the_post(&$p_mixed_Posts) {
+        // single WP_Post object received
+        if (!is_array($p_mixed_Posts)) {
+            $p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
+            return;
+        }
+        // array of WP_Post objects received
+        for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
+            $p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
+        }
+    }
 
     /**
      * Replace all Footnotes in a WP_Post object.

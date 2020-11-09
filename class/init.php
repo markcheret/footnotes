@@ -140,7 +140,7 @@ class MCI_Footnotes {
         // <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>:
         // This was enabled in Footnotes v2.0.0 through v2.0.3.
         // Re-added for 2.0.9d1 / 2.1.1d0 to look whether it can fix a broken tooltip display.   2020-11-07T1601+0100/2020-11-08T2246+0100
-        wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, true );
+        wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, false ); // in header 2020-11-09T2003+0100
         wp_enqueue_script( 'jQueryUI' );
 
         // Add jQuery Tools and finish adding jQueryUI:   2020-11-08T1638+0100/2020-11-08T2246+0100
@@ -154,7 +154,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.1.1d0'
+            '2.1.1d1'
         );
     }
     

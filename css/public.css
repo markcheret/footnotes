@@ -4,17 +4,17 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1d0
+ * Version: 2.1.1d1
  *
- * Last modified: 2020-11-08T2243+0100
+ * Last modified: 2020-11-09T1948+0100
  */
  
  
-/* MCI Footnotes logo
- *
- * The classes with 'heading' fix display in dashboard
- * See class/config.php and css/settings.css
- */
+/*
+MCI Footnotes logo
+The classes with 'heading' fix display in dashboard
+See class/config.php and css/settings.css
+*/
 
 .footnotes_logo,
 .footnotes_logo:hover,
@@ -32,30 +32,33 @@
 }
 
 /*
- * Inline footnote referrers
- * aka superscript footnote anchors
- *
- * referrer and surroundings:
- *  .footnote_referrer            = enclosing <a>
- *  .footnote_plugin_tooltip_text = inner <sup>
+Inline footnote referrers
+aka superscript footnote anchors
+
+referrer and surroundings:
+ .footnote_referrer            = enclosing <a>
+ .footnote_plugin_tooltip_text = inner <sup>
  */
 
- .footnote_referrer,
- .main-content .footnote_referrer,
- .footnote_plugin_tooltip_text {
-	 text-decoration: none !important;
-	 border-bottom: none !important;
-	 cursor: pointer;
-	 z-index: 1;
- }
- .footnote_referrer:hover,
+.footnote_referrer,
+.footnote_referrer:link,
+.main-content .footnote_referrer,
+.main-content .footnote_referrer:link,
+.footnote_plugin_tooltip_text {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    cursor: pointer;
+    z-index: 1;
+}
+.footnote_referrer:hover,
 .footnote_plugin_tooltip_text:hover {
     text-decoration: underline;
     font-weight: inherit;
 }
 
-/* tooltip infobox
- */
+/*
+tooltip infobox
+*/
 span.footnote_tooltip {
     font-size: inherit;
     text-align: left;
@@ -74,11 +77,13 @@ span.footnote_tooltip {
 }
 
 /*
- * Footnote references container
- */
+Footnote references container
+reference-container.html
+*/
 
-/* label
- */
+/*
+label
+*/
 .footnote_container_prepare {
     display: block !important;
     padding-top: 24px !important;
@@ -105,32 +110,32 @@ span.footnote_tooltip {
     font-size: 1.5em !important;
 }
 
-/* collapse button
-/* fully clickable, not sign only
- */
+/*
+collapse button
+fully clickable, not sign only
+*/
 .footnote_reference_container_collapse_button {
     cursor: pointer;
     padding-left: .5em;
-	font-size: 1.3em !important;
-	vertical-align: 2px;
+    font-size: 1.3em !important;
+    vertical-align: 2px;
 }
 .footnote_container_prepare > p > span:last-child a {
     text-decoration: none !important;
 }
 
-/* table
- */
+/*
+table
+*/
 .footnote-reference-container {
     width: 100%;
     border: none;
 }
 
-/* footnotes
- * class footnote_plugin_link is for backcompat.
- * Used in reference-container-body.html
- * See <https://wordpress.org/support/topic/change-the-position-5/#post-13617988>
- */
-.footnote_plugin_link,
+/*
+footnotes
+reference-container-body.html
+*/
 .footnote_plugin_index,
 .footnote_plugin_text {
     border:none !important;
@@ -138,9 +143,12 @@ span.footnote_tooltip {
     vertical-align: top !important;
     padding: 10px 6px 5px 0 !important;
 }
-.footnote_plugin_index a,
-.footnote_plugin_text a {
+.footnote_plugin_link,
+.footnote_plugin_link:link,
+.main-content .footnote_plugin_link,
+.main-content .footnote_plugin_link:link {
     text-decoration: none !important;
+    border-bottom: none !important;
 }
 .footnote_plugin_index:hover,
 .footnote_plugin_text a:hover {
@@ -164,7 +172,9 @@ span.footnote_tooltip {
     width: unset;        /*unset width of text column to fix site issues*/
 }
 
-/* Responsive*/
+/*
+Responsive
+*/
 @media only screen and (max-width: 768px) {
     .footnote_plugin_index {
         max-width: 100px;
@@ -172,13 +182,13 @@ span.footnote_tooltip {
 }
 
 /*
- * Footnotes printing style rules
- *
- * Printing a table, browsers tend to avoid page breaks,
- * but it takes a wrapper to avoid a page break before the table.
- *
- * UI elements - expand button, arrows - are hidden in print;
- * link styling is reverted so as to not gray out referrers/numbers.
+Footnotes printing style rules
+
+Printing a table, browsers tend to avoid page breaks,
+but it takes a wrapper to avoid a page break before the table.
+
+UI elements - expand button, arrows - are hidden in print;
+link styling is reverted so as to not gray out referrers/numbers.
  */
 
 .footnote_container_wrapper {
@@ -198,7 +208,7 @@ span.footnote_tooltip {
         color: inherit;
         text-decoration: none !important;
     }
-    div.post-meta-edit-link-wrapper { /* Edit button in WP2020*/
+    div.post-meta-edit-link-wrapper { /*Edit button in WP2020*/
         display: none;  /*(added as a service)*/
     }
 }

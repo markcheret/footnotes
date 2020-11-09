@@ -80,15 +80,19 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d1 =
+- Bugfix: Libraries: jQuery UI: load in header not in footer in case it matters for fixing tooltips
+- Bugfix: Layout: Ref container: Footnote numbers: disabled bottom border for theme compatibility
+
 = 2.1.1d0
-- Bugfix: Libraries: Switched jQuery UI to third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100/2020-11-08T2242+0100
+- Bugfix: Libraries: jQuery UI: switched to third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100/2020-11-08T2242+0100
 
 = 2.1.0 =
 - Add: UI: Tooltip: made 'Continue reading' button label customizable
 - Bugfix: Layout: Footnote referrers: disabled bottom border for theme compatibility
 - Update: Accessibility: added 'speaker-mute' class to reference container
 - Bugfix: Settings layout: added named selectors to limit applicability of styles
-- UPDATE: DISABLED the_post hook, the plugin stopped supporting this hook
+- UPDATE: REMOVED the_post hook, the plugin stopped supporting this hook
 
 = 2.0.8 =
 - BUGFIX: Priority level back to PHP_INT_MAX (need to get in touch with other plugins)
@@ -101,7 +105,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.6 =
 - Update: Autoload / infinite scroll support thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
-- Bugfix: Layout: Footnote referrers: deleted vertical align tweaks for cross-theme and user agent compatibility
+- Bugfix: Layout: Footnote referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
 - Bugfix: Layout: Reference container: fixed line break behavior in footnote # clusters
 - Bugfix: Layout: Reference container: auto-extending column to fit widest, to fix display with short note texts
 - Bugfix: Layout: Reference container: IDs: slightly increased left padding

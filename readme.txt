@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d2 =
+- Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
+
 = 2.1.1d1 =
 - Bugfix: Libraries: jQuery UI: load in header not in footer in case it matters for fixing tooltips
 - Bugfix: Layout: Ref container: Footnote numbers: disabled bottom border for theme compatibility

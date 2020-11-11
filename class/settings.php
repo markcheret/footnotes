@@ -10,6 +10,7 @@
  * v2.0.4   2020-11-02T2115+0100
  * v2.0.7   2020-11-06T1342+0100
  * v2.1.0   2020-11-08T2149+0100
+ * V2.2.0   2020-11-11T1819+0100  ######## set to '' line 416 before release! ######################
  */
 
 
@@ -28,8 +29,8 @@ class MCI_Footnotes_Settings {
      *
      * @since 2.0.9
      * @var string
-	 * 
-	 * 2020-11-08T2106+0100
+     * 
+     * 2020-11-08T2106+0100
      */
     const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = "footnote_inputfield_readon_label";
 
@@ -167,6 +168,16 @@ class MCI_Footnotes_Settings {
      * @var string
      */
     const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED = "footnote_inputfield_custom_mouse_over_box_enabled";
+
+    /**
+     * Settings Container Key for alternative tooltip implementation
+     *
+     * @since 2.2.0
+     * @var string
+     * 
+     * 2020-11-11T1817+0100
+     */
+    const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE = "footnote_inputfield_custom_mouse_over_box_alternative";
 
     /**
      * Settings Container Key for the mouse-over box to display only an excerpt.
@@ -393,57 +404,58 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'no'
         ),
         "footnotes_storage_custom" => array(
-			
-			// The default footnote referrer surroundings should be square brackets:
-			// * as in English typesetting;
-			// * for better UX thanks to a more button-like appearance;
-			// * for stylistic consistency with the expand-collapse button
-			self::C_STR_FOOTNOTES_STYLING_BEFORE => '[',
-			self::C_STR_FOOTNOTES_STYLING_AFTER => ']',
-			
-			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
-			
-			// The mouse over content truncation should be enabled by default
-			// to raise awareness of the functionality and to prevent the screen
-			// from being filled at mouse-over, and to allow the Continue reading:
-			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
-			
-			// The truncation length is raised from 150 to 200 chars:
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 200,
-			
-			// The default position should not be lateral because of the risk
-			// the box gets squeezed between note anchor at line end and window edge,
-			// and top because reading at the bottom of the window is more likely:
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION => 'top center',
-			
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X => 0,
-			// The vertical offset must be negative for the box not to cover 
-			// the current line of text (web coordinates origin is top left):
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
-			
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
-			// The mouse over box shouldn’t feature a colored background 
-			// by default, due to diverging user preferences. White is neutral:
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#ffffff',
-			
+            
+            // The default footnote referrer surroundings should be square brackets:
+            // * as in English typesetting;
+            // * for better UX thanks to a more button-like appearance;
+            // * for stylistic consistency with the expand-collapse button
+            self::C_STR_FOOTNOTES_STYLING_BEFORE => '[',
+            self::C_STR_FOOTNOTES_STYLING_AFTER => ']',
+            
+            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
+            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'yes',
+            
+            // The mouse over content truncation should be enabled by default
+            // to raise awareness of the functionality and to prevent the screen
+            // from being filled at mouse-over, and to allow the Continue reading:
+            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
+            
+            // The truncation length is raised from 150 to 200 chars:
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 200,
+            
+            // The default position should not be lateral because of the risk
+            // the box gets squeezed between note anchor at line end and window edge,
+            // and top because reading at the bottom of the window is more likely:
+            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION => 'top center',
+            
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X => 0,
+            // The vertical offset must be negative for the box not to cover 
+            // the current line of text (web coordinates origin is top left):
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
+            
+            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
+            // The mouse over box shouldn’t feature a colored background 
+            // by default, due to diverging user preferences. White is neutral:
+            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#ffffff',
+            
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
-			
-			// The mouse over box corners mustn’t be rounded as that is outdated:
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
-			
-			// The width should be limited to start with, for the box to have shape:
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
-			
+            self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
+            
+            // The mouse over box corners mustn’t be rounded as that is outdated:
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
+            
+            // The width should be limited to start with, for the box to have shape:
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
+            
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
             self::C_STR_HYPERLINK_ARROW => '&#8593;',
             self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
             self::C_STR_CUSTOM_CSS => ''
         ),
-		// These should all be enabled by default to prevent users from
-		// thinking at first that the feature is broken in post titles.
+        // These should all be enabled by default to prevent users from
+        // thinking at first that the feature is broken in post titles.
         // See <https://wordpress.org/support/topic/more-feature-ideas/>
-		// In titles, footnotes are functionally pointless in WordPress.
+        // In titles, footnotes are functionally pointless in WordPress.
         "footnotes_storage_expert" => array(
             self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',

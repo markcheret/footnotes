@@ -4,16 +4,18 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1d2
+ * Version: 2.1.1d3
  *
- * Last modified: 2020-11-11T1402+0100
+ * Last modified: 2020-11-11T2146+0100
  */
  
  
-/*
+/*‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 MCI Footnotes logo
 The classes with 'heading' fix display in dashboard
-See class/config.php and css/settings.css
+
+class/config.php
+css/settings.css
 */
 
 .footnotes_logo,
@@ -31,54 +33,77 @@ See class/config.php and css/settings.css
     color: #545f5a;
 }
 
-/*
-Inline footnote referrers
-aka superscript footnote anchors
+/*‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Footnote referrers and tooltips
 
-referrer and surroundings:
- .footnote_referrer            = enclosing <a>
- .footnote_plugin_tooltip_text = inner <sup>
- */
+templates/public/footnote.html
+templates/public/footnote-alternative.html
+
+.footnote_referrer            = enclosing <span>
+.footnote_plugin_tooltip_text = inner <sup>
+.footnote_tooltip             = inner <span>
+*/
 
 .footnote_referrer,
+.footnote_referrer a,
 .footnote_referrer:link,
+.footnote_referrer a:link,
 .main-content .footnote_referrer,
+.main-content .footnote_referrer a,
 .main-content .footnote_referrer:link,
+.main-content .footnote_referrer a:link,
 .footnote_plugin_tooltip_text {
     text-decoration: none !important;
     border-bottom: none !important;
     cursor: pointer;
-    z-index: 1;
 }
 .footnote_referrer:hover,
+.footnote_referrer a:hover,
 .footnote_plugin_tooltip_text:hover {
     text-decoration: underline;
     font-weight: inherit;
 }
 
-/*
-tooltip infobox
-*/
-span.footnote_tooltip {
-    font-size: inherit;
+.footnote_tooltip {
+    display: none;
+    z-index: 999;
     text-align: left;
+    padding: 12px;
     line-height: 1.2em;
-    z-index: 99;
+    font-size: inherit;
+    font-weight: normal;
+    font-style: normal;
 }
-.continue {
+
+.footnote_relative {
+	position: relative;
+}
+.footnote_tooltip_alternative {
+	position: absolute;
+    bottom: 24px;
+    left: -50px;
+    width: 400px;
+}
+
+/*
+Read-on button
+*/
+.footnote_tooltip_continue {
     font-style: italic;
     color: green;
     text-decoration: none !important;
     cursor: pointer;
 }
-.continue:hover {
+.footnote_tooltip_continue:hover {
     color: blue;
     text-decoration: underline !important;
 }
 
-/*
+
+/*‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Footnote references container
-reference-container.html
+
+templates/public/reference-container.html
 */
 
 /*
@@ -181,7 +206,7 @@ Responsive
     }
 }
 
-/*
+/*‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 Footnotes printing style rules
 
 Printing a table, browsers tend to avoid page breaks,

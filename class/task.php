@@ -120,7 +120,7 @@ class MCI_Footnotes_Task {
         <style type="text/css" media="screen">
             <?php
             echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
-            echo '.footnote_tooltip { display: none; padding: 12px; font-size: 13px;';
+            echo '.footnote_tooltip {';
             if (!empty($l_str_Color)) {
                 printf(" color: %s;", $l_str_Color);
             }
@@ -146,8 +146,14 @@ class MCI_Footnotes_Task {
             }
             echo '}';
             ?>
-        </style>
-        <?php
+		</style>
+<?php
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
+            echo '<script content="text/javascript">' . "\r\n";
+            echo "\t" . 'function footnoteTooltipShow(footnoteTooltipId) { document.getElementById(footnoteTooltipId).style.display = "block"; };' . "\r\n";
+            echo "\t" . 'function footnoteTooltipHide(footnoteTooltipId) { document.getElementById(footnoteTooltipId).style.display = "none"; }' . "\r\n";
+            echo "</script>\r\n";
+        };
     }
 
     /**
@@ -353,7 +359,11 @@ class MCI_Footnotes_Task {
 
         if (!$p_bool_HideFootnotesText) {
             // load template file
-            $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote");
+            if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
+                $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote-alternative");
+            } else {
+                $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote");
+            }
             $l_obj_TemplateTooltip = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "tooltip");
         } else {
             $l_obj_Template = null;
@@ -395,8 +405,7 @@ class MCI_Footnotes_Task {
                     if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
                         $l_str_ExcerptText = substr($l_str_DummyText, 0, $l_int_MaxLength);
                         $l_str_ExcerptText = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
-                        // Removed hyperlink navigation on user request, but left <a> element for style.
-                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . '<a class="continue" onclick="footnote_moveToAnchor_' . $l_int_PostID . '(\'footnote_plugin_reference_' . $l_int_PostID . '_' . $l_str_Index . '\');">' . MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL) . '</a>';
+                        $l_str_ExcerptText .= '&nbsp;&#x2026; ' . '<span class="footnote_tooltip_continue" onclick="footnote_moveToAnchor_' . $l_int_PostID . '(\'footnote_plugin_reference_' . $l_int_PostID . '_' . $l_str_Index . '\');">' . MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL) . '</span>';
                     }
                 }
 
@@ -429,7 +438,9 @@ class MCI_Footnotes_Task {
                             "offset-x" => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0
                         )
                     );
-                    $l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
+					if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
+						$l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
+					}
                     $l_obj_TemplateTooltip->reload();
                 }
             }

@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d3 =
+- Add: UI: Tooltips: experimental optional alternative CSS/JS implementation
+
 = 2.1.1d2 =
 - Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
 

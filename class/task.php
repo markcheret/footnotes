@@ -5,15 +5,15 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0
- * 
+ *
  * Edited for v2.0.0 and following.
- * 
+ *
  * Edited for v2.0.5: Autoload / infinite scroll support added thanks to code from
  * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
- * 
+ *
  * Edited for v2.0.9: DISABLED the_post HOOK  2020-11-08T1839+0100
  * Edited for v2.1.0: Promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
- * 
+ *
  * Last modified   2020-11-08T2146+0100
  */
 
@@ -60,15 +60,15 @@ class MCI_Footnotes_Task {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * 
+     *
      * Edited for v2.0.5 through v2.0.7   2020-11-02T0330+0100..2020-11-06T1344+0100
-     * 
-     * Explicitly setting all priority to (default) "10" instead of lowest "PHP_INT_MAX", 
+     *
+     * Explicitly setting all priority to (default) "10" instead of lowest "PHP_INT_MAX",
      * especially for the_content, makes the footnotes reference container display
      * beneath the content and above other features added by other plugins.
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
-     * 
+     *
      * But this change is suspected to cause issues and needs to be assessed!
      * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
      */
@@ -146,12 +146,18 @@ class MCI_Footnotes_Task {
             }
             echo '}';
             ?>
-		</style>
+        </style>
 <?php
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
             echo '<script content="text/javascript">' . "\r\n";
-            echo "\t" . 'function footnoteTooltipShow(footnoteTooltipId) { document.getElementById(footnoteTooltipId).style.display = "block"; };' . "\r\n";
-            echo "\t" . 'function footnoteTooltipHide(footnoteTooltipId) { document.getElementById(footnoteTooltipId).style.display = "none"; }' . "\r\n";
+            echo "\tfunction footnoteTooltipShow(footnoteTooltipId) {\r\n";
+            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.remove('hidden');\r\n";
+            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.add('shown');\r\n";
+            echo "\t}\r\n";
+            echo "\tfunction footnoteTooltipHide(footnoteTooltipId) { \r\n";
+			echo "\t\tdocument.getElementById(footnoteTooltipId).classList.remove('shown');\r\n";
+			echo "\t\tdocument.getElementById(footnoteTooltipId).classList.add('hidden');\r\n";
+			echo "\t}\r\n";
             echo "</script>\r\n";
         };
     }
@@ -421,13 +427,13 @@ class MCI_Footnotes_Task {
                     )
                 );
                 $l_str_FootnoteReplaceText = $l_obj_Template->getContent();
-                
+
                 // reset the template
                 $l_obj_Template->reload();
                 if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED))) {
                     $l_int_OffsetY = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
                     $l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
-                    
+
                     // fill in the tooltip template  templates/public/tooltip.html
                     $l_obj_TemplateTooltip->replace(
                         array(
@@ -435,12 +441,12 @@ class MCI_Footnotes_Task {
                             "id"       => $l_str_Index,
                             "position" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
                             "offset-y" => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
-                            "offset-x" => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0
+                            "offset-x" => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0,
                         )
                     );
-					if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
-						$l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
-					}
+                    if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
+                        $l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
+                    }
                     $l_obj_TemplateTooltip->reload();
                 }
             }
@@ -507,8 +513,9 @@ class MCI_Footnotes_Task {
             $l_str_FootnoteArrowIndex  = '<span class="footnote_index_item">';
             // wrap the arrow in a @media print { display:hidden } span
             $l_str_FootnoteArrowIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
-            // get the index; add support for legacy index placeholder:
+            // get the index:
             $l_str_FootnoteArrowIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+            // keep supporting legacy index placeholder:
             $l_str_FootnoteIndex       = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
             // check if it isn't the last footnote in the array
@@ -525,19 +532,20 @@ class MCI_Footnotes_Task {
                     }
                 }
             }
-            
+
             $l_str_FootnoteArrowIndex .= '</span>';
-            
+
             // replace all placeholders in the template  templates/public/reference-container-body.html
             // The individual arrow and index placeholders are for backcompat
             $l_obj_Template->replace(
                 array(
                     "post_id"     => $l_int_PostID,
                     "id"          => MCI_Footnotes_Convert::Index($l_str_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "arrow-index" => $l_str_FootnoteArrowIndex,
+                    "text"        => $l_str_FootnoteText,
+                    // Legacy placeholders:
                     "arrow"       => $l_str_Arrow,
                     "index"       => $l_str_FootnoteIndex,
-                    "arrow-index" => $l_str_FootnoteArrowIndex,
-                    "text"        => $l_str_FootnoteText
                 )
             );
             // extra line breaks for page source legibility:
@@ -555,13 +563,13 @@ class MCI_Footnotes_Task {
                 "label"        => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
                 "button-style" => !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
                 "style"        =>  MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
-                "content"      => $l_str_Body
+                "content"      => $l_str_Body,
             )
         );
 
         // free all found footnotes if reference container will be displayed
         self::$a_arr_Footnotes = array();
-        
+
         return $l_obj_TemplateContainer->getContent();
     }
 }

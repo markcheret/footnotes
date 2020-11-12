@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d5 =
+- Add: UI: Tooltips: Alternative implementation: added CSS animation
+
 = 2.1.1d4 =
 - Add: UI: Tooltips: added delay (400ms) before fade-out to improve usability of links and Read-on button
 - Update: Libraries: jQuery Tools: redacted jQuery.browser function use in js/jquery.tools.min.js

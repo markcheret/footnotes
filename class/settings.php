@@ -10,7 +10,9 @@
  * v2.0.4   2020-11-02T2115+0100
  * v2.0.7   2020-11-06T1342+0100
  * v2.1.0   2020-11-08T2149+0100
- * V2.2.0   2020-11-11T1819+0100  ######## set to '' line 416 before release! ######################
+ * V2.2.0   2020-11-11T1819+0100
+ * 
+ * Last modified: 2020-11-12T1936+0100
  */
 
 
@@ -413,7 +415,7 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_STYLING_AFTER => ']',
             
             self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
-            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'yes',
+            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => '',
             
             // The mouse over content truncation should be enabled by default
             // to raise awareness of the functionality and to prevent the screen

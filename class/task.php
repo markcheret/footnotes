@@ -155,9 +155,9 @@ class MCI_Footnotes_Task {
             echo "\t\tdocument.getElementById(footnoteTooltipId).classList.add('shown');\r\n";
             echo "\t}\r\n";
             echo "\tfunction footnoteTooltipHide(footnoteTooltipId) { \r\n";
-			echo "\t\tdocument.getElementById(footnoteTooltipId).classList.remove('shown');\r\n";
-			echo "\t\tdocument.getElementById(footnoteTooltipId).classList.add('hidden');\r\n";
-			echo "\t}\r\n";
+            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.remove('shown');\r\n";
+            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.add('hidden');\r\n";
+            echo "\t}\r\n";
             echo "</script>\r\n";
         };
     }
@@ -339,13 +339,17 @@ class MCI_Footnotes_Task {
      * @return string
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
-        // post ID to make everything unique wrt archive view and infinite scroll
+		
+        // post ID to make everything unique wrt infinite scroll and archive view
         global $l_int_PostID;
-        $l_int_PostID = get_the_id();
+		$l_int_PostID = get_the_id();
+		
         // contains the index for the next footnote on this page
-        $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
+		$l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
+		
         // contains the starting position for the lookup of a footnote
-        $l_int_PosStart = 0;
+		$l_int_PosStart = 0;
+		
         // get start and end tag for the footnotes short code
         $l_str_StartingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START);
         $l_str_EndingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END);
@@ -393,11 +397,14 @@ class MCI_Footnotes_Task {
                 break;
             }
             // calculate the length of the footnote
-            $l_int_Length = $l_int_PosEnd - $l_int_PosStart;
+			$l_int_Length = $l_int_PosEnd - $l_int_PosStart;
+			
             // get footnote text
-            $l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
+			$l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
+			
             // Text to be displayed instead of the footnote
-            $l_str_FootnoteReplaceText = "";
+			$l_str_FootnoteReplaceText = "";
+			
             // display the footnote as mouse-over box
             if (!$p_bool_HideFootnotesText) {
                 $l_str_Index = MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
@@ -405,7 +412,8 @@ class MCI_Footnotes_Task {
                 // display only an excerpt of the footnotes text if enabled
                 $l_str_ExcerptText = $l_str_FootnoteText;
                 $l_bool_EnableExcerpt = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED));
-                $l_int_MaxLength = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH));
+				$l_int_MaxLength = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH));
+				
                 if ($l_bool_EnableExcerpt) {
                     $l_str_DummyText = strip_tags($l_str_FootnoteText);
                     if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
@@ -451,7 +459,8 @@ class MCI_Footnotes_Task {
                 }
             }
             // replace the footnote with the template
-            $p_str_Content = substr_replace($p_str_Content, $l_str_FootnoteReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));
+			$p_str_Content = substr_replace($p_str_Content, $l_str_FootnoteReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));
+			
             // add footnote only if not empty
             if (!empty($l_str_FootnoteText)) {
                 // set footnote to the output box at the end
@@ -476,9 +485,10 @@ class MCI_Footnotes_Task {
      * @return string
      */
     public function ReferenceContainer() {
-        // post ID to make everything unique wrt archive view and infinite scroll
+        // post ID to make everything unique wrt infinite scroll and archive view
         global $l_int_PostID;
-        $l_int_PostID = get_the_id();
+		$l_int_PostID = get_the_id();
+		
         // no footnotes has been replaced on this page
         if (empty(self::$a_arr_Footnotes)) {
             return "";
@@ -501,6 +511,7 @@ class MCI_Footnotes_Task {
 
         // loop through all footnotes found in the page
         for ($l_str_Index = 0; $l_str_Index < count(self::$a_arr_Footnotes); $l_str_Index++) {
+			
             // get footnote text
             $l_str_FootnoteText = self::$a_arr_Footnotes[$l_str_Index];
             // if footnote is empty, get to the next one
@@ -508,26 +519,33 @@ class MCI_Footnotes_Task {
                 continue;
             }
             // generate content of footnote index cell
-            $l_str_FirstFootnoteIndex = ($l_str_Index + 1);
+			$l_str_FirstFootnoteIndex = ($l_str_Index + 1);
+			
             // wrap each index # in a white-space:nowrap span
             $l_str_FootnoteArrowIndex  = '<span class="footnote_index_item">';
             // wrap the arrow in a @media print { display:hidden } span
             $l_str_FootnoteArrowIndex .= '<span class="footnote_index_arrow">' . $l_str_Arrow . '&#x200A;</span>';
             // get the index:
-            $l_str_FootnoteArrowIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+			$l_str_FootnoteArrowIndex .= MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+			
             // keep supporting legacy index placeholder:
             $l_str_FootnoteIndex       = MCI_Footnotes_Convert::Index(($l_str_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
             // check if it isn't the last footnote in the array
             if ($l_str_FirstFootnoteIndex < count(self::$a_arr_Footnotes) && MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
+				
                 // get all footnotes that I haven't passed yet
                 for ($l_str_CheckIndex = $l_str_FirstFootnoteIndex; $l_str_CheckIndex < count(self::$a_arr_Footnotes); $l_str_CheckIndex++) {
+					
                     // check if a further footnote is the same as the actual one
                     if ($l_str_FootnoteText == self::$a_arr_Footnotes[$l_str_CheckIndex]) {
+						
                         // set the further footnote as empty so it won't be displayed later
-                        self::$a_arr_Footnotes[$l_str_CheckIndex] = "";
+						self::$a_arr_Footnotes[$l_str_CheckIndex] = "";
+						
                         // add the footnote index to the actual index
-                        $l_str_FootnoteArrowIndex .= ',</span> <span class="footnote_index_item">' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+						$l_str_FootnoteArrowIndex .= ',</span> <span class="footnote_index_item">' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+						
                         $l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_str_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
                     }
                 }

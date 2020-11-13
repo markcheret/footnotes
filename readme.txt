@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d6 =
+- Bugfix: UI: Tooltips: fixed line breaking for URLs by allowing to break long URLs anywhere
+
 = 2.1.1d5 =
 - Add: UI: Tooltips: Alternative implementation: added CSS animation
 

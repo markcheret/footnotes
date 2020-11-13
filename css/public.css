@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1d5
+ * Version: 2.1.1d6
  *
- * Last modified: 2020-11-12T1846+0100
+ * Last modified: 2020-11-13T1746+0100
  */
  
  
@@ -75,6 +75,9 @@ templates/public/footnote-alternative.html
     font-weight: normal;
     font-style: normal;
 }
+.footnote_tooltip a {
+    word-wrap: anywhere;
+}
 
 /*
 alternative tooltip implementation
@@ -83,33 +86,33 @@ alternative tooltip implementation
     position: relative;
 }
 .footnote_tooltip.position {
-	display: unset;
+    display: unset;
     position: absolute;
     bottom: 24px;
-	left: -50px;
-	width: 400px;
+    left: -50px;
+    width: 400px;
 }
 /*
 fade-in parameters
 */
 .footnote_tooltip.shown {
-	visibility: visible;
-	opacity: 1;
-	transition-property: visibility opacity;
-	transition-duration: 200ms;
-	transition-timing-function: linear;
-	transition-delay: 0ms;
+    visibility: visible;
+    opacity: 1;
+    transition-property: visibility opacity;
+    transition-duration: 200ms;
+    transition-timing-function: linear;
+    transition-delay: 0ms;
 }
 /*
 fade-out parameters
 */
 .footnote_tooltip.hidden {
-	visibility: hidden;
-	opacity: 0;
-	transition-property: visibility opacity;
-	transition-duration: 200ms;
-	transition-timing-function: linear;
-	transition-delay: 400ms;
+    visibility: hidden;
+    opacity: 0;
+    transition-property: visibility opacity;
+    transition-duration: 200ms;
+    transition-timing-function: linear;
+    transition-delay: 400ms;
 }
 
 /*

@@ -80,8 +80,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d7 =
+- Bugfix: Combining identical footnotes: fixed dead links
+
 = 2.1.1d6 =
-- Bugfix: UI: Tooltips: fixed line breaking for URLs by allowing to break long URLs anywhere
+- Bugfix: UI: Tooltips: fixed line breaking for hyperlinked URLs in Unicode-non-compliant user agents
+- Update: Libraries: completed minification of jQuery Tools
 
 = 2.1.1d5 =
 - Add: UI: Tooltips: Alternative implementation: added CSS animation
@@ -98,7 +102,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.1d1 =
 - Bugfix: Libraries: jQuery UI: load in header not in footer in case it matters for fixing tooltips
-- Bugfix: Layout: Ref container: Footnote numbers: disabled bottom border for theme compatibility
+- Bugfix: Layout: Ref container: Footnote number links: disabled bottom border for theme compatibility
 
 = 2.1.1d0
 - Bugfix: Libraries: jQuery UI: switched to third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100/2020-11-08T2242+0100
@@ -122,7 +126,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.0.6 =
 - Update: Autoload / infinite scroll support thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
 - Bugfix: Layout: Footnote referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
-- Bugfix: Layout: Reference container: fixed line break behavior in footnote # clusters
+- Bugfix: Layout: Reference container: fixed line breaking behavior in footnote # clusters
 - Bugfix: Layout: Reference container: auto-extending column to fit widest, to fix display with short note texts
 - Bugfix: Layout: Reference container: IDs: slightly increased left padding
 - Bugfix: Translations: fixed spelling error and erroneously changed word in en_GB and en_US

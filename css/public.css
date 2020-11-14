@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1d6
+ * Version: 2.1.1d7
  *
- * Last modified: 2020-11-13T1746+0100
+ * Last modified: 2020-11-14T2229+0100
  */
  
  
@@ -192,37 +192,42 @@ footnotes
 reference-container-body.html
 */
 .footnote_plugin_index,
+.footnote_plugin_index_combi,
 .footnote_plugin_text {
     border:none !important;
     text-align: left !important;
     vertical-align: top !important;
     padding: 10px 6px 5px 0 !important;
 }
+.footnote_backlink,
+.footnote_backlink:link,
 .footnote_plugin_link,
 .footnote_plugin_link:link,
+.main-content .footnote_backlink,
+.main-content .footnote_backlink:link,
 .main-content .footnote_plugin_link,
 .main-content .footnote_plugin_link:link {
     text-decoration: none !important;
     border-bottom: none !important;
 }
+.footnote_backlink:hover,
 .footnote_plugin_index:hover,
 .footnote_plugin_text a:hover {
     text-decoration: underline !important;
 }
 .footnote_plugin_index {
-    cursor: pointer;
-    overflow-wrap: unset;
-    word-wrap: unset;
-    word-wrap: normal !important;
-    word-break: unset;
-    word-break: keep-all !important;
     max-width: 140px;
     width: 2em;     /*auto-extending column to fit widest*/
-    overflow: hidden;
 }
+.footnote_backlink,
 .footnote_index_item {
     white-space: nowrap;
 }
+
+.footnote_backlink {
+    cursor: pointer;
+}
+
 .footnote_plugin_text {
     width: unset;        /*unset width of text column to fix site issues*/
 }

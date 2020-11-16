@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1d8
+ * Version: 2.1.1d9
  *
- * Last modified: 2020-11-16T1424+0100
+ * Last modified: 2020-11-16T2150+0100
  */
  
  
@@ -54,7 +54,8 @@ templates/public/footnote-alternative.html
 .main-content .footnote_referrer a:link,
 .footnote_plugin_tooltip_text {
     text-decoration: none !important;
-    border-bottom: none !important;
+	border-bottom: none !important;
+	line-height: 0;
     cursor: pointer;
 }
 .footnote_referrer:hover,
@@ -193,11 +194,12 @@ reference-container-body.html
 */
 .footnote_plugin_index,
 .footnote_plugin_index_combi,
+.footnote_plugin_link,
 .footnote_plugin_text {
     border:none !important;
     text-align: left !important;
     vertical-align: top !important;
-    padding: 10px 6px 5px 0 !important;
+    padding: 5px 6px 10px 0 !important;
 }
 .footnote_backlink,
 .footnote_backlink:link,
@@ -220,11 +222,13 @@ reference-container-body.html
     width: 2em;     /*auto-extending column to fit widest*/
 }
 .footnote_backlink,
-.footnote_index_item {
+.footnote_plugin_link {
     white-space: nowrap;
 }
 
-.footnote_backlink {
+.footnote_index,
+.footnote_backlink,
+.footnote_plugin_index.pointer {
     cursor: pointer;
 }
 
@@ -251,7 +255,7 @@ UI elements - expand button, arrows - are hidden in print;
 link styling is reverted so as to not gray out referrers/numbers.
  */
 
-.footnote_container_wrapper {
+.footnotes_reference_container {
     page-break-inside: avoid;
 }
 

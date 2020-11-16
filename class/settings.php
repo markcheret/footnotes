@@ -7,12 +7,17 @@
  * @since 1.5.0 14.09.14 10:43
  * 
  * Edited for:
- * v2.0.4   2020-11-02T2115+0100
- * v2.0.7   2020-11-06T1342+0100
- * v2.1.0   2020-11-08T2149+0100
- * V2.2.0   2020-11-11T1819+0100
+ * 2.0.4 restore arrow settings  2020-11-02T2115+0100
+ * 2.0.7 remove hook the_post  2020-11-06T1342+0100
+ * 2.1.0 add read-on button label customization  2020-11-08T2149+0100
+ * 2.1.1 fix tooltips on site by alternative  2020-11-11T1819+0100
+ * 2.1.1 fix disabling backlink symbol  2020-11-16T2021+0100
+ * 2.1.1 fix superscript by making it optional
+ * 2.1.1 fix start pages by option to hide ref container
+ * 2.1.1 fix ref container by option restoring 3-column layout
+ * 2.1.1 fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  * 
- * Last modified: 2020-11-12T1936+0100
+ * Last modified: 2020-11-16T2153+0100
  */
 
 
@@ -29,12 +34,26 @@ class MCI_Footnotes_Settings {
     /**
      * Settings Container Key for the label of the 'Read on' button in truncated tooltips
      *
-     * @since 2.0.9
+     * @since 2.1.0
      * @var string
      * 
      * 2020-11-08T2106+0100
      */
     const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = "footnote_inputfield_readon_label";
+
+    /**
+     * Settings Container Keys of 5 options fixing default layout
+     *
+     * @since 2.1.1
+     * @var string
+     * 
+     * 2020-11-16T0859+0100
+     */
+    const C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
+    const C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
+    const C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE      = "footnotes_inputfield_reference_container_start_page_enable";
+    const C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  = "footnotes_inputfield_reference_container_3column_layout_enable";
+    const C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH = "footnotes_inputfield_reference_container_backlink_symbol_switch";
 
     /**
      * Settings Container Key for the label of the reference container.
@@ -387,8 +406,9 @@ class MCI_Footnotes_Settings {
      * @var array
      */
     private $a_arr_Default = array(
+        
         "footnotes_storage" => array(
-            self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL => 'Continue reading',
+            
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
             self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => '',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
@@ -396,6 +416,12 @@ class MCI_Footnotes_Settings {
             // as long as the feature raises criticism for malfunctioning:
             // <https://wordpress.org/support/topic/too-many-errors-18/>
             self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => '',
+            
+            self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
+            self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
+            self::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => '',
+            self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => '',
+            
             self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
             self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
             self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
@@ -405,7 +431,12 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'yes',
             self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'no'
         ),
+        
         "footnotes_storage_custom" => array(
+            
+            self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL => 'Continue reading',
+            
+            self::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS => 'yes',
             
             // The default footnote referrer surroundings should be square brackets:
             // * as in English typesetting;
@@ -454,15 +485,17 @@ class MCI_Footnotes_Settings {
             self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
             self::C_STR_CUSTOM_CSS => ''
         ),
-        // These should all be enabled by default to prevent users from
+        
+        "footnotes_storage_expert" => array(
+            
+        // Titles should all be enabled by default to prevent users from
         // thinking at first that the feature is broken in post titles.
         // See <https://wordpress.org/support/topic/more-feature-ideas/>
-        // In titles, footnotes are functionally pointless in WordPress.
-        "footnotes_storage_expert" => array(
-            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => 'yes',
+        // Yet in titles, footnotes are functionally pointless in WordPress.
+            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
             self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
             self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
         )
     );

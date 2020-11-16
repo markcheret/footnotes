@@ -80,22 +80,32 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d9 =
+- Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support
+- Bugfix: Layout: Footnote referrers: new fix for line height
+- Bugfix: Layout: Reference container: Backlink symbol: select box to disable instead of space character
+- Bugfix: Layout: Reference container: option to restore 3-column layout when combined are turned off
+- Bugfix: Layout: Reference container: option to APpend symbol in 2-column when combined are turned off
+- Bugfix: Layout: Reference container: fix start pages by an option to hide the reference container
+- Bugfix: Layout: Reference container: Table rows: fix top and bottom padding
+- Bugfix: Libraries: made script loads depend on tooltip implementation option
+
 = 2.1.1d8 =
 - Bugfix: Libraries: commented out all script loads to check if it fixes a theme incompatibility
 
 = 2.1.1d7 =
-- Bugfix: Combining identical footnotes: fixed dead links
+- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity
 
 = 2.1.1d6 =
-- Bugfix: UI: Tooltips: fixed line breaking for hyperlinked URLs in Unicode-non-compliant user agents
-- Update: Libraries: completed minification of jQuery Tools
+- Bugfix: UI: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
+- Update: Libraries: complete minification of jQuery Tools
 
 = 2.1.1d5 =
-- Add: UI: Tooltips: Alternative implementation: added CSS animation
+- Add: UI: Tooltips: Alternative implementation: add CSS animation
 
 = 2.1.1d4 =
-- Add: UI: Tooltips: added delay (400ms) before fade-out to improve usability of links and Read-on button
-- Update: Libraries: jQuery Tools: redacted jQuery.browser function use in js/jquery.tools.min.js
+- Add: UI: Tooltips: add delay (400ms) before fade-out to improve usability of links and Read-on button
+- Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
 
 = 2.1.1d3 =
 - Add: UI: Tooltips: experimental optional alternative CSS/JS implementation
@@ -105,10 +115,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.1d1 =
 - Bugfix: Libraries: jQuery UI: load in header not in footer in case it matters for fixing tooltips
-- Bugfix: Layout: Ref container: Footnote number links: disabled bottom border for theme compatibility
+- Bugfix: Layout: Ref container: Footnote number links: disable bottom border for theme compatibility
 
 = 2.1.1d0
-- Bugfix: Libraries: jQuery UI: switched to third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100/2020-11-08T2242+0100
+- Bugfix: Libraries: jQuery UI: switch to third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100/2020-11-08T2242+0100
 
 = 2.1.0 =
 - Add: UI: Tooltip: made 'Continue reading' button label customizable
@@ -161,7 +171,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Prepended transitional up arrow to backlinking footnote numbers after a user complaint about missing backlinking semantics of the footnote number
 - Bugfix: Fragment IDs: Prepended post ID to footnote number
 - Bugfix: Feed plugin version in style sheet query string for cache busting
-- Bugfix: Print style: Hide reference collapse button when printing
+- Bugfix: Print style: prevent a page break just after the reference container label
+- Bugfix: Print style: Hide reference collapse button
 - Update: Layout: Removed padding before reference container label
 
 = 2.0.2 =

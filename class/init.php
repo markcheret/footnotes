@@ -119,29 +119,37 @@ class MCI_Footnotes {
 
         //###  SCRIPTS
 
-//        // enqueue the jQuery plugin registered by WordPress:
-//        wp_enqueue_script( 'jquery' );
-//
-//        // enqueue jQuery UI libraries registered by WordPress, needed for tooltips:
-//        wp_enqueue_script( 'jquery-ui-core' );
-//        wp_enqueue_script( 'jquery-ui-widget' );
-//        wp_enqueue_script( 'jquery-ui-position' );
-//        wp_enqueue_script( 'jquery-ui-tooltip' );
-//
-//        // enqueue jQuery Tools:
-//        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
+        // These are only enqueued if the jQuery tooltips are enabled.
+        // If alternative tooltips are enabled, these libraries are not needed.
+        // Scroll animation doesn’t seem to need even jQuery Core or it gets it from elsewhere.
+
+        if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
+
+            // enqueue the jQuery plugin registered by WordPress:
+            wp_enqueue_script( 'jquery' );
+
+            // enqueue jQuery UI libraries registered by WordPress, needed for tooltips:
+            wp_enqueue_script( 'jquery-ui-core' );
+            wp_enqueue_script( 'jquery-ui-widget' );
+            wp_enqueue_script( 'jquery-ui-position' );
+            wp_enqueue_script( 'jquery-ui-tooltip' );
+
+            // enqueue jQuery Tools:
+            wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
 
 
-        // Alternatively, fetch jQuery UI from cdnjs.cloudflare.com:
-        // Used to add jQuery UI following @vonpiernik:
-        // <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>:
-        // This was enabled in Footnotes v2.0.0 through v2.0.3.
-        // Re-added for 2.0.9d1 / 2.1.1d0 to look whether it can fix a broken tooltip display.   2020-11-07T1601+0100/2020-11-08T2246+0100
-        //wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, false ); // in header 2020-11-09T2003+0100
-        //wp_enqueue_script( 'jQueryUI' );
-        // This is then needed instead of the above first instance:
-        // Add jQuery Tools and finish adding jQueryUI:   2020-11-08T1638+0100/2020-11-08T2246+0100
-        //wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), ['jQueryUI']);
+            // Alternatively, fetch jQuery UI from cdnjs.cloudflare.com:
+            // Used to add jQuery UI following @vonpiernik:
+            // <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>:
+            // This was enabled in Footnotes v2.0.0 through v2.0.3.
+            // Re-added for 2.0.9d1 / 2.1.1d0 to look whether it can fix a broken tooltip display.   2020-11-07T1601+0100/2020-11-08T2246+0100
+            //wp_register_script( 'jQueryUI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, false ); // in header 2020-11-09T2003+0100
+            //wp_enqueue_script( 'jQueryUI' );
+            // This is then needed instead of the above first instance:
+            // Add jQuery Tools and finish adding jQueryUI:   2020-11-08T1638+0100/2020-11-08T2246+0100
+            //wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), ['jQueryUI']);
+
+        }
 
 
         //###  STYLES
@@ -151,7 +159,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.1.1d8'
+            '2.1.1d9'
         );
     }
 

@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d8 =
+- Bugfix: Libraries: commented out all script loads to check if it fixes a theme incompatibility
+
 = 2.1.1d7 =
 - Bugfix: Combining identical footnotes: fixed dead links
 

@@ -119,17 +119,17 @@ class MCI_Footnotes {
 
         //###  SCRIPTS
 
-        // enqueue the jQuery plugin registered by WordPress:
-        wp_enqueue_script( 'jquery' );
-
-        // enqueue jQuery UI libraries registered by WordPress, needed for tooltips:
-        wp_enqueue_script( 'jquery-ui-core' );
-        wp_enqueue_script( 'jquery-ui-widget' );
-        wp_enqueue_script( 'jquery-ui-position' );
-        wp_enqueue_script( 'jquery-ui-tooltip' );
-
-        // enqueue jQuery Tools:
-        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
+//        // enqueue the jQuery plugin registered by WordPress:
+//        wp_enqueue_script( 'jquery' );
+//
+//        // enqueue jQuery UI libraries registered by WordPress, needed for tooltips:
+//        wp_enqueue_script( 'jquery-ui-core' );
+//        wp_enqueue_script( 'jquery-ui-widget' );
+//        wp_enqueue_script( 'jquery-ui-position' );
+//        wp_enqueue_script( 'jquery-ui-tooltip' );
+//
+//        // enqueue jQuery Tools:
+//        wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
 
 
         // Alternatively, fetch jQuery UI from cdnjs.cloudflare.com:
@@ -151,7 +151,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.1.1d7'
+            '2.1.1d8'
         );
     }
 

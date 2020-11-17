@@ -135,17 +135,17 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-collapse" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, __("Collapse references by default", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "collapse" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, $l_arr_Enabled),
 
-                "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, __("Display a backlink symbol", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "symbol" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, $l_arr_Enabled),
+                "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, __("Display a backlink symbol", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "symbol" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, $l_arr_Enabled),
 
-                "label-startpage" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE, __("Display on start page too", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "startpage" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE, $l_arr_Enabled),
+                "label-startpage" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE, __("Display on start page too", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "startpage" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE, $l_arr_Enabled),
 
-                "label-3column" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, __("Three-column layout", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "3column" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, $l_arr_Enabled),
+                "label-3column" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, __("Three-column layout", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "3column" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, $l_arr_Enabled),
 
-                "label-switch" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, __("Symbol appended, not prepended", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "switch" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $l_arr_Enabled),
+                "label-switch" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, __("Symbol appended, not prepended", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "switch" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $l_arr_Enabled),
 
                 "label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __("Where shall the reference container appear", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_Positions)
@@ -302,8 +302,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         // replace all placeholders
         $l_obj_Template->replace(
             array(
-                "label-superscript" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, __("Enable superscript footnote referrers", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "superscript" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, $l_arr_Enabled),
+                "label-superscript" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, __("Enable superscript footnote referrers", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "superscript" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, $l_arr_Enabled),
 
                 "label-before" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE, __("Before Footnotes index", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "before" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
@@ -490,6 +490,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-the-content" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT, "the_content"),
                 "the-content" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT),
+                "priority-the-content" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL, 0, PHP_INT_MAX),
                 "url-the-content" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/the_content",
 
                 "label-the-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT, "the_excerpt"),

@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.1d10 =
+- Bugfix: Layout: Reference container: fix relative positioning by priority level setting
+
 = 2.1.1d9 =
 - Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support
 - Bugfix: Layout: Footnote referrers: new fix for line height

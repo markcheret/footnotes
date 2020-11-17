@@ -15,8 +15,9 @@
  * 2.1.0: promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
  * 2.1.1: combining identical footnotes: fixed dead links  2020-11-14T2233+0100
  * 2.1.1: options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
+ * 2.1.1: option fixing ref container relative position  2020-11-17T0254+0100
  *
- * Last modified   2020-11-16T2151+0100
+ * Last modified   2020-11-17T0255+0100
  */
 
 // If called directly, abort:
@@ -83,9 +84,11 @@ class MCI_Footnotes_Task {
 
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE))) {
             add_filter('the_title', array($this, "the_title"), PHP_INT_MAX);
-        }
+		}		
+		
+		// SET PRIORITY LEVEL TO CUSTOM FOR PAGE LAYOUT; DEFAULT PHP_INT_MAX:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
-            add_filter('the_content', array($this, "the_content"), PHP_INT_MAX);
+            add_filter('the_content', array($this, "the_content"), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL));
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
              add_filter('the_excerpt', array($this, "the_excerpt"), PHP_INT_MAX);
@@ -123,7 +126,7 @@ class MCI_Footnotes_Task {
             <?php
             echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
 
-            if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
+            if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
                 echo "\r\n.home .footnotes_reference_container { display: none; }\r\n";
             }
 
@@ -437,7 +440,7 @@ class MCI_Footnotes_Task {
                 }
 
                 // define the HTML element to use for the referrers:
-                if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS))) {
+                if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS))) {
                     $l_str_Element = 'sup';
                 } else {
                     $l_str_Element = 'span';
@@ -523,7 +526,7 @@ class MCI_Footnotes_Task {
         // FOOTNOTE INDEX BACKLINK SYMBOL
 
         // check if arrow is not disabled:
-        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE))) {
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE))) {
 
             // get html arrow
             $l_str_Arrow = MCI_Footnotes_Convert::getArrow(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW));
@@ -563,13 +566,13 @@ class MCI_Footnotes_Task {
         } else {
 
             // when 3-column layout is turned on (only valid if combining is turned off):
-            if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE))) {
+            if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE))) {
                 $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-3column");
 
             } else {
 
                 // when switch symbol and index is turned on (only valid if 3-column is disabled):
-                if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH))) {
+                if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH))) {
                     $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-switch");
 
                 } else {

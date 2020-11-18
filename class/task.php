@@ -17,7 +17,7 @@
  * 2.1.1: options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
  * 2.1.1: option fixing ref container relative position  2020-11-17T0254+0100
  *
- * Last modified   2020-11-17T0255+0100
+ * Last modified   2020-11-18T0138+0100
  */
 
 // If called directly, abort:
@@ -76,6 +76,16 @@ class MCI_Footnotes_Task {
      * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
      */
     public function registerHooks() {
+		
+		// first compute values from settings:
+		// for now only the_content is supported for customization:
+		$p_int_TheContentPriority = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL);
+		
+		// PHP_INT_MAX can be set using the value -1:
+		if ( $p_int_TheContentPriority == -1 ) {
+			$p_int_TheContentPriority = PHP_INT_MAX;
+		}
+		
         // append custom css to the header
         add_filter('wp_head', array($this, "wp_head"), PHP_INT_MAX);
 
@@ -88,7 +98,7 @@ class MCI_Footnotes_Task {
 		
 		// SET PRIORITY LEVEL TO CUSTOM FOR PAGE LAYOUT; DEFAULT PHP_INT_MAX:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
-            add_filter('the_content', array($this, "the_content"), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL));
+            add_filter('the_content', array($this, "the_content"), $p_int_TheContentPriority);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
              add_filter('the_excerpt', array($this, "the_excerpt"), PHP_INT_MAX);
@@ -525,7 +535,7 @@ class MCI_Footnotes_Task {
 
         // FOOTNOTE INDEX BACKLINK SYMBOL
 
-        // check if arrow is not disabled:
+        // check if arrow is enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE))) {
 
             // get html arrow

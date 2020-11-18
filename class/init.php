@@ -159,7 +159,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.1.1d10'
+            '2.1.1'
         );
     }
 

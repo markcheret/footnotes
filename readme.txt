@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.1.0
+Stable Tag: 2.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,48 +80,25 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.1.1d10 =
-- Bugfix: Layout: Reference container: fix relative positioning by priority level setting
-
-= 2.1.1d9 =
+= 2.1.1 =
+- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity
+- Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
+- Update: Libraries: jQuery Tools: complete minification
+- Bugfix: Libraries: made script loads depend on tooltip implementation option
+- Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
+- Bugfix: UI: Tooltips: optional alternative JS implementation with CSS animation to fix site issues
+- Bugfix: UI: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
+- Bugfix: UI: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
 - Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support
-- Bugfix: Layout: Footnote referrers: new fix for line height
+- Bugfix: Layout: Reference container: fix relative positioning by priority level setting
 - Bugfix: Layout: Reference container: Backlink symbol: select box to disable instead of space character
+- Bugfix: Layout: Reference container: Footnote number links: disable bottom border for theme compatibility
 - Bugfix: Layout: Reference container: option to restore 3-column layout when combined are turned off
 - Bugfix: Layout: Reference container: option to APpend symbol in 2-column when combined are turned off
 - Bugfix: Layout: Reference container: fix start pages by an option to hide the reference container
 - Bugfix: Layout: Reference container: Table rows: fix top and bottom padding
-- Bugfix: Libraries: made script loads depend on tooltip implementation option
-
-= 2.1.1d8 =
-- Bugfix: Libraries: commented out all script loads to check if it fixes a theme incompatibility
-
-= 2.1.1d7 =
-- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity
-
-= 2.1.1d6 =
-- Bugfix: UI: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
-- Update: Libraries: complete minification of jQuery Tools
-
-= 2.1.1d5 =
-- Add: UI: Tooltips: Alternative implementation: add CSS animation
-
-= 2.1.1d4 =
-- Add: UI: Tooltips: add delay (400ms) before fade-out to improve usability of links and Read-on button
-- Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
-
-= 2.1.1d3 =
-- Add: UI: Tooltips: experimental optional alternative CSS/JS implementation
-
-= 2.1.1d2 =
-- Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
-
-= 2.1.1d1 =
-- Bugfix: Libraries: jQuery UI: load in header not in footer in case it matters for fixing tooltips
-- Bugfix: Layout: Ref container: Footnote number links: disable bottom border for theme compatibility
-
-= 2.1.1d0
-- Bugfix: Libraries: jQuery UI: switch to third party to look whether it can fix a broken tooltip display   2020-11-07T1604+0100/2020-11-08T2242+0100
+- Bugfix: Layout: Footnote referrers: new fix for line height
+- Bugfix: Formatting: disabled overline showing in some themes on hovered backlinks
 
 = 2.1.0 =
 - Add: UI: Tooltip: made 'Continue reading' button label customizable

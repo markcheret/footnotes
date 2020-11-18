@@ -21,13 +21,13 @@
  * 
  * -----
  * 
- * Added jQueryUI and checks whether jQuery.browser exists
- * Following @vonpiernik <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>
- * 2020-10-26T2005+0100
+ * Added checks whether jQuery.browser exists    2020-10-26T2005+0100
+ * <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>
  * 
  * Removed usage of jQuery browser check function   2020-11-12T0127+0100
  * ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
- * See also on the Forum, lastly <https://wordpress.org/support/topic/jquery-issues-13/>
+ * See also on the Forum: <https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/>,
+ * lastly <https://wordpress.org/support/topic/jquery-issues-13/>
  * 
  * #1  (54) This was only a tweak to adjust width and height in Internet Explorer.
  * 

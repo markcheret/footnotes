@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1d10
+ * Version: 2.1.1
  *
- * Last modified: 2020-11-17T0256+0100
+ * Last modified: 2020-11-18T0137+0100
  */
  
  
@@ -143,7 +143,6 @@ label
 .footnote_container_prepare {
     display: block !important;
     padding-top: 24px !important;
-    margin-bottom: -5px;
 }
 .footnote_container_prepare > p {
     line-height: 1.3 !important;
@@ -212,9 +211,17 @@ reference-container-body.html
     text-decoration: none !important;
     border-bottom: none !important;
 }
-.footnote_backlink:hover,
+/*
+These rules when enabled cause the backlink to take an overline
+when hovered in some themes, not in others:
 .footnote_plugin_index:hover,
+.footnote_plugin_index.pointer:hover,
+*/
+.footnote_backlink:hover,
+.footnote_plugin_index_combi:hover,
+.footnote_plugin_link:hover,
 .footnote_plugin_text a:hover {
+	text-decoration: unset;
     text-decoration: underline !important;
 }
 .footnote_plugin_index {

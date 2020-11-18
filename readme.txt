@@ -4,13 +4,11 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.0.4
+Stable Tag: 2.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
-
-**footnotes** is now continually improved. Please feel free to check our current release candidate v2.0.5rc1, available at the bottom of the [Advanced view](https://wordpress.org/plugins/footnotes/advanced/).
 
 Featured on wpmudev: http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/
 Cheers for the review, folks!
@@ -82,19 +80,61 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.0.5rc1 =
-- Update: Autoload / infinite scroll support added thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
-- Bugfix: Settings style sheet unenqueued to fix input boxes on public pages (enqueued for 2.0.4)
-- Bugfix: Public style sheet: Footnote referrers: deleted vertical align tweaks for cross-theme and user agent compatibility
-- Bugfix: Public style sheet: Reference container: auto-extending column to fit widest, to fix display with short note texts
-- Bugfix: Public style sheet: Reference container: IDs: slightly increased left padding
+= 2.1.1 =
+- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity
+- Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
+- Update: Libraries: jQuery Tools: complete minification
+- Bugfix: Libraries: made script loads depend on tooltip implementation option
+- Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
+- Bugfix: UI: Tooltips: optional alternative JS implementation with CSS animation to fix site issues
+- Bugfix: UI: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
+- Bugfix: UI: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
+- Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support
+- Bugfix: Layout: Reference container: fix relative positioning by priority level setting
+- Bugfix: Layout: Reference container: Backlink symbol: select box to disable instead of space character
+- Bugfix: Layout: Reference container: Footnote number links: disable bottom border for theme compatibility
+- Bugfix: Layout: Reference container: option to restore 3-column layout when combined are turned off
+- Bugfix: Layout: Reference container: option to APpend symbol in 2-column when combined are turned off
+- Bugfix: Layout: Reference container: fix start pages by an option to hide the reference container
+- Bugfix: Layout: Reference container: Table rows: fix top and bottom padding
+- Bugfix: Layout: Footnote referrers: new fix for line height
+- Bugfix: Formatting: disabled overline showing in some themes on hovered backlinks
+
+= 2.1.0 =
+- Add: UI: Tooltip: made 'Continue reading' button label customizable
+- Bugfix: Layout: Footnote referrers: disabled bottom border for theme compatibility
+- Update: Accessibility: added 'speaker-mute' class to reference container
+- Bugfix: Settings layout: added named selectors to limit applicability of styles
+- UPDATE: REMOVED the_post hook, the plugin stopped supporting this hook
+
+= 2.0.8 =
+- BUGFIX: Priority level back to PHP_INT_MAX (need to get in touch with other plugins)
+
+= 2.0.7 =
+- BUGFIX: Disabled hook "the_post" **Any related code in the plugin shall disappear**
+- Update: Set priority level back to 10 assuming it is unproblematic
+- Update: Added backwards compatible support for legacy arrow and index placeholders in template
+- Update: Settings defaults adjusted for better and more up-to-date tooltip layout
+
+= 2.0.6 =
+- Update: Autoload / infinite scroll support thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+- Bugfix: Layout: Footnote referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
+- Bugfix: Layout: Reference container: fixed line breaking behavior in footnote # clusters
+- Bugfix: Layout: Reference container: auto-extending column to fit widest, to fix display with short note texts
+- Bugfix: Layout: Reference container: IDs: slightly increased left padding
+- Bugfix: Translations: fixed spelling error and erroneously changed word in en_GB and en_US
+- Update: Typesetting: discarded the dot after footnote numbers as not localizable (should be optional)
+- Bugfix: UI: Reference container: Collapse button fully clickable, not sign only
+- Bugfix: UI: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
+- Update: UX: Tooltip: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
+- BUGFIX: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility)
+
+= 2.0.5 =
+- Bugfix: Get references container close to content, not below all other features, by priority level 10
 - Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues
 - Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
 - Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal
-- Update: Tooltip infobox: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
-- Bugfix: Reference container: collapse button fully clickable, not sign only
-- Bugfix: Reference container: collapse button 'collapse' with minus sign not hyphen-minus
-- Bugfix: Translations: Spelling error in en_GB and en_US
+- Bugfix: Settings style sheet unenqueued to fix input boxes on public pages (enqueued for 2.0.4)
 
 = 2.0.4 =
 - Update: Restored arrow settings to customize or disable the now prepended arrow symbol
@@ -111,7 +151,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Prepended transitional up arrow to backlinking footnote numbers after a user complaint about missing backlinking semantics of the footnote number
 - Bugfix: Fragment IDs: Prepended post ID to footnote number
 - Bugfix: Feed plugin version in style sheet query string for cache busting
-- Bugfix: Print style: Hide reference collapse button when printing
+- Bugfix: Print style: prevent a page break just after the reference container label
+- Bugfix: Print style: Hide reference collapse button
 - Update: Layout: Removed padding before reference container label
 
 = 2.0.2 =

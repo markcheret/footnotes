@@ -5,6 +5,10 @@
  * @filesource
  * @author Stefan Herndler
  * @since  1.5.0 12.09.14 10:56
+ * 
+ * Updated for 2.1.2  added version # of settings.css for cache busting
+ *                ############  update line 200  after changes to settings.css
+ * Last modified 2020-11-19T1456+0100
  */
 
 
@@ -194,9 +198,20 @@ abstract class MCI_Footnotes_LayoutEngine {
         // add WordPress color picker layout
         wp_enqueue_style('wp-color-picker');
         // add WordPress color picker function
-        wp_enqueue_script('wp-color-picker');
+		wp_enqueue_script('wp-color-picker');
+		
+		
 		// register stylesheet
-		wp_register_style('mci-footnotes-admin-styles', plugins_url('../../css/settings.css', __FILE__));
+		// added version after changes started to settings.css from 2.1.2 on:
+		wp_register_style(
+			'mci-footnotes-admin-styles', 
+			plugins_url('../../css/settings.css', __FILE__), 
+			'', 
+			'2.1.2'
+		);
+		// UPDATE version # when making changes to settings.css, FOR CACHE BUSTING
+		
+		
 		// add stylesheet to the output
 		wp_enqueue_style('mci-footnotes-admin-styles');
 	}

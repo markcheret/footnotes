@@ -80,6 +80,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.2 =
+- Bugfix: Dashboard: priority level settings for all other hooks, preventing them from being zeroed at save
+- Update: Dashboard: WordPress documentation URLs of the hooks
+- Update: Dashboard: feature description for the hooks priority level settings
+
 = 2.1.1 =
 - Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity
 - Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
@@ -98,13 +103,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Layout: Reference container: fix start pages by an option to hide the reference container
 - Bugfix: Layout: Reference container: Table rows: fix top and bottom padding
 - Bugfix: Layout: Footnote referrers: new fix for line height
-- Bugfix: Formatting: disabled overline showing in some themes on hovered backlinks
+- Bugfix: Formatting: disable overline showing in some themes on hovered backlinks
 
 = 2.1.0 =
 - Add: UI: Tooltip: made 'Continue reading' button label customizable
 - Bugfix: Layout: Footnote referrers: disabled bottom border for theme compatibility
 - Update: Accessibility: added 'speaker-mute' class to reference container
-- Bugfix: Settings layout: added named selectors to limit applicability of styles
+- Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles
 - UPDATE: REMOVED the_post hook, the plugin stopped supporting this hook
 
 = 2.0.8 =

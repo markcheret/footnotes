@@ -134,7 +134,7 @@ class MCI_Footnotes {
             wp_enqueue_script( 'jquery-ui-position' );
             wp_enqueue_script( 'jquery-ui-tooltip' );
 
-			// enqueue jQuery Tools:                            redacted jQuery.browser, completed minification; added versioning 2020-11-18T2150+0100
+            // enqueue jQuery Tools:                            redacted jQuery.browser, completed minification; added versioning 2020-11-18T2150+0100
             wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), '', '2.1.1');
 
 

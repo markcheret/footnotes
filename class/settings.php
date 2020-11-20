@@ -425,17 +425,14 @@ class MCI_Footnotes_Settings {
         "footnotes_storage" => array(
 
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
-            self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => '',
+            self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => 'no',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
-            // Identical footnotes should not be combined by default
-            // as long as the feature raises criticism for malfunctioning:
-            // <https://wordpress.org/support/topic/too-many-errors-18/>
-            self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => '',
+            self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => 'yes',
 
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
-            self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => '',
-            self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => '',
+            self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
+            self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 
             self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
             self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
@@ -444,7 +441,11 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
             self::C_STR_FOOTNOTES_LOVE => 'no',
             self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'yes',
-            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'no'
+            
+            // since removal of the_post hook, expert mode is no danger zone
+            // not for experts only; raising awareness about relative positioning
+            // changed default to 'yes':
+            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'yes'
 
         ),
 
@@ -455,14 +456,18 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS => 'yes',
 
             // The default footnote referrer surroundings should be square brackets:
-            // * as in English typesetting;
+            // * with respect to baseline footnote referrers new option;
+            // * as in English or US American typesetting;
             // * for better UX thanks to a more button-like appearance;
-            // * for stylistic consistency with the expand-collapse button
+            // * for stylistic consistency with the expand-collapse button;
             self::C_STR_FOOTNOTES_STYLING_BEFORE => '[',
             self::C_STR_FOOTNOTES_STYLING_AFTER => ']',
 
             self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
-            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => '',
+            
+            // alternative, low-script tooltips using CSS for transitions
+            // in response to user demand for website with jQuery UI outage
+            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'no',
 
             // The mouse over content truncation should be enabled by default
             // to raise awareness of the functionality and to prevent the screen

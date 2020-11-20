@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.1.1
+Stable Tag: 2.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,9 +81,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.1.2 =
-- Bugfix: Dashboard: priority level settings for all other hooks, preventing them from being zeroed at save
+- Bugfix: Layout: Reference container: Backlinks: no underline on hover cell when combining identicals is on
+- Bugfix: Elementor: add experimental support for section name function
+- Bugfix: Dashboard: priority level settings for all other hooks
 - Update: Dashboard: WordPress documentation URLs of the hooks
-- Update: Dashboard: feature description for the hooks priority level settings
+- Update: Dashboard: feature description for the hooks priority level settings (not yet localized)
 
 = 2.1.1 =
 - Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity

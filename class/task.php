@@ -16,8 +16,8 @@
  * 2.1.1: combining identical footnotes: fixed dead links  2020-11-14T2233+0100
  * 2.1.1: options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
  * 2.1.1: option fixing ref container relative position  2020-11-17T0254+0100
- *
- * Last modified   2020-11-18T0138+0100
+ * 2.1.2: options for the other hooks  2020-11-19T1849+0100
+ * 2.1.2: support for Elementor accordion toggle section names  2020-11-20T0617+0100
  */
 
 // If called directly, abort:
@@ -64,28 +64,37 @@ class MCI_Footnotes_Task {
      * @author Stefan Herndler
      * @since 1.5.0
      *
-     * Edited for v2.0.5 through v2.0.7   2020-11-02T0330+0100..2020-11-06T1344+0100
+     * Edited for:
+     * 2.0.5 through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
+     * 2.2.0 add settings for all hooks  2020-11-19T1248+0100
      *
-     * Explicitly setting all priority to (default) "10" instead of lowest "PHP_INT_MAX",
-     * especially for the_content, makes the footnotes reference container display
-     * beneath the content and above other features added by other plugins.
+     * Explicitly setting the_content priority to "10" instead of lowest "PHP_INT_MAX",
+     * makes the footnotes reference container display beneath the post and above other
+     * features added by other plugins, e.g. related post lists and social buttons.
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
      *
-     * But this change is suspected to cause issues and needs to be assessed!
-     * See <https://wordpress.org/support/topic/change-the-position-5/#post-13612697>
+     * Default remains PHP_INT_MAX.
+     * PHP_INT_MAX cannot be reset by leaving the number box empty. because browsers
+     * (WebKit) don’t allow it, so we must resort to -1.
      */
     public function registerHooks() {
-		
-		// first compute values from settings:
-		// for now only the_content is supported for customization:
-		$p_int_TheContentPriority = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL);
-		
-		// PHP_INT_MAX can be set using the value -1:
-		if ( $p_int_TheContentPriority == -1 ) {
-			$p_int_TheContentPriority = PHP_INT_MAX;
-		}
-		
+
+        // get values from settings:
+        $p_int_TheTitlePriority    = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL));
+        $p_int_TheContentPriority  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL));
+        $p_int_TheExcerptPriority  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL));
+        $p_int_WidgetTitlePriority = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL));
+        $p_int_WidgetTextPriority  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL));
+
+        // PHP_INT_MAX can be set by -1:
+        $p_int_TheTitlePriority    = ($p_int_TheTitlePriority    == -1) ? PHP_INT_MAX : $p_int_TheTitlePriority   ;
+        $p_int_TheContentPriority  = ($p_int_TheContentPriority  == -1) ? PHP_INT_MAX : $p_int_TheContentPriority ;
+        $p_int_TheExcerptPriority  = ($p_int_TheExcerptPriority  == -1) ? PHP_INT_MAX : $p_int_TheExcerptPriority ;
+        $p_int_WidgetTitlePriority = ($p_int_WidgetTitlePriority == -1) ? PHP_INT_MAX : $p_int_WidgetTitlePriority;
+        $p_int_WidgetTextPriority  = ($p_int_WidgetTextPriority  == -1) ? PHP_INT_MAX : $p_int_WidgetTextPriority ;
+
+
         // append custom css to the header
         add_filter('wp_head', array($this, "wp_head"), PHP_INT_MAX);
 
@@ -93,25 +102,30 @@ class MCI_Footnotes_Task {
         add_filter('wp_footer', array($this, "wp_footer"), PHP_INT_MAX);
 
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE))) {
-            add_filter('the_title', array($this, "the_title"), PHP_INT_MAX);
-		}		
-		
-		// SET PRIORITY LEVEL TO CUSTOM FOR PAGE LAYOUT; DEFAULT PHP_INT_MAX:
+            add_filter('the_title', array($this, "the_title"), $p_int_TheTitlePriority);
+        }
+
+        // custom priority level for reference container relative positioning; default PHP_INT_MAX:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
             add_filter('the_content', array($this, "the_content"), $p_int_TheContentPriority);
         }
+
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
-             add_filter('the_excerpt', array($this, "the_excerpt"), PHP_INT_MAX);
+             add_filter('the_excerpt', array($this, "the_excerpt"), $p_int_TheExcerptPriority);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE))) {
-            add_filter('widget_title', array($this, "widget_title"), PHP_INT_MAX);
+            add_filter('widget_title', array($this, "widget_title"), $p_int_WidgetTitlePriority);
         }
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
-            add_filter('widget_text', array($this, "widget_text"), PHP_INT_MAX);
+            add_filter('widget_text', array($this, "widget_text"), $p_int_WidgetTextPriority);
         }
-        // DISABLED the_post HOOK  2020-11-08T1839+0100
+
+
+        // REMOVED the_post HOOK  2020-11-08T1839+0100
         //
         //
+
+
         // reset stored footnotes when displaying the header
         self::$a_arr_Footnotes = array();
         self::$a_bool_AllowLoveMe = true;
@@ -362,7 +376,15 @@ class MCI_Footnotes_Task {
 
         // post ID to make everything unique wrt infinite scroll and archive view
         global $l_int_PostId;
-        $l_int_PostId = get_the_id();
+        // add support for Elementor section names:
+        // Element_Section::get_name()
+        // see <https://code.elementor.com/?s=section>
+        if (function_exists('Element_Section::get_name')) {
+            $l_int_PostId = Element_Section::get_name();
+        } else {
+        // work in WordPress mode:
+            $l_int_PostId = get_the_id();
+        }
 
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
@@ -525,7 +547,15 @@ class MCI_Footnotes_Task {
 
         // post ID to make everything unique wrt infinite scroll and archive view:
         global $l_int_PostId;
-        $l_int_PostId = get_the_id();
+        // add support for Elementor section names:   2020-11-20T0615+0100
+        // Element_Section::get_name()
+        // see <https://code.elementor.com/?s=section>
+        if (function_exists('Element_Section::get_name')) {
+            $l_int_PostId = Element_Section::get_name();
+        } else {
+        // work in WordPress mode:
+            $l_int_PostId = get_the_id();
+        }
 
         // no footnotes has been replaced on this page
         if (empty(self::$a_arr_Footnotes)) {

@@ -4,12 +4,12 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1
+ * Version: 2.1.2
  *
- * Last modified: 2020-11-18T0137+0100
+ * Last modified: 2020-11-20T0620+0100
  */
- 
- 
+
+
 /*‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 MCI Footnotes logo
 The classes with 'heading' fix display in dashboard
@@ -54,8 +54,8 @@ templates/public/footnote-alternative.html
 .main-content .footnote_referrer a:link,
 .footnote_plugin_tooltip_text {
     text-decoration: none !important;
-	border-bottom: none !important;
-	line-height: 0;
+    border-bottom: none !important;
+    line-height: 0;
     cursor: pointer;
 }
 .footnote_referrer:hover,
@@ -218,10 +218,9 @@ when hovered in some themes, not in others:
 .footnote_plugin_index.pointer:hover,
 */
 .footnote_backlink:hover,
-.footnote_plugin_index_combi:hover,
 .footnote_plugin_link:hover,
 .footnote_plugin_text a:hover {
-	text-decoration: unset;
+    text-decoration: unset;
     text-decoration: underline !important;
 }
 .footnote_plugin_index {

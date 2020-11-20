@@ -89,7 +89,7 @@ class MCI_Footnotes_Layout_Init {
 	 * Registers all sub menu pages for the new main menu.
 	 *
 	 * @author Stefan Herndler
-	 * @since  2.0.2
+	 * @since  1.5.0
 	 * @see http://codex.wordpress.org/Function_Reference/add_menu_page
 	 */
 	public function registerMainMenu() {

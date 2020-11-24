@@ -10,8 +10,9 @@
  * 2.0.4   2020-11-01T0509+0100
  * 2.1.0   2020-11-08T2148+0100
  * 2.1.1  2020-11-16T2152+0100
+ * 2.1.3  2020-11-24T0955+0100
  *
- * Last modified: 2020-11-16T2152+0100
+ * Last modified: 2020-11-24T0955+0100
  */
 
 /**
@@ -498,6 +499,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "description-4" => __("For the reference container to sit above related posts, the priority level of the_content hook may need to be at most 1200.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "description-5" => __("For Footnotes to work when a glossary plugin is active, a higher priority of 1000 may be needed.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "description-6" => __("For the_content, another good pick with proven efficiency is priority level 10.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-7" => __("Usually only the_content should be enabled; widget_text may cause issues in accordions, the_title causes issues in browser tabs.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),

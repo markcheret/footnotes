@@ -16,7 +16,7 @@
  * 2.1.1 fix start pages by option to hide ref container
  * 2.1.1 fix ref container by option restoring 3-column layout
  * 2.1.1 fix ref container by option to switch index/symbol  2020-11-16T2022+0100
- * 2.1.1 fix ref container positioning by priority level  2020-11-17T0205+0100
+ * 2.1.3 fix ref container positioning by priority level  2020-11-17T0205+0100
  *
  * Last modified: 2020-11-17T0311+0100
  */
@@ -440,7 +440,7 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
             self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
             self::C_STR_FOOTNOTES_LOVE => 'no',
-            self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'yes',
+            self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'no',
             
             // since removal of the_post hook, expert mode is no danger zone
             // not for experts only; raising awareness about relative positioning
@@ -513,12 +513,21 @@ class MCI_Footnotes_Settings {
             // Titles should all be enabled by default to prevent users from
             // thinking at first that the feature is broken in post titles.
             // See <https://wordpress.org/support/topic/more-feature-ideas/>
-            // Yet in titles, footnotes are functionally pointless in WordPress.
-            self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
-            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
+			// Yet in titles, footnotes are functionally pointless in WordPress.
+			self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
+			
+			// This is the only useful one:
+			self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
+			
+			// And the_excerpt is disabled by default following @nikelaos in
+			// <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>
+			// <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+			self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => '',
+			
+			self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
+			
+			// disabled by default because of issues with footnotes in Elementor accordions:
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => '',
 
             // initially hard-coded default
             // shows "9223372036854775807" in the numbox
@@ -526,7 +535,7 @@ class MCI_Footnotes_Settings {
             // but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
             // define -1 as PHP_INT_MAX instead
             self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
-            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => PHP_INT_MAX,
+            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 10,
             self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  => PHP_INT_MAX,

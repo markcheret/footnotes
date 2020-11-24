@@ -80,6 +80,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.3 =
+- Bugfix: disable widget_text hook by default to fix accordions declaring headings as widgets
+- Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy
+- Bugfix: Reference container: fix width in mobile view by URL wrapping wrt Unicode-non-conformant browsers
+- Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on
+- Bugfix: Styling: raise Custom CSS priority to override settings
+- Bugfix: Styling: Tooltips: raise settings priority to override theme style sheets
+
 = 2.1.2 =
 - Bugfix: Layout: Reference container: Backlinks: no underline on hover cell when combining identicals is on
 - Bugfix: Elementor: add experimental support for section name function

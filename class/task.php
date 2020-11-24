@@ -17,7 +17,8 @@
  * 2.1.1: options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
  * 2.1.1: option fixing ref container relative position  2020-11-17T0254+0100
  * 2.1.2: options for the other hooks  2020-11-19T1849+0100
- * 2.1.2: support for Elementor accordion toggle section names  2020-11-20T0617+0100
+ * 
+ * Last modified:  2020-11-24T0957+0100
  */
 
 // If called directly, abort:
@@ -66,11 +67,14 @@ class MCI_Footnotes_Task {
      *
      * Edited for:
      * 2.0.5 through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
-     * 2.2.0 add settings for all hooks  2020-11-19T1248+0100
+	 * 2.1.1 add setting for the_content 
+     * 2.1.2 add settings for 4 other hooks  2020-11-19T1248+0100
      *
-     * Explicitly setting the_content priority to "10" instead of lowest "PHP_INT_MAX",
+     * Setting the_content priority to "10" instead of PHP_INT_MAX i.e. 9223372036854775807
      * makes the footnotes reference container display beneath the post and above other
      * features added by other plugins, e.g. related post lists and social buttons.
+	 * For YARPP to display related posts below the Footnotes reference container, 
+	 * priority needs to be at least 1200.
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
      *
@@ -148,7 +152,6 @@ class MCI_Footnotes_Task {
         ?>
         <style type="text/css" media="screen">
             <?php
-            echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
 
             if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
                 echo "\r\n.home .footnotes_reference_container { display: none; }\r\n";
@@ -156,22 +159,22 @@ class MCI_Footnotes_Task {
 
             echo '.footnote_tooltip {';
             if (!empty($l_str_Color)) {
-                printf(" color: %s;", $l_str_Color);
+                printf(" color: %s !important;", $l_str_Color);
             }
             if (!empty($l_str_Background)) {
-                printf(" background-color: %s;", $l_str_Background);
+                printf(" background-color: %s !important;", $l_str_Background);
             }
             if (!empty($l_int_BorderWidth) && intval($l_int_BorderWidth) > 0) {
-                printf(" border-width: %dpx; border-style: solid;", $l_int_BorderWidth);
+                printf(" border-width: %dpx !important; border-style: solid !important;", $l_int_BorderWidth);
             }
             if (!empty($l_str_BorderColor)) {
-                printf(" border-color: %s;", $l_str_BorderColor);
+                printf(" border-color: %s !important;", $l_str_BorderColor);
             }
             if (!empty($l_int_BorderRadius) && intval($l_int_BorderRadius) > 0) {
-                printf(" border-radius: %dpx;", $l_int_BorderRadius);
+                printf(" border-radius: %dpx !important;", $l_int_BorderRadius);
             }
             if (!empty($l_int_MaxWidth) && intval($l_int_MaxWidth) > 0) {
-                printf(" max-width: %dpx;", $l_int_MaxWidth);
+                printf(" max-width: %dpx !important;", $l_int_MaxWidth);
             }
             if (!empty($l_str_BoxShadowColor)) {
                 printf(" -webkit-box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
@@ -179,7 +182,11 @@ class MCI_Footnotes_Task {
                 printf(" box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
             }
             echo '}';
-            ?>
+
+            // set custom CSS to override settings, not conversely:
+            echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
+
+?>
         </style>
 <?php
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
@@ -376,15 +383,7 @@ class MCI_Footnotes_Task {
 
         // post ID to make everything unique wrt infinite scroll and archive view
         global $l_int_PostId;
-        // add support for Elementor section names:
-        // Element_Section::get_name()
-        // see <https://code.elementor.com/?s=section>
-        if (function_exists('Element_Section::get_name')) {
-            $l_int_PostId = Element_Section::get_name();
-        } else {
-        // work in WordPress mode:
-            $l_int_PostId = get_the_id();
-        }
+        $l_int_PostId = get_the_id();
 
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
@@ -547,15 +546,7 @@ class MCI_Footnotes_Task {
 
         // post ID to make everything unique wrt infinite scroll and archive view:
         global $l_int_PostId;
-        // add support for Elementor section names:   2020-11-20T0615+0100
-        // Element_Section::get_name()
-        // see <https://code.elementor.com/?s=section>
-        if (function_exists('Element_Section::get_name')) {
-            $l_int_PostId = Element_Section::get_name();
-        } else {
-        // work in WordPress mode:
-            $l_int_PostId = get_the_id();
-        }
+        $l_int_PostId = get_the_id();
 
         // no footnotes has been replaced on this page
         if (empty(self::$a_arr_Footnotes)) {
@@ -660,17 +651,24 @@ class MCI_Footnotes_Task {
 
                 $l_str_FootnoteId  = $l_str_FootnoteIndex;
 
-                // The dedicated template enumerating backlinks uses a new placeholder:
+                // in case the footnote is unique:
+                $l_str_FootnoteReference  = '<a id="footnote_plugin_reference_';
+                $l_str_FootnoteReference .= $l_int_PostId;
+                $l_str_FootnoteReference .= "_$l_str_FootnoteId\"";
+                $l_str_FootnoteReference .= ' class="footnote_backlink"';
 
-                $l_str_FootnoteBacklinks  = '<a id="footnote_plugin_reference_';
-                $l_str_FootnoteBacklinks .= $l_int_PostId;
-                $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId";
-                $l_str_FootnoteBacklinks .= '" class="footnote_backlink" ';
-                $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_' . $l_int_PostId;
-                $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_$l_int_PostId";
-                $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
-                $l_str_FootnoteBacklinks .= $l_str_FootnoteArrow;
-                $l_str_FootnoteBacklinks .= $l_str_FootnoteId . '</a>';
+                // the click event goes in the table cell:
+                $l_str_BacklinkEvent  = ' onclick="footnote_moveToAnchor_' . $l_int_PostId;
+                $l_str_BacklinkEvent .= "('footnote_plugin_tooltip_$l_int_PostId";
+                $l_str_BacklinkEvent .= "_$l_str_FootnoteId');\"";
+
+                // the dedicated template enumerating backlinks uses another variable:
+                $l_str_FootnoteBacklinks  = $l_str_FootnoteReference;
+                $l_str_FootnoteBacklinks .= $l_str_BacklinkEvent;
+
+                // finish both single note and notes cluster:
+                $l_str_FootnoteReference .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
+                $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
 
                 // If that is the only footnote with this text, we’re done.
 
@@ -690,6 +688,9 @@ class MCI_Footnotes_Task {
                         // if so, set the further footnote as empty so it won't be displayed later:
                         self::$a_arr_Footnotes[$l_int_CheckIndex] = "";
 
+                        // cancel the event altogether:
+                        $l_str_BacklinkEvent = "";
+
 
                         // HERE GOES THE FRAGMENT IDENTIFIER AND THE BACKLINK TOO:
                         // add the footnote index to the actual index:
@@ -697,16 +698,15 @@ class MCI_Footnotes_Task {
                         // update the footnote ID:
                         $l_str_FootnoteId = MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
-                        // keep on composing the backlinks enumeration:
+                        // resume composing the backlinks enumeration:
                         $l_str_FootnoteBacklinks .= ', <a id="footnote_plugin_reference_';
                         $l_str_FootnoteBacklinks .= $l_int_PostId;
                         $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId";
                         $l_str_FootnoteBacklinks .= '" class="footnote_backlink" ';
                         $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_' . $l_int_PostId;
                         $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_$l_int_PostId";
-                        $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
-                        $l_str_FootnoteBacklinks .= $l_str_FootnoteArrow;
-                        $l_str_FootnoteBacklinks .= $l_str_FootnoteId . '</a>';
+                        $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\"";
+						$l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
 
                         // this legacy is not used:
                         //$l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
@@ -717,6 +717,8 @@ class MCI_Footnotes_Task {
 
             // replace all placeholders in 'templates/public/reference-container-body.html'
             // or in 'templates/public/reference-container-body-combi.html'
+            // or in 'templates/public/reference-container-body-3column.html'
+            // or in 'templates/public/reference-container-body-switch.html'
             $l_obj_Template->replace(
                 array(
                     // placeholder used in all templates:
@@ -727,7 +729,9 @@ class MCI_Footnotes_Task {
                     "id"          => MCI_Footnotes_Convert::Index($l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
 
                     // used in standard layout WITH COMBINED IDENTICALS TURNED ON:
-                    "backlinks"   => $l_str_FootnoteBacklinks,
+                    "pointer"     => empty($l_str_BacklinkEvent) ? '' : ' pointer',
+                    "event"       => $l_str_BacklinkEvent,
+                    "backlinks"   => empty($l_str_BacklinkEvent) ? $l_str_FootnoteBacklinks : $l_str_FootnoteReference,
 
                     // Legacy placeholders for use in legacy layout templates:
                     "arrow"       => $l_str_FootnoteArrow,

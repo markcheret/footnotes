@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.1
+ * Version: 2.1.3
  *
- * Last modified: 2020-11-18T0136+0100
+ * Last modified: 2020-11-24T0957+0100
  */
 
 
@@ -38,7 +38,10 @@
     left: 96px;
 }
 
-
+/*
+On User Request: limited to a number of IDs to not affect all dashboards
+<https://wordpress.org/support/topic/all-input-have-width-80/>
+*/
 #footnote_inputfield_placeholder_start_user_defined,
 #footnote_inputfield_placeholder_end_user_defined,
 #footnote_inputfield_readon_label,
@@ -95,4 +98,36 @@ span.footnote_highlight_placeholder {
     display: block !important;
     margin: 20px auto !important;
     text-align: center !important;
+}
+
+/*
+initialized from style attributes in templates
+IE doesn’t support nth child, but these are not critical
+*/
+.expert-lookup tr th:first-child,
+.expert-lookup tr td:first-child {
+    width: 170px !important;
+}
+.expert-lookup tr th:nth-child(2),
+.expert-lookup tr td:nth-child(2) {
+    width: 65px !important;
+}
+.expert-lookup tr th:nth-child(3),
+.expert-lookup tr td:nth-child(3) {
+    width: 200px !important;
+}
+.expert-lookup tr td:nth-child(3) input {
+    width: 190px;
+}
+.expert-lookup tr th:last-child,
+.expert-lookup tr td:last-child {
+    white-space: nowrap;
+}
+
+.footnotes-description {
+    padding: 0 10%;
+}
+.footnotes-description p {
+    font-size: 1.4em;
+    font-style: italic;
 }

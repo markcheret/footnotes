@@ -5,13 +5,14 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
- * 
+ *
  * Edited for:
  * 2.0.4   2020-11-01T0509+0100
  * 2.1.0   2020-11-08T2148+0100
  * 2.1.1  2020-11-16T2152+0100
- * 
- * Last modified: 2020-11-16T2152+0100
+ * 2.1.3  2020-11-24T0955+0100
+ *
+ * Last modified: 2020-11-24T0955+0100
  */
 
 /**
@@ -79,7 +80,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @author Stefan Herndler
      * @since  1.5.0
      * @return array
-     * 
+     *
      * Edited for v2.0.4 to reflect changes in display since WPv5.5
      * Details in class/config.php
      */
@@ -409,12 +410,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * 
+     *
      * Edited heading for v2.0.4
-	 * 
+     *
      * The former 'hyperlink arrow', incompatible with combined identical footnotes,
-	 * became 'prepended arrow' in v2.0.3 after a user complaint about missing backlinking semantics
-	 * of the footnote number.
+     * became 'prepended arrow' in v2.0.3 after a user complaint about missing backlinking semantics
+     * of the footnote number.
      */
     public function HyperlinkArrow() {
         // load template file
@@ -473,38 +474,62 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * @author Stefan Herndler
      * @since 1.5.5
+     *
+     * Edited for:
+     * 2.1.1  add priority level setting for the_content  2020-11-16T2152+0100
+     * 2.2.0  add priority level settings for the other hooks   2020-11-19T1421+0100
      */
     public function lookupHooks() {
         // load template file
         $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "expert-lookup");
+
         // replace all placeholders
+        // priority level was initially hard-coded default
+        // shows "9223372036854775807" in the numbox
+        // empty should be interpreted as PHP_INT_MAX,
+        // but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
+        // define -1 as PHP_INT_MAX instead
+
         $l_obj_Template->replace(
             array(
+
+                "description-1" => __("The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-2" => __("Default 9223372036854775807 is lowest priority, 0 is highest.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-3" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-4" => __("For the reference container to sit above related posts, the priority level of the_content hook may need to be at most 1200.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-5" => __("For Footnotes to work when a glossary plugin is active, a higher priority of 1000 may be needed.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-6" => __("For the_content, another good pick with proven efficiency is priority level 10.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-7" => __("Usually only the_content should be enabled; widget_text may cause issues in accordions, the_title causes issues in browser tabs.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "head-numbox" => __("Priority level", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-url" => __("WordPress documentation", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-the-title" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE, "the_title"),
                 "the-title" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE),
-                "url-the-title" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/the_title",
+                "priority-the-title" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL, -1, PHP_INT_MAX),
+                "url-the-title" => "https://developer.wordpress.org/reference/hooks/the_title/",
 
                 "label-the-content" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT, "the_content"),
-				"the-content" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT),
-				// allowed for priority level are all positive integers, zero and -1 interpreted as PHP_INT_MAX:
+                "the-content" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT),
                 "priority-the-content" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL, -1, PHP_INT_MAX),
-                "url-the-content" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/the_content",
+                "url-the-content" => "https://developer.wordpress.org/reference/hooks/the_content/",
 
                 "label-the-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT, "the_excerpt"),
                 "the-excerpt" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT),
-                "url-the-excerpt" => "http://codex.wordpress.org/Function_Reference/the_excerpt",
+                "priority-the-excerpt" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL, -1, PHP_INT_MAX),
+                "url-the-excerpt" => "https://developer.wordpress.org/reference/functions/the_excerpt/",
 
                 "label-widget-title" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE, "widget_title"),
                 "widget-title" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE),
-                "url-widget-title" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/widget_title",
+                "priority-widget-title" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL, -1, PHP_INT_MAX),
+                "url-widget-title" => "https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_title",
 
                 "label-widget-text" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT, "widget_text"),
                 "widget-text" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT),
-                "url-widget-text" => "http://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text",
+                "priority-widget-text" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL, -1, PHP_INT_MAX),
+                "url-widget-text" => "https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text",
             )
         );
         // display template with replaced placeholders

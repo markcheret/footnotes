@@ -16,7 +16,7 @@
  * 2.1.1 fix start pages by option to hide ref container
  * 2.1.1 fix ref container by option restoring 3-column layout
  * 2.1.1 fix ref container by option to switch index/symbol  2020-11-16T2022+0100
- * 2.1.1 fix ref container positioning by priority level  2020-11-17T0205+0100
+ * 2.1.3 fix ref container positioning by priority level  2020-11-17T0205+0100
  *
  * Last modified: 2020-11-17T0311+0100
  */
@@ -380,8 +380,8 @@ class MCI_Footnotes_Settings {
      *
      * 2020-11-16T0859+0100
      */
-	const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
-	
+    const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
+
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
     const C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      = "footnotes_inputfield_reference_container_start_page_enable";
     const C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  = "footnotes_inputfield_reference_container_3column_layout_enable";
@@ -425,17 +425,14 @@ class MCI_Footnotes_Settings {
         "footnotes_storage" => array(
 
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
-            self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => '',
+            self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => 'no',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
-            // Identical footnotes should not be combined by default
-            // as long as the feature raises criticism for malfunctioning:
-            // <https://wordpress.org/support/topic/too-many-errors-18/>
-            self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => '',
+            self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => 'yes',
 
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
-            self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => '',
-            self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => '',
+            self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
+            self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 
             self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
             self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
@@ -443,8 +440,12 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
             self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
             self::C_STR_FOOTNOTES_LOVE => 'no',
-            self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'yes',
-            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'no'
+            self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'no',
+
+            // since removal of the_post hook, expert mode is no danger zone
+            // not for experts only; raising awareness about relative positioning
+            // changed default to 'yes':
+            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'yes'
 
         ),
 
@@ -455,14 +456,18 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS => 'yes',
 
             // The default footnote referrer surroundings should be square brackets:
-            // * as in English typesetting;
+            // * with respect to baseline footnote referrers new option;
+            // * as in English or US American typesetting;
             // * for better UX thanks to a more button-like appearance;
-            // * for stylistic consistency with the expand-collapse button
+            // * for stylistic consistency with the expand-collapse button;
             self::C_STR_FOOTNOTES_STYLING_BEFORE => '[',
             self::C_STR_FOOTNOTES_STYLING_AFTER => ']',
 
             self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED => 'yes',
-            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => '',
+
+            // alternative, low-script tooltips using CSS for transitions
+            // in response to user demand for website with jQuery UI outage
+            self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'no',
 
             // The mouse over content truncation should be enabled by default
             // to raise awareness of the functionality and to prevent the screen
@@ -510,13 +515,27 @@ class MCI_Footnotes_Settings {
             // See <https://wordpress.org/support/topic/more-feature-ideas/>
             // Yet in titles, footnotes are functionally pointless in WordPress.
             self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
-            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => 'yes',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
-            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => 'yes',
 
+            // This is the only useful one:
+            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
+
+            // And the_excerpt is disabled by default following @nikelaos in
+            // <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>
+            // <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+            self::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT => '',
+
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
+
+            // disabled by default because of issues with footnotes in Elementor accordions:
+            self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => '',
+
+            // initially hard-coded default
+            // shows "9223372036854775807" in the numbox
+            // empty should be interpreted as PHP_INT_MAX,
+            // but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
+            // define -1 as PHP_INT_MAX instead
             self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
-            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => PHP_INT_MAX,
+            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 10,
             self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  => PHP_INT_MAX,

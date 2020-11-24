@@ -3,7 +3,8 @@
  * Includes the main Class of the Plugin.
  *
  * ******************************************************************************************************
- * IMPORTANT: In registerPublic() line 134: Please keep plugin version # up to date for cache busting.  *
+ * IMPORTANT: In registerPublic() line 163: Please keep plugin version # up to date for cache busting.  *
+ *            Also in class/dashboard/layout:210 for settings.css                                       *
  * ******************************************************************************************************
  *
  * @filesource
@@ -15,7 +16,7 @@
  * Edited for v2.0.3: Added style sheet versioning   2020-10-29T1413+0100
  * Edited for v2.0.4: Added jQuery UI from WordPress   2020-11-01T1902+0100
  *
- * Continual update of version number.
+ * Continual update of version number for cache busting.
  */
 
 
@@ -134,8 +135,8 @@ class MCI_Footnotes {
             wp_enqueue_script( 'jquery-ui-position' );
             wp_enqueue_script( 'jquery-ui-tooltip' );
 
-            // enqueue jQuery Tools:
-            wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__));
+            // enqueue jQuery Tools:                            redacted jQuery.browser, completed minification; added versioning 2020-11-18T2150+0100
+            wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), '', '2.1.1');
 
 
             // Alternatively, fetch jQuery UI from cdnjs.cloudflare.com:
@@ -159,7 +160,7 @@ class MCI_Footnotes {
             'mci-footnotes-css-public',
             plugins_url('../css/public.css', __FILE__),
             '',
-            '2.1.1'
+            '2.1.3'
         );
     }
 

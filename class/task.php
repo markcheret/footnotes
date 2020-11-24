@@ -17,7 +17,7 @@
  * 2.1.1: options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
  * 2.1.1: option fixing ref container relative position  2020-11-17T0254+0100
  * 2.1.2: options for the other hooks  2020-11-19T1849+0100
- * 
+ *
  * Last modified:  2020-11-24T0957+0100
  */
 
@@ -67,14 +67,14 @@ class MCI_Footnotes_Task {
      *
      * Edited for:
      * 2.0.5 through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
-	 * 2.1.1 add setting for the_content 
+     * 2.1.1 add setting for the_content
      * 2.1.2 add settings for 4 other hooks  2020-11-19T1248+0100
      *
      * Setting the_content priority to "10" instead of PHP_INT_MAX i.e. 9223372036854775807
      * makes the footnotes reference container display beneath the post and above other
      * features added by other plugins, e.g. related post lists and social buttons.
-	 * For YARPP to display related posts below the Footnotes reference container, 
-	 * priority needs to be at least 1200.
+     * For YARPP to display related posts below the Footnotes reference container,
+     * priority needs to be at least 1200.
      * Requested by users: <https://wordpress.org/support/topic/change-the-position-5/>
      * Documentation: <https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter>
      *
@@ -706,7 +706,7 @@ class MCI_Footnotes_Task {
                         $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_' . $l_int_PostId;
                         $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_$l_int_PostId";
                         $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\"";
-						$l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
+                        $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
 
                         // this legacy is not used:
                         //$l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));

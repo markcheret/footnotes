@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d0
+ * Version: 2.1.4d1
  *
- * Last modified: 2020-11-25T0836+0100
+ * Last modified: 2020-11-26T0037+0100
  */
 
 
@@ -76,7 +76,9 @@ templates/public/footnote-alternative.html
     text-decoration: none !important;
     border-bottom: none !important;
     line-height: 0;
-    cursor: pointer;
+	cursor: pointer;
+	position: relative;
+	vertical-align: baseline;
 }
 .footnote_referrer:hover,
 .footnote_referrer a:hover,

@@ -80,7 +80,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.1.4d0 =
+= 2.1.4d1 =
 - Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
 
 = 2.1.3 =

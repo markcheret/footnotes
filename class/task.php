@@ -19,7 +19,7 @@
  * 2.1.2: options for the other hooks  2020-11-19T1849+0100
  * 2.1.4: fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
  *
- * Last modified:  2020-11-25T0837+0100
+ * Last modified:  2020-11-26T0036+0100
  */
 
 // If called directly, abort:
@@ -448,7 +448,7 @@ class MCI_Footnotes_Task {
             // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents
             // spare however values of the href argument!
             // see public.css
-            $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+            $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
 
             // Text to be displayed instead of the footnote
             $l_str_FootnoteReplaceText = "";
@@ -479,21 +479,26 @@ class MCI_Footnotes_Task {
 
                 // define the HTML element to use for the referrers:
                 if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS))) {
-                    $l_str_Element = 'sup';
+                    $l_str_SupSpan = 'sup';
                 } else {
-                    $l_str_Element = 'span';
+                    $l_str_SupSpan = 'span';
                 }
 
+                // determine whether the link element is used, see below
+                
+                
                 // fill in 'templates/public/footnote.html':
                 $l_obj_Template->replace(
                     array(
-                        "post_id" => $l_int_PostId,
-                        "id"      => $l_int_Index,
-                        "element" => $l_str_Element,
-                        "before"  => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
-                        "index"   => $l_int_Index,
-                        "after"   => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
-                        "text"    => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
+                        "post_id"    => $l_int_PostId,
+                        "id"         => $l_int_Index,
+                        "link-start" => '<a>',
+                        "link-end"   => '</a>',
+                        "sup-span"   => $l_str_SupSpan,
+                        "before"     => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
+                        "index"      => $l_int_Index,
+                        "after"      => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
+                        "text"       => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
                     )
                 );
                 $l_str_FootnoteReplaceText = $l_obj_Template->getContent();
@@ -551,16 +556,52 @@ class MCI_Footnotes_Task {
      */
     public function ReferenceContainer() {
 
-        // post ID to make everything unique wrt infinite scroll and archive view:
-        global $l_int_PostId;
-        $l_int_PostId = get_the_id();
-
-        // no footnotes has been replaced on this page
+        // no footnotes have been replaced on this page:
         if (empty(self::$a_arr_Footnotes)) {
             return "";
         }
 
+        /**
+         * INFINITE SCROLL / AUTOLOAD, ARCHIVE VIEW
+         * 
+         * Multiple posts are appended to each other, functions and IDs must be disambiguated.
+         * Contributed by @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+         * @since 2.0.5
+         *
+         * post ID to make everything unique wrt infinite scroll and archive view:
+         */
+        global $l_int_PostId;
+        $l_int_PostId = get_the_id();
 
+
+        /**
+         * OPTIONAL LINK ELEMENT FOR FOOTNOTE REFERRERS AND BACKLINKS
+         * 
+         * STYLING:
+         * Link color is preferred for referrers and backlinks.
+         * Setting a global link color is a common feature in WordPress themes.
+         * CSS does not support identifiers for link colors (color: link | hover | active | visited)
+         * These are only supported as pseudo-classes of the link element.
+         * Hence the link element must be present for styling purposes.
+         * But styling these elements with the link color is not universally preferred.
+         * If not, the very presence of the link elements may need to be avoided.
+         * 
+         * FUNCTIONALITY:
+         * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
+         * Browsers may need to be prevented from logging these clicks in the browsing history,
+         * as logging compromises the usability of the 'return to previous' button in browsers.
+         * For that purpose, and for scroll animation, this linking is performed by JavaScript.
+         * 
+         * The link elements have been added and are present @since 2.0.0.
+         * Then the link addresses were removed @since 2.0.4.
+         * Then the presence of <a> elements was made optional
+         * @since 2.1.4
+         * 2020-11-25T1306+0100
+         */
+        $l_str_LinkSpan = true ? 'a' : 'span';
+        // in progress ##############################################
+         
+         
         // FOOTNOTE INDEX BACKLINK SYMBOL
 
         // check if arrow is enabled:
@@ -584,7 +625,7 @@ class MCI_Footnotes_Task {
 
         } else {
 
-            // if it is, set it to empty:
+            // if it is not, set arrow to empty:
             $l_str_Arrow = "";
             $l_str_FootnoteArrow = "";
 
@@ -659,7 +700,8 @@ class MCI_Footnotes_Task {
                 $l_str_FootnoteId  = $l_str_FootnoteIndex;
 
                 // in case the footnote is unique:
-                $l_str_FootnoteReference  = '<a id="footnote_plugin_reference_';
+                $l_str_FootnoteReference  = "<$l_str_LinkSpan";
+                $l_str_FootnoteReference .= ' id="footnote_plugin_reference_';
                 $l_str_FootnoteReference .= $l_int_PostId;
                 $l_str_FootnoteReference .= "_$l_str_FootnoteId\"";
                 $l_str_FootnoteReference .= ' class="footnote_backlink"';
@@ -674,8 +716,8 @@ class MCI_Footnotes_Task {
                 $l_str_FootnoteBacklinks .= $l_str_BacklinkEvent;
 
                 // finish both single note and notes cluster:
-                $l_str_FootnoteReference .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
-                $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
+                $l_str_FootnoteReference .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
+                $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
 
                 // If that is the only footnote with this text, we’re done.
 
@@ -706,14 +748,15 @@ class MCI_Footnotes_Task {
                         $l_str_FootnoteId = MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
                         // resume composing the backlinks enumeration:
-                        $l_str_FootnoteBacklinks .= ', <a id="footnote_plugin_reference_';
+                        $l_str_FootnoteBacklinks .= ", <$l_str_LinkSpan";
+                        $l_str_FootnoteBacklinks .= ' id="footnote_plugin_reference_';
                         $l_str_FootnoteBacklinks .= $l_int_PostId;
                         $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId";
                         $l_str_FootnoteBacklinks .= '" class="footnote_backlink" ';
                         $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_' . $l_int_PostId;
                         $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_$l_int_PostId";
                         $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\"";
-                        $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</a>";
+                        $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
 
                         // this legacy is not used:
                         //$l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
@@ -723,7 +766,7 @@ class MCI_Footnotes_Task {
             }
 
             // line wrapping of URLs already fixed, see:
-            // $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+            // $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
             
             // replace all placeholders in 'templates/public/reference-container-body.html'
             // or in 'templates/public/reference-container-body-combi.html'
@@ -737,6 +780,9 @@ class MCI_Footnotes_Task {
                     // used in standard layout W/O COMBINED FOOTNOTES:
                     "post_id"     => $l_int_PostId,
                     "id"          => MCI_Footnotes_Convert::Index($l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "link-start"  => $l_str_LinkSpan == 'a' ?  '<a>' : '',
+                    "link-end"    => $l_str_LinkSpan == 'a' ? '</a>' : '',
+                    "link-span"   => $l_str_LinkSpan,
 
                     // used in standard layout WITH COMBINED IDENTICALS TURNED ON:
                     "pointer"     => empty($l_str_BacklinkEvent) ? '' : ' pointer',
@@ -751,7 +797,7 @@ class MCI_Footnotes_Task {
 
             $l_str_Body .= $l_obj_Template->getContent();
 
-            // extra line breaks for page source legibility:
+            // extra line breaks for page source readability:
             $l_str_Body .= "\r\n\r\n";
 
             $l_obj_Template->reload();

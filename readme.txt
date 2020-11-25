@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4d0 =
+- Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
+
 = 2.1.3 =
 - Bugfix: disable widget_text hook by default to fix accordions declaring headings as widgets
 - Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy

@@ -17,8 +17,9 @@
  * 2.1.1: options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
  * 2.1.1: option fixing ref container relative position  2020-11-17T0254+0100
  * 2.1.2: options for the other hooks  2020-11-19T1849+0100
+ * 2.1.4: fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
  *
- * Last modified:  2020-11-24T0957+0100
+ * Last modified:  2020-11-25T0837+0100
  */
 
 // If called directly, abort:
@@ -443,6 +444,12 @@ class MCI_Footnotes_Task {
             // get footnote text
             $l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
 
+            // fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
+            // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents
+            // spare however values of the href argument!
+            // see public.css
+            $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+
             // Text to be displayed instead of the footnote
             $l_str_FootnoteReplaceText = "";
 
@@ -715,6 +722,9 @@ class MCI_Footnotes_Task {
                 }
             }
 
+            // line wrapping of URLs already fixed, see:
+            // $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+            
             // replace all placeholders in 'templates/public/reference-container-body.html'
             // or in 'templates/public/reference-container-body-combi.html'
             // or in 'templates/public/reference-container-body-3column.html'

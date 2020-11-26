@@ -207,7 +207,7 @@ abstract class MCI_Footnotes_LayoutEngine {
             'mci-footnotes-admin-styles',
             plugins_url('../../css/settings.css', __FILE__),
             '',
-            '2.1.4d1'
+            '2.1.4d2'
         );
         // UPDATE version # when making changes to settings.css, FOR CACHE BUSTING
 

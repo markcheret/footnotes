@@ -373,7 +373,7 @@ class MCI_Footnotes_Settings {
     const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = "footnote_inputfield_readon_label";
 
     /**
-     * Settings Container Keys of options fixing default layout
+     * Settings Container Keys for options fixing default layout
      *
      * @since 2.1.1
      * @var string
@@ -381,17 +381,36 @@ class MCI_Footnotes_Settings {
      * 2020-11-16T0859+0100
      */
     const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
-
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
     const C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      = "footnotes_inputfield_reference_container_start_page_enable";
     const C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  = "footnotes_inputfield_reference_container_3column_layout_enable";
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH = "footnotes_inputfield_reference_container_backlink_symbol_switch";
 
+    /**
+     * Settings Container Keys for hook priority levels
+     *
+     * @since 2.1.1 (the_content)
+     * @since 2.1.2
+     * @var string
+     *
+     * 2020-11-16T0859+0100
+     * 2020-11-20T0620+0100
+     */
     const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    = "footnote_inputfield_expert_lookup_the_title_priority_level";
     const C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_content_priority_level";
     const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_excerpt_priority_level";
     const C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL = "footnote_inputfield_expert_lookup_widget_title_priority_level";
     const C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_widget_text_priority_level";
+
+    /**
+     * Settings Container Keys for the link element option
+     *
+     * @since 2.1.4
+     * @var string
+     *
+     * 2020-11-26T1002+0100
+     */
+    const C_BOOL_LINK_ELEMENT_ENABLED = "footnote_inputfield_link_element_enabled";
 
 
 
@@ -433,6 +452,8 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
+
+            self::C_BOOL_LINK_ELEMENT_ENABLED => 'yes',
 
             self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
             self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',

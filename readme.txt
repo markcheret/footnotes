@@ -80,8 +80,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4d2 =
+- Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
+- Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
+- Bugfix: Layout: Tooltip: prevent line break in Read-on link label
+
 = 2.1.4d1 =
 - Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
+- Bugfix: Reference container: Styles: re-add the class dedicated to combined footnotes indices
 
 = 2.1.3 =
 - Bugfix: disable widget_text hook by default to fix accordions declaring headings as widgets

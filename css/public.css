@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d1
+ * Version: 2.1.4d2
  *
- * Last modified: 2020-11-26T0037+0100
+ * Last modified: 2020-11-26T1050+0100
  */
 
 
@@ -44,12 +44,13 @@ class/task.php
 
 not cross-browser compatible:
 word-break: break-word;
-word-break: break-all;
 overflow-wrap: anywhere;
 word-wrap: anywhere;
+word-break: break-all;
 */
 
 .footnote_url_wrap {
+    overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
@@ -76,9 +77,7 @@ templates/public/footnote-alternative.html
     text-decoration: none !important;
     border-bottom: none !important;
     line-height: 0;
-	cursor: pointer;
-	position: relative;
-	vertical-align: baseline;
+    cursor: pointer;
 }
 .footnote_referrer:hover,
 .footnote_referrer a:hover,
@@ -143,6 +142,7 @@ Read-on button
     color: green;
     text-decoration: none !important;
     cursor: pointer;
+    white-space: nowrap;
 }
 .footnote_tooltip_continue:hover {
     color: blue;

@@ -18,8 +18,9 @@
  * 2.1.1: option fixing ref container relative position  2020-11-17T0254+0100
  * 2.1.2: options for the other hooks  2020-11-19T1849+0100
  * 2.1.4: fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
+ * 2.1.4: fix issues with link elements by making them optional   2020-11-26T1051+0100
  *
- * Last modified:  2020-11-26T0036+0100
+ * Last modified:  2020-11-26T1051+0100
  */
 
 // If called directly, abort:
@@ -484,16 +485,17 @@ class MCI_Footnotes_Task {
                     $l_str_SupSpan = 'span';
                 }
 
-                // determine whether the link element is used, see below
-                
-                
+                // determine whether the link element is used, see below in ReferenceContainer()
+                $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
+
+
                 // fill in 'templates/public/footnote.html':
                 $l_obj_Template->replace(
                     array(
                         "post_id"    => $l_int_PostId,
                         "id"         => $l_int_Index,
-                        "link-start" => '<a>',
-                        "link-end"   => '</a>',
+                        "link-start" => $l_str_LinkSpan == 'a' ?  '<a>' : '',
+                        "link-end"   => $l_str_LinkSpan == 'a' ? '</a>' : '',
                         "sup-span"   => $l_str_SupSpan,
                         "before"     => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
                         "index"      => $l_int_Index,
@@ -563,7 +565,7 @@ class MCI_Footnotes_Task {
 
         /**
          * INFINITE SCROLL / AUTOLOAD, ARCHIVE VIEW
-         * 
+         *
          * Multiple posts are appended to each other, functions and IDs must be disambiguated.
          * Contributed by @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
          * @since 2.0.5
@@ -576,7 +578,7 @@ class MCI_Footnotes_Task {
 
         /**
          * OPTIONAL LINK ELEMENT FOR FOOTNOTE REFERRERS AND BACKLINKS
-         * 
+         *
          * STYLING:
          * Link color is preferred for referrers and backlinks.
          * Setting a global link color is a common feature in WordPress themes.
@@ -585,23 +587,22 @@ class MCI_Footnotes_Task {
          * Hence the link element must be present for styling purposes.
          * But styling these elements with the link color is not universally preferred.
          * If not, the very presence of the link elements may need to be avoided.
-         * 
+         *
          * FUNCTIONALITY:
          * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
          * Browsers may need to be prevented from logging these clicks in the browsing history,
          * as logging compromises the usability of the 'return to previous' button in browsers.
          * For that purpose, and for scroll animation, this linking is performed by JavaScript.
-         * 
+         *
          * The link elements have been added and are present @since 2.0.0.
          * Then the link addresses were removed @since 2.0.4.
          * Then the presence of <a> elements was made optional
          * @since 2.1.4
          * 2020-11-25T1306+0100
          */
-        $l_str_LinkSpan = true ? 'a' : 'span';
-        // in progress ##############################################
-         
-         
+        $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
+
+
         // FOOTNOTE INDEX BACKLINK SYMBOL
 
         // check if arrow is enabled:
@@ -767,7 +768,7 @@ class MCI_Footnotes_Task {
 
             // line wrapping of URLs already fixed, see:
             // $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
-            
+
             // replace all placeholders in 'templates/public/reference-container-body.html'
             // or in 'templates/public/reference-container-body-combi.html'
             // or in 'templates/public/reference-container-body-3column.html'

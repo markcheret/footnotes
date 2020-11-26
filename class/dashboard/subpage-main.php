@@ -11,8 +11,9 @@
  * 2.1.0   2020-11-08T2148+0100
  * 2.1.1  2020-11-16T2152+0100
  * 2.1.3  2020-11-24T0955+0100
+ * 2.1.4  2020-11-26T1052+0100
  *
- * Last modified: 2020-11-24T0955+0100
+ * Last modified: 2020-11-26T1052+0100
  */
 
 /**
@@ -89,9 +90,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             // Change string "%s styling" to "Footnotes styling" to fix layout in WPv5.5:
             $this->addMetaBox("settings", "styling", __("Footnotes styling", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Styling"),
             $this->addMetaBox("settings", "reference-container", __("References Container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "ReferenceContainer"),
+            $this->addMetaBox("settings", "other", __("Other", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Other"),
             // Leave intact since this is not localized:
             $this->addMetaBox("settings", "love", MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, "Love"),
-            $this->addMetaBox("settings", "other", __("Other", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Other"),
 
             // This is restored to meet user demand for arrow symbol semantics:
             $this->addMetaBox("customize", "hyperlink-arrow", __("Hyperlink symbol in the Reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "HyperlinkArrow"),
@@ -276,6 +277,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         // replace all placeholders
         $l_obj_Template->replace(
             array(
+                "label-link" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED, __("Use the link element for referrers and backlinks", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "link" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED, $l_arr_Enabled),
                 "label-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, __("Allow footnotes on Summarized Posts", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "excerpt" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, $l_arr_Enabled),
                 "label-expert-mode" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE, __("Enable the Expert mode", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
@@ -493,13 +496,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_obj_Template->replace(
             array(
 
-                "description-1" => __("The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-2" => __("Default 9223372036854775807 is lowest priority, 0 is highest.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-3" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-4" => __("For the reference container to sit above related posts, the priority level of the_content hook may need to be at most 1200.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-5" => __("For Footnotes to work when a glossary plugin is active, a higher priority of 1000 may be needed.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-6" => __("For the_content, another good pick with proven efficiency is priority level 10.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-7" => __("Usually only the_content should be enabled; widget_text may cause issues in accordions, the_title causes issues in browser tabs.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-1" => __("The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-2" => __("Default 9223372036854775807 is lowest priority, 0 is highest", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-3" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-4" => __("For the_content, this figure needs to be lower than 1200 to make sure that a feature inserted by another plugin running at 1200 displays below the reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-5" => __("For Elementor accordions, the widget_text hook must be disabled", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),

@@ -19,8 +19,9 @@
  * 2.1.2: options for the other hooks  2020-11-19T1849+0100
  * 2.1.4: fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
  * 2.1.4: fix issues with link elements by making them optional   2020-11-26T1051+0100
+ * 2.1.4: support appending arrow when combining identicals is on   2020-11-26T1633+0100
  *
- * Last modified:  2020-11-26T1051+0100
+ * Last modified:  2020-11-26T1706+0100
  */
 
 // If called directly, abort:
@@ -638,20 +639,20 @@ class MCI_Footnotes_Task {
         // line breaks for source readability:
         $l_str_Body = "\r\n\r\n";
 
-        // when combine identical is turned on, another template is needed:
+        // when combining identical footnotes is turned on, another template is needed:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
-            // In the combined template, identifiers only are clickable.
+            // the combining template allows for backlink clusters and supports cell clicking for single notes:
             $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-combi");
 
         } else {
 
-            // when 3-column layout is turned on (only valid if combining is turned off):
+            // when 3-column layout is turned on (only available if combining is turned off):
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE))) {
                 $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-3column");
 
             } else {
 
-                // when switch symbol and index is turned on (only valid if 3-column is disabled):
+                // when switch symbol and index is turned on, and combining and 3-columns are off:
                 if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH))) {
                     $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-switch");
 
@@ -663,6 +664,19 @@ class MCI_Footnotes_Task {
                 }
             }
         }
+
+        // SET SWITCH FLAG INDEPENDENTLY
+
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH))) {
+
+            $l_bool_SymbolSwitch = true;
+
+        } else {
+
+            $l_bool_SymbolSwitch = false;
+
+        }
+
 
         // FILL IN THE TEMPLATE
 
@@ -681,7 +695,7 @@ class MCI_Footnotes_Task {
 
             // INDEX COLUMN WITH ONE BACKLINK PER TABLE ROW
 
-            // Standard behavior appropriate for combine identical TURNED OFF
+            // Standard behavior appropriate for combining identicals turned off
 
             // generate content of footnote index cell
             $l_int_FirstFootnoteIndex = ($l_int_Index + 1);
@@ -692,9 +706,7 @@ class MCI_Footnotes_Task {
 
 
 
-            // SUPPORT FOR COMBINE IDENTICAL: COMPOSING ENUMERATED BACKLINKS
-
-            $l_str_FootnoteBacklinks = "";
+            // SUPPORT FOR COMBINING IDENTICALS: COMPOSE ENUMERATED BACKLINKS
 
             if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
 
@@ -716,16 +728,24 @@ class MCI_Footnotes_Task {
                 $l_str_FootnoteBacklinks  = $l_str_FootnoteReference;
                 $l_str_FootnoteBacklinks .= $l_str_BacklinkEvent;
 
-                // finish both single note and notes cluster:
-                $l_str_FootnoteReference .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
-                $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
+                // finish both single note and notes cluster, depending on switch option status:
+                if ($l_bool_SymbolSwitch) {
 
+                    $l_str_FootnoteReference .= ">$l_str_FootnoteId$l_str_FootnoteArrow</$l_str_LinkSpan>";
+                    $l_str_FootnoteBacklinks .= ">$l_str_FootnoteId$l_str_FootnoteArrow</$l_str_LinkSpan>";
+
+                } else {
+
+                    $l_str_FootnoteReference .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
+                    $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
+
+                }
                 // If that is the only footnote with this text, we’re done.
 
             }
 
 
-            // CHECK IF COMBINE IDENTICAL IS TURNED ON, and
+            // CHECK IF COMBINING IDENTICALS IS TURNED ON, and
             // check if it isn't the last footnote in the array:
             if ($l_int_FirstFootnoteIndex < count(self::$a_arr_Footnotes) && MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
 
@@ -756,8 +776,11 @@ class MCI_Footnotes_Task {
                         $l_str_FootnoteBacklinks .= '" class="footnote_backlink" ';
                         $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_' . $l_int_PostId;
                         $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_$l_int_PostId";
-                        $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\"";
-                        $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId</$l_str_LinkSpan>";
+                        $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
+                        $l_str_FootnoteBacklinks .= $l_bool_SymbolSwitch ? '' : $l_str_FootnoteArrow;
+                        $l_str_FootnoteBacklinks .= $l_str_FootnoteId;
+                        $l_str_FootnoteBacklinks .= $l_bool_SymbolSwitch ? $l_str_FootnoteArrow : '';
+                        $l_str_FootnoteBacklinks .= "</$l_str_LinkSpan>";
 
                         // this legacy is not used:
                         //$l_str_FootnoteIndex      .= ', ' . MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));

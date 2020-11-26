@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d2
+ * Version: 2.1.4d3
  *
- * Last modified: 2020-11-26T1050+0100
+ * Last modified: 2020-11-26T1805+0100
  */
 
 
@@ -82,7 +82,7 @@ templates/public/footnote-alternative.html
 .footnote_referrer:hover,
 .footnote_referrer a:hover,
 .footnote_plugin_tooltip_text:hover {
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: inherit;
 }
 
@@ -242,7 +242,7 @@ when hovered in some themes, not in others:
 .footnote_plugin_link:hover,
 .footnote_plugin_text a:hover {
     text-decoration: unset;
-    text-decoration: underline !important;
+    text-decoration: underline; /*deprioritized to ease customization*/
 }
 .footnote_plugin_index,
 .footnote_plugin_index_combi {

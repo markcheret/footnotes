@@ -80,6 +80,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4d3 =
+- Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on
+- Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization
+- Bugfix: Footnote referrers: disable hover underline
+
 = 2.1.4d2 =
 - Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
 - Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels

@@ -404,13 +404,17 @@ class MCI_Footnotes_Settings {
 
     /**
      * Settings Container Keys for the link element option
+     * Settings Container Keys for backlink typography and layout
      *
      * @since 2.1.4
      * @var string
      *
      * 2020-11-26T1002+0100
      */
-    const C_BOOL_LINK_ELEMENT_ENABLED = "footnote_inputfield_link_element_enabled";
+    const C_BOOL_LINK_ELEMENT_ENABLED          =  "footnote_inputfield_link_element_enabled";
+    const C_STR_BACKLINKS_SEPARATOR            = "footnotes_inputfield_backlinks_separator";
+    const C_STR_BACKLINKS_TERMINATOR           = "footnotes_inputfield_backlinks_terminator";
+    const C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED = "footnotes_inputfield_backlinks_line_breaks_enabled";
 
 
 
@@ -443,6 +447,12 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage" => array(
 
+            self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
+            self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
+            self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
+            self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
+            self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
+
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
             self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => 'no',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
@@ -453,20 +463,24 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 
-            self::C_BOOL_LINK_ELEMENT_ENABLED => 'yes',
+            // hex character reference and Unicode name (defined in all-caps):
+            // self::C_STR_BACKLINKS_TERMINATOR => '&#x2E; FULL STOP',
+            // self::C_STR_BACKLINKS_SEPARATOR  => '&#x2C; COMMA',
+            self::C_STR_BACKLINKS_SEPARATOR  => 'none',
+            self::C_STR_BACKLINKS_TERMINATOR => 'none',
 
-            self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
-            self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
-            self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
-            self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
-            self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
-            self::C_STR_FOOTNOTES_LOVE => 'no',
+            // whether a <br /> tag is inserted:
+            self::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED => 'no',
+
+            self::C_BOOL_LINK_ELEMENT_ENABLED => 'yes',
             self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'no',
 
             // since removal of the_post hook, expert mode is no danger zone
             // not for experts only; raising awareness about relative positioning
             // changed default to 'yes':
-            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'yes'
+            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'yes',
+
+            self::C_STR_FOOTNOTES_LOVE => 'no',
 
         ),
 
@@ -531,6 +545,8 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage_expert" => array(
 
+            // checkboxes
+
             // Titles should all be enabled by default to prevent users from
             // thinking at first that the feature is broken in post titles.
             // See <https://wordpress.org/support/topic/more-feature-ideas/>
@@ -538,7 +554,7 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
 
             // This is the only useful one:
-            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'checked',
 
             // And the_excerpt is disabled by default following @nikelaos in
             // <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>
@@ -547,16 +563,18 @@ class MCI_Footnotes_Settings {
 
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
 
-            // disabled by default because of issues with footnotes in Elementor accordions:
+            // The widget_text hook must be disabled, because a footnotes container is inserted
+            // at the bottom of each widget, but multiple containers in a page are not disambiguated.
+            // E.g. enabling this causes issues with footnotes in Elementor accordions.
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => '',
 
             // initially hard-coded default
-            // shows "9223372036854775807" in the numbox
-            // empty should be interpreted as PHP_INT_MAX,
-            // but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
+            // shows "9223372036854780000" instead of 9223372036854775807 in the numbox
+            // empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty:
+            // <https://github.com/Modernizr/Modernizr/issues/171>
             // define -1 as PHP_INT_MAX instead
             self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
-            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 10,
+            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 1000,
             self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  => PHP_INT_MAX,

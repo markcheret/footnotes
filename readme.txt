@@ -80,6 +80,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4d4 =
+- Bugfix: Reference container: Backlinks: disable separators and terminators
+- Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations
+
 = 2.1.4d3 =
 - Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on
 - Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization

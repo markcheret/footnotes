@@ -20,8 +20,10 @@
  * 2.1.4: fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
  * 2.1.4: fix issues with link elements by making them optional   2020-11-26T1051+0100
  * 2.1.4: support appending arrow when combining identicals is on   2020-11-26T1633+0100
+ * 2.1.4: disable or select backlink separator and terminator  2020-11-28T1048+0100
+ * 2.1.4: optional line breaks to stack enumerated backlinks  2020-11-28T1049+0100
  *
- * Last modified:  2020-11-26T1706+0100
+ * Last modified:  2020-11-28T1049+0100
  */
 
 // If called directly, abort:
@@ -604,8 +606,13 @@ class MCI_Footnotes_Task {
         $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
 
 
-        // FOOTNOTE INDEX BACKLINK SYMBOL
-
+        /**
+         * FOOTNOTE INDEX BACKLINK SYMBOL
+         *
+         * The backlink symbol has been removed for 2.0.0 along with column 2 of the reference container.
+         * On user request, an arrow is prepended @since 2.0.3, and the setting is restored @since 2.0.4.
+         * @since 2.1.1 a select box allows to disable the symbol instead of customizing it to invisible.
+         */
         // check if arrow is enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE))) {
 
@@ -628,16 +635,46 @@ class MCI_Footnotes_Task {
         } else {
 
             // if it is not, set arrow to empty:
-            $l_str_Arrow = "";
-            $l_str_FootnoteArrow = "";
+            $l_str_Arrow = '';
+            $l_str_FootnoteArrow = '';
 
         }
 
 
-        // REFERENCE CONTAINER TABLE ROW TEMPLATE LOAD
+        /**
+         * BACKLINK TERMINATORS AND SEPARATORS
+         *
+         * Initially a dot was appended in the table row template, and a comma for enumerations.
+         * @since 2.0.6 a dot after footnote numbers is discarded as not localizable; making it
+         * optional was envisaged. The comma in enumerations is not generally preferred either.
+         */
+        if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR) == 'none') {
+            $l_str_Separator  = '';
+        }
+        if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR) == 'none') {
+            $l_str_Terminator = '';
+        }
 
-        // line breaks for source readability:
+
+        /**
+         * LINE BREAKS
+         *
+         * The backlinks of combined footnotes are generally preferred in an enumeration.
+         * But when few footnotes are identical, stacking the items in list form is better.
+         * Variable number length and proportional character width require explicit line breaks.
+         * Otherwise, an ordinary space character offering a line break opportunity is inserted.
+         */
+        $l_str_LineBreak = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED)) ? '<br />' : ' ';
+
+        /**
+         * For maintenance and support, table rows in the reference container should be 
+         * separated by an empty line. So we add these line breaks for source readability.
+         * Before the first table row (breaks between rows are ~200 lines below):
+         */
         $l_str_Body = "\r\n\r\n";
+
+
+        // REFERENCE CONTAINER TABLE ROW TEMPLATE LOAD
 
         // when combining identical footnotes is turned on, another template is needed:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
@@ -769,7 +806,7 @@ class MCI_Footnotes_Task {
                         $l_str_FootnoteId = MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
                         // resume composing the backlinks enumeration:
-                        $l_str_FootnoteBacklinks .= ", <$l_str_LinkSpan";
+                        $l_str_FootnoteBacklinks .= "$l_str_Separator$l_str_LineBreak<$l_str_LinkSpan";
                         $l_str_FootnoteBacklinks .= ' id="footnote_plugin_reference_';
                         $l_str_FootnoteBacklinks .= $l_int_PostId;
                         $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId";
@@ -807,6 +844,7 @@ class MCI_Footnotes_Task {
                     "link-start"  => $l_str_LinkSpan == 'a' ?  '<a>' : '',
                     "link-end"    => $l_str_LinkSpan == 'a' ? '</a>' : '',
                     "link-span"   => $l_str_LinkSpan,
+                    "terminator"  => $l_str_Terminator,
 
                     // used in standard layout WITH COMBINED IDENTICALS TURNED ON:
                     "pointer"     => empty($l_str_BacklinkEvent) ? '' : ' pointer',

@@ -11,9 +11,9 @@
  * 2.1.0   2020-11-08T2148+0100
  * 2.1.1  2020-11-16T2152+0100
  * 2.1.3  2020-11-24T0955+0100
- * 2.1.4  2020-11-26T1052+0100
+ * 2.1.4  2020-11-28T1050+0100
  *
- * Last modified: 2020-11-26T1052+0100
+ * Last modified: 2020-11-28T1050+0100
  */
 
 /**
@@ -125,6 +125,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
         );
+        // options for the punctuation used as separator or terminator:
+        $l_arr_Punctuation = array(
+            "none" => __("none", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+        );
 
         // load template file
         $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "settings-reference-container");
@@ -150,7 +154,16 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "switch" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $l_arr_Enabled),
 
                 "label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __("Where shall the reference container appear", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_Positions)
+                "position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_Positions),
+
+                "label-separator" => $this->addLabel(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR, __("Separator to use when enumerating backlinks", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "separator" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR, $l_arr_Punctuation),
+
+                "label-terminator" => $this->addLabel(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR, __("Punctuation after a single backlink", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "terminator" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR, $l_arr_Punctuation),
+
+                "label-linebreak" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, __("Stack backlinks when enumerating", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "linebreak" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, $l_arr_Enabled),
             )
         );
         // display template with replaced placeholders
@@ -500,7 +513,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "description-2" => __("Default 9223372036854775807 is lowest priority, 0 is highest", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "description-3" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "description-4" => __("For the_content, this figure needs to be lower than 1200 to make sure that a feature inserted by another plugin running at 1200 displays below the reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-5" => __("For Elementor accordions, the widget_text hook must be disabled", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-5" => __("The widget_text hook must be disabled, because a footnotes container is inserted at the bottom of each widget, but multiple containers in a page are not disambiguated", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),

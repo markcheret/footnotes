@@ -80,6 +80,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4d5
+- Bugfix: Reference container: separating and terminating punctuation optional and customizable
+- Bugfix: Reference container: Label: delete overflow hidden rule
+- Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
+- Bugfix: Dashboard: Footnotes main settings: fix layout, raise shortcodes to top
+- Bugfix: Reference container: add quick note to the Excerpt select box
+- Bugfix: Style sheet versioning for cache busting: automated safe mode compatible with security
+
 = 2.1.4d4 =
 - Bugfix: Reference container: Backlinks: disable separators and terminators
 - Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations

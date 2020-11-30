@@ -407,13 +407,18 @@ class MCI_Footnotes_Settings {
      * Settings Container Keys for backlink typography and layout
      *
      * @since 2.1.4
-     * @var string
+     * @var string|bool
      *
      * 2020-11-26T1002+0100
+	 * 2020-11-30T0427+0100
      */
     const C_BOOL_LINK_ELEMENT_ENABLED          =  "footnote_inputfield_link_element_enabled";
-    const C_STR_BACKLINKS_SEPARATOR            = "footnotes_inputfield_backlinks_separator";
-    const C_STR_BACKLINKS_TERMINATOR           = "footnotes_inputfield_backlinks_terminator";
+    const C_BOOL_BACKLINKS_SEPARATOR_ENABLED   = "footnotes_inputfield_backlinks_separator_enabled";
+    const C_STR_BACKLINKS_SEPARATOR_OPTION     = "footnotes_inputfield_backlinks_separator_option";
+    const C_STR_BACKLINKS_SEPARATOR_CUSTOM     = "footnotes_inputfield_backlinks_separator_custom";
+    const C_BOOL_BACKLINKS_TERMINATOR_ENABLED  = "footnotes_inputfield_backlinks_terminator_enabled";
+    const C_STR_BACKLINKS_TERMINATOR_OPTION    = "footnotes_inputfield_backlinks_terminator_option";
+    const C_STR_BACKLINKS_TERMINATOR_CUSTOM    = "footnotes_inputfield_backlinks_terminator_custom";
     const C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED = "footnotes_inputfield_backlinks_line_breaks_enabled";
 
 
@@ -463,11 +468,14 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 
-            // hex character reference and Unicode name (defined in all-caps):
-            // self::C_STR_BACKLINKS_TERMINATOR => '&#x2E; FULL STOP',
-            // self::C_STR_BACKLINKS_SEPARATOR  => '&#x2C; COMMA',
-            self::C_STR_BACKLINKS_SEPARATOR  => 'none',
-            self::C_STR_BACKLINKS_TERMINATOR => 'none',
+            // backlink separators and terminators are often not preferred.
+            // but a choice must be provided along with the ability to customize:
+            self::C_BOOL_BACKLINKS_SEPARATOR_ENABLED  => 'yes',
+            self::C_STR_BACKLINKS_SEPARATOR_OPTION    => 'comma',
+            self::C_STR_BACKLINKS_SEPARATOR_CUSTOM    => '',
+            self::C_BOOL_BACKLINKS_TERMINATOR_ENABLED => 'no',
+            self::C_STR_BACKLINKS_TERMINATOR_OPTION   => 'full_stop',
+            self::C_STR_BACKLINKS_TERMINATOR_CUSTOM   => '',
 
             // whether a <br /> tag is inserted:
             self::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED => 'no',

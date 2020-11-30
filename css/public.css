@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d4
+ * Version: 2.1.4d5
  *
- * Last modified: 2020-11-28T1051+0100
+ * Last modified: 2020-11-30T0712+0100
  */
 
 
@@ -169,7 +169,6 @@ label
     margin-bottom: 0.25em !important;
     padding: 0 !important;
     font-weight: normal !important;
-    overflow: hidden !important;
     border-bottom: 1px solid #aaaaaa !important;
     display: block !important;
     -webkit-margin-before: 0.83em !important;

@@ -642,16 +642,51 @@ class MCI_Footnotes_Task {
 
 
         /**
-         * BACKLINK TERMINATORS AND SEPARATORS
+         * BACKLINK SEPARATOR
          *
-         * Initially a dot was appended in the table row template, and a comma for enumerations.
-         * @since 2.0.6 a dot after footnote numbers is discarded as not localizable; making it
-         * optional was envisaged. The comma in enumerations is not generally preferred either.
+         * Initially a comma was appended in this algorithm for enumerations.
+         * The comma in enumerations is not generally preferred.
+         * @since 2.1.4 the separator is optional, has options, and is customizable:
          */
-        if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR) == 'none') {
-            $l_str_Separator  = '';
+        // check if it is even enabled:
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED))) {
+            // if so, check if it is customized:
+            $l_str_Separator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM);
+            if (empty($l_str_Separator)) {
+                // if it is not, check which option is on:
+                $l_str_SeparatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_OPTION);
+                switch ($l_str_SeparatorOption) {
+                    case 'comma'    : $l_str_Separator = ',';              break;
+                    case 'semicolon': $l_str_Separator = ';';              break;
+                    case 'en_dash'  : $l_str_Separator = '&nbsp;&#x2013;'; break;
+                }
+            }
+        } else {
+            $l_str_Separator = '';
         }
-        if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR) == 'none') {
+
+        /**
+         * BACKLINK TERMINATOR
+         *
+         * Initially a dot was appended in the table row template.
+         * @since 2.0.6 a dot after footnote numbers is discarded as not localizable;
+         * making it optional was envisaged.
+         * @since 2.1.4 the terminator is optional, has options, and is customizable:
+         */
+        // check if it is even enabled:
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED))) {
+            // if so, check if it is customized:
+            $l_str_Terminator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM);
+            if (empty($l_str_Terminator)) {
+                // if it is not, check which option is on:
+                $l_str_TerminatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_OPTION);
+                switch ($l_str_TerminatorOption) {
+                    case 'period'     : $l_str_Terminator = '.'; break;
+                    case 'parenthesis': $l_str_Terminator = ')'; break;
+                    case 'colon'      : $l_str_Terminator = ':'; break;
+                }
+            }
+        } else {
             $l_str_Terminator = '';
         }
 
@@ -667,7 +702,7 @@ class MCI_Footnotes_Task {
         $l_str_LineBreak = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED)) ? '<br />' : ' ';
 
         /**
-         * For maintenance and support, table rows in the reference container should be 
+         * For maintenance and support, table rows in the reference container should be
          * separated by an empty line. So we add these line breaks for source readability.
          * Before the first table row (breaks between rows are ~200 lines below):
          */

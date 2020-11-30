@@ -7,8 +7,9 @@
  * @since  1.5.0 12.09.14 10:56
  *
  * 2.1.2  added version # of settings.css for cache busting  2020-11-19T1456+0100
- *
- * ############  Please update line 210  after changes to settings.css  ###############
+ * 2.1.4  automated version number update  2020-11-30T0648+0100
+ * 
+ * Last modified:  2020-11-30T0649+0100
  */
 
 
@@ -207,9 +208,9 @@ abstract class MCI_Footnotes_LayoutEngine {
             'mci-footnotes-admin-styles',
             plugins_url('../../css/settings.css', __FILE__),
             '',
-            '2.1.4d4'
+            FOOTNOTES_VERSION
         );
-        // UPDATE version # when making changes to settings.css, FOR CACHE BUSTING
+        // automated update of version number for cache busting
 
 
         // add stylesheet to the output

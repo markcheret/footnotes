@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d5
+ * Version: 2.1.4d6
  *
- * Last modified: 2020-11-30T0712+0100
+ * Last modified: 2020-12-01T0450+0100
  */
 
 
@@ -42,23 +42,25 @@
 On User Request: limited to a number of IDs to not affect all dashboards
 <https://wordpress.org/support/topic/all-input-have-width-80/>
 */
+/*input[type=text], input[type=password], textarea, select*/
 #footnote_inputfield_placeholder_start_user_defined,
 #footnote_inputfield_placeholder_end_user_defined,
 #footnote_inputfield_readon_label,
 #footnote_inputfield_references_label,
-#footnote_inputfield_custom_css
-/*input[type=text], input[type=password], textarea, select*/ {
+#footnote_inputfield_custom_css {
     padding-left: 8px !important;
     padding-right: 8px !important;
     width: 80% !important;
 }
 
+#footnote_inputfield_custom_hyperlink_symbol,
 #footnotes_inputfield_backlinks_terminator_option,
 #footnotes_inputfield_backlinks_separator_option {
 	width: 200px;
 }
 
-textarea {
+/*textarea*/
+#footnote_inputfield_custom_css {
     height: 250px;
 }
 

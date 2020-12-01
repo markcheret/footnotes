@@ -80,13 +80,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4d6 =
+- Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
+
 = 2.1.4d5
 - Bugfix: Reference container: separating and terminating punctuation optional and customizable
 - Bugfix: Reference container: Label: delete overflow hidden rule
 - Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
-- Bugfix: Dashboard: Footnotes main settings: fix layout, raise shortcodes to top
-- Bugfix: Reference container: add quick note to the Excerpt select box
-- Bugfix: Style sheet versioning for cache busting: automated safe mode compatible with security
+- Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
+- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box
+- Warning: Plugins deleting version parameter can compromise style sheet cache busting
 
 = 2.1.4d4 =
 - Bugfix: Reference container: Backlinks: disable separators and terminators

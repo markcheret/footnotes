@@ -7,13 +7,13 @@
  * @since 1.5.0 12.09.14 10:56
  *
  * Edited:
- * 1.6.5: Replaced deprecated function create_function()
- * 2.0.0: Added jQueryUI from Cloudflare   2020-10-26T1907+0100
- * 2.0.3: Added style sheet versioning   2020-10-29T1413+0100
- * 2.0.4: Added jQuery UI from WordPress   2020-11-01T1902+0100
- * 2.1.4: Automated update of version number for cache busting  2020-11-30T0646+0100
+ * 1.6.5  replace deprecated function create_function()
+ * 2.0.0  add jQueryUI from Cloudflare   2020-10-26T1907+0100
+ * 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
+ * 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
+ * 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
  * 
- * Last modified:  2020-11-30T0646+0100
+ * Last modified:  2020-12-01T0146+0100
  */
 
 

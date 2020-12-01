@@ -6,10 +6,13 @@
  * @author Stefan Herndler
  * @since  1.5.0 12.09.14 10:56
  *
- * 2.1.2  added version # of settings.css for cache busting  2020-11-19T1456+0100
- * 2.1.4  automated version number update  2020-11-30T0648+0100
- * 
- * Last modified:  2020-11-30T0649+0100
+ * Edited:
+ * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
+ * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
+ * 2.1.4  fix punctuation issue in dashboard labels  2020-12-01T0211+0100
+ * ########## this fix reverted for now; restore when updating strings and translations
+ *
+ * Last modified:  2020-12-01T0439+0100
  */
 
 
@@ -381,12 +384,24 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @param string $p_str_SettingName Name of the Settings key to connect the Label with the input/select field.
      * @param string $p_str_Caption Label caption.
      * @return string
+     * 
+     * Edited 2020-12-01T0159+0100
+     * @since 2.1.4 no colon
      */
     protected function addLabel($p_str_SettingName, $p_str_Caption) {
         if (empty($p_str_Caption)) {
             return "";
         }
+        // remove the colon causing localization issues with French,
+        // and with languages not using punctuation at all,
+        // and with languages using other punctuation marks instead of colon,
+        // e.g. Greek using a raised dot.
+        // In French, colon is preceded by a space, forcibly non-breaking,
+        // and narrow per new school.
+        // Eventually add colon to label strings for inclusion in localization.
+        // Else drop colons after labels.
         return sprintf('<label for="%s">%s:</label>', $p_str_SettingName, $p_str_Caption);
+        //                                ^ here deleted colon  2020-12-01T0156+0100
     }
 
     /**

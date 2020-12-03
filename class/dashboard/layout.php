@@ -9,10 +9,11 @@
  * Edited:
  * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
  * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
- * 2.1.4  started fixing punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
+ * 2.1.4  start fixing punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
  * ########## this fix reverted for now; restore when updating strings and translations
+ * 2.1.4  step argument and support for floating in numbox  2020-12-03T0952+0100
  *
- * Last modified:  2020-12-01T1559+0100
+ * Last modified:  2020-12-03T0952+0100
  */
 
 

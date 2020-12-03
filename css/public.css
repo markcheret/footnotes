@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d7
+ * Version: 2.1.4d8
  *
- * Last modified: 2020-12-03T0836+0100
+ * Last modified: 2020-12-03T1834+0100
  */
 
 
@@ -261,27 +261,29 @@ when hovered in some themes, not in others:
 }
 
 /*
-These rules are moved to settings defaulting to this
-since 2.1.4
-auto-expanding column to fit widest
-Not using 'max-content' as that causes no-wrap and overflows.
+These rules are just defauls preventing the table from filling the width.
+They are not very effective by lack of table-layout: fixed;
+since 2.1.4 settings are optionally available, with table-layout: fixed;
 
+By default, the backlink column is auto-expanding to fit widest.
+Not using 'max-content' as that causes no-wrap and overflows.
+These are overridden if settings are enabled.
+*/
 .footnote_plugin_index,
 .footnote_plugin_index_combi {
-    max-width: 140px;
-	width: 2em;
+    max-width: 100px;
+    width: 2.5em;
 }
-*/
-
 /*
 Responsive
 */
 @media only screen and (max-width: 768px) {
     .footnote_plugin_index,
     .footnote_plugin_index_combi {
-        max-width: 100px;
+        max-width: 80px;
     }
 }
+
 
 /****************************************************************
 Footnotes printing style rules

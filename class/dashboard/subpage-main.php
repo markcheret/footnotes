@@ -7,13 +7,12 @@
  * @since 1.5.0 14.09.14 14:47
  *
  * Edited for:
- * 2.0.4   2020-11-01T0509+0100
- * 2.1.0   2020-11-08T2148+0100
- * 2.1.1  2020-11-16T2152+0100
- * 2.1.3  2020-11-24T0955+0100
- * 2.1.4  2020-11-28T1050+0100
+ * 2.0.4  restore arrow settings  2020-11-01T0509+0100
+ * 2.1.0  read-on button label  2020-11-08T2148+0100
+ * 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
+ * 2.1.4  settings for ref container and tooltips  2020-12-03T0950+0100
  *
- * Last modified: 2020-11-30T0711+0100
+ * Last modified: 2020-12-03T1359+0100
  */
 
 /**

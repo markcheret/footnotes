@@ -80,37 +80,26 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.1.4d7 =
-- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
-- Bugfix: Tooltip: fix issues with font size by moving it to settings and defaulting to previous
-
-= 2.1.4d6 =
-- Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
-
-= 2.1.4d5
-- Bugfix: Reference container: separating and terminating punctuation optional and customizable
-- Bugfix: Reference container: Label: delete overflow hidden rule
-- Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
+= 2.1.4d8 =
 - Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
+- Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
 - Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box
-
-= 2.1.4d4 =
-- Bugfix: Reference container: Backlinks: disable separators and terminators
-- Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations
-
-= 2.1.4d3 =
+- Bugfix: Layout: Tooltips: prevent line break in Read-on link label
+- Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
 - Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on
 - Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization
-- Bugfix: Footnote referrers: disable hover underline
-
-= 2.1.4d2 =
-- Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
-- Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
-- Bugfix: Layout: Tooltip: prevent line break in Read-on link label
-
-= 2.1.4d1 =
-- Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
+- Bugfix: Reference container: Backlinks: fix line breaking with respect to separators and terminators
+- Bugfix: Reference container: Backlinks: options to disable separators and terminators
+- Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations
+- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
+- Bugfix: Reference container: Label: delete overflow hidden rule
+- Bugfix: Reference container: separating and terminating punctuation optional and customizable
 - Bugfix: Reference container: Styles: re-add the class dedicated to combined footnotes indices
+- Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
+- Bugfix: Styling: Referrers: disable hover underline
+- Bugfix: Styling: Tooltips: fix font size issue by moving it to settings, defaulting to inherit
+- Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
+- Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
 
 = 2.1.3 =
 - Bugfix: disable widget_text hook by default to fix accordions declaring headings as widgets

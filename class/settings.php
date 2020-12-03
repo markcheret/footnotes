@@ -7,18 +7,19 @@
  * @since 1.5.0 14.09.14 10:43
  *
  * Edited for:
- * 2.0.4 restore arrow settings  2020-11-02T2115+0100
- * 2.0.7 remove hook the_post  2020-11-06T1342+0100
- * 2.1.0 add read-on button label customization  2020-11-08T2149+0100
- * 2.1.1 fix tooltips on site by alternative  2020-11-11T1819+0100
- * 2.1.1 fix disabling backlink symbol  2020-11-16T2021+0100
- * 2.1.1 fix superscript by making it optional
- * 2.1.1 fix start pages by option to hide ref container
- * 2.1.1 fix ref container by option restoring 3-column layout
- * 2.1.1 fix ref container by option to switch index/symbol  2020-11-16T2022+0100
- * 2.1.3 fix ref container positioning by priority level  2020-11-17T0205+0100
+ * 2.0.4  restore arrow settings  2020-11-02T2115+0100
+ * 2.0.7  remove hook the_post  2020-11-06T1342+0100
+ * 2.1.0  add read-on button label customization  2020-11-08T2149+0100
+ * 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
+ * 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
+ * 2.1.1  fix superscript by making it optional
+ * 2.1.1  fix start pages by option to hide ref container
+ * 2.1.1  fix ref container by option restoring 3-column layout
+ * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
+ * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
+ * 2.1.4  more settings container keys  2020-12-03T0955+0100
  *
- * Last modified: 2020-11-17T0311+0100
+ * Last modified: 2020-12-03T1603+0100
  */
 
 
@@ -492,12 +493,12 @@ class MCI_Footnotes_Settings {
             self::C_STR_BACKLINKS_TERMINATOR_CUSTOM   => '',
 
             // set backlinks column width:
-            self::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED => 'yes',
-            self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR  => '2',
-            self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT    => 'em',
+            self::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED => 'no',
+            self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR  => '50',
+            self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT    => 'px',
 
             // set backlinks column max width:
-            self::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'yes',
+            self::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'no',
             self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
             self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
 

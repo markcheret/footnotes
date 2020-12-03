@@ -147,22 +147,84 @@ class MCI_Footnotes_Task {
      * @since 1.5.0
      */
     public function wp_head() {
+
+        // tooltip:
+        $l_str_FontSizeEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED));
+        $l_str_FontSizeScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR);
+        $l_str_FontSizeUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT);
+
         $l_str_Color = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR);
         $l_str_Background = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND);
+
         $l_int_BorderWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH);
         $l_str_BorderColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR);
         $l_int_BorderRadius = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS);
+
         $l_int_MaxWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH);
+
         $l_str_BoxShadowColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR);
+
+        // ref container first column width:
+        $l_int_ColumnWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR);
+        $l_str_ColumnWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT);
+
+        if (!empty($l_int_ColumnWidthScalar)) {
+            if ($l_str_ColumnWidthUnit == '%') {
+                if ($l_int_ColumnWidthScalar > 100) {
+                    $l_int_ColumnWidthScalar = 100;
+                }
+            }
+        } else {
+            $l_int_ColumnWidthScalar = 0;
+        }
+
+        // ref container first column max width:
+        $l_int_ColumnMaxWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR);
+        $l_str_ColumnMaxWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT);
+
+        if (!empty($l_int_ColumnMaxWidthScalar)) {
+            if ($l_str_ColumnMaxWidthUnit == '%') {
+                if ($l_int_ColumnMaxWidthScalar > 100) {
+                    $l_int_ColumnMaxWidthScalar = 100;
+                }
+            }
+        } else {
+            $l_int_ColumnMaxWidthScalar = 0;
+        }
+
         ?>
-        <style type="text/css" media="screen">
+        <style type="text/css" media="all">
             <?php
 
+            // display ref container on home page:
             if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
-                echo "\r\n.home .footnotes_reference_container { display: none; }\r\n";
+                echo ".home .footnotes_reference_container { display: none; }\r\n";
+            }
+
+            // first column width:
+            if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED))) {
+                echo ".footnote_plugin_index, .footnote_plugin_index_combi {";
+                echo " width: $l_int_ColumnWidthScalar$l_str_ColumnWidthUnit !important;";
+                echo '}';
+            }
+
+            // first column max width:
+            if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED))) {
+                echo ".footnote_plugin_index, .footnote_plugin_index_combi {";
+                echo " max-width: $l_int_ColumnMaxWidthScalar$l_str_ColumnMaxWidthUnit !important;";
+                echo '}';
             }
 
             echo '.footnote_tooltip {';
+
+            echo ' font-size: ';
+            if($l_str_FontSizeEnabled) {
+                echo $l_str_FontSizeScalar . $l_str_FontSizeUnit;
+            } else {
+                echo 'inherit';
+            }
+            echo ' !important;';
+
             if (!empty($l_str_Color)) {
                 printf(" color: %s !important;", $l_str_Color);
             }

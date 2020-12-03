@@ -4,9 +4,9 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d6
+ * Version: 2.1.4d7
  *
- * Last modified: 2020-12-01T0450+0100
+ * Last modified: 2020-12-03T0836+0100
  */
 
 
@@ -92,8 +92,8 @@ templates/public/footnote-alternative.html
     cursor: auto;
     text-align: left;
     padding: 12px;
-    line-height: 1.2em;
-    font-size: inherit;
+    line-height: 1.2;
+    /*font-size: inherit; moved to settings since 2.1.4 */
     font-weight: normal;
     font-style: normal;
 }
@@ -229,6 +229,18 @@ reference-container-body.html
     text-decoration: none !important;
     border-bottom: none !important;
 }
+.footnote_backlink,
+.footnote_plugin_link {
+    white-space: nowrap;
+}
+
+.footnote_index,
+.footnote_backlink,
+.footnote_plugin_index.pointer,
+.footnote_plugin_index_combi.pointer {
+    cursor: pointer;
+}
+
 /*
 These rules when enabled cause the backlink to take an overline
 when hovered in some themes, not in others:
@@ -243,26 +255,23 @@ when hovered in some themes, not in others:
     text-decoration: unset;
     text-decoration: underline; /*deprioritized to ease customization*/
 }
-.footnote_plugin_index,
-.footnote_plugin_index_combi {
-    max-width: 140px;
-    width: 2em;     /*auto-expanding column to fit widest*/
-}
-.footnote_backlink,
-.footnote_plugin_link {
-    white-space: nowrap;
-}
-
-.footnote_index,
-.footnote_backlink,
-.footnote_plugin_index.pointer,
-.footnote_plugin_index_combi.pointer {
-    cursor: pointer;
-}
 
 .footnote_plugin_text {
     width: unset;        /*unset width of text column to fix site issues*/
 }
+
+/*
+These rules are moved to settings defaulting to this
+since 2.1.4
+auto-expanding column to fit widest
+Not using 'max-content' as that causes no-wrap and overflows.
+
+.footnote_plugin_index,
+.footnote_plugin_index_combi {
+    max-width: 140px;
+	width: 2em;
+}
+*/
 
 /*
 Responsive

@@ -405,21 +405,35 @@ class MCI_Footnotes_Settings {
     /**
      * Settings Container Keys for the link element option
      * Settings Container Keys for backlink typography and layout
+     * Settings Container Keys for tooltip font size
      *
      * @since 2.1.4
-     * @var string|bool
+     * @var string|bool|int
      *
      * 2020-11-26T1002+0100
-	 * 2020-11-30T0427+0100
+     * 2020-11-30T0427+0100
+     * 2020-12-03T0501+0100
      */
-    const C_BOOL_LINK_ELEMENT_ENABLED          =  "footnote_inputfield_link_element_enabled";
-    const C_BOOL_BACKLINKS_SEPARATOR_ENABLED   = "footnotes_inputfield_backlinks_separator_enabled";
-    const C_STR_BACKLINKS_SEPARATOR_OPTION     = "footnotes_inputfield_backlinks_separator_option";
-    const C_STR_BACKLINKS_SEPARATOR_CUSTOM     = "footnotes_inputfield_backlinks_separator_custom";
-    const C_BOOL_BACKLINKS_TERMINATOR_ENABLED  = "footnotes_inputfield_backlinks_terminator_enabled";
-    const C_STR_BACKLINKS_TERMINATOR_OPTION    = "footnotes_inputfield_backlinks_terminator_option";
-    const C_STR_BACKLINKS_TERMINATOR_CUSTOM    = "footnotes_inputfield_backlinks_terminator_custom";
-    const C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED = "footnotes_inputfield_backlinks_line_breaks_enabled";
+    const C_BOOL_LINK_ELEMENT_ENABLED               =  "footnote_inputfield_link_element_enabled";
+
+    const C_BOOL_BACKLINKS_SEPARATOR_ENABLED        = "footnotes_inputfield_backlinks_separator_enabled";
+    const C_STR_BACKLINKS_SEPARATOR_OPTION          = "footnotes_inputfield_backlinks_separator_option";
+    const C_STR_BACKLINKS_SEPARATOR_CUSTOM          = "footnotes_inputfield_backlinks_separator_custom";
+    const C_BOOL_BACKLINKS_TERMINATOR_ENABLED       = "footnotes_inputfield_backlinks_terminator_enabled";
+    const C_STR_BACKLINKS_TERMINATOR_OPTION         = "footnotes_inputfield_backlinks_terminator_option";
+    const C_STR_BACKLINKS_TERMINATOR_CUSTOM         = "footnotes_inputfield_backlinks_terminator_custom";
+    const C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED     = "footnotes_inputfield_backlinks_column_width_enabled";
+    const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR       = "footnotes_inputfield_backlinks_column_width_scalar";
+    const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT         = "footnotes_inputfield_backlinks_column_width_unit";
+    const C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED = "footnotes_inputfield_backlinks_column_max_width_enabled";
+    const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR   = "footnotes_inputfield_backlinks_column_max_width_scalar";
+    const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT     = "footnotes_inputfield_backlinks_column_max_width_unit";
+    const C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED      = "footnotes_inputfield_backlinks_line_breaks_enabled";
+
+    // called mouse over box not tooltip for consistency:
+    const C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED   = "footnotes_inputfield_mouse_over_box_font_size_enabled";
+    const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR     = "footnotes_inputfield_mouse_over_box_font_size_scalar";
+    const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT       = "footnotes_inputfield_mouse_over_box_font_size_unit";
 
 
 
@@ -477,6 +491,16 @@ class MCI_Footnotes_Settings {
             self::C_STR_BACKLINKS_TERMINATOR_OPTION   => 'full_stop',
             self::C_STR_BACKLINKS_TERMINATOR_CUSTOM   => '',
 
+            // set backlinks column width:
+            self::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED => 'yes',
+            self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR  => '2',
+            self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT    => 'em',
+
+            // set backlinks column max width:
+            self::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'yes',
+            self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
+            self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
+
             // whether a <br /> tag is inserted:
             self::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED => 'no',
 
@@ -529,6 +553,10 @@ class MCI_Footnotes_Settings {
             // The vertical offset must be negative for the box not to cover
             // the current line of text (web coordinates origin is top left):
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
+
+            self::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED => 'no',
+            self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => '0.6',
+            self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     => 'em',
 
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
             // The mouse over box shouldn’t feature a colored background

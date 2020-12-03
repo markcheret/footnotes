@@ -80,6 +80,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4d7 =
+- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
+- Bugfix: Tooltip: fix issues with font size by moving it to settings and defaulting to previous
+
 = 2.1.4d6 =
 - Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
 
@@ -89,7 +93,6 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
 - Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
 - Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box
-- Warning: Plugins deleting version parameter can compromise style sheet cache busting
 
 = 2.1.4d4 =
 - Bugfix: Reference container: Backlinks: disable separators and terminators

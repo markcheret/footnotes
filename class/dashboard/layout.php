@@ -9,10 +9,10 @@
  * Edited:
  * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
  * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
- * 2.1.4  fix punctuation issue in dashboard labels  2020-12-01T0211+0100
+ * 2.1.4  started fixing punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
  * ########## this fix reverted for now; restore when updating strings and translations
  *
- * Last modified:  2020-12-01T0439+0100
+ * Last modified:  2020-12-01T1559+0100
  */
 
 
@@ -386,7 +386,7 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @return string
      * 
      * Edited 2020-12-01T0159+0100
-     * @since 2.1.4 no colon
+     * @since #################### no colon
      */
     protected function addLabel($p_str_SettingName, $p_str_Caption) {
         if (empty($p_str_Caption)) {
@@ -401,7 +401,8 @@ abstract class MCI_Footnotes_LayoutEngine {
         // Eventually add colon to label strings for inclusion in localization.
         // Else drop colons after labels.
         return sprintf('<label for="%s">%s:</label>', $p_str_SettingName, $p_str_Caption);
-        //                                ^ here deleted colon  2020-12-01T0156+0100
+		//                                ^ here deleted colon  2020-12-01T0156+0100
+		// ########## this fix reverted for now; restore when updating strings and translations
     }
 
     /**
@@ -507,12 +508,16 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @param int $p_in_Min Minimum value.
      * @param int $p_int_Max Maximum value.
      * @return string
+	 * 
+	 * Edited:
+	 * @since 2.1.4  step argument and %f to allow decimals  2020-12-03T0631+0100
      */
-    protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max) {
+    protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max, $p_flo_Step = 1) {
         // collect data for given settings field
-        $l_arr_Data = $this->LoadSetting($p_str_SettingName);
-        return sprintf('<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
-            $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"], $p_in_Min, $p_int_Max);
+		$l_arr_Data = $this->LoadSetting($p_str_SettingName);
+		
+        return sprintf('<input type="number" name="%s" id="%s" value="%f" step="%f" min="%d" max="%d"/>',
+            $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"], $p_flo_Step, $p_in_Min, $p_int_Max);
     }
 
 } // end of class

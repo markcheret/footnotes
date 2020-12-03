@@ -94,9 +94,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             // Leave intact since this is not localized:
             $this->addMetaBox("settings", "love", MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, "Love"),
 
-			// The HyperlinkArrow meta box ceased for 2.0.0
-			// The HyperlinkArrow meta box was restored for 2.0.4 to meet user demand for arrow symbol semantics
-			// The HyperlinkArrow meta box ceased for 2.1.4 as its content is moved to Settings > Reference container > Display a backlink symbol
+            // The HyperlinkArrow meta box ceased for 2.0.0
+            // The HyperlinkArrow meta box was restored for 2.0.4 to meet user demand for arrow symbol semantics
+            // The HyperlinkArrow meta box ceased for 2.1.4 as its content is moved to Settings > Reference container > Display a backlink symbol
             $this->addMetaBox("customize", "superscript", __("Superscript layout", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript"),
             $this->addMetaBox("customize", "mouse-over-box", __("Mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
             $this->addMetaBox("customize", "custom-css", __("Add custom CSS to the public page", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
@@ -139,6 +139,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             "parenthesis" => __("CLOSING PARENTHESIS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "colon" => __("COLON", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
         );
+        // options for the first column width (per cent is a ratio, not a unit):
+        $l_arr_WidthUnits = array(
+            "%" => __("per cent", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "px" => __("pixels", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "em" => __("em", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "rem" => __("rem", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+        );
         // options for Yes/No select box:
         $l_arr_Enabled = array(
             "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
@@ -163,11 +170,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "symbol-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, $l_arr_Enabled),
                 "symbol-options" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::getArrow()),
                 "symbol-custom" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED),
-                "symbol-comment" => __("Your input overrides the selection", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "symbol-comment" => __("Your input overrides the selection.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-switch" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, __("Symbol appended, not prepended", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-				"switch" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $l_arr_Enabled),
-				
+                "switch" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $l_arr_Enabled),
+
                 "label-3column" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, __("Backlink symbol in an extra column", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "3column" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, $l_arr_Enabled),
                 "3column-comment" => __("This legacy layout is available if identical footnotes are not combined.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
@@ -179,16 +186,26 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "separator-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED, $l_arr_Enabled),
                 "separator-options" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_OPTION, $l_arr_Separators),
                 "separator-custom" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM),
-                "separator-comment" => __("Your input overrides the selection", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "separator-comment" => __("Your input overrides the selection.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-terminator" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED, __("Add a terminal punctuation to backlinks", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "terminator-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED, $l_arr_Enabled),
                 "terminator-options" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_OPTION, $l_arr_Terminators),
                 "terminator-custom" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM),
-                "terminator-comment" => __("Your input overrides the selection", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "terminator-comment" => __("Your input overrides the selection.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
-                "label-linebreak" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, __("Stack backlinks when enumerating", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "linebreak" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, $l_arr_Enabled),
+                "label-width" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED, __("Set backlinks column width", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "width-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED, $l_arr_Enabled),
+                "width-scalar" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR, 0, 500, 0.1),
+                "width-unit" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT, $l_arr_WidthUnits),
+
+                "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED, __("Set backlinks column maximum width", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "max-width-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED, $l_arr_Enabled),
+                "max-width-scalar" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR, 0, 500, 0.1),
+                "max-width-unit" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT, $l_arr_WidthUnits),
+
+                "label-line-break" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, __("Stack backlinks when enumerating", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "line-break" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, $l_arr_Enabled),
             )
         );
         // display template with replaced placeholders
@@ -319,8 +336,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-excerpt" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, __("Allow footnotes on Summarized Posts", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "excerpt" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, $l_arr_Enabled),
-                "excerpt-comment1" => __("This should be disabled, and the Advanced Excerpt plugin used instead.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "excerpt-comment2" => __("Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "excerpt-comment1" => __("This should be disabled.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "excerpt-comment2" => __("In some themes, the Advanced Excerpt plugin is indispensable to display footnotes in excerpts.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "excerpt-comment3" => __("Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-expert-mode" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE, __("Enable the Expert mode", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "expert-mode" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE, $l_arr_Enabled)
@@ -384,11 +402,25 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             "bottom left" => __("bottom left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "center left" => __("center left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
         );
+        // options for the font size unit:
+        $l_arr_FontSizeUnits = array(
+            "em" => __("em", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "rem" => __("rem", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "px" => __("pixels", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "pt" => __("points", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "pc" => __("picas", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "mm" => __("millimeters", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "%" => __("per cent", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+        );
+
         // load template file
         $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "customize-mouse-over-box");
         // replace all placeholders
         $l_obj_Template->replace(
             array(
+
+                // tooltip settings:
+
                 "label-enable" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, __("Enable the mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, $l_arr_Enabled),
 
@@ -415,6 +447,18 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "offset-y" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y, -50, 50),
                 "notice-offset-y" => __("Offset (Y axis) in px (may be negative)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
+                "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Max. width (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
+                "notice-max-width" => __("Set the max-width to 0px to disable this setting.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                // tooltip styling:
+
+                "label-font-size" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED, __("Set font size", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "font-size-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED, $l_arr_Enabled),
+                "font-size-scalar" => $this->addNumBox(MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR, 0, 50, 0.1),
+                "font-size-unit" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT, $l_arr_FontSizeUnits),
+                "font-size-comment" => __("By default, the font size is set to equal the surrounding text.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
                 "label-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR, __("Color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR),
                 "notice-color" => __("Empty color will use the default color defined by your current theme.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
@@ -434,10 +478,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-border-radius" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS, __("Border radius (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "border-radius" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS, 0, 20),
                 "notice-border-radius" => __("Set the radius to 0px to avoid a radius.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Max. width (px)", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
-                "notice-max-width" => __("Set the max-width to 0px to disable this setting.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-box-shadow-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR, __("Box shadow color", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "box-shadow-color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR),
@@ -460,8 +500,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * The former 'hyperlink arrow', incompatible with combined identical footnotes,
      * became 'prepended arrow' in v2.0.3 after a user complaint about missing backlinking semantics
      * of the footnote number.
-	 * 
-	 * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
+     *
+     * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
      */
 
     /**

@@ -19,7 +19,7 @@
  * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  * 2.1.4  more settings container keys  2020-12-03T0955+0100
  *
- * Last modified: 2020-12-03T1603+0100
+ * Last modified: 2020-12-04T2230+0100
  */
 
 
@@ -436,6 +436,7 @@ class MCI_Footnotes_Settings {
     const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR     = "footnotes_inputfield_mouse_over_box_font_size_scalar";
     const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT       = "footnotes_inputfield_mouse_over_box_font_size_unit";
 
+    const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT       = "footnotes_inputfield_page_layout_support";
 
 
     /**
@@ -478,6 +479,9 @@ class MCI_Footnotes_Settings {
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
             self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => 'yes',
 
+            // whether to enqueue additional style sheet:
+            self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT => 'none',
+
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
@@ -505,7 +509,10 @@ class MCI_Footnotes_Settings {
             // whether a <br /> tag is inserted:
             self::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED => 'no',
 
+            // whether to use link elements:
             self::C_BOOL_LINK_ELEMENT_ENABLED => 'yes',
+
+            // excerpt should be disabled:
             self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'no',
 
             // since removal of the_post hook, expert mode is no danger zone

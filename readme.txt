@@ -80,10 +80,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.1.4d9 =
+= 2.1.4d10 =
+- Bugfix: Reference container: fix theme-dependent layout issues by optionally enqueuing additional style sheet
 - Bugfix: Reference container: fix layout issues by moving backlink column width to settings
 - Bugfix: Reference container: separating and terminating punctuation optional and customizable
-- Bugfix: Styling: Tooltips: fix font size issue by moving it to settings and default it to legacy
+- Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default
 - Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations
 - Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
 - Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
@@ -110,7 +111,6 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.2 =
 - Bugfix: Layout: Reference container: Backlinks: no underline on hover cell when combining identicals is on
-- Bugfix: Elementor: add experimental support for section name function
 - Bugfix: Dashboard: priority level settings for all other hooks
 - Update: Dashboard: WordPress documentation URLs of the hooks
 - Update: Dashboard: feature description for the hooks priority level settings (not yet localized)

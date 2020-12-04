@@ -4,9 +4,10 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.4d9
  *
- * Last modified: 2020-12-04T0202+0100
+ * Version: 2.1.4d10
+ *
+ * Last modified: 2020-12-04T2234+0100
  */
 
 
@@ -154,6 +155,11 @@ Read-on button
 Footnote references container
 
 templates/public/reference-container.html
+
+Also optional responsive basic page layout support:
+public-container.css
+public-main.css
+public-body.css
 */
 
 /*

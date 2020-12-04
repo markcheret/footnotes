@@ -25,7 +25,7 @@
  * <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>
  * 
  * Removed usage of jQuery browser check function   2020-11-12T0127+0100
- * ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+ *   ==> this is version 1.2.7redacted
  * See also on the Forum: <https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/>,
  * lastly <https://wordpress.org/support/topic/jquery-issues-13/>
  * 
@@ -44,7 +44,7 @@
  * #6 (420) This disabled slide-fade for Internet Explorer.
  *          Browsers not supporting an effect simply don’t execute it, they won’t throw an error.
  * 
- * Re-formatted minified file. Last modified: 2020-11-13T0444+0100
+ * Halfways minified file. Last modified: 2020-12-04T2140+0100
  */
 (function (a) {
 	a.tools = a.tools || {version: "v1.2.7"};

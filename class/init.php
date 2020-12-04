@@ -12,8 +12,9 @@
  * 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
  * 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
  * 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
+ * 2.1.4  enqueue optionally an extra style sheet  2020-12-04T2231+0100
  * 
- * Last modified:  2020-12-01T0146+0100
+ * Last modified:  2020-12-04T2232+0100
  */
 
 
@@ -132,8 +133,10 @@ class MCI_Footnotes {
             wp_enqueue_script( 'jquery-ui-position' );
             wp_enqueue_script( 'jquery-ui-tooltip' );
 
-            // enqueue jQuery Tools:                            redacted jQuery.browser, completed minification; added versioning 2020-11-18T2150+0100
-            wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), '', '2.1.1');
+			// enqueue jQuery Tools:
+			// redacted jQuery.browser, completed minification; added versioning 2020-11-18T2150+0100
+			// not use '-js' in the handle, is appended automatically
+            wp_enqueue_script('mci-footnotes-jquery-tools', plugins_url('footnotes/js/jquery.tools.min.js'), array(), '1.2.7redacted');
 
 
             // Alternatively, fetch jQuery UI from cdnjs.cloudflare.com:
@@ -152,13 +155,16 @@ class MCI_Footnotes {
 
         //###  STYLES
 
-        // up-to-date plugin version number needed for cache busting:
-        wp_enqueue_style(
-            'mci-footnotes-css-public',
-            plugins_url('../css/public.css', __FILE__),
-            '',
-            FOOTNOTES_VERSION
-        );
-    }
-
+		// up-to-date plugin version number needed for cache busting:
+		// not use '-css' in the handle, is appended automatically;
+		// constant FOOTNOTES_VERSION defined in footnotes.php, media all is default
+		wp_enqueue_style( 'mci-footnotes-public', plugins_url('footnotes/css/public.css'), array(), FOOTNOTES_VERSION, 'all' );
+		
+		// optional layout fix for unsupportive themes:
+		// since 2.1.4   2020-12-04T2231+0100
+		$l_str_LayoutOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT);
+		if ($l_str_LayoutOption != 'none') {
+			wp_enqueue_style( 'mci-footnotes-public-' . $l_str_LayoutOption, plugins_url('footnotes/css/public-' . $l_str_LayoutOption . '.css'), array(), FOOTNOTES_VERSION, 'all' );
+	    }
+	}
 }

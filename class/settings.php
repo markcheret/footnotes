@@ -555,9 +555,12 @@ class MCI_Footnotes_Settings {
             // the current line of text (web coordinates origin is top left):
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
 
-            self::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED => 'no',
-            self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => '0.6',
-            self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     => 'em',
+            // tooltip font size reset to legacy by default since 2.1.4;
+            // was set to inherit since 2.1.1 as it overrode custom CSS,
+            // is moved to settings since 2.1.4    2020-12-04T1023+0100
+            self::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED => 'yes',
+            self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => '13',
+            self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     => 'px',
 
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
             // The mouse over box shouldn’t feature a colored background

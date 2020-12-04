@@ -12,7 +12,7 @@
  * 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
  * 2.1.4  settings for ref container and tooltips  2020-12-03T0950+0100
  *
- * Last modified: 2020-12-03T1359+0100
+ * Last modified: 2020-12-04T0206+0100
  */
 
 /**
@@ -561,11 +561,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_obj_Template->replace(
             array(
 
-                "description-1" => __("The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-2" => __("Default 9223372036854775807 is lowest priority, 0 is highest", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-3" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-4" => __("For the_content, this figure needs to be lower than 1200 to make sure that a feature inserted by another plugin running at 1200 displays below the reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-5" => __("The widget_text hook must be disabled, because a footnotes container is inserted at the bottom of each widget, but multiple containers in a page are not disambiguated", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-1" => __("The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-2" => __("Default 9223372036854775807 is lowest priority, 0 is highest.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-3" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-4" => __("For the_content, this figure needs to be lower than 1200 to make sure that the reference container displays above features inserted by other plugins running at 1200 or a greater/lower level, later in the process.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-5" => __("The widget_text hook must be disabled, because a footnotes container is inserted at the bottom of each widget, but multiple containers in a page are not disambiguated.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),

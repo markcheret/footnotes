@@ -80,24 +80,23 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.1.4d8 =
-- Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
+= 2.1.4d9 =
+- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
+- Bugfix: Reference container: separating and terminating punctuation optional and customizable
+- Bugfix: Styling: Tooltips: fix font size issue by moving it to settings and default it to legacy
+- Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations
 - Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
+- Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
 - Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box
 - Bugfix: Layout: Tooltips: prevent line break in Read-on link label
 - Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
 - Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on
 - Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization
 - Bugfix: Reference container: Backlinks: fix line breaking with respect to separators and terminators
-- Bugfix: Reference container: Backlinks: options to disable separators and terminators
-- Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations
-- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
 - Bugfix: Reference container: Label: delete overflow hidden rule
-- Bugfix: Reference container: separating and terminating punctuation optional and customizable
 - Bugfix: Reference container: Styles: re-add the class dedicated to combined footnotes indices
 - Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
 - Bugfix: Styling: Referrers: disable hover underline
-- Bugfix: Styling: Tooltips: fix font size issue by moving it to settings, defaulting to inherit
 - Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
 - Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
 

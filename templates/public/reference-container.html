@@ -53,9 +53,9 @@
         var l_obj_Target = jQuery('#' + p_str_TargetID);
         if (l_obj_Target.length) {
             jQuery('html, body').animate({
-                scrollTop: l_obj_Target.offset().top - window.innerHeight * 0.20
+                scrollTop: l_obj_Target.offset().top - window.innerHeight * [[scroll-offset]]
             },
-            380);/*duration*/
+            [[scroll-duration]]);
         }
     }
 </script>

@@ -80,12 +80,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.1.4d10 =
-- Bugfix: Reference container: fix theme-dependent layout issues by optionally enqueuing additional style sheet
-- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
-- Bugfix: Reference container: separating and terminating punctuation optional and customizable
-- Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default
-- Bugfix: Reference container: Backlinks: optional line breaks to stack enumerations
+= 2.2.0d0 =
+- Add: UX: settings for scroll offset and duration
+- Add: Reference container: fix theme-dependent layout issues by optionally enqueuing additional style sheet
+- Add: Reference container: fix layout issues by moving backlink column width to settings
+- Add: Reference container: separating and terminating punctuation optional and customizable
+- Add: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default
+- Add: Reference container: Backlinks: optional line breaks to stack enumerations
 - Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
 - Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
 - Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box

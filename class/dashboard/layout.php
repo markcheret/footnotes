@@ -8,12 +8,14 @@
  *
  * Edited:
  * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
- * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
- * 2.1.4  start fixing punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
- * ########## this fix reverted for now; restore when updating strings and translations
- * 2.1.4  step argument and support for floating in numbox  2020-12-03T0952+0100
+ * 2.2.0  automate passing version number for cache busting  2020-11-30T0648+0100
+ * 2.2.0  optional step argument and support for floating in numbox  2020-12-05T0540+0100
  *
- * Last modified:  2020-12-03T0952+0100
+ *
+ * ########## fix punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
+ * ########## this fix reverted for now; restore when updating strings and translations
+ *
+ * Last modified:  2020-12-05T0540+0100
  */
 
 
@@ -208,14 +210,8 @@ abstract class MCI_Footnotes_LayoutEngine {
 
         // register stylesheet
         // added version # after changes started to settings.css from 2.1.2 on:
-        wp_register_style(
-            'mci-footnotes-admin-styles',
-            plugins_url('../../css/settings.css', __FILE__),
-            '',
-            FOOTNOTES_VERSION
-        );
         // automated update of version number for cache busting
-
+        wp_register_style( 'mci-footnotes-admin-styles', plugins_url('footnotes/css/settings.css'), array(), FOOTNOTES_VERSION );
 
         // add stylesheet to the output
         wp_enqueue_style('mci-footnotes-admin-styles');
@@ -385,7 +381,7 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @param string $p_str_SettingName Name of the Settings key to connect the Label with the input/select field.
      * @param string $p_str_Caption Label caption.
      * @return string
-     * 
+     *
      * Edited 2020-12-01T0159+0100
      * @since #################### no colon
      */
@@ -402,8 +398,8 @@ abstract class MCI_Footnotes_LayoutEngine {
         // Eventually add colon to label strings for inclusion in localization.
         // Else drop colons after labels.
         return sprintf('<label for="%s">%s:</label>', $p_str_SettingName, $p_str_Caption);
-		//                                ^ here deleted colon  2020-12-01T0156+0100
-		// ########## this fix reverted for now; restore when updating strings and translations
+        //                                ^ here deleted colon  2020-12-01T0156+0100
+        // ########## this fix reverted for now; restore when updating strings and translations
     }
 
     /**
@@ -509,16 +505,21 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @param int $p_in_Min Minimum value.
      * @param int $p_int_Max Maximum value.
      * @return string
-	 * 
-	 * Edited:
-	 * @since 2.1.4  step argument and %f to allow decimals  2020-12-03T0631+0100
+     *
+     * Edited:
+     * @since 2.2.0  step argument and %f to allow decimals  2020-12-03T0631+0100..2020-12-05T0506+0100
      */
-    protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max, $p_flo_Step = 1) {
+    protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max, $p_bool_Deci = false ) {
         // collect data for given settings field
-		$l_arr_Data = $this->LoadSetting($p_str_SettingName);
-		
-        return sprintf('<input type="number" name="%s" id="%s" value="%f" step="%f" min="%d" max="%d"/>',
-            $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"], $p_flo_Step, $p_in_Min, $p_int_Max);
+        $l_arr_Data = $this->LoadSetting($p_str_SettingName);
+
+        if ($p_bool_Deci) {
+            return sprintf('<input type="number" name="%s" id="%s" value="%f" step="0.1" min="%d" max="%d"/>',
+            $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"], $p_in_Min, $p_int_Max);
+        } else {
+            return sprintf('<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
+            $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"], $p_in_Min, $p_int_Max);
+        }
     }
 
 } // end of class

@@ -17,9 +17,9 @@
  * 2.1.1  fix ref container by option restoring 3-column layout
  * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
- * 2.1.4  more settings container keys  2020-12-03T0955+0100
+ * 2.2.0  more settings container keys  2020-12-03T0955+0100
  *
- * Last modified: 2020-12-04T2230+0100
+ * Last modified: 2020-12-05T0405+0100
  */
 
 
@@ -407,13 +407,15 @@ class MCI_Footnotes_Settings {
      * Settings Container Keys for the link element option
      * Settings Container Keys for backlink typography and layout
      * Settings Container Keys for tooltip font size
+     * Settings Container Keys for scroll offset and duration
      *
-     * @since 2.1.4
+     * @since 2.2.0
      * @var string|bool|int
      *
      * 2020-11-26T1002+0100
      * 2020-11-30T0427+0100
      * 2020-12-03T0501+0100
+	 * 2020-12-05T0425+0100
      */
     const C_BOOL_LINK_ELEMENT_ENABLED               =  "footnote_inputfield_link_element_enabled";
 
@@ -436,7 +438,10 @@ class MCI_Footnotes_Settings {
     const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR     = "footnotes_inputfield_mouse_over_box_font_size_scalar";
     const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT       = "footnotes_inputfield_mouse_over_box_font_size_unit";
 
-    const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT       = "footnotes_inputfield_page_layout_support";
+	const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT       = "footnotes_inputfield_page_layout_support";
+	
+    const C_INT_FOOTNOTES_SCROLL_OFFSET             = "footnotes_inputfield_scroll_offset";
+    const C_INT_FOOTNOTES_SCROLL_DURATION           = "footnotes_inputfield_scroll_duration";
 
 
     /**
@@ -473,7 +478,9 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
             self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
             self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
-
+			self::C_INT_FOOTNOTES_SCROLL_OFFSET   => 20,
+			self::C_INT_FOOTNOTES_SCROLL_DURATION => 380,
+		
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
             self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => 'no',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
@@ -562,9 +569,9 @@ class MCI_Footnotes_Settings {
             // the current line of text (web coordinates origin is top left):
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
 
-            // tooltip font size reset to legacy by default since 2.1.4;
+            // tooltip font size reset to legacy by default since 2.2.0;
             // was set to inherit since 2.1.1 as it overrode custom CSS,
-            // is moved to settings since 2.1.4    2020-12-04T1023+0100
+            // is moved to settings since 2.2.0    2020-12-04T1023+0100
             self::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED => 'yes',
             self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => '13',
             self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     => 'px',

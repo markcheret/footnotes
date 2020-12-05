@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.1.4d10
+ * Version: 2.2.0d0
  *
- * Last modified: 2020-12-04T2234+0100
+ * Last modified: 2020-12-05T0357+0100
  */
 
 
@@ -159,7 +159,6 @@ templates/public/reference-container.html
 Also optional responsive basic page layout support:
 public-container.css
 public-main.css
-public-body.css
 */
 
 /*

@@ -6,9 +6,15 @@
  * @author Stefan Herndler
  * @since  1.5.0 12.09.14 10:56
  *
- * 2.1.2  added version # of settings.css for cache busting  2020-11-19T1456+0100
+ * Edited:
+ * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
+ * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
+ * 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
  *
- * ############  Please update line 210  after changes to settings.css  ###############
+ * ########## fix punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
+ * ########## this fix reverted for now; restore when updating strings and translations, line 400
+ *
+ * Last modified:  2020-12-06T1654+0100
  */
 
 
@@ -203,14 +209,8 @@ abstract class MCI_Footnotes_LayoutEngine {
 
         // register stylesheet
         // added version # after changes started to settings.css from 2.1.2 on:
-        wp_register_style(
-            'mci-footnotes-admin-styles',
-            plugins_url('../../css/settings.css', __FILE__),
-            '',
-            '2.1.3'
-        );
-        // UPDATE version # when making changes to settings.css, FOR CACHE BUSTING
-
+        // automated update of version number for cache busting
+        wp_register_style( 'mci-footnotes-admin-styles', plugins_url('footnotes/css/settings.css'), array(), FOOTNOTES_VERSION );
 
         // add stylesheet to the output
         wp_enqueue_style('mci-footnotes-admin-styles');
@@ -380,12 +380,25 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @param string $p_str_SettingName Name of the Settings key to connect the Label with the input/select field.
      * @param string $p_str_Caption Label caption.
      * @return string
+     *
+     * Edited 2020-12-01T0159+0100
+     * @since #################### no colon
      */
     protected function addLabel($p_str_SettingName, $p_str_Caption) {
         if (empty($p_str_Caption)) {
             return "";
         }
+        // remove the colon causing localization issues with French,
+        // and with languages not using punctuation at all,
+        // and with languages using other punctuation marks instead of colon,
+        // e.g. Greek using a raised dot.
+        // In French, colon is preceded by a space, forcibly non-breaking,
+        // and narrow per new school.
+        // Add colon to label strings for inclusion in localization.
+        // Colon after label is widely preferred best practice, mandatory per style guides.
         return sprintf('<label for="%s">%s:</label>', $p_str_SettingName, $p_str_Caption);
+        //                                ^ here deleted colon  2020-12-01T0156+0100
+        // ########## this fix reverted for now; restore when updating strings and translations
     }
 
     /**
@@ -488,15 +501,26 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @author Stefan Herndler
      * @since  1.5.0
      * @param string $p_str_SettingName Name of the Settings key to pre load the input field.
-     * @param int $p_in_Min Minimum value.
-     * @param int $p_int_Max Maximum value.
+     * @param int    $p_in_Min Minimum value.
+     * @param int    $p_int_Max Maximum value.
+     * @param bool   $p_bool_Deci  true if 0.1 steps and floating to string, false if integer (default)
      * @return string
+     *
+     * Edited:
+     * @since 2.1.4  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-05T2006+0100
      */
-    protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max) {
+    protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max, $p_bool_Deci = false ) {
         // collect data for given settings field
         $l_arr_Data = $this->LoadSetting($p_str_SettingName);
-        return sprintf('<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
+
+        if ($p_bool_Deci) {
+            $l_str_Value = number_format($l_arr_Data["value"], 1);
+            return sprintf('<input type="number" name="%s" id="%s" value="%s" step="0.1" min="%d" max="%d"/>',
+            $l_arr_Data["name"], $l_arr_Data["id"], $l_str_Value, $p_in_Min, $p_int_Max);
+        } else {
+            return sprintf('<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
             $l_arr_Data["name"], $l_arr_Data["id"], $l_arr_Data["value"], $p_in_Min, $p_int_Max);
+        }
     }
 
 } // end of class

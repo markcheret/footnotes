@@ -7,18 +7,19 @@
  * @since 1.5.0 14.09.14 10:43
  *
  * Edited for:
- * 2.0.4 restore arrow settings  2020-11-02T2115+0100
- * 2.0.7 remove hook the_post  2020-11-06T1342+0100
- * 2.1.0 add read-on button label customization  2020-11-08T2149+0100
- * 2.1.1 fix tooltips on site by alternative  2020-11-11T1819+0100
- * 2.1.1 fix disabling backlink symbol  2020-11-16T2021+0100
- * 2.1.1 fix superscript by making it optional
- * 2.1.1 fix start pages by option to hide ref container
- * 2.1.1 fix ref container by option restoring 3-column layout
- * 2.1.1 fix ref container by option to switch index/symbol  2020-11-16T2022+0100
- * 2.1.3 fix ref container positioning by priority level  2020-11-17T0205+0100
+ * 2.0.4  restore arrow settings  2020-11-02T2115+0100
+ * 2.0.7  remove hook the_post  2020-11-06T1342+0100
+ * 2.1.0  add read-on button label customization  2020-11-08T2149+0100
+ * 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
+ * 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
+ * 2.1.1  fix superscript by making it optional
+ * 2.1.1  fix start pages by option to hide ref container
+ * 2.1.1  fix ref container by option restoring 3-column layout
+ * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
+ * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
+ * 2.1.4  more settings container keys  2020-12-03T0955+0100
  *
- * Last modified: 2020-11-17T0311+0100
+ * Last modified: 2020-12-06T1653+0100
  */
 
 
@@ -175,7 +176,7 @@ class MCI_Footnotes_Settings {
     /**
      * Settings Container Key for alternative tooltip implementation
      *
-     * @since 2.2.0
+     * @since 2.1.4
      * @var string
      *
      * 2020-11-11T1817+0100
@@ -373,7 +374,7 @@ class MCI_Footnotes_Settings {
     const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = "footnote_inputfield_readon_label";
 
     /**
-     * Settings Container Keys of options fixing default layout
+     * Settings Container Keys for options fixing default layout
      *
      * @since 2.1.1
      * @var string
@@ -381,18 +382,83 @@ class MCI_Footnotes_Settings {
      * 2020-11-16T0859+0100
      */
     const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
-
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
     const C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      = "footnotes_inputfield_reference_container_start_page_enable";
     const C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  = "footnotes_inputfield_reference_container_3column_layout_enable";
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH = "footnotes_inputfield_reference_container_backlink_symbol_switch";
 
+    /**
+     * Settings Container Keys for hook priority levels
+     *
+     * @since 2.1.1 (the_content)
+     * @since 2.1.2
+     * @var string
+     *
+     * 2020-11-16T0859+0100
+     * 2020-11-20T0620+0100
+     */
     const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    = "footnote_inputfield_expert_lookup_the_title_priority_level";
     const C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_content_priority_level";
     const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_excerpt_priority_level";
     const C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL = "footnote_inputfield_expert_lookup_widget_title_priority_level";
     const C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_widget_text_priority_level";
 
+    /**
+     * Settings Container Keys for the link element option
+     * Settings Container Keys for backlink typography and layout
+     * Settings Container Keys for tooltip font size
+     * Settings Container Keys for page layout support
+     * Settings Container Keys for scroll offset and duration
+     * Settings Container Keys for tooltip display durations
+     *
+     * @since 2.1.4
+     * @var string|bool|int
+     *
+     * 2020-11-26T1002+0100
+     * 2020-11-30T0427+0100
+     * 2020-12-03T0501+0100
+     * 2020-12-05T0425+0100
+     */
+
+    // link element option:
+    const C_BOOL_LINK_ELEMENT_ENABLED               =  "footnote_inputfield_link_element_enabled";
+
+    // backlink typography:
+    const C_BOOL_BACKLINKS_SEPARATOR_ENABLED        = "footnotes_inputfield_backlinks_separator_enabled";
+    const C_STR_BACKLINKS_SEPARATOR_OPTION          = "footnotes_inputfield_backlinks_separator_option";
+    const C_STR_BACKLINKS_SEPARATOR_CUSTOM          = "footnotes_inputfield_backlinks_separator_custom";
+    const C_BOOL_BACKLINKS_TERMINATOR_ENABLED       = "footnotes_inputfield_backlinks_terminator_enabled";
+    const C_STR_BACKLINKS_TERMINATOR_OPTION         = "footnotes_inputfield_backlinks_terminator_option";
+    const C_STR_BACKLINKS_TERMINATOR_CUSTOM         = "footnotes_inputfield_backlinks_terminator_custom";
+
+    // backlink layout:
+    const C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED     = "footnotes_inputfield_backlinks_column_width_enabled";
+    const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR       = "footnotes_inputfield_backlinks_column_width_scalar";
+    const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT         = "footnotes_inputfield_backlinks_column_width_unit";
+    const C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED = "footnotes_inputfield_backlinks_column_max_width_enabled";
+    const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR   = "footnotes_inputfield_backlinks_column_max_width_scalar";
+    const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT     = "footnotes_inputfield_backlinks_column_max_width_unit";
+    const C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED      = "footnotes_inputfield_backlinks_line_breaks_enabled";
+
+    // tooltip font size:
+    // called mouse over box not tooltip for consistency
+    const C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED   = "footnotes_inputfield_mouse_over_box_font_size_enabled";
+    const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR     = "footnotes_inputfield_mouse_over_box_font_size_scalar";
+    const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT       = "footnotes_inputfield_mouse_over_box_font_size_unit";
+
+    // page layout support:
+    const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT       = "footnotes_inputfield_page_layout_support";
+
+    // scroll offset and duration:
+    const C_INT_FOOTNOTES_SCROLL_OFFSET             = "footnotes_inputfield_scroll_offset";
+    const C_INT_FOOTNOTES_SCROLL_DURATION           = "footnotes_inputfield_scroll_duration";
+
+    // tooltip display durations:
+    // called mouse over box not tooltip for consistency
+    const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY        = "footnotes_inputfield_mouse_over_box_fade_in_delay";
+    const C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION     = "footnotes_inputfield_mouse_over_box_fade_in_duration";
+    const C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY       = "footnotes_inputfield_mouse_over_box_fade_out_delay";
+    const C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION    = "footnotes_inputfield_mouse_over_box_fade_out_duration";
 
 
     /**
@@ -424,28 +490,61 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage" => array(
 
+            self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
+            self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
+            self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
+            self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
+            self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
+            self::C_INT_FOOTNOTES_SCROLL_OFFSET   => 20,
+            self::C_INT_FOOTNOTES_SCROLL_DURATION => 380,
+
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
             self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => 'no',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
             self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => 'yes',
+
+            // whether to enqueue additional style sheet:
+            self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT => 'none',
 
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 
-            self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
-            self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
-            self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
-            self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
-            self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
-            self::C_STR_FOOTNOTES_LOVE => 'no',
+            // backlink separators and terminators are often not preferred.
+            // but a choice must be provided along with the ability to customize:
+            self::C_BOOL_BACKLINKS_SEPARATOR_ENABLED  => 'yes',
+            self::C_STR_BACKLINKS_SEPARATOR_OPTION    => 'comma',
+            self::C_STR_BACKLINKS_SEPARATOR_CUSTOM    => '',
+            self::C_BOOL_BACKLINKS_TERMINATOR_ENABLED => 'no',
+            self::C_STR_BACKLINKS_TERMINATOR_OPTION   => 'full_stop',
+            self::C_STR_BACKLINKS_TERMINATOR_CUSTOM   => '',
+
+            // set backlinks column width:
+            self::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED => 'no',
+            self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR  => '50',
+            self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT    => 'px',
+
+            // set backlinks column max width:
+            self::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'no',
+            self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
+            self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
+
+            // whether a <br /> tag is inserted:
+            self::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED => 'no',
+
+            // whether to use link elements:
+            self::C_BOOL_LINK_ELEMENT_ENABLED => 'yes',
+
+            // excerpt should be disabled:
             self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'no',
 
             // since removal of the_post hook, expert mode is no danger zone
             // not for experts only; raising awareness about relative positioning
             // changed default to 'yes':
-            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'yes'
+            self::C_BOOL_FOOTNOTES_EXPERT_MODE => 'yes',
+
+            self::C_STR_FOOTNOTES_LOVE => 'no',
 
         ),
 
@@ -487,6 +586,20 @@ class MCI_Footnotes_Settings {
             // the current line of text (web coordinates origin is top left):
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
 
+            // tooltip display durations:
+            // called mouse over box not tooltip for consistency
+            self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY      =>   0,
+            self::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION   => 200,
+            self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY     => 400,
+            self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION  => 200,
+
+            // tooltip font size reset to legacy by default since 2.1.4;
+            // was set to inherit since 2.1.1 as it overrode custom CSS,
+            // is moved to settings since 2.1.4    2020-12-04T1023+0100
+            self::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED => 'yes',
+            self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => 13,
+            self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     => 'px',
+
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',
             // The mouse over box shouldn’t feature a colored background
             // by default, due to diverging user preferences. White is neutral:
@@ -510,6 +623,8 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage_expert" => array(
 
+            // checkboxes
+
             // Titles should all be enabled by default to prevent users from
             // thinking at first that the feature is broken in post titles.
             // See <https://wordpress.org/support/topic/more-feature-ideas/>
@@ -517,7 +632,7 @@ class MCI_Footnotes_Settings {
             self::C_BOOL_EXPERT_LOOKUP_THE_TITLE => '',
 
             // This is the only useful one:
-            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'yes',
+            self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT => 'checked',
 
             // And the_excerpt is disabled by default following @nikelaos in
             // <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>
@@ -526,16 +641,18 @@ class MCI_Footnotes_Settings {
 
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE => '',
 
-            // disabled by default because of issues with footnotes in Elementor accordions:
+            // The widget_text hook must be disabled, because a footnotes container is inserted
+            // at the bottom of each widget, but multiple containers in a page are not disambiguated.
+            // E.g. enabling this causes issues with footnotes in Elementor accordions.
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT => '',
 
             // initially hard-coded default
-            // shows "9223372036854775807" in the numbox
-            // empty should be interpreted as PHP_INT_MAX,
-            // but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
+            // shows "9223372036854780000" instead of 9223372036854775807 in the numbox
+            // empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty:
+            // <https://github.com/Modernizr/Modernizr/issues/171>
             // define -1 as PHP_INT_MAX instead
             self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
-            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 10,
+            self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 1000,
             self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  => PHP_INT_MAX,

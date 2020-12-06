@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.1.3
+Stable Tag: 2.1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,6 +80,32 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.1.4 =
+- Add: Dashboard: Main settings: add settings for scroll offset and duration
+- Add: Dashboard: Tooltip settings: add settings for display delays and fade durations
+- Add: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default
+- Add: Reference container: fix theme-dependent layout issues by optionally enqueuing additional style sheet
+- Add: Reference container: fix layout issues by moving backlink column width to settings
+- Add: Reference container: separating and terminating punctuation optional and customizable
+- Add: Reference container: Backlinks: optional line breaks to stack enumerations
+- Bugfix: Layout: Tooltips: prevent line break in Read-on link label
+- Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
+- Bugfix: Styling: Referrers: disable hover underline
+- Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
+- Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on
+- Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization
+- Bugfix: Reference container: Backlinks: fix line breaking with respect to separators and terminators
+- Bugfix: Reference container: Label: delete overflow hidden rule
+- Bugfix: Reference container: Expand/collapse button: same padding to the right for right-to-left
+- Bugfix: Reference container: Styles: re-add the class dedicated to combined footnotes indices
+- Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
+- Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
+- Bugfix: Dashboard: Tooltip settings: Truncation length: change input box type from text to numeric
+- Update: Dashboard: Notices: use explicit italic style
+- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box
+- Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
+- Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
+
 = 2.1.3 =
 - Bugfix: disable widget_text hook by default to fix accordions declaring headings as widgets
 - Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy
@@ -90,7 +116,6 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.2 =
 - Bugfix: Layout: Reference container: Backlinks: no underline on hover cell when combining identicals is on
-- Bugfix: Elementor: add experimental support for section name function
 - Bugfix: Dashboard: priority level settings for all other hooks
 - Update: Dashboard: WordPress documentation URLs of the hooks
 - Update: Dashboard: feature description for the hooks priority level settings (not yet localized)

@@ -4,17 +4,19 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- * Version: 2.1.3
  *
- * Last modified: 2020-11-24T0957+0100
+ * Version: 2.1.4
+ *
+ * Last modified: 2020-12-06T1649+0100
  */
 
 
-/* MCI Footnotes logo
- *
- * The classes with 'heading' fix display in dashboard
- * See class/config.php and css/public.css
- */
+/*****************************************************
+MCI Footnotes logo
+
+The classes with 'heading' fix display in dashboard
+See class/config.php and css/public.css
+*/
 
  .postbox-header {
     position: relative;
@@ -38,22 +40,74 @@
     left: 96px;
 }
 
-/*
+/*************************************************************************
 On User Request: limited to a number of IDs to not affect all dashboards
 <https://wordpress.org/support/topic/all-input-have-width-80/>
 */
-#footnote_inputfield_placeholder_start_user_defined,
-#footnote_inputfield_placeholder_end_user_defined,
+/*input[type=text], input[type=password], textarea, select*/
 #footnote_inputfield_readon_label,
 #footnote_inputfield_references_label,
-#footnote_inputfield_custom_css
-/*input[type=text], input[type=password], textarea, select*/ {
+#footnote_inputfield_custom_css,
+#footnote_inputfield_love {
     padding-left: 8px !important;
     padding-right: 8px !important;
     width: 80% !important;
 }
 
-textarea {
+#footnote_inputfield_reference_container_place {
+    width: 310px;
+}
+
+#footnote_inputfield_counter_style,
+#footnotes_inputfield_page_layout_support {
+    width: 505px;
+}
+
+#footnote_inputfield_placeholder_start,
+#footnote_inputfield_placeholder_end,
+#footnote_inputfield_custom_mouse_over_box_excerpt_length,
+#footnote_inputfield_custom_mouse_over_box_position {
+    width: 180px;
+}
+#footnote_inputfield_placeholder_start_user_defined,
+#footnote_inputfield_placeholder_end_user_defined {
+    width: 320px;
+}
+
+#footnote_inputfield_combine_identical,
+#footnotes_inputfield_scroll_offset,
+#footnotes_inputfield_scroll_duration,
+#footnote_inputfield_custom_mouse_over_box_offset_x,
+#footnote_inputfield_custom_mouse_over_box_offset_y,
+#footnote_inputfield_custom_mouse_over_box_max_width,
+#footnotes_inputfield_mouse_over_box_fade_in_delay,
+#footnotes_inputfield_mouse_over_box_fade_in_duration,
+#footnotes_inputfield_mouse_over_box_fade_out_delay,
+#footnotes_inputfield_mouse_over_box_fade_out_duration,
+#footnote_inputfield_custom_mouse_over_box_border_width,
+#footnote_inputfield_custom_mouse_over_box_border_radius {
+    width: 80px;
+}
+
+#footnote_inputfield_custom_hyperlink_symbol,
+#footnotes_inputfield_backlinks_terminator_option,
+#footnotes_inputfield_backlinks_separator_option {
+    width: 230px;
+}
+
+#footnotes_inputfield_backlinks_column_width_scalar,
+#footnotes_inputfield_backlinks_column_max_width_scalar,
+#footnotes_inputfield_mouse_over_box_font_size_scalar {
+    width: 85px;
+}
+#footnotes_inputfield_backlinks_column_width_unit,
+#footnotes_inputfield_backlinks_column_max_width_unit,
+#footnotes_inputfield_mouse_over_box_font_size_unit {
+    width: 140px;
+}
+
+/*textarea*/
+#footnote_inputfield_custom_css {
     height: 250px;
 }
 
@@ -100,34 +154,49 @@ span.footnote_highlight_placeholder {
     text-align: center !important;
 }
 
-/*
+/*********************************************************
 initialized from style attributes in templates
 IE doesn’t support nth child, but these are not critical
 */
-.expert-lookup tr th:first-child,
-.expert-lookup tr td:first-child {
+#expert-lookup tr th:first-child,
+#expert-lookup tr td:first-child {
     width: 170px !important;
 }
-.expert-lookup tr th:nth-child(2),
-.expert-lookup tr td:nth-child(2) {
+#expert-lookup tr th:nth-child(2),
+#expert-lookup tr td:nth-child(2) {
     width: 65px !important;
 }
-.expert-lookup tr th:nth-child(3),
-.expert-lookup tr td:nth-child(3) {
+#expert-lookup tr th:nth-child(3),
+#expert-lookup tr td:nth-child(3) {
     width: 200px !important;
 }
-.expert-lookup tr td:nth-child(3) input {
+#expert-lookup tr td:nth-child(3) input {
     width: 190px;
 }
-.expert-lookup tr th:last-child,
-.expert-lookup tr td:last-child {
+#expert-lookup tr th:last-child,
+#expert-lookup tr td:last-child {
     white-space: nowrap;
 }
 
-.footnotes-description {
+#settings-other tr td:nth-child(2) {
+    width: 30%;
+}
+/*
+fullwidth div above or below settings tables:
+*/
+.footnotes_description {
     padding: 0 10%;
 }
-.footnotes-description p {
+.footnotes_description p {
     font-size: 1.4em;
+    font-style: italic;
+}
+/*
+span previously formatted as em element
+but emphasis is not the correct semantics,
+as it is rendered as bold in other scripts
+so we need an explicit italic style:
+*/
+.footnotes_notice {
     font-style: italic;
 }

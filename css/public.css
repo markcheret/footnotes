@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0d0
+ * Version: 2.2.0d2
  *
- * Last modified: 2020-12-05T0357+0100
+ * Last modified: 2020-12-06T1326+0100
  */
 
 
@@ -194,7 +194,7 @@ fully clickable, not sign only
 */
 .footnote_reference_container_collapse_button {
     cursor: pointer;
-    padding-left: .5em;
+    padding: 0 0.5em;
     font-size: 1.3em !important;
     vertical-align: 2px;
 }

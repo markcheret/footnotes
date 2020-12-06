@@ -1,14 +1,14 @@
 /**
- * Footnotes Responsive Layout for the reference container
+ * Footnotes Responsive Layout for the main element
  *
  * Based on Hello Elementor v2.3.0 Basic responsive layout
  * licensed under GNU General Public License v3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  *
- * Since 2.1.4
- * Version: 2.1.4d10
+ * Since 2.2.0
+ * Version: 2.2.0d0
  *
- * Last modified: 2020-12-04T1843+0100
+ * Last modified: 2020-12-05T1414+0100
  */
 
 
@@ -35,14 +35,14 @@ The enqueuing of this style sheet is optional. The setting
 is in the dashboard under Settings > Reference container.
 */
 
-.footnotes_reference_container {
+main, .main-content, .site-main {
     margin-right: auto;
     margin-left: auto;
 }
 
 @media (max-width: 575px) {
 
-    .footnotes_reference_container {
+    main, .main-content, .site-main {
         padding-right: 10px;
         padding-left: 10px;
     }
@@ -50,28 +50,28 @@ is in the dashboard under Settings > Reference container.
 
 @media (min-width: 576px) {
 
-    .footnotes_reference_container {
+    main, .main-content, .site-main {
         max-width: 500px;
     }
 }
 
 @media (min-width: 768px) {
 
-    .footnotes_reference_container {
+    main, .main-content, .site-main {
         max-width: 600px;
     }
 }
 
 @media (min-width: 992px) {
 
-    .footnotes_reference_container {
+    main, .main-content, .site-main {
         max-width: 800px;
     }
 }
 
 @media (min-width: 1200px) {
 
-    .footnotes_reference_container {
+    main, .main-content, .site-main {
         max-width: 960px;
     }
 }

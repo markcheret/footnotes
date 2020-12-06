@@ -19,7 +19,7 @@
  * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  * 2.2.0  more settings container keys  2020-12-03T0955+0100
  *
- * Last modified: 2020-12-05T0405+0100
+ * Last modified: 2020-12-06T1321+0100
  */
 
 
@@ -407,7 +407,9 @@ class MCI_Footnotes_Settings {
      * Settings Container Keys for the link element option
      * Settings Container Keys for backlink typography and layout
      * Settings Container Keys for tooltip font size
+     * Settings Container Keys for page layout support
      * Settings Container Keys for scroll offset and duration
+     * Settings Container Keys for tooltip display durations
      *
      * @since 2.2.0
      * @var string|bool|int
@@ -415,16 +417,21 @@ class MCI_Footnotes_Settings {
      * 2020-11-26T1002+0100
      * 2020-11-30T0427+0100
      * 2020-12-03T0501+0100
-	 * 2020-12-05T0425+0100
+     * 2020-12-05T0425+0100
      */
+
+    // link element option:
     const C_BOOL_LINK_ELEMENT_ENABLED               =  "footnote_inputfield_link_element_enabled";
 
+    // backlink typography:
     const C_BOOL_BACKLINKS_SEPARATOR_ENABLED        = "footnotes_inputfield_backlinks_separator_enabled";
     const C_STR_BACKLINKS_SEPARATOR_OPTION          = "footnotes_inputfield_backlinks_separator_option";
     const C_STR_BACKLINKS_SEPARATOR_CUSTOM          = "footnotes_inputfield_backlinks_separator_custom";
     const C_BOOL_BACKLINKS_TERMINATOR_ENABLED       = "footnotes_inputfield_backlinks_terminator_enabled";
     const C_STR_BACKLINKS_TERMINATOR_OPTION         = "footnotes_inputfield_backlinks_terminator_option";
     const C_STR_BACKLINKS_TERMINATOR_CUSTOM         = "footnotes_inputfield_backlinks_terminator_custom";
+
+    // backlink layout:
     const C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED     = "footnotes_inputfield_backlinks_column_width_enabled";
     const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR       = "footnotes_inputfield_backlinks_column_width_scalar";
     const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT         = "footnotes_inputfield_backlinks_column_width_unit";
@@ -433,15 +440,25 @@ class MCI_Footnotes_Settings {
     const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT     = "footnotes_inputfield_backlinks_column_max_width_unit";
     const C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED      = "footnotes_inputfield_backlinks_line_breaks_enabled";
 
-    // called mouse over box not tooltip for consistency:
+    // tooltip font size:
+    // called mouse over box not tooltip for consistency
     const C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED   = "footnotes_inputfield_mouse_over_box_font_size_enabled";
     const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR     = "footnotes_inputfield_mouse_over_box_font_size_scalar";
     const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT       = "footnotes_inputfield_mouse_over_box_font_size_unit";
 
-	const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT       = "footnotes_inputfield_page_layout_support";
-	
+    // page layout support:
+    const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT       = "footnotes_inputfield_page_layout_support";
+
+    // scroll offset and duration:
     const C_INT_FOOTNOTES_SCROLL_OFFSET             = "footnotes_inputfield_scroll_offset";
     const C_INT_FOOTNOTES_SCROLL_DURATION           = "footnotes_inputfield_scroll_duration";
+
+    // tooltip display durations:
+    // called mouse over box not tooltip for consistency
+    const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY        = "footnotes_inputfield_mouse_over_box_fade_in_delay";
+    const C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION     = "footnotes_inputfield_mouse_over_box_fade_in_duration";
+    const C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY       = "footnotes_inputfield_mouse_over_box_fade_out_delay";
+    const C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION    = "footnotes_inputfield_mouse_over_box_fade_out_duration";
 
 
     /**
@@ -478,9 +495,9 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
             self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
             self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
-			self::C_INT_FOOTNOTES_SCROLL_OFFSET   => 20,
-			self::C_INT_FOOTNOTES_SCROLL_DURATION => 380,
-		
+            self::C_INT_FOOTNOTES_SCROLL_OFFSET   => 20,
+            self::C_INT_FOOTNOTES_SCROLL_DURATION => 380,
+
             self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
             self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => 'no',
             self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
@@ -569,11 +586,18 @@ class MCI_Footnotes_Settings {
             // the current line of text (web coordinates origin is top left):
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
 
+            // tooltip display durations:
+            // called mouse over box not tooltip for consistency
+            self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY      =>   0,
+            self::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION   => 200,
+            self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY     => 400,
+            self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION  => 200,
+
             // tooltip font size reset to legacy by default since 2.2.0;
             // was set to inherit since 2.1.1 as it overrode custom CSS,
             // is moved to settings since 2.2.0    2020-12-04T1023+0100
             self::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED => 'yes',
-            self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => '13',
+            self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => 13,
             self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     => 'px',
 
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR => '',

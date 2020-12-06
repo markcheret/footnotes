@@ -24,8 +24,9 @@
  * 2.2.0  optional line breaks to stack enumerated backlinks  2020-11-28T1049+0100
  * 2.2.0  ref container column width and tooltip font size settings  2020-12-03T0954+0100
  * 2.2.0  scroll offset and duration settings  2020-12-05T0538+0100
+ * 2.2.0  tooltip display duration settings  2020-12-06T1320+0100
  *
- * Last modified:  2020-12-05T0538+0100
+ * Last modified:  2020-12-06T1321+0100
  */
 
 // If called directly, abort:
@@ -576,23 +577,32 @@ class MCI_Footnotes_Task {
 
                 // reset the template
                 $l_obj_Template->reload();
-                if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED))) {
+                if (
+                    MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) &&
+                    !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))
+                ) {
                     $l_int_OffsetY = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
                     $l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
+                    $l_int_FadeInDelay     = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY    ));
+                    $l_int_FadeInDuration  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ));
+                    $l_int_FadeOutDelay    = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY   ));
+                    $l_int_FadeOutDuration = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION));
 
                     // fill in 'templates/public/tooltip.html':
                     $l_obj_TemplateTooltip->replace(
                         array(
-                            "post_id"  => $l_int_PostId,
-                            "id"       => $l_int_Index,
-                            "position" => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
-                            "offset-y" => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
-                            "offset-x" => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0,
+                            "post_id"           => $l_int_PostId,
+                            "id"                => $l_int_Index,
+                            "position"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
+                            "offset-y"          => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
+                            "offset-x"          => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0,
+                            "fade-in-delay"     => !empty($l_int_FadeInDelay    ) ? $l_int_FadeInDelay     : 0,
+                            "fade-in-duration"  => !empty($l_int_FadeInDuration ) ? $l_int_FadeInDuration  : 0,
+                            "fade-out-delay"    => !empty($l_int_FadeOutDelay   ) ? $l_int_FadeOutDelay    : 0,
+                            "fade-out-duration" => !empty($l_int_FadeOutDuration) ? $l_int_FadeOutDuration : 0,
                         )
                     );
-                    if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
-                        $l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
-                    }
+                    $l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
                     $l_obj_TemplateTooltip->reload();
                 }
             }
@@ -969,7 +979,7 @@ class MCI_Footnotes_Task {
         // get scroll offset and duration settings:
         $l_int_ScrollOffset = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET);
         $l_int_ScrollDuration = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION);
-        
+
         // load 'templates/public/reference-container.html':
         $l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
         $l_obj_TemplateContainer->replace(

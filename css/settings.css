@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0d0
+ * Version: 2.2.0d2
  *
- * Last modified: 2020-12-05T0358+0100
+ * Last modified: 2020-12-06T1325+0100
  */
 
 
@@ -45,8 +45,6 @@ On User Request: limited to a number of IDs to not affect all dashboards
 <https://wordpress.org/support/topic/all-input-have-width-80/>
 */
 /*input[type=text], input[type=password], textarea, select*/
-#footnote_inputfield_placeholder_start_user_defined,
-#footnote_inputfield_placeholder_end_user_defined,
 #footnote_inputfield_readon_label,
 #footnote_inputfield_references_label,
 #footnote_inputfield_custom_css,
@@ -54,6 +52,30 @@ On User Request: limited to a number of IDs to not affect all dashboards
     padding-left: 8px !important;
     padding-right: 8px !important;
     width: 80% !important;
+}
+
+#footnote_inputfield_reference_container_place {
+    width: 310px;
+}
+
+#footnote_inputfield_counter_style,
+#footnotes_inputfield_page_layout_support {
+    width: 505px;
+}
+
+#footnote_inputfield_placeholder_start,
+#footnote_inputfield_placeholder_end {
+	width: 180px;
+}
+#footnote_inputfield_placeholder_start_user_defined,
+#footnote_inputfield_placeholder_end_user_defined {
+	width: 320px;
+}
+
+#footnote_inputfield_combine_identical,
+#footnotes_inputfield_scroll_offset,
+#footnotes_inputfield_scroll_duration {
+	width: 80px;
 }
 
 #footnote_inputfield_custom_hyperlink_symbol,
@@ -148,11 +170,22 @@ IE doesn’t support nth child, but these are not critical
 #settings-other tr td:nth-child(2) {
     width: 30%;
 }
-
+/*
+fullwidth div above or below settings tables:
+*/
 .footnotes_description {
     padding: 0 10%;
 }
 .footnotes_description p {
     font-size: 1.4em;
+    font-style: italic;
+}
+/*
+span previously formatted as em element
+but emphasis is not the correct semantics,
+as it is rendered as bold in other scripts
+so we need an explicit italic style:
+*/
+.footnotes_notice {
     font-style: italic;
 }

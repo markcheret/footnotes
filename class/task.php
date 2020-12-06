@@ -26,7 +26,7 @@
  * 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
  * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
  *
- * Last modified:  2020-12-06T1652+0100
+ * Last modified:  2020-12-06T2248+0100
  */
 
 // If called directly, abort:
@@ -517,9 +517,9 @@ class MCI_Footnotes_Task {
 
             // fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
             // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents
-            // spare however values of the href argument!
+            // spare however values of the href and the src arguments!
             // see public.css
-            $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+            $l_str_FootnoteText = preg_replace( '#(?<!href=.)(?<!src=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
 
             // Text to be displayed instead of the footnote
             $l_str_FootnoteReplaceText = "";
@@ -936,8 +936,7 @@ class MCI_Footnotes_Task {
 
             }
 
-            // line wrapping of URLs already fixed, see:
-            // $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+            // line wrapping of URLs already fixed, see above
 
             // replace all placeholders in 'templates/public/reference-container-body.html'
             // or in 'templates/public/reference-container-body-combi.html'

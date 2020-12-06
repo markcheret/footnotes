@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0d2
+ * Version: 2.1.4
  *
- * Last modified: 2020-12-06T1325+0100
+ * Last modified: 2020-12-06T1649+0100
  */
 
 
@@ -64,18 +64,29 @@ On User Request: limited to a number of IDs to not affect all dashboards
 }
 
 #footnote_inputfield_placeholder_start,
-#footnote_inputfield_placeholder_end {
-	width: 180px;
+#footnote_inputfield_placeholder_end,
+#footnote_inputfield_custom_mouse_over_box_excerpt_length,
+#footnote_inputfield_custom_mouse_over_box_position {
+    width: 180px;
 }
 #footnote_inputfield_placeholder_start_user_defined,
 #footnote_inputfield_placeholder_end_user_defined {
-	width: 320px;
+    width: 320px;
 }
 
 #footnote_inputfield_combine_identical,
 #footnotes_inputfield_scroll_offset,
-#footnotes_inputfield_scroll_duration {
-	width: 80px;
+#footnotes_inputfield_scroll_duration,
+#footnote_inputfield_custom_mouse_over_box_offset_x,
+#footnote_inputfield_custom_mouse_over_box_offset_y,
+#footnote_inputfield_custom_mouse_over_box_max_width,
+#footnotes_inputfield_mouse_over_box_fade_in_delay,
+#footnotes_inputfield_mouse_over_box_fade_in_duration,
+#footnotes_inputfield_mouse_over_box_fade_out_delay,
+#footnotes_inputfield_mouse_over_box_fade_out_duration,
+#footnote_inputfield_custom_mouse_over_box_border_width,
+#footnote_inputfield_custom_mouse_over_box_border_radius {
+    width: 80px;
 }
 
 #footnote_inputfield_custom_hyperlink_symbol,

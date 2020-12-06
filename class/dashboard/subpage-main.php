@@ -10,9 +10,9 @@
  * 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * 2.1.0  read-on button label  2020-11-08T2148+0100
  * 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
- * 2.2.0  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
+ * 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
  *
- * Last modified: 2020-12-06T1321+0100
+ * Last modified: 2020-12-06T1653+0100
  */
 
 /**
@@ -95,7 +95,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
             // The HyperlinkArrow meta box ceased for 2.0.0
             // The HyperlinkArrow meta box was restored for 2.0.4 to meet user demand for arrow symbol semantics
-            // The HyperlinkArrow meta box ceased for 2.2.0 as its content is moved to Settings > Reference container > Display a backlink symbol
+            // The HyperlinkArrow meta box ceased for 2.1.4 as its content is moved to Settings > Reference container > Display a backlink symbol
             $this->addMetaBox("customize", "superscript", __("Superscript layout", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript"),
             $this->addMetaBox("customize", "mouse-over-box", __("Mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
             $this->addMetaBox("customize", "custom-css", __("Add custom CSS to the public page", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
@@ -114,7 +114,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 1.5.0
      *
      * Completed:
-     * @since 2.2.0: layout and typography options   2020-11-30T0548+0100
+     * @since 2.1.4: layout and typography options   2020-11-30T0548+0100
      */
     public function ReferenceContainer() {
         // options for the positioning of the reference container
@@ -540,7 +540,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * became 'prepended arrow' in v2.0.3 after a user complaint about missing backlinking semantics
      * of the footnote number.
      *
-     * @since 2.2.0  moved to Settings > Reference container > Display a backlink symbol
+     * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
      */
 
     /**
@@ -585,7 +585,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Edited for:
      * 2.1.1  add priority level setting for the_content  2020-11-16T2152+0100
-     * 2.2.0  add priority level settings for the other hooks   2020-11-19T1421+0100
+     * 2.1.4  add priority level settings for the other hooks   2020-11-19T1421+0100
      */
     public function lookupHooks() {
         // load template file

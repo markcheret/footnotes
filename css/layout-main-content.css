@@ -1,19 +1,21 @@
 /**
- * Footnotes Responsive Layout for the main element
+ * Basic responsive layout for the main element
  *
  * Based on Hello Elementor v2.3.0 Basic responsive layout
+ * themes/hello-elementor/theme.css:8..31
  * licensed under GNU General Public License v3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  *
- * Since 2.2.0
- * Version: 2.2.0d0
+ * Since v2.1.4 of Footnotes
  *
- * Last modified: 2020-12-05T1414+0100
- */
-
+ * Last modified: 2020-12-06T1722+0100
+ *
+ * The enqueuing of this style sheet is optional and can be
+ * enabled in the Reference container settings.
+**/
 
 /***********************************************************
-Basic responsive layout
+Rationale
 
 In Hello Elementor Theme, this applies to .site-header, and
 also to .site-main, which is a class of the <main> element,
@@ -28,11 +30,7 @@ into the benefit of the basic responsive layout style rules
 that would apply if the page were not built with Elementor.
 
 This is mainly useful with Hello Elementor, but it might be
-used also with another theme depriving the features from
-other plugins of basic layout rules as applied to content.
-
-The enqueuing of this style sheet is optional. The setting
-is in the dashboard under Settings > Reference container.
+used also with another theme.
 */
 
 main, .main-content, .site-main {

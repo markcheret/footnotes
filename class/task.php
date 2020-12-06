@@ -17,16 +17,16 @@
  * 2.1.1  options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
  * 2.1.1  option fixing ref container relative position  2020-11-17T0254+0100
  * 2.1.2  options for the other hooks  2020-11-19T1849+0100
- * 2.2.0  fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
- * 2.2.0  fix issues with link elements by making them optional   2020-11-26T1051+0100
- * 2.2.0  support appending arrow when combining identicals is on   2020-11-26T1633+0100
- * 2.2.0  disable or select backlink separator and terminator  2020-11-28T1048+0100
- * 2.2.0  optional line breaks to stack enumerated backlinks  2020-11-28T1049+0100
- * 2.2.0  ref container column width and tooltip font size settings  2020-12-03T0954+0100
- * 2.2.0  scroll offset and duration settings  2020-12-05T0538+0100
- * 2.2.0  tooltip display duration settings  2020-12-06T1320+0100
+ * 2.1.4  fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
+ * 2.1.4  fix issues with link elements by making them optional   2020-11-26T1051+0100
+ * 2.1.4  support appending arrow when combining identicals is on   2020-11-26T1633+0100
+ * 2.1.4  disable or select backlink separator and terminator  2020-11-28T1048+0100
+ * 2.1.4  optional line breaks to stack enumerated backlinks  2020-11-28T1049+0100
+ * 2.1.4  ref container column width and tooltip font size settings  2020-12-03T0954+0100
+ * 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
+ * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
  *
- * Last modified:  2020-12-06T1321+0100
+ * Last modified:  2020-12-06T1652+0100
  */
 
 // If called directly, abort:
@@ -676,7 +676,7 @@ class MCI_Footnotes_Task {
          * The link elements have been added and are present @since 2.0.0.
          * Then the link addresses were removed @since 2.0.4.
          * Then the presence of <a> elements was made optional
-         * @since 2.2.0
+         * @since 2.1.4
          * 2020-11-25T1306+0100
          */
         $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
@@ -722,7 +722,7 @@ class MCI_Footnotes_Task {
          *
          * Initially a comma was appended in this algorithm for enumerations.
          * The comma in enumerations is not generally preferred.
-         * @since 2.2.0 the separator is optional, has options, and is customizable:
+         * @since 2.1.4 the separator is optional, has options, and is customizable:
          */
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED))) {
@@ -747,7 +747,7 @@ class MCI_Footnotes_Task {
          * Initially a dot was appended in the table row template.
          * @since 2.0.6 a dot after footnote numbers is discarded as not localizable;
          * making it optional was envisaged.
-         * @since 2.2.0 the terminator is optional, has options, and is customizable:
+         * @since 2.1.4 the terminator is optional, has options, and is customizable:
          */
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED))) {

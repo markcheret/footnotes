@@ -11,10 +11,10 @@
  * 2.0.0  add jQueryUI from Cloudflare   2020-10-26T1907+0100
  * 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
  * 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
- * 2.2.0  automate passing version number for cache busting  2020-11-30T0646+0100
- * 2.2.0  optionally enqueue an extra style sheet  2020-12-04T2231+0100
+ * 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
+ * 2.1.4  optionally enqueue an extra style sheet  2020-12-04T2231+0100
  *
- * Last modified:  2020-12-05T1418+0100
+ * Last modified:  2020-12-06T1655+0100
  */
 
 
@@ -161,7 +161,7 @@ class MCI_Footnotes {
         wp_enqueue_style( 'mci-footnotes-public', plugins_url('footnotes/css/public.css'), array(), FOOTNOTES_VERSION, 'all' );
 
         // optional layout fix by lack of layout support:
-        // since 2.2.0   2020-12-05T1417+0100
+        // since 2.1.4   2020-12-05T1417+0100
         $l_str_LayoutOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT);
         if ($l_str_LayoutOption != 'none') {
             wp_enqueue_style( 'mci-footnotes-layout-' . $l_str_LayoutOption, plugins_url('footnotes/css/layout-' . $l_str_LayoutOption . '.css'), array(), FOOTNOTES_VERSION, 'all' );

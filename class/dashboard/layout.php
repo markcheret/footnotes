@@ -8,14 +8,13 @@
  *
  * Edited:
  * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
- * 2.2.0  automate passing version number for cache busting  2020-11-30T0648+0100
- * 2.2.0  optional step argument and support for floating in numbox  2020-12-05T0540+0100
- *
+ * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
+ * 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
  *
  * ########## fix punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
  * ########## this fix reverted for now; restore when updating strings and translations, line 400
  *
- * Last modified:  2020-12-05T2008+0100
+ * Last modified:  2020-12-06T1654+0100
  */
 
 
@@ -508,7 +507,7 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @return string
      *
      * Edited:
-     * @since 2.2.0  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-05T2006+0100
+     * @since 2.1.4  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-05T2006+0100
      */
     protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max, $p_bool_Deci = false ) {
         // collect data for given settings field

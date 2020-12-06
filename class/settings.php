@@ -17,9 +17,9 @@
  * 2.1.1  fix ref container by option restoring 3-column layout
  * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
- * 2.2.0  more settings container keys  2020-12-03T0955+0100
+ * 2.1.4  more settings container keys  2020-12-03T0955+0100
  *
- * Last modified: 2020-12-06T1321+0100
+ * Last modified: 2020-12-06T1653+0100
  */
 
 
@@ -176,7 +176,7 @@ class MCI_Footnotes_Settings {
     /**
      * Settings Container Key for alternative tooltip implementation
      *
-     * @since 2.2.0
+     * @since 2.1.4
      * @var string
      *
      * 2020-11-11T1817+0100
@@ -411,7 +411,7 @@ class MCI_Footnotes_Settings {
      * Settings Container Keys for scroll offset and duration
      * Settings Container Keys for tooltip display durations
      *
-     * @since 2.2.0
+     * @since 2.1.4
      * @var string|bool|int
      *
      * 2020-11-26T1002+0100
@@ -593,9 +593,9 @@ class MCI_Footnotes_Settings {
             self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY     => 400,
             self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION  => 200,
 
-            // tooltip font size reset to legacy by default since 2.2.0;
+            // tooltip font size reset to legacy by default since 2.1.4;
             // was set to inherit since 2.1.1 as it overrode custom CSS,
-            // is moved to settings since 2.2.0    2020-12-04T1023+0100
+            // is moved to settings since 2.1.4    2020-12-04T1023+0100
             self::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED => 'yes',
             self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   => 13,
             self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     => 'px',

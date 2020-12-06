@@ -80,7 +80,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.0d2 =
+= 2.1.4 =
 - Add: Dashboard: Main settings: add settings for scroll offset and duration
 - Add: Dashboard: Tooltip settings: add settings for display delays and fade durations
 - Add: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default

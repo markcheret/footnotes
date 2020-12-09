@@ -18,8 +18,9 @@
  * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  * 2.1.4  more settings container keys  2020-12-03T0955+0100
+ * 2.2.0  option to disable URL line wrapping   2020-12-09T1606+0100
  *
- * Last modified: 2020-12-06T1653+0100
+ * Last modified: 2020-12-09T1606+0100
  */
 
 
@@ -460,6 +461,16 @@ class MCI_Footnotes_Settings {
     const C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY       = "footnotes_inputfield_mouse_over_box_fade_out_delay";
     const C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION    = "footnotes_inputfield_mouse_over_box_fade_out_duration";
 
+    /**
+     * Settings Container Key for URL wrap option
+     *
+     * @since 2.2.0
+     * @var bool
+     *
+     * 2020-12-09T1554+0100
+     */
+    const C_BOOL_FOOTNOTE_URL_WRAP_ENABLED          =  "footnote_inputfield_url_wrap_enabled";
+
 
     /**
      * Stores a singleton reference of this class.
@@ -532,6 +543,9 @@ class MCI_Footnotes_Settings {
 
             // whether a <br /> tag is inserted:
             self::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED => 'no',
+
+            // whether to enable URL line wrapping:
+            self::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED => 'yes',
 
             // whether to use link elements:
             self::C_BOOL_LINK_ELEMENT_ENABLED => 'yes',

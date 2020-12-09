@@ -10,11 +10,9 @@
  * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
  * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
  * 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
+ * 2.2.0  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
  *
- * ########## fix punctuation-related localization issue in dashboard labels  2020-12-01T0211+0100
- * ########## this fix reverted for now; restore when updating strings and translations, line 400
- *
- * Last modified:  2020-12-06T1654+0100
+ * Last modified:  2020-12-08T1547+0100
  */
 
 
@@ -296,7 +294,7 @@ abstract class MCI_Footnotes_LayoutEngine {
         $l_str_ActiveSectionID = isset($_GET['t']) ? $_GET['t'] : key($this->a_arr_Sections);
         $l_arr_ActiveSection = $this->a_arr_Sections[$l_str_ActiveSectionID];
 
-        // iterate through each value that has to be in the specific contaienr
+        // iterate through each value that has to be in the specific container
         foreach(MCI_Footnotes_Settings::instance()->getDefaults($l_arr_ActiveSection["container"]) as $l_str_Key => $l_mixed_Value) {
             // setting is available in the POST array, use it
             if (array_key_exists($l_str_Key, $_POST)) {
@@ -396,9 +394,8 @@ abstract class MCI_Footnotes_LayoutEngine {
         // and narrow per new school.
         // Add colon to label strings for inclusion in localization.
         // Colon after label is widely preferred best practice, mandatory per style guides.
-        return sprintf('<label for="%s">%s:</label>', $p_str_SettingName, $p_str_Caption);
-        //                                ^ here deleted colon  2020-12-01T0156+0100
-        // ########## this fix reverted for now; restore when updating strings and translations
+        return sprintf('<label for="%s">%s</label>', $p_str_SettingName, $p_str_Caption);
+        //                                ^ here deleted colon  2020-12-08T1546+0100
     }
 
     /**

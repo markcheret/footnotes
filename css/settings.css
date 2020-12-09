@@ -5,13 +5,13 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.1.5
+ * Version: 2.2.0d0
  *
- * Last modified: 2020-12-06T2258+0100
+ * Last modified: 2020-12-09T1607+0100
  */
 
 
-/*****************************************************
+/************************************************************
 MCI Footnotes logo
 
 The classes with 'heading' fix display in dashboard
@@ -40,14 +40,16 @@ See class/config.php and css/public.css
     left: 96px;
 }
 
-/*************************************************************************
-On User Request: limited to a number of IDs to not affect all dashboards
+/************************************************************
+Input fields
+
+On User Request:
+Limited to a number of IDs to not affect all dashboards
 <https://wordpress.org/support/topic/all-input-have-width-80/>
 */
 /*input[type=text], input[type=password], textarea, select*/
 #footnote_inputfield_readon_label,
 #footnote_inputfield_references_label,
-#footnote_inputfield_custom_css,
 #footnote_inputfield_love {
     padding-left: 8px !important;
     padding-right: 8px !important;
@@ -106,10 +108,9 @@ On User Request: limited to a number of IDs to not affect all dashboards
     width: 140px;
 }
 
-/*textarea*/
-#footnote_inputfield_custom_css {
-    height: 250px;
-}
+/************************************************************
+Headings and labels
+*/
 
 label {
     display: inline-block;
@@ -154,34 +155,90 @@ span.footnote_highlight_placeholder {
     text-align: center !important;
 }
 
-/*********************************************************
+/************************************************************
+Special table layout
+
+Hooks and priority levels:
 initialized from style attributes in templates
 IE doesn’t support nth child, but these are not critical
 */
-#expert-lookup tr th:first-child,
-#expert-lookup tr td:first-child {
+#expert_lookup tr th:first-child,
+#expert_lookup tr td:first-child {
     width: 170px !important;
 }
-#expert-lookup tr th:nth-child(2),
-#expert-lookup tr td:nth-child(2) {
+#expert_lookup tr th:nth-child(2),
+#expert_lookup tr td:nth-child(2) {
     width: 65px !important;
 }
-#expert-lookup tr th:nth-child(3),
-#expert-lookup tr td:nth-child(3) {
+#expert_lookup tr th:nth-child(3),
+#expert_lookup tr td:nth-child(3) {
     width: 200px !important;
 }
-#expert-lookup tr td:nth-child(3) input {
+#expert_lookup tr td:nth-child(3) input {
     width: 190px;
 }
-#expert-lookup tr th:last-child,
-#expert-lookup tr td:last-child {
+#expert_lookup tr th:last-child,
+#expert_lookup tr td:last-child {
     white-space: nowrap;
 }
 
-#settings-other tr td:nth-child(2) {
+/*
+Other settings
+*/
+#settings_other tr td:nth-child(2) {
     width: 30%;
 }
+
 /*
+Custom CSS
+
+16 CSS classes are listed directly in the template
+templates/dashboard/customize-css.html
+
+Localized notices are dropped to ease translators’ task.
+
+The textarea has monospace font but no tab support.
+*/
+#customize_css tr td:first-child {
+    width: 44% !important;
+    font-weight: normal !important;
+}
+#customize_css tr td:first-child span:first-child {
+    font-weight: bold !important;
+}
+#customize_css .list {
+    padding-top: 10px;
+}
+#customize_css .list p {
+    font-family: monospace;
+    padding-left: 10px;
+    text-indent: -10px;
+    margin: .5em 0;
+}
+
+#footnote_inputfield_custom_css {
+    height: 500px;
+    width: 90%;
+    resize: both;
+    overflow: scroll;
+    font-family: monospace;
+}
+
+/************************************************************
+Notices
+
+span previously formatted as em element
+but emphasis is not the correct semantics,
+as it is rendered as bold in other scripts
+so we need an explicit italic style:
+*/
+.footnotes_notice {
+    font-style: italic;
+}
+
+/************************************************************
+Descriptions
+
 fullwidth div above or below settings tables:
 */
 .footnotes_description {
@@ -189,14 +246,5 @@ fullwidth div above or below settings tables:
 }
 .footnotes_description p {
     font-size: 1.4em;
-    font-style: italic;
-}
-/*
-span previously formatted as em element
-but emphasis is not the correct semantics,
-as it is rendered as bold in other scripts
-so we need an explicit italic style:
-*/
-.footnotes_notice {
     font-style: italic;
 }

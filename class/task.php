@@ -25,8 +25,9 @@
  * 2.1.4  ref container column width and tooltip font size settings  2020-12-03T0954+0100
  * 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
  * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
+ * 2.2.0  option to disable URL line wrapping   2020-12-09T1606+0100
  *
- * Last modified:  2020-12-06T2248+0100
+ * Last modified:  2020-12-09T1607+0100
  */
 
 // If called directly, abort:
@@ -518,8 +519,10 @@ class MCI_Footnotes_Task {
             // fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
             // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents
             // spare however values of the href and the src arguments!
-            // see public.css
-            $l_str_FootnoteText = preg_replace( '#(?<!href=.)(?<!src=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+			// see public.css
+			if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
+				$l_str_FootnoteText = preg_replace( '#(?<!href=.)(?<!src=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+			}
 
             // Text to be displayed instead of the footnote
             $l_str_FootnoteReplaceText = "";

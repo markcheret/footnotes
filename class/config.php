@@ -6,7 +6,10 @@
  * @author Stefan Herndler
  * @since 1.5.0 12.09.14 10:56
  * 
- * Last edited for v2.0.4   2020-11-01T0452+0100
+ * Edited for:
+ * 2.0.4  add Public Plugin name for dashboard heading   2020-11-01T0452+0100
+ * 
+ * Last modified: 2020-12-08T2032+0100
  */
 
 

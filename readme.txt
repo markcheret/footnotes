@@ -80,6 +80,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.2.0d0 =
+- Bugfix: add option to disable URL line wrapping added for Unicode non conformant browsers
+- Update: Dashboard: reorder tabs, move CSS to extra tab, update tab labels
+- Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels
+- Bugfix: Localization: conform to WordPress plugin language file name scheme
+
 = 2.1.5 =
 - Bugfix: Reference container, tooltips: exclude image source too from URL line wrapping span
 

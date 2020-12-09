@@ -80,7 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.0d4 =
+= 2.2.0d5 =
+- Bugfix: Reference container, tooltips: fix issues with URL wrap span by catch-all lookbehind 
+- Bugfix: Tooltips: set z-index to maximum to address display issues with overlay content
 - Bugfix: Dashboard: fix settings bug by canceling new tab for CSS
 - Bugfix: add option to disable URL line wrapping added for Unicode non conformant browsers
 - Update: Dashboard: reorder tabs, move CSS to extra tab, update tab labels

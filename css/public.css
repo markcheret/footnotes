@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0d4
+ * Version: 2.2.0d5
  *
- * Last modified: 2020-12-09T1717+0100
+ * Last modified: 2020-12-09T1924+0100
  */
 
 
@@ -99,7 +99,7 @@ Classes:
 
 .footnote_tooltip {
     display: none;
-    z-index: 99999;
+    z-index: 2147483647;
     cursor: auto;
     text-align: left;
     padding: 12px;

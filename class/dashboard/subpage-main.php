@@ -14,7 +14,7 @@
  * 2.2.0  slight UI reordering   2020-12-09T1114+0100
  * 2.2.0  option to disable URL line wrapping   2020-12-09T1604+0100
  *
- * Last modified: 2020-12-09T1604+0100
+ * Last modified: 2020-12-09T1716+0100
  */
 
 /**
@@ -69,8 +69,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_arr_Tabs = array();
         $l_arr_Tabs[] = $this->addSection("settings", __("Settings", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 0, true);
         $l_arr_Tabs[] = $this->addSection("expert", __("Priority", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 2, true);
-        $l_arr_Tabs[] = $this->addSection("referrers", __("Referrers", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1, true);
-        $l_arr_Tabs[] = $this->addSection("customize", __("Custom CSS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1, true);
+        $l_arr_Tabs[] = $this->addSection("customize", __("Configure", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1, true);
         $l_arr_Tabs[] = $this->addSection("how-to", __("How to", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), null, false);
         return $l_arr_Tabs;
     }
@@ -99,8 +98,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             // The HyperlinkArrow meta box ceased for 2.0.0
             // The HyperlinkArrow meta box was restored for 2.0.4 to meet user demand for arrow symbol semantics
             // The HyperlinkArrow meta box ceased for 2.1.4 as its content is moved to Settings > Reference container > Display a backlink symbol
-            $this->addMetaBox("referrers", "superscript", __("Referrer typesetting", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript"),
-            $this->addMetaBox("referrers", "mouse-over-box", __("Mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
+            $this->addMetaBox("customize", "superscript", __("Referrer typesetting", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript"),
+            $this->addMetaBox("customize", "mouse-over-box", __("Mouse-over box", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
 
             $this->addMetaBox("customize", "custom-css", __("Custom CSS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
 

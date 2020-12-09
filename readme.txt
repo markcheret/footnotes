@@ -80,7 +80,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.0d3 =
+= 2.2.0d4 =
+- Bugfix: Dashboard: fix settings bug by canceling new tab for CSS
 - Bugfix: add option to disable URL line wrapping added for Unicode non conformant browsers
 - Update: Dashboard: reorder tabs, move CSS to extra tab, update tab labels
 - Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels

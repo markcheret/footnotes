@@ -505,11 +505,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR, __("Text color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR),
-                "notice-color" => __("To use the current theme’s default text color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear and leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-color" => __("To use the current theme’s default text color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear or leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-background" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND, __("Background color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "background" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND),
-                "notice-background" => __("To use the current theme’s default background color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear and leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-background" => __("To use the current theme’s default background color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear or leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-border-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH, __("Border width:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "border-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH, 0, 4, true),
@@ -517,7 +517,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-border-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR, __("Border color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "border-color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR),
-                "notice-border-color" => __("To use the current theme’s default border color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear and leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-border-color" => __("To use the current theme’s default border color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear or leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-border-radius" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS, __("Rounded corner radius:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "border-radius" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS, 0, 500),
@@ -525,7 +525,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-box-shadow-color" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR, __("Box shadow color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "box-shadow-color" => $this->addColorSelection(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR),
-                "notice-box-shadow-color" => __("To use the current theme’s default box shadow color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear and leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-box-shadow-color" => __("To use the current theme’s default box shadow color:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) . ' ' . __("Clear or leave empty.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
             )
         );
@@ -615,10 +615,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             array(
 
                 "description-1" => __("The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-2" => __("Default 9223372036854775807 is lowest priority, 0 is highest.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-3" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-4" => __("For the_content, this figure needs to be lower than 1200 to make sure that the reference container displays above features inserted by other plugins running at 1200 or a greater/lower level, later in the process.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-5" => __("The widget_text hook must be disabled, because a footnotes container is inserted at the bottom of each widget, but multiple containers in a page are not disambiguated.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-2" => __("For the_content, this figure must be lower than 99 so that a string added by a plugin running at 99 may not be mistaken as a footnote.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-3" => __("This makes also sure that the reference container displays above a feature inserted by a plugin running at 1200.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-4" => __("Default 9223372036854775807 is lowest priority, 0 is highest.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-5" => __("To restore default priority, set to -1, interpreted as 9223372036854775807, the constant PHP_INT_MAX.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-6" => __("The widget_text hook must be disabled, because a footnotes container is inserted at the bottom of each widget, but multiple containers in a page are not disambiguated.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),

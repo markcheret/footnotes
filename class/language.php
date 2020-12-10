@@ -57,15 +57,15 @@ class MCI_Footnotes_Language {
      * @return bool
      * 
      * Edited for:
-     * 2.2.0  conform to WordPress plugin language file name scheme by using load_plugin_textdomain()
+     * 2.1.6  conform to WordPress plugin language file name scheme by using load_plugin_textdomain()
      * @see wp-includes/l10n.php:857
-     * “ The .mo file should be named based on the text domain with a dash, and then the locale exactly.”
+     * “The .mo file should be named based on the text domain with a dash, and then the locale exactly.”
      */
     private static function load($p_str_LanguageCode) {
         return load_plugin_textdomain(
             MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
             false, // This argument only fills the gap left by a deprecated argument (since WP2.7).
-            MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages/' . MCI_Footnotes_Config::C_STR_PLUGIN_NAME . $p_str_LanguageCode . '.mo'
+            MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages' // The plugin basedir is provided.
         );
     }
 }

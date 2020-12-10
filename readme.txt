@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.2.0d6 =
+- Bugfix: Localization: correct arguments for plugin textdomain load function
+
 = 2.1.6 =
 - Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict
 - Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content

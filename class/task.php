@@ -25,8 +25,10 @@
  * 2.1.4  ref container column width and tooltip font size settings  2020-12-03T0954+0100
  * 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
  * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
+ * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
+ * 2.1.6  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
  *
- * Last modified:  2020-12-06T1652+0100
+ * Last modified:  2020-12-10T0448+0100
  */
 
 // If called directly, abort:
@@ -517,9 +519,12 @@ class MCI_Footnotes_Task {
 
             // fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
             // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents
-            // spare however values of the href argument!
-            // see public.css
-            $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+			// spare however values of the href and the src arguments!
+			// Even ARIA labels may take an URL as value, so use \w=. as a catch-all.
+			// see public.css
+			if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
+				$l_str_FootnoteText = preg_replace( '#(?<!\w=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+			}
 
             // Text to be displayed instead of the footnote
             $l_str_FootnoteReplaceText = "";
@@ -936,8 +941,7 @@ class MCI_Footnotes_Task {
 
             }
 
-            // line wrapping of URLs already fixed, see:
-            // $l_str_FootnoteText = preg_replace( '#(?<!href=.)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+            // line wrapping of URLs already fixed, see above
 
             // replace all placeholders in 'templates/public/reference-container-body.html'
             // or in 'templates/public/reference-container-body-combi.html'

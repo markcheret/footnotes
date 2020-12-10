@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.1.4
+Stable Tag: 2.1.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,6 +79,19 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.1.6 =
+- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict
+- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content
+- Bugfix: Reference container, tooltips: fix issues with URL wrap span by catch-all negative lookbehind 
+- Bugfix: Reference container, tooltips: add option to disable URL line wrapping added for browser support
+- Update: Dashboard: reorder tabs and update tab labels
+- Bugfix: Dashboard: remove Expert mode enable setting since permanently enabled as 'Priority'
+- Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels
+- Bugfix: Localization: conform to WordPress plugin language file name scheme
+
+= 2.1.5 =
+- Bugfix: Reference container, tooltips: exclude image source too from URL line wrapping span
 
 = 2.1.4 =
 - Add: Dashboard: Main settings: add settings for scroll offset and duration

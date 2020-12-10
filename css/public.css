@@ -5,15 +5,18 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.1.4
+ * Version: 2.1.6
  *
- * Last modified: 2020-12-06T1649+0100
+ * Last modified: 2020-12-10T0449+0100
  */
 
 
 /*****************************************************
 MCI Footnotes logo
-The classes with 'heading' fix display in dashboard
+
+The classes with 'heading' fix display in dashboard,
+where since WordPress 5.5 settings box labels with 
+spans are displayed as justified and not last line.
 
 class/config.php
 css/settings.css
@@ -37,13 +40,18 @@ css/settings.css
 /*****************************************************
 Long URLs in Unicode-non-compliant user agents
 
-prevent URLs from expanding the reference container
-in mobile view, or from hanging out of the tooltip
+Unicode recommends to break URLs at slashes, but
+some browsers don’t, so we need to prevent URLs 
+from expanding the reference container in mobile view, 
+or from hanging out of the tooltip even on desktop.
 
-based on pattern, not link element
+Based on pattern, not link element, since some URLs
+are not hyperlinked, while often the hyperlink text
+is common language, that mustn’t be broken anywhere.
+
 class/task.php
 
-not cross-browser compatible:
+These rules aren’t cross-browser compatible:
 word-break: break-word;
 overflow-wrap: anywhere;
 word-wrap: anywhere;
@@ -58,9 +66,11 @@ word-break: break-all;
 /*****************************************************
 Footnote referrers and tooltips
 
+Templates:
 templates/public/footnote.html
 templates/public/footnote-alternative.html
 
+Classes:
 .footnote_referrer            = enclosing <span>
 .footnote_plugin_tooltip_text = inner <sup>
 .footnote_tooltip             = inner <span>
@@ -89,7 +99,7 @@ templates/public/footnote-alternative.html
 
 .footnote_tooltip {
     display: none;
-    z-index: 999;
+    z-index: 2147483647;
     cursor: auto;
     text-align: left;
     padding: 12px;
@@ -152,13 +162,37 @@ Read-on button
 
 
 /*****************************************************
-Footnote references container
+Footnote reference container
 
+Templates:
 templates/public/reference-container.html
+templates/public/reference-container-body.html
+templates/public/reference-container-combi.html
+templates/public/reference-container-switch.html
+templates/public/reference-container-3column.html
 
-Also optional responsive basic page layout support:
-public-container.css
-public-main.css
+Optional responsive basic page layout support
+style sheets:
+css/layout-reference-container.css
+css/layout-main-content.css
+css/layout-page-content.css
+
+Classes:
+.footnotes_reference_container                = enclosing <div>
+.footnote_container_prepare                   = label <div>
+.footnote_reference_container_label           = <span>
+.footnote_reference_container_collapse_button = sibling <span>
+.footnote-reference-container                 = misleading and inconsistent; alias:
+.footnotes_table                              = <table>
+.footnote_plugin_index_combi                  = first <td> if identical footnotes are combined
+.footnote_plugin_index                        = first <td> if not
+.footnote_index                               = <a> or <span> in first <td> in 3-column table
+.footnote_plugin_link                         = <a> or <span> if identical footnotes are not combined, or second <td> in 3-column table
+.footnote_backlink                            = <a> or <span> if identical footnotes are combined, or in second <td> in 3-column table
+.footnote_index_arrow                         = nested <span>, symbol only
+.footnote_plugin_text                         = second <td>, or third <td> in 3-column table
+
+
 */
 
 /*
@@ -205,14 +239,14 @@ fully clickable, not sign only
 /*
 table
 */
-.footnote-reference-container {
+.footnote-reference-container,
+.footnotes_table {
     width: 100%;
     border: none;
 }
 
 /*
 footnotes
-reference-container-body.html
 */
 .footnote_plugin_index,
 .footnote_plugin_index_combi,

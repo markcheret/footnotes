@@ -25,10 +25,10 @@
  * 2.1.4  ref container column width and tooltip font size settings  2020-12-03T0954+0100
  * 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
  * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
- * 2.2.0  option to disable URL line wrapping   2020-12-09T1606+0100
- * 2.2.0  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
+ * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
+ * 2.1.6  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
  *
- * Last modified:  2020-12-09T1921+0100
+ * Last modified:  2020-12-10T0448+0100
  */
 
 // If called directly, abort:

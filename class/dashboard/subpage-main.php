@@ -13,8 +13,9 @@
  * 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
  * 2.2.0  slight UI reordering   2020-12-09T1114+0100
  * 2.2.0  option to disable URL line wrapping   2020-12-09T1604+0100
+ * 2.2.0  remove expert mode setting as irrelevant   2020-12-09T2105+0100
  *
- * Last modified: 2020-12-09T1716+0100
+ * Last modified: 2020-12-09T2105+0100
  */
 
 /**
@@ -367,9 +368,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "notice1-excerpt" => __("This should be disabled.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "notice2-excerpt" => __("In some themes, the Advanced Excerpt plugin is indispensable to display footnotes in excerpts.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "notice3-excerpt" => __("Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-expert-mode" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE, __("Enable the Expert mode:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "expert-mode" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_EXPERT_MODE, $l_arr_Enabled)
             )
         );
         // display template with replaced placeholders

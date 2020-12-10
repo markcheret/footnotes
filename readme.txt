@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable Tag: 2.1.5
+Stable Tag: 2.1.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,12 +80,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.0d5 =
-- Bugfix: Reference container, tooltips: fix issues with URL wrap span by catch-all lookbehind 
-- Bugfix: Tooltips: set z-index to maximum to address display issues with overlay content
-- Bugfix: Dashboard: fix settings bug by canceling new tab for CSS
-- Bugfix: add option to disable URL line wrapping added for Unicode non conformant browsers
-- Update: Dashboard: reorder tabs, move CSS to extra tab, update tab labels
+= 2.1.6 =
+- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict
+- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content
+- Bugfix: Reference container, tooltips: fix issues with URL wrap span by catch-all negative lookbehind 
+- Bugfix: Reference container, tooltips: add option to disable URL line wrapping added for browser support
+- Update: Dashboard: reorder tabs and update tab labels
+- Bugfix: Dashboard: remove Expert mode enable setting since permanently enabled as 'Priority'
 - Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels
 - Bugfix: Localization: conform to WordPress plugin language file name scheme
 

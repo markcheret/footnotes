@@ -21,7 +21,7 @@
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  set default priority level of the_content to 98   2020-12-10T0447+0100
  *
- * Last modified: 2020-12-10T0447+0100
+ * Last modified: 2020-12-12T1224+0100
  */
 
 
@@ -145,8 +145,8 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.5
      * @var string
-	 * 
-	 * @since 2.1.6: this setting removed as irrelevant since priority level setting is permanently visible   2020-12-09T2107+0100
+     *
+     * @since 2.1.6: this setting removed as irrelevant since priority level setting is permanently visible   2020-12-09T2107+0100
      */
     const C_BOOL_FOOTNOTES_EXPERT_MODE = "footnote_inputfield_enable_expert_mode";
 
@@ -466,10 +466,10 @@ class MCI_Footnotes_Settings {
 
     /**
      * Settings Container Key for URL wrap option
-	 * 
-	 * This is made optional because it may cause issues when the regex catches too much;
-	 * alongside the regex now contains a catch-all negative lookbehind excluding every URL
-	 * preceded by '\w=.'
+     *
+     * This is made optional because it may cause issues when the regex catches too much;
+     * alongside the regex now contains a catch-all negative lookbehind excluding every URL
+     * preceded by '\w=.'
      *
      * @since 2.1.6
      * @var bool
@@ -672,13 +672,12 @@ class MCI_Footnotes_Settings {
             // empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty:
             // <https://github.com/Modernizr/Modernizr/issues/171>
             // define -1 as PHP_INT_MAX instead
-			self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
-			
-			// Priority level of the_content as the only relevant one
-			// must be less than 99 because that is the level of Super Socializer,
-			// and the Pinterest button code contains at least one instance of '(('
-			// and one of '))', i.e. the default footnote start and end short codes,
-			// causing an issue with two fake footnotes messing up the whole website.
+            self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
+
+            // Priority level of the_content as the only relevant one
+            // must be less than 99 because social icons may yield scripts that
+            // contain the strings '((' and '))', i.e. the default footnote start
+            // and end short codes, causing issues with fake footnotes.
             self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 98,
             self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
@@ -833,6 +832,9 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
+     * 
+     * Edit: This didn’t actually work.
+     * @since 2.2.0 this function is not called any longer when deleting the plugin
      */
     public function ClearAll() {
         // iterate through each Settings Container

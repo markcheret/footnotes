@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0d6
+ * Version: 2.2.0d8
  *
- * Last modified: 2020-12-10T1320+0100
+ * Last modified: 2020-12-12T2203+0100
  */
 
 
@@ -183,21 +183,18 @@ IE doesn’t support nth child, but these are not critical
 }
 
 /*
-Other settings
-*/
-#settings_other tr td:nth-child(2) {
-    width: 30%;
-}
-
-/*
 Custom CSS
 
+Localized notices are dropped to ease translators’ task.
 16 CSS classes are listed directly in the template
 templates/dashboard/customize-css.html
 
-Localized notices are dropped to ease translators’ task.
+</p> end tags are omitted per HTML5 standard, to improve
+maintainability and readability of the source list.
+<https://stackoverflow.com/questions/8460993/p-end-tag-p-is-not-needed-in-html>
 
-The textarea has monospace font but no tab support.
+The textarea has monospace font, but no other features 
+helping edit CSS, as tab support and syntactic colors.
 */
 #customize_css tr td:first-child {
     width: 44% !important;
@@ -227,10 +224,18 @@ The textarea has monospace font but no tab support.
 /************************************************************
 Notices
 
-span previously formatted as em element
-but emphasis is not the correct semantics,
-as it is rendered as bold in other scripts
-so we need an explicit italic style:
+These spans were previously formatted using the em element.
+But the intended semantics was not emphasis.
+In locales using boldface to emphasize, the effect is the
+exact opposite of the intention.
+
+So we must use spans with explicit italic font style.
+Scripts not featuring italic fonts fall back to normal,
+and that is just fine, as italic is only needed here for
+scripts that do have italic, and failing to use it would
+look weird.
+
+since 2.1.4
 */
 .footnotes_notice {
     font-style: italic;
@@ -239,12 +244,15 @@ so we need an explicit italic style:
 /************************************************************
 Descriptions
 
-fullwidth div above or below settings tables:
+padded div above or below a settings table
+
+Use case: more extensive information not fitting into a brief
+notice after the end of the settings box.
 */
 .footnotes_description {
-    padding: 0 10%;
+    padding: 0 6%;
 }
 .footnotes_description p {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-style: italic;
 }

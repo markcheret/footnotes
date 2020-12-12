@@ -1,5 +1,8 @@
 /**
  * Created by Stefan on 24.05.14.
+ * 
+ * 
+ * Edit: be careful to maintain version number near EOF   2020-12-11T1225+0100
  */
 
 (function() {
@@ -57,14 +60,16 @@
          * The current keys are longname, author, authorurl, infourl and version.
          *
          * @return {Object} Name/value array containing information about the plugin.
+		 * 
+		 * Edit: needs update the version number manually   2020-12-11T1224+0100
          */
         getInfo : function() {
             return {
                 longname : 'Inserts the Footnotes short code.',
                 author : 'Mark Cheret',
                 authorurl : 'https://cheret.de',
-                infourl : 'http://wordpress.org/plugins/footnotes/',
-                version : "2.0.0"
+                infourl : 'https://wordpress.org/plugins/footnotes/',
+                version : "2.1.6"
             };
         }
     });

@@ -10,9 +10,9 @@
  * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
  * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
  * 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
- * 2.2.0  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
+ * 2.1.6  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
  *
- * Last modified:  2020-12-08T1547+0100
+ * Last modified:  2020-12-10T1447+0100
  */
 
 
@@ -114,7 +114,12 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @return array meta box description to be able to append a meta box to the output.
      */
     protected function addMetaBox($p_str_SectionID, $p_str_ID, $p_str_Title, $p_str_CallbackFunctionName) {
-        return array("parent" => MCI_Footnotes_Config::C_STR_PLUGIN_NAME . "-" . $p_str_SectionID, "id" => $p_str_ID, "title" => $p_str_Title, "callback" => $p_str_CallbackFunctionName);
+        return array(
+            "parent"   => MCI_Footnotes_Config::C_STR_PLUGIN_NAME . "-" . $p_str_SectionID, 
+            "id"       => $p_str_ID, 
+            "title"    => $p_str_Title, 
+            "callback" => $p_str_CallbackFunctionName
+        );
     }
 
     /**
@@ -379,8 +384,8 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @param string $p_str_Caption Label caption.
      * @return string
      *
-     * Edited 2020-12-01T0159+0100
-     * @since #################### no colon
+     * Edited 2020-12-01T0159+0100..
+     * @since 2.1.6 no colon
      */
     protected function addLabel($p_str_SettingName, $p_str_Caption) {
         if (empty($p_str_Caption)) {
@@ -394,6 +399,7 @@ abstract class MCI_Footnotes_LayoutEngine {
         // and narrow per new school.
         // Add colon to label strings for inclusion in localization.
         // Colon after label is widely preferred best practice, mandatory per style guides.
+        // <https://softwareengineering.stackexchange.com/questions/234546/colons-in-internationalized-ui>
         return sprintf('<label for="%s">%s</label>', $p_str_SettingName, $p_str_Caption);
         //                                ^ here deleted colon  2020-12-08T1546+0100
     }
@@ -504,14 +510,14 @@ abstract class MCI_Footnotes_LayoutEngine {
      * @return string
      *
      * Edited:
-     * @since 2.1.4  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-05T2006+0100
+     * @since 2.1.4  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-12T1110+0100
      */
     protected function addNumBox($p_str_SettingName, $p_in_Min, $p_int_Max, $p_bool_Deci = false ) {
         // collect data for given settings field
         $l_arr_Data = $this->LoadSetting($p_str_SettingName);
 
         if ($p_bool_Deci) {
-            $l_str_Value = number_format($l_arr_Data["value"], 1);
+            $l_str_Value = number_format(floatval($l_arr_Data["value"]), 1);
             return sprintf('<input type="number" name="%s" id="%s" value="%s" step="0.1" min="%d" max="%d"/>',
             $l_arr_Data["name"], $l_arr_Data["id"], $l_str_Value, $p_in_Min, $p_int_Max);
         } else {

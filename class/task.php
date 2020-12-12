@@ -28,7 +28,7 @@
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
  *
- * Last modified:  2020-12-10T1006+0100
+ * Last modified:  2020-12-11T1437+0100
  */
 
 // If called directly, abort:
@@ -282,6 +282,9 @@ class MCI_Footnotes_Task {
      *
      * @author Stefan Herndler
      * @since 1.5.0
+     * 
+     * Edited:
+     * @since 2.2.0  more options  2020-12-11T0506+0100
      */
     public function wp_footer() {
         if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "footer") {
@@ -294,22 +297,20 @@ class MCI_Footnotes_Task {
             return;
         }
         // set a hyperlink to the word "footnotes" in the Love slug
-        $l_str_LinkedName = sprintf('<a href="http://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration:none;">%s</a>',MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME);
+        $l_str_LinkedName = sprintf('<a href="https://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration:none;">%s</a>', MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME);
         // get random love me text
         if (strtolower($l_str_LoveMeIndex) == "random") {
-            $l_str_LoveMeIndex = "text-" . rand(1,3);
+            $l_str_LoveMeIndex = "text-" . rand(1,7);
         }
         switch ($l_str_LoveMeIndex) {
-            case "text-1":
-                $l_str_LoveMeText = sprintf(__('I %s %s', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, $l_str_LinkedName);
-                break;
-            case "text-2":
-                $l_str_LoveMeText = sprintf(__('this site uses the awesome %s Plugin', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName);
-                break;
-            case "text-3":
-            default:
-                $l_str_LoveMeText = sprintf(__('extra smooth %s', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName);
-                break;
+            // options named wrt backcompat, simplest is default:
+            case "text-1": $l_str_LoveMeText = sprintf(__('I %2$s %1$s', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL); break;
+            case "text-2": $l_str_LoveMeText = sprintf(__('This website uses the awesome %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName); break;
+            case "text-4": $l_str_LoveMeText = sprintf('%s %s', $l_str_LinkedName, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL); break;
+            case "text-5": $l_str_LoveMeText = sprintf('%s %s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, $l_str_LinkedName); break;
+            case "text-6": $l_str_LoveMeText = sprintf(__('This website uses %s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName); break;
+            case "text-7": $l_str_LoveMeText = sprintf(__('This website uses the %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName); break;
+            case "text-3": default: $l_str_LoveMeText = sprintf('%s', $l_str_LinkedName); break;
         }
         echo sprintf('<div style="text-align:center; color:#acacac;">%s</div>', $l_str_LoveMeText);
     }
@@ -518,7 +519,7 @@ class MCI_Footnotes_Task {
             $l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
 
             // fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
-            // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents
+            // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents.
             // spare however values of the href and the src arguments!
             // Even ARIA labels may take an URL as value, so use \w=[\'"] as a catch-all    2020-12-10T1005+0100
             // see public.css

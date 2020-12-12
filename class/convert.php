@@ -5,6 +5,11 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 12.09.14 10:56
+ * 
+ * Edited:
+ * @since 2.2.0  add lowercase Roman   2020-12-12T1540+0100
+ * 
+ * Last modified:  2020-12-12T1541+0100
  */
 
 
@@ -24,11 +29,16 @@ class MCI_Footnotes_Convert {
 	 * @param int $p_int_Index Index to be converted.
 	 * @param string $p_str_ConvertStyle Style of the new/converted Index.
 	 * @return string Converted Index as string in the defined counter style.
+	 * 
+	 * Edited:
+	 * @since 2.2.0  lowercase Roman numerals supported
 	 */
 	public static function Index($p_int_Index, $p_str_ConvertStyle = "arabic_plain") {
 		switch ($p_str_ConvertStyle) {
 			case "romanic":
-				return self::toRomanic($p_int_Index);
+				return self::toRomanic($p_int_Index, true);
+			case "roman_low":
+				return self::toRomanic($p_int_Index, false);
 			case "latin_high":
 				return self::toLatin($p_int_Index, true);
 			case "latin_low":
@@ -97,8 +107,11 @@ class MCI_Footnotes_Convert {
 	 * @since 1.0-gamma
 	 * @param int $p_int_Value Value/Index to be converted.
 	 * @return string
+	 * 
+	 * Edited:
+	 * @since 2.2.0   optionally lowercase (code from Latin)   2020-12-12T1538+0100
 	 */
-	private static function toRomanic($p_int_Value) {
+	private static function toRomanic($p_int_Value, $p_bool_UpperCase) {
 		// table containing all necessary romanic letters
 		$l_arr_RomanicLetters = array(
 			'M' => 1000,
@@ -128,7 +141,10 @@ class MCI_Footnotes_Convert {
 			}
 		}
 		// return romanic letters as string
-		return $l_str_Return;
+		if ($p_bool_UpperCase) {
+			return strtoupper($l_str_Return);
+		}
+		return strtolower($l_str_Return);
 	}
 
 	/**

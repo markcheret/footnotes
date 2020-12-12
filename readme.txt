@@ -2,7 +2,7 @@
 Contributors: mark.cheret, lolzim, pewgeuges, dartiss
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
 Stable Tag: 2.1.6
 License: GPLv3 or later
@@ -80,21 +80,33 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.0d6 =
+= 2.2.0d7 =
+- Add: Start/end short codes: more predefined options
+- Add: Numbering styles: lowercase Roman numerals support
+- Update: Dashboard: Tooltip settings: grouped into 3 thematic containers
+- Update: Dashboard: Main settings: grouped into 3 specific containers
+- Update: Dashboard: moved link element option to the Referrers options
+- Update: Dashboard: moved URL wrap option to the Reference container options
+- Update: Dashboard: grouped both Custom CSS and priority level settings
+- Update: Dashboard: renamed tabs
+- Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
 - Bugfix: Localization: correct arguments for plugin textdomain load function
+- Update: Priority levels: update the notice in the dashboard Priority tab
+- Bugfix: Reference container, tooltips: URL wrap: specifically catch the quotation mark
+- Add: Footnotes mention in the footer: more options
 
 = 2.1.6 =
 - Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict
 - Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content
-- Bugfix: Reference container, tooltips: fix issues with URL wrap span by catch-all negative lookbehind 
-- Bugfix: Reference container, tooltips: add option to disable URL line wrapping added for browser support
+- Bugfix: Reference container, tooltips: URL wrap: fix issues with span by catch-all negative lookbehind 
+- Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap
 - Update: Dashboard: reorder tabs and update tab labels
 - Bugfix: Dashboard: remove Expert mode enable setting since permanently enabled as 'Priority'
 - Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels
 - Bugfix: Localization: conform to WordPress plugin language file name scheme
 
 = 2.1.5 =
-- Bugfix: Reference container, tooltips: exclude image source too from URL line wrapping span
+- Bugfix: Reference container, tooltips: URL wrap: exclude image source too
 
 = 2.1.4 =
 - Add: Dashboard: Main settings: add settings for scroll offset and duration

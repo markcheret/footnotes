@@ -7,7 +7,9 @@
  * 
  * Edited for:
  * 2.0.0  PHP-related bug fix thanks to MatKus (@matkus)   2020-10-26T1609+0100
- * 2.2.0  conform to WordPress plugin language file name scheme   2020-12-08T1931+0100
+ * 2.1.6  conform to WordPress plugin language file name scheme   2020-12-08T1931+0100
+ * 
+ * Last modified:  2020-12-11T1449+0100
  */
 
 /**
@@ -65,7 +67,7 @@ class MCI_Footnotes_Language {
         return load_plugin_textdomain(
             MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
             false, // This argument only fills the gap left by a deprecated argument (since WP2.7).
-            MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages' // The plugin basedir is provided.
+            MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages' // The plugin basedir is provided; trailing slash will be clipped.
         );
     }
 }

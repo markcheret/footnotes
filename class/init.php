@@ -159,28 +159,28 @@ class MCI_Footnotes {
         // not use '-css' in the handle, is appended automatically;
         // constant FOOTNOTES_VERSION defined in footnotes.php, media all is default
         wp_enqueue_style(
-			'mci-footnotes-public',
-			plugins_url(
-				MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/public.css'
-			),
-			array(),
-			FOOTNOTES_VERSION,
-			'all'
-		);
+            'mci-footnotes-public',
+            plugins_url(
+                MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/public.css'
+            ),
+            array(),
+            FOOTNOTES_VERSION,
+            'all'
+        );
 
         // optional layout fix by lack of layout support:
         // since 2.1.4   2020-12-05T1417+0100
         $l_str_LayoutOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT);
         if ($l_str_LayoutOption != 'none') {
             wp_enqueue_style(
-				'mci-footnotes-layout-' . $l_str_LayoutOption,
-				plugins_url(
-					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/layout-' . $l_str_LayoutOption . '.css'
-				),
-				array(),
-				FOOTNOTES_VERSION,
-				'all'
-			);
+                'mci-footnotes-layout-' . $l_str_LayoutOption,
+                plugins_url(
+                    MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/layout-' . $l_str_LayoutOption . '.css'
+                ),
+                array(),
+                FOOTNOTES_VERSION,
+                'all'
+            );
         }
     }
 }

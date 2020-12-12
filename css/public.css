@@ -5,9 +5,14 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0d6
+ * Version: 2.2.0d8
  *
- * Last modified: 2020-12-10T1320+0100
+ *     Classes added to public.css may be added to the
+ *     list documenting CSS classes for Custom CSS if
+ *     recommended for general use.
+ *     List in templates/dashboard/customize-css.html
+ *
+ * Last modified: 2020-12-12T2203+0100
  */
 
 
@@ -99,12 +104,11 @@ Classes:
 
 .footnote_tooltip {
     display: none;
-    z-index: 2147483647;
+    z-index: 2147483647 !important;
     cursor: auto;
     text-align: left;
     padding: 12px;
     line-height: 1.2;
-    /*font-size: inherit; moved to settings since 2.1.4 */
     font-weight: normal;
     font-style: normal;
 }

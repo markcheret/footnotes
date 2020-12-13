@@ -2,7 +2,7 @@
 Contributors: mark.cheret, lolzim, pewgeuges, dartiss
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.6
+Tested up to: 5.5
 Requires PHP: 5.6
 Stable Tag: 2.1.6
 License: GPLv3 or later
@@ -80,7 +80,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.0d7 =
+= 2.2.0d8 =
 - Add: Start/end short codes: more predefined options
 - Add: Numbering styles: lowercase Roman numerals support
 - Update: Dashboard: Tooltip settings: grouped into 3 thematic containers

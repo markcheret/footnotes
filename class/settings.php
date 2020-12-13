@@ -20,8 +20,9 @@
  * 2.1.4  more settings container keys  2020-12-03T0955+0100
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  set default priority level of the_content to 98   2020-12-10T0447+0100
+ * 2.2.0  reference container custom position shortcode  2020-12-13T2056+0100
  *
- * Last modified: 2020-12-12T1224+0100
+ * Last modified: 2020-12-13T2057+0100
  */
 
 
@@ -467,16 +468,25 @@ class MCI_Footnotes_Settings {
     /**
      * Settings Container Key for URL wrap option
      *
-     * This is made optional because it may cause issues when the regex catches too much;
-     * alongside the regex now contains a catch-all negative lookbehind excluding every URL
-     * preceded by '\w=.'
+     * This is made optional because it causes weird line breaks.
+     * Unicode-compliant browsers break URLs at slashes.
      *
      * @since 2.1.6
      * @var bool
      *
-     * 2020-12-09T1554+0100..2020-12-10T0446+0100
+     * 2020-12-09T1554+0100..2020-12-13T1313+0100
      */
     const C_BOOL_FOOTNOTE_URL_WRAP_ENABLED          =  "footnote_inputfield_url_wrap_enabled";
+
+    /**
+     * Settings Container Key for reference container position shortcode
+     *
+     * @since 2.2.0
+     * @var string
+     *
+     * 2020-12-13T2056+0100
+     */
+    const C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE  =  "footnote_inputfield_reference_container_position_shortcode";
 
 
     /**
@@ -524,9 +534,10 @@ class MCI_Footnotes_Settings {
             // whether to enqueue additional style sheet:
             self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT => 'none',
 
-            self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE      => '[[references]]',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
+            self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 
             // backlink separators and terminators are often not preferred.
@@ -671,11 +682,11 @@ class MCI_Footnotes_Settings {
             // shows "9223372036854780000" instead of 9223372036854775807 in the numbox
             // empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty:
             // <https://github.com/Modernizr/Modernizr/issues/171>
-            // define -1 as PHP_INT_MAX instead
+            // interpret -1 as PHP_INT_MAX instead
             self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
 
-            // Priority level of the_content as the only relevant one
-            // must be less than 99 because social icons may yield scripts that
+            // Priority level of the_content, as the only relevant priority level
+            // must be less than 99 because social buttons may yield scripts that
             // contain the strings '((' and '))', i.e. the default footnote start
             // and end short codes, causing issues with fake footnotes.
             self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 98,
@@ -834,7 +845,10 @@ class MCI_Footnotes_Settings {
      * @since 1.5.0
      * 
      * Edit: This didn’t actually work.
-     * @since 2.2.0 this function is not called any longer when deleting the plugin
+     * @since 2.2.0 this function is not called any longer when deleting the plugin, 
+     * to protect user data against loss, since manually updating a plugin is safer
+     * done by deleting and reinstalling (see the warning about database backup).
+     * 2020-12-13T1353+0100
      */
     public function ClearAll() {
         // iterate through each Settings Container

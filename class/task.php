@@ -27,8 +27,9 @@
  * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
+ * 2.2.0  support for custom position shortcode for reference container  2020-12-13T2058+0100
  *
- * Last modified:  2020-12-11T1437+0100
+ * Last modified:  2020-12-13T2058+0100
  */
 
 // If called directly, abort:
@@ -282,7 +283,7 @@ class MCI_Footnotes_Task {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * 
+     *
      * Edited:
      * @since 2.2.0  more options  2020-12-11T0506+0100
      */
@@ -431,8 +432,20 @@ class MCI_Footnotes_Task {
         $p_str_Content = $this->search($p_str_Content, false, $p_bool_HideFootnotesText);
 
         // append the reference container
+        // or insert at shortcode:  (2.2.0 2020-12-13T2057+0100)
+        $l_str_ReferenceContainerPositionShortcode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE);
+
         if ($p_bool_OutputReferences) {
-            $p_str_Content = $p_str_Content . $this->ReferenceContainer();
+            
+            if (strpos( $p_str_Content, $l_str_ReferenceContainerPositionShortcode ) !== false ) {
+
+                $p_str_Content = str_replace( $l_str_ReferenceContainerPositionShortcode, $this->ReferenceContainer(), $p_str_Content );
+
+            } else {
+
+                $p_str_Content .= $this->ReferenceContainer();
+
+            }
         }
 
         // take a look if the LOVE ME slug should NOT be displayed on this page/post, remove the short code if found

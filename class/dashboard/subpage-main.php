@@ -15,8 +15,9 @@
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1604+0100
  * 2.1.6  remove expert mode setting as irrelevant   2020-12-09T2105+0100
  * 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
+ * 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
  *
- * Last modified: 2020-12-12T2202+0100
+ * Last modified: 2020-12-13T2055+0100
  */
 
 /**
@@ -115,8 +116,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             $this->addMetaBox("settings", "love", MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, "Love"),
             
             $this->addMetaBox("customize", "superscript", __("Referrer typesetting and formatting", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript"),
-            $this->addMetaBox("customize", "mouse-over-box-display", __("Tooltip display", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxDisplay"),
+            $this->addMetaBox("customize", "mouse-over-box", __("Tooltips", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox"),
             $this->addMetaBox("customize", "mouse-over-box-truncation", __("Tooltip truncation", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTruncation"),
+            $this->addMetaBox("customize", "mouse-over-box-position", __("Tooltip position", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxPosition"),
+            $this->addMetaBox("customize", "mouse-over-box-timing", __("Tooltip timing", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTiming"),
             $this->addMetaBox("customize", "mouse-over-box-appearance", __("Tooltip appearance", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxAppearance"),
 
             $this->addMetaBox("expert", "lookup", __("WordPress hooks and priority levels", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "LookupHooks"),
@@ -190,8 +193,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-collapse" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, __("Collapse by default:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "collapse" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, $l_arr_Enabled),
 
-                "label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __("Position:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "label-shortcode" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE, __("Position shortcode:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "shortcode" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE),
+                "notice-shortcode" => __("If present in the content, this shortcode will be replaced with the reference container.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __("Default position:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_Positions),
+                "notice-position" => __("Will be overridden in the presence of the shortcode.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-page-layout" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT, __("Apply basic responsive page layout:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "page-layout" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT, $l_arr_PageLayoutOptions),
@@ -349,9 +357,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-identical" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES, __("Combine identical footnotes:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "identical" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES, $l_arr_Enable),
                 "notice-identical" => __("This option may require copy-pasting footnotes in multiple instances.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description1-identical" => __("Even when footnotes are combined, footnote numbers keep incrementing.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description2-identical" => __("This avoids suboptimal referrer and backlink disambiguation using a secondary numbering system.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description3-identical" => __("Repeating the content is an opportunity to add details.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-identical" => __("Even when footnotes are combined, footnote numbers keep incrementing. This avoids suboptimal referrer and backlink disambiguation using a secondary numbering system. Repeating the content is an opportunity to add details.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders
@@ -454,8 +460,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "excerpts" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT, $l_arr_Enabled),
                 "notice-excerpts" => __("The recommended value is No.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 // In some themes, the Advanced Excerpt plugin is indispensable to display footnotes in excerpts.
-                "description1-excerpts" => sprintf(__("In some themes, the %s plugin is indispensable to display footnotes in excerpts.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank">Advanced Excerpt</a>'),
-                "description2-excerpts" => __("Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-excerpts" => sprintf(__("In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank">Advanced Excerpt</a>'),
             )
         );
         // display template with replaced placeholders
@@ -495,6 +500,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-link" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED, __("Use the link element for referrers and backlinks:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "link" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED, $l_arr_Enabled),
                 "notice-link" => __("The link element is needed to apply the theme’s link color.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-link" => __("If the link element is not desired for styling, a simple span is used instead when the above is set to No. The link addresses have been removed. Else footnote clicks are logged in the browsing history and make the back button unusable.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders
@@ -508,24 +514,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 1.5.2
      *
      * Edited:
-     * @since 2.2.0   3 parts to address increased settings number
+     * @since 2.2.0   5 parts to address increased settings number
      */
-    public function MouseOverBoxDisplay() {
+    public function MouseOverBox() {
         // options for Yes/No select box:
         $l_arr_Enabled = array(
             "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
-        );
-        // options for the Mouse-over box position
-        $l_arr_Position = array(
-            "top left"      => __("top left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "top center"    => __("top center", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "top right"     => __("top right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "center right"  => __("center right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "bottom right"  => __("bottom right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "bottom center" => __("bottom center", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "bottom left"   => __("bottom left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "center left"   => __("center left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
         );
 
         // load template file
@@ -536,41 +531,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-enable" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, __("Display tooltips:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, $l_arr_Enabled),
+                "notice-enable" => __("Formatted text boxes allowing hyperlinks, displayed on mouse-over or on tap and hold.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-alternative" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, __("Display alternative tooltips:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "alternative" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, $l_arr_Enabled),
-                "notice-alternative" => __("Intended to work around a tooltip outage.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION, __("Position:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION, $l_arr_Position),
-
-                "label-offset-x" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X, __("Horizontal offset rightwards:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "offset-x" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X, -150, 150),
-                "notice-offset-x" => __("pixels; negative value for a leftwards offset", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-offset-y" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y, __("Vertical offset downwards:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "offset-y" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y, -150, 150),
-                "notice-offset-y" => __("pixels; negative value for an upwards offset", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Maximum width:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
-                "notice-max-width" => __("pixels; 0 to disable this setting", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-fade-in-delay" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY, __("Fade-in delay:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "fade-in-delay" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY, 0, 20000),
-                "notice-fade-in-delay" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-fade-in-duration" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION, __("Fade-in duration:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "fade-in-duration" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION, 0, 20000),
-                "notice-fade-in-duration" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-fade-out-delay" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY, __("Fade-out delay:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "fade-out-delay" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY, 0, 20000),
-                "notice-fade-out-delay" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-fade-out-duration" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION, __("Fade-out duration:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "fade-out-duration" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION, 0, 20000),
-                "notice-fade-out-duration" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-alternative" => __("Intended to work around a configuration-related tooltip outage.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-alternative" => sprintf(__("Some themes inhibit jQuery tooltips. For alternative tooltips, animated by CSS, %s does not load any external scripts.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>'),
 
             )
         );
@@ -596,9 +562,82 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-max-length" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH, __("Maximum number of characters in the tooltip:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "max-length" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH, 3, 10000),
+                // The feature trims back until the last full word.
+                "notice-max-length" => __("No weird cuts.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-readon" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL, __("‘Read on’ button label:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "readon" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL),
+
+            )
+        );
+        // display template with replaced placeholders
+        echo $l_obj_Template->getContent();
+    }
+
+    public function MouseOverBoxPosition() {
+
+        // options for the Mouse-over box position
+        $l_arr_Position = array(
+            "top left"      => __("top left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "top center"    => __("top center", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "top right"     => __("top right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "center right"  => __("center right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "bottom right"  => __("bottom right", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "bottom center" => __("bottom center", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "bottom left"   => __("bottom left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "center left"   => __("center left", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+        );
+
+        // load template file
+        $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "mouse-over-box-position");
+        // replace all placeholders
+        $l_obj_Template->replace(
+            array(
+
+                "label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION, __("Position:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION, $l_arr_Position),
+
+                "label-offset-x" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X, __("Horizontal offset rightwards:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "offset-x" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X, -150, 150),
+                "notice-offset-x" => __("pixels; negative value for a leftwards offset", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-offset-y" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y, __("Vertical offset downwards:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "offset-y" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y, -150, 150),
+                "notice-offset-y" => __("pixels; negative value for an upwards offset", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Maximum width:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
+                "notice-max-width" => __("pixels; 0 to disable this setting", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+            )
+        );
+        // display template with replaced placeholders
+        echo $l_obj_Template->getContent();
+    }
+
+    public function MouseOverBoxTiming() {
+
+        // load template file
+        $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "mouse-over-box-timing");
+        // replace all placeholders
+        $l_obj_Template->replace(
+            array(
+
+                "label-fade-in-delay" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY, __("Fade-in delay:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "fade-in-delay" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY, 0, 20000),
+                "notice-fade-in-delay" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-fade-in-duration" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION, __("Fade-in duration:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "fade-in-duration" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION, 0, 20000),
+                "notice-fade-in-duration" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-fade-out-delay" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY, __("Fade-out delay:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "fade-out-delay" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY, 0, 20000),
+                "notice-fade-out-delay" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-fade-out-duration" => $this->addLabel(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION, __("Fade-out duration:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "fade-out-duration" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION, 0, 20000),
+                "notice-fade-out-duration" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
             )
         );
@@ -748,11 +787,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             array(
 
                 "description-1" => __('The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-2" => sprintf(__('For the_content, this figure must be lower than %1$d so that certain strings added by a plugin running at %1$d may not be mistaken as a footnote.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 99),
-                "description-3" => sprintf(__('This makes also sure that the reference container displays above a feature inserted by a plugin running at %d.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1200),
-                "description-4" => sprintf(__('%d is lowest priority, %d is highest.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), PHP_INT_MAX, 0),
-                "description-5" => sprintf(__('To set priority level to lowest, set it to %d, interpreted as %d, the constant %s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), -1, PHP_INT_MAX, 'PHP_INT_MAX'),
-                "description-6" => __('The widget_text hook must be disabled, because a footnotes container is inserted at the bottom of each widget, but multiple containers in a page are not disambiguated.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-2" => sprintf(__('For the_content, this figure must be lower than %1$d so that certain strings added by a plugin running at %1$d may not be mistaken as a footnote. This makes also sure that the reference container displays above a feature inserted by a plugin running at %2$d.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 99, 1200),
+                "description-3" => sprintf(__('%1$d is lowest priority, %2$d is highest. To set priority level to lowest, set it to %3$d, interpreted as %1$d, the constant %4$s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), PHP_INT_MAX, 0, -1, 'PHP_INT_MAX'),
+                "description-4" => __('The widget_text hook must be disabled, because a reference container is inserted at the bottom of each widget with footnotes, but multiple containers in a page are not functional.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),

@@ -80,7 +80,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.0d8 =
+= 2.2.0 =
+- Add: Reference container: support for custom position shortcode
+- Update: Priority levels: update the notice in the dashboard Priority tab
+- Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
 - Add: Start/end short codes: more predefined options
 - Add: Numbering styles: lowercase Roman numerals support
 - Update: Dashboard: Tooltip settings: grouped into 3 thematic containers
@@ -88,10 +91,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: moved link element option to the Referrers options
 - Update: Dashboard: moved URL wrap option to the Reference container options
 - Update: Dashboard: grouped both Custom CSS and priority level settings under the same tab
-- Update: Dashboard: tab labels 'Referrers and tooltips', 'Priority and CSS'
-- Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
+- Update: Dashboard: renamed tab labels 'Referrers and tooltips', 'Priority and CSS'
 - Bugfix: Localization: correct arguments for plugin textdomain load function
-- Update: Priority levels: update the notice in the dashboard Priority tab
 - Bugfix: Reference container, tooltips: URL wrap: specifically catch the quotation mark
 - Add: Footnotes mention in the footer: more options
 

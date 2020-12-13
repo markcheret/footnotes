@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0d8
+ * Version: 2.2.0
  *
- * Last modified: 2020-12-12T2203+0100
+ * Last modified: 2020-12-13T2059+0100
  */
 
 
@@ -79,6 +79,7 @@ Limited to a number of IDs to not affect all dashboards
 #footnote_inputfield_combine_identical,
 #footnotes_inputfield_scroll_offset,
 #footnotes_inputfield_scroll_duration,
+#footnote_inputfield_custom_mouse_over_box_excerpt_enabled,
 #footnote_inputfield_custom_mouse_over_box_offset_x,
 #footnote_inputfield_custom_mouse_over_box_offset_y,
 #footnote_inputfield_custom_mouse_over_box_max_width,
@@ -122,7 +123,7 @@ label {
 }
 
 .postbox > h3 > span {
-    padding-left: 10px;
+    padding: 0 10px;
 }
 
 .postbox > .inside > table {
@@ -140,15 +141,13 @@ label {
 
 span.footnote_highlight_placeholder {
     font-weight: bold !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    padding: 0 8px !important;
 }
 
 .footnote_placeholder_box_example {
     border: 2px solid #2bb975 !important;
     border-radius: 4px !important;
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
+    padding-top: 16px 0 !important;
     width: 50% !important;
     display: block !important;
     margin: 20px auto !important;
@@ -208,7 +207,7 @@ helping edit CSS, as tab support and syntactic colors.
 }
 #customize_css .list p {
     font-family: monospace;
-    padding-left: 10px;
+    padding: 0 10px;
     text-indent: -10px;
     margin: .5em 0;
 }
@@ -239,6 +238,8 @@ since 2.1.4
 */
 .footnotes_notice {
     font-style: italic;
+    display: inline-block;
+    text-align: end;
 }
 
 /************************************************************

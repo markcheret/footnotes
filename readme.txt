@@ -2,7 +2,7 @@
 Contributors: mark.cheret, lolzim, pewgeuges, dartiss
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
 Stable Tag: 2.1.6
 License: GPLv3 or later
@@ -87,8 +87,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: Main settings: grouped into 3 specific containers
 - Update: Dashboard: moved link element option to the Referrers options
 - Update: Dashboard: moved URL wrap option to the Reference container options
-- Update: Dashboard: grouped both Custom CSS and priority level settings
-- Update: Dashboard: renamed tabs
+- Update: Dashboard: grouped both Custom CSS and priority level settings under the same tab
+- Update: Dashboard: tab labels 'Referrers and tooltips', 'Priority and CSS'
 - Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
 - Bugfix: Localization: correct arguments for plugin textdomain load function
 - Update: Priority levels: update the notice in the dashboard Priority tab

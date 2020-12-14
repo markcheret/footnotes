@@ -22,7 +22,7 @@
  * 2.1.6  set default priority level of the_content to 98   2020-12-10T0447+0100
  * 2.2.0  reference container custom position shortcode  2020-12-13T2056+0100
  *
- * Last modified: 2020-12-13T2057+0100
+ * Last modified: 2020-12-13T2123+0100
  */
 
 
@@ -534,7 +534,7 @@ class MCI_Footnotes_Settings {
             // whether to enqueue additional style sheet:
             self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT => 'none',
 
-			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE      => '[[references]]',
+            self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE      => '[[references]]',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',

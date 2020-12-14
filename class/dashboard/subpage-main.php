@@ -17,7 +17,7 @@
  * 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
  * 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
  *
- * Last modified: 2020-12-13T2055+0100
+ * Last modified: 2020-12-14T1404+0100
  */
 
 /**
@@ -121,6 +121,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             $this->addMetaBox("customize", "mouse-over-box-position", __("Tooltip position", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxPosition"),
             $this->addMetaBox("customize", "mouse-over-box-timing", __("Tooltip timing", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTiming"),
             $this->addMetaBox("customize", "mouse-over-box-appearance", __("Tooltip appearance", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxAppearance"),
+            $this->addMetaBox("customize", "custom-css", __("Custom CSS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
 
             $this->addMetaBox("expert", "lookup", __("WordPress hooks and priority levels", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "LookupHooks"),
             $this->addMetaBox("expert", "custom-css", __("Custom CSS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS"),
@@ -252,6 +253,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-line-break" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, __("Stack backlinks when enumerating:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "line-break" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED, $l_arr_Enabled),
                 "notice-line-break" => __("This option adds a line break before each added backlink when identical footnotes are combined.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-link" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED, __("Use the link element for referrers and backlinks:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "link" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED, $l_arr_Enabled),
+                "notice-link" => __("The link element is needed to apply the theme’s link color.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-link" => __("If the link element is not desired for styling, a simple span is used instead when the above is set to No. The link addresses have been removed. Else footnote clicks are logged in the browsing history and make the back button unusable.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders

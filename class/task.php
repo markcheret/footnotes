@@ -120,7 +120,7 @@ class MCI_Footnotes_Task {
             add_filter('the_title', array($this, "the_title"), $p_int_TheTitlePriority);
         }
 
-        // custom priority level for reference container relative positioning; default PHP_INT_MAX:
+        // custom priority level for reference container relative positioning; default 98:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
             add_filter('the_content', array($this, "the_content"), $p_int_TheContentPriority);
         }
@@ -256,7 +256,7 @@ class MCI_Footnotes_Task {
                 printf(" -moz-box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
                 printf(" box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
             }
-            echo '}';
+            echo "}\r\n";
 
             // set custom CSS to override settings, not conversely:
             echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);

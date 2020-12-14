@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.2.0
+Stable Tag: 2.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,6 +79,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.2.1 =
+- Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure
 
 = 2.2.0 =
 - Add: Reference container: support for custom position shortcode

@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.0
+ * Version: 2.2.2
  *
- * Last modified: 2020-12-13T2127+0100
+ * Last modified: 2020-12-15T1020+0100
  */
 
 
@@ -195,25 +195,28 @@ maintainability and readability of the source list.
 The textarea has monospace font, but no other features 
 helping edit CSS, as tab support and syntactic colors.
 */
-#customize_css tr td:first-child {
+#customize_css_new tr td:first-child {
     width: 44% !important;
     font-weight: normal !important;
 }
-#customize_css tr td:first-child span:first-child {
+#customize_css_new tr td:first-child span:first-child {
     font-weight: bold !important;
 }
-#customize_css .list {
+#customize_css_new .list {
     padding-top: 10px;
 }
-#customize_css .list p {
+#customize_css_new .list p {
     font-family: monospace;
     padding: 0 10px;
     text-indent: -10px;
     margin: .5em 0;
 }
 
-#footnote_inputfield_custom_css {
+#footnote_inputfield_custom_css_new {
     height: 500px;
+}
+#footnote_inputfield_custom_css,
+#footnote_inputfield_custom_css_new {
     width: 90%;
     resize: both;
     overflow: scroll;

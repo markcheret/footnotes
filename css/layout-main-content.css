@@ -8,7 +8,7 @@
  *
  * Since v2.1.4 of Footnotes
  *
- * Last modified: 2020-12-06T1722+0100
+ * Last modified for v2.2.2  2020-12-15T1004+0100
  *
  * The enqueuing of this style sheet is optional and can be
  * enabled in the Reference container settings.
@@ -20,56 +20,66 @@ Rationale
 In Hello Elementor Theme, this applies to .site-header, and
 also to .site-main, which is a class of the <main> element,
 at the condition that the page is not built with Elementor:
-    body:not([class*="elementor-page-"])
+        body:not([class*="elementor-page-"])
 Therefore, in pages built with Elementor, proper layout is
 applied only to features managed by Elementor, not others.
 
-The Footnotes references container is near the end of main.
-This style sheet lets Footnotes’ reference container come
+Footnotes reference containers are near the bottom of main.
+This style sheet lets Footnotes’ reference containers come
 into the benefit of the basic responsive layout style rules
 that would apply if the page were not built with Elementor.
 
-This is mainly useful with Hello Elementor, but it might be
-used also with another theme.
+This is mainly useful with Hello Elementor but it helps fix
+also other themes like Twenty Twenty-One.
 */
 
-main, .main-content, .site-main {
-    margin-right: auto;
-    margin-left: auto;
+main,
+.main-content,
+.site-main {
+    margin: 0 auto;
 }
 
 @media (max-width: 575px) {
 
-    main, .main-content, .site-main {
-        padding-right: 10px;
-        padding-left: 10px;
+    main,
+    .main-content,
+    .site-main {
+        padding: 0 10px;
     }
 }
 
 @media (min-width: 576px) {
 
-    main, .main-content, .site-main {
+    main,
+    .main-content,
+    .site-main {
         max-width: 500px;
     }
 }
 
 @media (min-width: 768px) {
 
-    main, .main-content, .site-main {
+    main,
+    .main-content,
+    .site-main {
         max-width: 600px;
     }
 }
 
 @media (min-width: 992px) {
 
-    main, .main-content, .site-main {
+    main,
+    .main-content,
+    .site-main {
         max-width: 800px;
     }
 }
 
 @media (min-width: 1200px) {
 
-    main, .main-content, .site-main {
+    main,
+    .main-content,
+    .site-main {
         max-width: 960px;
     }
 }

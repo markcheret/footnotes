@@ -80,6 +80,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.2.2 =
+- Bugfix: Dashboard: Link element setting only under General settings > Reference container
+- Add: Dashboard: migrate Custom CSS to dedicated new tab, keep legacy until checking a box
+- Bugfix: Reference container: edits to optional basic responsive page layout style sheets
+
 = 2.2.1 =
 - Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure
 

@@ -21,8 +21,9 @@
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  set default priority level of the_content to 98   2020-12-10T0447+0100
  * 2.2.0  reference container custom position shortcode  2020-12-13T2056+0100
+ * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
  *
- * Last modified: 2020-12-13T2123+0100
+ * Last modified: 2020-12-15T0744+0100
  */
 
 
@@ -320,8 +321,13 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.0
      * @var string
+     *
+     * Edited:
+     * 2.2.2  migrate Custom CSS to a dedicated tab  2020-12-15T0520+0100
      */
     const C_STR_CUSTOM_CSS = "footnote_inputfield_custom_css";
+    const C_STR_CUSTOM_CSS_NEW = "footnote_inputfield_custom_css_new";
+    const C_BOOL_CUSTOM_CSS_MIGRATED = "footnote_inputfield_custom_css_migrated";
 
     /**
      * Settings Container Key the activation of the_title hook.
@@ -504,8 +510,18 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.0
      * @var array
+     *
+     * Edited:
+     * 2.2.2  added tab for Custom CSS  2020-12-15T0740+0100
+     *
+     * These are the storage container names, one per dashboard tab.
      */
-    private $a_arr_Container = array("footnotes_storage", "footnotes_storage_custom", "footnotes_storage_expert");
+    private $a_arr_Container = array(
+        "footnotes_storage",
+        "footnotes_storage_custom",
+        "footnotes_storage_expert",
+        "footnotes_storage_custom_css",
+    );
 
     /**
      * Contains all Default Settings for each Settings Container.
@@ -649,7 +665,9 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
             self::C_STR_HYPERLINK_ARROW => '&#8593;',
             self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
-            self::C_STR_CUSTOM_CSS => ''
+
+            // Custom CSS migrates to a dedicated tab:
+            self::C_STR_CUSTOM_CSS => '',
 
         ),
 
@@ -694,7 +712,14 @@ class MCI_Footnotes_Settings {
             self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  => PHP_INT_MAX,
 
-        )
+        ),
+
+        "footnotes_storage_custom_css" => array(
+
+            self::C_STR_CUSTOM_CSS_NEW => '',
+            self::C_BOOL_CUSTOM_CSS_MIGRATED => '',
+
+        ),
 
     );
 
@@ -843,9 +868,9 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * 
+     *
      * Edit: This didn’t actually work.
-     * @since 2.2.0 this function is not called any longer when deleting the plugin, 
+     * @since 2.2.0 this function is not called any longer when deleting the plugin,
      * to protect user data against loss, since manually updating a plugin is safer
      * done by deleting and reinstalling (see the warning about database backup).
      * 2020-12-13T1353+0100

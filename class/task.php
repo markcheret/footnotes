@@ -28,8 +28,9 @@
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
  * 2.2.0  support for custom position shortcode for reference container  2020-12-13T2058+0100
+ * 2.2.3  custom CSS from new setting in header after legacy  2020-12-15T1128+0100
  *
- * Last modified:  2020-12-13T2058+0100
+ * Last modified:  2020-12-15T1128+0100
  */
 
 // If called directly, abort:
@@ -260,6 +261,7 @@ class MCI_Footnotes_Task {
 
             // set custom CSS to override settings, not conversely:
             echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
+            echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW);
 
 ?>
         </style>

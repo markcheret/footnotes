@@ -8,7 +8,7 @@
  *
  * Since v2.1.4 of Footnotes
  *
- * Last modified for v2.2.2  2020-12-15T1046+0100
+ * Last modified for v2.2.4  2020-12-16T0624+0100
  *
  * The enqueuing of this style sheet is optional and can be
  * enabled in the Reference container settings.
@@ -29,11 +29,13 @@ This style sheet lets Footnotes’ reference containers come
 into the benefit of the basic responsive layout style rules
 that would apply if the page were not built with Elementor.
 
-This is mainly useful with Hello Elementor but it helps fix
-also other themes like Twenty Twenty-One.
+This is mainly useful with Hello Elementor, but it may help
+fix also other themes like Twenty Twenty-One for display in
+older browsers not yet supporting CSS variables.
 */
 
 .entry-content div.footnotes_reference_container,
+.entry-content > .footnotes_reference_container,
 main div.footnotes_reference_container {
     margin: 0 auto;
 }
@@ -41,7 +43,8 @@ main div.footnotes_reference_container {
 @media (max-width: 575px) {
 
     .entry-content div.footnotes_reference_container,
-    main div.footnotes_reference_container {
+	.entry-content > .footnotes_reference_container,
+	main div.footnotes_reference_container {
         padding: 0 10px;
     }
 }
@@ -49,6 +52,7 @@ main div.footnotes_reference_container {
 @media (min-width: 576px) {
 
     .entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 500px;
     }
@@ -57,6 +61,7 @@ main div.footnotes_reference_container {
 @media (min-width: 768px) {
 
     .entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 600px;
     }
@@ -65,6 +70,7 @@ main div.footnotes_reference_container {
 @media (min-width: 992px) {
 
     .entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 800px;
     }
@@ -73,6 +79,7 @@ main div.footnotes_reference_container {
 @media (min-width: 1200px) {
 
     .entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 960px;
     }

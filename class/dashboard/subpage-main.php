@@ -17,8 +17,9 @@
  * 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
  * 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
  * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
+ * 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1244+0100
  *
- * Last modified: 2020-12-15T0928+0100
+ * Last modified: 2020-12-16T1256+0100
  */
 
 /**
@@ -118,6 +119,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_arr_MetaBoxes[] = $this->addMetaBox("settings", "excerpts", __("Footnotes in excerpts", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Excerpts");
         $l_arr_MetaBoxes[] = $this->addMetaBox("settings", "love", MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, "Love");
 
+        $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "hyperlink-arrow", __("Backlink symbol", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "HyperlinkArrow");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "superscript", __("Referrer typesetting and formatting", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box", __("Tooltips", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-truncation", __("Tooltip truncation", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTruncation");
@@ -159,23 +161,25 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         );
         // basic responsive page layout options:
         $l_arr_PageLayoutOptions = array(
-            "none" => __("no additional external style sheet", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "reference-container" => __("only to the reference container", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-            "page-content" => __("to the div element starting below the post title", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "none" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "reference-container" => __("to the reference container exclusively", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "entry-content" => __("to the div element starting below the post title", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "main-content" => __("to the main element including the post title", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
         );
         // options for the separating punctuation between backlinks:
-        // Unicode names are conventionally uppercase.
-        $l_arr_Separators = array(
+            $l_arr_Separators = array(
+            // Unicode character names are conventionally uppercase.
             "comma" => __("COMMA", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "semicolon" => __("SEMICOLON", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "en_dash" => __("EN DASH", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
         );
         // options for the terminating punctuation after backlinks:
-        // The Unicode name of RIGHT PARENTHESIS was originally more accurate because it is bidi-mirrored.
+        // The Unicode name of RIGHT PARENTHESIS was originally more accurate because
+        // this character is bidi-mirrored. Let’s use the Unicode 1.0 name.
         // The wrong names were enforced in spite of Unicode, that subsequently scrambled to correct.
         $l_arr_Terminators = array(
             "period" => __("FULL STOP", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            // Unicode 1.0 name of RIGHT PARENTHESIS (represented as a left parenthesis in right-to-left scripts):
             "parenthesis" => __("CLOSING PARENTHESIS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "colon" => __("COLON", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
         );
@@ -225,9 +229,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, __("Display a backlink symbol:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "symbol-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, $l_arr_Enabled),
-                "symbol-options" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::getArrow()),
-                "symbol-custom" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED),
-                "notice-symbol" => __("Your input overrides the selection.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-symbol" => __("Please choose or input the symbol at the top of the next dashboard tab.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-switch" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, __("Symbol appended, not prepended:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "switch" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $l_arr_Enabled),
@@ -736,6 +738,22 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
      */
+    public function HyperlinkArrow() {
+        // load template file
+        $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "customize-hyperlink-arrow");
+        // replace all placeholders
+        $l_obj_Template->replace(
+            array(
+                "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, __("Select the backlink symbol:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "symbol-options" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::getArrow()),
+                "symbol-custom" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED),
+                "notice-symbol" => __("Your input overrides the selection.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-symbol" => __("This setting cannot be moved into the reference container settings, because each tab is saved in a different place, so moving a setting breaks user data. Our apologies for having done so with this setting now moved back to the tab it pre-existed under.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            )
+        );
+        // display template with replaced placeholders
+        echo $l_obj_Template->getContent();
+    }
 
     /**
      * Displays the custom css box.

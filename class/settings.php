@@ -22,8 +22,9 @@
  * 2.1.6  set default priority level of the_content to 98   2020-12-10T0447+0100
  * 2.2.0  reference container custom position shortcode  2020-12-13T2056+0100
  * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
+ * 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1256+0100
  *
- * Last modified: 2020-12-15T0744+0100
+ * Last modified: 2020-12-16T1256+0100
  */
 
 
@@ -552,6 +553,8 @@ class MCI_Footnotes_Settings {
 
             self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE      => '[[references]]',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
+
+            // backlink symbol:
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
             self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
@@ -597,6 +600,9 @@ class MCI_Footnotes_Settings {
         ),
 
         "footnotes_storage_custom" => array(
+
+			self::C_STR_HYPERLINK_ARROW                             => '&#8593;',
+            self::C_STR_HYPERLINK_ARROW_USER_DEFINED                => '',
 
             self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL => 'Continue reading',
 
@@ -663,8 +669,6 @@ class MCI_Footnotes_Settings {
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
 
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
-            self::C_STR_HYPERLINK_ARROW => '&#8593;',
-            self::C_STR_HYPERLINK_ARROW_USER_DEFINED => '',
 
             // Custom CSS migrates to a dedicated tab:
             self::C_STR_CUSTOM_CSS => '',

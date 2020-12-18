@@ -43,8 +43,8 @@ main div.footnotes_reference_container {
 @media (max-width: 575px) {
 
     .entry-content div.footnotes_reference_container,
-	.entry-content > .footnotes_reference_container,
-	main div.footnotes_reference_container {
+    .entry-content > .footnotes_reference_container,
+    main div.footnotes_reference_container {
         padding: 0 10px;
     }
 }
@@ -52,7 +52,7 @@ main div.footnotes_reference_container {
 @media (min-width: 576px) {
 
     .entry-content div.footnotes_reference_container,
-	.entry-content > .footnotes_reference_container,
+    .entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 500px;
     }
@@ -61,7 +61,7 @@ main div.footnotes_reference_container {
 @media (min-width: 768px) {
 
     .entry-content div.footnotes_reference_container,
-	.entry-content > .footnotes_reference_container,
+    .entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 600px;
     }
@@ -70,7 +70,7 @@ main div.footnotes_reference_container {
 @media (min-width: 992px) {
 
     .entry-content div.footnotes_reference_container,
-	.entry-content > .footnotes_reference_container,
+    .entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 800px;
     }
@@ -79,7 +79,7 @@ main div.footnotes_reference_container {
 @media (min-width: 1200px) {
 
     .entry-content div.footnotes_reference_container,
-	.entry-content > .footnotes_reference_container,
+    .entry-content > .footnotes_reference_container,
     main div.footnotes_reference_container {
         max-width: 960px;
     }

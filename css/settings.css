@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.4
+ * Version: 2.2.5
  *
- * Last modified: 2020-12-16T1302+0100
+ * Last modified: 2020-12-18T1629+0100
  */
 
 
@@ -67,8 +67,7 @@ Limited to a number of IDs to not affect all dashboards
 
 #footnote_inputfield_placeholder_start,
 #footnote_inputfield_placeholder_end,
-#footnote_inputfield_custom_mouse_over_box_excerpt_length,
-#footnote_inputfield_custom_mouse_over_box_position {
+#footnote_inputfield_custom_mouse_over_box_excerpt_length {
     width: 180px;
 }
 #footnote_inputfield_placeholder_start_user_defined,
@@ -83,6 +82,9 @@ Limited to a number of IDs to not affect all dashboards
 #footnote_inputfield_custom_mouse_over_box_offset_x,
 #footnote_inputfield_custom_mouse_over_box_offset_y,
 #footnote_inputfield_custom_mouse_over_box_max_width,
+#footnotes_inputfield_alternative_mouse_over_box_offset_x,
+#footnotes_inputfield_alternative_mouse_over_box_offset_y,
+#footnotes_inputfield_alternative_mouse_over_box_width,
 #footnotes_inputfield_mouse_over_box_fade_in_delay,
 #footnotes_inputfield_mouse_over_box_fade_in_duration,
 #footnotes_inputfield_mouse_over_box_fade_out_delay,

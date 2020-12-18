@@ -9,6 +9,7 @@
  * Since v2.1.4 of Footnotes
  *
  * Last modified for v2.2.2  2020-12-15T1004+0100
+ * Last modified for v2.2.5  2020-12-16T1321+0100
  *
  * The enqueuing of this style sheet is optional and can be
  * enabled in the Reference container settings.
@@ -29,8 +30,9 @@ This style sheet lets Footnotes’ reference containers come
 into the benefit of the basic responsive layout style rules
 that would apply if the page were not built with Elementor.
 
-This is mainly useful with Hello Elementor but it helps fix
-also other themes like Twenty Twenty-One.
+This is mainly useful with Hello Elementor, but it may help
+fix also other themes like Twenty Twenty-One for display in
+older browsers not yet supporting CSS variables.
 */
 
 div.page-content,

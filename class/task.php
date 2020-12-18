@@ -8,12 +8,16 @@
  *
  * Edited for v2.0.0 and following.
  *
- * 2.0.5  Autoload / infinite scroll support added thanks to code from
- * @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+ * 2.0.5  Autoload / infinite scroll support added thanks to code from @docteurfitness
+ * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  *
  * 2.0.9  DISABLED the_post HOOK  2020-11-08T1839+0100
+ *
  * 2.1.0  promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
- * 2.1.1  combining identical footnotes: fixed dead links  2020-11-14T2233+0100
+ * 2.1.1  combining identical footnotes: fixed dead links, thanks to @happyches   2020-11-14T2233+0100
+ * @see <https://wordpress.org/support/topic/custom-css-for-jumbled-references/>
+ * 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
+ * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
  * 2.1.1  options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
  * 2.1.1  option fixing ref container relative position  2020-11-17T0254+0100
  * 2.1.2  options for the other hooks  2020-11-19T1849+0100
@@ -27,10 +31,16 @@
  * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
- * 2.2.0  support for custom position shortcode for reference container  2020-12-13T2058+0100
+ * 2.2.0  support for custom position shortcode for reference container, thanks to @hamshe  2020-12-13T2058+0100
+ * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
  * 2.2.3  custom CSS from new setting in header after legacy  2020-12-15T1128+0100
+ * 2.2.5  connected alternative tooltips to position and timing settings  2020-12-18T1113+0100
+ * 2.2.5  delete unused position shortcode when ref container in widget or footer, thanks to @hamshe   2020-12-18T1437+0100
+ * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126>
+ * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+ * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
- * Last modified:  2020-12-15T1140+0100
+ * Last modified:  2020-12-18T1627+0100
  */
 
 // If called directly, abort:
@@ -152,133 +162,219 @@ class MCI_Footnotes_Task {
      *
      * @author Stefan Herndler
      * @since 1.5.0
+     *
+     * Edited:
+     * 2.1.1  option to hide ref container from start page
+     * 2.1.1  script for alternative tooltips
+     * 2.1.3  raise settings priority to override theme style sheets
+     * 2.1.4  tootip font size and backlink column width settings
+	 * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+	 * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
      */
     public function wp_head() {
 
-        // tooltip:
-        $l_str_FontSizeEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED));
-        $l_str_FontSizeScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR);
-        $l_str_FontSizeUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT);
+        // no switch out to insert start tag:
+        echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
 
-        $l_str_Color = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR);
-        $l_str_Background = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND);
+        // display ref container on home page:
+        if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
+            echo ".home .footnotes_reference_container { display: none; }\r\n";
+		}
+		
+		// ref container label bottom border:
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER))) {
+            echo ".footnote_container_prepare > ";
+			echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT);
+            echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
+		}
 
-        $l_int_BorderWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH);
-        $l_str_BorderColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR);
-        $l_int_BorderRadius = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS);
-
-        $l_int_MaxWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH);
-
-        $l_str_BoxShadowColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR);
-
-        // ref container first column width:
+        // ref container first column width and max-width:
         $l_bool_ColumnWidthEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED));
-        $l_int_ColumnWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR);
-        $l_str_ColumnWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT);
-
         $l_bool_ColumnMaxWidthEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED));
-        $l_int_ColumnMaxWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR);
-        $l_str_ColumnMaxWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT);
 
-        if (!empty($l_int_ColumnWidthScalar)) {
-            if ($l_str_ColumnWidthUnit == '%') {
-                if ($l_int_ColumnWidthScalar > 100) {
-                    $l_int_ColumnWidthScalar = 100;
+        if ( $l_bool_ColumnWidthEnabled || $l_bool_ColumnMaxWidthEnabled ) {
+            echo ".footnote-reference-container { table-layout: fixed; }";
+            echo ".footnote_plugin_index, .footnote_plugin_index_combi {";
+
+            if ( $l_bool_ColumnWidthEnabled ) {
+
+                $l_int_ColumnWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR);
+                $l_str_ColumnWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT);
+
+                if (!empty($l_int_ColumnWidthScalar)) {
+                    if ($l_str_ColumnWidthUnit == '%') {
+                        if ($l_int_ColumnWidthScalar > 100) {
+                            $l_int_ColumnWidthScalar = 100;
+                        }
+                    }
+                } else {
+                    $l_int_ColumnWidthScalar = 0;
                 }
+
+                echo " width: $l_int_ColumnWidthScalar$l_str_ColumnWidthUnit !important;";
             }
-        } else {
-            $l_int_ColumnWidthScalar = 0;
+
+            if ( $l_bool_ColumnMaxWidthEnabled ) {
+
+                $l_int_ColumnMaxWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR);
+                $l_str_ColumnMaxWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT);
+
+                if (!empty($l_int_ColumnMaxWidthScalar)) {
+                    if ($l_str_ColumnMaxWidthUnit == '%') {
+                        if ($l_int_ColumnMaxWidthScalar > 100) {
+                            $l_int_ColumnMaxWidthScalar = 100;
+                        }
+                    }
+                } else {
+                    $l_int_ColumnMaxWidthScalar = 0;
+                }
+
+                echo " max-width: $l_int_ColumnMaxWidthScalar$l_str_ColumnMaxWidthUnit !important;";
+
+            }
+        echo "}\r\n";
         }
 
-        if (!empty($l_int_ColumnMaxWidthScalar)) {
-            if ($l_str_ColumnMaxWidthUnit == '%') {
-                if ($l_int_ColumnMaxWidthScalar > 100) {
-                    $l_int_ColumnMaxWidthScalar = 100;
-                }
-            }
-        } else {
-            $l_int_ColumnMaxWidthScalar = 0;
-        }
+        // tooltips:
+        $l_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED));
+        $l_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE));
 
-        ?>
-        <style type="text/css" media="all">
-            <?php
+        if ($l_bool_TooltipsEnabled) {
 
-            // display ref container on home page:
-            if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
-                echo ".home .footnotes_reference_container { display: none; }\r\n";
-            }
-
-            // ref container first column width:
-            if ( $l_bool_ColumnWidthEnabled || $l_bool_ColumnMaxWidthEnabled ) {
-                echo ".footnote-reference-container { table-layout: fixed; }";
-                echo ".footnote_plugin_index, .footnote_plugin_index_combi {";
-
-                if ( $l_bool_ColumnWidthEnabled ) {
-                    echo " width: $l_int_ColumnWidthScalar$l_str_ColumnWidthUnit !important;";
-                }
-                if ( $l_bool_ColumnMaxWidthEnabled ) {
-                    echo " max-width: $l_int_ColumnMaxWidthScalar$l_str_ColumnMaxWidthUnit !important;";
-                }
-                echo '}';
-            }
-
-            // tooltip:
             echo '.footnote_tooltip {';
 
+            // tooltip appearance:
+
+            // font size:
             echo ' font-size: ';
-            if($l_str_FontSizeEnabled) {
-                echo $l_str_FontSizeScalar . $l_str_FontSizeUnit;
+            if(MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED))) {
+                echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR);
+                echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT);
             } else {
                 echo 'inherit';
             }
             echo ' !important;';
 
+            // text color:
+            $l_str_Color = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR);
             if (!empty($l_str_Color)) {
                 printf(" color: %s !important;", $l_str_Color);
             }
+
+            // background color:
+            $l_str_Background = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND);
             if (!empty($l_str_Background)) {
                 printf(" background-color: %s !important;", $l_str_Background);
             }
+
+            // border width:
+            $l_int_BorderWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH);
             if (!empty($l_int_BorderWidth) && intval($l_int_BorderWidth) > 0) {
                 printf(" border-width: %dpx !important; border-style: solid !important;", $l_int_BorderWidth);
             }
+
+            // border color:
+            $l_str_BorderColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR);
             if (!empty($l_str_BorderColor)) {
                 printf(" border-color: %s !important;", $l_str_BorderColor);
             }
+
+            // corner radius:
+            $l_int_BorderRadius = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS);
             if (!empty($l_int_BorderRadius) && intval($l_int_BorderRadius) > 0) {
                 printf(" border-radius: %dpx !important;", $l_int_BorderRadius);
             }
-            if (!empty($l_int_MaxWidth) && intval($l_int_MaxWidth) > 0) {
-                printf(" max-width: %dpx !important;", $l_int_MaxWidth);
-            }
+
+            // shadow color:
+            $l_str_BoxShadowColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR);
             if (!empty($l_str_BoxShadowColor)) {
                 printf(" -webkit-box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
                 printf(" -moz-box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
                 printf(" box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
             }
-            echo "}\r\n";
-            
-            // set custom CSS to override settings, not conversely:
-            // if dashboard tab migration acknowledged, disable legacy in case it was not cut:
-            if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_MIGRATED))) {
-                echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
+
+            // alternative tooltips:
+            if ( ! $l_bool_AlternativeTooltipsEnabled) {
+
+                // tooltip position:
+                $l_int_MaxWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH);
+                if (!empty($l_int_MaxWidth) && intval($l_int_MaxWidth) > 0) {
+                    printf(" max-width: %dpx !important;", $l_int_MaxWidth);
+                }
+                echo "}\r\n";
+
+            } else {
+                echo "}\r\n";
+
+                // position:
+                echo ".footnote_tooltip.position {";
+                echo " width: " . intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH)) . 'px;';
+
+                $l_str_AlternativePosition = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION);
+                $l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X));
+
+                if ($l_str_AlternativePosition == 'top left' || $l_str_AlternativePosition == 'bottom left') {
+                    echo ' right: ' . ( !empty($l_int_OffsetX) ? $l_int_OffsetX : 0) . 'px;';
+                } else {
+                    echo ' left: ' . ( !empty($l_int_OffsetX) ? $l_int_OffsetX : 0) . 'px;';
+                }
+
+                $l_int_OffsetY = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y));
+
+                if ($l_str_AlternativePosition == 'top left' || $l_str_AlternativePosition == 'top right') {
+                    echo ' bottom: ' . ( !empty($l_int_OffsetY) ? $l_int_OffsetY : 0) . 'px;';
+                } else {
+                    echo ' top: ' . ( !empty($l_int_OffsetY) ? $l_int_OffsetY : 0) . 'px;';
+                }
+                echo "}\r\n";
+
+                // timing:
+                // jQuery tooltip timing is in templates/public/tooltip.html, filled in after line 690 below.
+                echo ' .footnote_tooltip.shown {';
+                $l_int_FadeInDelay     = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY    ));
+                $l_int_FadeInDuration  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ));
+                $l_int_FadeInDelay     = !empty($l_int_FadeInDelay    ) ? $l_int_FadeInDelay     : '0';
+                $l_int_FadeInDuration  = !empty($l_int_FadeInDuration ) ? $l_int_FadeInDuration  : '0';
+                echo " transition-delay: $l_int_FadeInDelay" . 'ms;';
+                echo " transition-duration: $l_int_FadeInDuration" . 'ms;';
+
+                echo '} .footnote_tooltip.hidden {';
+                $l_int_FadeOutDelay    = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY   ));
+                $l_int_FadeOutDuration = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION));
+                $l_int_FadeOutDelay     = !empty($l_int_FadeOutDelay    ) ? $l_int_FadeOutDelay     : '0';
+                $l_int_FadeOutDuration  = !empty($l_int_FadeOutDuration ) ? $l_int_FadeOutDuration  : '0';
+                echo " transition-delay: $l_int_FadeOutDelay" . 'ms;';
+                echo " transition-duration: $l_int_FadeOutDuration" . 'ms;';
+
+                echo "}\r\n";
+
             }
-            echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW);
-?>
-        </style>
-<?php
-        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
-            echo '<script content="text/javascript">' . "\r\n";
-            echo "\tfunction footnoteTooltipShow(footnoteTooltipId) {\r\n";
-            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.remove('hidden');\r\n";
-            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.add('shown');\r\n";
-            echo "\t}\r\n";
-            echo "\tfunction footnoteTooltipHide(footnoteTooltipId) { \r\n";
-            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.remove('shown');\r\n";
-            echo "\t\tdocument.getElementById(footnoteTooltipId).classList.add('hidden');\r\n";
-            echo "\t}\r\n";
-            echo "</script>\r\n";
+        }
+
+        // set custom CSS to override settings, not conversely:
+        // if dashboard tab migration acknowledged, disable legacy in case it was not cut:
+        if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_MIGRATED))) {
+            echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
+        }
+        echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW);
+
+        // no switch out to insert end tag:
+        echo "\r\n</style>\r\n";
+
+        // alternative tooltip script printed formatted not minified:
+        if ($l_bool_AlternativeTooltipsEnabled) {
+            ?>
+            <script content="text/javascript">
+                function footnoteTooltipShow(footnoteTooltipId) {
+                    document.getElementById(footnoteTooltipId).classList.remove('hidden');
+                    document.getElementById(footnoteTooltipId).classList.add('shown');
+                }
+                function footnoteTooltipHide(footnoteTooltipId) {
+                    document.getElementById(footnoteTooltipId).classList.remove('shown');
+                    document.getElementById(footnoteTooltipId).classList.add('hidden');
+                }
+            </script>
+            <?php
         };
     }
 
@@ -428,6 +524,13 @@ class MCI_Footnotes_Task {
      * @param bool $p_bool_OutputReferences Appends the Reference Container to the output if set to true, default true.
      * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
      * @return string
+     *
+     * Edited:
+     * @since 2.2.0  insert reference container at shortcode, thanks to @hamshe   2020-12-13T2057+0100
+     * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
+     * 
+     * @since 2.2.5  delete unused position shortcode, when position is widget or footer, thanks to @hamshe   2020-12-18T1434+0100
+     * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126>
      */
     public function exec($p_str_Content, $p_bool_OutputReferences = false, $p_bool_HideFootnotesText = false) {
         // replace all footnotes in the content, settings are converted to html characters
@@ -436,11 +539,11 @@ class MCI_Footnotes_Task {
         $p_str_Content = $this->search($p_str_Content, false, $p_bool_HideFootnotesText);
 
         // append the reference container
-        // or insert at shortcode:  (2.2.0 2020-12-13T2057+0100)
+        // or insert at shortcode: added for 2.2.0, thanks to @hamshe
         $l_str_ReferenceContainerPositionShortcode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE);
 
         if ($p_bool_OutputReferences) {
-            
+
             if (strpos( $p_str_Content, $l_str_ReferenceContainerPositionShortcode ) !== false ) {
 
                 $p_str_Content = str_replace( $l_str_ReferenceContainerPositionShortcode, $this->ReferenceContainer(), $p_str_Content );
@@ -451,6 +554,9 @@ class MCI_Footnotes_Task {
 
             }
         }
+
+        // delete position shortcode should any remain e.g. when ref container is in footer, thanks to @hamshe:
+        $p_str_Content = str_replace( $l_str_ReferenceContainerPositionShortcode, '', $p_str_Content );
 
         // take a look if the LOVE ME slug should NOT be displayed on this page/post, remove the short code if found
         if (strpos($p_str_Content, MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG) !== false) {
@@ -998,21 +1104,21 @@ class MCI_Footnotes_Task {
 
         }
 
-        // get scroll offset and duration settings:
-        $l_int_ScrollOffset = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET);
-        $l_int_ScrollDuration = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION);
-
+        // streamline:
+        $l_bool_CollapseDefault = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE));
+        
         // load 'templates/public/reference-container.html':
         $l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
         $l_obj_TemplateContainer->replace(
             array(
                 "post_id"         =>  $l_int_PostId,
-                "label"           =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
-                "button-style"    => !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
-                "style"           =>  MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE)) ? 'display: none;' : '',
+                "element"         =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT),
+                "name"            =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
+                "button-style"    => !$l_bool_CollapseDefault ? 'display: none;' : '',
+                "style"           =>  $l_bool_CollapseDefault ? 'display: none;' : '',
                 "content"         =>  $l_str_Body,
-                "scroll-offset"   => ($l_int_ScrollOffset / 100),
-                "scroll-duration" =>  $l_int_ScrollDuration,
+                "scroll-offset"   => (intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET)) / 100),
+                "scroll-duration" =>  intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION)),
             )
         );
 

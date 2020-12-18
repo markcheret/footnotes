@@ -13,18 +13,23 @@
  * 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
  * 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
  * 2.1.1  fix superscript by making it optional
- * 2.1.1  fix start pages by option to hide ref container
+ * 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
+ * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
  * 2.1.1  fix ref container by option restoring 3-column layout
  * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  * 2.1.4  more settings container keys  2020-12-03T0955+0100
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
  * 2.1.6  set default priority level of the_content to 98   2020-12-10T0447+0100
- * 2.2.0  reference container custom position shortcode  2020-12-13T2056+0100
+ * 2.2.0  reference container custom position shortcode, thanks to @hamshe   2020-12-13T2056+0100
+ * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
  * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
  * 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1256+0100
+ * 2.2.5  alternative tooltip position settings  2020-12-17T0907+0100
+ * 2.2.5  options for reference container label element, thanks to @markhillyer    2020-12-18T1455+0100
+ * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
- * Last modified: 2020-12-16T1256+0100
+ * Last modified: 2020-12-18T1632+0100
  */
 
 
@@ -424,7 +429,7 @@ class MCI_Footnotes_Settings {
      * Settings Container Keys for tooltip display durations
      *
      * @since 2.1.4
-     * @var string|bool|int
+     * @var string|bool|int|flo
      *
      * 2020-11-26T1002+0100
      * 2020-11-30T0427+0100
@@ -495,6 +500,24 @@ class MCI_Footnotes_Settings {
      */
     const C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE  =  "footnote_inputfield_reference_container_position_shortcode";
 
+    /**
+     * Settings Container Keys for alternative tooltip position
+     * Settings Container Keys for reference container label element, thanks to @markhillyer
+     * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+     *
+     * @since 2.2.5
+     * @var int
+     *
+     * 2020-12-17T0746+0100
+     * 2020-12-18T1509+0100
+     */
+    const C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION = "footnotes_inputfield_alternative_mouse_over_box_position";
+    const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X = "footnotes_inputfield_alternative_mouse_over_box_offset_x";
+    const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y = "footnotes_inputfield_alternative_mouse_over_box_offset_y";
+    const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    = "footnotes_inputfield_alternative_mouse_over_box_width";
+
+    const C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT             = "footnotes_inputfield_reference_container_label_element";
+    const C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER      = "footnotes_inputfield_reference_container_label_bottom_border";
 
     /**
      * Stores a singleton reference of this class.
@@ -535,24 +558,28 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage" => array(
 
-            self::C_STR_FOOTNOTES_SHORT_CODE_START => '((',
-            self::C_STR_FOOTNOTES_SHORT_CODE_END => '))',
-            self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
-            self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
-            self::C_STR_FOOTNOTES_COUNTER_STYLE => 'arabic_plain',
-            self::C_INT_FOOTNOTES_SCROLL_OFFSET   => 20,
-            self::C_INT_FOOTNOTES_SCROLL_DURATION => 380,
+            self::C_STR_FOOTNOTES_SHORT_CODE_START                  => '((',
+            self::C_STR_FOOTNOTES_SHORT_CODE_END                    => '))',
+            self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED     => '',
+            self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED       => '',
 
-            self::C_STR_REFERENCE_CONTAINER_NAME => 'References',
-            self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE => 'no',
-            self::C_STR_REFERENCE_CONTAINER_POSITION => 'post_end',
-            self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES => 'yes',
+            self::C_STR_FOOTNOTES_COUNTER_STYLE                     => 'arabic_plain',
+            self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES                => 'yes',
 
-            // whether to enqueue additional style sheet:
-            self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT => 'none',
+            self::C_INT_FOOTNOTES_SCROLL_OFFSET                     => 20,
+            self::C_INT_FOOTNOTES_SCROLL_DURATION                   => 380,
 
+            self::C_STR_REFERENCE_CONTAINER_NAME                    => 'References',
+            self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT           => 'p',
+            self::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER    => 'yes',
+            self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE               => 'no',
+
+            self::C_STR_REFERENCE_CONTAINER_POSITION                => 'post_end',
             self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE      => '[[references]]',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      => 'yes',
+
+            // whether to enqueue additional style sheet:
+            self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT               => 'none',
 
             // backlink symbol:
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
@@ -601,7 +628,7 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage_custom" => array(
 
-			self::C_STR_HYPERLINK_ARROW                             => '&#8593;',
+            self::C_STR_HYPERLINK_ARROW                             => '&#8593;',
             self::C_STR_HYPERLINK_ARROW_USER_DEFINED                => '',
 
             self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL => 'Continue reading',
@@ -640,6 +667,15 @@ class MCI_Footnotes_Settings {
             // the current line of text (web coordinates origin is top left):
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y => -7,
 
+            // The width should be limited to start with, for the box to have shape:
+            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
+
+            // fixed width is for alternative tooltips, cannot reuse max-width nor offsets:
+            self::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION => 'top right',
+            self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X => -50,
+            self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y =>  24,
+            self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    => 400,
+
             // tooltip display durations:
             // called mouse over box not tooltip for consistency
             self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY      =>   0,
@@ -664,9 +700,6 @@ class MCI_Footnotes_Settings {
 
             // The mouse over box corners mustn’t be rounded as that is outdated:
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
-
-            // The width should be limited to start with, for the box to have shape:
-            self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
 
             self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
 

@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.2.4
+Stable Tag: 2.2.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,6 +80,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.2.5 =
+- Add: Dashboard: Footnotes numbering: add support for Ibid. notation in suggestions for guidance, thanks to @meglio
+- Add: Reference container: support options for label element and label bottom border, thanks to @markhillyer
+- Bugfix: Referernce container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe
+- Bugfix: Dashboard: Tooltip position/timing settings: include alternative tooltips (for themes not supporting jQuery tooltips)
+- Bugfix: Dashboard: Tooltip position/timing settings: raise above tooltip truncation settings for better consistency
+
 = 2.2.4 =
 - Bugfix: Reference container: Backlink symbol selection: moved back to previous tab “Referrers and tooltips”
 - Bugfix: Custom CSS: make inserting existing in header depend on migration complete checkbox status
@@ -96,7 +103,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure
 
 = 2.2.0 =
-- Add: Reference container: support for custom position shortcode
+- Add: Reference container: support for custom position shortcode, thanks to @hamshe
 - Update: Priority levels: update the notice in the dashboard Priority tab
 - Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
 - Add: Start/end short codes: more predefined options
@@ -165,7 +172,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: feature description for the hooks priority level settings (not yet localized)
 
 = 2.1.1 =
-- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity
+- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity, thanks to @happyches
 - Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
 - Update: Libraries: jQuery Tools: complete minification
 - Bugfix: Libraries: made script loads depend on tooltip implementation option

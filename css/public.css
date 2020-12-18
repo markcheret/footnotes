@@ -5,14 +5,14 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.4
+ * Version: 2.2.5
  *
  *     Classes added to public.css may be added to the
  *     list documenting CSS classes for Custom CSS if
  *     recommended for general use.
- *     List in templates/dashboard/customize-css.html
+ *     List in templates/dashboard/customize-css-new.html
  *
- * Last modified: 2020-12-16T1302+0100
+ * Last modified: 2020-12-18T1701+0100
  */
 
 
@@ -133,9 +133,12 @@ fade-in parameters
     visibility: visible;
     opacity: 1;
     transition-property: visibility opacity;
-    transition-duration: 200ms;
     transition-timing-function: linear;
+/*
+property values of settings are inline CSS
     transition-delay: 0ms;
+    transition-duration: 200ms;
+*/
 }
 /*
 fade-out parameters
@@ -144,9 +147,12 @@ fade-out parameters
     visibility: hidden;
     opacity: 0;
     transition-property: visibility opacity;
-    transition-duration: 200ms;
     transition-timing-function: linear;
+/*
+property values of settings are inline CSS
     transition-delay: 400ms;
+    transition-duration: 200ms;
+*/
 }
 
 /*
@@ -210,7 +216,7 @@ label
     margin-bottom: 0.25em !important;
     padding: 0 !important;
     font-weight: normal !important;
-    border-bottom: 1px solid #aaaaaa !important;
+    /* bottom border optional since 2.2.5 */
     display: block !important;
     -webkit-margin-before: 0.83em !important;
     -webkit-margin-after: 0.83em !important;
@@ -233,8 +239,17 @@ fully clickable, not sign only
     padding: 0 0.5em;
     font-size: 1.3em !important;
     vertical-align: 2px;
+    text-decoration: none !important;
 }
-.footnote_container_prepare > p > span:last-child a {
+h2 > .footnote_reference_container_collapse_button,
+h3 > .footnote_reference_container_collapse_button,
+h4 > .footnote_reference_container_collapse_button,
+h5 > .footnote_reference_container_collapse_button,
+h6 > .footnote_reference_container_collapse_button {
+    font-size: inherit !important;
+}
+.footnote_container_prepare > p > span:last-child a,
+.footnote_reference_container_collapse_button a {
     text-decoration: none !important;
 }
 

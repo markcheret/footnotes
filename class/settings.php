@@ -26,7 +26,7 @@
  * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
  * 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1256+0100
  * 2.2.5  alternative tooltip position settings  2020-12-17T0907+0100
- * 2.2.5  options for reference container label element, thanks to @markhillyer    2020-12-18T1455+0100
+ * 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
  * Last modified: 2020-12-18T1632+0100

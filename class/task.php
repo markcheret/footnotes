@@ -40,7 +40,7 @@
  * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
- * Last modified:  2020-12-18T1627+0100
+ * Last modified:  2020-12-18T1751+0100
  */
 
 // If called directly, abort:
@@ -168,8 +168,8 @@ class MCI_Footnotes_Task {
      * 2.1.1  script for alternative tooltips
      * 2.1.3  raise settings priority to override theme style sheets
      * 2.1.4  tootip font size and backlink column width settings
-	 * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
-	 * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+     * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+     * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
      */
     public function wp_head() {
 
@@ -179,14 +179,14 @@ class MCI_Footnotes_Task {
         // display ref container on home page:
         if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
             echo ".home .footnotes_reference_container { display: none; }\r\n";
-		}
-		
-		// ref container label bottom border:
+        }
+
+        // ref container label bottom border:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER))) {
             echo ".footnote_container_prepare > ";
-			echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT);
+            echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT);
             echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
-		}
+        }
 
         // ref container first column width and max-width:
         $l_bool_ColumnWidthEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED));
@@ -528,7 +528,7 @@ class MCI_Footnotes_Task {
      * Edited:
      * @since 2.2.0  insert reference container at shortcode, thanks to @hamshe   2020-12-13T2057+0100
      * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
-     * 
+     *
      * @since 2.2.5  delete unused position shortcode, when position is widget or footer, thanks to @hamshe   2020-12-18T1434+0100
      * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126>
      */
@@ -1106,7 +1106,7 @@ class MCI_Footnotes_Task {
 
         // streamline:
         $l_bool_CollapseDefault = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE));
-        
+
         // load 'templates/public/reference-container.html':
         $l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
         $l_obj_TemplateContainer->replace(

@@ -557,7 +557,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Edited:
      * @since 2.2.0   5 parts to address increased settings number
-     * @since 2.2.5   added position settings container for the alternative tooltips
+     * @since 2.2.5   added position settings for the alternative tooltips
      */
     public function MouseOverBox() {
         // options for Yes/No select box:

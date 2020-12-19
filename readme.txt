@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.3.0d0 =
+- Add: Customization: support for custom templates
+
 = 2.2.5 =
 - Add: Dashboard: Footnotes numbering: add support for Ibid. notation in suggestions for guidance, thanks to @meglio
 - Add: Reference container: support options for label element and label bottom border, thanks to @markhillyer

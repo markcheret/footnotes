@@ -5,8 +5,14 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:58
+ *
+ * Edited:
+ * @since 2.0.3  further minify template content
+ * @since 2.0.4  regex to delete multiple spaces
  * 
- * Last modified: 2020-11-01T0347+0100
+ * @since 2.3.0  support for custom templates   2020-12-19T0606+0100
+ * 
+ * Last modified: 2020-12-19T0713+0100
  */
 
 
@@ -63,18 +69,32 @@ class MCI_Footnotes_Template {
      * @param string $p_str_FileType Template file type (take a look on the Class constants).
      * @param string $p_str_FileName Template file name inside the Template directory without the file extension.
      * @param string $p_str_Extension Optional Template file extension (default: html)
+     *
+     * Edited:
+     * @since 2.0.3  further minify template content
+     * @since 2.0.4  regex to delete multiple spaces
+     * 
+     * @since 2.3.0  support for custom templates   2020-12-19T0606+0100
      */
     public function __construct($p_str_FileType, $p_str_FileName, $p_str_Extension = "html") {
         // no template file type and/or file name set
         if (empty($p_str_FileType) || empty($p_str_FileName)) {
             return;
         }
-        // get absolute path to the specified template file
-        $l_str_TemplateFile = dirname(__FILE__) . "/../templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
-        // Template file does not exist
+
+        // First look for a custom template:
+
+        $l_str_TemplateFile = dirname(__FILE__) . "/../../footnotes-custom/templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
         if (!file_exists($l_str_TemplateFile)) {
-            return;
+
+            // get absolute path to the specified template file
+            $l_str_TemplateFile = dirname(__FILE__) . "/../templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
+            // Template file does not exist
+            if (!file_exists($l_str_TemplateFile)) {
+                return;
+            }
         }
+
         // get Template file content
         $this->a_str_OriginalContent = str_replace("\n", "", file_get_contents($l_str_TemplateFile));
         $this->a_str_OriginalContent = str_replace("\r", "", $this->a_str_OriginalContent);

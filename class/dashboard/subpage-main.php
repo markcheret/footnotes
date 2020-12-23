@@ -10,10 +10,14 @@
  * 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * 2.1.0  read-on button label  2020-11-08T2148+0100
  * 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
+ * 2.1.2  priority level settings for all other hooks, thanks to @nikelaos
+ * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705>
  * 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
  * 2.1.6  slight UI reordering   2020-12-09T1114+0100
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1604+0100
  * 2.1.6  remove expert mode setting as outdated   2020-12-09T2105+0100
+ * 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos
+ * @see <https://wordpress.org/support/topic/doesnt-work-with-mailpoet/>
  * 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
  * 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
  * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
@@ -23,7 +27,7 @@
  * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
- * Last modified: 2020-12-18T1631+0100
+ * Last modified: 2020-12-20T0533+0100
  */
 
 /**
@@ -308,7 +312,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 1.5.0
      *
      * Edited heading  2020-12-12T1412+0100
-     * @since 2.2.0  more short code options  2020-12-12T1412+0100
+     * @since 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos  2020-12-12T1412+0100
+     * @see <https://wordpress.org/support/topic/doesnt-work-with-mailpoet/>
      * @since 2.2.0  3 boxes for clarity  2020-12-12T1422+0100
      * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2019+0100
      * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
@@ -485,7 +490,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 1.5.0
      *
      * Edited heading   2020-12-12T1453+0100
-     * @since 2.1.1   more settings and notices
+     * @since 2.1.1   more settings and notices, thanks to @nikelaos
+	 * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
      * @since 2.2.0   dedicated to the excerpt setting and its notices   2020-12-12T1454+0100
      */
     public function Excerpts() {

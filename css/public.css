@@ -5,14 +5,22 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.5
+ * Version: 2.2.8
  *
  *     Classes added to public.css may be added to the
  *     list documenting CSS classes for Custom CSS if
  *     recommended for general use.
  *     List in templates/dashboard/customize-css-new.html
  *
- * Last modified: 2020-12-18T1701+0100
+ * Edited for 2.0.0
+ * @since 2.0.1  enforced borderless table cells with !important property, thanks to @ragonesi
+ * @see <https://wordpress.org/support/topic/box-around-c-references-container/>
+ * @since 2.1.1  line height 0 for (superscript) referrers, thanks to @cwbayer
+ * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
+ * @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
+ * @see <https://wordpress.org/support/topic/counter-styles-not-working/>
+ * 
+ * Last modified: 2020-12-23T1109+0100
  */
 
 
@@ -102,6 +110,12 @@ Classes:
     font-weight: inherit;
 }
 
+/*
+tooltips
+
+@since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
+@see <https://wordpress.org/support/topic/counter-styles-not-working/>
+*/
 .footnote_tooltip {
     display: none;
     z-index: 2147483647 !important;
@@ -264,6 +278,10 @@ table
 
 /*
 footnotes
+
+enforced borderless table cells with !important property, thanks to @ragonesi
+@since 2.0.1
+@see <https://wordpress.org/support/topic/box-around-c-references-container/>
 */
 .footnote_plugin_index,
 .footnote_plugin_index_combi,

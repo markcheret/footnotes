@@ -8,39 +8,49 @@
  *
  * Edited for v2.0.0 and following.
  *
- * 2.0.5  Autoload / infinite scroll support added thanks to code from @docteurfitness
+ * @since 2.0.5  Autoload / infinite scroll support added thanks to code from @docteurfitness
  * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  *
- * 2.0.9  DISABLED the_post HOOK  2020-11-08T1839+0100
+ * @since 2.0.9  DISABLED the_post HOOK  2020-11-08T1839+0100
  *
- * 2.1.0  promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
- * 2.1.1  combining identical footnotes: fixed dead links, thanks to @happyches   2020-11-14T2233+0100
+ * @since 2.1.0  promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
+ * @since 2.1.1  combining identical footnotes: fixed dead links, thanks to @happyches   2020-11-14T2233+0100
  * @see <https://wordpress.org/support/topic/custom-css-for-jumbled-references/>
- * 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
+ * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
  * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
- * 2.1.1  options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
- * 2.1.1  option fixing ref container relative position  2020-11-17T0254+0100
- * 2.1.2  options for the other hooks  2020-11-19T1849+0100
- * 2.1.4  fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
- * 2.1.4  fix issues with link elements by making them optional   2020-11-26T1051+0100
- * 2.1.4  support appending arrow when combining identicals is on   2020-11-26T1633+0100
- * 2.1.4  disable or select backlink separator and terminator  2020-11-28T1048+0100
- * 2.1.4  optional line breaks to stack enumerated backlinks  2020-11-28T1049+0100
- * 2.1.4  ref container column width and tooltip font size settings  2020-12-03T0954+0100
- * 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
- * 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
- * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
- * 2.1.6  add catch-all exclusion to fix URL line wrapping   2020-12-09T1921+0100
- * 2.2.0  support for custom position shortcode for reference container, thanks to @hamshe  2020-12-13T2058+0100
+ * @since 2.1.1  options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
+ * @since 2.1.1  priority level option fixing ref container relative position, thanks to june01, @spaceling, @imeson  2020-11-17T0254+0100
+ * @see <https://wordpress.org/support/topic/change-the-position-5/>
+ * @since 2.1.2  priority level settings for all other hooks, thanks to @nikelaos  2020-11-19T1849+0100
+ * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705>
+ * @since 2.1.4  fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
+ * @since 2.1.4  fix issues with link elements by making them optional   2020-11-26T1051+0100
+ * @since 2.1.4  support appending arrow when combining identicals is on   2020-11-26T1633+0100
+ * @since 2.1.4  disable or select backlink separator and terminator  2020-11-28T1048+0100
+ * @since 2.1.4  optional line breaks to stack enumerated backlinks  2020-11-28T1049+0100
+ * @since 2.1.4  ref container column width and tooltip font size settings  2020-12-03T0954+0100
+ * @since 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
+ * @since 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
+ * @since 2.1.5  URL wrap: exclude image source too, thanks to @bjrnet21
+ * @see <https://wordpress.org/support/topic/2-1-4-breaks-on-my-site-images-dont-show/>
+ * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
+ * @since 2.1.6  add catch-all exclusion to fix URL line wrapping, thanks to @a223123131   2020-12-09T1921+0100
+ * @see <https://wordpress.org/support/topic/broken-layout-starting-version-2-1-4/>
+ * @since 2.2.0  support for custom position shortcode for reference container, thanks to @hamshe  2020-12-13T2058+0100
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
- * 2.2.3  custom CSS from new setting in header after legacy  2020-12-15T1128+0100
- * 2.2.5  connected alternative tooltips to position and timing settings  2020-12-18T1113+0100
- * 2.2.5  delete unused position shortcode when ref container in widget or footer, thanks to @hamshe   2020-12-18T1437+0100
+ * @since 2.2.3  custom CSS from new setting in header after legacy  2020-12-15T1128+0100
+ * @since 2.2.5  connected alternative tooltips to position and timing settings  2020-12-18T1113+0100
+ * @since 2.2.5  delete unused position shortcode when ref container in widget or footer, thanks to @hamshe   2020-12-18T1437+0100
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126>
- * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+ * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+ * @since 2.2.6  URL wrap: make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
+ * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
+ * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20 and @spaceling   2020-12-23T1046+0100
+ * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
+ * @since 2.2.8  correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1108+0100
  *
- * Last modified:  2020-12-18T1751+0100
+ * Last modified:  2020-12-23T1108+0100
  */
 
 // If called directly, abort:
@@ -88,9 +98,9 @@ class MCI_Footnotes_Task {
      * @since 1.5.0
      *
      * Edited for:
-     * 2.0.5 through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
-     * 2.1.1 add setting for the_content
-     * 2.1.2 add settings for 4 other hooks  2020-11-19T1248+0100
+     * @since 2.0.5 through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
+     * @since 2.1.1 add setting for the_content
+     * @since 2.1.2 add settings for 4 other hooks  2020-11-19T1248+0100
      *
      * Setting the_content priority to "10" instead of PHP_INT_MAX i.e. 9223372036854775807
      * makes the footnotes reference container display beneath the post and above other
@@ -164,11 +174,11 @@ class MCI_Footnotes_Task {
      * @since 1.5.0
      *
      * Edited:
-     * 2.1.1  option to hide ref container from start page
-     * 2.1.1  script for alternative tooltips
-     * 2.1.3  raise settings priority to override theme style sheets
-     * 2.1.4  tootip font size and backlink column width settings
-     * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+     * @since 2.1.1  option to hide ref container from start page
+     * @since 2.1.1  script for alternative tooltips
+     * @since 2.1.3  raise settings priority to override theme style sheets
+     * @since 2.1.4  tootip font size and backlink column width settings
+     * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
      * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
      */
     public function wp_head() {
@@ -641,13 +651,33 @@ class MCI_Footnotes_Task {
             // get footnote text
             $l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
 
-            // fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
-            // to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents.
-            // spare however values of the href and the src arguments!
-            // Even ARIA labels may take an URL as value, so use \w=[\'"] as a catch-all    2020-12-10T1005+0100
-            // see public.css
+            
+            /**
+             * URL line wrap
+             * 
+             * Fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
+             * to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents.
+             * @see public.css
+             * 
+             * spare however values of the href and the src arguments!
+             * @since 2.1.5  exclude image source too, thanks to @bjrnet21
+             * @see <https://wordpress.org/support/topic/2-1-4-breaks-on-my-site-images-dont-show/>
+             * 
+             * Even ARIA labels may take a URL as value, so use \w=[\'"] as a catch-all    2020-12-10T1005+0100
+             * @since 2.1.6  add catch-all exclusion to fix URL line wrapping, thanks to @a223123131   2020-12-09T1921+0100
+             * @see <https://wordpress.org/support/topic/broken-layout-starting-version-2-1-4/>
+             * 
+             * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
+             * 
+             * URLs may be a query string in a URL:
+             * @since 2.2.6  make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
+             * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
+             * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20 and @spaceling   2020-12-23T1046+0100
+             * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
+			 * @since 2.2.8  correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1107+0100
+             */
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
-                $l_str_FootnoteText = preg_replace( '#(?<!\w=[\'"])(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+                $l_str_FootnoteText = preg_replace( '#(?<!\w=[\'"])(?<!\w=)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
             }
 
             // Text to be displayed instead of the footnote
@@ -775,7 +805,8 @@ class MCI_Footnotes_Task {
          * INFINITE SCROLL / AUTOLOAD, ARCHIVE VIEW
          *
          * Multiple posts are appended to each other, functions and IDs must be disambiguated.
-         * Contributed by @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+         * Contributed by @docteurfitness
+         * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
          * @since 2.0.5
          *
          * post ID to make everything unique wrt infinite scroll and archive view:
@@ -801,12 +832,11 @@ class MCI_Footnotes_Task {
          * Browsers may need to be prevented from logging these clicks in the browsing history,
          * as logging compromises the usability of the 'return to previous' button in browsers.
          * For that purpose, and for scroll animation, this linking is performed by JavaScript.
+         * 
          *
-         * The link elements have been added and are present @since 2.0.0.
-         * Then the link addresses were removed @since 2.0.4.
-         * Then the presence of <a> elements was made optional
-         * @since 2.1.4
-         * 2020-11-25T1306+0100
+         * @since 2.0.0  the link elements have been added and are present.
+         * @since 2.0.4  the link addresses were removed.
+         * @since 2.1.4  the presence of <a> elements was made optional, 2020-11-25T1306+0100
          */
         $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
 

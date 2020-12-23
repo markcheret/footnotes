@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.2.5
+Stable Tag: 2.2.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,8 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.3.0d0 =
-- Add: Customization: support for custom templates
+= 2.2.6 =
+- Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2
+- Add: Customization: support for custom templates in sibling folder (should be filterable function, thanks to @misfist)
 
 = 2.2.5 =
 - Add: Dashboard: Footnotes numbering: add support for Ibid. notation in suggestions for guidance, thanks to @meglio
@@ -109,7 +110,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Add: Reference container: support for custom position shortcode, thanks to @hamshe
 - Update: Priority levels: update the notice in the dashboard Priority tab
 - Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
-- Add: Start/end short codes: more predefined options
+- Add: Start/end short codes: more predefined options, thanks to @nikelaos
 - Add: Numbering styles: lowercase Roman numerals support
 - Update: Dashboard: Tooltip settings: grouped into 3 thematic containers
 - Update: Dashboard: Main settings: grouped into 3 specific containers
@@ -122,9 +123,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Add: Footnotes mention in the footer: more options
 
 = 2.1.6 =
-- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict
-- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content
-- Bugfix: Reference container, tooltips: URL wrap: fix issues with span by catch-all negative lookbehind 
+- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman
+- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
+- Bugfix: Reference container, tooltips: URL wrap: fix regex, thanks to @a223123131
 - Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap
 - Update: Dashboard: reorder tabs and update tab labels
 - Bugfix: Dashboard: remove Expert mode enable setting since permanently enabled as 'Priority'
@@ -132,7 +133,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Localization: conform to WordPress plugin language file name scheme
 
 = 2.1.5 =
-- Bugfix: Reference container, tooltips: URL wrap: exclude image source too
+- Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21
 
 = 2.1.4 =
 - Add: Dashboard: Main settings: add settings for scroll offset and duration
@@ -156,12 +157,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
 - Bugfix: Dashboard: Tooltip settings: Truncation length: change input box type from text to numeric
 - Update: Dashboard: Notices: use explicit italic style
-- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box
+- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box, thanks to @nikelaos
 - Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
 - Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
 
 = 2.1.3 =
-- Bugfix: disable widget_text hook by default to fix accordions declaring headings as widgets
+- Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets
+- Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos
 - Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy
 - Bugfix: Reference container: fix width in mobile view by URL wrapping wrt Unicode-non-conformant browsers
 - Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on
@@ -170,9 +172,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.2 =
 - Bugfix: Layout: Reference container: Backlinks: no underline on hover cell when combining identicals is on
-- Bugfix: Dashboard: priority level settings for all other hooks
+- Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos
 - Update: Dashboard: WordPress documentation URLs of the hooks
-- Update: Dashboard: feature description for the hooks priority level settings (not yet localized)
+- Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos
 
 = 2.1.1 =
 - Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity, thanks to @happyches
@@ -183,8 +185,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: UI: Tooltips: optional alternative JS implementation with CSS animation to fix site issues
 - Bugfix: UI: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
 - Bugfix: UI: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
-- Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support
-- Bugfix: Layout: Reference container: fix relative positioning by priority level setting
+- Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support, thanks to @cwbayer
+- Bugfix: Layout: Reference container: fix relative positioning by priority level setting, thanks to june01, @spaceling, @imeson
 - Bugfix: Layout: Reference container: Backlink symbol: select box to disable instead of space character
 - Bugfix: Layout: Reference container: Footnote number links: disable bottom border for theme compatibility
 - Bugfix: Layout: Reference container: option to restore 3-column layout when combined are turned off
@@ -221,6 +223,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: UI: Reference container: Collapse button fully clickable, not sign only
 - Bugfix: UI: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
 - Update: UX: Tooltip: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
+- Update: UX: Tooltip: set fade duration to 200ms both ways (was 200 in and 2000 out since 2.0.0, 0 in and 100 out before)
 - BUGFIX: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility)
 
 = 2.0.5 =
@@ -256,7 +259,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Disabled underline in footnote anchors, underline only on hover
 
 = 2.0.1 =
-- Bugfix: Fixed public.css
+- Bugfix: enforced borderless table cells with !important property, thanks to @ragonesi
 - Update: Language fr_FR along with es_ES, de_AT, de_DE, en_GB, en_US for 2.0
 
 = 2.0.0 =

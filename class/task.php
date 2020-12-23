@@ -47,7 +47,7 @@
  * 2.2.6  URL wrap: make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
  * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
  *
- * Last modified:  2020-12-23T0423+0100
+ * Last modified:  2020-12-23T1047+0100
  */
 
 // If called directly, abort:
@@ -669,9 +669,11 @@ class MCI_Footnotes_Task {
              * URLs may be a query string in a URL:
              * @since 2.2.6  make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
              * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
+             * @since 2.2.7  revert that change in the exclusion regex, thanks to @spiralofhope2 and @spaceling   2020-12-23T1046+0100
+             * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
              */
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
-                $l_str_FootnoteText = preg_replace( '#(?<!\w=[\'"]?)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+                $l_str_FootnoteText = preg_replace( '#(?<!\w=[\'"])(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
             }
 
             // Text to be displayed instead of the footnote

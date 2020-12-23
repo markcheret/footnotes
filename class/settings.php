@@ -31,7 +31,7 @@
  * 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
- * Last modified: 2020-12-20T0518+0100
+ * Last modified: 2020-12-23T0747+0100
  */
 
 
@@ -399,9 +399,9 @@ class MCI_Footnotes_Settings {
      * @var string
      *
      * 2020-11-16T0859+0100
-	 * 
-	 * option to enable/disable the superscript element for referrers, thanks to @cwbayer
-	 * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
+     * 
+     * option to enable/disable the superscript element for referrers, thanks to @cwbayer
+     * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
      */
     const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
@@ -558,11 +558,11 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.0
      * @var array
-	 * 
-	 * Edited multiple times.
-	 * 
-	 * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
-	 * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+     * 
+     * Edited multiple times.
+     * 
+     * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
+     * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
      */
     private $a_arr_Default = array(
 
@@ -624,7 +624,7 @@ class MCI_Footnotes_Settings {
             // whether to use link elements:
             self::C_BOOL_LINK_ELEMENT_ENABLED => 'yes',
 
-			// excerpt should be disabled:
+            // excerpt should be disabled:
             self::C_BOOL_FOOTNOTES_IN_EXCERPT => 'no',
 
             // since removal of the_post hook, expert mode is no danger zone

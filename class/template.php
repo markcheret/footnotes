@@ -10,9 +10,10 @@
  * @since 2.0.3  further minify template content
  * @since 2.0.4  regex to delete multiple spaces
  * 
- * @since 2.3.0  support for custom templates   2020-12-19T0606+0100
+ * @since 2.3.0  support for custom templates in fixed location, while failing to add filter thanks to @misfist   2020-12-19T0606+0100
+ * @see <https://wordpress.org/support/topic/template-override-filter/#post-13811141>
  * 
- * Last modified: 2020-12-19T0713+0100
+ * Last modified: 2020-12-20T0200+0100
  */
 
 
@@ -75,6 +76,9 @@ class MCI_Footnotes_Template {
      * @since 2.0.4  regex to delete multiple spaces
      * 
      * @since 2.3.0  support for custom templates   2020-12-19T0606+0100
+     * @see <https://wordpress.org/support/topic/template-override-filter/#post-13811141>
+     * 
+     * @since 2.3.0  regex to delete space before >
      */
     public function __construct($p_str_FileType, $p_str_FileName, $p_str_Extension = "html") {
         // no template file type and/or file name set
@@ -87,6 +91,7 @@ class MCI_Footnotes_Template {
         $l_str_TemplateFile = dirname(__FILE__) . "/../../footnotes-custom/templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
         if (!file_exists($l_str_TemplateFile)) {
 
+            // else load internal template:
             // get absolute path to the specified template file
             $l_str_TemplateFile = dirname(__FILE__) . "/../templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
             // Template file does not exist
@@ -95,11 +100,13 @@ class MCI_Footnotes_Template {
             }
         }
 
+        // minify template to some extent:
         // get Template file content
         $this->a_str_OriginalContent = str_replace("\n", "", file_get_contents($l_str_TemplateFile));
         $this->a_str_OriginalContent = str_replace("\r", "", $this->a_str_OriginalContent);
         $this->a_str_OriginalContent = str_replace("\t", " ", $this->a_str_OriginalContent);
         $this->a_str_OriginalContent = preg_replace('# +#', " ", $this->a_str_OriginalContent);
+        $this->a_str_OriginalContent = str_replace(" >", ">", $this->a_str_OriginalContent);
         $this->reload();
     }
 

@@ -17,10 +17,12 @@
  * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
  * 2.1.1  fix ref container by option restoring 3-column layout
  * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
+ * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
+ * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
  * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  * 2.1.4  more settings container keys  2020-12-03T0955+0100
  * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
- * 2.1.6  set default priority level of the_content to 98   2020-12-10T0447+0100
+ * 2.1.6  set default priority level of the_content to 98 to prevent plugin conflict, thanks to @marthalindeman   2020-12-10T0447+0100
  * 2.2.0  reference container custom position shortcode, thanks to @hamshe   2020-12-13T2056+0100
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
  * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
@@ -29,7 +31,7 @@
  * 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
- * Last modified: 2020-12-18T1632+0100
+ * Last modified: 2020-12-23T0747+0100
  */
 
 
@@ -397,6 +399,9 @@ class MCI_Footnotes_Settings {
      * @var string
      *
      * 2020-11-16T0859+0100
+     * 
+     * option to enable/disable the superscript element for referrers, thanks to @cwbayer
+     * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
      */
     const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
@@ -553,6 +558,11 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.0
      * @var array
+     * 
+     * Edited multiple times.
+     * 
+     * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
+     * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
      */
     private $a_arr_Default = array(
 

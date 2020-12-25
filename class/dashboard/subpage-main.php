@@ -26,8 +26,10 @@
  * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
  * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+ * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
+ * @see <https://wordpress.org/support/topic/borders-25/>
  *
- * Last modified: 2020-12-25T0355+0100
+ * Last modified: 2020-12-25T2336+0100
  */
 
 /**
@@ -231,6 +233,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-border" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER, __("Border under the heading:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "border" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER, $l_arr_Enabled),
+
+                "label-row-borders" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, __("Borders around the table rows:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "row-borders" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, $l_arr_Enabled),
 
                 "label-collapse" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, __("Collapse by default:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "collapse" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, $l_arr_Enabled),
@@ -491,7 +496,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Edited heading   2020-12-12T1453+0100
      * @since 2.1.1   more settings and notices, thanks to @nikelaos
-	 * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+     * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
      * @since 2.2.0   dedicated to the excerpt setting and its notices   2020-12-12T1454+0100
      */
     public function Excerpts() {
@@ -896,7 +901,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * empty should be interpreted as PHP_INT_MAX,
      * but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
      * define -1 as PHP_INT_MAX instead
-	 * 
+     *
      * @since 2.2.9  removed the warning about the widget text hook  2020-12-25T0348+0100
      * @since 2.2.9  added guidance for the widget text hook  2020-12-25T0353+0100
      */

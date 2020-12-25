@@ -55,8 +55,11 @@
  * @since 2.2.9  Reference containers, widget_text hook: support for multiple containers in a page, thanks to @justbecuz   2020-12-25T0338+0100
  * @see <https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830>
  * @since 2.2.9  URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference  2020-12-25T1251+0100
+ * @since 2.2.10 URL wrap: support also file transfer protocol URLs  2020-12-25T2220+0100
+ * @since 2.2.10 Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh  2020-12-25T2304+0100
+ * @see <https://wordpress.org/support/topic/borders-25/>
  *
- * Last modified:  2020-12-25T1301+0100
+ * Last modified:  2020-12-25T2352+0100
  */
 
 // If called directly, abort:
@@ -233,6 +236,13 @@ class MCI_Footnotes_Task {
             echo ".footnote_container_prepare > ";
             echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT);
             echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
+        }
+
+        // ref container table borders:
+        if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE))) {
+            echo ".footnotes_table, .footnotes_plugin_reference_row {";
+            echo "border: 1px solid #060606;";
+            echo " !important;}\r\n";
         }
 
         // ref container first column width and max-width:
@@ -626,7 +636,7 @@ class MCI_Footnotes_Task {
      * @param bool $p_bool_ConvertHtmlChars html encode settings, default true.
      * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
      * @return string
-     * 
+     *
      * Edited since 2.0.0
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
@@ -720,9 +730,10 @@ class MCI_Footnotes_Task {
              * @since 2.2.9  account for RFC 2396 allowed characters in parameter names  2020-12-24T1956+0100
              * @see <https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names>
              * @since 2.2.9  exclude URLs also where the equals sign is preceded by an entity or character reference  2020-12-25T1234+0100
+             * @since 2.2.10 support also file transfer protocol URLs  2020-12-25T2220+0100
              */
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
-                $l_str_FootnoteText = preg_replace( '#(?<![-\w\.!~\*\'\(\);]=[\'"])(?<![-\w\.!~\*\'\(\);]=)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+                $l_str_FootnoteText = preg_replace( '#(?<![-\w\.!~\*\'\(\);]=[\'"])(?<![-\w\.!~\*\'\(\);]=)((ht|f)tps?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
             }
 
             // Text to be displayed instead of the footnote
@@ -920,15 +931,15 @@ class MCI_Footnotes_Task {
          * The comma in enumerations is not generally preferred.
          * @since 2.1.4 the separator is optional, has options, and is customizable:
          */
-        
+
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED))) {
-            
+
             // if so, check if it is customized:
             $l_str_Separator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM);
-            
+
             if (empty($l_str_Separator)) {
-                
+
                 // if it is not, check which option is on:
                 $l_str_SeparatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_OPTION);
                 switch ($l_str_SeparatorOption) {
@@ -937,9 +948,9 @@ class MCI_Footnotes_Task {
                     case 'en_dash'  : $l_str_Separator = '&nbsp;&#x2013;'; break;
                 }
             }
-            
+
         } else {
-            
+
             $l_str_Separator = '';
         }
 
@@ -951,15 +962,15 @@ class MCI_Footnotes_Task {
          * making it optional was envisaged.
          * @since 2.1.4 the terminator is optional, has options, and is customizable:
          */
-        
+
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED))) {
-            
+
             // if so, check if it is customized:
             $l_str_Terminator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM);
-            
+
             if (empty($l_str_Terminator)) {
-                
+
                 // if it is not, check which option is on:
                 $l_str_TerminatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_OPTION);
                 switch ($l_str_TerminatorOption) {
@@ -968,9 +979,9 @@ class MCI_Footnotes_Task {
                     case 'colon'      : $l_str_Terminator = ':'; break;
                 }
             }
-            
+
         } else {
-            
+
             $l_str_Terminator = '';
         }
 

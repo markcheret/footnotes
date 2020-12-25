@@ -31,8 +31,10 @@
  * @since 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  * @since 2.2.9  set default priority level of widget_text to 98 like for the_content (since 2.1.6), thanks to @marthalindeman   2020-12-25T1646+0100
+ * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
+ * @see <https://wordpress.org/support/topic/borders-25/>
  *
- * Last modified: 2020-12-25T1647+0100
+ * Last modified: 2020-12-25T2336+0100
  */
 
 
@@ -400,7 +402,7 @@ class MCI_Footnotes_Settings {
      * @var string
      *
      * 2020-11-16T0859+0100
-     * 
+     *
      * option to enable/disable the superscript element for referrers, thanks to @cwbayer
      * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
      */
@@ -526,6 +528,18 @@ class MCI_Footnotes_Settings {
     const C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER      = "footnotes_inputfield_reference_container_label_bottom_border";
 
     /**
+     * Settings Container Key for table cell borders, thanks to @noobishh
+     * @see <https://wordpress.org/support/topic/borders-25/>
+     *
+     * @since 2.2.10
+     * @var bool
+     *
+     * 2020-12-25T2311+0100
+     */
+    const C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE      = "footnotes_inputfield_reference_container_row_borders_enable";
+
+
+    /**
      * Stores a singleton reference of this class.
      *
      * @author Stefan Herndler
@@ -559,9 +573,9 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.0
      * @var array
-     * 
+     *
      * Edited multiple times.
-     * 
+     *
      * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
      * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
      */
@@ -591,6 +605,9 @@ class MCI_Footnotes_Settings {
 
             // whether to enqueue additional style sheet:
             self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT               => 'none',
+
+            // table cell borders:
+            self::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE    => 'no',
 
             // backlink symbol:
             self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  => 'no',
@@ -751,8 +768,8 @@ class MCI_Footnotes_Settings {
             // interpret -1 as PHP_INT_MAX instead
             self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
 
-			// Priority level of the_content and of widget_text as the only relevant
-			// hooks must be less than 99 because social buttons may yield scripts
+            // Priority level of the_content and of widget_text as the only relevant
+            // hooks must be less than 99 because social buttons may yield scripts
             // that contain the strings '((' and '))', i.e. the default footnote
             // start and end short codes, causing issues with fake footnotes.
             self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 98,

@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.2.9
+Stable Tag: 2.2.10
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,6 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.2.10 =
+- Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh
+- Bugfix: Reference container: add missing container ID in function name in one of the four table row templates
+- Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs
 
 = 2.2.9 =
 - Bugfix: Reference containers, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz

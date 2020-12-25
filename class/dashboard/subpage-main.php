@@ -6,28 +6,28 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  *
- * Edited for:
- * 2.0.4  restore arrow settings  2020-11-01T0509+0100
- * 2.1.0  read-on button label  2020-11-08T2148+0100
- * 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
- * 2.1.2  priority level settings for all other hooks, thanks to @nikelaos
+ * Edited:
+ * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
+ * @since 2.1.0  read-on button label  2020-11-08T2148+0100
+ * @since 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
+ * @since 2.1.2  priority level settings for all other hooks, thanks to @nikelaos
  * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705>
- * 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
- * 2.1.6  slight UI reordering   2020-12-09T1114+0100
- * 2.1.6  option to disable URL line wrapping   2020-12-09T1604+0100
- * 2.1.6  remove expert mode setting as outdated   2020-12-09T2105+0100
- * 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos
+ * @since 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
+ * @since 2.1.6  slight UI reordering   2020-12-09T1114+0100
+ * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1604+0100
+ * @since 2.1.6  remove expert mode setting as outdated   2020-12-09T2105+0100
+ * @since 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos
  * @see <https://wordpress.org/support/topic/doesnt-work-with-mailpoet/>
- * 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
- * 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
- * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
- * 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1244+0100
- * 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2021+0100
+ * @since 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
+ * @since 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
+ * @since 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
+ * @since 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1244+0100
+ * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2021+0100
  * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
- * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+ * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  *
- * Last modified: 2020-12-20T0533+0100
+ * Last modified: 2020-12-25T0355+0100
  */
 
 /**
@@ -79,11 +79,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @return array
      *
      * Edited:
-     * 2.1.6  tabs reordered and renamed
+     * @since 2.1.6  tabs reordered and renamed
      * @see customization vs configuration
      * <https://www.linkedin.com/pulse/20140610191154-4746170-configuration-vs-customization-when-and-why-would-i-implement-each>
      *
-     * 2.1.6  removed if statement around expert tab
+     * @since 2.1.6  removed if statement around expert tab
      */
     protected function getSections() {
         $l_arr_Tabs = array();
@@ -160,7 +160,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Completed:
      * @since 2.1.4: layout and typography options   2020-11-30T0548+0100
-     * 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+     * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
      * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
      */
     public function ReferenceContainer() {
@@ -808,12 +808,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 1.5.0
      *
      * Edited:
-     * 2.1.6  drop localized notices for CSS classes as the number increased to 16
+     * @since 2.1.6  drop localized notices for CSS classes as the number increased to 16
      *        list directly in the template, as CSS is in English anyway
-     *        @see templates/dashboard/customize-css.html
+     * @see templates/dashboard/customize-css.html
      *         2020-12-09T1113+0100
      *
-     * 2.2.2  migrate Custom CSS to a dedicated tab   2020-12-15T0506+0100
+     * @since 2.2.2  migrate Custom CSS to a dedicated tab   2020-12-15T0506+0100
      */
     public function CustomCSS() {
         // load template file
@@ -896,6 +896,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * empty should be interpreted as PHP_INT_MAX,
      * but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
      * define -1 as PHP_INT_MAX instead
+	 * 
+     * @since 2.2.9  removed the warning about the widget text hook  2020-12-25T0348+0100
+     * @since 2.2.9  added guidance for the widget text hook  2020-12-25T0353+0100
      */
     public function LookupHooks() {
         // load template file
@@ -908,7 +911,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "description-1" => __('The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "description-2" => sprintf(__('For the_content, this figure must be lower than %1$d so that certain strings added by a plugin running at %1$d may not be mistaken as a footnote. This makes also sure that the reference container displays above a feature inserted by a plugin running at %2$d.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 99, 1200),
                 "description-3" => sprintf(__('%1$d is lowest priority, %2$d is highest. To set priority level to lowest, set it to %3$d, interpreted as %1$d, the constant %4$s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), PHP_INT_MAX, 0, -1, 'PHP_INT_MAX'),
-                "description-4" => __('The widget_text hook must be disabled, because a reference container is inserted at the bottom of each widget with footnotes, but multiple containers in a page are not functional.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-4" => __('The widget_text hook must be enabled either when footnotes are present in theme text widgets, or when Elementor accordions or toggles shall have a reference container per section. If they should not, this hook must be disabled.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "head-hook" => __("WordPress hook function name", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 "head-checkbox" => __("Activate", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),

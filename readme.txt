@@ -80,11 +80,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.2.9d2 =
+- Bugfix: Reference containers, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz
+- Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names
+- Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference
+
 = 2.2.8 =
 - Bugfix: Reference container, tooltips: URL wrap: correct lookbehind by duplicating it with and without quotation mark class
 
 = 2.2.7 =
-- Bugfix: Reference container, tooltips: URL wrap: revert the change in the exclusion regex, thanks to @rjl20 and @spaceling
+- Bugfix: Reference container, tooltips: URL wrap: revert the change in the regex, thanks to @rjl20, @spaceling, @friedrichnorth, @bernardzit
 
 = 2.2.6 =
 - Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2

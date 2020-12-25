@@ -6,32 +6,33 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:43
  *
- * Edited for:
- * 2.0.4  restore arrow settings  2020-11-02T2115+0100
- * 2.0.7  remove hook the_post  2020-11-06T1342+0100
- * 2.1.0  add read-on button label customization  2020-11-08T2149+0100
- * 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
- * 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
- * 2.1.1  fix superscript by making it optional
- * 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
+ * Edited:
+ * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
+ * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
+ * @since 2.1.0  add read-on button label customization  2020-11-08T2149+0100
+ * @since 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
+ * @since 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
+ * @since 2.1.1  fix superscript by making it optional
+ * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
  * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
- * 2.1.1  fix ref container by option restoring 3-column layout
- * 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
+ * @since 2.1.1  fix ref container by option restoring 3-column layout
+ * @since 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
  * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
- * 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
- * 2.1.4  more settings container keys  2020-12-03T0955+0100
- * 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
- * 2.1.6  set default priority level of the_content to 98 to prevent plugin conflict, thanks to @marthalindeman   2020-12-10T0447+0100
- * 2.2.0  reference container custom position shortcode, thanks to @hamshe   2020-12-13T2056+0100
+ * @since 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
+ * @since 2.1.4  more settings container keys  2020-12-03T0955+0100
+ * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
+ * @since 2.1.6  set default priority level of the_content to 98 to prevent plugin conflict, thanks to @marthalindeman   2020-12-10T0447+0100
+ * @since 2.2.0  reference container custom position shortcode, thanks to @hamshe   2020-12-13T2056+0100
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
- * 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
- * 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1256+0100
- * 2.2.5  alternative tooltip position settings  2020-12-17T0907+0100
- * 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
+ * @since 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
+ * @since 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1256+0100
+ * @since 2.2.5  alternative tooltip position settings  2020-12-17T0907+0100
+ * @since 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+ * @since 2.2.9  set default priority level of widget_text to 98 like for the_content (since 2.1.6), thanks to @marthalindeman   2020-12-25T1646+0100
  *
- * Last modified: 2020-12-23T0747+0100
+ * Last modified: 2020-12-25T1647+0100
  */
 
 
@@ -331,7 +332,7 @@ class MCI_Footnotes_Settings {
      * @var string
      *
      * Edited:
-     * 2.2.2  migrate Custom CSS to a dedicated tab  2020-12-15T0520+0100
+     * @since 2.2.2  migrate Custom CSS to a dedicated tab  2020-12-15T0520+0100
      */
     const C_STR_CUSTOM_CSS = "footnote_inputfield_custom_css";
     const C_STR_CUSTOM_CSS_NEW = "footnote_inputfield_custom_css_new";
@@ -750,14 +751,14 @@ class MCI_Footnotes_Settings {
             // interpret -1 as PHP_INT_MAX instead
             self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    => PHP_INT_MAX,
 
-            // Priority level of the_content, as the only relevant priority level
-            // must be less than 99 because social buttons may yield scripts that
-            // contain the strings '((' and '))', i.e. the default footnote start
-            // and end short codes, causing issues with fake footnotes.
+			// Priority level of the_content and of widget_text as the only relevant
+			// hooks must be less than 99 because social buttons may yield scripts
+            // that contain the strings '((' and '))', i.e. the default footnote
+            // start and end short codes, causing issues with fake footnotes.
             self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  => 98,
             self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  => PHP_INT_MAX,
             self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
-            self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  => PHP_INT_MAX,
+            self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  => 98,
 
         ),
 

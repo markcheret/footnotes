@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.2.8
+Stable Tag: 2.2.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,8 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.2.9d2 =
+= 2.2.9 =
 - Bugfix: Reference containers, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz
+- Update: Priority levels: set widget_text default to 98 and update its description in the dashboard Priority level tab
 - Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names
 - Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference
 

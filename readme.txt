@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.2.8
+Stable Tag: 2.2.10
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,11 +80,22 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.2.10 =
+- Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh
+- Bugfix: Reference container: add missing container ID in function name in one of the four table row templates
+- Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs
+
+= 2.2.9 =
+- Bugfix: Reference containers, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz
+- Update: Priority levels: set widget_text default to 98 and update its description in the dashboard Priority level tab
+- Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names
+- Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference
+
 = 2.2.8 =
 - Bugfix: Reference container, tooltips: URL wrap: correct lookbehind by duplicating it with and without quotation mark class
 
 = 2.2.7 =
-- Bugfix: Reference container, tooltips: URL wrap: revert the change in the exclusion regex, thanks to @rjl20 and @spaceling
+- Bugfix: Reference container, tooltips: URL wrap: revert the change in the regex, thanks to @rjl20, @spaceling, @friedrichnorth, @bernardzit
 
 = 2.2.6 =
 - Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2

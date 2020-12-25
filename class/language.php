@@ -6,10 +6,10 @@
  * @since 1.5.0 14.09.14 17:47
  * 
  * Edited for:
- * 2.0.0  PHP-related bug fix thanks to MatKus (@matkus)   2020-10-26T1609+0100
+ * 2.0.0  PHP-related bug fix thanks to @matkus   2020-10-26T1609+0100
  * 2.1.6  conform to WordPress plugin language file name scheme   2020-12-08T1931+0100
  * 
- * Last modified:  2020-12-11T1449+0100
+ * Last modified:  2020-12-25T0344+0100
  */
 
 /**
@@ -35,7 +35,7 @@ class MCI_Footnotes_Language {
      * @author Stefan Herndler
      * @since 1.5.0
      * 
-     * @since 2.0.0  PHP 7.1 related bug fix thanks to MatKus (@matkus)
+     * @since 2.0.0  PHP 7.1 related bug fix thanks to @matkus
      * @see <https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/>
      * @see <https://www.php.net/manual/en/migration71.incompatible.php>
      */
@@ -46,7 +46,7 @@ class MCI_Footnotes_Language {
             // 2020-10-26T1609+0100
             return;
         }
-        // fallback to english
+        // fall back to British English:
         self::load("en_GB");
     }
 

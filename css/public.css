@@ -5,7 +5,7 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.8
+ * Version: 2.2.10
  *
  *     Classes added to public.css may be added to the
  *     list documenting CSS classes for Custom CSS if
@@ -20,7 +20,7 @@
  * @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
  * @see <https://wordpress.org/support/topic/counter-styles-not-working/>
  * 
- * Last modified: 2020-12-23T1109+0100
+ * Last modified: 2020-12-25T2357+0100
  */
 
 
@@ -287,7 +287,7 @@ enforced borderless table cells with !important property, thanks to @ragonesi
 .footnote_plugin_index_combi,
 .footnote_plugin_link,
 .footnote_plugin_text {
-    border:none !important;
+    border: none !important;
     text-align: left !important;
     vertical-align: top !important;
     padding: 5px 6px 10px 0 !important;

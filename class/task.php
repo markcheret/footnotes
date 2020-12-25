@@ -46,11 +46,20 @@
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  * @since 2.2.6  URL wrap: make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
  * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
- * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20 and @spaceling   2020-12-23T1046+0100
+ * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20, @spaceling, @friedrichnorth, @bernardzit   2020-12-23T1046+0100
  * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
- * @since 2.2.8  correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1108+0100
+ * @see <https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/>
+ * @since 2.2.8  URL wrap: correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1108+0100
+ * @since 2.2.9  URL wrap: account for RFC 2396 allowed characters in parameter names  2020-12-24T1956+0100
+ * @see <https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names>
+ * @since 2.2.9  Reference containers, widget_text hook: support for multiple containers in a page, thanks to @justbecuz   2020-12-25T0338+0100
+ * @see <https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830>
+ * @since 2.2.9  URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference  2020-12-25T1251+0100
+ * @since 2.2.10 URL wrap: support also file transfer protocol URLs  2020-12-25T2220+0100
+ * @since 2.2.10 Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh  2020-12-25T2304+0100
+ * @see <https://wordpress.org/support/topic/borders-25/>
  *
- * Last modified:  2020-12-23T1108+0100
+ * Last modified:  2020-12-25T2352+0100
  */
 
 // If called directly, abort:
@@ -90,6 +99,37 @@ class MCI_Footnotes_Task {
      * @var string
      */
     public static $a_str_Prefix = "";
+
+    /**
+     * INFINITE SCROLL / AUTOLOAD, ARCHIVE VIEW
+     *
+     * Multiple posts are appended to each other, functions and note IDs must be disambiguated.
+     *
+     * Contribution thankfully received from @docteurfitness
+     * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
+     * @since 2.0.5
+     * @var int
+     *
+     * post ID to make everything unique wrt infinite scroll and archive view:
+     * (will be filled in by the next possible occasion; PHP seems to prohibit doing so here)
+     */
+    public static $l_int_PostId = '';
+
+    /**
+     * Reference container ID
+     *
+     * This ID disambiguates multiple reference containers in a page
+     * as they may occur when the widget_text hook is active and the page
+     * is built with Elementor and has an accordion or similar toggle sections.
+     *
+     * Is incremented each time after a reference container is inserted.
+     *
+     * Thanks to @justbecuz
+     * @see <https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830>
+     * @since 2.2.9
+     * @var int
+     */
+    public static $l_int_ReferenceContainerId = 1;
 
     /**
      * Register WordPress Hooks to replace Footnotes in the content of a public page.
@@ -183,7 +223,7 @@ class MCI_Footnotes_Task {
      */
     public function wp_head() {
 
-        // no switch out to insert start tag:
+        // insert start tag without switching out of PHP:
         echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
 
         // display ref container on home page:
@@ -196,6 +236,13 @@ class MCI_Footnotes_Task {
             echo ".footnote_container_prepare > ";
             echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT);
             echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
+        }
+
+        // ref container table borders:
+        if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE))) {
+            echo ".footnotes_table, .footnotes_plugin_reference_row {";
+            echo "border: 1px solid #060606;";
+            echo " !important;}\r\n";
         }
 
         // ref container first column width and max-width:
@@ -368,7 +415,7 @@ class MCI_Footnotes_Task {
         }
         echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW);
 
-        // no switch out to insert end tag:
+        // insert end tag without switching out of PHP:
         echo "\r\n</style>\r\n";
 
         // alternative tooltip script printed formatted not minified:
@@ -543,13 +590,13 @@ class MCI_Footnotes_Task {
      * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126>
      */
     public function exec($p_str_Content, $p_bool_OutputReferences = false, $p_bool_HideFootnotesText = false) {
+
         // replace all footnotes in the content, settings are converted to html characters
         $p_str_Content = $this->search($p_str_Content, true, $p_bool_HideFootnotesText);
         // replace all footnotes in the content, settings are NOT converted to html characters
         $p_str_Content = $this->search($p_str_Content, false, $p_bool_HideFootnotesText);
 
-        // append the reference container
-        // or insert at shortcode: added for 2.2.0, thanks to @hamshe
+        // append the reference container or insert at shortcode:
         $l_str_ReferenceContainerPositionShortcode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE);
 
         if ($p_bool_OutputReferences) {
@@ -563,6 +610,9 @@ class MCI_Footnotes_Task {
                 $p_str_Content .= $this->ReferenceContainer();
 
             }
+
+            // increment the container ID:
+            self::$l_int_ReferenceContainerId++;
         }
 
         // delete position shortcode should any remain e.g. when ref container is in footer, thanks to @hamshe:
@@ -573,7 +623,7 @@ class MCI_Footnotes_Task {
             self::$a_bool_AllowLoveMe = false;
             $p_str_Content = str_replace(MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG, "", $p_str_Content);
         }
-        // return the content with replaced footnotes and optional reference container append
+        // return the content with replaced footnotes and optional reference container appended:
         return $p_str_Content;
     }
 
@@ -586,12 +636,13 @@ class MCI_Footnotes_Task {
      * @param bool $p_bool_ConvertHtmlChars html encode settings, default true.
      * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
      * @return string
+     *
+     * Edited since 2.0.0
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
 
         // post ID to make everything unique wrt infinite scroll and archive view
-        global $l_int_PostId;
-        $l_int_PostId = get_the_id();
+        self::$l_int_PostId = get_the_id();
 
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
@@ -631,7 +682,7 @@ class MCI_Footnotes_Task {
 
         // search footnotes short codes in the content
         do {
-            // get first occurrence of the footnote short code [start]
+            // get first occurrence of the footnote start tag short code:
             $i_int_len_Content = strlen($p_str_Content);
             if ($l_int_PosStart > $i_int_len_Content) $l_int_PosStart = $i_int_len_Content;
             $l_int_PosStart = strpos($p_str_Content, $l_str_StartingTag, $l_int_PosStart);
@@ -639,7 +690,7 @@ class MCI_Footnotes_Task {
             if ($l_int_PosStart === false) {
                 break;
             }
-            // get first occurrence of a footnote short code [end]
+            // get first occurrence of the footnote end tag short code:
             $l_int_PosEnd = strpos($p_str_Content, $l_str_EndingTag, $l_int_PosStart);
             // no short code found, stop here
             if ($l_int_PosEnd === false) {
@@ -651,33 +702,38 @@ class MCI_Footnotes_Task {
             // get footnote text
             $l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
 
-            
+
             /**
              * URL line wrap
-             * 
+             *
              * Fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element,
              * to prevent them from hanging out of the tooltip in non-Unicode-compliant user agents.
              * @see public.css
-             * 
+             *
              * spare however values of the href and the src arguments!
              * @since 2.1.5  exclude image source too, thanks to @bjrnet21
              * @see <https://wordpress.org/support/topic/2-1-4-breaks-on-my-site-images-dont-show/>
-             * 
+             *
              * Even ARIA labels may take a URL as value, so use \w=[\'"] as a catch-all    2020-12-10T1005+0100
              * @since 2.1.6  add catch-all exclusion to fix URL line wrapping, thanks to @a223123131   2020-12-09T1921+0100
              * @see <https://wordpress.org/support/topic/broken-layout-starting-version-2-1-4/>
-             * 
+             *
              * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
-             * 
+             *
              * URLs may be a query string in a URL:
              * @since 2.2.6  make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
              * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
-             * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20 and @spaceling   2020-12-23T1046+0100
+             * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20, @spaceling, @friedrichnorth, @bernardzit   2020-12-23T1046+0100
              * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
-			 * @since 2.2.8  correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1107+0100
+             * @see <https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/>
+             * @since 2.2.8  correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1107+0100
+             * @since 2.2.9  account for RFC 2396 allowed characters in parameter names  2020-12-24T1956+0100
+             * @see <https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names>
+             * @since 2.2.9  exclude URLs also where the equals sign is preceded by an entity or character reference  2020-12-25T1234+0100
+             * @since 2.2.10 support also file transfer protocol URLs  2020-12-25T2220+0100
              */
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
-                $l_str_FootnoteText = preg_replace( '#(?<!\w=[\'"])(?<!\w=)(https?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
+                $l_str_FootnoteText = preg_replace( '#(?<![-\w\.!~\*\'\(\);]=[\'"])(?<![-\w\.!~\*\'\(\);]=)((ht|f)tps?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );
             }
 
             // Text to be displayed instead of the footnote
@@ -687,7 +743,7 @@ class MCI_Footnotes_Task {
             if (!$p_bool_HideFootnotesText) {
                 $l_int_Index = MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
-                // display only an excerpt of the footnotes text if enabled
+                // display only a truncated footnote text if option enabled:
                 $l_str_ExcerptText = $l_str_FootnoteText;
                 $l_bool_EnableExcerpt = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED));
                 $l_int_MaxLength = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH));
@@ -699,8 +755,10 @@ class MCI_Footnotes_Task {
                         $l_str_ExcerptText  = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
                         $l_str_ExcerptText .= '&nbsp;&#x2026; ';
                         $l_str_ExcerptText .= '<span class="footnote_tooltip_continue" ';
-                        $l_str_ExcerptText .= 'onclick="footnote_moveToAnchor_' . $l_int_PostId;
-                        $l_str_ExcerptText .= '(\'footnote_plugin_reference_' . $l_int_PostId;
+                        $l_str_ExcerptText .= 'onclick="footnote_moveToAnchor_' . self::$l_int_PostId;
+                        $l_str_ExcerptText .= '_' . self::$l_int_ReferenceContainerId;
+                        $l_str_ExcerptText .= '(\'footnote_plugin_reference_' . self::$l_int_PostId;
+                        $l_str_ExcerptText .= '_' . self::$l_int_ReferenceContainerId;
                         $l_str_ExcerptText .= '_' . $l_int_Index . '\');">';
                         $l_str_ExcerptText .= MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL);
                         $l_str_ExcerptText .= '</span>';
@@ -721,15 +779,16 @@ class MCI_Footnotes_Task {
                 // fill in 'templates/public/footnote.html':
                 $l_obj_Template->replace(
                     array(
-                        "post_id"    => $l_int_PostId,
-                        "id"         => $l_int_Index,
-                        "link-start" => $l_str_LinkSpan == 'a' ?  '<a>' : '',
-                        "link-end"   => $l_str_LinkSpan == 'a' ? '</a>' : '',
-                        "sup-span"   => $l_str_SupSpan,
-                        "before"     => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
-                        "index"      => $l_int_Index,
-                        "after"      => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
-                        "text"       => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
+                        "post_id"      => self::$l_int_PostId,
+                        "container_id" => self::$l_int_ReferenceContainerId,
+                        "note_id"      => $l_int_Index,
+                        "link-start"   => $l_str_LinkSpan == 'a' ?  '<a>' : '',
+                        "link-end"     => $l_str_LinkSpan == 'a' ? '</a>' : '',
+                        "sup-span"     => $l_str_SupSpan,
+                        "before"       => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
+                        "index"        => $l_int_Index,
+                        "after"        => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
+                        "text"         => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
                     )
                 );
                 $l_str_FootnoteReplaceText = $l_obj_Template->getContent();
@@ -740,8 +799,8 @@ class MCI_Footnotes_Task {
                     MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) &&
                     !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))
                 ) {
-                    $l_int_OffsetY = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
-                    $l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
+                    $l_int_OffsetY         = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
+                    $l_int_OffsetX         = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
                     $l_int_FadeInDelay     = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY    ));
                     $l_int_FadeInDuration  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ));
                     $l_int_FadeOutDelay    = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY   ));
@@ -750,8 +809,9 @@ class MCI_Footnotes_Task {
                     // fill in 'templates/public/tooltip.html':
                     $l_obj_TemplateTooltip->replace(
                         array(
-                            "post_id"           => $l_int_PostId,
-                            "id"                => $l_int_Index,
+                            "post_id"           => self::$l_int_PostId,
+                            "container_id"      => self::$l_int_ReferenceContainerId,
+                            "note_id"           => $l_int_Index,
                             "position"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
                             "offset-y"          => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
                             "offset-x"          => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0,
@@ -801,19 +861,6 @@ class MCI_Footnotes_Task {
             return "";
         }
 
-        /**
-         * INFINITE SCROLL / AUTOLOAD, ARCHIVE VIEW
-         *
-         * Multiple posts are appended to each other, functions and IDs must be disambiguated.
-         * Contributed by @docteurfitness
-         * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
-         * @since 2.0.5
-         *
-         * post ID to make everything unique wrt infinite scroll and archive view:
-         */
-        global $l_int_PostId;
-        $l_int_PostId = get_the_id();
-
 
         /**
          * OPTIONAL LINK ELEMENT FOR FOOTNOTE REFERRERS AND BACKLINKS
@@ -832,11 +879,12 @@ class MCI_Footnotes_Task {
          * Browsers may need to be prevented from logging these clicks in the browsing history,
          * as logging compromises the usability of the 'return to previous' button in browsers.
          * For that purpose, and for scroll animation, this linking is performed by JavaScript.
-         * 
          *
-         * @since 2.0.0  the link elements have been added and are present.
-         * @since 2.0.4  the link addresses were removed.
-         * @since 2.1.4  the presence of <a> elements was made optional, 2020-11-25T1306+0100
+         *
+         * @since 2.0.0  added the link elements with hard links
+         * @since 2.0.4  removed the hard links on user request
+         * @see <https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/>
+         * @since 2.1.4  made link elements optional, 2020-11-25T1306+0100
          */
         $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
 
@@ -844,11 +892,11 @@ class MCI_Footnotes_Task {
         /**
          * FOOTNOTE INDEX BACKLINK SYMBOL
          *
-         * The backlink symbol has been removed for 2.0.0 along with column 2 of the reference container.
-         * On user request, an arrow is prepended @since 2.0.3, and the setting is restored @since 2.0.4.
-         * @since 2.1.1 a select box allows to disable the symbol instead of customizing it to invisible.
+         * @since 2.0.0  removed backlink symbol along with column 2 of the reference container
+         * @since 2.0.3  prepended an arrow on user request
+         * @since 2.0.4  restored the arrow select & symbol input setting
+         * @since 2.1.1  made the symbol optional instead of customizing it to invisible
          */
-        // check if arrow is enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE))) {
 
             // get html arrow
@@ -883,11 +931,15 @@ class MCI_Footnotes_Task {
          * The comma in enumerations is not generally preferred.
          * @since 2.1.4 the separator is optional, has options, and is customizable:
          */
+
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED))) {
+
             // if so, check if it is customized:
             $l_str_Separator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM);
+
             if (empty($l_str_Separator)) {
+
                 // if it is not, check which option is on:
                 $l_str_SeparatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_OPTION);
                 switch ($l_str_SeparatorOption) {
@@ -896,7 +948,9 @@ class MCI_Footnotes_Task {
                     case 'en_dash'  : $l_str_Separator = '&nbsp;&#x2013;'; break;
                 }
             }
+
         } else {
+
             $l_str_Separator = '';
         }
 
@@ -908,11 +962,15 @@ class MCI_Footnotes_Task {
          * making it optional was envisaged.
          * @since 2.1.4 the terminator is optional, has options, and is customizable:
          */
+
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED))) {
+
             // if so, check if it is customized:
             $l_str_Terminator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM);
+
             if (empty($l_str_Terminator)) {
+
                 // if it is not, check which option is on:
                 $l_str_TerminatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_OPTION);
                 switch ($l_str_TerminatorOption) {
@@ -921,7 +979,9 @@ class MCI_Footnotes_Task {
                     case 'colon'      : $l_str_Terminator = ':'; break;
                 }
             }
+
         } else {
+
             $l_str_Terminator = '';
         }
 
@@ -1022,13 +1082,18 @@ class MCI_Footnotes_Task {
                 // in case the footnote is unique:
                 $l_str_FootnoteReference  = "<$l_str_LinkSpan";
                 $l_str_FootnoteReference .= ' id="footnote_plugin_reference_';
-                $l_str_FootnoteReference .= $l_int_PostId;
+                $l_str_FootnoteReference .= self::$l_int_PostId;
+                $l_str_FootnoteReference .= '_' . self::$l_int_ReferenceContainerId;
                 $l_str_FootnoteReference .= "_$l_str_FootnoteId\"";
                 $l_str_FootnoteReference .= ' class="footnote_backlink"';
 
                 // the click event goes in the table cell:
-                $l_str_BacklinkEvent  = ' onclick="footnote_moveToAnchor_' . $l_int_PostId;
-                $l_str_BacklinkEvent .= "('footnote_plugin_tooltip_$l_int_PostId";
+                $l_str_BacklinkEvent  = ' onclick="footnote_moveToAnchor_';
+                $l_str_BacklinkEvent .= self::$l_int_PostId;
+                $l_str_BacklinkEvent .= '_' . self::$l_int_ReferenceContainerId;
+                $l_str_BacklinkEvent .= "('footnote_plugin_tooltip_";
+                $l_str_BacklinkEvent .= self::$l_int_PostId;
+                $l_str_BacklinkEvent .= '_' . self::$l_int_ReferenceContainerId;
                 $l_str_BacklinkEvent .= "_$l_str_FootnoteId');\"";
 
                 // the dedicated template enumerating backlinks uses another variable:
@@ -1076,11 +1141,16 @@ class MCI_Footnotes_Task {
                             $l_str_FootnoteBacklinks .= "$l_str_Separator</$l_str_LinkSpan>";
                             $l_str_FootnoteBacklinks .= "$l_str_LineBreak<$l_str_LinkSpan";
                             $l_str_FootnoteBacklinks .= ' id="footnote_plugin_reference_';
-                            $l_str_FootnoteBacklinks .= $l_int_PostId;
+                            $l_str_FootnoteBacklinks .= self::$l_int_PostId;
+                            $l_str_FootnoteBacklinks .= '_' . self::$l_int_ReferenceContainerId;
                             $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId";
                             $l_str_FootnoteBacklinks .= '" class="footnote_backlink" ';
-                            $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_' . $l_int_PostId;
-                            $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_$l_int_PostId";
+                            $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_';
+                            $l_str_FootnoteBacklinks .= self::$l_int_PostId;
+                            $l_str_FootnoteBacklinks .= '_' . self::$l_int_ReferenceContainerId;
+                            $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_";
+                            $l_str_FootnoteBacklinks .= self::$l_int_PostId;
+                            $l_str_FootnoteBacklinks .= '_' . self::$l_int_ReferenceContainerId;
                             $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
                             $l_str_FootnoteBacklinks .= $l_bool_SymbolSwitch ? '' : $l_str_FootnoteArrow;
                             $l_str_FootnoteBacklinks .= $l_str_FootnoteId;
@@ -1104,24 +1174,25 @@ class MCI_Footnotes_Task {
             $l_obj_Template->replace(
                 array(
                     // placeholder used in all templates:
-                    "text"        => $l_str_FootnoteText,
+                    "text"         => $l_str_FootnoteText,
 
                     // used in standard layout W/O COMBINED FOOTNOTES:
-                    "post_id"     => $l_int_PostId,
-                    "id"          => MCI_Footnotes_Convert::Index($l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-                    "link-start"  => $l_str_LinkSpan == 'a' ?  '<a>' : '',
-                    "link-end"    => $l_str_LinkSpan == 'a' ? '</a>' : '',
-                    "link-span"   => $l_str_LinkSpan,
-                    "terminator"  => $l_str_Terminator,
+                    "post_id"      => self::$l_int_PostId,
+                    "container_id" => self::$l_int_ReferenceContainerId,
+                    "note_id"      => MCI_Footnotes_Convert::Index($l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "link-start"   => $l_str_LinkSpan == 'a' ?  '<a>' : '',
+                    "link-end"     => $l_str_LinkSpan == 'a' ? '</a>' : '',
+                    "link-span"    => $l_str_LinkSpan,
+                    "terminator"   => $l_str_Terminator,
 
                     // used in standard layout WITH COMBINED IDENTICALS TURNED ON:
-                    "pointer"     => empty($l_str_BacklinkEvent) ? '' : ' pointer',
-                    "event"       => $l_str_BacklinkEvent,
-                    "backlinks"   => empty($l_str_BacklinkEvent) ? $l_str_FootnoteBacklinks : $l_str_FootnoteReference,
+                    "pointer"      => empty($l_str_BacklinkEvent) ? '' : ' pointer',
+                    "event"        => $l_str_BacklinkEvent,
+                    "backlinks"    => empty($l_str_BacklinkEvent) ? $l_str_FootnoteBacklinks : $l_str_FootnoteReference,
 
                     // Legacy placeholders for use in legacy layout templates:
-                    "arrow"       => $l_str_FootnoteArrow,
-                    "index"       => $l_str_FootnoteIndex,
+                    "arrow"        => $l_str_FootnoteArrow,
+                    "index"        => $l_str_FootnoteIndex,
                 )
             );
 
@@ -1141,7 +1212,8 @@ class MCI_Footnotes_Task {
         $l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
         $l_obj_TemplateContainer->replace(
             array(
-                "post_id"         =>  $l_int_PostId,
+                "post_id"         =>  self::$l_int_PostId,
+                "container_id"    =>  self::$l_int_ReferenceContainerId,
                 "element"         =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT),
                 "name"            =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
                 "button-style"    => !$l_bool_CollapseDefault ? 'display: none;' : '',

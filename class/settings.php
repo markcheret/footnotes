@@ -35,10 +35,10 @@
  * @see <https://wordpress.org/support/topic/borders-25/>
  * @since 2.3.0  reference container: settings for top (and bottom) margin, thanks to @hamshe
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
- * @since 2.3.0  referrers, reference container: settings for anchor slugs
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
+ * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
  *
- * Last modified: 2020-12-29T1331+0100
+ * Last modified: 2020-12-31T1429+0100
  */
 
 
@@ -621,10 +621,10 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_COUNTER_STYLE                     => 'arabic_plain',
             self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES                => 'yes',
 
-			self::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE                => 'no',
-			self::C_STR_REFERRER_FRAGMENT_ID_SLUG                   => 'r',
-			self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG                   => 'f',
-			self::C_STR_HARD_LINK_IDS_SEPARATOR                     => '+',
+            self::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE                => 'no',
+            self::C_STR_REFERRER_FRAGMENT_ID_SLUG                   => 'r',
+            self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG                   => 'f',
+            self::C_STR_HARD_LINK_IDS_SEPARATOR                     => '+',
             self::C_INT_FOOTNOTES_SCROLL_OFFSET                     => 20,
             self::C_INT_FOOTNOTES_SCROLL_DURATION                   => 380,
 

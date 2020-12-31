@@ -33,8 +33,12 @@
  * @since 2.2.9  set default priority level of widget_text to 98 like for the_content (since 2.1.6), thanks to @marthalindeman   2020-12-25T1646+0100
  * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
  * @see <https://wordpress.org/support/topic/borders-25/>
+ * @since 2.3.0  reference container: settings for top (and bottom) margin, thanks to @hamshe
+ * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
+ * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
+ * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
  *
- * Last modified: 2020-12-25T2336+0100
+ * Last modified: 2020-12-31T1429+0100
  */
 
 
@@ -327,18 +331,24 @@ class MCI_Footnotes_Settings {
     const C_STR_HYPERLINK_ARROW_USER_DEFINED = "footnote_inputfield_custom_hyperlink_symbol_user";
 
     /**
-     * Settings Container Key for the user defined styling.
+     * Settings Container Key for the Custom CSS.
      *
      * @author Stefan Herndler
      * @since 1.5.0
      * @var string
      *
+     * Edited heading  2020-12-27T1233+0100
      * Edited:
      * @since 2.2.2  migrate Custom CSS to a dedicated tab  2020-12-15T0520+0100
+     * @var string|bool
+     *
+     * @since 2.3.0  swap Boolean from 'migration complete' to 'show legacy'  2020-12-27T1233+0100
+     * The Boolean must be false if its setting is contained in the container to be hidden,
+     * because when saving, all missing constants are zeroed, i.e. this is set to false.
      */
-    const C_STR_CUSTOM_CSS = "footnote_inputfield_custom_css";
-    const C_STR_CUSTOM_CSS_NEW = "footnote_inputfield_custom_css_new";
-    const C_BOOL_CUSTOM_CSS_MIGRATED = "footnote_inputfield_custom_css_migrated";
+    const C_STR_CUSTOM_CSS                = "footnote_inputfield_custom_css";
+    const C_STR_CUSTOM_CSS_NEW            = "footnote_inputfield_custom_css_new";
+    const C_BOOL_CUSTOM_CSS_LEGACY_ENABLE = "footnote_inputfield_custom_css_legacy_enable";
 
     /**
      * Settings Container Key the activation of the_title hook.
@@ -538,6 +548,26 @@ class MCI_Footnotes_Settings {
      */
     const C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE      = "footnotes_inputfield_reference_container_row_borders_enable";
 
+    /**
+     * Settings container keys for reference container top and bottom margins
+     * Settings container keys for hard link enabling
+     * Settings container keys for hard link anchors in referrers and footnotes
+     *
+     * @since 2.3.0
+     * @var int|bool|str
+     *
+     * 2020-12-29T0914+0100
+     */
+    const C_INT_REFERENCE_CONTAINER_TOP_MARGIN    = "footnotes_inputfield_reference_container_top_margin";
+    const C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN = "footnotes_inputfield_reference_container_bottom_margin";
+    const C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE      = "footnotes_inputfield_hard_links_enable";
+    const C_STR_REFERRER_FRAGMENT_ID_SLUG         = "footnotes_inputfield_referrer_fragment_id_slug";
+    const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG         = "footnotes_inputfield_footnote_fragment_id_slug";
+    const C_STR_HARD_LINK_IDS_SEPARATOR           = "footnotes_inputfield_hard_link_ids_separator";
+
+    /**
+     *      SETTINGS STORAGE
+     */
 
     /**
      * Stores a singleton reference of this class.
@@ -591,6 +621,10 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_COUNTER_STYLE                     => 'arabic_plain',
             self::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES                => 'yes',
 
+            self::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE                => 'no',
+            self::C_STR_REFERRER_FRAGMENT_ID_SLUG                   => 'r',
+            self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG                   => 'f',
+            self::C_STR_HARD_LINK_IDS_SEPARATOR                     => '+',
             self::C_INT_FOOTNOTES_SCROLL_OFFSET                     => 20,
             self::C_INT_FOOTNOTES_SCROLL_DURATION                   => 380,
 
@@ -605,6 +639,10 @@ class MCI_Footnotes_Settings {
 
             // whether to enqueue additional style sheet:
             self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT               => 'none',
+            
+            // top and bottom margins:
+            self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN              => 24,
+            self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN           =>  0,
 
             // table cell borders:
             self::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE    => 'no',
@@ -781,8 +819,8 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage_custom_css" => array(
 
-            self::C_STR_CUSTOM_CSS_NEW => '',
-            self::C_BOOL_CUSTOM_CSS_MIGRATED => '',
+            self::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE => 'yes',
+            self::C_STR_CUSTOM_CSS_NEW            => '',
 
         ),
 

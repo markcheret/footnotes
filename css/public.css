@@ -5,7 +5,7 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.10
+ * Version: 2.3.0
  *
  *     Classes added to public.css may be added to the
  *     list documenting CSS classes for Custom CSS if
@@ -19,8 +19,9 @@
  * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
  * @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
  * @see <https://wordpress.org/support/topic/counter-styles-not-working/>
+ * @since 2.3.0  offset anchors for optional hard links
  * 
- * Last modified: 2020-12-25T2357+0100
+ * Last modified: 2020-12-31T1211+0100
  */
 
 
@@ -77,6 +78,22 @@ word-break: break-all;
 }
 
 /*****************************************************
+Optional hard links
+
+Anchors with scroll offset
+*/
+
+.footnote_item_base,
+.footnote_referrer_base {
+    position: absolute;
+}
+
+.footnote_item_anchor,
+.footnote_referrer_anchor {
+    position: relative;
+}
+
+/*****************************************************
 Footnote referrers and tooltips
 
 Templates:
@@ -90,24 +107,29 @@ Classes:
 */
 
 .footnote_referrer,
-.footnote_referrer a,
 .footnote_referrer:link,
-.footnote_referrer a:link,
+.footnote_referrer:hover,
+.footnote_referrer > a,
+.footnote_referrer > a:link,
+.footnote_referrer > a:hover,
+.footnote_plugin_tooltip_text,
+.footnote_plugin_tooltip_text:hover,
 .main-content .footnote_referrer,
-.main-content .footnote_referrer a,
 .main-content .footnote_referrer:link,
-.main-content .footnote_referrer a:link,
-.footnote_plugin_tooltip_text {
+.main-content .footnote_referrer:hover,
+.main-content .footnote_referrer > a,
+.main-content .footnote_referrer > a:link,
+.main-content .footnote_referrer > a:hover,
+.main-content .footnote_plugin_tooltip_text,
+.main-content .footnote_plugin_tooltip_text:hover {
     text-decoration: none !important;
     border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.footnote_plugin_tooltip_text {
     line-height: 0;
     cursor: pointer;
-}
-.footnote_referrer:hover,
-.footnote_referrer a:hover,
-.footnote_plugin_tooltip_text:hover {
-    text-decoration: none;
-    font-weight: inherit;
 }
 
 /*
@@ -208,6 +230,7 @@ Classes:
 .footnote_reference_container_collapse_button = sibling <span>
 .footnote-reference-container                 = misleading and inconsistent; alias:
 .footnotes_table                              = <table>
+.footnotes_plugin_reference_row               = <tr>
 .footnote_plugin_index_combi                  = first <td> if identical footnotes are combined
 .footnote_plugin_index                        = first <td> if not
 .footnote_index                               = <a> or <span> in first <td> in 3-column table

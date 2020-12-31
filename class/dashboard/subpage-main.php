@@ -28,8 +28,16 @@
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
  * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
  * @see <https://wordpress.org/support/topic/borders-25/>
+ * @since 2.3.0  Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
+ * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
+ * @since 2.3.0  rename Priority level tab as Scope and priority   2020-12-26T2222+0100
+ * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
+ * @since 2.3.0  mention op. cit. abbreviation   2020-12-28T2342+0100
+ * @since 2.3.0  add settings for hard links, thanks to @psykonevro and @martinneumannat  2020-12-29T1322+0100
+ * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
+ * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
  *
- * Last modified: 2020-12-25T2336+0100
+ * Last modified: 2020-12-31T0801+0100
  */
 
 /**
@@ -90,8 +98,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
     protected function getSections() {
         $l_arr_Tabs = array();
         $l_arr_Tabs[] = $this->addSection("settings", __("General settings", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 0, true);
+        // tab name used in public function CustomCSSMigration()
         $l_arr_Tabs[] = $this->addSection("customize", __("Referrers and tooltips", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1, true);
-        $l_arr_Tabs[] = $this->addSection("expert", __("Priority level", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 2, true);
+        $l_arr_Tabs[] = $this->addSection("expert", __("Scope and priority", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 2, true);
         $l_arr_Tabs[] = $this->addSection("customcss", __("Custom CSS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 3, true);
         $l_arr_Tabs[] = $this->addSection("how-to", __("Quick start guide", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), null, false);
         return $l_arr_Tabs;
@@ -137,13 +146,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-timing", __("Tooltip timing", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTiming");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-truncation", __("Tooltip truncation", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTruncation");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-appearance", __("Tooltip appearance", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxAppearance");
-        if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_MIGRATED))) {
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE))) {
             $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "custom-css", __("Your existing Custom CSS code", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS");
         }
 
         $l_arr_MetaBoxes[] = $this->addMetaBox("expert", "lookup", __("WordPress hooks with priority level", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "LookupHooks");
 
-        if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_MIGRATED))) {
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE))) {
             $l_arr_MetaBoxes[] = $this->addMetaBox("customcss", "custom-css-migration", __("Your existing Custom CSS code", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSSMigration");
         }
         $l_arr_MetaBoxes[] = $this->addMetaBox("customcss", "custom-css-new", __("Custom CSS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSSNew");
@@ -234,9 +243,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-border" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER, __("Border under the heading:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "border" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER, $l_arr_Enabled),
 
-                "label-row-borders" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, __("Borders around the table rows:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "row-borders" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, $l_arr_Enabled),
-
                 "label-collapse" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, __("Collapse by default:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "collapse" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, $l_arr_Enabled),
 
@@ -248,6 +254,17 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "shortcode" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE),
                 "notice-shortcode" => __("If present in the content, any shortcode in this text box will be replaced with the reference container.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
+                "label-startpage" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE, __("Display on start page too:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "startpage" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE, $l_arr_Enabled),
+
+                "label-margin-top" => $this->addLabel(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_TOP_MARGIN, __("Top margin:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "margin-top" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_TOP_MARGIN, -500, 500),
+                "notice-margin-top" => __("pixels; may be negative", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-margin-bottom" => $this->addLabel(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN, __("Bottom margin:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "margin-bottom" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN, -500, 500),
+                "notice-margin-bottom" => __("pixels; may be negative", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
                 "label-page-layout" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT, __("Apply basic responsive page layout:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "page-layout" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT, $l_arr_PageLayoutOptions),
                 "notice-page-layout" => __("Most themes don’t need this fix.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
@@ -255,9 +272,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-url-wrap" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED, __("Allow URLs to line-wrap anywhere:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "url-wrap" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED, $l_arr_Enabled),
                 "notice-url-wrap" => __("Unicode-conformant browsers don’t need this fix.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-
-                "label-startpage" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE, __("Display on start page too:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
-                "startpage" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE, $l_arr_Enabled),
 
                 "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, __("Display a backlink symbol:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "symbol-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, $l_arr_Enabled),
@@ -269,6 +283,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "label-3column" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, __("Backlink symbol in an extra column:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "3column" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, $l_arr_Enabled),
                 "notice-3column" => __("This legacy layout is available if identical footnotes are not combined.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-row-borders" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, __("Borders around the table rows:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "row-borders" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, $l_arr_Enabled),
 
                 "label-separator" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED, __("Add a separator when enumerating backlinks:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "separator-enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED, $l_arr_Enabled),
@@ -411,7 +428,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "identical" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES, $l_arr_Enable),
                 "notice-identical" => __("This option may require copy-pasting footnotes in multiple instances.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 // Support for Ibid. notation added thanks to @meglio in <https://wordpress.org/support/topic/add-support-for-ibid-notation/>.
-                "description-identical" => __("Even when footnotes are combined, footnote numbers keep incrementing. This avoids suboptimal referrer and backlink disambiguation using a secondary numbering system. The Ibid. notation followed by the current page number avoids repeating the footnote content. For changing sources, shortened citations may be used. Repeating full citations is also an opportunity to add details.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-identical" => __("Even when footnotes are combined, footnote numbers keep incrementing. This avoids suboptimal referrer and backlink disambiguation using a secondary numbering system. The Ibid. notation and the op. cit. abbreviation followed by the current page number avoid repeating the footnote content. For changing sources, shortened citations may be used. Repeating full citations is also an opportunity to add details.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders
@@ -419,6 +436,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
     }
 
     public function Scrolling() {
+
+        // options for enabling hard links for AMP compat:
+        $l_arr_Enable = array(
+            "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+        );
 
         // load template file
         $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "settings-scrolling");
@@ -432,7 +455,24 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-scroll-duration" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __("Scroll duration:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "scroll-duration" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000),
-                "notice-scroll-duration" => __("milliseconds", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-scroll-duration" => __("milliseconds; instantly if hard links are enabled and JavaScript is disabled", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                // enable hard links for AMP compat:
+                "label-hard-links" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE, __("Enable hard links:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "hard-links" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE, $l_arr_Enable),
+                "notice-hard-links" => __("Hard links are indispensable for AMP compatibility and allow to link to footnotes.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-footnote" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG, __("Fragment identifier slug for footnotes:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "footnote" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG),
+                "notice-footnote" => __("This will show up in the address bar after clicking on a hard-linked footnote referrer.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-referrer" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERRER_FRAGMENT_ID_SLUG, __("Fragment identifier slug for footnote referrers:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "referrer" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_REFERRER_FRAGMENT_ID_SLUG),
+                "notice-referrer" => __("This will show up in the address bar after clicking on a hard-linked backlink.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-separator" => $this->addLabel(MCI_Footnotes_Settings::C_STR_HARD_LINK_IDS_SEPARATOR, __("ID separator:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "separator" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HARD_LINK_IDS_SEPARATOR),
+                "notice-separator" => __("May be empty or any string, for example _, - or +, to distinguish post number, container number and footnote number.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
             )
         );
@@ -788,6 +828,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * of the footnote number.
      *
      * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
+     * @since 2.2.1 and 2.2.4  back here
      */
     public function HyperlinkArrow() {
         // load template file
@@ -795,7 +836,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         // replace all placeholders
         $l_obj_Template->replace(
             array(
-                "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, __("Select the backlink symbol:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "label-symbol" => $this->addLabel(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, __("Select or input the backlink symbol:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "symbol-options" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::getArrow()),
                 "symbol-custom" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED),
                 "notice-symbol" => __("Your input overrides the selection.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
@@ -819,6 +860,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *         2020-12-09T1113+0100
      *
      * @since 2.2.2  migrate Custom CSS to a dedicated tab   2020-12-15T0506+0100
+     * @since 2.3.0  say 'copy-paste' instead of 'cut and paste', since cutting is not needed  2020-12-27T1257+0100
      */
     public function CustomCSS() {
         // load template file
@@ -828,7 +870,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             array(
                 "label-css" => $this->addLabel(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS, __("Your existing Custom CSS code:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "css" => $this->addTextArea(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS),
-                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe. Please cut and paste the content into the new text area under the new tab.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe. Please copy-paste the content into the new text area under the new tab.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 // CSS classes are listed in the template.
                 // Localized notices are dropped to ease translators’ task.
@@ -851,6 +893,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
     }
 
     public function CustomCSSMigration() {
+
+        // options for Yes/No select box:
+        $l_arr_Enabled = array(
+            "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+        );
+
         // load template file
         $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "customize-css-migration");
         // replace all placeholders
@@ -858,11 +907,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             array(
                 "label-css" => $this->addLabel(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS, __("Your existing Custom CSS code:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "css" => $this->addTextArea(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS),
-                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe. Please copy and paste the content into the new text area below.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe. Please copy-paste the content into the new text area below.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
-                "label-migrated" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_MIGRATED, "Custom CSS migration complete:"),
-                "migrated" => $this->addCheckbox(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_MIGRATED),
-                "notice-migrated" => __("Please check this box when you are done migrating. After saving while this box is checked, the legacy Custom CSS containers are going to disappear.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "label-show-legacy" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE, "Show legacy Custom CSS settings containers:"),
+                "show-legacy" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE, $l_arr_Enabled),
+                "notice-show-legacy" => __("Please set to No when you are done migrating, for the legacy Custom CSS containers to disappear.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                // The placeholder is the “Referrers and tooltips” settings tab name.
+                "description-show-legacy" => sprintf(__('The legacy Custom CSS under the %s tab and its mirror here are emptied, and the select box saved as No, when the settings tab is saved while the settings container is not displayed.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), __("Referrers and tooltips", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 
             )
         );

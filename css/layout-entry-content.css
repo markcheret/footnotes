@@ -2,17 +2,21 @@
  * Basic responsive layout for the entry content div
  *
  * Based on Hello Elementor v2.3.0 Basic responsive layout
- * themes/hello-elementor/theme.css:8..31
- * licensed under GNU General Public License v3 or later
+ *         themes/hello-elementor/theme.css:8..31
+ * Licensed under GNU General Public License v3 or later;
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  *
  * Since v2.1.4 of Footnotes
  *
- * Last modified for v2.2.2  2020-12-15T1004+0100
- * Last modified for v2.2.5  2020-12-16T1321+0100
+ * Modified for 2.2.2  2020-12-15T1004+0100
+ * Modified for 2.2.5  2020-12-16T1321+0100
+ * Modified for 2.3.0  2020-12-29T0207+0100
+ *
+ * Last modified:  2020-12-29T0210+0100
  *
  * The enqueuing of this style sheet is optional and can be
- * enabled in the Reference container settings.
+ * enabled in the dashboard under General settings >
+ * Reference container > Apply basic responsive page layout.
 **/
 
 /***********************************************************
@@ -33,49 +37,64 @@ that would apply if the page were not built with Elementor.
 This is mainly useful with Hello Elementor, but it may help
 fix also other themes like Twenty Twenty-One for display in
 older browsers not yet supporting CSS variables.
+
+Sources:
+.entry .entry-content <= Twenty Nineteen
 */
 
-div.page-content,
-div.entry-content {
+.page-content,
+.entry-content,
+.entry .entry-content,
+main .entry .entry-content {
     margin: 0 auto;
 }
 
 @media (max-width: 575px) {
 
-	div.page-content,
-	div.entry-content {
-		padding: 0 10px;
+    .page-content,
+    .entry-content,
+    .entry .entry-content,
+    main .entry .entry-content {
+        padding: 0 10px;
     }
 }
 
 @media (min-width: 576px) {
 
-	div.page-content,
-	div.entry-content {
+    .page-content,
+    .entry-content,
+    .entry .entry-content,
+    main .entry .entry-content {
         max-width: 500px;
     }
 }
 
 @media (min-width: 768px) {
 
-	div.page-content,
-	div.entry-content {
+    .page-content,
+    .entry-content,
+    .entry .entry-content,
+    main .entry .entry-content {
         max-width: 600px;
     }
 }
 
 @media (min-width: 992px) {
 
-	div.page-content,
-	div.entry-content {
+    .page-content,
+    .entry-content,
+    .entry .entry-content,
+    main .entry .entry-content {
         max-width: 800px;
     }
 }
 
 @media (min-width: 1200px) {
 
-	div.page-content,
-	div.entry-content {
+    .page-content,
+    .entry-content,
+    .entry .entry-content,
+    main .entry .entry-content {
         max-width: 960px;
     }
 }

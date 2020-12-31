@@ -80,13 +80,24 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.3.0 =
+- Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat
+- Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
+- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik
+- Bugfix: Dashboard: swap Custom CSS migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints
+- Update: Dashboard: rename 'Priority level' tab as 'Scope and priority', to account for the new alternative depending on widget_text hook activation
+- Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers
+- Bugfix: Referrers: extend clickable area to the full line height in sync with current pointer shape
+- Bugfix: Referrers: extend scope of the underline inhibition to be more comprehensive and consistent
+- Bugfix: Reference container: edits to optional basic responsive page layout style sheet
+
 = 2.2.10 =
 - Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh
 - Bugfix: Reference container: add missing container ID in function name in one of the four table row templates
 - Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs
 
 = 2.2.9 =
-- Bugfix: Reference containers, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz
+- Bugfix: Reference container, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz
 - Update: Priority levels: set widget_text default to 98 and update its description in the dashboard Priority level tab
 - Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names
 - Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference

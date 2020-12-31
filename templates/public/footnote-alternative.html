@@ -2,12 +2,15 @@
     class="footnote_referrer relative"
     onmouseover="footnoteTooltipShow('footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]')"
     onmouseout="footnoteTooltipHide('footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]')"
-    >[[link-start]]<[[sup-span]]
+    ><[[link-span]]
+        onclick="footnote_moveToAnchor_[[post_id]]_[[container_id]]('footnote_plugin_reference_[[post_id]]_[[container_id]]_[[note_id]]');"
+        [[hard-link]]
+        ><[[sup-span]]
             id="footnote_plugin_tooltip_[[post_id]]_[[container_id]]_[[note_id]]"
             class="footnote_plugin_tooltip_text"
-            onclick="footnote_moveToAnchor_[[post_id]]_[[container_id]]('footnote_plugin_reference_[[post_id]]_[[container_id]]_[[note_id]]');"
             >[[before]][[index]][[after]]</[[sup-span]]
-    >[[link-end]]<span
+        ></[[link-span]]
+    >[[anchor-element]]<span
         id="footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]"
         class="footnote_tooltip position hidden"
         onmouseout="footnoteTooltipHide('footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]')"

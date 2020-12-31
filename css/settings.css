@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.2.10
+ * Version: 2.3.0
  *
- * Last modified: 2020-12-25T2357+0100
+ * Last modified: 2020-12-31T1026+0100
  */
 
 
@@ -100,11 +100,14 @@ Limited to a number of IDs to not affect all dashboards
     width: 230px;
 }
 
+#footnotes_inputfield_reference_container_top_margin,
+#footnotes_inputfield_reference_container_bottom_margin,
 #footnotes_inputfield_backlinks_column_width_scalar,
 #footnotes_inputfield_backlinks_column_max_width_scalar,
 #footnotes_inputfield_mouse_over_box_font_size_scalar {
     width: 85px;
 }
+
 #footnotes_inputfield_backlinks_column_width_unit,
 #footnotes_inputfield_backlinks_column_max_width_unit,
 #footnotes_inputfield_mouse_over_box_font_size_unit {

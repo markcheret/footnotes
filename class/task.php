@@ -13,7 +13,7 @@
  *
  * @since 2.0.9  DISABLED the_post HOOK  2020-11-08T1839+0100
  *
- * @since 2.1.0  promoted the 'Continue reading' button from localization to customization  2020-11-08T2146+0100
+ * @since 2.1.0  promote the 'Continue reading' button from localization to configuration  2020-11-08T2146+0100
  * @since 2.1.1  combining identical footnotes: fixed dead links, thanks to @happyches   2020-11-14T2233+0100
  * @see <https://wordpress.org/support/topic/custom-css-for-jumbled-references/>
  * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
@@ -58,8 +58,14 @@
  * @since 2.2.10 URL wrap: support also file transfer protocol URLs  2020-12-25T2220+0100
  * @since 2.2.10 Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh  2020-12-25T2304+0100
  * @see <https://wordpress.org/support/topic/borders-25/>
+ * @since 2.3.0  Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
+ * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
+ * @since 2.3.0  optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat
+ * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
+ * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
+ * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
  *
- * Last modified:  2020-12-25T2352+0100
+ * Last modified:  2020-12-31T1234+0100
  */
 
 // If called directly, abort:
@@ -72,6 +78,10 @@ defined( 'ABSPATH' ) or die;
  * @since 1.5.0
  */
 class MCI_Footnotes_Task {
+
+    /**
+     *        PROPERTIES
+     */
 
     /**
      * Contains all footnotes found on current public page.
@@ -130,6 +140,67 @@ class MCI_Footnotes_Task {
      * @var int
      */
     public static $l_int_ReferenceContainerId = 1;
+
+    /**
+     * Hard links for AMP
+     *
+     * Optional hard links in referrers and backlinks for AMP compatibility
+     *
+     * Thanks to @psykonevro and @martinneumannat
+     * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
+     * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
+     * @since 2.3.0
+     * @var bool|str|int
+     */
+    public static $l_bool_HardLinksEnable        = false;
+    public static $l_str_ReferrerLinkSlug        = 'r';
+    public static $l_str_FootnoteLinkSlug        = 'f';
+    public static $l_str_LinkIdsSeparator        = '+';
+    public static $l_str_PostContainerIdCompound = '';
+    // scroll offset may now need to get into inline CSS:
+    public static $l_int_ScrollOffset            = 0;
+
+    /**
+     * OPTIONAL LINK ELEMENT FOR FOOTNOTE REFERRERS AND BACKLINKS
+     *
+     * STYLING:
+     * Link color is preferred for referrers and backlinks.
+     * Setting a global link color is a common feature in WordPress themes.
+     * CSS does not support identifiers for link colors (color: link | hover | active | visited)
+     * These are only supported as pseudo-classes of the link element.
+     * Hence the link element must be present for styling purposes.
+     * But styling these elements with the link color is not universally preferred.
+     * If not, the very presence of the link elements may need to be avoided.
+     *
+     * FUNCTIONALITY:
+     * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
+     * Browsers may need to be prevented from logging these clicks in the browsing history,
+     * as logging compromises the usability of the 'return to previous' button in browsers.
+     * For that purpose, and for scroll animation, this linking is performed by JavaScript.
+     *
+     * Link elements also raise further concerns, so that their useless proliferation needs
+     * to be mitigated. By contrast, due to an insufficiency in the CSS standard, real link
+     * elements are required to get the link color, as opposed to named colors on the basis
+     * of the already supported pseudo-classes :link, :hover, :active and :visited that can
+     * still not be used in color names.
+     *
+     * @since 2.0.0  added the link elements with hard links
+     * @since 2.0.4  removed the hard links on user request
+     * @see <https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/>
+     * @since 2.1.4  made link elements optional for styling purposes, 2020-11-25T1306+0100
+     * @since 2.3.0  this variable keeps its default value if hard links are enabled   2020-12-30T2313+0100
+     *
+     * @var str
+     */
+    public static $l_str_LinkSpan = 'span';
+    public static $l_str_LinkOpenTag = '';
+    public static $l_str_LinkCloseTag = '';
+
+
+
+    /**
+     *        METHODS
+     */
 
     /**
      * Register WordPress Hooks to replace Footnotes in the content of a public page.
@@ -220,6 +291,8 @@ class MCI_Footnotes_Task {
      * @since 2.1.4  tootip font size and backlink column width settings
      * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
      * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+     * @since 2.3.0  Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
+     * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
      */
     public function wp_head() {
 
@@ -230,6 +303,15 @@ class MCI_Footnotes_Task {
         if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
             echo ".home .footnotes_reference_container { display: none; }\r\n";
         }
+
+        // ref container top and bottom margins:
+        $l_int_ReferenceContainerTopMargin = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_TOP_MARGIN));
+        $l_int_ReferenceContainerBottomMargin = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN));
+        echo ".footnotes_reference_container {margin-top: ";
+        echo empty($l_int_ReferenceContainerTopMargin) ? '0' : $l_int_ReferenceContainerTopMargin;
+        echo "px !important; margin-bottom: ";
+        echo empty($l_int_ReferenceContainerBottomMargin) ? '0' : $l_int_ReferenceContainerBottomMargin;
+        echo "px !important;}\r\n";
 
         // ref container label bottom border:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER))) {
@@ -290,6 +372,15 @@ class MCI_Footnotes_Task {
 
             }
         echo "}\r\n";
+        }
+
+        // hard links scroll offset:
+        self::$l_bool_HardLinksEnable = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE));
+        self::$l_int_ScrollOffset = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET));
+        if (self::$l_bool_HardLinksEnable) {
+            echo ".footnote_referrer_anchor, .footnote_item_anchor {bottom: ";
+            echo self::$l_int_ScrollOffset;
+            echo "vh;}\r\n";
         }
 
         // tooltips:
@@ -409,8 +500,8 @@ class MCI_Footnotes_Task {
         }
 
         // set custom CSS to override settings, not conversely:
-        // if dashboard tab migration acknowledged, disable legacy in case it was not cut:
-        if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_MIGRATED))) {
+        // Legacy Custom CSS is used until it’s set to disappear after dashboard tab migration:
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE))) {
             echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
         }
         echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW);
@@ -668,7 +759,7 @@ class MCI_Footnotes_Task {
         }
 
         if (!$p_bool_HideFootnotesText) {
-            // load template file
+            // load two template files:
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
                 $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote-alternative");
             } else {
@@ -727,9 +818,11 @@ class MCI_Footnotes_Task {
              * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
              * @see <https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/>
              * @since 2.2.8  correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1107+0100
+             *
              * @since 2.2.9  account for RFC 2396 allowed characters in parameter names  2020-12-24T1956+0100
              * @see <https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names>
              * @since 2.2.9  exclude URLs also where the equals sign is preceded by an entity or character reference  2020-12-25T1234+0100
+             *
              * @since 2.2.10 support also file transfer protocol URLs  2020-12-25T2220+0100
              */
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
@@ -738,6 +831,23 @@ class MCI_Footnotes_Task {
 
             // Text to be displayed instead of the footnote
             $l_str_FootnoteReplaceText = "";
+
+            // whether hard links are enabled; relevant also below in ReferenceContainer():
+            if (self::$l_bool_HardLinksEnable) {
+
+                // get the configurable parts:
+                self::$l_str_ReferrerLinkSlug = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERRER_FRAGMENT_ID_SLUG);
+                self::$l_str_FootnoteLinkSlug = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG);
+                self::$l_str_LinkIdsSeparator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_HARD_LINK_IDS_SEPARATOR);
+
+                // streamline ID concatenation:
+                self::$l_str_PostContainerIdCompound  = self::$l_str_LinkIdsSeparator;
+                self::$l_str_PostContainerIdCompound .= self::$l_int_PostId;
+                self::$l_str_PostContainerIdCompound .= self::$l_str_LinkIdsSeparator;
+                self::$l_str_PostContainerIdCompound .= self::$l_int_ReferenceContainerId;
+                self::$l_str_PostContainerIdCompound .= self::$l_str_LinkIdsSeparator;
+
+            }
 
             // display the footnote referrers and the tooltips:
             if (!$p_bool_HideFootnotesText) {
@@ -753,49 +863,102 @@ class MCI_Footnotes_Task {
                     if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
                         $l_str_ExcerptText  = substr($l_str_DummyText, 0, $l_int_MaxLength);
                         $l_str_ExcerptText  = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
-                        $l_str_ExcerptText .= '&nbsp;&#x2026; ';
-                        $l_str_ExcerptText .= '<span class="footnote_tooltip_continue" ';
+                        $l_str_ExcerptText .= '&nbsp;&#x2026; <';
+                        $l_str_ExcerptText .= self::$l_bool_HardLinksEnable ? 'a' : 'span';
+                        $l_str_ExcerptText .= ' class="footnote_tooltip_continue" ';
                         $l_str_ExcerptText .= 'onclick="footnote_moveToAnchor_' . self::$l_int_PostId;
                         $l_str_ExcerptText .= '_' . self::$l_int_ReferenceContainerId;
                         $l_str_ExcerptText .= '(\'footnote_plugin_reference_' . self::$l_int_PostId;
                         $l_str_ExcerptText .= '_' . self::$l_int_ReferenceContainerId;
-                        $l_str_ExcerptText .= '_' . $l_int_Index . '\');">';
+                        $l_str_ExcerptText .= "_$l_int_Index');\"";
+
+                        // if enabled, add the hard link fragment ID:
+                        if (self::$l_bool_HardLinksEnable) {
+
+                            $l_str_ExcerptText .= ' href="#';
+                            $l_str_ExcerptText .= self::$l_str_FootnoteLinkSlug;
+                            $l_str_ExcerptText .= self::$l_str_PostContainerIdCompound;
+                            $l_str_ExcerptText .= $l_int_Index;
+                            $l_str_ExcerptText .= '"';
+                        }
+
+                        $l_str_ExcerptText .= '>';
                         $l_str_ExcerptText .= MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL);
-                        $l_str_ExcerptText .= '</span>';
+                        $l_str_ExcerptText .= self::$l_bool_HardLinksEnable ? '</a>' : '</span>';
                     }
                 }
 
                 // define the HTML element to use for the referrers:
                 if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS))) {
+
                     $l_str_SupSpan = 'sup';
+
                 } else {
+
                     $l_str_SupSpan = 'span';
                 }
 
-                // determine whether the link element is used, see below in ReferenceContainer()
-                $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
+                // whether hard links are enabled; relevant also below in ReferenceContainer():
+                if (self::$l_bool_HardLinksEnable) {
 
+                    self::$l_str_LinkSpan = 'a';
+                    self::$l_str_LinkCloseTag = '</a>';
+                    // self::$l_str_LinkOpenTag will be defined as needed
+
+                    // compose hyperlink address (leading space is in template):
+                    $l_str_FootnoteLinkArgument  = 'href="#';
+                    $l_str_FootnoteLinkArgument .= self::$l_str_FootnoteLinkSlug;
+                    $l_str_FootnoteLinkArgument .= self::$l_str_PostContainerIdCompound;
+                    $l_str_FootnoteLinkArgument .= $l_int_Index;
+                    $l_str_FootnoteLinkArgument .= '" class="footnote_hard_link"';
+
+                    // compose offset anchor, an empty span child of empty span
+                    // to prevent browsers from drawing tall dotted rectangles:
+                    $l_str_ReferrerAnchorElement  = '<span class="footnote_referrer_base"><span id="';
+                    $l_str_ReferrerAnchorElement .= self::$l_str_ReferrerLinkSlug;
+                    $l_str_ReferrerAnchorElement .= self::$l_str_PostContainerIdCompound;
+                    $l_str_ReferrerAnchorElement .= $l_int_Index;
+                    $l_str_ReferrerAnchorElement .= '" class="footnote_referrer_anchor"></span></span>';
+
+                } else {
+
+                    // no hyperlink nor offset anchor needed:
+                    $l_str_FootnoteLinkArgument = '';
+                    $l_str_ReferrerAnchorElement = '';
+
+                    // whether the link element is used nevertheless for styling:
+                    if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ) {
+
+                        self::$l_str_LinkSpan = 'a';
+                        self::$l_str_LinkOpenTag = '<a>';
+                        self::$l_str_LinkCloseTag = '</a>';
+
+                    }
+                }
 
                 // fill in 'templates/public/footnote.html':
                 $l_obj_Template->replace(
                     array(
-                        "post_id"      => self::$l_int_PostId,
-                        "container_id" => self::$l_int_ReferenceContainerId,
-                        "note_id"      => $l_int_Index,
-                        "link-start"   => $l_str_LinkSpan == 'a' ?  '<a>' : '',
-                        "link-end"     => $l_str_LinkSpan == 'a' ? '</a>' : '',
-                        "sup-span"     => $l_str_SupSpan,
-                        "before"       => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
-                        "index"        => $l_int_Index,
-                        "after"        => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
-                        "text"         => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
+                        "link-span"      => self::$l_str_LinkSpan,
+                        "post_id"        => self::$l_int_PostId,
+                        "container_id"   => self::$l_int_ReferenceContainerId,
+                        "note_id"        => $l_int_Index,
+                        "hard-link"      => $l_str_FootnoteLinkArgument,
+                        "sup-span"       => $l_str_SupSpan,
+                        "before"         => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
+                        "index"          => $l_int_Index,
+                        "after"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
+                        "anchor-element" => $l_str_ReferrerAnchorElement,
+                        "text"           => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
                     )
                 );
                 $l_str_FootnoteReplaceText = $l_obj_Template->getContent();
 
                 // reset the template
                 $l_obj_Template->reload();
+
                 if (
+                    // standard tooltip is enabled:
                     MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) &&
                     !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))
                 ) {
@@ -863,39 +1026,12 @@ class MCI_Footnotes_Task {
 
 
         /**
-         * OPTIONAL LINK ELEMENT FOR FOOTNOTE REFERRERS AND BACKLINKS
-         *
-         * STYLING:
-         * Link color is preferred for referrers and backlinks.
-         * Setting a global link color is a common feature in WordPress themes.
-         * CSS does not support identifiers for link colors (color: link | hover | active | visited)
-         * These are only supported as pseudo-classes of the link element.
-         * Hence the link element must be present for styling purposes.
-         * But styling these elements with the link color is not universally preferred.
-         * If not, the very presence of the link elements may need to be avoided.
-         *
-         * FUNCTIONALITY:
-         * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
-         * Browsers may need to be prevented from logging these clicks in the browsing history,
-         * as logging compromises the usability of the 'return to previous' button in browsers.
-         * For that purpose, and for scroll animation, this linking is performed by JavaScript.
-         *
-         *
-         * @since 2.0.0  added the link elements with hard links
-         * @since 2.0.4  removed the hard links on user request
-         * @see <https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/>
-         * @since 2.1.4  made link elements optional, 2020-11-25T1306+0100
-         */
-        $l_str_LinkSpan = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ? 'a' : 'span';
-
-
-        /**
          * FOOTNOTE INDEX BACKLINK SYMBOL
          *
          * @since 2.0.0  removed backlink symbol along with column 2 of the reference container
          * @since 2.0.3  prepended an arrow on user request
          * @since 2.0.4  restored the arrow select & symbol input setting
-         * @since 2.1.1  made the symbol optional instead of customizing it to invisible
+         * @since 2.1.1  made the symbol optional instead of configuring it to invisible
          */
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE))) {
 
@@ -929,13 +1065,13 @@ class MCI_Footnotes_Task {
          *
          * Initially a comma was appended in this algorithm for enumerations.
          * The comma in enumerations is not generally preferred.
-         * @since 2.1.4 the separator is optional, has options, and is customizable:
+         * @since 2.1.4 the separator is optional, has options, and is configurable:
          */
 
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED))) {
 
-            // if so, check if it is customized:
+            // if so, check if it is freely configured:
             $l_str_Separator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM);
 
             if (empty($l_str_Separator)) {
@@ -960,13 +1096,13 @@ class MCI_Footnotes_Task {
          * Initially a dot was appended in the table row template.
          * @since 2.0.6 a dot after footnote numbers is discarded as not localizable;
          * making it optional was envisaged.
-         * @since 2.1.4 the terminator is optional, has options, and is customizable:
+         * @since 2.1.4 the terminator is optional, has options, and is configurable:
          */
 
         // check if it is even enabled:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED))) {
 
-            // if so, check if it is customized:
+            // if so, check if it is input-configured:
             $l_str_Terminator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM);
 
             if (empty($l_str_Terminator)) {
@@ -1032,18 +1168,8 @@ class MCI_Footnotes_Task {
             }
         }
 
-        // SET SWITCH FLAG INDEPENDENTLY
-
-        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH))) {
-
-            $l_bool_SymbolSwitch = true;
-
-        } else {
-
-            $l_bool_SymbolSwitch = false;
-
-        }
-
+        // whether to switch backlink symbol and footnote number:
+        $l_bool_SymbolSwitch = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH));
 
         // FILL IN THE TEMPLATE
 
@@ -1060,34 +1186,74 @@ class MCI_Footnotes_Task {
                 continue;
             }
 
-            // INDEX COLUMN WITH ONE BACKLINK PER TABLE ROW
-
-            // Standard behavior appropriate for combining identicals turned off
-
             // generate content of footnote index cell
             $l_int_FirstFootnoteIndex = ($l_int_Index + 1);
 
             // get the footnote index string and
             // keep supporting legacy index placeholder:
-            $l_str_FootnoteIndex  = MCI_Footnotes_Convert::Index(($l_int_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+            $l_str_FootnoteId  = MCI_Footnotes_Convert::Index(($l_int_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
+
+            // INDEX COLUMN WITH ONE BACKLINK PER TABLE ROW
+
+            // if enabled, and for the case the footnote is single, compose hard link:
+            if (self::$l_bool_HardLinksEnable) {
+
+                // compose fragment ID anchor with offset, for use in reference container, an
+                // empty span child of empty span to avoid tall dotted rectangles in browser:
+                $l_str_FootnoteAnchorElement  = '<span class="footnote_item_base"><span id="';
+                $l_str_FootnoteAnchorElement .= self::$l_str_FootnoteLinkSlug;
+                $l_str_FootnoteAnchorElement .= self::$l_str_PostContainerIdCompound;
+                $l_str_FootnoteAnchorElement .= $l_str_FootnoteId;
+                $l_str_FootnoteAnchorElement .= '" class="footnote_item_anchor"></span></span>';
+
+                // compose optional hard link address:
+                $l_str_HardLinkAddress  = ' href="#';
+                $l_str_HardLinkAddress .= self::$l_str_ReferrerLinkSlug;
+                $l_str_HardLinkAddress .= self::$l_str_PostContainerIdCompound;
+                $l_str_HardLinkAddress .= $l_str_FootnoteId . '"';
+
+                // compose optional opening link tag with optional hard link, mandatory for instance:
+                self::$l_str_LinkOpenTag  = '<a' . $l_str_HardLinkAddress;
+                self::$l_str_LinkOpenTag  = ' class="footnote_hard_back_link">';
+
+            } else {
+                // define as empty, too:
+                $l_str_FootnoteAnchorElement = '';
+            }
 
 
             // SUPPORT FOR COMBINING IDENTICALS: COMPOSE ENUMERATED BACKLINKS
 
+            // Prepare to have single footnotes, where the click event and
+            // optional hard link need to be set to cover the table cell,
+            // for better usability and UX.
+
+            // set a flag to check for the combined status of a footnote item:
+            $l_bool_FlagCombined = false;
+
+            // set otherwise unused variables as empty to avoid screwing up the placeholder array:
+            $l_str_BacklinkEvent     = '';
+            $l_str_FootnoteBacklinks = '';
+            $l_str_FootnoteReference = '';
+
             if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
 
-                $l_str_FootnoteId  = $l_str_FootnoteIndex;
-
-                // in case the footnote is unique:
-                $l_str_FootnoteReference  = "<$l_str_LinkSpan";
+                // ID, optional hard link address, and class:
+                $l_str_FootnoteReference  = '<' . self::$l_str_LinkSpan;
                 $l_str_FootnoteReference .= ' id="footnote_plugin_reference_';
                 $l_str_FootnoteReference .= self::$l_int_PostId;
                 $l_str_FootnoteReference .= '_' . self::$l_int_ReferenceContainerId;
                 $l_str_FootnoteReference .= "_$l_str_FootnoteId\"";
+                if (self::$l_bool_HardLinksEnable) {
+                    $l_str_FootnoteReference .= ' href="#';
+                    $l_str_FootnoteReference .= self::$l_str_ReferrerLinkSlug;
+                    $l_str_FootnoteReference .= self::$l_str_PostContainerIdCompound;
+                    $l_str_FootnoteReference .= $l_str_FootnoteId . '"';
+                }
                 $l_str_FootnoteReference .= ' class="footnote_backlink"';
 
-                // the click event goes in the table cell:
+                // the click event goes in the table cell if footnote remains single:
                 $l_str_BacklinkEvent  = ' onclick="footnote_moveToAnchor_';
                 $l_str_BacklinkEvent .= self::$l_int_PostId;
                 $l_str_BacklinkEvent .= '_' . self::$l_int_ReferenceContainerId;
@@ -1096,24 +1262,35 @@ class MCI_Footnotes_Task {
                 $l_str_BacklinkEvent .= '_' . self::$l_int_ReferenceContainerId;
                 $l_str_BacklinkEvent .= "_$l_str_FootnoteId');\"";
 
+
                 // the dedicated template enumerating backlinks uses another variable:
                 $l_str_FootnoteBacklinks  = $l_str_FootnoteReference;
-                $l_str_FootnoteBacklinks .= $l_str_BacklinkEvent;
+
+                // append the click event right to the backlink item for enumerations;
+                // else it goes in the table cell:
+                $l_str_FootnoteBacklinks .= $l_str_BacklinkEvent . '>';
+                $l_str_FootnoteReference .= '>';
+
+                // append the optional offset anchor for hard links:
+                if (self::$l_bool_HardLinksEnable) {
+                    $l_str_FootnoteReference .= $l_str_FootnoteAnchorElement;
+                    $l_str_FootnoteBacklinks .= $l_str_FootnoteAnchorElement;
+                }
 
                 // continue both single note and notes cluster, depending on switch option status:
                 if ($l_bool_SymbolSwitch) {
 
-                    $l_str_FootnoteReference .= ">$l_str_FootnoteId$l_str_FootnoteArrow";
-                    $l_str_FootnoteBacklinks .= ">$l_str_FootnoteId$l_str_FootnoteArrow";
+                    $l_str_FootnoteReference .= "$l_str_FootnoteId$l_str_FootnoteArrow";
+                    $l_str_FootnoteBacklinks .= "$l_str_FootnoteId$l_str_FootnoteArrow";
 
                 } else {
 
-                    $l_str_FootnoteReference .= ">$l_str_FootnoteArrow$l_str_FootnoteId";
-                    $l_str_FootnoteBacklinks .= ">$l_str_FootnoteArrow$l_str_FootnoteId";
+                    $l_str_FootnoteReference .= "$l_str_FootnoteArrow$l_str_FootnoteId";
+                    $l_str_FootnoteBacklinks .= "$l_str_FootnoteArrow$l_str_FootnoteId";
 
                 }
-                // If that is the only footnote with this text, we’re nearly done.
 
+                // If that is the only footnote with this text, we’re almost done.
 
                 // check if it isn't the last footnote in the array:
                 if ($l_int_FirstFootnoteIndex < count(self::$a_arr_Footnotes)) {
@@ -1127,31 +1304,44 @@ class MCI_Footnotes_Task {
                             // if so, set the further footnote as empty so it won't be displayed later:
                             self::$a_arr_Footnotes[$l_int_CheckIndex] = "";
 
-                            // cancel the event altogether:
-                            $l_str_BacklinkEvent = "";
-
-
-                            // HERE GOES THE FRAGMENT IDENTIFIER AND THE BACKLINK TOO:
-                            // add the footnote index to the actual index:
+                            // set the flag to true for the combined status:
+                            $l_bool_FlagCombined = true;
 
                             // update the footnote ID:
                             $l_str_FootnoteId = MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
                             // resume composing the backlinks enumeration:
-                            $l_str_FootnoteBacklinks .= "$l_str_Separator</$l_str_LinkSpan>";
-                            $l_str_FootnoteBacklinks .= "$l_str_LineBreak<$l_str_LinkSpan";
+                            $l_str_FootnoteBacklinks .= "$l_str_Separator</";
+                            $l_str_FootnoteBacklinks .= self::$l_str_LinkSpan . '>';
+                            $l_str_FootnoteBacklinks .= $l_str_LineBreak;
+                            $l_str_FootnoteBacklinks .= '<' . self::$l_str_LinkSpan;
                             $l_str_FootnoteBacklinks .= ' id="footnote_plugin_reference_';
                             $l_str_FootnoteBacklinks .= self::$l_int_PostId;
                             $l_str_FootnoteBacklinks .= '_' . self::$l_int_ReferenceContainerId;
-                            $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId";
-                            $l_str_FootnoteBacklinks .= '" class="footnote_backlink" ';
-                            $l_str_FootnoteBacklinks .= 'onclick="footnote_moveToAnchor_';
+                            $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId\"";
+                            // insert the optional hard link address:
+                            if (self::$l_bool_HardLinksEnable) {
+                                $l_str_FootnoteBacklinks .= ' href="#';
+                                $l_str_FootnoteBacklinks .= self::$l_str_ReferrerLinkSlug;
+                                $l_str_FootnoteBacklinks .= self::$l_str_PostContainerIdCompound;
+                                $l_str_FootnoteBacklinks .= $l_str_FootnoteId . '"';
+                            }
+                            $l_str_FootnoteBacklinks .= ' class="footnote_backlink"';
+                            $l_str_FootnoteBacklinks .= ' onclick="footnote_moveToAnchor_';
                             $l_str_FootnoteBacklinks .= self::$l_int_PostId;
                             $l_str_FootnoteBacklinks .= '_' . self::$l_int_ReferenceContainerId;
                             $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_";
                             $l_str_FootnoteBacklinks .= self::$l_int_PostId;
                             $l_str_FootnoteBacklinks .= '_' . self::$l_int_ReferenceContainerId;
                             $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
+                            // append the offset anchor for optional hard links:
+                            if (self::$l_bool_HardLinksEnable) {
+                                $l_str_FootnoteBacklinks .= '<span class="footnote_item_base"><span id="';
+                                $l_str_FootnoteBacklinks .= self::$l_str_FootnoteLinkSlug;
+                                $l_str_FootnoteBacklinks .= self::$l_str_PostContainerIdCompound;
+                                $l_str_FootnoteBacklinks .= $l_str_FootnoteId;
+                                $l_str_FootnoteBacklinks .= '" class="footnote_item_anchor"></span></span>';
+                            }
                             $l_str_FootnoteBacklinks .= $l_bool_SymbolSwitch ? '' : $l_str_FootnoteArrow;
                             $l_str_FootnoteBacklinks .= $l_str_FootnoteId;
                             $l_str_FootnoteBacklinks .= $l_bool_SymbolSwitch ? $l_str_FootnoteArrow : '';
@@ -1160,8 +1350,9 @@ class MCI_Footnotes_Task {
                     }
                 }
 
-                $l_str_FootnoteReference .= "$l_str_Terminator</$l_str_LinkSpan>";
-                $l_str_FootnoteBacklinks .= "$l_str_Terminator</$l_str_LinkSpan>";
+                // append terminator and end tag:
+                $l_str_FootnoteReference .= $l_str_Terminator . '</' . self::$l_str_LinkSpan . '>';
+                $l_str_FootnoteBacklinks .= $l_str_Terminator . '</' . self::$l_str_LinkSpan . '>';
 
             }
 
@@ -1173,26 +1364,29 @@ class MCI_Footnotes_Task {
             // or in 'templates/public/reference-container-body-switch.html'
             $l_obj_Template->replace(
                 array(
+
                     // placeholder used in all templates:
-                    "text"         => $l_str_FootnoteText,
+                    "text"            => $l_str_FootnoteText,
 
                     // used in standard layout W/O COMBINED FOOTNOTES:
-                    "post_id"      => self::$l_int_PostId,
-                    "container_id" => self::$l_int_ReferenceContainerId,
-                    "note_id"      => MCI_Footnotes_Convert::Index($l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-                    "link-start"   => $l_str_LinkSpan == 'a' ?  '<a>' : '',
-                    "link-end"     => $l_str_LinkSpan == 'a' ? '</a>' : '',
-                    "link-span"    => $l_str_LinkSpan,
-                    "terminator"   => $l_str_Terminator,
+                    "post_id"         => self::$l_int_PostId,
+                    "container_id"    => self::$l_int_ReferenceContainerId,
+                    "note_id"         => MCI_Footnotes_Convert::Index($l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
+                    "link-start"      => self::$l_str_LinkOpenTag,
+                    "link-end"        => self::$l_str_LinkCloseTag,
+                    "link-span"       => self::$l_str_LinkSpan,
+                    "terminator"      => $l_str_Terminator,
+                    "anchor-element"  => $l_str_FootnoteAnchorElement,
+                    "hard-link"       => $l_str_HardLinkAddress,
 
                     // used in standard layout WITH COMBINED IDENTICALS TURNED ON:
-                    "pointer"      => empty($l_str_BacklinkEvent) ? '' : ' pointer',
-                    "event"        => $l_str_BacklinkEvent,
-                    "backlinks"    => empty($l_str_BacklinkEvent) ? $l_str_FootnoteBacklinks : $l_str_FootnoteReference,
+                    "pointer"         => $l_bool_FlagCombined ? '' : ' pointer',
+                    "event"           => $l_bool_FlagCombined ? '' : $l_str_BacklinkEvent,
+                    "backlinks"       => $l_bool_FlagCombined ? $l_str_FootnoteBacklinks : $l_str_FootnoteReference,
 
                     // Legacy placeholders for use in legacy layout templates:
-                    "arrow"        => $l_str_FootnoteArrow,
-                    "index"        => $l_str_FootnoteIndex,
+                    "arrow"           => $l_str_FootnoteArrow,
+                    "index"           => $l_str_FootnoteId,
                 )
             );
 
@@ -1219,7 +1413,7 @@ class MCI_Footnotes_Task {
                 "button-style"    => !$l_bool_CollapseDefault ? 'display: none;' : '',
                 "style"           =>  $l_bool_CollapseDefault ? 'display: none;' : '',
                 "content"         =>  $l_str_Body,
-                "scroll-offset"   => (intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET)) / 100),
+                "scroll-offset"   =>  (self::$l_int_ScrollOffset / 100),
                 "scroll-duration" =>  intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION)),
             )
         );

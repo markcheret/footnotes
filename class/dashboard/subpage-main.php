@@ -38,7 +38,7 @@
  * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
  * @since 2.3.1  footnote shortcode syntax validation  2021-01-01T0624+0100
  *
- * Last modified: 2021-01-01T0639+0100
+ * Last modified: 2021-01-01T1241+0100
  */
 
 /**
@@ -400,7 +400,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 // option to enable syntax validation:
                 "label-syntax" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE, __("Check for balanced shortcodes:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "syntax" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE, $l_arr_Enable),
-                "notice-syntax" => __("In  the presence of an unclosed opening tag shortcode, a warning displays below the post title.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-syntax" => __("In the presence of a lone start tag shortcode, a warning displays below the post title.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders

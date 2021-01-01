@@ -1,23 +1,41 @@
 note-for-developers.txt
 2020-12-19T0609+0100
-Last modified:  2020-12-19T0706+0100
+Last modified:  2021-01-01T2212+0100
 
-Footnotes plugin for WordPress, v2.3.0 and later
+Footnotes plugin for WordPress, v2.2.6 and later
 
 Support for custom templates
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-Since v2.3.0, Footnotes can process custom templates.
+Since v2.2.6, Footnotes supports custom templates.
 
-To use custom templates, please make a sibling of the "footnotes" folder called "footnotes-custom" containing just the content of templates/public/ with the same structure.
+Custom templates may be loaded from a sibling folder 'footnotes-custom'
+or since v2.3.1 from a folder 'templates/footnotes/' in the active theme.
 
-Existing homonymous templates on the path wp-content/plugins/footnotes-custom/templates/public/ are loaded instead of their counterparts in wp-content/plugins/footnotes/templates/public/.
+See footnotes/class/template.php:67..116
 
-The new location does not need to contain all templates.
-E.g. for custom tooltips, you need only one or both of these:
+
+A.  Active theme
+    ‾‾‾‾‾‾‾‾‾‾‾‾
+Please create a folder 'templates/footnotes/' in your child theme and
+store all your public custom templates for Footnotes directly therein.
+
+Existing homonymous templates are loaded instead of their counterparts in
+wp-content/plugins/footnotes/templates/public/.
+
+
+B.  Sibling folder
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Please make a sibling of the "footnotes" folder called 'footnotes-custom' and
+the same internal structure and file names as 'footnotes/templates/public/'.
+
+Example for custom tooltips:
 
 footnotes-custom
 └── templates
     └── public
         ├── footnote.html
         └── tooltip.html
+
+The timing parameters in the inline jQuery script 'tooltip.html' are already
+configurable in the dashboard > Referrers and tooltips > Tooltip timing.

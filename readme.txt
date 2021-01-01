@@ -81,6 +81,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.3.1 =
+- Bugfix: Customization: support for custom templates in active theme, thanks to @misfist
 - Bugfix: Shortcodes: syntax validation for balanced footnote start and end tag short codes
 
 = 2.3.0 =

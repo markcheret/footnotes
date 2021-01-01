@@ -66,7 +66,7 @@
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
  * @since 2.3.1  syntax validation for balanced footnote start and end tags  2021-01-01T0227+0100
  *
- * Last modified:  2021-01-01T0642+0100
+ * Last modified:  2021-01-01T1239+0100
  */
 
 // If called directly, abort:
@@ -212,8 +212,7 @@ class MCI_Footnotes_Task {
      * @since 2.3.1
      * @var bool
      */
-    public static $l_bool_SyntaxErrorFlag = false;
-    public static $l_bool_SyntaxErrorShow = true;
+    public static $l_bool_SyntaxErrorFlag = true;
 
 
 
@@ -748,6 +747,8 @@ class MCI_Footnotes_Task {
      * @return string
      *
      * Edited since 2.0.0
+	 * 
+	 * @since 2.3.1  footnote shortcode syntax validation
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
 
@@ -786,21 +787,21 @@ class MCI_Footnotes_Task {
             $l_str_ValidationRegex = '#' . $l_str_StartTagRegex . '(((?!' . $l_str_EndTagRegex . ').)*?)(' . $l_str_StartTagRegex . '|$)#s';
             preg_match( $l_str_ValidationRegex, $p_str_Content, $p_arr_ErrorLocation );
             if ( empty( $p_arr_ErrorLocation ) ) {
-                self::$l_bool_SyntaxErrorShow = false;
+                self::$l_bool_SyntaxErrorFlag = false;
             }
 
             // prevent generating and inserting the warning multiple times:
-            if ( self::$l_bool_SyntaxErrorShow ) {
+            if ( self::$l_bool_SyntaxErrorFlag ) {
                 $l_str_ErrorSpotString = strip_tags($p_arr_ErrorLocation[1]);
 
                 $l_str_SyntaxErrorWarning  = '<div class="footnotes_validation_error"><p>';
-                $l_str_SyntaxErrorWarning .= 'WARNING: unbalanced footnote start tag short code before:';
+                $l_str_SyntaxErrorWarning .= __("WARNING: unbalanced footnote start tag short code before:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME);
                 $l_str_SyntaxErrorWarning .= '</p><p>“';
                 $l_str_SyntaxErrorWarning .= $l_str_ErrorSpotString;
                 $l_str_SyntaxErrorWarning .= '”</p></div>';
 
                 $p_str_Content = $l_str_SyntaxErrorWarning . $p_str_Content;
-                self::$l_bool_SyntaxErrorShow = false;
+                self::$l_bool_SyntaxErrorFlag = false;
 
                 return $p_str_Content;
             }

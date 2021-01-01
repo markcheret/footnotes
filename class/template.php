@@ -15,7 +15,7 @@
  * @since 2.3.1  templates may be in active theme, thanks to @misfist
  * @see <https://wordpress.org/support/topic/template-override-filter/#post-13846598>
  *
- * Last modified: 2021-01-01T2214+0100
+ * Last modified: 2021-01-01T2246+0100
  */
 
 
@@ -82,8 +82,8 @@ class MCI_Footnotes_Template {
      *
      * @since 2.2.6  regex to delete a space before a closing pointy bracket
      * 
-     * @since 2.3.1  look for custom template in the active theme
-     * @see <https://wordpress.stackexchange.com/questions/220942/how-to-get-the-active-themes-slug>
+     * @since 2.3.1  look for custom template in the active theme first, thanks to @misfist
+     * @see <https://wordpress.org/support/topic/template-override-filter/#post-13846598>
      */
     public function __construct($p_str_FileType, $p_str_FileName, $p_str_Extension = "html") {
         // no template file type and/or file name set
@@ -91,17 +91,17 @@ class MCI_Footnotes_Template {
             return;
         }
 
-        // First look for a custom template in a 'footnotes-custom' sibling folder:
-        $l_str_TemplateFile = dirname(__FILE__) . "/../../footnotes-custom/templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
+        // First try to load the template from the active theme in 'templates/footnotes/':
+        $l_str_TemplateFile  = dirname(__FILE__) . "/../../../themes/";
+        // get active theme dir name (parent theme unlikely to contain custom templates):
+        // see <https://wordpress.stackexchange.com/questions/220942/how-to-get-the-active-themes-slug>
+        $l_str_TemplateFile .= get_stylesheet();
+        $l_str_TemplateFile .= "/templates/footnotes/" . $p_str_FileName . "." . $p_str_Extension;
 
-        // else load template from the active theme:
+        // else look for a custom template in a 'footnotes-custom' sibling folder:
         if (!file_exists($l_str_TemplateFile)) {
 
-            $l_str_TemplateFile  = dirname(__FILE__) . "/../../../themes/";
-            // get active theme dir name (parent theme unlikely to contain custom templates):
-            // see <https://wordpress.stackexchange.com/questions/220942/how-to-get-the-active-themes-slug>
-            $l_str_TemplateFile .= get_stylesheet();
-            $l_str_TemplateFile .= "/templates/footnotes/" . $p_str_FileName . "." . $p_str_Extension;
+            $l_str_TemplateFile = dirname(__FILE__) . "/../../footnotes-custom/templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
 
             // else load internal template:
             if (!file_exists($l_str_TemplateFile)) {

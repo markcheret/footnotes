@@ -5,7 +5,7 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.3.0
+ * Version: 2.3.1
  *
  *     Classes added to public.css may be added to the
  *     list documenting CSS classes for Custom CSS if
@@ -20,8 +20,9 @@
  * @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
  * @see <https://wordpress.org/support/topic/counter-styles-not-working/>
  * @since 2.3.0  offset anchors for optional hard links
+ * @since 2.3.1  validation error warning box
  * 
- * Last modified: 2020-12-31T1211+0100
+ * Last modified: 2021-01-01T0642+0100
  */
 
 
@@ -49,6 +50,39 @@ css/settings.css
 .footnotes_logo_part2,
 .footnotes_logo_part2_heading {
     color: #545f5a;
+}
+
+/*****************************************************
+Validation error warning displayed below post title
+
+The presence of unbalanced footnote start short codes
+significantly alters the post display and may cause an
+issue with missing content or footnotes, while it may
+be hard to detect in long posts and under deadline.
+
+A validation check displays a warning box below the 
+post title, populated with the first instance of a 
+content snippet preceded by an unbalanced start tag
+short code.
+
+@since 2.3.1
+*/
+
+.footnotes_validation_error {
+	border: 4px solid red;
+	padding: 20px;
+	background: #ff000055;
+}
+
+.footnotes_validation_error p:first-child {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.footnotes_validation_error p:last-child {
+	font-size: 12px;
+	text-align: start;
 }
 
 /*****************************************************

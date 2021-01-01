@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.3.1 =
+- Bugfix: Shortcodes: syntax validation for balanced footnote start and end tag short codes
+
 = 2.3.0 =
 - Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat
 - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe

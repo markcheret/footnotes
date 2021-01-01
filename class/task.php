@@ -64,8 +64,9 @@
  * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
  * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
+ * @since 2.3.1  syntax validation for balanced footnote start and end tags  2021-01-01T0227+0100
  *
- * Last modified:  2020-12-31T1234+0100
+ * Last modified:  2021-01-01T0642+0100
  */
 
 // If called directly, abort:
@@ -195,6 +196,24 @@ class MCI_Footnotes_Task {
     public static $l_str_LinkSpan = 'span';
     public static $l_str_LinkOpenTag = '';
     public static $l_str_LinkCloseTag = '';
+
+    /**
+     * SYNTAX VALIDATION
+     *
+     * This part of the algorithm first checks for balanced footnote opening and closing tag
+     * short codes. The first encountered error triggers the display of a warning below the
+     * post title and cancellation of further parsing.
+     *
+     * Unbalanced short codes have caused significant trouble because they are hard to detect.
+     * Any compiler or other tool reports syntax errors in the first place. Footnotes’ exception
+     * is considered a design flaw, and the feature is released as a bug fix after overdue 2.3.0
+     * released in urgency to provide AMP compat before 2021.
+     *
+     * @since 2.3.1
+     * @var bool
+     */
+    public static $l_bool_SyntaxErrorFlag = false;
+    public static $l_bool_SyntaxErrorShow = true;
 
 
 
@@ -753,11 +772,41 @@ class MCI_Footnotes_Task {
             $l_str_StartingTag = htmlspecialchars($l_str_StartingTag);
             $l_str_EndingTag = htmlspecialchars($l_str_EndingTag);
         }
+
         // if footnotes short code is empty, return the content without changes
         if (empty($l_str_StartingTag) || empty($l_str_EndingTag)) {
             return $p_str_Content;
         }
 
+        // if footnotes short codes are unbalanced, and syntax validation is not disabled,
+        // return content with prepended warning:
+        if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE))) {
+            $l_str_StartTagRegex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_StartingTag );
+            $l_str_EndTagRegex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_EndingTag );
+            $l_str_ValidationRegex = '#' . $l_str_StartTagRegex . '(((?!' . $l_str_EndTagRegex . ').)*?)(' . $l_str_StartTagRegex . '|$)#s';
+            preg_match( $l_str_ValidationRegex, $p_str_Content, $p_arr_ErrorLocation );
+            if ( empty( $p_arr_ErrorLocation ) ) {
+                self::$l_bool_SyntaxErrorShow = false;
+            }
+
+            // prevent generating and inserting the warning multiple times:
+            if ( self::$l_bool_SyntaxErrorShow ) {
+                $l_str_ErrorSpotString = strip_tags($p_arr_ErrorLocation[1]);
+
+                $l_str_SyntaxErrorWarning  = '<div class="footnotes_validation_error"><p>';
+                $l_str_SyntaxErrorWarning .= 'WARNING: unbalanced footnote start tag short code before:';
+                $l_str_SyntaxErrorWarning .= '</p><p>“';
+                $l_str_SyntaxErrorWarning .= $l_str_ErrorSpotString;
+                $l_str_SyntaxErrorWarning .= '”</p></div>';
+
+                $p_str_Content = $l_str_SyntaxErrorWarning . $p_str_Content;
+                self::$l_bool_SyntaxErrorShow = false;
+
+                return $p_str_Content;
+            }
+        }
+
+        // load referrer templates if footnotes text not hidden:
         if (!$p_bool_HideFootnotesText) {
             // load two template files:
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {

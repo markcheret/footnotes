@@ -6,6 +6,8 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  *
+ * Last modified: 2021-01-02T2335+0100
+ *
  * Edited:
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
@@ -36,9 +38,7 @@
  * @since 2.3.0  add settings for hard links, thanks to @psykonevro and @martinneumannat  2020-12-29T1322+0100
  * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
  * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
- * @since 2.3.1  footnote shortcode syntax validation  2021-01-01T0624+0100
- *
- * Last modified: 2021-01-01T1241+0100
+ * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
  */
 
 /**
@@ -335,11 +335,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 1.5.0
      *
      * Edited heading  2020-12-12T1412+0100
-     * @since 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos  2020-12-12T1412+0100
+     * @since 2.2.0  start/end short codes: more predefined options  2020-12-12T1412+0100
      * @see <https://wordpress.org/support/topic/doesnt-work-with-mailpoet/>
      * @since 2.2.0  3 boxes for clarity  2020-12-12T1422+0100
      * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2019+0100
      * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
+	 * @since 2.4.0  added warning about Block Editor escapement disruption  2021-01-02T2324+0100
+	 * @since 2.4.0  removed the HTML comment tag option  2021-01-02T2325+0100
      */
     public function StartEnd() {
         // footnotes start tag short code options:
@@ -353,7 +355,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             htmlspecialchars("<fn>") => htmlspecialchars("<fn>"),
             "[ref]" => "[ref]",
             htmlspecialchars("<ref>") => htmlspecialchars("<ref>"),
-            htmlspecialchars("<!--n>") => htmlspecialchars("<!--n>"),
             // Custom (user-defined) start and end tags bracketing the footnote text inline:
             "userdefined" => __('custom short code', MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
         );
@@ -368,9 +369,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             htmlspecialchars("</fn>") => htmlspecialchars("</fn>"),
             "[/ref]" => "[/ref]",
             htmlspecialchars("</ref>") => htmlspecialchars("</ref>"),
-            htmlspecialchars("<n-->") => htmlspecialchars("<n-->"),
             // Custom (user-defined) start and end tags bracketing the footnote text inline:
-            "userdefined" => __('custom short code', MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+            "userdefined" => __("custom short code", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
         );
         // options for the syntax validation:
         $l_arr_Enable = array(
@@ -383,6 +383,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         // replace all placeholders
         $l_obj_Template->replace(
             array(
+
+                "description" => __("WARNING: Short codes with closing pointy brackets are disabled in the new WordPress Block Editor that disrupts the traditional balanced escapement applied by WordPress Classic Editor.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
                 "label-short-code-start" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, __("Footnote start tag short code:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "short-code-start" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, $l_arr_ShortCodeStart),
                 "short-code-start-user" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED),

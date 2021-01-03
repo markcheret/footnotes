@@ -6,6 +6,8 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:43
  *
+ * Last modified: 2021-01-02T2340+0100
+ *
  * Edited:
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
@@ -37,9 +39,7 @@
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
  * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
- * @since 2.3.1  footnote shortcode syntax validation  2021-01-01T0624+0100
- *
- * Last modified: 2021-01-01T0624+0100
+ * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
  */
 
 
@@ -569,7 +569,7 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key for shortcode syntax validation
 	 * 
-	 * @since 2.3.1
+	 * @since 2.4.0
 	 * @var bool
 	 * 
 	 * 2021-01-01T0616+0100

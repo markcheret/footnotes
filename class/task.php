@@ -8,6 +8,8 @@
  *
  * Edited for v2.0.0 and following.
  *
+ * Last modified:  2021-01-03T2056+0100
+ *
  * @since 2.0.5  Autoload / infinite scroll support added thanks to code from @docteurfitness
  * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  *
@@ -64,9 +66,8 @@
  * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
  * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
- * @since 2.3.1  syntax validation for balanced footnote start and end tags  2021-01-01T0227+0100
- *
- * Last modified:  2021-01-01T1239+0100
+ * @since 2.4.0  syntax validation for balanced footnote start and end tags  2021-01-01T0227+0100
+ * @since 2.4.0  scroll offset to a safety default value 34 right in the properties section  2021-01-03T2056+0100
  */
 
 // If called directly, abort:
@@ -152,14 +153,17 @@ class MCI_Footnotes_Task {
      * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
      * @since 2.3.0
      * @var bool|str|int
+	 * 
+	 * @since 2.4.0  scroll offset to a safety default value 34 right here  2021-01-03T2055+0100
+	 *               Some websites are using really high fixed headers not contracting at scroll.
      */
     public static $l_bool_HardLinksEnable        = false;
     public static $l_str_ReferrerLinkSlug        = 'r';
     public static $l_str_FootnoteLinkSlug        = 'f';
     public static $l_str_LinkIdsSeparator        = '+';
     public static $l_str_PostContainerIdCompound = '';
-    // scroll offset may now need to get into inline CSS:
-    public static $l_int_ScrollOffset            = 0;
+    // scroll offset may now need to get into inline CSS; default:
+    public static $l_int_ScrollOffset            = 34;
 
     /**
      * OPTIONAL LINK ELEMENT FOR FOOTNOTE REFERRERS AND BACKLINKS
@@ -209,7 +213,7 @@ class MCI_Footnotes_Task {
      * is considered a design flaw, and the feature is released as a bug fix after overdue 2.3.0
      * released in urgency to provide AMP compat before 2021.
      *
-     * @since 2.3.1
+     * @since 2.4.0
      * @var bool
      */
     public static $l_bool_SyntaxErrorFlag = true;
@@ -338,11 +342,14 @@ class MCI_Footnotes_Task {
             echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
         }
 
-        // ref container table borders:
+        // ref container table row borders:
         if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE))) {
             echo ".footnotes_table, .footnotes_plugin_reference_row {";
             echo "border: 1px solid #060606;";
             echo " !important;}\r\n";
+            // adapt left padding to the presence of a border:
+            echo ".footnote_plugin_index, .footnote_plugin_index_combi {";
+            echo "padding-left: 6px !important}\r\n";
         }
 
         // ref container first column width and max-width:
@@ -747,8 +754,8 @@ class MCI_Footnotes_Task {
      * @return string
      *
      * Edited since 2.0.0
-	 * 
-	 * @since 2.3.1  footnote shortcode syntax validation
+     * 
+     * @since 2.4.0  footnote shortcode syntax validation
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
 

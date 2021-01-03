@@ -5,7 +5,10 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.3.1
+ * Version: 2.4.0
+ * 
+ * Last modified: 2021-01-02T1203+0100
+ *
  *
  *     Classes added to public.css may be added to the
  *     list documenting CSS classes for Custom CSS if
@@ -20,9 +23,7 @@
  * @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
  * @see <https://wordpress.org/support/topic/counter-styles-not-working/>
  * @since 2.3.0  offset anchors for optional hard links
- * @since 2.3.1  validation error warning box
- * 
- * Last modified: 2021-01-01T0642+0100
+ * @since 2.4.0  validation error warning box
  */
 
 
@@ -65,7 +66,7 @@ post title, populated with the first instance of a
 content snippet preceded by an unbalanced start tag
 short code.
 
-@since 2.3.1
+@since 2.4.0
 */
 
 .footnotes_validation_error {
@@ -268,8 +269,9 @@ Classes:
 .footnote_plugin_index_combi                  = first <td> if identical footnotes are combined
 .footnote_plugin_index                        = first <td> if not
 .footnote_index                               = <a> or <span> in first <td> in 3-column table
-.footnote_plugin_link                         = <a> or <span> if identical footnotes are not combined, or second <td> in 3-column table
-.footnote_backlink                            = <a> or <span> if identical footnotes are combined, or in second <td> in 3-column table
+.footnote_plugin_symbol                       = second <td> in 3-column table
+.footnote_plugin_link                         = <a> or <span> (identical footnotes not combined)
+.footnote_backlink                            = <a> or <span>
 .footnote_index_arrow                         = nested <span>, symbol only
 .footnote_plugin_text                         = second <td>, or third <td> in 3-column table
 */
@@ -342,7 +344,7 @@ enforced borderless table cells with !important property, thanks to @ragonesi
 */
 .footnote_plugin_index,
 .footnote_plugin_index_combi,
-.footnote_plugin_link,
+.footnote_plugin_symbol,
 .footnote_plugin_text {
     border: none !important;
     text-align: left !important;

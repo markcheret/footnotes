@@ -80,9 +80,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.3.1 =
-- Bugfix: Customization: support for custom templates in active theme, thanks to @misfist
-- Bugfix: Shortcodes: syntax validation for balanced footnote start and end tag short codes
+= 2.4.0 =
+- Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor
+- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
+- Add: Customization: support for custom templates in active theme, thanks to @misfist
+- Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes
+- Add: Reference container: Row borders: more options for border width, style and color
+- Bugfix: Reference container: Row borders: adapt left padding to the presence of a left border
+- Bugfix: Reference container: add class footnote_plugin_symbol to disambiguate repurposed class footnote_plugin_link
 
 = 2.3.0 =
 - Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat
@@ -142,7 +147,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Add: Reference container: support for custom position shortcode, thanks to @hamshe
 - Update: Priority levels: update the notice in the dashboard Priority tab
 - Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
-- Add: Start/end short codes: more predefined options, thanks to @nikelaos
+- Add: Start/end short codes: more predefined options
 - Add: Numbering styles: lowercase Roman numerals support
 - Update: Dashboard: Tooltip settings: grouped into 3 thematic containers
 - Update: Dashboard: Main settings: grouped into 3 specific containers

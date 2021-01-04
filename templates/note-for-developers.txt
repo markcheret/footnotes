@@ -1,7 +1,6 @@
 note-for-developers.txt
 2020-12-19T0609+0100
-
-Last modified:  2021-01-02T1207+0100
+Last modified:  2021-01-01T2249+0100
 
 Footnotes plugin for WordPress, v2.2.6 and later
 
@@ -11,7 +10,7 @@ Support for custom templates
 Since v2.2.6, Footnotes supports custom templates.
 
 Custom templates may be loaded from a sibling folder 'footnotes-custom'
-or since v2.4.0 from a folder 'templates/footnotes/' in the active theme.
+or since v2.3.1 from a folder 'templates/footnotes/' in the active theme.
 
 Priority order:
     1. active theme

@@ -8,7 +8,7 @@
  *
  * Edited for v2.0.0 and following.
  *
- * Last modified:  2021-01-03T2056+0100
+ * Last modified:  2021-01-04T1623+0100
  *
  * @since 2.0.5  Autoload / infinite scroll support added thanks to code from @docteurfitness
  * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
@@ -68,6 +68,10 @@
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
  * @since 2.4.0  syntax validation for balanced footnote start and end tags  2021-01-01T0227+0100
  * @since 2.4.0  scroll offset to a safety default value 34 right in the properties section  2021-01-03T2056+0100
+ * @since 2.4.0  initialize scroll offset variable to 34 as a more robust default, thanks to @lukashuggenberg  2021-01-04T0504+0100
+ * @since 2.4.0  set empty reference container label to NNBSP to make it more robust, thanks to @lukashuggenberg  2021-01-04T0504+0100
+ * @since 2.4.0  optimize template load and process, thanks to @misfist  2021-01-04T1355+0100
+ * @since 2.4.0  initialize hard link address as empty to fix undefined variable bug, thanks to @a223123131  2021-01-04T1622+0100
  */
 
 // If called directly, abort:
@@ -144,6 +148,17 @@ class MCI_Footnotes_Task {
     public static $l_int_ReferenceContainerId = 1;
 
     /**
+     * Load tooltip inline script only if jQuery tooltips are enabled
+     * Streamline process depending on tooltip enabled status
+     *
+     * @author Patrizia Lutz @misfist
+     *
+     * @since 2.4.0d0
+     */
+    public static $l_bool_TooltipsEnabled = false;
+    public static $l_bool_AlternativeTooltipsEnabled = false;
+
+    /**
      * Hard links for AMP
      *
      * Optional hard links in referrers and backlinks for AMP compatibility
@@ -153,9 +168,10 @@ class MCI_Footnotes_Task {
      * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
      * @since 2.3.0
      * @var bool|str|int
-	 * 
-	 * @since 2.4.0  scroll offset to a safety default value 34 right here  2021-01-03T2055+0100
-	 *               Some websites are using really high fixed headers not contracting at scroll.
+     *
+     * @since 2.4.0  initialize scroll offset to a safety default value 34 right here  2021-01-03T2055+0100
+     *               By accident, this variable may not be updated with settings storage.
+     *               Websites may use high fixed headers not contracting at scroll.
      */
     public static $l_bool_HardLinksEnable        = false;
     public static $l_str_ReferrerLinkSlug        = 'r';
@@ -409,10 +425,10 @@ class MCI_Footnotes_Task {
         }
 
         // tooltips:
-        $l_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED));
-        $l_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE));
+        self::$l_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED));
+        self::$l_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE));
 
-        if ($l_bool_TooltipsEnabled) {
+        if (self::$l_bool_TooltipsEnabled) {
 
             echo '.footnote_tooltip {';
 
@@ -467,7 +483,7 @@ class MCI_Footnotes_Task {
             }
 
             // alternative tooltips:
-            if ( ! $l_bool_AlternativeTooltipsEnabled) {
+            if ( ! self::$l_bool_AlternativeTooltipsEnabled) {
 
                 // tooltip position:
                 $l_int_MaxWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH);
@@ -535,7 +551,7 @@ class MCI_Footnotes_Task {
         echo "\r\n</style>\r\n";
 
         // alternative tooltip script printed formatted not minified:
-        if ($l_bool_AlternativeTooltipsEnabled) {
+        if (self::$l_bool_AlternativeTooltipsEnabled) {
             ?>
             <script content="text/javascript">
                 function footnoteTooltipShow(footnoteTooltipId) {
@@ -754,7 +770,7 @@ class MCI_Footnotes_Task {
      * @return string
      *
      * Edited since 2.0.0
-     * 
+     *
      * @since 2.4.0  footnote shortcode syntax validation
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
@@ -816,13 +832,19 @@ class MCI_Footnotes_Task {
 
         // load referrer templates if footnotes text not hidden:
         if (!$p_bool_HideFootnotesText) {
-            // load two template files:
-            if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
+
+            // load footnote referrer template file:
+            if (self::$l_bool_AlternativeTooltipsEnabled) {
                 $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote-alternative");
             } else {
                 $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote");
             }
-            $l_obj_TemplateTooltip = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "tooltip");
+
+            // load tooltip inline script if jQuery tooltips are enabled:
+            if (self::$l_bool_TooltipsEnabled && ! self::$l_bool_AlternativeTooltipsEnabled) {
+                $l_obj_TemplateTooltip = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "tooltip");
+            }
+
         } else {
             $l_obj_Template = null;
             $l_obj_TemplateTooltip = null;
@@ -911,11 +933,13 @@ class MCI_Footnotes_Task {
                 $l_int_Index = MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
 
                 // display only a truncated footnote text if option enabled:
-                $l_str_ExcerptText = $l_str_FootnoteText;
                 $l_bool_EnableExcerpt = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED));
                 $l_int_MaxLength = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH));
 
-                if ($l_bool_EnableExcerpt) {
+                // define excerpt text as footnote text by default:
+                $l_str_ExcerptText = $l_str_FootnoteText;
+
+                if (self::$l_bool_TooltipsEnabled && $l_bool_EnableExcerpt) {
                     $l_str_DummyText = strip_tags($l_str_FootnoteText);
                     if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
                         $l_str_ExcerptText  = substr($l_str_DummyText, 0, $l_int_MaxLength);
@@ -1006,7 +1030,7 @@ class MCI_Footnotes_Task {
                         "index"          => $l_int_Index,
                         "after"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
                         "anchor-element" => $l_str_ReferrerAnchorElement,
-                        "text"           => MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) ? $l_str_ExcerptText : "",
+                        "text"           => self::$l_bool_TooltipsEnabled ? $l_str_ExcerptText : "",
                     )
                 );
                 $l_str_FootnoteReplaceText = $l_obj_Template->getContent();
@@ -1014,11 +1038,9 @@ class MCI_Footnotes_Task {
                 // reset the template
                 $l_obj_Template->reload();
 
-                if (
-                    // standard tooltip is enabled:
-                    MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED)) &&
-                    !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))
-                ) {
+                // if standard tooltips are enabled but alternative are not:
+                if (self::$l_bool_TooltipsEnabled && ! self::$l_bool_AlternativeTooltipsEnabled) {
+
                     $l_int_OffsetY         = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
                     $l_int_OffsetX         = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
                     $l_int_FadeInDelay     = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY    ));
@@ -1254,7 +1276,10 @@ class MCI_Footnotes_Task {
             // INDEX COLUMN WITH ONE BACKLINK PER TABLE ROW
 
             // if enabled, and for the case the footnote is single, compose hard link:
-            if (self::$l_bool_HardLinksEnable) {
+			// define variable as empty for the reference container if not enabled:
+			$l_str_HardLinkAddress = '';
+		
+			if (self::$l_bool_HardLinksEnable) {
 
                 // compose fragment ID anchor with offset, for use in reference container, an
                 // empty span child of empty span to avoid tall dotted rectangles in browser:
@@ -1459,6 +1484,9 @@ class MCI_Footnotes_Task {
         // streamline:
         $l_bool_CollapseDefault = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE));
 
+        // prevent empty from being less robust:
+        $l_str_ReferenceContainerLabel = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME);
+
         // load 'templates/public/reference-container.html':
         $l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
         $l_obj_TemplateContainer->replace(
@@ -1466,7 +1494,7 @@ class MCI_Footnotes_Task {
                 "post_id"         =>  self::$l_int_PostId,
                 "container_id"    =>  self::$l_int_ReferenceContainerId,
                 "element"         =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT),
-                "name"            =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME),
+                "name"            =>  empty($l_str_ReferenceContainerLabel) ? '&#x202F;' : $l_str_ReferenceContainerLabel,
                 "button-style"    => !$l_bool_CollapseDefault ? 'display: none;' : '',
                 "style"           =>  $l_bool_CollapseDefault ? 'display: none;' : '',
                 "content"         =>  $l_str_Body,

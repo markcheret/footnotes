@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.3.0
+Stable Tag: 2.4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,13 +81,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.4.0 =
+- Bugfix: initialize hard link address as empty to fix undefined variable bug, thanks to @a223123131
 - Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor
 - Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
-- Add: Customization: support for custom templates in active theme, thanks to @misfist
+- Add: Customization: Enable template location stack, contributed by @misfist
+- Bugfix: optimize template load and process according to settings, thanks to @misfist
 - Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes
-- Add: Reference container: Row borders: more options for border width, style and color
-- Bugfix: Reference container: Row borders: adapt left padding to the presence of a left border
-- Bugfix: Reference container: add class footnote_plugin_symbol to disambiguate repurposed class footnote_plugin_link
+- Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border
+- Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg
+- Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg
+- Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class footnote_plugin_link
 
 = 2.3.0 =
 - Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat

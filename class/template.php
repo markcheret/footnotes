@@ -67,6 +67,16 @@ class MCI_Footnotes_Template {
     private $a_str_ReplacedContent = "";
 
     /**
+     * Plugin Directory
+     * 
+     * @author Patrizia Lutz @misfist
+     * @since 2.4.0d3
+     *
+     * @var string
+     */
+    public $plugin_directory;
+
+    /**
      * Class Constructor. Reads and loads the template file without replace any placeholder.
      *
      * @author Stefan Herndler
@@ -93,40 +103,28 @@ class MCI_Footnotes_Template {
             return;
         }
 
-        // First try to load the template from the active theme in 'templates/footnotes/':
-        $l_str_TemplateFile  = dirname(__FILE__) . "/../../../themes/";
-        // get active theme dir name (parent theme unlikely to contain custom templates):
-        // see <https://wordpress.stackexchange.com/questions/220942/how-to-get-the-active-themes-slug>
-        // returns the stylesheet’s folder name, not the actual style sheet:
-        $l_str_TemplateFile .= get_stylesheet();
-        $l_str_TemplateFile .= "/templates/footnotes/" . $p_str_FileName . "." . $p_str_Extension;
+        /**
+         * Define plugin root path
+         * 
+         * @since 2.4.0d3
+         * 
+         * @author Patrizia Lutz @misfist
+         */
+        $this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
 
-        // else look for a custom template in a 'footnotes-custom' sibling folder:
-        if (!file_exists($l_str_TemplateFile)) {
-
-            $l_str_TemplateFile = dirname(__FILE__) . "/../../footnotes-custom/templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
-
-            // else load internal template:
-            if (!file_exists($l_str_TemplateFile)) {
-
-                // get absolute path to the specified template file
-                $l_str_TemplateFile = dirname(__FILE__) . "/../templates/" . $p_str_FileType . "/" . $p_str_FileName . "." . $p_str_Extension;
-
-                // do nothing if template file does not exist:
-                if (!file_exists($l_str_TemplateFile)) {
-                    return;
-                }
-            }
+        /**
+         * Modularize functions
+         * 
+         * @since 2.4.0d3
+         * 
+         * @author Patrizia Lutz @misfist
+         */
+        if( $template = $this->get_template( $p_str_FileType, $p_str_FileName, $p_str_Extension ) )  {
+            $this->process_template( $template );
+        } else {
+            return;
         }
 
-        // minify template content to some extent:
-        // get Template file content
-        $this->a_str_OriginalContent = str_replace("\n", "", file_get_contents($l_str_TemplateFile));
-        $this->a_str_OriginalContent = str_replace("\r", "", $this->a_str_OriginalContent);
-        $this->a_str_OriginalContent = str_replace("\t", " ", $this->a_str_OriginalContent);
-        $this->a_str_OriginalContent = preg_replace('# +#', " ", $this->a_str_OriginalContent);
-        $this->a_str_OriginalContent = str_replace(" >", ">", $this->a_str_OriginalContent);
-        $this->reload();
     }
 
     /**
@@ -173,6 +171,79 @@ class MCI_Footnotes_Template {
      */
     public function getContent() {
         return $this->a_str_ReplacedContent;
+    }
+
+        /**
+     * Process template file
+     * 
+     * @author Patrizia Lutz @misfist
+     * 
+     * @since 2.4.0d3
+     *
+     * @param string $template
+     * @return void
+     */
+    public function process_template( $template ) {
+        $this->a_str_OriginalContent = str_replace( "\n", "", file_get_contents( $template ) );
+        $this->a_str_OriginalContent = str_replace( "\r", "", $this->a_str_OriginalContent );
+        $this->a_str_OriginalContent = str_replace( "\t", " ", $this->a_str_OriginalContent );
+        $this->a_str_OriginalContent = preg_replace( '# +#', " ", $this->a_str_OriginalContent );
+        $this->a_str_OriginalContent = str_replace( " >", ">", $this->a_str_OriginalContent );
+        $this->reload();
+    }
+
+    /**
+     * Get the template
+     * 
+     * @author Patrizia Lutz @misfist
+     * 
+     * @since 2.4.0d3
+     *
+     * @param string $p_str_FileType
+     * @param string $p_str_FileName
+     * @param string $p_str_Extension
+     * @return mixed false | template path
+     */
+    public function get_template( $p_str_FileType, $p_str_FileName, $p_str_Extension = "html" ) {
+        $located = false;
+
+        /**
+         * The directory change be modified
+         * @usage to change location of templates to `template_parts/footnotes/':
+         * add_filter( 'mci_footnotes_template_directory', function( $directory ) {
+         *  return 'template_parts/footnotes/;
+         * } );
+         */
+        $template_directory = apply_filters( 'mci_footnotes_template_directory', 'footnotes/templates/' );
+        $custom_directory = apply_filters( 'mci_footnotes_custom_template_directory', 'footnotes-custom/' );
+        $template_name = $p_str_FileType . '/' . $p_str_FileName . '.' . $p_str_Extension;
+
+        /**
+         * Look in active (child) theme
+         */
+		if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name ) ) {
+            $located = trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name;
+        
+        /**
+         * Look in parent theme
+         */
+        } elseif ( file_exists( trailingslashit( get_template_directory() ) . $template_directory . $template_name ) ) {
+            $located = trailingslashit( get_template_directory() ) . $template_directory . $template_name;
+            
+        /**
+         * Look custom directory
+         */
+        } elseif ( file_exists( trailingslashit( WP_PLUGIN_DIR ) . $custom_directory . 'templates/' . $template_name ) ) {
+            $located = trailingslashit( WP_PLUGIN_DIR ) . $custom_directory . 'templates/' . $template_name;
+
+        /**
+         * Look in plugin
+         */
+        } elseif ( file_exists( $this->plugin_directory . 'templates/' . $template_name ) ) {
+            $located = $this->plugin_directory . 'templates/' . $template_name;
+        }
+
+        return $located;
     }
 
 } // end of class

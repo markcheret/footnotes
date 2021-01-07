@@ -8,7 +8,7 @@
  *
  * Edited for v2.0.0 and following.
  *
- * Last modified:  2021-01-04T1623+0100
+ * Last modified:  2021-01-07T2219+0100
  *
  * @since 2.0.5  Autoload / infinite scroll support added thanks to code from @docteurfitness
  * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
@@ -72,6 +72,12 @@
  * @since 2.4.0  set empty reference container label to NNBSP to make it more robust, thanks to @lukashuggenberg  2021-01-04T0504+0100
  * @since 2.4.0  optimize template load and process, thanks to @misfist  2021-01-04T1355+0100
  * @since 2.4.0  initialize hard link address as empty to fix undefined variable bug, thanks to @a223123131  2021-01-04T1622+0100
+ * @since 2.5.0  Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra  2021-01-07T0824+0100
+ * @since 2.5.0  Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra
+ * @since 2.5.0  Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra
+ * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
+ * @since 2.5.0  Hooks: support the term_description hook, thanks to @vitaefit (feature) and @misfist (hook name)
+ * @see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/>
  */
 
 // If called directly, abort:
@@ -247,9 +253,12 @@ class MCI_Footnotes_Task {
      * @since 1.5.0
      *
      * Edited for:
-     * @since 2.0.5 through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
-     * @since 2.1.1 add setting for the_content
-     * @since 2.1.2 add settings for 4 other hooks  2020-11-19T1248+0100
+     * @since 2.0.5  through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
+     * @since 2.1.1  add setting for the_content
+     * @since 2.1.2  add settings for 4 other hooks  2020-11-19T1248+0100
+	 * 
+	 * @since 2.5.0  support for the term_description hook, thanks to @vitaefit (feature) and @misfist (hook name)
+	 * @see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/>
      *
      * Setting the_content priority to "10" instead of PHP_INT_MAX i.e. 9223372036854775807
      * makes the footnotes reference container display beneath the post and above other
@@ -293,6 +302,7 @@ class MCI_Footnotes_Task {
         // custom priority level for reference container relative positioning; default 98:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
             add_filter('the_content', array($this, "the_content"), $p_int_TheContentPriority);
+            add_filter('term_description', array($this, "the_content"), $p_int_TheContentPriority);
         }
 
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
@@ -304,6 +314,11 @@ class MCI_Footnotes_Task {
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
             add_filter('widget_text', array($this, "widget_text"), $p_int_WidgetTextPriority);
         }
+
+        // HOOK FOR CATEGORY PAGES:
+        // 2021-01-05T1402+0100
+        // see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/#post-13866617>
+        // add_filter('term_description', array($this, "the_content"), $p_int_TheContentPriority);
 
 
         // REMOVED the_post HOOK  2020-11-08T1839+0100
@@ -772,6 +787,10 @@ class MCI_Footnotes_Task {
      * Edited since 2.0.0
      *
      * @since 2.4.0  footnote shortcode syntax validation
+     * @since 2.5.0  Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra  2021-01-07T0824+0100
+     * @since 2.5.0  Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra
+     * @since 2.5.0  Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra
+	 * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
 
@@ -780,7 +799,7 @@ class MCI_Footnotes_Task {
 
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
-
+ 
         // contains the starting position for the lookup of a footnote
         $l_int_PosStart = 0;
 
@@ -805,9 +824,24 @@ class MCI_Footnotes_Task {
         // if footnotes short codes are unbalanced, and syntax validation is not disabled,
         // return content with prepended warning:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE))) {
+
+            // convert the shortcodes to regex syntax conformant:
             $l_str_StartTagRegex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_StartingTag );
             $l_str_EndTagRegex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_EndingTag );
-            $l_str_ValidationRegex = '#' . $l_str_StartTagRegex . '(((?!' . $l_str_EndTagRegex . ').)*?)(' . $l_str_StartTagRegex . '|$)#s';
+
+            // apply different regex depending on whether start shortcode is double/triple opening parenthesis:
+            if ( $l_str_StartingTag == '((' || $l_str_StartingTag == '(((' ) {
+
+                // this prevents from catching a script containing e.g. a double opening parenthesis:
+                $l_str_ValidationRegex = '#' . $l_str_StartTagRegex . '(((?!' . $l_str_EndTagRegex . ')[^\{\}])*?)(' . $l_str_StartTagRegex . '|$)#s';
+
+            } else {
+
+                // catch all only if the start shortcode is not double/triple opening parenthesis, i.e. is unlikely to occur in scripts:
+                $l_str_ValidationRegex = '#' . $l_str_StartTagRegex . '(((?!' . $l_str_EndTagRegex . ').)*?)(' . $l_str_StartTagRegex . '|$)#s';
+            }
+
+            // check syntax and get error locations:
             preg_match( $l_str_ValidationRegex, $p_str_Content, $p_arr_ErrorLocation );
             if ( empty( $p_arr_ErrorLocation ) ) {
                 self::$l_bool_SyntaxErrorFlag = false;
@@ -815,15 +849,33 @@ class MCI_Footnotes_Task {
 
             // prevent generating and inserting the warning multiple times:
             if ( self::$l_bool_SyntaxErrorFlag ) {
-                $l_str_ErrorSpotString = strip_tags($p_arr_ErrorLocation[1]);
 
+                // get plain text string for error location:
+                $l_str_ErrorSpotString = strip_tags( $p_arr_ErrorLocation[1] );
+
+                // limit string length to 300 characters:
+                if ( strlen( $l_str_ErrorSpotString ) > 300 ) {
+                    $l_str_ErrorSpotString = substr( $l_str_ErrorSpotString, 0, 299 ) . '…';
+                }
+
+                // compose warning box:
                 $l_str_SyntaxErrorWarning  = '<div class="footnotes_validation_error"><p>';
-                $l_str_SyntaxErrorWarning .= __("WARNING: unbalanced footnote start tag short code before:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME);
+                $l_str_SyntaxErrorWarning .= __("WARNING: unbalanced footnote start tag short code found.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME);
+                $l_str_SyntaxErrorWarning .= '</p><p>';
+
+                // syntax validation setting in the dashboard under the General settings tab:
+                $l_str_SyntaxErrorWarning .= sprintf( __("If this warning is irrelevant, please disable the syntax validation feature in the dashboard under %s &gt; %s &gt; %s.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), __("General settings", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), __("Footnote start and end short codes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), __("Check for balanced shortcodes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) );
+
+                $l_str_SyntaxErrorWarning .= '</p><p>';
+                $l_str_SyntaxErrorWarning .= __("Unbalanced start tag short code found before:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME);
                 $l_str_SyntaxErrorWarning .= '</p><p>“';
                 $l_str_SyntaxErrorWarning .= $l_str_ErrorSpotString;
                 $l_str_SyntaxErrorWarning .= '”</p></div>';
 
+                // prepend the warning box to the content:
                 $p_str_Content = $l_str_SyntaxErrorWarning . $p_str_Content;
+
+                // checked, set flag to false to prevent duplicate warning:
                 self::$l_bool_SyntaxErrorFlag = false;
 
                 return $p_str_Content;
@@ -1276,10 +1328,10 @@ class MCI_Footnotes_Task {
             // INDEX COLUMN WITH ONE BACKLINK PER TABLE ROW
 
             // if enabled, and for the case the footnote is single, compose hard link:
-			// define variable as empty for the reference container if not enabled:
-			$l_str_HardLinkAddress = '';
-		
-			if (self::$l_bool_HardLinksEnable) {
+            // define variable as empty for the reference container if not enabled:
+            $l_str_HardLinkAddress = '';
+
+            if (self::$l_bool_HardLinksEnable) {
 
                 // compose fragment ID anchor with offset, for use in reference container, an
                 // empty span child of empty span to avoid tall dotted rectangles in browser:

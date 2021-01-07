@@ -80,17 +80,24 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.4.0 =
-- Bugfix: initialize hard link address as empty to fix undefined variable bug, thanks to @a223123131
-- Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor
-- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
+= 2.5.0 =
 - Add: Customization: Enable template location stack, contributed by @misfist
-- Bugfix: optimize template load and process according to settings, thanks to @misfist
+- Bugfix: Hooks: support the term_description hook, thanks to @vitaefit (feature) and @misfist (hook name)
+- Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra
+- Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra
+- Bugfix: Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra
+- Update: Shortcode syntax validation: add more information around the setting, thanks to @andreasra
+- Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor
+
+= 2.4.0 =
 - Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes
+- Bugfix: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131
+- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
+- Bugfix: optimize template load and process according to settings, thanks to @misfist
 - Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border
 - Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg
 - Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg
-- Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class footnote_plugin_link
+- Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'
 
 = 2.3.0 =
 - Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat
@@ -125,14 +132,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Add: Customization: support for custom templates in sibling folder (should be filterable function, thanks to @misfist)
 
 = 2.2.5 =
-- Add: Dashboard: Footnotes numbering: add support for Ibid. notation in suggestions for guidance, thanks to @meglio
-- Add: Reference container: support options for label element and label bottom border, thanks to @markhillyer
+- Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio
+- Bugfix: Reference container: Label: not enforce bottom border but make it an option, thanks to @markhillyer
+- Bugfix: Reference container: Label: allow to switch from paragraph element to heading, thanks to @markhillyer
 - Bugfix: Referernce container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe
 - Bugfix: Dashboard: Tooltip position/timing settings: include alternative tooltips (for themes not supporting jQuery tooltips)
 - Bugfix: Dashboard: Tooltip position/timing settings: raise above tooltip truncation settings for better consistency
 
 = 2.2.4 =
-- Bugfix: Reference container: Backlink symbol selection: moved back to previous tab “Referrers and tooltips”
+- Bugfix: Reference container: Backlink symbol selection: move back to previous tab “Referrers and tooltips”
 - Bugfix: Custom CSS: make inserting existing in header depend on migration complete checkbox status
 
 = 2.2.3 =
@@ -140,7 +148,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.2.2 =
 - Bugfix: Dashboard: Link element setting only under General settings > Reference container
-- Add: Dashboard: migrate Custom CSS to dedicated new tab, keep legacy until checking a box
+- Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed
 - Bugfix: Reference container: edits to optional basic responsive page layout style sheets
 
 = 2.2.1 =
@@ -148,16 +156,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.2.0 =
 - Add: Reference container: support for custom position shortcode, thanks to @hamshe
-- Update: Priority levels: update the notice in the dashboard Priority tab
-- Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
 - Add: Start/end short codes: more predefined options
 - Add: Numbering styles: lowercase Roman numerals support
-- Update: Dashboard: Tooltip settings: grouped into 3 thematic containers
-- Update: Dashboard: Main settings: grouped into 3 specific containers
-- Update: Dashboard: moved link element option to the Referrers options
-- Update: Dashboard: moved URL wrap option to the Reference container options
-- Update: Dashboard: grouped both Custom CSS and priority level settings under the same tab
-- Update: Dashboard: renamed tab labels 'Referrers and tooltips', 'Priority and CSS'
+- Update: Priority levels: update the notice in the dashboard Priority tab
+- Update: Dashboard: Tooltip settings: group into 3 thematic containers
+- Update: Dashboard: Main settings: group into 3 specific containers
+- Update: Dashboard: move link element option to the Referrers options
+- Update: Dashboard: move URL wrap option to the Reference container options
+- Update: Dashboard: group both Custom CSS and priority level settings under the same tab
+- Update: Dashboard: rename tab labels 'Referrers and tooltips', 'Priority and CSS'
+- Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
 - Bugfix: Localization: correct arguments for plugin textdomain load function
 - Bugfix: Reference container, tooltips: URL wrap: specifically catch the quotation mark
 - Add: Footnotes mention in the footer: more options
@@ -176,13 +184,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21
 
 = 2.1.4 =
-- Add: Dashboard: Main settings: add settings for scroll offset and duration
-- Add: Dashboard: Tooltip settings: add settings for display delays and fade durations
-- Add: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default
-- Add: Reference container: fix theme-dependent layout issues by optionally enqueuing additional style sheet
-- Add: Reference container: fix layout issues by moving backlink column width to settings
-- Add: Reference container: separating and terminating punctuation optional and customizable
-- Add: Reference container: Backlinks: optional line breaks to stack enumerations
+- Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers
+- Bugfix: Scroll duration: make configurable to conform to website content and style requirements
+- Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style
+- Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default
+- Bugfix: Reference container: fix layout by optionally enqueuing additional style sheet (depends on theme)
+- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
+- Bugfix: Reference container: make separating and terminating punctuation optional and configurable
+- Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks
 - Bugfix: Layout: Tooltips: prevent line break in Read-on link label
 - Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
 - Bugfix: Styling: Referrers: disable hover underline
@@ -265,6 +274,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: UX: Tooltip: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
 - Update: UX: Tooltip: set fade duration to 200ms both ways (was 200 in and 2000 out since 2.0.0, 0 in and 100 out before)
 - BUGFIX: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility)
+- Update: Scroll offset: raise percentage from 12% to a safer 20% inner window height, by lack of configurability
 
 = 2.0.5 =
 - Bugfix: Get references container close to content, not below all other features, by priority level 10
@@ -291,6 +301,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Print style: prevent a page break just after the reference container label
 - Bugfix: Print style: Hide reference collapse button
 - Update: Layout: Removed padding before reference container label
+- Update: Scroll offset: raise percentage from 5% to a safer 12% inner window height, by lack of configurability
 
 = 2.0.2 =
 - Bugfix: Restored expand/collapse button of reference container

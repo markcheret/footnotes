@@ -6,7 +6,7 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:58
  *
- * Last modified: 2021-01-02T2352+0100
+ * Last modified: 2021-01-07T2209+0100
  *
  * Edited:
  * @since 2.0.3  prettify reference container template
@@ -18,6 +18,8 @@
  * @see <https://wordpress.org/support/topic/template-override-filter/>
  * @since 2.4.0  templates may be in active theme, thanks to @misfist
  * @see <https://wordpress.org/support/topic/template-override-filter/#post-13846598>
+ * @since 2.5.0  Enable template location stack, contributed by @misfist
+ * @see <https://wordpress.org/support/topic/template-override-filter/#post-13864301>
  */
 
 
@@ -68,7 +70,7 @@ class MCI_Footnotes_Template {
 
     /**
      * Plugin Directory
-     * 
+     *
      * @author Patrizia Lutz @misfist
      * @since 2.4.0d3
      *
@@ -93,7 +95,7 @@ class MCI_Footnotes_Template {
      * @see <https://wordpress.org/support/topic/template-override-filter/>
      *
      * @since 2.2.6  delete a space before a closing pointy bracket
-     * 
+     *
      * @since 2.4.0  look for custom template in the active theme first, thanks to @misfist
      * @see <https://wordpress.org/support/topic/template-override-filter/#post-13846598>
      */
@@ -105,18 +107,18 @@ class MCI_Footnotes_Template {
 
         /**
          * Define plugin root path
-         * 
+         *
          * @since 2.4.0d3
-         * 
+         *
          * @author Patrizia Lutz @misfist
          */
         $this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
 
         /**
          * Modularize functions
-         * 
+         *
          * @since 2.4.0d3
-         * 
+         *
          * @author Patrizia Lutz @misfist
          */
         if( $template = $this->get_template( $p_str_FileType, $p_str_FileName, $p_str_Extension ) )  {
@@ -173,11 +175,11 @@ class MCI_Footnotes_Template {
         return $this->a_str_ReplacedContent;
     }
 
-        /**
+    /**
      * Process template file
-     * 
+     *
      * @author Patrizia Lutz @misfist
-     * 
+     *
      * @since 2.4.0d3
      *
      * @param string $template
@@ -194,9 +196,9 @@ class MCI_Footnotes_Template {
 
     /**
      * Get the template
-     * 
+     *
      * @author Patrizia Lutz @misfist
-     * 
+     *
      * @since 2.4.0d3
      *
      * @param string $p_str_FileType
@@ -221,17 +223,17 @@ class MCI_Footnotes_Template {
         /**
          * Look in active (child) theme
          */
-		if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name ) ) {
+        if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name ) ) {
             $located = trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name;
-        
+
         /**
          * Look in parent theme
          */
         } elseif ( file_exists( trailingslashit( get_template_directory() ) . $template_directory . $template_name ) ) {
             $located = trailingslashit( get_template_directory() ) . $template_directory . $template_name;
-            
+
         /**
-         * Look custom directory
+         * Look in custom directory
          */
         } elseif ( file_exists( trailingslashit( WP_PLUGIN_DIR ) . $custom_directory . 'templates/' . $template_name ) ) {
             $located = trailingslashit( WP_PLUGIN_DIR ) . $custom_directory . 'templates/' . $template_name;

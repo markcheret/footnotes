@@ -6,7 +6,7 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  *
- * Last modified: 2021-01-02T2335+0100
+ * Last modified: 2021-01-07T2207+0100
  *
  * Edited:
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
@@ -39,6 +39,8 @@
  * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
  * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
  * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
+ * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
+ * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
  */
 
 /**
@@ -98,12 +100,17 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      */
     protected function getSections() {
         $l_arr_Tabs = array();
+
+        // sync tab name with mirror in task.php:
         $l_arr_Tabs[] = $this->addSection("settings", __("General settings", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 0, true);
-        // tab name used in public function CustomCSSMigration()
+
+        // sync tab name with mirror in public function CustomCSSMigration():
         $l_arr_Tabs[] = $this->addSection("customize", __("Referrers and tooltips", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 1, true);
+
         $l_arr_Tabs[] = $this->addSection("expert", __("Scope and priority", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 2, true);
         $l_arr_Tabs[] = $this->addSection("customcss", __("Custom CSS", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), 3, true);
         $l_arr_Tabs[] = $this->addSection("how-to", __("Quick start guide", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), null, false);
+
         return $l_arr_Tabs;
     }
 
@@ -132,6 +139,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
     protected function getMetaBoxes() {
         $l_arr_MetaBoxes = array();
 
+        // sync box name with mirror in task.php:
         $l_arr_MetaBoxes[] = $this->addMetaBox("settings", "start-end", __("Footnote start and end short codes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "StartEnd");
         $l_arr_MetaBoxes[] = $this->addMetaBox("settings", "numbering", __("Footnotes numbering", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Numbering");
         $l_arr_MetaBoxes[] = $this->addMetaBox("settings", "scrolling", __("Scrolling behavior", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Scrolling");
@@ -340,8 +348,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @since 2.2.0  3 boxes for clarity  2020-12-12T1422+0100
      * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2019+0100
      * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
-	 * @since 2.4.0  added warning about Block Editor escapement disruption  2021-01-02T2324+0100
-	 * @since 2.4.0  removed the HTML comment tag option  2021-01-02T2325+0100
+     * @since 2.4.0  added warning about Block Editor escapement disruption  2021-01-02T2324+0100
+     * @since 2.4.0  removed the HTML comment tag option  2021-01-02T2325+0100
+	 * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
+	 * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
      */
     public function StartEnd() {
         // footnotes start tag short code options:
@@ -384,7 +394,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_obj_Template->replace(
             array(
 
-                "description" => __("WARNING: Short codes with closing pointy brackets are disabled in the new WordPress Block Editor that disrupts the traditional balanced escapement applied by WordPress Classic Editor.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-escapement" => __("WARNING: Short codes with closing pointy brackets are disabled in the new WordPress Block Editor that disrupts the traditional balanced escapement applied by WordPress Classic Editor.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-short-code-start" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, __("Footnote start tag short code:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "short-code-start" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, $l_arr_ShortCodeStart),
@@ -395,15 +405,19 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "short-code-end-user" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED),
 
                 // for script showing/hiding user defined text boxes:
-                "short-code-start-id" => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START,
+                    "short-code-start-id" => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START,
                 "short-code-end-id" => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END,
                 "short-code-start-user-id" => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED,
                 "short-code-end-user-id" => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED,
 
-                // option to enable syntax validation:
+                "description-parentheses" => __("WARNING: Although widespread industry standard, the double parentheses are problematic because they may occur in scripts embedded in the content and be mistaken as a short code.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                // option to enable syntax validation, label mirrored in task.php:
                 "label-syntax" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE, __("Check for balanced shortcodes:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "syntax" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE, $l_arr_Enable),
                 "notice-syntax" => __("In the presence of a lone start tag shortcode, a warning displays below the post title.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "description-syntax" => __("If the start tag short code is ‘((’ or ‘(((’, it will not be reported as unbalanced if the following string contains braces hinting that it is a script.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders
@@ -550,6 +564,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * Edited heading   2020-12-12T1453+0100
      * @since 2.1.1   more settings and notices, thanks to @nikelaos
      * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+     * @see <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>
      * @since 2.2.0   dedicated to the excerpt setting and its notices   2020-12-12T1454+0100
      */
     public function Excerpts() {

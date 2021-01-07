@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.4.0
+ * Version: 2.5.0
  * 
- * Last modified: 2021-01-02T1203+0100
+ * Last modified: 2021-01-07T0851+0100
  *
  *
  *     Classes added to public.css may be added to the
@@ -62,28 +62,39 @@ issue with missing content or footnotes, while it may
 be hard to detect in long posts and under deadline.
 
 A validation check displays a warning box below the 
-post title, populated with the first instance of a 
-content snippet preceded by an unbalanced start tag
-short code.
+post title, populated with 300 characters of contente
+preceded by the first unbalanced start tag short code.
 
 @since 2.4.0
+@since 2.5.0  improvement increased paragraph number
 */
 
 .footnotes_validation_error {
-	border: 4px solid red;
-	padding: 20px;
-	background: #ff000055;
+    border: 4px solid red;
+	padding: 20px 40px;
+	margin: 20px 0;
+    background: #ff000055;
+    text-align: start;
 }
 
 .footnotes_validation_error p:first-child {
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footnotes_validation_error p:nth-child(2) {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.footnotes_validation_error p:nth-child(3) {
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .footnotes_validation_error p:last-child {
-	font-size: 12px;
-	text-align: start;
+    font-size: 12px;
 }
 
 /*****************************************************

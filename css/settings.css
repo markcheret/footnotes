@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.4.0
+ * Version: 2.5.0
  *
- * Last modified: 2021-01-02T1204+0100
+ * Last modified: 2021-01-07T1816+0100
  */
 
 
@@ -166,51 +166,54 @@ Hooks and priority levels:
 initialized from style attributes in templates
 IE doesn’t support nth child, but these are not critical
 */
-#expert_lookup tr th:first-child,
-#expert_lookup tr td:first-child {
+.expert_lookup tr th:first-child,
+.expert_lookup tr td:first-child {
     width: 170px !important;
 }
-#expert_lookup tr th:nth-child(2),
-#expert_lookup tr td:nth-child(2) {
+.expert_lookup tr th:nth-child(2),
+.expert_lookup tr td:nth-child(2) {
     width: 65px !important;
 }
-#expert_lookup tr th:nth-child(3),
-#expert_lookup tr td:nth-child(3) {
+.expert_lookup tr th:nth-child(3),
+.expert_lookup tr td:nth-child(3) {
     width: 200px !important;
 }
-#expert_lookup tr td:nth-child(3) input {
+.expert_lookup tr td:nth-child(3) input {
     width: 190px;
 }
-#expert_lookup tr th:last-child,
-#expert_lookup tr td:last-child {
+.expert_lookup tr th:last-child,
+.expert_lookup tr td:last-child {
     white-space: nowrap;
 }
 
 /*
 Custom CSS
 
+The number of CSS classes recommended for customization
+significantly increased from 4 to 18 as of v2.4.0.
+
 Localized notices are dropped to ease translators’ task.
-16 CSS classes are listed directly in the template
+CSS classes are listed directly in the template
 templates/dashboard/customize-css.html
 
-</p> end tags are omitted per HTML5 standard, to improve
-maintainability and readability of the source list.
+For better maintainability and readability of the source
+list, the </p> end tags are omitted per HTML5 standard:
 <https://stackoverflow.com/questions/8460993/p-end-tag-p-is-not-needed-in-html>
 
 The textarea has monospace font, but no other features 
-helping edit CSS, as tab support and syntactic colors.
+helping edit CSS, like tab support and syntactic colors.
 */
-#customize_css_new tr td:first-child {
+.customize_css_new tr td:first-child {
     width: 44% !important;
     font-weight: normal !important;
 }
-#customize_css_new tr td:first-child span:first-child {
+.customize_css_new tr td:first-child span:first-child {
     font-weight: bold !important;
 }
-#customize_css_new .list {
+.customize_css_new .list {
     padding-top: 10px;
 }
-#customize_css_new .list p {
+.customize_css_new .list p {
     font-family: monospace;
     padding: 0 10px;
     text-indent: -10px;

@@ -6,7 +6,7 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:43
  *
- * Last modified: 2021-01-02T2340+0100
+ * Last modified: 2021-01-07T2206+0100
  *
  * Edited:
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100

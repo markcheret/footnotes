@@ -5,9 +5,9 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.5.0
+ * Version: 2.6.0
  *
- * Last modified: 2021-01-07T1816+0100
+ * Last modified: 2021-01-14T2350+0100
  */
 
 
@@ -203,8 +203,8 @@ list, the </p> end tags are omitted per HTML5 standard:
 The textarea has monospace font, but no other features 
 helping edit CSS, like tab support and syntactic colors.
 */
-.customize_css_new tr td:first-child {
-    width: 44% !important;
+#customize_css_new tr td:first-child {
+    width: 38% !important;
     font-weight: normal !important;
 }
 .customize_css_new tr td:first-child span:first-child {
@@ -225,7 +225,7 @@ helping edit CSS, like tab support and syntactic colors.
 }
 #footnote_inputfield_custom_css,
 #footnote_inputfield_custom_css_new {
-    width: 90%;
+    width: 96%;
     resize: both;
     overflow: scroll;
     font-family: monospace;

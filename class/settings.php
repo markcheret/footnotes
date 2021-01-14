@@ -6,39 +6,64 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:43
  *
- * Last modified: 2021-01-07T2206+0100
+ * Last modified: 2021-01-12T2217+0100
  *
  * Edited:
+ *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
+ *
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
+ *
  * @since 2.1.0  add read-on button label customization  2020-11-08T2149+0100
+ *
  * @since 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
+ *
  * @since 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
+ *
  * @since 2.1.1  fix superscript by making it optional
+ *
  * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
  * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
+ *
  * @since 2.1.1  fix ref container by option restoring 3-column layout
+ *
  * @since 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
+ *
  * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
  * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+ *
  * @since 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
+ *
  * @since 2.1.4  more settings container keys  2020-12-03T0955+0100
+ *
  * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
+ *
  * @since 2.1.6  set default priority level of the_content to 98 to prevent plugin conflict, thanks to @marthalindeman   2020-12-10T0447+0100
+ *
  * @since 2.2.0  reference container custom position shortcode, thanks to @hamshe   2020-12-13T2056+0100
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
+ *
  * @since 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
+ *
  * @since 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1256+0100
+ *
  * @since 2.2.5  alternative tooltip position settings  2020-12-17T0907+0100
+ *
  * @since 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+ *
  * @since 2.2.9  set default priority level of widget_text to 98 like for the_content (since 2.1.6), thanks to @marthalindeman   2020-12-25T1646+0100
+ *
  * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
  * @see <https://wordpress.org/support/topic/borders-25/>
+ *
  * @since 2.3.0  reference container: settings for top (and bottom) margin, thanks to @hamshe
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
+ *
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
+ *
  * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
+ *
  * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
  */
 
@@ -566,18 +591,18 @@ class MCI_Footnotes_Settings {
     const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG         = "footnotes_inputfield_footnote_fragment_id_slug";
     const C_STR_HARD_LINK_IDS_SEPARATOR           = "footnotes_inputfield_hard_link_ids_separator";
 
-	/**
-	 * Settings container key for shortcode syntax validation
-	 * 
-	 * @since 2.4.0
-	 * @var bool
-	 * 
-	 * 2021-01-01T0616+0100
-	 */
-	const C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = "footnotes_inputfield_shortcode_syntax_validation_enable";
-	
-	
-	
+    /**
+     * Settings container key for shortcode syntax validation
+     * 
+     * @since 2.4.0
+     * @var bool
+     * 
+     * 2021-01-01T0616+0100
+     */
+    const C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = "footnotes_inputfield_shortcode_syntax_validation_enable";
+    
+    
+    
     /**
      *      SETTINGS STORAGE
      */
@@ -922,6 +947,9 @@ class MCI_Footnotes_Settings {
      * @since 1.5.0
      * @param int $p_int_Index Settings Container Array Key Index.
      * @return array Settings loaded from Container of Default Settings if Settings Container is empty (first usage).
+     * 
+     * @since   ditched trimming whitespace from text box content in response to user request.
+     * @see <https://wordpress.org/support/topic/leading-space-in-footnotes-tag/#post-5347966>
      */
     private function Load($p_int_Index) {
         // load all settings from container
@@ -944,6 +972,7 @@ class MCI_Footnotes_Settings {
         // iterate through each setting in the container
         foreach($l_arr_Options as $l_str_Key => $l_str_Value) {
             // remove all whitespace at the beginning and end of a setting
+            // trimming whitespace is ditched:
             //$l_str_Value = trim($l_str_Value);
             // write the sanitized value back to the setting container
             $l_arr_Options[$l_str_Key] = $l_str_Value;

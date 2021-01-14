@@ -10,73 +10,111 @@
  *
  * Last modified:  2021-01-07T2219+0100
  *
- * @since 2.0.5  Autoload / infinite scroll support added thanks to code from @docteurfitness
+ * @since 2.0.5  debug autoload / infinite scroll through added post ID, contributed by @docteurfitness
  * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
  *
- * @since 2.0.9  DISABLED the_post HOOK  2020-11-08T1839+0100
+ * @since 2.0.9  REMOVED the_post HOOK  2020-11-08T1839+0100
  *
  * @since 2.1.0  promote the 'Continue reading' button from localization to configuration  2020-11-08T2146+0100
+ *
  * @since 2.1.1  combining identical footnotes: fixed dead links, thanks to @happyches   2020-11-14T2233+0100
  * @see <https://wordpress.org/support/topic/custom-css-for-jumbled-references/>
+ *
  * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
  * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
+ *
  * @since 2.1.1  options fixing ref container layout and referrer vertical alignment  2020-11-16T2024+0100
+ *
  * @since 2.1.1  priority level option fixing ref container relative position, thanks to june01, @spaceling, @imeson  2020-11-17T0254+0100
  * @see <https://wordpress.org/support/topic/change-the-position-5/>
+ *
  * @since 2.1.2  priority level settings for all other hooks, thanks to @nikelaos  2020-11-19T1849+0100
  * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705>
+ *
  * @since 2.1.4  fix line wrapping of URLs based on pattern, not link element  2020-11-25T0837+0100
+ *
  * @since 2.1.4  fix issues with link elements by making them optional   2020-11-26T1051+0100
+ *
  * @since 2.1.4  support appending arrow when combining identicals is on   2020-11-26T1633+0100
+ *
  * @since 2.1.4  disable or select backlink separator and terminator  2020-11-28T1048+0100
+ *
  * @since 2.1.4  optional line breaks to stack enumerated backlinks  2020-11-28T1049+0100
+ *
  * @since 2.1.4  ref container column width and tooltip font size settings  2020-12-03T0954+0100
+ *
  * @since 2.1.4  scroll offset and duration settings  2020-12-05T0538+0100
+ *
  * @since 2.1.4  tooltip display duration settings  2020-12-06T1320+0100
+ *
  * @since 2.1.5  URL wrap: exclude image source too, thanks to @bjrnet21
  * @see <https://wordpress.org/support/topic/2-1-4-breaks-on-my-site-images-dont-show/>
+ *
  * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
+ *
  * @since 2.1.6  add catch-all exclusion to fix URL line wrapping, thanks to @a223123131   2020-12-09T1921+0100
  * @see <https://wordpress.org/support/topic/broken-layout-starting-version-2-1-4/>
+ *
  * @since 2.2.0  support for custom position shortcode for reference container, thanks to @hamshe  2020-12-13T2058+0100
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
+ *
  * @since 2.2.3  custom CSS from new setting in header after legacy  2020-12-15T1128+0100
- * @since 2.2.5  connected alternative tooltips to position and timing settings  2020-12-18T1113+0100
+ *
+ * @since 2.2.5  connect alternative tooltips to position and timing settings  2020-12-18T1113+0100
+ *
  * @since 2.2.5  delete unused position shortcode when ref container in widget or footer, thanks to @hamshe   2020-12-18T1437+0100
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126>
+ *
  * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
  * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+ *
  * @since 2.2.6  URL wrap: make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
  * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
+ *
  * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20, @spaceling, @friedrichnorth, @bernardzit   2020-12-23T1046+0100
  * @see <https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/>
  * @see <https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/>
+ *
  * @since 2.2.8  URL wrap: correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1108+0100
+ *
  * @since 2.2.9  URL wrap: account for RFC 2396 allowed characters in parameter names  2020-12-24T1956+0100
  * @see <https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names>
+ *
  * @since 2.2.9  Reference containers, widget_text hook: support for multiple containers in a page, thanks to @justbecuz   2020-12-25T0338+0100
  * @see <https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830>
+ *
  * @since 2.2.9  URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference  2020-12-25T1251+0100
+ *
  * @since 2.2.10 URL wrap: support also file transfer protocol URLs  2020-12-25T2220+0100
+ *
  * @since 2.2.10 Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh  2020-12-25T2304+0100
  * @see <https://wordpress.org/support/topic/borders-25/>
+ *
  * @since 2.3.0  Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
  * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
+ *
  * @since 2.3.0  optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat
  * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
  * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
+ *
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
+ *
  * @since 2.4.0  syntax validation for balanced footnote start and end tags  2021-01-01T0227+0100
- * @since 2.4.0  scroll offset to a safety default value 34 right in the properties section  2021-01-03T2056+0100
+ *
  * @since 2.4.0  initialize scroll offset variable to 34 as a more robust default, thanks to @lukashuggenberg  2021-01-04T0504+0100
+ *
  * @since 2.4.0  set empty reference container label to NNBSP to make it more robust, thanks to @lukashuggenberg  2021-01-04T0504+0100
+ *
  * @since 2.4.0  optimize template load and process, thanks to @misfist  2021-01-04T1355+0100
+ *
  * @since 2.4.0  initialize hard link address as empty to fix undefined variable bug, thanks to @a223123131  2021-01-04T1622+0100
+ *
  * @since 2.5.0  Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra  2021-01-07T0824+0100
  * @since 2.5.0  Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra
  * @since 2.5.0  Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra
  * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
- * @since 2.5.0  Hooks: support the term_description hook, thanks to @vitaefit (feature) and @misfist (hook name)
+ *
+ * @since 2.5.0  Hooks: support the term_description hook, thanks to @vitaefit (bug report) and @misfist (hook name)
  * @see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/>
  */
 
@@ -252,13 +290,26 @@ class MCI_Footnotes_Task {
      * @author Stefan Herndler
      * @since 1.5.0
      *
-     * Edited for:
+     * Edited:
+     *
+     * the_post hook:
+     * @since 1.5.4  added the_post hook in response to user request for custom post types
+     * @see <https://wordpress.org/support/topic/doesnt-work-in-custon-post-types/#post-5339110>
+     *
+     * @since 2.0.9  removed the_post hook after its default enabling caused multiple issues  2020-11-08T1839+0100
+     * @see <https://wordpress.org/support/topic/change-the-position-5/page/2/#post-13630114
+     * @see <https://wordpress.org/support/topic/footnotes-appearing-in-header/#post-13630303>
+     * @see <https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13630799>
+     * @see <https://wordpress.org/support/topic/no-footnotes-anymore/#post-13813233>
+     *
+     * Category pages:
+     * @since 2.5.0  support for the term_description hook, thanks to @vitaefit bug report, thanks to @misfist code contribution
+     * @see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/>
+     *
+     * Priority level:
      * @since 2.0.5  through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
      * @since 2.1.1  add setting for the_content
      * @since 2.1.2  add settings for 4 other hooks  2020-11-19T1248+0100
-	 * 
-	 * @since 2.5.0  support for the term_description hook, thanks to @vitaefit (feature) and @misfist (hook name)
-	 * @see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/>
      *
      * Setting the_content priority to "10" instead of PHP_INT_MAX i.e. 9223372036854775807
      * makes the footnotes reference container display beneath the post and above other
@@ -302,6 +353,9 @@ class MCI_Footnotes_Task {
         // custom priority level for reference container relative positioning; default 98:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
             add_filter('the_content', array($this, "the_content"), $p_int_TheContentPriority);
+            // HOOK FOR CATEGORY PAGES:
+            // 2021-01-05T1402+0100
+            // see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/#post-13866617>
             add_filter('term_description', array($this, "the_content"), $p_int_TheContentPriority);
         }
 
@@ -314,11 +368,6 @@ class MCI_Footnotes_Task {
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
             add_filter('widget_text', array($this, "widget_text"), $p_int_WidgetTextPriority);
         }
-
-        // HOOK FOR CATEGORY PAGES:
-        // 2021-01-05T1402+0100
-        // see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/#post-13866617>
-        // add_filter('term_description', array($this, "the_content"), $p_int_TheContentPriority);
 
 
         // REMOVED the_post HOOK  2020-11-08T1839+0100
@@ -790,7 +839,7 @@ class MCI_Footnotes_Task {
      * @since 2.5.0  Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra  2021-01-07T0824+0100
      * @since 2.5.0  Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra
      * @since 2.5.0  Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra
-	 * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
+     * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
      */
     public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
 
@@ -799,7 +848,7 @@ class MCI_Footnotes_Task {
 
         // contains the index for the next footnote on this page
         $l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
- 
+
         // contains the starting position for the lookup of a footnote
         $l_int_PosStart = 0;
 

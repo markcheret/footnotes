@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, pewgeuges, dartiss
+Contributors: mark.cheret, lolzim, pewgeuges, misfist, dartiss, docteurfitness, martinneumannat
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6
@@ -39,16 +39,15 @@ This is an example. Please note, that you can customize the shortcode you want t
 4. Your awesome text `custom-shortcode` with an awesome footnote `custom-shortcode`
 
 = Where to get footnotes? =
-The current version is available on wordpress.org:
-http://downloads.wordpress.org/plugin/footnotes.zip
+The current version is available on the [WordPress.org plugins platform, Footnotes](https://wordpress.org/plugins/footnotes/).
 
 = Support =
-Please report feature requests, bugs and other support related questions in the WordPress Forums at https://wordpress.org/support/plugin/footnotes
+Please report feature requests, bugs and other support related questions in the [Footnotes section of WordPress Support Forum](https://wordpress.org/support/plugin/footnotes).
 
-Speak your mind, unload your burdens. Notice how we screwed up big time? Bring it to our attention in the above mentioned WordPress Forums. Be polite, though :)
+Speak your mind, unload your burdens. Notice how we screwed up big time? Bring it to our attention in the above-mentioned [WordPress Forum](https://wordpress.org/support/plugin/footnotes).
 
 = Development =
-Development of the plugin is an open process. Latest code is available on wordpress.org
+Development of the plugin is an open process. Latest code is available in the [plugin part of WordPress SVN repository, footnotes/](https://plugins.svn.wordpress.org/footnotes/).
 
 == Frequently Asked Questions ==
 
@@ -80,29 +79,34 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.6.0 =
+- Update: Readme/documentation: add new contributors in the file header’s Contributors field
+- Update: Readme/documentation: update or fix URLs in Download, Support and Development sections
+- Bugfix: Dashboard: Custom CSS: make class list column formatting effective again
+
 = 2.5.0 =
-- Add: Customization: Enable template location stack, contributed by @misfist
-- Bugfix: Hooks: support the term_description hook, thanks to @vitaefit (feature) and @misfist (hook name)
-- Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra
-- Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra
-- Bugfix: Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra
-- Update: Shortcode syntax validation: add more information around the setting, thanks to @andreasra
+- Add: Customization: Enable template location stack, thanks to @misfist source file contribution
+- Bugfix: Hooks: support the term_description hook, thanks to @vitaefit bug report, thanks to @misfist code contribution
+- Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report
+- Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra bug report
+- Bugfix: Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report
+- Update: Shortcode syntax validation: add more information around the setting
 - Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor
 
 = 2.4.0 =
 - Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes
-- Bugfix: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131
+- Bugfix: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report
 - Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
-- Bugfix: optimize template load and process according to settings, thanks to @misfist
+- Bugfix: optimize template load and process according to settings, thanks to @misfist code contribution
 - Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border
-- Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg
-- Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg
+- Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg bug report
+- Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report
 - Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'
 
 = 2.3.0 =
-- Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro and @martinneumannat
-- Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
-- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik
+- Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution
+- Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report
+- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik feedback
 - Bugfix: Dashboard: swap Custom CSS migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints
 - Update: Dashboard: rename 'Priority level' tab as 'Scope and priority', to account for the new alternative depending on widget_text hook activation
 - Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers
@@ -111,12 +115,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: edits to optional basic responsive page layout style sheet
 
 = 2.2.10 =
-- Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change made on user request, thanks to @noobishh
+- Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change, thanks to @noobishh bug report
 - Bugfix: Reference container: add missing container ID in function name in one of the four table row templates
 - Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs
 
 = 2.2.9 =
-- Bugfix: Reference container, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz
+- Bugfix: Reference container, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz bug report
 - Update: Priority levels: set widget_text default to 98 and update its description in the dashboard Priority level tab
 - Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names
 - Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference
@@ -125,17 +129,17 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container, tooltips: URL wrap: correct lookbehind by duplicating it with and without quotation mark class
 
 = 2.2.7 =
-- Bugfix: Reference container, tooltips: URL wrap: revert the change in the regex, thanks to @rjl20, @spaceling, @friedrichnorth, @bernardzit
+- Bugfix: Reference container, tooltips: URL wrap: revert the change in the regex, thanks to @rjl20 @spaceling @friedrichnorth @bernardzit @lukashuggenberg bug reports
 
 = 2.2.6 =
-- Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2
-- Add: Customization: support for custom templates in sibling folder (should be filterable function, thanks to @misfist)
+- Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report
+- Add: Customization: support for custom templates in sibling folder, thanks to @misfist filter request
 
 = 2.2.5 =
-- Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio
-- Bugfix: Reference container: Label: not enforce bottom border but make it an option, thanks to @markhillyer
-- Bugfix: Reference container: Label: allow to switch from paragraph element to heading, thanks to @markhillyer
-- Bugfix: Referernce container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe
+- Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio code contribution
+- Bugfix: Reference container: Label: not enforce bottom border but make it an option, thanks to @markhillyer bug report
+- Bugfix: Reference container: Label: allow to switch from paragraph element to heading, thanks to @markhillyer code contribution
+- Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report
 - Bugfix: Dashboard: Tooltip position/timing settings: include alternative tooltips (for themes not supporting jQuery tooltips)
 - Bugfix: Dashboard: Tooltip position/timing settings: raise above tooltip truncation settings for better consistency
 
@@ -144,7 +148,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Custom CSS: make inserting existing in header depend on migration complete checkbox status
 
 = 2.2.3 =
-- Bugfix: Custom CSS: insert new in header after existing
+- Bugfix: Custom CSS: insert new CSS in the public page header element after existing CSS
 
 = 2.2.2 =
 - Bugfix: Dashboard: Link element setting only under General settings > Reference container
@@ -155,7 +159,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure
 
 = 2.2.0 =
-- Add: Reference container: support for custom position shortcode, thanks to @hamshe
+- Add: Reference container: support for custom position shortcode, thanks to @hamshe feature request
 - Add: Start/end short codes: more predefined options
 - Add: Numbering styles: lowercase Roman numerals support
 - Update: Priority levels: update the notice in the dashboard Priority tab
@@ -171,17 +175,17 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Add: Footnotes mention in the footer: more options
 
 = 2.1.6 =
-- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman
-- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
-- Bugfix: Reference container, tooltips: URL wrap: fix regex, thanks to @a223123131
+- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman bug report
+- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons feedback
+- Bugfix: Reference container, tooltips: URL wrap: fix regex, thanks to @a223123131 bug report
 - Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap
 - Update: Dashboard: reorder tabs and update tab labels
 - Bugfix: Dashboard: remove Expert mode enable setting since permanently enabled as 'Priority'
 - Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels
-- Bugfix: Localization: conform to WordPress plugin language file name scheme
+- Bugfix: Localization: conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report
 
 = 2.1.5 =
-- Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21
+- Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21 bug report
 
 = 2.1.4 =
 - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers
@@ -206,13 +210,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
 - Bugfix: Dashboard: Tooltip settings: Truncation length: change input box type from text to numeric
 - Update: Dashboard: Notices: use explicit italic style
-- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box, thanks to @nikelaos
+- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box, thanks to @nikelaos feedback
 - Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
 - Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
 
 = 2.1.3 =
 - Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets
-- Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos
+- Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report
 - Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy
 - Bugfix: Reference container: fix width in mobile view by URL wrapping wrt Unicode-non-conformant browsers
 - Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on
@@ -221,12 +225,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.2 =
 - Bugfix: Layout: Reference container: Backlinks: no underline on hover cell when combining identicals is on
-- Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos
+- Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos feedback
 - Update: Dashboard: WordPress documentation URLs of the hooks
-- Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos
+- Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos feedback
 
 = 2.1.1 =
-- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity, thanks to @happyches
+- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity, thanks to @happyches bug report
 - Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
 - Update: Libraries: jQuery Tools: complete minification
 - Bugfix: Libraries: made script loads depend on tooltip implementation option
@@ -234,8 +238,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: UI: Tooltips: optional alternative JS implementation with CSS animation to fix site issues
 - Bugfix: UI: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
 - Bugfix: UI: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
-- Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support, thanks to @cwbayer
-- Bugfix: Layout: Reference container: fix relative positioning by priority level setting, thanks to june01, @spaceling, @imeson
+- Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support, thanks to @cwbayer bug report
+- Bugfix: Layout: Reference container: fix relative positioning by priority level setting, thanks to june01 @spaceling @imeson bug reports
 - Bugfix: Layout: Reference container: Backlink symbol: select box to disable instead of space character
 - Bugfix: Layout: Reference container: Footnote number links: disable bottom border for theme compatibility
 - Bugfix: Layout: Reference container: option to restore 3-column layout when combined are turned off
@@ -291,7 +295,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Tooltip infobox: improved layout with inherited font size by lower line height
 - Bugfix: Tooltip infobox: 'Continue reading' button: disabled default underline
 - Bugfix: Translations: reviewed all locales (en, de, es, fr), synced ref line # with edited code
-- Bugfix: Fixed display of 2 dashboard headings
+- Bugfix: Dashboard: fix display of two headings containing the logo
 
 = 2.0.3 =
 - Bugfix: Layout: Self-adjusting width of ID column but hidden overflow

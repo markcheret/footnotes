@@ -8,7 +8,7 @@
 
 /* Version: 2.5.1
 
-Last modified: 2021-01-18T2124+0100
+Last modified: 2021-01-18T2228+0100
 
 
         Classes recommended for Custom CSS are listed in
@@ -411,10 +411,9 @@ footnotes
     white-space: nowrap;
 }
 
+.pointer,
 .footnote_index,
-.footnote_backlink,
-.footnote_plugin_index.pointer,
-.footnote_plugin_index_combi.pointer {
+.footnote_backlink {
     cursor: pointer;
 }
 

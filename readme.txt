@@ -82,6 +82,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.5.1 =
 - Bugfix: Hooks: support for footnotes in Popup Maker popups, thanks to @squatcher bug report
 - Bugfix: Reference container: click on label expands but also collapses, thanks to @ahmadword bug report
+- Bugfix: Reference container: Label: cursor takes pointer shape, thanks to @ahmadword bug report
 - Bugfix: Dashboard: Custom CSS: mention validity of legacy while visible, thanks to @rkupadhya bug report
 - Bugfix: Dashboard: Custom CSS: make class list column formatting effective again
 - Update: Readme/documentation: add new contributors in the file header’s Contributors field

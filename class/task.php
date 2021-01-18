@@ -8,7 +8,7 @@
  *
  * Edited for v2.0.0 and following.
  *
- * Last modified:  2021-01-07T2219+0100
+ * Last modified:  2021-01-18T2119+0100
  *
  * @since 2.0.5  debug autoload / infinite scroll through added post ID, contributed by @docteurfitness
  * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
@@ -116,7 +116,7 @@
  *
  * @since 2.5.0  Hooks: support for footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution
  * @see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/>
- * 
+ *
  * @since 2.5.1  Hooks: support for footnotes in Popup Maker popups, thanks to @squatcher bug report
  * @see <https://wordpress.org/support/topic/footnotes-use-in-popup-maker/>
  */
@@ -309,10 +309,10 @@ class MCI_Footnotes_Task {
      * @since 2.5.0  support for the term_description hook, thanks to @vitaefit bug report, thanks to @misfist code contribution
      * @see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/>
      *
-	 * Popup Maker popups:
-	 * @since 2.5.1  support for the pum_popup_content hook, thanks to @squatcher bug report
-	 * @see <https://wordpress.org/support/topic/footnotes-use-in-popup-maker/>
-	 * 
+     * Popup Maker popups:
+     * @since 2.5.1  support for the pum_popup_content hook, thanks to @squatcher bug report
+     * @see <https://wordpress.org/support/topic/footnotes-use-in-popup-maker/>
+     *
      * Priority level:
      * @since 2.0.5  through v2.0.7  changes to priority  2020-11-02T0330+0100..2020-11-06T1344+0100
      * @since 2.1.1  add setting for the_content
@@ -359,16 +359,16 @@ class MCI_Footnotes_Task {
 
         // custom priority level for reference container relative positioning; default 98:
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
-			add_filter('the_content', array($this, "the_content"), $p_int_TheContentPriority);
-			
+            add_filter('the_content', array($this, "the_content"), $p_int_TheContentPriority);
+
             // HOOK FOR CATEGORY PAGES:
             // 2021-01-05T1402+0100
             // see <https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/#post-13866617>
-			add_filter('term_description', array($this, "the_content"), $p_int_TheContentPriority);
-			
-			// HOOK FOR POPUP MAKER POPUPS:
-			// 2021-01-18T2038+0100
-			// see <https://wordpress.org/support/topic/footnotes-use-in-popup-maker/>
+            add_filter('term_description', array($this, "the_content"), $p_int_TheContentPriority);
+
+            // HOOK FOR POPUP MAKER POPUPS:
+            // 2021-01-18T2038+0100
+            // see <https://wordpress.org/support/topic/footnotes-use-in-popup-maker/>
             add_filter('pum_popup_content', array($this, "the_content"), $p_int_TheContentPriority);
         }
 

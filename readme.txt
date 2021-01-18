@@ -82,7 +82,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.5.1 =
 - Bugfix: Hooks: support for footnotes in Popup Maker popups, thanks to @squatcher bug report
 - Bugfix: Reference container: click on label expands but also collapses, thanks to @ahmadword bug report
-- Bugfix: Dashboard: Custom CSS: mention validity of legacy while visible, thanks to @rkupadhya feedback
+- Bugfix: Dashboard: Custom CSS: mention validity of legacy while visible, thanks to @rkupadhya bug report
 - Bugfix: Dashboard: Custom CSS: make class list column formatting effective again
 - Update: Readme/documentation: add new contributors in the file header’s Contributors field
 - Update: Readme/documentation: update or fix URLs in Download, Support and Development sections
@@ -109,7 +109,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.3.0 =
 - Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution
 - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report
-- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik feedback
+- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik bug report
 - Bugfix: Dashboard: swap Custom CSS migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints
 - Update: Dashboard: rename 'Priority level' tab as 'Scope and priority', to account for the new alternative depending on widget_text hook activation
 - Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers
@@ -179,7 +179,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.6 =
 - Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman bug report
-- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons feedback
+- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report
 - Bugfix: Reference container, tooltips: URL wrap: fix regex, thanks to @a223123131 bug report
 - Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap
 - Update: Dashboard: reorder tabs and update tab labels
@@ -213,7 +213,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
 - Bugfix: Dashboard: Tooltip settings: Truncation length: change input box type from text to numeric
 - Update: Dashboard: Notices: use explicit italic style
-- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box, thanks to @nikelaos feedback
+- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box, thanks to @nikelaos bug report
 - Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
 - Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
 
@@ -228,9 +228,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.2 =
 - Bugfix: Reference container: Backlinks: no underline on hover cell when combining identicals is on
-- Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos feedback
+- Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos bug report
 - Update: Dashboard: WordPress documentation URLs of the hooks
-- Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos feedback
+- Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos bug report
 
 = 2.1.1 =
 - Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity, thanks to @happyches bug report

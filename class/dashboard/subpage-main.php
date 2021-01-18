@@ -6,7 +6,7 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  *
- * Last modified: 2021-01-18T2102+0100
+ * Last modified: 2021-01-18T2127+0100
  *
  * Edited:
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
@@ -889,7 +889,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * @since 2.2.2  migrate Custom CSS to a dedicated tab   2020-12-15T0506+0100
      * @since 2.3.0  say 'copy-paste' instead of 'cut and paste' since cutting is not needed  2020-12-27T1257+0100
-     * @since 2.5.1  mention validity while visible, thanks to @rkupadhya feedback
+     * @since 2.5.1  mention validity while visible, thanks to @rkupadhya bug report
      */
     public function CustomCSS() {
         // load template file

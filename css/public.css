@@ -8,7 +8,7 @@
 
 /* Version: 2.5.1
 
-Last modified: 2021-01-18T2051+0100
+Last modified: 2021-01-18T2124+0100
 
 
         Classes recommended for Custom CSS are listed in
@@ -24,7 +24,7 @@ Edited:
 @since 2.0.0  Reference container: Collapse button: fix text decoration
 @since 2.0.1  enforce borderless table cells through !important property, thanks to @ragonesi bug report
 @since 2.1.1  Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
-@since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons feedback
+@since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report
 @since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
 @since 2.4.0  validation error warning box
 @since 2.5.0  validation error warning box more paragraphs
@@ -68,7 +68,7 @@ issue with missing content or footnotes, while it may
 be hard to detect in long posts and under deadline.
 
 A validation check displays a warning box below the
-post title, populated with 300 characters of contente
+post title, populated with 300 characters of content
 preceded by the first unbalanced start tag short code.
 
 @since 2.4.0
@@ -194,7 +194,7 @@ Classes:
 /*
 tooltips
 
-@since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
+@since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report
 @see <https://wordpress.org/support/topic/counter-styles-not-working/#post-13767299>
 */
 

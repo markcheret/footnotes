@@ -4,43 +4,38 @@
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- *
- * Version: 2.6.0
- * 
- * Last modified: 2021-01-14T2351+0100
- *
- *
- *     Classes added to public.css may be added to the
- *     list documenting CSS classes for Custom CSS if
- *     recommended for general use.
- *     List in templates/dashboard/customize-css-new.html
- *
- *
- * Edited for 2.0.0
- *
- * @since 2.0.1  enforced borderless table cells with !important property, thanks to @ragonesi bug report
- * @see <https://wordpress.org/support/topic/box-around-c-references-container/>
- *
- * @since 2.1.1  line height 0 for (superscript) referrers, thanks to @cwbayer bug report
- * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
- *
- * @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons feedback
- * @see <https://wordpress.org/support/topic/counter-styles-not-working/>
- *
- * @since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
- * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
- * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
- *
- * @since 2.4.0  validation error warning box
- * @since 2.5.0  validation error warning box more paragraphs
  */
+
+/* Version: 2.5.1
+
+Last modified: 2021-01-18T2051+0100
+
+
+        Classes recommended for Custom CSS are listed in
+        templates/dashboard/customize-css-new.html
+
+
+Edited:
+
+@since 2.0.0  Referrers: vertical align: lower from top: 0.4em to top: 0.6em
+@since 2.0.0  Tooltips: Font size: set to inherit instead of 13px
+@since 2.0.0  Tooltips: Continue button: apply distinctive font color and font style
+@since 2.0.0  Tooltips: fix bug displaying content inline when page is printed, thanks to @gernsheim bug report
+@since 2.0.0  Reference container: Collapse button: fix text decoration
+@since 2.0.1  enforce borderless table cells through !important property, thanks to @ragonesi bug report
+@since 2.1.1  Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
+@since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons feedback
+@since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
+@since 2.4.0  validation error warning box
+@since 2.5.0  validation error warning box more paragraphs
+*/
 
 
 /*****************************************************
 MCI Footnotes logo
 
 The classes with 'heading' fix display in dashboard,
-where since WordPress 5.5 settings box labels with 
+where since WordPress 5.5 settings box labels with
 spans are displayed as justified and not last line.
 
 class/config.php
@@ -53,10 +48,12 @@ css/settings.css
     text-decoration: none;
     font-weight: normal;
 }
+
 .footnotes_logo_part1,
 .footnotes_logo_part1_heading {
     color: #2bb975;
 }
+
 .footnotes_logo_part2,
 .footnotes_logo_part2_heading {
     color: #545f5a;
@@ -70,7 +67,7 @@ significantly alters the post display and may cause an
 issue with missing content or footnotes, while it may
 be hard to detect in long posts and under deadline.
 
-A validation check displays a warning box below the 
+A validation check displays a warning box below the
 post title, populated with 300 characters of contente
 preceded by the first unbalanced start tag short code.
 
@@ -80,8 +77,8 @@ preceded by the first unbalanced start tag short code.
 
 .footnotes_validation_error {
     border: 4px solid red;
-	padding: 20px 40px;
-	margin: 20px 0;
+    padding: 20px 40px;
+    margin: 20px 0;
     background: #ff000055;
     text-align: start;
 }
@@ -110,8 +107,8 @@ preceded by the first unbalanced start tag short code.
 Long URLs in Unicode-non-compliant user agents
 
 Unicode recommends to break URLs at slashes, but
-some browsers don’t, so we need to prevent URLs 
-from expanding the reference container in mobile view, 
+some browsers don’t, so we need to prevent URLs
+from expanding the reference container in mobile view,
 or from hanging out of the tooltip even on desktop.
 
 Based on pattern, not link element, since some URLs
@@ -136,6 +133,10 @@ word-break: break-all;
 Optional hard links
 
 Anchors with scroll offset
+
+@since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
+@see <https://wordpress.org/support/topic/making-it-amp-compatible/>
+@see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
 */
 
 .footnote_item_base,
@@ -159,6 +160,9 @@ Classes:
 .footnote_referrer            = enclosing <span>
 .footnote_plugin_tooltip_text = inner <sup>
 .footnote_tooltip             = inner <span>
+
+@since 2.1.1  Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
+@see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
 */
 
 .footnote_referrer,
@@ -191,8 +195,9 @@ Classes:
 tooltips
 
 @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons
-@see <https://wordpress.org/support/topic/counter-styles-not-working/>
+@see <https://wordpress.org/support/topic/counter-styles-not-working/#post-13767299>
 */
+
 .footnote_tooltip {
     display: none;
     z-index: 2147483647 !important;
@@ -207,9 +212,11 @@ tooltips
 /*
 alternative tooltip implementation
 */
+
 .footnote_referrer.relative {
     position: relative;
 }
+
 .footnote_tooltip.position {
     display: unset;
     position: absolute;
@@ -217,9 +224,11 @@ alternative tooltip implementation
     left: -50px;
     width: 400px;
 }
+
 /*
 fade-in parameters
 */
+
 .footnote_tooltip.shown {
     visibility: visible;
     opacity: 1;
@@ -231,9 +240,11 @@ property values of settings are inline CSS
     transition-duration: 200ms;
 */
 }
+
 /*
 fade-out parameters
 */
+
 .footnote_tooltip.hidden {
     visibility: hidden;
     opacity: 0;
@@ -249,6 +260,7 @@ property values of settings are inline CSS
 /*
 Read-on button
 */
+
 .footnote_tooltip_continue {
     font-style: italic;
     color: green;
@@ -256,6 +268,7 @@ Read-on button
     cursor: pointer;
     white-space: nowrap;
 }
+
 .footnote_tooltip_continue:hover {
     color: blue;
     text-decoration: underline !important;
@@ -299,10 +312,12 @@ Classes:
 /*
 label
 */
+
 .footnote_container_prepare {
     display: block !important;
     padding-top: 24px !important;
 }
+
 .footnote_container_prepare > p {
     line-height: 1.3 !important;
     margin-top: 1em !important;
@@ -318,6 +333,7 @@ label
     text-align: left !important;
     vertical-align: middle;
 }
+
 .footnote_container_prepare > p > span:first-child {
     text-align: left !important;
     font-size: 1.5em !important;
@@ -327,6 +343,7 @@ label
 collapse button
 fully clickable, not sign only
 */
+
 .footnote_reference_container_collapse_button {
     cursor: pointer;
     padding: 0 0.5em;
@@ -334,6 +351,7 @@ fully clickable, not sign only
     vertical-align: 2px;
     text-decoration: none !important;
 }
+
 h2 > .footnote_reference_container_collapse_button,
 h3 > .footnote_reference_container_collapse_button,
 h4 > .footnote_reference_container_collapse_button,
@@ -341,6 +359,7 @@ h5 > .footnote_reference_container_collapse_button,
 h6 > .footnote_reference_container_collapse_button {
     font-size: inherit !important;
 }
+
 .footnote_container_prepare > p > span:last-child a,
 .footnote_reference_container_collapse_button a {
     text-decoration: none !important;
@@ -349,6 +368,7 @@ h6 > .footnote_reference_container_collapse_button {
 /*
 table
 */
+
 .footnote-reference-container,
 .footnotes_table {
     width: 100%;
@@ -358,10 +378,12 @@ table
 /*
 footnotes
 
-enforced borderless table cells with !important property, thanks to @ragonesi
-@since 2.0.1
+@since 2.0.0  borderless table cells, thanks to @ragonesi bug report
+@see <https://wordpress.org/support/topic/thin-box-around-notes-in-reference-container/>
+@since 2.0.1  enforce borderless text cells through !important property, thanks to @ragonesi bug report
 @see <https://wordpress.org/support/topic/box-around-c-references-container/>
 */
+
 .footnote_plugin_index,
 .footnote_plugin_index_combi,
 .footnote_plugin_symbol,
@@ -371,6 +393,7 @@ enforced borderless table cells with !important property, thanks to @ragonesi
     vertical-align: top !important;
     padding: 5px 6px 10px 0 !important;
 }
+
 .footnote_backlink,
 .footnote_backlink:link,
 .footnote_plugin_link,
@@ -382,6 +405,7 @@ enforced borderless table cells with !important property, thanks to @ragonesi
     text-decoration: none !important;
     border-bottom: none !important;
 }
+
 .footnote_backlink,
 .footnote_plugin_link {
     white-space: nowrap;
@@ -402,6 +426,7 @@ when hovered in some themes, not in others:
 .footnote_plugin_index.pointer:hover,
 .footnote_plugin_index_combi.pointer:hover,
 */
+
 .footnote_backlink:hover,
 .footnote_plugin_link:hover,
 .footnote_plugin_text a:hover {
@@ -422,15 +447,19 @@ By default, the backlink column is auto-expanding to fit widest.
 Not using 'max-content' as that causes no-wrap and overflows.
 These are overridden if settings are enabled.
 */
+
 .footnote_plugin_index,
 .footnote_plugin_index_combi {
     max-width: 100px;
     width: 2.5em;
 }
+
 /*
 Responsive
 */
+
 @media only screen and (max-width: 768px) {
+
     .footnote_plugin_index,
     .footnote_plugin_index_combi {
         max-width: 80px;
@@ -441,11 +470,16 @@ Responsive
 /****************************************************************
 Footnotes printing style rules
 
-Printing a table, browsers tend to avoid page breaks,
-but it takes a wrapper to avoid a page break before the table.
+Printing a table, browsers tend to avoid page breaks inside,
+but it takes a wrapper to avoid a page break before the table
+just after the reference container headline.
 
-UI elements - expand button, arrows - are hidden in print;
-link styling is reverted so as to not gray out referrers/numbers.
+UI elements (expand/collapse button, backlink arrows) are hidden.
+
+Link color set to inherit, so referrers/numbers are not grayed out.
+
+@since 2.0.0  Tooltips: fix bug displaying content inline when page is printed, thanks to @gernsheim bug report
+@see <https://wordpress.org/support/topic/printing-pdf-with-footnotes-generated-by-footnotes/>
  */
 
 .footnotes_reference_container {
@@ -453,20 +487,25 @@ link styling is reverted so as to not gray out referrers/numbers.
 }
 
 @media print {
+
     .footnote_tooltip,
     .footnote_reference_container_collapse_button,
     .footnote_index_arrow {
         display: none;
     }
+
     .footnote_plugin_tooltip_text {
         color: inherit;
     }
+
     .footnote_plugin_index a,
     .footnote_plugin_index_combi a {
         color: inherit;
         text-decoration: none !important;
     }
-    div.post-meta-edit-link-wrapper { /*Edit button in WP2020*/
-        display: none;  /*(added as a service)*/
+
+    /* Edit button in WP2020 (added as a service) */
+    div.post-meta-edit-link-wrapper {
+        display: none;
     }
 }

@@ -79,10 +79,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.6.0 =
+= 2.5.1 =
+- Bugfix: Hooks: support for footnotes in Popup Maker popups, thanks to @squatcher bug report
+- Bugfix: Reference container: click on label expands but also collapses, thanks to @ahmadword bug report
+- Bugfix: Dashboard: Custom CSS: mention validity of legacy while visible, thanks to @rkupadhya feedback
+- Bugfix: Dashboard: Custom CSS: make class list column formatting effective again
 - Update: Readme/documentation: add new contributors in the file header’s Contributors field
 - Update: Readme/documentation: update or fix URLs in Download, Support and Development sections
-- Bugfix: Dashboard: Custom CSS: make class list column formatting effective again
 
 = 2.5.0 =
 - Add: Customization: Enable template location stack, thanks to @misfist source file contribution
@@ -224,7 +227,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Styling: Tooltips: raise settings priority to override theme style sheets
 
 = 2.1.2 =
-- Bugfix: Layout: Reference container: Backlinks: no underline on hover cell when combining identicals is on
+- Bugfix: Reference container: Backlinks: no underline on hover cell when combining identicals is on
 - Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos feedback
 - Update: Dashboard: WordPress documentation URLs of the hooks
 - Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos feedback
@@ -235,23 +238,23 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Libraries: jQuery Tools: complete minification
 - Bugfix: Libraries: made script loads depend on tooltip implementation option
 - Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
-- Bugfix: UI: Tooltips: optional alternative JS implementation with CSS animation to fix site issues
-- Bugfix: UI: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
-- Bugfix: UI: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
-- Bugfix: Layout: Footnote referrers: select box to make superscript optional wrt themes w/o support, thanks to @cwbayer bug report
-- Bugfix: Layout: Reference container: fix relative positioning by priority level setting, thanks to june01 @spaceling @imeson bug reports
-- Bugfix: Layout: Reference container: Backlink symbol: select box to disable instead of space character
-- Bugfix: Layout: Reference container: Footnote number links: disable bottom border for theme compatibility
-- Bugfix: Layout: Reference container: option to restore 3-column layout when combined are turned off
-- Bugfix: Layout: Reference container: option to APpend symbol in 2-column when combined are turned off
-- Bugfix: Layout: Reference container: fix start pages by an option to hide the reference container
-- Bugfix: Layout: Reference container: Table rows: fix top and bottom padding
-- Bugfix: Layout: Footnote referrers: new fix for line height
+- Bugfix: Tooltips: optional alternative JS implementation with CSS animation to fix site issues
+- Bugfix: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
+- Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
+- Bugfix: Footnote referrers: select box to make superscript optional, thanks to @cwbayer bug report
+- Bugfix: Footnote referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
+- Bugfix: Reference container: fix relative positioning by priority level setting, thanks to june01 @spaceling @imeson bug reports
+- Bugfix: Reference container: Backlink symbol: select box to disable instead of space character
+- Bugfix: Reference container: Footnote number links: disable bottom border for theme compatibility
+- Bugfix: Reference container: option to restore 3-column layout when combined are turned off
+- Bugfix: Reference container: option to APpend symbol in 2-column when combined are turned off
+- Bugfix: Reference container: fix start pages by an option to hide the reference container
+- Bugfix: Reference container: Table rows: fix top and bottom padding
 - Bugfix: Formatting: disable overline showing in some themes on hovered backlinks
 
 = 2.1.0 =
 - Add: UI: Tooltip: made 'Continue reading' button label customizable
-- Bugfix: Layout: Footnote referrers: disabled bottom border for theme compatibility
+- Bugfix: Footnote referrers: disabled bottom border for theme compatibility
 - Update: Accessibility: added 'speaker-mute' class to reference container
 - Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles
 - UPDATE: REMOVED the_post hook, the plugin stopped supporting this hook
@@ -267,16 +270,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.6 =
 - Update: Autoload / infinite scroll support thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
-- Bugfix: Layout: Footnote referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
-- Bugfix: Layout: Reference container: fixed line breaking behavior in footnote # clusters
-- Bugfix: Layout: Reference container: auto-extending column to fit widest, to fix display with short note texts
-- Bugfix: Layout: Reference container: IDs: slightly increased left padding
+- Bugfix: Footnote referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
+- Bugfix: Reference container: fixed line breaking behavior in footnote # clusters
+- Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts
+- Bugfix: Reference container: IDs: slightly increased left padding
 - Bugfix: Translations: fixed spelling error and erroneously changed word in en_GB and en_US
 - Update: Typesetting: discarded the dot after footnote numbers as not localizable (should be optional)
-- Bugfix: UI: Reference container: Collapse button fully clickable, not sign only
-- Bugfix: UI: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
-- Update: UX: Tooltip: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
-- Update: UX: Tooltip: set fade duration to 200ms both ways (was 200 in and 2000 out since 2.0.0, 0 in and 100 out before)
+- Bugfix: Reference container: Collapse button fully clickable, not sign only
+- Bugfix: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
+- Update: Tooltips: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
+- Update: Tooltips: set fade duration to 200ms both ways (was 200 in and 2000 out since 2.0.0, 0 in and 100 out before)
 - BUGFIX: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility)
 - Update: Scroll offset: raise percentage from 12% to a safer 20% inner window height, by lack of configurability
 
@@ -285,27 +288,27 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues
 - Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
 - Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal
-- Bugfix: Settings style sheet unenqueued to fix input boxes on public pages (enqueued for 2.0.4)
+- Bugfix: Settings style sheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4)
 
 = 2.0.4 =
-- Update: Restored arrow settings to customize or disable the now prepended arrow symbol
-- Update: GDPR: Added jQuery UI from WordPress instead of third party
-- Bugfix: UX: Removed hyperlink addresses from referrers and backlinks wrt browsing history
-- Bugfix: Reference container: layout: removed inconvenient left/right cellpadding
-- Bugfix: Tooltip infobox: improved layout with inherited font size by lower line height
-- Bugfix: Tooltip infobox: 'Continue reading' button: disabled default underline
-- Bugfix: Translations: reviewed all locales (en, de, es, fr), synced ref line # with edited code
+- Update: Restore arrow settings to customize or disable the now prepended arrow symbol
+- Update: GDPR: Add jQuery UI from WordPress instead of third party
+- Bugfix: UX: Remove hyperlink addresses from referrers and backlinks wrt browsing history
+- Bugfix: Reference container: remove inconvenient left/right cellpadding
+- Bugfix: Tooltips: improve layout with inherited font size by lower line height
+- Bugfix: Tooltips: 'Continue reading' button: disable default underline
+- Bugfix: Translations: review all locales (en, de, es, fr), synced ref line # with edited code
 - Bugfix: Dashboard: fix display of two headings containing the logo
 
 = 2.0.3 =
-- Bugfix: Layout: Self-adjusting width of ID column but hidden overflow
-- Update: Prepended transitional up arrow to backlinking footnote numbers after a user complaint about missing backlinking semantics of the footnote number
+- Bugfix: Reference container: Self-adjusting width of ID column but hidden overflow
+- Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to  bug report
 - Bugfix: Fragment IDs: Prepended post ID to footnote number
 - Bugfix: Feed plugin version in style sheet query string for cache busting
 - Bugfix: Print style: prevent a page break just after the reference container label
 - Bugfix: Print style: Hide reference collapse button
-- Update: Layout: Removed padding before reference container label
-- Update: Scroll offset: raise percentage from 5% to a safer 12% inner window height, by lack of configurability
+- Update: Reference container: Headline: remove padding before reference container label
+- Update: Scroll offset: raise percentage from 5% to a safer 12% inner window height, by lack of setting
 
 = 2.0.2 =
 - Bugfix: Restored expand/collapse button of reference container
@@ -314,8 +317,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Disabled underline in footnote anchors, underline only on hover
 
 = 2.0.1 =
-- Bugfix: enforced borderless table cells with !important property, thanks to @ragonesi
-- Update: Language fr_FR along with es_ES, de_AT, de_DE, en_GB, en_US for 2.0
+- Bugfix: enforce borderless table cells through !important property, thanks to @ragonesi bug report
+- Update: Translations: revised fr_FR
 
 = 2.0.0 =
 - Major contributions taken from WordPress user pewgeuges, all details here https://github.com/media-competence-institute/footnotes/blob/master/README.md:
@@ -330,6 +333,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Adjusted scrolling time and offset
 - Bugfix: No borders around footnotes in the container
 - Bugfix: Mouse-over box display timing
+- Update: Translations: revised de_AT, de_DE, en_GB, en_US, es_ES
 
 = 1.6.6 =
 - Beginning of translation to French

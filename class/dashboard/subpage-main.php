@@ -6,7 +6,7 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  *
- * Last modified: 2021-01-07T2207+0100
+ * Last modified: 2021-01-18T2102+0100
  *
  * Edited:
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
@@ -350,8 +350,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
      * @since 2.4.0  added warning about Block Editor escapement disruption  2021-01-02T2324+0100
      * @since 2.4.0  removed the HTML comment tag option  2021-01-02T2325+0100
-	 * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
-	 * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
+     * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
+     * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
      */
     public function StartEnd() {
         // footnotes start tag short code options:
@@ -636,7 +636,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Edited:
      * @since 2.2.0   5 parts to address increased settings number
-     * @since 2.2.5   added position settings for the alternative tooltips
+     * @since 2.2.5   position settings for alternative tooltips
      */
     public function MouseOverBox() {
         // options for Yes/No select box:
@@ -653,7 +653,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-enable" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, __("Display tooltips:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "enable" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED, $l_arr_Enabled),
-                "notice-enable" => __("Formatted text boxes allowing hyperlinks, displayed on mouse-over or on tap and hold.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-enable" => __("Formatted text boxes allowing hyperlinks, displayed on mouse-over or tap and hold.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-alternative" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, __("Display alternative tooltips:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "alternative" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, $l_arr_Enabled),
@@ -888,7 +888,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *         2020-12-09T1113+0100
      *
      * @since 2.2.2  migrate Custom CSS to a dedicated tab   2020-12-15T0506+0100
-     * @since 2.3.0  say 'copy-paste' instead of 'cut and paste', since cutting is not needed  2020-12-27T1257+0100
+     * @since 2.3.0  say 'copy-paste' instead of 'cut and paste' since cutting is not needed  2020-12-27T1257+0100
+     * @since 2.5.1  mention validity while visible, thanks to @rkupadhya feedback
      */
     public function CustomCSS() {
         // load template file
@@ -898,7 +899,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             array(
                 "label-css" => $this->addLabel(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS, __("Your existing Custom CSS code:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "css" => $this->addTextArea(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS),
-                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe. Please copy-paste the content into the new text area under the new tab.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe, and the code remains valid while visible. Please copy-paste the content into the new text area under the new tab.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 // CSS classes are listed in the template.
                 // Localized notices are dropped to ease translators’ task.
@@ -935,7 +936,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
             array(
                 "label-css" => $this->addLabel(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS, __("Your existing Custom CSS code:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "css" => $this->addTextArea(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS),
-                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe. Please copy-paste the content into the new text area below.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-css" => __('Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe, and the code remains valid while visible. Please copy-paste the content into the new text area below. Set Show legacy to No. Save twice.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
                 "label-show-legacy" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE, "Show legacy Custom CSS settings containers:"),
                 "show-legacy" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE, $l_arr_Enabled),

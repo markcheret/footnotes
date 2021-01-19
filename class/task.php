@@ -8,7 +8,7 @@
  *
  * Edited for v2.0.0 and following.
  *
- * Last modified:  2021-01-18T2119+0100
+ * Last modified:  2021-01-19T2354+0100
  *
  * @since 2.0.5  debug autoload / infinite scroll through added post ID, contributed by @docteurfitness
  * @see <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
@@ -119,6 +119,8 @@
  *
  * @since 2.5.1  Hooks: support for footnotes in Popup Maker popups, thanks to @squatcher bug report
  * @see <https://wordpress.org/support/topic/footnotes-use-in-popup-maker/>
+ * 
+ * @since 2.6.0  Tooltips: possible to display dedicated content, thanks to @jbj2199 feature request
  */
 
 // If called directly, abort:
@@ -195,6 +197,8 @@ class MCI_Footnotes_Task {
     public static $l_int_ReferenceContainerId = 1;
 
     /**
+     * TEMPLATE PROCESS OPTIMIZATION
+     *
      * Load tooltip inline script only if jQuery tooltips are enabled
      * Streamline process depending on tooltip enabled status
      *
@@ -206,7 +210,7 @@ class MCI_Footnotes_Task {
     public static $l_bool_AlternativeTooltipsEnabled = false;
 
     /**
-     * Hard links for AMP
+     * HARD LINKS FOR AMP
      *
      * Optional hard links in referrers and backlinks for AMP compatibility
      *
@@ -263,6 +267,23 @@ class MCI_Footnotes_Task {
     public static $l_str_LinkSpan = 'span';
     public static $l_str_LinkOpenTag = '';
     public static $l_str_LinkCloseTag = '';
+
+    /**
+     * DEDICATED TOOLTIP TEXT
+     *
+     * Tooltips can display another content than the footnote entry
+     * in the reference container. The trigger is a shortcode in
+     * the footnote text separating the tooltip text from the note.
+     *
+     * @thanksto @jbj2199 feature request
+     * @see <https://wordpress.org/support/topic/change-tooltip-text/>
+     * @since 2.6.0d1
+     * @timestamp 2021-01-19T2223+0100
+     */
+    public static $a_bool_HasTooltipText = false;
+    public static $a_str_TooltipShortcode = '[[/tooltip]]';
+    public static $a_int_TooltipTextLength = 0;
+    public static $a_int_TooltipShortcodeLength = 12;
 
     /**
      * SYNTAX VALIDATION
@@ -383,9 +404,9 @@ class MCI_Footnotes_Task {
         }
 
 
-        // REMOVED the_post HOOK  2020-11-08T1839+0100
-        //
-        //
+        // REMOVED the_post HOOK
+        // 2020-11-08T1839+0100
+        // @since 2.0.9
 
 
         // reset stored footnotes when displaying the header
@@ -807,10 +828,13 @@ class MCI_Footnotes_Task {
 
         // append the reference container or insert at shortcode:
         $l_str_ReferenceContainerPositionShortcode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE);
+        if ( empty( $l_str_ReferenceContainerPositionShortcode ) ) {
+            $l_str_ReferenceContainerPositionShortcode = '[[references]]';
+        }
 
-        if ($p_bool_OutputReferences) {
+        if ( $p_bool_OutputReferences ) {
 
-            if (strpos( $p_str_Content, $l_str_ReferenceContainerPositionShortcode ) !== false ) {
+            if ( strpos( $p_str_Content, $l_str_ReferenceContainerPositionShortcode ) !== false ) {
 
                 $p_str_Content = str_replace( $l_str_ReferenceContainerPositionShortcode, $this->ReferenceContainer(), $p_str_Content );
 
@@ -986,6 +1010,16 @@ class MCI_Footnotes_Task {
             // get footnote text
             $l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
 
+            // get tooltip text if present:
+            self::$a_str_TooltipShortcode = '[[/tooltip]]'; // grab from DB
+            self::$a_int_TooltipShortcodeLength = strlen( self::$a_str_TooltipShortcode );
+            self::$a_int_TooltipTextLength = strpos( $l_str_FootnoteText, self::$a_str_TooltipShortcode );
+            self::$a_bool_HasTooltipText = self::$a_int_TooltipTextLength === false ? false : true;
+            if ( self::$a_bool_HasTooltipText ) {
+                $l_str_TooltipText = substr( $l_str_FootnoteText, 0, self::$a_int_TooltipTextLength );
+            } else {
+                $l_str_TooltipText = '';
+            }
 
             /**
              * URL line wrap
@@ -1131,6 +1165,13 @@ class MCI_Footnotes_Task {
                     }
                 }
 
+                // determine tooltip content:
+                if ( self::$l_bool_TooltipsEnabled ) {
+                    $l_str_TooltipContent = self::$a_bool_HasTooltipText ? $l_str_TooltipText : $l_str_ExcerptText;
+                } else {
+                    $l_str_TooltipContent = '';
+                }
+
                 // fill in 'templates/public/footnote.html':
                 $l_obj_Template->replace(
                     array(
@@ -1144,7 +1185,7 @@ class MCI_Footnotes_Task {
                         "index"          => $l_int_Index,
                         "after"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
                         "anchor-element" => $l_str_ReferrerAnchorElement,
-                        "text"           => self::$l_bool_TooltipsEnabled ? $l_str_ExcerptText : "",
+                        "text"           => $l_str_TooltipContent,
                     )
                 );
                 $l_str_FootnoteReplaceText = $l_obj_Template->getContent();
@@ -1373,8 +1414,9 @@ class MCI_Footnotes_Task {
 
             // get footnote text
             $l_str_FootnoteText = self::$a_arr_Footnotes[$l_int_Index];
-            // if footnote is empty, get to the next one
-            // With combine identical turned on, identicals will be deleted and are skipped:
+
+            // if footnote is empty, go to the next one;
+            // With combine identicals turned on, identicals will be deleted and are skipped:
             if (empty($l_str_FootnoteText)) {
                 continue;
             }
@@ -1554,6 +1596,15 @@ class MCI_Footnotes_Task {
 
             // line wrapping of URLs already fixed, see above
 
+            // get reference container item text if tooltip text goes separate:
+            self::$a_int_TooltipTextLength = strpos( $l_str_FootnoteText, self::$a_str_TooltipShortcode );
+            self::$a_bool_HasTooltipText = self::$a_int_TooltipTextLength === false ? false : true;
+            if ( self::$a_bool_HasTooltipText ) {
+                $l_str_ReferenceText = substr( $l_str_FootnoteText, ( self::$a_int_TooltipTextLength + self::$a_int_TooltipShortcodeLength ) );
+            } else {
+                $l_str_ReferenceText = $l_str_FootnoteText;
+            }
+
             // replace all placeholders in 'templates/public/reference-container-body.html'
             // or in 'templates/public/reference-container-body-combi.html'
             // or in 'templates/public/reference-container-body-3column.html'
@@ -1562,7 +1613,7 @@ class MCI_Footnotes_Task {
                 array(
 
                     // placeholder used in all templates:
-                    "text"            => $l_str_FootnoteText,
+                    "text"            => $l_str_ReferenceText,
 
                     // used in standard layout W/O COMBINED FOOTNOTES:
                     "post_id"         => self::$l_int_PostId,

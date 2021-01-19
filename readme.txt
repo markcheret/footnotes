@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable Tag: 2.5.1
+Stable Tag: 2.5.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -78,6 +78,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.5.2 =
+- Update: Tooltips: possible to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 feature request
+- Bugfix: Localization: plugin language file name changes effective in version control system
 
 = 2.5.1 =
 - Bugfix: Hooks: support for footnotes in Popup Maker popups, thanks to @squatcher bug report

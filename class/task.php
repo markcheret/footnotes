@@ -8,7 +8,7 @@
  *
  * @edited @since 2.0.0
  *
- * @lastmodified 2021-01-23T0119+0100
+ * @lastmodified 2021-01-23T0132+0100
  *
  * @since 2.0.5  debug autoload / infinite scroll by adding post ID, thanks to @docteurfitness code contribution
  * @since 2.0.9  REMOVE the_post HOOK  2020-11-08T1839+0100
@@ -115,7 +115,7 @@
  * @link https://wordpress.org/support/topic/footnotes-use-in-popup-maker/
  *
  * @since 2.5.2  Tooltips: ability to display dedicated content, thanks to @jbj2199 bug report
- * 
+ *
  * @since 2.5.3  URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report
  */
 
@@ -1066,25 +1066,25 @@ class MCI_Footnotes_Task {
              * URLs may be a query string in a URL:
              * @since 2.2.6  make the quotation mark optional in the exclusion regex, thanks to @spiralofhope2   2020-12-23T0409+0100
              * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/
-			 * 
+             *
              * @since 2.2.7  revert that change in the exclusion regex, thanks to @rjl20, @spaceling, @friedrichnorth, @bernardzit   2020-12-23T1046+0100
              * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/
-			 * 
+             *
              * @link https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/
              * @since 2.2.8  correct lookbehind by duplicating it with and without quotation mark class  2020-12-23T1107+0100
              *
              * @since 2.2.9  account for RFC 2396 allowed characters in parameter names  2020-12-24T1956+0100
              * @link https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names
-			 * 
+             *
              * @since 2.2.9  exclude URLs also where the equals sign is preceded by an entity or character reference  2020-12-25T1234+0100
              *
              * @since 2.2.10 support also file transfer protocol URLs  2020-12-25T2220+0100
-			 * 
-			 * URL pattern may be part of a Wayback Machine URL
-			 * @thanksto @rumperuu bug report
-			 * @link https://wordpress.org/support/topic/line-wrap-href-regex-bug/
-			 * @since 2.5.3
-			 * exclude protocols with prepended slash hinting it’s in a Wayback Machine URL
+             *
+             * URL pattern may be part of a Wayback Machine URL
+             * @thanksto @rumperuu bug report
+             * @link https://wordpress.org/support/topic/line-wrap-href-regex-bug/
+             * @since 2.5.3
+             * exclude protocols with prepended slash hinting it’s in a Wayback Machine URL
              */
             if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED))) {
                 $l_str_FootnoteText = preg_replace( '#(?<![-\w\.!~\*\'\(\);]=[\'"])(?<![-\w\.!~\*\'\(\);]=)(?<!/)((ht|f)tps?://[^\\s<]+)#', '<span class="footnote_url_wrap">$1</span>', $l_str_FootnoteText );

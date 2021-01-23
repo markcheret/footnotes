@@ -6,12 +6,13 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  *
- * Last modified: 2021-01-18T2127+0100
+ * Last modified: 2021-01-22T0545+0100
  *
  * Edited:
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
  * @since 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
+ * @since 2.1.1  Referrers: superscript becomes optional, thanks to @cwbayer bug report
  * @since 2.1.2  priority level settings for all other hooks, thanks to @nikelaos
  * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705>
  * @since 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100

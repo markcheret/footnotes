@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, pewgeuges, misfist, dartiss, docteurfitness, martinneumannat
+Contributors: mark.cheret, lolzim, dartiss, docteurfitness, martinneumannat, misfist, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6
@@ -79,8 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.5.3 =
+- Bugfix: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report
+
 = 2.5.2 =
-- Update: Tooltips: possible to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 feature request
+- Bugfix: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 bug report
 - Bugfix: Localization: plugin language file name changes effective in version control system
 
 = 2.5.1 =
@@ -103,12 +106,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.4.0 =
 - Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes
-- Bugfix: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report
-- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
 - Bugfix: optimize template load and process according to settings, thanks to @misfist code contribution
-- Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border
+- Bugfix: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report
 - Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg bug report
 - Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report
+- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
+- Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border
 - Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'
 
 = 2.3.0 =
@@ -238,28 +241,28 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos bug report
 
 = 2.1.1 =
-- Bugfix: Combining identical footnotes: fix dead links, ensure referrer-backlink bijectivity, thanks to @happyches bug report
+- Bugfix: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report
 - Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
 - Update: Libraries: jQuery Tools: complete minification
-- Bugfix: Libraries: made script loads depend on tooltip implementation option
+- Bugfix: Libraries: make script loads depend on tooltip implementation option
 - Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
-- Bugfix: Tooltips: optional alternative JS implementation with CSS animation to fix site issues
-- Bugfix: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
-- Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
-- Bugfix: Footnote referrers: select box to make superscript optional, thanks to @cwbayer bug report
-- Bugfix: Footnote referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
 - Bugfix: Reference container: fix relative positioning by priority level setting, thanks to june01 @spaceling @imeson bug reports
+- Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report
 - Bugfix: Reference container: Backlink symbol: select box to disable instead of space character
 - Bugfix: Reference container: Footnote number links: disable bottom border for theme compatibility
 - Bugfix: Reference container: option to restore 3-column layout when combined are turned off
 - Bugfix: Reference container: option to APpend symbol in 2-column when combined are turned off
-- Bugfix: Reference container: fix start pages by an option to hide the reference container
 - Bugfix: Reference container: Table rows: fix top and bottom padding
+- Bugfix: Referrers: superscript becomes optional, thanks to @cwbayer bug report
+- Bugfix: Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
+- Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage
+- Bugfix: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
+- Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
 - Bugfix: Formatting: disable overline showing in some themes on hovered backlinks
 
 = 2.1.0 =
 - Add: UI: Tooltip: made 'Continue reading' button label customizable
-- Bugfix: Footnote referrers: disabled bottom border for theme compatibility
+- Bugfix: Referrers: disabled bottom border for theme compatibility
 - Update: Accessibility: added 'speaker-mute' class to reference container
 - Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles
 - UPDATE: REMOVED the_post hook, the plugin stopped supporting this hook
@@ -274,8 +277,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Settings defaults adjusted for better and more up-to-date tooltip layout
 
 = 2.0.6 =
-- Update: Autoload / infinite scroll support thanks to @docteurfitness <https://wordpress.org/support/topic/auto-load-post-compatibility-update/>
-- Bugfix: Footnote referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
+- Update: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution
+- Bugfix: Referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
 - Bugfix: Reference container: fixed line breaking behavior in footnote # clusters
 - Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts
 - Bugfix: Reference container: IDs: slightly increased left padding

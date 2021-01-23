@@ -23,14 +23,14 @@
  * @since 2.1.1  fix superscript by making it optional
  *
  * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
- * @see <https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/>
+ * @link https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/
  *
  * @since 2.1.1  fix ref container by option restoring 3-column layout
  *
  * @since 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  *
  * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
- * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+ * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
  *
  * @since 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  *
@@ -41,7 +41,7 @@
  * @since 2.1.6  set default priority level of the_content to 98 to prevent plugin conflict, thanks to @marthalindeman   2020-12-10T0447+0100
  *
  * @since 2.2.0  reference container custom position shortcode, thanks to @hamshe   2020-12-13T2056+0100
- * @see <https://wordpress.org/support/topic/reference-container-in-elementor/>
+ * @link https://wordpress.org/support/topic/reference-container-in-elementor/
  *
  * @since 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
  *
@@ -50,15 +50,15 @@
  * @since 2.2.5  alternative tooltip position settings  2020-12-17T0907+0100
  *
  * @since 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
- * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+ * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
  *
  * @since 2.2.9  set default priority level of widget_text to 98 like for the_content (since 2.1.6), thanks to @marthalindeman   2020-12-25T1646+0100
  *
  * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
- * @see <https://wordpress.org/support/topic/borders-25/>
+ * @link https://wordpress.org/support/topic/borders-25/
  *
  * @since 2.3.0  reference container: settings for top (and bottom) margin, thanks to @hamshe
- * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
+ * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
  *
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
  *
@@ -440,7 +440,7 @@ class MCI_Footnotes_Settings {
      * 2020-11-16T0859+0100
      *
      * option to enable/disable the superscript element for referrers, thanks to @cwbayer
-     * @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
+     * @link https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/
      */
     const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
@@ -547,7 +547,7 @@ class MCI_Footnotes_Settings {
     /**
      * Settings Container Keys for alternative tooltip position
      * Settings Container Keys for reference container label element, thanks to @markhillyer
-     * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+     * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
      *
      * @since 2.2.5
      * @var int
@@ -565,7 +565,7 @@ class MCI_Footnotes_Settings {
 
     /**
      * Settings Container Key for table cell borders, thanks to @noobishh
-     * @see <https://wordpress.org/support/topic/borders-25/>
+     * @link https://wordpress.org/support/topic/borders-25/
      *
      * @since 2.2.10
      * @var bool
@@ -645,7 +645,7 @@ class MCI_Footnotes_Settings {
      * Edited multiple times.
      *
      * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
-     * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
+     * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
      */
     private $a_arr_Default = array(
 
@@ -949,7 +949,7 @@ class MCI_Footnotes_Settings {
      * @return array Settings loaded from Container of Default Settings if Settings Container is empty (first usage).
      * 
      * @since   ditched trimming whitespace from text box content in response to user request.
-     * @see <https://wordpress.org/support/topic/leading-space-in-footnotes-tag/#post-5347966>
+     * @link https://wordpress.org/support/topic/leading-space-in-footnotes-tag/#post-5347966
      */
     private function Load($p_int_Index) {
         // load all settings from container

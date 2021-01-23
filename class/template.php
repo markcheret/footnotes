@@ -15,11 +15,11 @@
  * @since 2.0.6  prettify other templates (footnote, tooltip script, ref container row)
  * @since 2.2.6  delete a space before a closing pointy bracket
  * @since 2.2.6  support for custom templates in fixed location, while failing to add filter thanks to @misfist   2020-12-19T0606+0100
- * @see <https://wordpress.org/support/topic/template-override-filter/>
+ * @link https://wordpress.org/support/topic/template-override-filter/
  * @since 2.4.0  templates may be in active theme, thanks to @misfist
- * @see <https://wordpress.org/support/topic/template-override-filter/#post-13846598>
+ * @link https://wordpress.org/support/topic/template-override-filter/#post-13846598
  * @since 2.5.0  Enable template location stack, contributed by @misfist
- * @see <https://wordpress.org/support/topic/template-override-filter/#post-13864301>
+ * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
  */
 
 
@@ -92,12 +92,12 @@ class MCI_Footnotes_Template {
      * @since 2.0.4  regex to delete multiple spaces
      *
      * @since 2.2.6  support for custom templates   2020-12-19T0606+0100
-     * @see <https://wordpress.org/support/topic/template-override-filter/>
+     * @link https://wordpress.org/support/topic/template-override-filter/
      *
      * @since 2.2.6  delete a space before a closing pointy bracket
      *
      * @since 2.4.0  look for custom template in the active theme first, thanks to @misfist
-     * @see <https://wordpress.org/support/topic/template-override-filter/#post-13846598>
+     * @link https://wordpress.org/support/topic/template-override-filter/#post-13846598
      */
     public function __construct($p_str_FileType, $p_str_FileName, $p_str_Extension = "html") {
         // no template file type and/or file name set

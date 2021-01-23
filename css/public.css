@@ -6,9 +6,9 @@
  * Since: 1.0
  */
 
-/* Version: 2.5.2
+/* Version: 2.5.3
 
-Last modified: 2021-01-20T0007+0100
+Last modified: 2021-01-23T0120+0100
 
 
         Classes recommended for Custom CSS are listed in
@@ -309,6 +309,12 @@ Classes:
 .footnote_plugin_text                         = second <td>, or third <td> in 3-column table
 */
 
+.footnotes_reference_container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 /*
 label
 */
@@ -438,7 +444,7 @@ when hovered in some themes, not in others:
 }
 
 /*
-These rules are just defauls preventing the table from filling the width.
+These rules are just defaults preventing the table from filling the width.
 They are not very effective by lack of table-layout: fixed;
 since 2.1.4 settings are optionally available, with table-layout: fixed;
 

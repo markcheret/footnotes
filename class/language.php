@@ -8,11 +8,11 @@
  * Edited:
  * 
  * @since 2.0.0  PHP-related bug fix thanks to @matkus2 code contribution   2020-10-26T1609+0100
- * @see <https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/>
- * @see <https://www.php.net/manual/en/migration71.incompatible.php>
+ * @link https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/
+ * @link https://www.php.net/manual/en/migration71.incompatible.php
  * 
  * @since 2.1.6  conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report   2020-12-08T1931+0100
- * @see <https://wordpress.org/support/topic/more-feature-ideas/>
+ * @link https://wordpress.org/support/topic/more-feature-ideas/
  * 
  * Last modified:  2021-01-10T1755+0100
  */
@@ -41,8 +41,8 @@ class MCI_Footnotes_Language {
      * @since 1.5.0
      * 
      * @since 2.0.0  PHP 7.1 related bug fix thanks to @matkus2 code contribution
-     * @see <https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/>
-     * @see <https://www.php.net/manual/en/migration71.incompatible.php>
+     * @link https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/
+     * @link https://www.php.net/manual/en/migration71.incompatible.php
      */
     public static function loadTextDomain() {
         // language file with localization exists
@@ -65,7 +65,7 @@ class MCI_Footnotes_Language {
      * 
      * Edited:
      * @since 2.1.6  conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report
-     * @see <https://wordpress.org/support/topic/more-feature-ideas/>
+     * @link https://wordpress.org/support/topic/more-feature-ideas/
      * That is done by using load_plugin_textdomain()
      * @see wp-includes/l10n.php:857
      * “The .mo file should be named based on the text domain with a dash, and then the locale exactly.”

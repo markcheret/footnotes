@@ -12,7 +12,7 @@
  * 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
  * 2.1.6  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
  *
- * Last modified:  2020-12-10T1447+0100
+ * Last modified:  2021-01-22T0440+0100
  */
 
 
@@ -213,7 +213,7 @@ abstract class MCI_Footnotes_LayoutEngine {
         // register stylesheet
         // added version # after changes started to settings.css from 2.1.2 on:
         // automated update of version number for cache busting
-        wp_register_style( 'mci-footnotes-admin-styles', plugins_url('footnotes/css/settings.css'), array(), FOOTNOTES_VERSION );
+        wp_register_style( 'mci-footnotes-admin-styles', plugins_url('footnotes/css/settings.css'), array(), C_STR_FOOTNOTES_VERSION );
 
         // add stylesheet to the output
         wp_enqueue_style('mci-footnotes-admin-styles');

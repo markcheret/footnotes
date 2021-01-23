@@ -157,14 +157,14 @@ class MCI_Footnotes {
 
         // up-to-date plugin version number needed for cache busting:
         // not use '-css' in the handle, is appended automatically;
-        // constant FOOTNOTES_VERSION defined in footnotes.php, media all is default
+        // constant C_STR_FOOTNOTES_VERSION defined in footnotes.php, media all is default
         wp_enqueue_style(
             'mci-footnotes-public',
             plugins_url(
                 MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/public.css'
             ),
             array(),
-            FOOTNOTES_VERSION,
+            C_STR_FOOTNOTES_VERSION,
             'all'
         );
 
@@ -178,7 +178,7 @@ class MCI_Footnotes {
                     MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/layout-' . $l_str_LayoutOption . '.css'
                 ),
                 array(),
-                FOOTNOTES_VERSION,
+                C_STR_FOOTNOTES_VERSION,
                 'all'
             );
         }

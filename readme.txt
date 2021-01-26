@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, dartiss, docteurfitness, martinneumannat, misfist, pewgeuges
+Contributors: mark.cheret, lolzim, dartiss, docteurfitness, martinneumannat, misfist, rumperuu, spaceling, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6
@@ -79,6 +79,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.5.4 =
+- Bugfix: Tooltips: fix display in Popup Maker popups
+
 = 2.5.3 =
 - Bugfix: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report
 
@@ -87,7 +90,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Localization: plugin language file name changes effective in version control system
 
 = 2.5.1 =
-- Bugfix: Hooks: support for footnotes in Popup Maker popups, thanks to @squatcher bug report
+- Bugfix: Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report
 - Bugfix: Reference container: click on label expands but also collapses, thanks to @ahmadword bug report
 - Bugfix: Reference container: Label: cursor takes pointer shape, thanks to @ahmadword bug report
 - Bugfix: Dashboard: Custom CSS: mention validity of legacy while visible, thanks to @rkupadhya bug report
@@ -97,7 +100,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.5.0 =
 - Add: Customization: Enable template location stack, thanks to @misfist source file contribution
-- Bugfix: Hooks: support the term_description hook, thanks to @vitaefit bug report, thanks to @misfist code contribution
+- Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution
 - Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report
 - Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra bug report
 - Bugfix: Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report
@@ -106,8 +109,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.4.0 =
 - Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes
-- Bugfix: optimize template load and process according to settings, thanks to @misfist code contribution
-- Bugfix: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report
+- Bugfix: Performance: optimize template load and process according to settings, thanks to @misfist code contribution
+- Bugfix: Process: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report
 - Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg bug report
 - Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report
 - Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
@@ -242,18 +245,18 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.1 =
 - Bugfix: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report
+- Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report
 - Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
 - Update: Libraries: jQuery Tools: complete minification
 - Bugfix: Libraries: make script loads depend on tooltip implementation option
 - Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
-- Bugfix: Reference container: fix relative positioning by priority level setting, thanks to june01 @spaceling @imeson bug reports
 - Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report
 - Bugfix: Reference container: Backlink symbol: select box to disable instead of space character
 - Bugfix: Reference container: Footnote number links: disable bottom border for theme compatibility
-- Bugfix: Reference container: option to restore 3-column layout when combined are turned off
-- Bugfix: Reference container: option to APpend symbol in 2-column when combined are turned off
+- Bugfix: Reference container: option to restore 3-column layout (combining identicals turned off)
+- Bugfix: Reference container: option to append symbol (prepended by default) (combining identicals turned off)
 - Bugfix: Reference container: Table rows: fix top and bottom padding
-- Bugfix: Referrers: superscript becomes optional, thanks to @cwbayer bug report
+- Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report
 - Bugfix: Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
 - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage
 - Bugfix: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
@@ -261,7 +264,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Formatting: disable overline showing in some themes on hovered backlinks
 
 = 2.1.0 =
-- Add: UI: Tooltip: made 'Continue reading' button label customizable
+- Add: Tooltips: Read-on button: Label: configurable instead of localizable
 - Bugfix: Referrers: disabled bottom border for theme compatibility
 - Update: Accessibility: added 'speaker-mute' class to reference container
 - Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles
@@ -277,13 +280,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Settings defaults adjusted for better and more up-to-date tooltip layout
 
 = 2.0.6 =
-- Update: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution
+- Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution
 - Bugfix: Referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
 - Bugfix: Reference container: fixed line breaking behavior in footnote # clusters
 - Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts
 - Bugfix: Reference container: IDs: slightly increased left padding
 - Bugfix: Translations: fixed spelling error and erroneously changed word in en_GB and en_US
-- Update: Typesetting: discarded the dot after footnote numbers as not localizable (should be optional)
+- Bugfix: Typesetting: discarded the dot after footnote numbers as not localizable (should be optional)
 - Bugfix: Reference container: Collapse button fully clickable, not sign only
 - Bugfix: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
 - Update: Tooltips: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
@@ -292,7 +295,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Scroll offset: raise percentage from 12% to a safer 20% inner window height, by lack of configurability
 
 = 2.0.5 =
-- Bugfix: Get references container close to content, not below all other features, by priority level 10
+- Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson bug reports, thanks to @spaceling code contribution
 - Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues
 - Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
 - Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal

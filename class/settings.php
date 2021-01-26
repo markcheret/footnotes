@@ -593,16 +593,16 @@ class MCI_Footnotes_Settings {
 
     /**
      * Settings container key for shortcode syntax validation
-     * 
+     *
      * @since 2.4.0
      * @var bool
-     * 
+     *
      * 2021-01-01T0616+0100
      */
     const C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = "footnotes_inputfield_shortcode_syntax_validation_enable";
-    
-    
-    
+
+
+
     /**
      *      SETTINGS STORAGE
      */
@@ -655,7 +655,7 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_SHORT_CODE_END                      => '))',
             self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED       => '',
             self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED         => '',
-            
+
             self::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE  => 'yes',
 
             self::C_STR_FOOTNOTES_COUNTER_STYLE                       => 'arabic_plain',
@@ -679,7 +679,7 @@ class MCI_Footnotes_Settings {
 
             // whether to enqueue additional style sheet:
             self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT                 => 'none',
-            
+
             // top and bottom margins:
             self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN                => 24,
             self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN             =>  0,
@@ -816,15 +816,16 @@ class MCI_Footnotes_Settings {
 
         "footnotes_storage_expert" => array(
 
-            // checkboxes
+            // These are checkboxes; keyword 'checked' is converted to Boolean true,
+            // empty string to false (default):
 
             // Titles should all be enabled by default to prevent users from
             // thinking at first that the feature is broken in post titles.
             // See <https://wordpress.org/support/topic/more-feature-ideas/>
-            // Yet in titles, footnotes are functionally pointless in WordPress.
+            // Yet in titles, footnotes are still buggy, because WordPress
+            // uses the title string in menus and in the title element.
             self::C_BOOL_EXPERT_LOOKUP_THE_TITLE                      => '',
 
-            // This is the only useful one:
             self::C_BOOL_EXPERT_LOOKUP_THE_CONTENT                    => 'checked',
 
             // And the_excerpt is disabled by default following @nikelaos in
@@ -834,9 +835,10 @@ class MCI_Footnotes_Settings {
 
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE                   => '',
 
-            // The widget_text hook must be disabled, because a footnotes container is inserted
-            // at the bottom of each widget, but multiple containers in a page are not disambiguated.
-            // E.g. enabling this causes issues with footnotes in Elementor accordions.
+            // The widget_text hook must be disabled by default, because it causes
+            // multiple reference containers to appear in Elementor accordions, but
+            // it must be enabled if multiple reference containers are desired, as
+            // in Elementor toggles.
             self::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT                    => '',
 
             // initially hard-coded default
@@ -947,7 +949,7 @@ class MCI_Footnotes_Settings {
      * @since 1.5.0
      * @param int $p_int_Index Settings Container Array Key Index.
      * @return array Settings loaded from Container of Default Settings if Settings Container is empty (first usage).
-     * 
+     *
      * @since   ditched trimming whitespace from text box content in response to user request.
      * @link https://wordpress.org/support/topic/leading-space-in-footnotes-tag/#post-5347966
      */

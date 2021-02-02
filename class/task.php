@@ -79,15 +79,10 @@
  *
  * @edit 2.3.0  optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution
  * @edit 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
- *
  * @edit 2.4.0  syntax validation for balanced footnote start and end tags  2021-01-01T0227+0100
- *
  * @edit 2.4.0  initialize scroll offset variable to 34 as a more robust default, thanks to @lukashuggenberg  2021-01-04T0504+0100
- *
  * @edit 2.4.0  set empty reference container label to NNBSP to make it more robust, thanks to @lukashuggenberg  2021-01-04T0504+0100
- *
  * @edit 2.4.0  Performance: optimize template load and process according to settings, thanks to @misfist code contribution
- *
  * @edit 2.4.0  initialize hard link address as empty to fix undefined variable bug, thanks to @a223123131  2021-01-04T1622+0100
  *
  * @edit 2.5.0  Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra  2021-01-07T0824+0100
@@ -96,10 +91,7 @@
  * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
  *
  * @edit 2.5.0  Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution
- * @link https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/
- *
  * @edit 2.5.1  Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report
- * @link https://wordpress.org/support/topic/footnotes-use-in-popup-maker/
  *
  * @edit 2.5.2  Tooltips: ability to display dedicated content, thanks to @jbj2199 bug report
  *
@@ -339,8 +331,8 @@ class MCI_Footnotes_Task {
      * @edit 2.0.9  removed the_post hook after its default enabling caused multiple issues
      * @edit 2.1.1  Dashboard: priority level setting for the_content hook, thanks to @imeson bug report
      * @edit 2.1.2  Dashboard: priority level settings for all other hooks, thanks to @nikelaos bug report
-     * @edit 2.5.0  support the term_description hook, thanks to @vitaefit bug report, thanks to @misfist code contribution
-     * @edit 2.5.1  support the pum_popup_content hook, thanks to @squatcher bug report
+     * @edit 2.5.0  Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution
+     * @edit 2.5.1  Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report
      */
     public function registerHooks() {
 
@@ -376,7 +368,7 @@ class MCI_Footnotes_Task {
          *
          * @link https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter
          *
-         * Setting the_content priority to "10" instead of PHP_INT_MAX i.e. 9223372036854775807
+         * Setting the_content priority to 10 instead of PHP_INT_MAX i.e. 9223372036854775807
          * makes the footnotes reference container display beneath the post and above other
          * features added by other plugins, e.g. related post lists and social buttons.
          *
@@ -420,8 +412,8 @@ class MCI_Footnotes_Task {
              * HOOK FOR CATEGORY PAGES
              *
              * Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution
-             * @datestamp 2021-01-05T1402+0100
              * @since 2.5.0
+             * @datestamp 2021-01-05T1402+0100
              *
              * @reporter @vitaefit
              * @bugreport https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/

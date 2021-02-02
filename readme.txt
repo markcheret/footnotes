@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, dartiss, docteurfitness, martinneumannat, misfist, rumperuu, spaceling, pewgeuges
+Contributors: mark.cheret, lolzim, dartiss, docteurfitness, felipelavinz, martinneumannat, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6
@@ -79,8 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.4 =
+= 2.5.4d1 =
+- Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report
 - Bugfix: Tooltips: fix display in Popup Maker popups
+- Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign
+- Bugfix: Editor button: Text editor button: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report
 
 = 2.5.3 =
 - Bugfix: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report
@@ -246,8 +249,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.1.1 =
 - Bugfix: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report
 - Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report
-- Update: Libraries: jQuery Tools: redact jQuery.browser function use in js/jquery.tools.min.js
-- Update: Libraries: jQuery Tools: complete minification
+- Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports
+- Bugfix: Libraries: jQuery Tools: complete minification
 - Bugfix: Libraries: make script loads depend on tooltip implementation option
 - Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
 - Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report
@@ -265,8 +268,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.1.0 =
 - Add: Tooltips: Read-on button: Label: configurable instead of localizable
-- Bugfix: Referrers: disabled bottom border for theme compatibility
-- Update: Accessibility: added 'speaker-mute' class to reference container
+- Bugfix: Referrers: disable bottom border for theme compatibility
+- Update: Accessibility: add 'speaker-mute' class to reference container
 - Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles
 - UPDATE: REMOVED the_post hook, the plugin stopped supporting this hook
 
@@ -281,12 +284,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.6 =
 - Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution
-- Bugfix: Referrers: deleted vertical align tweaks, for cross-theme and user agent compatibility
-- Bugfix: Reference container: fixed line breaking behavior in footnote # clusters
+- Bugfix: Referrers: delete vertical align tweaks, for cross-theme and user agent compatibility
+- Bugfix: Reference container: fix line breaking behavior in footnote # clusters
 - Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts
 - Bugfix: Reference container: IDs: slightly increased left padding
-- Bugfix: Translations: fixed spelling error and erroneously changed word in en_GB and en_US
-- Bugfix: Typesetting: discarded the dot after footnote numbers as not localizable (should be optional)
+- Bugfix: Translations: fix spelling error and erroneously changed word in en_GB and en_US
+- Bugfix: Typesetting: discard the dot after footnote numbers as not localizable (should be optional)
 - Bugfix: Reference container: Collapse button fully clickable, not sign only
 - Bugfix: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
 - Update: Tooltips: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
@@ -296,7 +299,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.5 =
 - Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson bug reports, thanks to @spaceling code contribution
-- Bugfix: Public style sheet: Reference container: unset width of text column to fix site issues
+- Bugfix: Reference container: unset width of text column to fix site issues
 - Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
 - Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal
 - Bugfix: Settings style sheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4)
@@ -335,7 +338,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Major contributions taken from WordPress user pewgeuges, all details here https://github.com/media-competence-institute/footnotes/blob/master/README.md:
 - Update: **symbol for backlinks** removed
 - Update: hyperlink moved to the reference number
-- Update: Upgrade jQuery library
+- Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
+- Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
 - Update: Account for disruptive PHP change
 - Bugfix: footnote links script independent
 - Bugfix: Get the “Continue reading” link to work in the mouse-over box
@@ -350,7 +354,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Beginning of translation to French
 
 = 1.6.5 =
-- Update: Fix for deprecated PHP function create_function() (man thanks to Felipe Lavín Z.)
+- Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution
+- Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution
 - Update: The CSS had been modified in order to show the tooltip numbers a little less higher than text
 - Bugfix: Fixed error on demo in backend
 

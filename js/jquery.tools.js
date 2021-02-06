@@ -25,72 +25,77 @@
  * Make sure to sync the version number in class/init.php:
  * @version 1.2.7.redacted.2
  *
- * @lastmodified 2021-02-01T0411+0100
+ * @lastmodified 2021-02-05T0618+0100
  * @accountable @pewgeuges
  *
- * @edit 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
- * @edit 2.0.0  Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
- * @edit 2.1.1  Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports
- * @edit 2.1.1  Bugfix: Libraries: jQuery Tools: complete minification
- * @edit 2.5.4  Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report
- * @edit 2.5.4  Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign
+ * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett @twellve_million bug reports, thanks to @vonpiernik code contribution
+ * @since 2.0.0  Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
+ * @since 2.1.1  Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports
+ * @since 2.1.1  Bugfix: Libraries: jQuery Tools: complete minification
+ * @since 2.5.4  Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report
+ * @since 2.5.4  Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign
  */
 
 /**
  * UPGRADE TO JQUERY UI AND FIX DEPRECATED FUNCTION jQuery.browser()
  *
- * Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
- * Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
+ * - Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett @twellve_million bug reports, thanks to @vonpiernik code contribution
+ * - Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
+ * 
  * @since 2.0.0
- * @datestamp 2020-10-26T2005+0100
+ * @datetime 2020-10-26T2005+0100
  * @accountable @pewgeuges
  *
  * @contributor @vonpiernik
- * @source https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762
+ * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762
  *
  * @reporter @rajinderverma
- * @bugreport https://wordpress.org/support/topic/tooltip-hover-not-showing/
+ * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/
  *
  * @reporter @ericcorbett2
- * @bugreport https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13324142
+ * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13324142
  *
  * @reporter @honlapdavid
- * @bugreport https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13355421
+ * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13355421
  *
  * @reporter @mmallett
- * @bugreport https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13445437
+ * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13445437
+ * 
+ * @reporter @twellve_million
+ * @link https://wordpress.org/support/topic/error-in-jquery-tools-min-js-a-browser-is-undefined/
  *
  * Fixing jQuery.browser was needed alongside adding the jQueryUI library to debug the tooltips.
  */
 
 /**
- * FUNCTION jQuery.browser() DEPRECATED, REDACTED (COMMENTED OUT)
+ * REDACT (COMMENT OUT) DEPRECATED FUNCTION jQuery.browser()
  *
- * Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports
+ * - Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports
+ * 
  * @since 2.1.1
- * @datestamp 2020-11-12T0127+0100
+ * @datetime 2020-11-12T0127+0100
  * @accountable @pewgeuges
  *
  * @reporter @bjrnet21
- * @bugreport https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/
+ * @link https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/
  *
  * @reporter @cconser
- * @bugreport https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13262355
+ * @link https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13262355
  *
  * @reporter @vyassuresh
- * @bugreport https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13263019
+ * @link https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13263019
  *
  * @reporter @spaceling
- * @bugreport https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13309712
+ * @link https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13309712
  *
  * @reporter @widecast
- * @bugreport https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13414243
+ * @link https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13414243
  *
  * @reporter @olivlyon
- * @bugreport https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13472896
+ * @link https://wordpress.org/support/topic/after-wp-5-5-upgrade-jquery-is-deprecated/#post-13472896
  *
  * @reporter @maxident
- * @bugreport https://wordpress.org/support/topic/jquery-issues-13/
+ * @link https://wordpress.org/support/topic/jquery-issues-13/
  *
  * The function jQuery.browser() cannot be easily replaced like other deprecated functions.
  * The recommended fix is to use Modernizr instead.
@@ -126,7 +131,7 @@
     function c() {
 
         /**
-         * REDACT DEPRECATED jQuery.browser()
+         * REDACT (COMMENT OUT) DEPRECATED FUNCTION jQuery.browser()
          * 
          * #1  This was only a tweak to adjust width and height in Internet Explorer.
          */
@@ -149,14 +154,15 @@
         /**
          * EQUALS SIGN IN JAVASCRIPT
          * 
-         * Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign
+         * - Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign
+		 * 
          * @since 2.5.4
-         * @datestamp 2021-01-27T1955+0100
-		 * @accountable @pewgeuges
+         * @datetime 2021-01-27T1955+0100
+         * @accountable @pewgeuges
          * 
          * 23 instances (27 less 4 already triple), first below, next was already
          * All instances checked whether '==' has the semantics of '===', though.
-         * @see Douglas Crockford, JavaScript: The Good Parts
+         * @bib Douglas Crockford, JavaScript: The Good Parts
          */
 
         typeof j === "string" && (j = {color: j}), j = j || h, h = j = a.extend(a.extend({}, b.conf), j), e = a("#" + j.maskId), e.length || (e = a("<div/>").attr("id", j.maskId), a("body").append(e));
@@ -321,7 +327,7 @@
     a.tools = a.tools || {version: "v1.2.7"}, a.tools.history = {init: function (g) {
 
         /**
-         * REDACT DEPRECATED jQuery.browser()
+         * REDACT (COMMENT OUT) DEPRECATED FUNCTION jQuery.browser()
          * 
          * #2  This was only for very old Internet Explorer (older than IE8).
          */
@@ -369,7 +375,7 @@
     }};
 
     /**
-     * REDACT DEPRECATED jQuery.browser()
+     * REDACT (COMMENT OUT) DEPRECATED FUNCTION jQuery.browser()
      * 
      * #3  This was only about a naming convention of Firefox: 'DOMMouseScroll' vs 'mousewheel',
      *     or 'mousemove' in very old Firefox (older than v1.9).
@@ -406,7 +412,7 @@
         var c = this.getConf();
 
         /**
-         * REDACT DEPRECATED jQuery.browser()
+         * REDACT (COMMENT OUT) DEPRECATED FUNCTION jQuery.browser()
          * 
          * #4  This disabled fade-in for Internet Explorer other than FadeIE.
          */
@@ -416,7 +422,7 @@
         var c = this.getConf();
 
         /**
-         * REDACT DEPRECATED jQuery.browser()
+         * REDACT (COMMENT OUT) DEPRECATED FUNCTION jQuery.browser()
          * 
          * #5  This disabled fade-out for Internet Explorer other than FadeIE.
          */
@@ -489,20 +495,21 @@
             /**
              * REPLACE DEPRECATED FUNCTION jQuery.isFunction()
              *
-             * Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report
-             * @edit 2.5.4
-             * @datestamp 2021-01-27T1911+0100
-			 * @accountable @pewgeuges
+             * - Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report
+			 * 
+             * @since 2.5.4
+             * @datetime 2021-01-27T1911+0100
+             * @accountable @pewgeuges
              *
              * @reporter @a223123131
-             * @bugreport https://wordpress.org/support/topic/deprecated-jquery-code-9/
+             * @link https://wordpress.org/support/topic/deprecated-jquery-code-9/
              *
              * The official fix is to replace it with the typeof operator.
              * @link https://api.jquery.com/jquery.isfunction/
              * 
              * That requires to double-check the absence of problem with
              * the use of typeof.
-             * @see Douglas Crockford, JavaScript: The Good Parts
+             * @bib Douglas Crockford, JavaScript: The Good Parts
              */
 
             typeof (e[c]) === "function" && a(f).on(c, e[c]), f[c] = function (b) {
@@ -569,7 +576,7 @@
     var b = a.tools.tooltip;
 
     /**
-     * REDACT DEPRECATED jQuery.browser()
+     * REDACT (COMMENT OUT) DEPRECATED FUNCTION jQuery.browser()
      * 
      * #6  This disabled slide-fade for Internet Explorer.
      *     Browsers not supporting an effect simply don’t execute it, they won’t throw an error.

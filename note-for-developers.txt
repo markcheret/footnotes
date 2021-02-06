@@ -1,0 +1,268 @@
+note-for-developers.txt
+2020-12-19T0609+0100
+Last modified:  2021-02-04T0544+0100
+
+
+Footnotes plugin for WordPress, v2.5.3 and later
+
+
+A.  Support for custom templates
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+Since v2.2.6, Footnotes supports custom templates.
+
+Custom templates may be loaded from a sibling folder 'footnotes-custom'
+or since v2.4.0 from a folder 'templates/footnotes/' in the active theme.
+
+Priority order:
+    1. active theme
+    2. sibling folder
+    3. internal
+
+See footnotes/class/template.php:67..116
+
+
+1. Active theme
+   ‾‾‾‾‾‾‾‾‾‾‾‾
+Please create a folder 'templates/footnotes/' in your child theme and
+store all your public custom templates for Footnotes directly therein.
+
+Existing homonymous templates are loaded instead of their counterparts in
+wp-content/plugins/footnotes/templates/public/.
+
+
+2. Sibling folder
+   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Please make a sibling of the "footnotes" folder called 'footnotes-custom' and
+the same internal structure and file names as 'footnotes/templates/public/'.
+
+Example for custom tooltips:
+
+footnotes-custom
+└── templates
+    └── public
+        ├── footnote.html
+        └── tooltip.html
+
+Note: The timing parameters in the inline jQuery script 'tooltip.html' are already
+configurable in the dashboard > Referrers and tooltips > Tooltip timing.
+
+
+B.  PHPDOC custom tags
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+PHPDOC tags
+2021-01-24T2310+0100
+2021-02-04T0831+0100
+
+▲ Source for standard tags:
+https://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_tags.pkg.html
+
+@access
+@author
+@copyright
+@deprecated
+@example
+@ignore
+@internal
+@link
+@see
+@since
+@tutorial
+@version
+inline {@internal}}
+inline {@inheritdoc}
+inline {@link}
+
+Sidepane:
+
+phpDocumentor tags
+    @abstract 
+    @access 
+    @author 
+    @category 
+    @copyright 
+    @deprecated 
+    @example 
+    @final 
+    @filesource 
+    @global 
+    @ignore 
+    @internal 
+    @license 
+    @link 
+    @method 
+    @name 
+    @package 
+    @param 
+    @property 
+    @return 
+    @see 
+    @since 
+    @static 
+    @staticvar 
+    @subpackage 
+    @todo 
+    @tutorial 
+    @uses 
+    @var 
+    @version 
+
+phpDocumentor Inline tags
+    inline {@example} 
+    inline {@id} 
+    inline {@internal}} 
+    inline {@inheritdoc} 
+    inline {@link} 
+    inline {@source} 
+    inline {@toc} 
+    inline {@tutorial} 
+
+
+▲ Tags required/recommended by WordPress coding standard:
+https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/
+(the only tag added from draft PSR-5 recommendations is @type)
+
+@access
+@author [DO NOT USE]
+@copyright
+@deprecated
+@global
+@ignore
+@internal
+@license
+@link
+@method
+@package
+@param
+@return
+@see
+@since
+@static
+@staticvar
+@subpackage
+@todo
+@type
+@uses
+@var
+
+
+▲ Tags supported in Atom TextMate found in VSCode 1.47.3:
+/usr/share/code/resources/app/extensions/php/syntaxes/php.tmLanguage.json
+(Note the 4 tags appended to the list, hence initially missing)
+
+@api
+@abstract
+@author
+@category
+@copyright
+@example
+@global
+@inherit[Dd]oc
+@internal
+@license
+@link
+@method
+@property(-(read|write))?
+@package
+@param
+@return
+@see
+@since
+@source
+@static
+@subpackage
+@throws
+@todo
+@var
+@version
+@uses
+@deprecated
+@final
+@ignore
+
+MISSING TAGS:
+
+- wrt phpDocumentor:
+@access
+@filesource
+@id
+@name
+@staticvar
+@toc
+@tutorial
+@usedby
+
+- wrt WordPress:
+@type
+
+
+▲ up-to-date list (standard/WP, custom) as per 2021-02-04T0522+0100:
+
+@api
+@abstract
+@access
+@author
+@category
+@copyright
+@deprecated
+@example
+@filesource
+@final
+@global
+@id
+@ignore
+@inherit[Dd]oc
+@internal
+@license
+@link
+@method
+@name
+@package
+@param
+@property(-(read|write))?
+@return
+@see
+@since
+@source
+@static
+@staticvar
+@subpackage
+@throws
+@toc
+@todo
+@tutorial
+@type
+@usedby
+@uses
+@var
+@version
+
+@accountable
+@bib
+@biblio
+@bibliography
+@bugfix
+@callback
+@commit
+@committed
+@committer
+@contributed
+@contribution
+@contributor
+@courtesy
+@date
+@datetime
+@feature
+@featurerequest
+@lastmodified
+@modified
+@publisher
+@reporter
+@time
+
+
+▲ Complements for update (missing and added tags):
+/usr/share/code/resources/app/extensions/php/syntaxes/php.tmLanguage.json
+
+|access|filesource|id|name|staticvar|toc|tutorial|type|usedby
+|accountable|bib|biblio|bugfix|callback|commit|committed|committer|contributed|contribution|contributor|courtesy|date|datetime|feature|featurerequest|lastmodified|modified|publisher|reporter

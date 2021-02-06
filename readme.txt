@@ -79,266 +79,267 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.4d1 =
-- Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report
-- Bugfix: Tooltips: fix display in Popup Maker popups
-- Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign
-- Bugfix: Editor button: Text editor button: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report
+= 2.5.4d2 =
+- Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report.
+- Bugfix: Tooltips: fix display in Popup Maker popups.
+- Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign.
+- Bugfix: Editor button: Text editor button: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
+- Bugfix: Editor button: Classic Editor text mode: correct label to singular.
 
 = 2.5.3 =
-- Bugfix: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report
+- Bugfix: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
 
 = 2.5.2 =
-- Bugfix: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 bug report
-- Bugfix: Localization: plugin language file name changes effective in version control system
+- Bugfix: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 bug report.
+- Bugfix: Localization: plugin language file name changes effective in version control system.
 
 = 2.5.1 =
-- Bugfix: Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report
-- Bugfix: Reference container: click on label expands but also collapses, thanks to @ahmadword bug report
-- Bugfix: Reference container: Label: cursor takes pointer shape, thanks to @ahmadword bug report
-- Bugfix: Dashboard: Custom CSS: mention validity of legacy while visible, thanks to @rkupadhya bug report
-- Bugfix: Dashboard: Custom CSS: make class list column formatting effective again
-- Update: Readme/documentation: add new contributors in the file header’s Contributors field
-- Update: Readme/documentation: update or fix URLs in Download, Support and Development sections
+- Bugfix: Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report.
+- Bugfix: Reference container: click on label expands but also collapses, thanks to @ahmadword bug report.
+- Bugfix: Reference container: Label: cursor takes pointer shape, thanks to @ahmadword bug report.
+- Bugfix: Dashboard: Custom CSS: mention validity of legacy while visible, thanks to @rkupadhya bug report.
+- Bugfix: Dashboard: Custom CSS: make class list column formatting effective again.
+- Update: Readme/documentation: add new contributors in the file header’s Contributors field.
+- Update: Readme/documentation: update or fix URLs in Download, Support and Development sections.
 
 = 2.5.0 =
-- Add: Customization: Enable template location stack, thanks to @misfist source file contribution
-- Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution
-- Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report
-- Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra bug report
-- Bugfix: Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report
-- Update: Shortcode syntax validation: add more information around the setting
-- Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor
+- Add: Customization: Enable template location stack, thanks to @misfist source file contribution.
+- Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
+- Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
+- Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
+- Bugfix: Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
+- Update: Shortcode syntax validation: add more information around the setting.
+- Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor.
 
 = 2.4.0 =
-- Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes
-- Bugfix: Performance: optimize template load and process according to settings, thanks to @misfist code contribution
-- Bugfix: Process: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report
-- Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg bug report
-- Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report
-- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode
-- Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border
-- Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'
+- Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes.
+- Bugfix: Performance: optimize template load and process according to settings, thanks to @misfist code contribution.
+- Bugfix: Process: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report.
+- Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg bug report.
+- Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report.
+- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode.
+- Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border.
+- Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'.
 
 = 2.3.0 =
-- Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution
-- Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report
-- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik bug report
-- Bugfix: Dashboard: swap Custom CSS migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints
-- Update: Dashboard: rename 'Priority level' tab as 'Scope and priority', to account for the new alternative depending on widget_text hook activation
-- Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers
-- Bugfix: Referrers: extend clickable area to the full line height in sync with current pointer shape
-- Bugfix: Referrers: extend scope of the underline inhibition to be more comprehensive and consistent
-- Bugfix: Reference container: edits to optional basic responsive page layout style sheet
+- Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+- Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
+- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik bug report.
+- Bugfix: Dashboard: swap Custom CSS migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
+- Update: Dashboard: rename 'Priority level' tab as 'Scope and priority', to account for the new alternative depending on widget_text hook activation.
+- Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers.
+- Bugfix: Referrers: extend clickable area to the full line height in sync with current pointer shape.
+- Bugfix: Referrers: extend scope of the underline inhibition to be more comprehensive and consistent.
+- Bugfix: Reference container: edits to optional basic responsive page layout style sheet.
 
 = 2.2.10 =
-- Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change, thanks to @noobishh bug report
-- Bugfix: Reference container: add missing container ID in function name in one of the four table row templates
-- Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs
+- Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change, thanks to @noobishh bug report.
+- Bugfix: Reference container: add missing container ID in function name in one of the four table row templates.
+- Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs.
 
 = 2.2.9 =
-- Bugfix: Reference container, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz bug report
-- Update: Priority levels: set widget_text default to 98 and update its description in the dashboard Priority level tab
-- Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names
-- Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference
+- Bugfix: Reference container, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz bug report.
+- Update: Priority levels: set widget_text default to 98 and update its description in the dashboard Priority level tab.
+- Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names.
+- Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference.
 
 = 2.2.8 =
-- Bugfix: Reference container, tooltips: URL wrap: correct lookbehind by duplicating it with and without quotation mark class
+- Bugfix: Reference container, tooltips: URL wrap: correct lookbehind by duplicating it with and without quotation mark class.
 
 = 2.2.7 =
-- Bugfix: Reference container, tooltips: URL wrap: revert the change in the regex, thanks to @rjl20 @spaceling @friedrichnorth @bernardzit @lukashuggenberg bug reports
+- Bugfix: Reference container, tooltips: URL wrap: revert the change in the regex, thanks to @rjl20 @spaceling @friedrichnorth @bernardzit @lukashuggenberg bug reports.
 
 = 2.2.6 =
-- Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report
-- Add: Customization: support for custom templates in sibling folder, thanks to @misfist filter request
+- Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
+- Add: Customization: support for custom templates in sibling folder, thanks to @misfist filter request.
 
 = 2.2.5 =
-- Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio code contribution
-- Bugfix: Reference container: Label: not enforce bottom border but make it an option, thanks to @markhillyer bug report
-- Bugfix: Reference container: Label: allow to switch from paragraph element to heading, thanks to @markhillyer code contribution
-- Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report
-- Bugfix: Dashboard: Tooltip position/timing settings: include alternative tooltips (for themes not supporting jQuery tooltips)
-- Bugfix: Dashboard: Tooltip position/timing settings: raise above tooltip truncation settings for better consistency
+- Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio code contribution.
+- Bugfix: Reference container: Label: not enforce bottom border but make it an option, thanks to @markhillyer bug report.
+- Bugfix: Reference container: Label: allow to switch from paragraph element to heading, thanks to @markhillyer code contribution.
+- Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report.
+- Bugfix: Dashboard: Tooltip position/timing settings: include alternative tooltips (for themes not supporting jQuery tooltips).
+- Bugfix: Dashboard: Tooltip position/timing settings: raise above tooltip truncation settings for better consistency.
 
 = 2.2.4 =
-- Bugfix: Reference container: Backlink symbol selection: move back to previous tab “Referrers and tooltips”
-- Bugfix: Custom CSS: make inserting existing in header depend on migration complete checkbox status
+- Bugfix: Reference container: Backlink symbol selection: move back to previous tab “Referrers and tooltips”.
+- Bugfix: Custom CSS: make inserting existing in header depend on migration complete checkbox status.
 
 = 2.2.3 =
-- Bugfix: Custom CSS: insert new CSS in the public page header element after existing CSS
+- Bugfix: Custom CSS: insert new CSS in the public page header element after existing CSS.
 
 = 2.2.2 =
-- Bugfix: Dashboard: Link element setting only under General settings > Reference container
-- Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed
-- Bugfix: Reference container: edits to optional basic responsive page layout style sheets
+- Bugfix: Dashboard: Link element setting only under General settings > Reference container.
+- Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
+- Bugfix: Reference container: edits to optional basic responsive page layout style sheets.
 
 = 2.2.1 =
-- Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure
+- Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure.
 
 = 2.2.0 =
-- Add: Reference container: support for custom position shortcode, thanks to @hamshe feature request
-- Add: Start/end short codes: more predefined options
-- Add: Numbering styles: lowercase Roman numerals support
-- Update: Priority levels: update the notice in the dashboard Priority tab
-- Update: Dashboard: Tooltip settings: group into 3 thematic containers
-- Update: Dashboard: Main settings: group into 3 specific containers
-- Update: Dashboard: move link element option to the Referrers options
-- Update: Dashboard: move URL wrap option to the Reference container options
-- Update: Dashboard: group both Custom CSS and priority level settings under the same tab
-- Update: Dashboard: rename tab labels 'Referrers and tooltips', 'Priority and CSS'
-- Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue
-- Bugfix: Localization: correct arguments for plugin textdomain load function
-- Bugfix: Reference container, tooltips: URL wrap: specifically catch the quotation mark
-- Add: Footnotes mention in the footer: more options
+- Add: Reference container: support for custom position shortcode, thanks to @hamshe feature request.
+- Add: Start/end short codes: more predefined options.
+- Add: Numbering styles: lowercase Roman numerals support.
+- Update: Priority levels: update the notice in the dashboard Priority tab.
+- Update: Dashboard: Tooltip settings: group into 3 thematic containers.
+- Update: Dashboard: Main settings: group into 3 specific containers.
+- Update: Dashboard: move link element option to the Referrers options.
+- Update: Dashboard: move URL wrap option to the Reference container options.
+- Update: Dashboard: group both Custom CSS and priority level settings under the same tab.
+- Update: Dashboard: rename tab labels 'Referrers and tooltips', 'Priority and CSS'.
+- Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue.
+- Bugfix: Localization: correct arguments for plugin textdomain load function.
+- Bugfix: Reference container, tooltips: URL wrap: specifically catch the quotation mark.
+- Add: Footnotes mention in the footer: more options.
 
 = 2.1.6 =
-- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman bug report
-- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report
-- Bugfix: Reference container, tooltips: URL wrap: fix regex, thanks to @a223123131 bug report
-- Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap
-- Update: Dashboard: reorder tabs and update tab labels
-- Bugfix: Dashboard: remove Expert mode enable setting since permanently enabled as 'Priority'
-- Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels
-- Bugfix: Localization: conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report
+- Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman bug report.
+- Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report.
+- Bugfix: Reference container, tooltips: URL wrap: fix regex, thanks to @a223123131 bug report.
+- Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap.
+- Update: Dashboard: reorder tabs and update tab labels.
+- Bugfix: Dashboard: remove Expert mode enable setting since permanently enabled as 'Priority'.
+- Bugfix: Dashboard: fix punctuation-related localization issue by including colon in labels.
+- Bugfix: Localization: conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report.
 
 = 2.1.5 =
-- Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21 bug report
+- Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21 bug report.
 
 = 2.1.4 =
-- Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers
-- Bugfix: Scroll duration: make configurable to conform to website content and style requirements
-- Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style
-- Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default
-- Bugfix: Reference container: fix layout by optionally enqueuing additional style sheet (depends on theme)
-- Bugfix: Reference container: fix layout issues by moving backlink column width to settings
-- Bugfix: Reference container: make separating and terminating punctuation optional and configurable
-- Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks
-- Bugfix: Layout: Tooltips: prevent line break in Read-on link label
-- Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues
-- Bugfix: Styling: Referrers: disable hover underline
-- Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element
-- Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on
-- Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization
-- Bugfix: Reference container: Backlinks: fix line breaking with respect to separators and terminators
-- Bugfix: Reference container: Label: delete overflow hidden rule
-- Bugfix: Reference container: Expand/collapse button: same padding to the right for right-to-left
-- Bugfix: Reference container: Styles: re-add the class dedicated to combined footnotes indices
-- Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording
-- Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top
-- Bugfix: Dashboard: Tooltip settings: Truncation length: change input box type from text to numeric
-- Update: Dashboard: Notices: use explicit italic style
-- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box, thanks to @nikelaos bug report
-- Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard
-- Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels
+- Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
+- Bugfix: Scroll duration: make configurable to conform to website content and style requirements.
+- Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style.
+- Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default.
+- Bugfix: Reference container: fix layout by optionally enqueuing additional style sheet (depends on theme).
+- Bugfix: Reference container: fix layout issues by moving backlink column width to settings.
+- Bugfix: Reference container: make separating and terminating punctuation optional and configurable.
+- Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks.
+- Bugfix: Layout: Tooltips: prevent line break in Read-on link label.
+- Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues.
+- Bugfix: Styling: Referrers: disable hover underline.
+- Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element.
+- Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on.
+- Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization.
+- Bugfix: Reference container: Backlinks: fix line breaking with respect to separators and terminators.
+- Bugfix: Reference container: Label: delete overflow hidden rule.
+- Bugfix: Reference container: Expand/collapse button: same padding to the right for right-to-left.
+- Bugfix: Reference container: Styles: re-add the class dedicated to combined footnotes indices.
+- Bugfix: Dashboard: move arrow settings from Customize to Settings > Reference container to reunite and fix issue with new heading wording.
+- Bugfix: Dashboard: Main settings: fix layout, raise shortcodes to top.
+- Bugfix: Dashboard: Tooltip settings: Truncation length: change input box type from text to numeric.
+- Update: Dashboard: Notices: use explicit italic style.
+- Bugfix: Dashboard: Other settings: Excerpt: display guidance next to select box, thanks to @nikelaos bug report.
+- Bugfix: WordPress hooks: the_content: set priority to 1000 as a safeguard.
+- Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels.
 
 = 2.1.3 =
-- Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets
-- Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report
-- Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy
-- Bugfix: Reference container: fix width in mobile view by URL wrapping wrt Unicode-non-conformant browsers
-- Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on
-- Bugfix: Styling: raise Custom CSS priority to override settings
-- Bugfix: Styling: Tooltips: raise settings priority to override theme style sheets
+- Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets.
+- Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+- Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy.
+- Bugfix: Reference container: fix width in mobile view by URL wrapping wrt Unicode-non-conformant browsers.
+- Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on.
+- Bugfix: Styling: raise Custom CSS priority to override settings.
+- Bugfix: Styling: Tooltips: raise settings priority to override theme style sheets.
 
 = 2.1.2 =
-- Bugfix: Reference container: Backlinks: no underline on hover cell when combining identicals is on
-- Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos bug report
-- Update: Dashboard: WordPress documentation URLs of the hooks
-- Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos bug report
+- Bugfix: Reference container: Backlinks: no underline on hover cell when combining identicals is on.
+- Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos bug report.
+- Update: Dashboard: WordPress documentation URLs of the hooks.
+- Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos bug report.
 
 = 2.1.1 =
-- Bugfix: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report
-- Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report
-- Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports
-- Bugfix: Libraries: jQuery Tools: complete minification
-- Bugfix: Libraries: make script loads depend on tooltip implementation option
-- Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips
-- Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report
-- Bugfix: Reference container: Backlink symbol: select box to disable instead of space character
-- Bugfix: Reference container: Footnote number links: disable bottom border for theme compatibility
-- Bugfix: Reference container: option to restore 3-column layout (combining identicals turned off)
-- Bugfix: Reference container: option to append symbol (prepended by default) (combining identicals turned off)
-- Bugfix: Reference container: Table rows: fix top and bottom padding
-- Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report
-- Bugfix: Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
-- Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage
-- Bugfix: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button
-- Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents
-- Bugfix: Formatting: disable overline showing in some themes on hovered backlinks
+- Bugfix: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
+- Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report.
+- Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports.
+- Bugfix: Libraries: jQuery Tools: complete minification.
+- Bugfix: Libraries: make script loads depend on tooltip implementation option.
+- Bugfix: Libraries: jQuery UI: properly pick the libraries registered by WordPress needed for tooltips.
+- Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
+- Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
+- Bugfix: Reference container: Footnote number links: disable bottom border for theme compatibility.
+- Bugfix: Reference container: option to restore 3-column layout (combining identicals turned off).
+- Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
+- Bugfix: Reference container: Table rows: fix top and bottom padding.
+- Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report.
+- Bugfix: Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report.
+- Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
+- Bugfix: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button.
+- Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents.
+- Bugfix: Formatting: disable overline showing in some themes on hovered backlinks.
 
 = 2.1.0 =
-- Add: Tooltips: Read-on button: Label: configurable instead of localizable
-- Bugfix: Referrers: disable bottom border for theme compatibility
-- Update: Accessibility: add 'speaker-mute' class to reference container
-- Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles
-- UPDATE: REMOVED the_post hook, the plugin stopped supporting this hook
+- Add: Tooltips: Read-on button: Label: configurable instead of localizable.
+- Bugfix: Referrers: disable bottom border for theme compatibility.
+- Update: Accessibility: add 'speaker-mute' class to reference container.
+- Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles.
+- UPDATE: Hooks: remove 'the_post', the plugin stops supporting this hook.
 
 = 2.0.8 =
-- BUGFIX: Priority level back to PHP_INT_MAX (need to get in touch with other plugins)
+- BUGFIX: Priority level back to PHP_INT_MAX (need to get in touch with other plugins).
 
 = 2.0.7 =
-- BUGFIX: Disabled hook "the_post" **Any related code in the plugin shall disappear**
-- Update: Set priority level back to 10 assuming it is unproblematic
-- Update: Added backwards compatible support for legacy arrow and index placeholders in template
-- Update: Settings defaults adjusted for better and more up-to-date tooltip layout
+- BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @@markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
+- Update: Set priority level back to 10 assuming it is unproblematic.
+- Update: Added backwards compatible support for legacy arrow and index placeholders in template.
+- Update: Settings defaults adjusted for better and more up-to-date tooltip layout.
 
 = 2.0.6 =
-- Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution
-- Bugfix: Referrers: delete vertical align tweaks, for cross-theme and user agent compatibility
-- Bugfix: Reference container: fix line breaking behavior in footnote # clusters
-- Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts
-- Bugfix: Reference container: IDs: slightly increased left padding
-- Bugfix: Translations: fix spelling error and erroneously changed word in en_GB and en_US
-- Bugfix: Typesetting: discard the dot after footnote numbers as not localizable (should be optional)
-- Bugfix: Reference container: Collapse button fully clickable, not sign only
-- Bugfix: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus
-- Update: Tooltips: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before)
-- Update: Tooltips: set fade duration to 200ms both ways (was 200 in and 2000 out since 2.0.0, 0 in and 100 out before)
-- BUGFIX: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility)
-- Update: Scroll offset: raise percentage from 12% to a safer 20% inner window height, by lack of configurability
+- Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution.
+- Bugfix: Referrers: delete vertical align tweaks, for cross-theme and user agent compatibility.
+- Bugfix: Reference container: fix line breaking behavior in footnote # clusters.
+- Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts.
+- Bugfix: Reference container: IDs: slightly increased left padding.
+- Bugfix: Translations: fix spelling error and erroneously changed word in en_GB and en_US.
+- Bugfix: Typesetting: discard the dot after footnote numbers as not localizable (should be optional).
+- Bugfix: Reference container: Collapse button fully clickable, not sign only.
+- Bugfix: Reference container: Collapse button 'collapse' with minus sign not hyphen-minus.
+- Update: Tooltips: set display predelay to 0 for responsiveness (was 800 since 2.0.0, 400 before).
+- Update: Tooltips: set fade duration to 200ms both ways (was 200 in and 2000 out since 2.0.0, 0 in and 100 out before).
+- BUGFIX: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility).
+- Update: Scroll offset: raise percentage from 12% to a safer 20% inner window height, by lack of configurability.
 
 = 2.0.5 =
-- Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson bug reports, thanks to @spaceling code contribution
-- Bugfix: Reference container: unset width of text column to fix site issues
-- Update: Enable all hooks by default to prevent footnotes from seeming broken in post titles
-- Bugfix: Restore cursor shape pointer over 'Continue reading' button after hyperlink removal
-- Bugfix: Settings style sheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4)
+- Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.
+- Bugfix: Reference container: unset width of text column to fix site issues.
+- Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
+- Bugfix: Tooltips: Restore cursor shape 'pointer' over Read-on button after hard link removal.
+- Bugfix: Settings style sheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4).
 
 = 2.0.4 =
-- Update: Restore arrow settings to customize or disable the now prepended arrow symbol
-- Update: GDPR: Add jQuery UI from WordPress instead of third party
-- Bugfix: UX: Remove hyperlink addresses from referrers and backlinks wrt browsing history
-- Bugfix: Reference container: remove inconvenient left/right cellpadding
-- Bugfix: Tooltips: improve layout with inherited font size by lower line height
-- Bugfix: Tooltips: 'Continue reading' button: disable default underline
-- Bugfix: Translations: review all locales (en, de, es, fr), synced ref line # with edited code
-- Bugfix: Dashboard: fix display of two headings containing the logo
+- Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
+- Update: GDPR: Add jQuery UI from WordPress instead of third party.
+- Bugfix: UX: Remove hyperlink addresses from referrers and backlinks wrt browsing history.
+- Bugfix: Reference container: remove inconvenient left/right cellpadding.
+- Bugfix: Tooltips: improve layout with inherited font size by lower line height.
+- Bugfix: Tooltips: 'Continue reading' button: disable default underline.
+- Bugfix: Translations: review all locales (en, de, es, fr), synced ref line # with edited code.
+- Bugfix: Dashboard: fix display of two headings containing the logo.
 
 = 2.0.3 =
-- Bugfix: Reference container: Self-adjusting width of ID column but hidden overflow
-- Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to  bug report
-- Bugfix: Fragment IDs: Prepended post ID to footnote number
-- Bugfix: Feed plugin version in style sheet query string for cache busting
-- Bugfix: Print style: prevent a page break just after the reference container label
-- Bugfix: Print style: Hide reference collapse button
-- Update: Reference container: Headline: remove padding before reference container label
-- Update: Scroll offset: raise percentage from 5% to a safer 12% inner window height, by lack of setting
+- Bugfix: Reference container: Self-adjusting width of ID column but hidden overflow.
+- Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to  bug report.
+- Bugfix: Fragment IDs: Prepended post ID to footnote number.
+- Bugfix: Feed plugin version in style sheet query string for cache busting.
+- Bugfix: Print style: prevent a page break just after the reference container label.
+- Bugfix: Print style: Hide reference collapse button.
+- Update: Reference container: Headline: remove padding before reference container label.
+- Update: Scroll offset: raise percentage from 5% to a safer 12% inner window height, by lack of setting.
 
 = 2.0.2 =
-- Bugfix: Restored expand/collapse button of reference container
-- Bugfix: Dashboard: Available CSS selectors, last item display
-- Bugfix: Footnote anchor and ID color to default on screen, to inherit in print
-- Bugfix: Disabled underline in footnote anchors, underline only on hover
+- Bugfix: Restored expand/collapse button of reference container.
+- Bugfix: Dashboard: Available CSS selectors, last item display.
+- Bugfix: Footnote anchor and ID color to default on screen, to inherit in print.
+- Bugfix: Disabled underline in footnote anchors, underline only on hover.
 
 = 2.0.1 =
-- Bugfix: enforce borderless table cells through !important property, thanks to @ragonesi bug report
-- Update: Translations: revised fr_FR
+- Bugfix: enforce borderless table cells through !important property, thanks to @ragonesi bug report.
+- Update: Translations: revised fr_FR.
 
 = 2.0.0 =
 - Major contributions taken from WordPress user pewgeuges, all details here https://github.com/media-competence-institute/footnotes/blob/master/README.md:
 - Update: **symbol for backlinks** removed
 - Update: hyperlink moved to the reference number
-- Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
+- Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett @twellve_million bug reports, thanks to @vonpiernik code contribution
 - Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
 - Update: Account for disruptive PHP change
 - Bugfix: footnote links script independent

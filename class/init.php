@@ -7,13 +7,13 @@
  * @since 1.5.0 12.09.14 10:56
  * 
  *
- * @edit 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution
- * @edit 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution
- * @edit 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
- * @edit 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
- * @edit 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
- * @edit 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
- * @edit 2.1.4  optionally enqueue an extra style sheet  2020-12-04T2231+0100
+ * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution
+ * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution
+ * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
+ * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
+ * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
+ * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
+ * @since 2.1.4  optionally enqueue an extra style sheet  2020-12-04T2231+0100
  *
  * Last modified:  2021-01-31T0755+0100
  */
@@ -47,7 +47,7 @@ class MCI_Footnotes {
 	 * @since 1.6.5  
 	 * 
 	 * @contributor @felipelavinz
-	 * @source https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
+	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
      */
     public function run() {
         // register language
@@ -81,14 +81,14 @@ class MCI_Footnotes {
 	 * @since 1.6.5  
 	 * 
 	 * @contributor @felipelavinz
-	 * @source https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
+	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
 	 * 
 	 * @reporter @psykonevro
-	 * @bugreport https://wordpress.org/support/topic/bug-function-create_function-is-deprecated/
-	 * @bugreport https://wordpress.org/support/topic/deprecated-function-create_function-14/
+	 * @link https://wordpress.org/support/topic/bug-function-create_function-is-deprecated/
+	 * @link https://wordpress.org/support/topic/deprecated-function-create_function-14/
 	 * 
 	 * @reporter @daliasued
-	 * @bugreport https://wordpress.org/support/topic/deprecated-function-create_function-14/#post-13312853
+	 * @link https://wordpress.org/support/topic/deprecated-function-create_function-14/#post-13312853
      *
      * create_function() was deprecated in PHP 7.2.0 and removed in PHP 8.0.0.
 	 * @link https://www.php.net/manual/en/function.create-function.php
@@ -128,7 +128,7 @@ class MCI_Footnotes {
      * @author Stefan Herndler
      * @since 1.5.0
      *
- * @edit 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
+ * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution
      * Updated for v2.0.0 adding jQuery UI
      * Updated for v2.0.4 by adding jQuery UI from WordPress following @check2020de:
      * <https://wordpress.org/support/topic/gdpr-issue-with-jquery/>
@@ -143,12 +143,11 @@ class MCI_Footnotes {
         // These are only enqueued if the jQuery tooltips are enabled.
         // If alternative tooltips are enabled, these libraries are not needed.
         // Scroll animation doesn’t seem to need even jQuery Core or it gets it from elsewhere.
-		//* @edit 2.0.0  add jQueryUI from Cloudflare   2020-10-26T1907+0100
-		//* @edit 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
-		//* @edit 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
-		//* @edit 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
-		//* @edit 2.1.4  optionally enqueue an extra style sheet  2020-12-04T2231+0100
-		//*/
+		// @since 2.0.0  add jQueryUI from Cloudflare   2020-10-26T1907+0100
+		// @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
+		// @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
+		// @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
+		// @since 2.1.4  optionally enqueue an extra style sheet  2020-12-04T2231+0100
 	   
         if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE))) {
 

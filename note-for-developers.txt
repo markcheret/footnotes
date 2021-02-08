@@ -1,13 +1,13 @@
 note-for-developers.txt
-2020-12-19T0609+0100
-Last modified:  2021-02-04T0544+0100
+@datetime 2020-12-19T0609+0100
+@lastmodified 2021-02-08T0843+0100
 
 
 Footnotes plugin for WordPress, v2.5.3 and later
 
 
-A.  Support for custom templates
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+A.  Customized template parts
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 Since v2.2.6, Footnotes supports custom templates.
 
@@ -48,11 +48,37 @@ Note: The timing parameters in the inline jQuery script 'tooltip.html' are alrea
 configurable in the dashboard > Referrers and tooltips > Tooltip timing.
 
 
-B.  PHPDOC custom tags
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-PHPDOC tags
+
+
+B.  Customized documentation schema
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+In community-based, open source projects, it is important to comprehensively 
+recognize, acknowledge and document how developers, testers and users helped
+build the product.
+
+Note: Per the WordPress Coding Standards, the '@author' tag must not be used.
+https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/
+
+PHPDOC tag:      Role:                 In the changelog:
+
+@contributor     Provided code.        “thanks to @USERNAME code contribution.”
+
+@reporter        Reported a bug.       “thanks to @USERNAME bug report.”
+@reporter        Reported an issue.    “thanks to @USERNAME issue report.”
+@reporter        Requested a feature.  “thanks to @USERNAME issue report.” (!)
+
+@user            Provided feedback.    “thanks to @USERNAME feedback.”
+@user            Allowed insight.      “thanks to @USERNAME usage.”
+
+@accountable     Edited the codebase.   -
+
+@committer       Uploaded a version.    -
+
+
+PHPDOC tags & custom tags
 2021-01-24T2310+0100
-2021-02-04T0831+0100
+2021-02-08T0415+0100
 
 ▲ Source for standard tags:
 https://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_tags.pkg.html
@@ -120,7 +146,9 @@ phpDocumentor Inline tags
 
 ▲ Tags required/recommended by WordPress coding standard:
 https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/
-(the only tag added from draft PSR-5 recommendations is @type)
+
+Note: The only tag added from draft PSR-5 recommendations is @type.
+https://stackoverflow.com/questions/48202550/source-of-type-tag-in-docblock
 
 @access
 @author [DO NOT USE]
@@ -146,9 +174,17 @@ https://developer.wordpress.org/coding-standards/inline-documentation-standards/
 @var
 
 
+▲ Tags added by PHPStan:
+https://phpstan.org/blog/generics-in-php-using-phpdocs
+
+@extends
+@implements
+@template
+
+
 ▲ Tags supported in Atom TextMate found in VSCode 1.47.3:
 /usr/share/code/resources/app/extensions/php/syntaxes/php.tmLanguage.json
-(Note the 4 tags appended to the list, hence initially missing)
+Note the 4 tags appended to the list, hence initially missing.
 
 @api
 @abstract
@@ -195,8 +231,13 @@ MISSING TAGS:
 - wrt WordPress:
 @type
 
+- wrt PHPStan:
+@extends
+@implements
+@template
 
-▲ up-to-date list (standard/WP, custom) as per 2021-02-04T0522+0100:
+
+▲ up-to-date list (standard/WP/PHPStan, custom) as per 2021-02-08T0335+0100:
 
 @api
 @abstract
@@ -206,11 +247,13 @@ MISSING TAGS:
 @copyright
 @deprecated
 @example
+@extends
 @filesource
 @final
 @global
 @id
 @ignore
+@implements
 @inherit[Dd]oc
 @internal
 @license
@@ -227,6 +270,7 @@ MISSING TAGS:
 @static
 @staticvar
 @subpackage
+@template
 @throws
 @toc
 @todo
@@ -240,29 +284,34 @@ MISSING TAGS:
 @accountable
 @bib
 @biblio
-@bibliography
-@bugfix
 @callback
 @commit
-@committed
 @committer
-@contributed
-@contribution
 @contributor
 @courtesy
 @date
 @datetime
-@feature
-@featurerequest
 @lastmodified
 @modified
 @publisher
 @reporter
-@time
+@user
 
 
-▲ Complements for update (missing and added tags):
+▲ Config (original, missing and added tags):
 /usr/share/code/resources/app/extensions/php/syntaxes/php.tmLanguage.json
 
-|access|filesource|id|name|staticvar|toc|tutorial|type|usedby
-|accountable|bib|biblio|bugfix|callback|commit|committed|committer|contributed|contribution|contributor|courtesy|date|datetime|feature|featurerequest|lastmodified|modified|publisher|reporter
+original:
+abstract|api|author|category|copyright|deprecated|example|final|global|ignore|inherit[Dd]oc|internal|license|link|method|package|param|property(-(read|write))?|return|see|since|source|static|subpackage|throws|todo|uses|var|version
+
+missing:
+|access|filesource|id|name|staticvar|toc|tutorial|usedby
+
+WordPress:
+|type
+
+PHPStan:
+|extends|implements|template
+
+custom:
+|accountable|bib|biblio|callback|commit|committer|contributor|courtesy|date|datetime|lastmodified|modified|publisher|reporter|user

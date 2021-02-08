@@ -15,16 +15,16 @@
         textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
     }
     /**
-     * adds a button to the Classic Editor text mode
+     * Adds a button to the Classic Editor text mode.
      *
      *
-     * @since 2.5.4d1  try to fix uncaught reference error of “QTags is not defined”
+     * @since 2.5.4  Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
      *
      * @reporter @dpartridge
      * @link https://wordpress.org/support/topic/qtags-addbutton/
      * 
      * 
-     * @link 2.5.4  correct label to singular
+     * @since 2.5.4  Bugfix: Editor button: Classic Editor text mode: correct label to singular.
      */
     if ( QTags ) {
         QTags.addButton( 'MCI_Footnotes_QuickTag_button', 'footnote', MCI_Footnotes_text_editor_callback );

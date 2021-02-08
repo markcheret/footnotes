@@ -1,8 +1,8 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, dartiss, docteurfitness, felipelavinz, martinneumannat, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
+Contributors: mark.cheret, lolzim, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.6
+Tested up to: 5.6.1
 Requires PHP: 5.6
 Stable Tag: 2.5.3
 License: GPLv3 or later
@@ -79,11 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.4d2 =
+= 2.5.4d3 =
 - Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report.
 - Bugfix: Tooltips: fix display in Popup Maker popups.
 - Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign.
-- Bugfix: Editor button: Text editor button: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
+- Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
 - Bugfix: Editor button: Classic Editor text mode: correct label to singular.
 
 = 2.5.3 =
@@ -103,7 +103,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Readme/documentation: update or fix URLs in Download, Support and Development sections.
 
 = 2.5.0 =
-- Add: Customization: Enable template location stack, thanks to @misfist source file contribution.
+- Adding: Customization: Enable template location stack, thanks to @misfist source file contribution.
 - Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
 - Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
 - Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
@@ -112,7 +112,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor.
 
 = 2.4.0 =
-- Add: Shortcodes: syntax validation for balanced footnote start and end tag short codes.
+- Adding: Shortcodes: syntax validation for balanced footnote start and end tag short codes.
 - Bugfix: Performance: optimize template load and process according to settings, thanks to @misfist code contribution.
 - Bugfix: Process: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report.
 - Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg bug report.
@@ -122,15 +122,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'.
 
 = 2.3.0 =
-- Add: optional hard links in referrers and backlinks for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+- Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
 - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
-- Bugfix: Referrers and tooltips: disable box shadow to more effectively remove unwanted underline as bottom border, thanks to @klusik bug report.
-- Bugfix: Dashboard: swap Custom CSS migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
-- Update: Dashboard: rename 'Priority level' tab as 'Scope and priority', to account for the new alternative depending on widget_text hook activation.
-- Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers.
+- Bugfix: Referrers and backlinks: more effectively remove unwanted underline by disabling box shadow used instead of bottom border, thanks to @klusik feedback.
+- Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
+- Update: Dashboard: Priority level: rename tab as 'Scope and priority', to account for the new alternative depending on widget_text hook activation.
+- Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers, not the tooltip content.
 - Bugfix: Referrers: extend clickable area to the full line height in sync with current pointer shape.
 - Bugfix: Referrers: extend scope of the underline inhibition to be more comprehensive and consistent.
-- Bugfix: Reference container: edits to optional basic responsive page layout style sheet.
+- Bugfix: Reference container: Basic responsive page layout: edits to one of the optional style sheets.
 
 = 2.2.10 =
 - Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change, thanks to @noobishh bug report.
@@ -151,7 +151,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.2.6 =
 - Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
-- Add: Customization: support for custom templates in sibling folder, thanks to @misfist filter request.
+- Adding: Customization: support for custom templates in sibling folder, thanks to @misfist filter request.
 
 = 2.2.5 =
 - Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio code contribution.
@@ -177,9 +177,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure.
 
 = 2.2.0 =
-- Add: Reference container: support for custom position shortcode, thanks to @hamshe feature request.
-- Add: Start/end short codes: more predefined options.
-- Add: Numbering styles: lowercase Roman numerals support.
+- Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
+- Adding: Start/end short codes: more predefined options.
+- Adding: Numbering styles: lowercase Roman numerals support.
 - Update: Priority levels: update the notice in the dashboard Priority tab.
 - Update: Dashboard: Tooltip settings: group into 3 thematic containers.
 - Update: Dashboard: Main settings: group into 3 specific containers.
@@ -190,7 +190,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Tooltips: add 'important' property to z-index to fix display overlay issue.
 - Bugfix: Localization: correct arguments for plugin textdomain load function.
 - Bugfix: Reference container, tooltips: URL wrap: specifically catch the quotation mark.
-- Add: Footnotes mention in the footer: more options.
+- Adding: Footnotes mention in the footer: more options.
 
 = 2.1.6 =
 - Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman bug report.
@@ -268,7 +268,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Formatting: disable overline showing in some themes on hovered backlinks.
 
 = 2.1.0 =
-- Add: Tooltips: Read-on button: Label: configurable instead of localizable.
+- Adding: Tooltips: Read-on button: Label: configurable instead of localizable.
 - Bugfix: Referrers: disable bottom border for theme compatibility.
 - Update: Accessibility: add 'speaker-mute' class to reference container.
 - Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles.
@@ -319,29 +319,29 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: Self-adjusting width of ID column but hidden overflow.
 - Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to  bug report.
 - Bugfix: Fragment IDs: Prepended post ID to footnote number.
-- Bugfix: Feed plugin version in style sheet query string for cache busting.
+- Bugfix: External style sheets cache busting: add plugin version number argument in enqueuing function call.
 - Bugfix: Print style: prevent a page break just after the reference container label.
 - Bugfix: Print style: Hide reference collapse button.
 - Update: Reference container: Headline: remove padding before reference container label.
 - Update: Scroll offset: raise percentage from 5% to a safer 12% inner window height, by lack of setting.
 
 = 2.0.2 =
-- Bugfix: Restored expand/collapse button of reference container.
-- Bugfix: Dashboard: Available CSS selectors, last item display.
-- Bugfix: Footnote anchor and ID color to default on screen, to inherit in print.
-- Bugfix: Disabled underline in footnote anchors, underline only on hover.
+- Bugfix: Reference container: restore expand/collapse button in the template, thanks to @ragonesi bug report.
+- Bugfix: Dashboard: Custom CSS: Available selectors: fix display of the last item.
+- Bugfix: Referrers and backlinks: restore default link color on screen, set color to inherit in print.
+- Bugfix: Referrers: disable text decoration underline by default, enable underline on hover.
 
 = 2.0.1 =
-- Bugfix: enforce borderless table cells through !important property, thanks to @ragonesi bug report.
+- Bugfix: Reference container: enforce borderless table cells, thanks to @ragonesi bug report.
 - Update: Translations: revised fr_FR.
 
 = 2.0.0 =
 - Major contributions taken from WordPress user pewgeuges, all details here https://github.com/media-competence-institute/footnotes/blob/master/README.md:
 - Update: **symbol for backlinks** removed
 - Update: hyperlink moved to the reference number
-- Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett @twellve_million bug reports, thanks to @vonpiernik code contribution
-- Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
-- Update: Account for disruptive PHP change
+- Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett @twellve_million bug reports, thanks to @vonpiernik code contribution.
+- Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution.
+- Bugfix: Localization: correct function call apply_filters() with all required arguments after PHP 7.1 promoted warning to error, thanks to @matkus2 bug report and code contribution.
 - Bugfix: footnote links script independent
 - Bugfix: Get the “Continue reading” link to work in the mouse-over box
 - Bugfix: Debug printed posts and pages
@@ -355,8 +355,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Beginning of translation to French
 
 = 1.6.5 =
-- Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution
-- Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution
+- Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
+- Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
 - Update: The CSS had been modified in order to show the tooltip numbers a little less higher than text
 - Bugfix: Fixed error on demo in backend
 
@@ -377,10 +377,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 1.6.0 =
 - **IMPORTANT**: Improved performance. You need to Activate the Plugin again. (Settings won't change!)
-- Add: Setting to customize the mouse-over box shadow
-- Add: Translation: United States
-- Add: Translation: Austria
-- Add: Translation: Spanish (many thanks to Pablo L.)
+- Adding: Setting to customize the mouse-over box shadow
+- Adding: Translation: United States
+- Adding: Translation: Austria
+- Adding: Translation: Spanish (many thanks to Pablo L.)
 - Update: Translations (de_DE and en_GB)
 - Update: Changed Plugins init file name to improve performance (Re-activation of the Plugin is required)
 - Update: ManFisher note styling
@@ -388,15 +388,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Avoid multiple IDs for footnotes when multiple reference containers are displayed
 
 = 1.5.7 =
-- Add: Setting to define the positioning of the mouse-over box
-- Add: Setting to define an offset for the mouse-over box (precise positioning)
+- Adding: Setting to define the positioning of the mouse-over box
+- Adding: Setting to define an offset for the mouse-over box (precise positioning)
 - Bugfix: Target element to move down to the reference container is the footnote index instead of the arrow (possibility to hide the arrow)
 - Bugfix: Rating calculation for the 'other plugins' list
 
 = 1.5.6 =
 - **IMPORTANT**: We have changed the html tag for the superscript. Please check and update your custom CSS.
-- Add: .pot file to enable Translations for everybody
-- Add: Settings to customize the mouse-over box (color, background color, border, max. width)
+- Adding: .pot file to enable Translations for everybody
+- Adding: Settings to customize the mouse-over box (color, background color, border, max. width)
 - Update: Translation file names
 - Update: Translation EN and DE
 - Update: Styling of the superscript (need to check custom CSS code for the superscript)
@@ -406,17 +406,17 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Enable multiple WP_Post objects for the_post hook
 
 = 1.5.5 =
-- Add: Expert mode setting
-- Add: Activation and Deactivation of WordPress hooks to look for Footnotes (expert mode)
-- Add: WordPress hooks: 'the_title' and 'widget_title' (default: disabled) to search for Footnote short codes
+- Adding: Expert mode setting
+- Adding: Activation and Deactivation of WordPress hooks to look for Footnotes (expert mode)
+- Adding: WordPress hooks: 'the_title' and 'widget_title' (default: disabled) to search for Footnote short codes
 - Bugfix: Default value for the WordPress hook the_post to be disabled (adds Footnotes twice to the Reference container)
 - Bugfix: Activation, Deactivation and Uninstall hook class name
 - Bugfix: Add submenu pages only once for each ManFisher WordPress Plugin
 - Bugfix: Display the Reference container in the Footer correctly
 
 = 1.5.4 =
-- Add: Setting to enable an excerpt of the Footnotes mouse-over box text (default: disabled)
-- Add: Setting to define the maximum length of the excerpt displayed in the mouse-over box (default: 150 characters)
+- Adding: Setting to enable an excerpt of the Footnotes mouse-over box text (default: disabled)
+- Adding: Setting to define the maximum length of the excerpt displayed in the mouse-over box (default: 150 characters)
 - Update: Detail information about other Plugins from ManFisher (rating, downloads, last updated, Author name/url)
 - Update: Receiving list of other Plugins from the Developer Team from an external server
 - Update: Translations (EN and DE)
@@ -425,14 +425,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Try to replace each appearance of Footnotes in the current Post object loaded from the WordPress database
 
 = 1.5.3 =
-- Add: Developer's homepage to the 'other Plugins' list
+- Adding: Developer's homepage to the 'other Plugins' list
 - Update: Smoothy scroll to an anchor using Javascript
 - Bugfix: Set the vertical align for each cell in the Reference container to TOP
 
 = 1.5.2 =
-- Add: Setting to enable/disable the mouse-over box
-- Add: Current WordPress Theme to the Diagnostics sub page
-- Add: ManFisher note in the "other Plugins" sub page
+- Adding: Setting to enable/disable the mouse-over box
+- Adding: Current WordPress Theme to the Diagnostics sub page
+- Adding: ManFisher note in the "other Plugins" sub page
 - Update: Removed unnecessary hidden inputs from the Settings page
 - Update: Merged public CSS files to reduce the output and improve the performance
 - Update: Translations (EN and DE)
@@ -445,9 +445,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Translation overhaul for German
 
 = 1.5.0 =
-- Add: Grouped the Plugin Settings into a new Menu Page called "ManFisher Plugins"
-- Add: Sub Page to list all other Plugins of the Contributors
-- Add: Hyperlink to manfisher.eu in the "other plugins" page
+- Adding: Grouped the Plugin Settings into a new Menu Page called "ManFisher Plugins"
+- Adding: Sub Page to list all other Plugins of the Contributors
+- Adding: Hyperlink to manfisher.eu in the "other plugins" page
 - Update: Refactored the whole source code
 - Update: Moved the Diagnostics Sections to into a new Sub Page called "Diagnostics"
 - Bugfix: Line up Footnotes with multiple lines in the Reference container
@@ -458,9 +458,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Feature: WPML Config XML file for easy multi language string translation (WPML String Translation Support File)
 - Update: Changed e-Mail support address to the WordPress support forum
 - Update: Language EN and DE
-- Add: Tab for Plugin Diagnostics
-- Add: Donate link to the installed Plugin overview page
-- Add: Donate button to the "HowTo" tab
+- Adding: Tab for Plugin Diagnostics
+- Adding: Donate link to the installed Plugin overview page
+- Adding: Donate button to the "HowTo" tab
 
 = 1.3.4 =
 - Bugfix: Settings access permission vor sub-sites
@@ -474,21 +474,21 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: More security recognizing Footnotes on public pages (e.g. ignoring empty Footnote short codes)
 - Bugfix: Clear old Footnotes before lookup new public page (only if no reference container displayed before)
 - Update: language EN and DE
-- Add: Setting to customize the hyperlink symbol in der reference container for each footnote reference
-- Add: Setting to enter a user defined hyperlink symbol
+- Adding: Setting to customize the hyperlink symbol in der reference container for each footnote reference
+- Adding: Setting to enter a user defined hyperlink symbol
 - 
 
 = 1.3.1 =
 - Bugfix: Allow settings to be empty
 - Bugfix: Removed space between the hyperlink and superscript in the footnotes index
-- Add: Setting to customize the text before and after the footnotes index in superscript
+- Adding: Setting to customize the text before and after the footnotes index in superscript
 
 = 1.3.0 =
 - Bugfix: Changed tooltip class to be unique
 - Bugfix: Changed superscript styling to not manipulate the line height
 - Bugfix: Changed styling of the footnotes text in the reference container to avoid line breaks
 - Update: Reformatted code
-- Add: new settings tab for custom CSS settings
+- Adding: new settings tab for custom CSS settings
 
 = 1.2.5 =
 - Bugfix: New styling of the mouse-over box to stay in screen (thanks to Jori, France and Manuel345, undisclosed location)
@@ -509,7 +509,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 1.2.2 =
 - Bugfix: WYSIWYG editor and plain text editor buttons insert footnote short code correctly (also if defined like html tag)
 - Update: The admin can decide which "I love footnotes" text (or not text) will be displayed in the footer
-- Add: Buttons next to the reference label to expand/collapse the reference container if set to "collapse by default"
+- Adding: Buttons next to the reference label to expand/collapse the reference container if set to "collapse by default"
 - Bugfix: Replace footnote short code
 - Update: Combined buttons for the "collapse/expand" reference container
 
@@ -529,19 +529,19 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 1.1.1 =
 - Feature: Short code to not display the 'love me' slug on specific pages ( short code = [[no footnotes: love]] )
 - Update: Setting where the reference container appears on public pages can also be set to the widget area
-- Add: Link to the wordpress.org support page in the plugin main page
+- Adding: Link to the wordpress.org support page in the plugin main page
 - Update: Changed plugin URL from GitHub to WordPress
 - Bugfix: Uninstall function to really remove all settings done in the settings page
 - Bugfix: Load default settings after plugin is installed
 - Update: Translation for support link and new setting option
-- Add: Label to display the user the short code to not display the 'love me' slug
+- Adding: Label to display the user the short code to not display the 'love me' slug
 
 = 1.1.0 =
 - Update: Global styling for the public plugin name
 - Update: Easier usage of the public plugin name in translations
 - Update: New Layout for the settings page to group similar settings to get a better overview
 - Update: Display settings submit button only if there is at least 1 editable setting in the current tab
-- Add: Setting where the reference container appears on public pages (needs some corrections!)
+- Adding: Setting where the reference container appears on public pages (needs some corrections!)
 - Bugfix: Displays only one reference container in front of the footer on category pages
 
 = 1.0.6 =
@@ -556,41 +556,41 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Feature: the footnotes WordPress Plugin now has its very own CI
   - Update: Styling
   - Update: Settings to support the styling
-- Add: Inspirational Screenshots for further development
-- Add: Settings screenshot
+- Adding: Inspirational Screenshots for further development
+- Adding: Settings screenshot
 - Update: i18n fine-tuning
 
 = 1.0.4 =
 - Update: replacing function when footnote is a link (bugfix)
 - Footnote hover box remains until cursor leaves footnote or hover box
 - Links in the footnote hover box are click able
-- Add: setting to allow footnotes on Summarized Posts
-- Add: setting to tell the world you're using footnotes plugin
-- Add: setting for the counter style of the footnote index
+- Adding: setting to allow footnotes on Summarized Posts
+- Adding: setting to tell the world you're using footnotes plugin
+- Adding: setting for the counter style of the footnote index
   - Arabic Numbers (1, 2, 3, 4, 5, ...)
   - Arabic Numbers leading 0 (01, 02, 03, 04, 05, ...)
   - Latin Characters lower-case (a, b, c, d, e, ...)
   - Latin Characters upper-case (A, B, C, D, E, ...)
   - Roman Numerals (I, II, III, IV, V, ...)
-- Add: a link to the WordPress plugin in the footer if the WP-admin accepts it
+- Adding: a link to the WordPress plugin in the footer if the WP-admin accepts it
 - Update: translations for the new settings
 - Switch back the version numbering scheme to have 3 digits
 
 = 1.0.3 =
-- Add: setting to use personal starting and ending tag for the footnotes
+- Adding: setting to use personal starting and ending tag for the footnotes
 - Update: translations for the new setting
 - Update: reading settings and fallback to default values (bugfix)
 
 = 1.0.2 =
-- Add: setting to collapse the reference container by default
-- Add: link behind the footnotes to automatically jump to the reference container
-- Add: function to easy output input fields for the settings page
+- Adding: setting to collapse the reference container by default
+- Adding: link behind the footnotes to automatically jump to the reference container
+- Adding: function to easy output input fields for the settings page
 - Update: translation for the new setting
 
 = 1.0.1 =
 - Separated functions in different files for a better overview
-- Add: a version control to each file / class / function / variable
-- Add: layout for the settings menu, settings split in tabs and not a list-view
+- Adding: a version control to each file / class / function / variable
+- Adding: layout for the settings menu, settings split in tabs and not a list-view
 - Update: Replacing footnotes in widget texts will show the reference container at the end of the page (bugfix)
 - Update: translations for EN and DE
 - Changed version number from 3 digits to 2 digits

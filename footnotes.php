@@ -4,14 +4,27 @@
     Plugin URI: https://wordpress.org/plugins/footnotes/
     Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
     Author: Mark Cheret
-    Version: 2.5.4d2
+    Version: 2.5.4d3
     Author URI: http://cheret.de/plugins/footnotes-2/
     Text Domain: footnotes
     Domain Path: /languages
 */
-define( 'C_STR_FOOTNOTES_VERSION', '2.5.4d2' );
 /*
-    Copyright 2020 Mark Cheret (email: mark@cheret.de)
+ *  Copyright 2021 Mark Cheret (email: mark@cheret.de)
+ */
+/**
+ * Version number for style sheet cache busting.
+ *
+ * @since 2.1.4
+ * @since 2.5.3 (Hungarian)
+ * @var str
+ * @lastmodified 2021-02-08T1900+0100
+ * @committer @pewgeuges
+ */
+define( 'C_STR_FOOTNOTES_VERSION', '2.5.4d3' );
+
+/*
+    LICENSE NOTICE
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 3, as
@@ -28,6 +41,8 @@ define( 'C_STR_FOOTNOTES_VERSION', '2.5.4d2' );
 */
 
 /**
+ * Plugin’s main PHP file.
+ * 
  * @filesource
  * @author Stefan Herndler
  * @since 0.0.1

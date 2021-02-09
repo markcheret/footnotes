@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
+Contributors: mark.cheret, lolzim, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6.1
@@ -79,18 +79,18 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.4d3 =
+= 2.5.4d4 =
 - Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report.
-- Bugfix: Tooltips: fix display in Popup Maker popups.
+- Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
 - Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign.
 - Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
 - Bugfix: Editor button: Classic Editor text mode: correct label to singular.
 
 = 2.5.3 =
-- Bugfix: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
+- Bugfix: Reference container, tooltips: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
 
 = 2.5.2 =
-- Bugfix: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 bug report.
+- Update: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
 - Bugfix: Localization: plugin language file name changes effective in version control system.
 
 = 2.5.1 =
@@ -103,21 +103,21 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Readme/documentation: update or fix URLs in Download, Support and Development sections.
 
 = 2.5.0 =
-- Adding: Customization: Enable template location stack, thanks to @misfist source file contribution.
+- Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
 - Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
-- Bugfix: Shortcode syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
-- Bugfix: Shortcode syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
-- Bugfix: Shortcode syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
-- Update: Shortcode syntax validation: add more information around the setting.
-- Bugfix: Shortcodes: Dashboard: warning about '&gt;' escapement disruption in WordPress Block Editor.
+- Bugfix: Footnote delimiter syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
+- Bugfix: Footnote delimiter syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
+- Bugfix: Footnote delimiter syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
+- Update: Dashboard: Footnote delimiter syntax validation: add more information around the setting.
+- Bugfix: Dashboard: Footnote delimiters: warning about '&gt;' escapement disruption in WordPress Block Editor.
 
 = 2.4.0 =
-- Adding: Shortcodes: syntax validation for balanced footnote start and end tag short codes.
-- Bugfix: Performance: optimize template load and process according to settings, thanks to @misfist code contribution.
-- Bugfix: Process: initialize hard link address variable to empty to fix 'undefined variable' bug, thanks to @a223123131 bug report.
-- Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg bug report.
+- Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
+- Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
+- Bugfix: Process: initialize hard link address variables to empty string to fix 'undefined variable' bug, thanks to @a223123131 bug report.
+- Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg feedback.
 - Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report.
-- Bugfix: Shortcodes: Dashboard: remove new option involving HTML comment tags only usable in source mode.
+- Bugfix: Footnote delimiters: Dashboard: remove new option involving HTML comment tags only usable in source mode.
 - Bugfix: Reference container: Row borders: adapt left padding to the presence of an optional left border.
 - Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'.
 
@@ -133,32 +133,33 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: Basic responsive page layout: edits to one of the optional style sheets.
 
 = 2.2.10 =
-- Bugfix: Reference container: add option for table borders to revert 2.0.0/2.0.1 change, thanks to @noobishh bug report.
-- Bugfix: Reference container: add missing container ID in function name in one of the four table row templates.
+- Bugfix: Reference container: add option for table borders to restore pre-2.0.0 design, thanks to @noobishh issue report.
+- Bugfix: Reference container: add missing container ID in function name in default table row template for uncombined footnotes.
 - Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs.
 
 = 2.2.9 =
-- Bugfix: Reference container, widget_text hook: support for multiple reference containers in a page, thanks to @justbecuz bug report.
+- Bugfix: Reference container, widget_text hook: support for multiple containers in a page, thanks to @justbecuz bug report.
 - Update: Priority levels: set widget_text default to 98 and update its description in the dashboard Priority level tab.
 - Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names.
 - Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference.
 
 = 2.2.8 =
-- Bugfix: Reference container, tooltips: URL wrap: correct lookbehind by duplicating it with and without quotation mark class.
+- Bugfix: Reference container, tooltips: URL wrap: correctly make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
 
 = 2.2.7 =
-- Bugfix: Reference container, tooltips: URL wrap: revert the change in the regex, thanks to @rjl20 @spaceling @friedrichnorth @bernardzit @lukashuggenberg bug reports.
+- Bugfix: Reference container, tooltips: URL wrap: remove a bug introduced in the regex, thanks to @rjl20 @spaceling @lukashuggenberg @klusik @friedrichnorth @bernardzit bug reports.
 
 = 2.2.6 =
 - Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
-- Adding: Customization: support for custom templates in sibling folder, thanks to @misfist filter request.
+- Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
 
 = 2.2.5 =
 - Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio code contribution.
-- Bugfix: Reference container: Label: not enforce bottom border but make it an option, thanks to @markhillyer bug report.
-- Bugfix: Reference container: Label: allow to switch from paragraph element to heading, thanks to @markhillyer code contribution.
+- Bugfix: Reference container: Label: make bottom border an option, thanks to @markhillyer issue report.
+- Bugfix: Reference container: Label: option to select paragraph or heading element, thanks to @markhillyer issue report.
 - Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report.
-- Bugfix: Dashboard: Tooltip position/timing settings: include alternative tooltips (for themes not supporting jQuery tooltips).
+- Update: Tooltips: Alternative tooltips: connect to position/timing settings (for themes not supporting jQuery tooltips).
+- Update: Dashboard: Tooltip position/timing settings: include alternative tooltips (for themes not supporting jQuery tooltips).
 - Bugfix: Dashboard: Tooltip position/timing settings: raise above tooltip truncation settings for better consistency.
 
 = 2.2.4 =
@@ -209,15 +210,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
 - Bugfix: Scroll duration: make configurable to conform to website content and style requirements.
 - Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style.
-- Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default.
+- Bugfix: Tooltips: Styling: fix font size issue by adding font size to settings with legacy as default.
 - Bugfix: Reference container: fix layout by optionally enqueuing additional style sheet (depends on theme).
 - Bugfix: Reference container: fix layout issues by moving backlink column width to settings.
 - Bugfix: Reference container: make separating and terminating punctuation optional and configurable.
 - Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks.
 - Bugfix: Layout: Tooltips: prevent line break in Read-on link label.
-- Bugfix: Styling: Referrers and backlinks: make link elements optional to fix issues.
-- Bugfix: Styling: Referrers: disable hover underline.
-- Bugfix: Reference container, tooltips: fix line wrapping of URLs based on pattern, not link element.
+- Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues.
+- Bugfix: Referrers: Styling: disable hover underline.
+- Bugfix: Reference container, tooltips: fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element.
 - Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on.
 - Bugfix: Reference container: Backlinks: deprioritize hover underline to ease customization.
 - Bugfix: Reference container: Backlinks: fix line breaking with respect to separators and terminators.
@@ -248,7 +249,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: feature description for the hooks priority level settings, thanks to @nikelaos bug report.
 
 = 2.1.1 =
-- Bugfix: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
+- Bugfix: Referrers, reference container: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
 - Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report.
 - Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports.
 - Bugfix: Libraries: jQuery Tools: complete minification.

@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 17:47
  *
  *
- * @lastmodified 2021-02-06T1352+0100
+ * @lastmodified 2021-02-08T1914+0100
  *
  * @since 2.0.0  Bugfix: Localization: correct function call apply_filters() with all required arguments after PHP 7.1 promoted warning to error, thanks to @matkus2 bug report and code contribution.
  * @since 2.1.6  Bugfix: Localization: conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report.
@@ -83,17 +83,17 @@ class MCI_Footnotes_Language {
      * @param string $p_str_LanguageCode Language Code to load a specific text domain.
      * @return bool
      *
-	 * 
+     *
      * - Bugfix: Localization: conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report.
-	 * 
-	 * @since 2.1.6
-	 * @datetime 2020-12-08T1931+0100
-	 * 
-	 * @reporter @nikelaos
+     *
+     * @since 2.1.6
+     * @datetime 2020-12-08T1931+0100
+     *
+     * @reporter @nikelaos
      * @link https://wordpress.org/support/topic/more-feature-ideas/
-	 * 
+     *
      * That is done by using load_plugin_textdomain():
-	 * “The .mo file should be named based on the text domain with a dash, and then the locale exactly.”
+     * “The .mo file should be named based on the text domain with a dash, and then the locale exactly.”
      * @see wp-includes/l10n.php:857
      */
     private static function load($p_str_LanguageCode) {

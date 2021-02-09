@@ -60,8 +60,9 @@
  * @since 2.3.0  reference container: settings for top (and bottom) margin, thanks to @hamshe
  * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
  *
- * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
- *
+ * @since 2.3.0  Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
+ * @datetime 2020-12-27T1243+0100
+
  * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
  *
  * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100

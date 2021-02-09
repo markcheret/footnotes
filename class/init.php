@@ -7,12 +7,12 @@
  * @since 1.5.0 12.09.14 10:56
  *
  *
- * @lastmodified 2021-02-06T0304+0100
+ * @lastmodified 2021-02-08T1910+0100
  *
  * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
  * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
- * 
+ *
  * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
  * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
  * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
@@ -44,13 +44,13 @@ class MCI_Footnotes {
      *
      *
      * - Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
-	 * 
+     *
      * @since 1.6.5
      *
      * @contributor @felipelavinz
      * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
-	 * 
-	 * @see initializeWidgets()
+     *
+     * @see initializeWidgets()
      */
     public function run() {
         // register language
@@ -81,7 +81,7 @@ class MCI_Footnotes {
      *
      *
      * - Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution
-	 * 
+     *
      * @since 1.6.5
      *
      * @contributor @felipelavinz
@@ -99,8 +99,8 @@ class MCI_Footnotes {
      *
      * The fix is to move add_action() above into run(),
      * and use the bare register_widget() here.
-	 * @see run()
-	 * 
+     * @see run()
+     *
      * Also, the visibility of initializeWidgets() is not private any longer.
      */
     public function initializeWidgets() {
@@ -134,21 +134,21 @@ class MCI_Footnotes {
      * @author Stefan Herndler
      * @since 1.5.0
      *
-	 * 
-	 * - Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
-	 * 
-	 * @since 2.0.0 
+     *
+     * - Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
+     *
+     * @since 2.0.0
      * Updated for v2.0.4 by adding jQuery UI from WordPress following @check2020de:
      * <https://wordpress.org/support/topic/gdpr-issue-with-jquery/>
      * See <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
      *
-	 * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.
-	 * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
-	 * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
-	 * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
-	 * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
-	 * @since 2.1.4  optionally enqueue an extra style sheet  2020-12-04T2231+0100
-	 */
+     * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.
+     * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
+     * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
+     * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
+     * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
+     * @since 2.1.4  optionally enqueue an extra style sheet  2020-12-04T2231+0100
+     */
     public function registerPublic() {
 
         //###  SCRIPTS

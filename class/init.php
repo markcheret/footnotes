@@ -7,7 +7,7 @@
  * @since 1.5.0 12.09.14 10:56
  *
  *
- * @lastmodified 2021-02-08T1910+0100
+ * @lastmodified 2021-02-11T0816+0100
  *
  * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
@@ -50,7 +50,7 @@ class MCI_Footnotes {
      * @contributor @felipelavinz
      * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
      *
-     * @see initializeWidgets()
+     * @see self::initializeWidgets()
      */
     public function run() {
         // register language
@@ -99,7 +99,7 @@ class MCI_Footnotes {
      *
      * The fix is to move add_action() above into run(),
      * and use the bare register_widget() here.
-     * @see run()
+     * @see self::run()
      *
      * Also, the visibility of initializeWidgets() is not private any longer.
      */

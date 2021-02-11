@@ -79,12 +79,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.4d4 =
+= 2.5.4d5 =
 - Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report.
-- Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
-- Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign.
 - Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
+- Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
+- Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
 - Bugfix: Editor button: Classic Editor text mode: correct label to singular.
+- Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign.
 
 = 2.5.3 =
 - Bugfix: Reference container, tooltips: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
@@ -105,10 +106,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.5.0 =
 - Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
 - Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
-- Bugfix: Footnote delimiter syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
-- Bugfix: Footnote delimiter syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
-- Bugfix: Footnote delimiter syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
-- Update: Dashboard: Footnote delimiter syntax validation: add more information around the setting.
+- Bugfix: Footnote delimiters: Syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
+- Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
+- Bugfix: Footnote delimiters: Syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
+- Update: Dashboard: Footnote delimiters: Syntax validation: add more information around the setting.
 - Bugfix: Dashboard: Footnote delimiters: warning about '&gt;' escapement disruption in WordPress Block Editor.
 
 = 2.4.0 =
@@ -213,10 +214,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Tooltips: Styling: fix font size issue by adding font size to settings with legacy as default.
 - Bugfix: Reference container: fix layout by optionally enqueuing additional style sheet (depends on theme).
 - Bugfix: Reference container: fix layout issues by moving backlink column width to settings.
-- Bugfix: Reference container: make separating and terminating punctuation optional and configurable.
+- Bugfix: Reference container: make separating and terminating punctuation optional and configurable, thanks to @docteurfitness issue report and code contribution.
 - Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks.
-- Bugfix: Layout: Tooltips: prevent line break in Read-on link label.
-- Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues.
+- Bugfix: Tooltips: Read-on button: Label: prevent line breaks.
+- Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.
 - Bugfix: Referrers: Styling: disable hover underline.
 - Bugfix: Reference container, tooltips: fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element.
 - Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on.
@@ -237,7 +238,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets.
 - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
 - Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy.
-- Bugfix: Reference container: fix width in mobile view by URL wrapping wrt Unicode-non-conformant browsers.
+- Bugfix: Reference container: fix width in mobile view by URL wrapping for Unicode-non-conformant browsers, thanks to @karolszakiel bug report.
 - Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on.
 - Bugfix: Styling: raise Custom CSS priority to override settings.
 - Bugfix: Styling: Tooltips: raise settings priority to override theme style sheets.
@@ -258,21 +259,21 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
 - Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
 - Bugfix: Reference container: Footnote number links: disable bottom border for theme compatibility.
-- Bugfix: Reference container: option to restore 3-column layout (combining identicals turned off).
+- Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
 - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
 - Bugfix: Reference container: Table rows: fix top and bottom padding.
 - Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report.
 - Bugfix: Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report.
 - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
 - Bugfix: Tooltips: add delay (400ms) before fade-out to fix UX wrt links and Read-on button.
-- Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents.
+- Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents, thanks to @andreasra bug report.
 - Bugfix: Formatting: disable overline showing in some themes on hovered backlinks.
 
 = 2.1.0 =
-- Adding: Tooltips: Read-on button: Label: configurable instead of localizable.
+- Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
 - Bugfix: Referrers: disable bottom border for theme compatibility.
 - Update: Accessibility: add 'speaker-mute' class to reference container.
-- Bugfix: Dashboard: Layout: added named selectors to limit applicability of styles.
+- Bugfix: Dashboard: Layout: add named selectors to limit applicability of styles.
 - UPDATE: Hooks: remove 'the_post', the plugin stops supporting this hook.
 
 = 2.0.8 =
@@ -287,7 +288,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.0.6 =
 - Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution.
 - Bugfix: Referrers: delete vertical align tweaks, for cross-theme and user agent compatibility.
-- Bugfix: Reference container: fix line breaking behavior in footnote # clusters.
+- Bugfix: Reference container: fix line breaking behavior in footnote backlink clusters.
 - Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts.
 - Bugfix: Reference container: IDs: slightly increased left padding.
 - Bugfix: Translations: fix spelling error and erroneously changed word in en_GB and en_US.

@@ -6,42 +6,42 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 14:47
  *
- * Last modified: 2021-01-22T0545+0100
  *
- * Edited:
+ * @lastmodified 2021-02-11T0821+0100
+ *
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
  * @since 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
  * @since 2.1.1  Referrers: superscript becomes optional, thanks to @cwbayer bug report
  * @since 2.1.2  priority level settings for all other hooks, thanks to @nikelaos
- * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705>
+ * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705
  * @since 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
  * @since 2.1.6  slight UI reordering   2020-12-09T1114+0100
  * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1604+0100
  * @since 2.1.6  remove expert mode setting as outdated   2020-12-09T2105+0100
  * @since 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos
- * @see <https://wordpress.org/support/topic/doesnt-work-with-mailpoet/>
+ * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
  * @since 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
  * @since 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
  * @since 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
  * @since 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1244+0100
  * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2021+0100
- * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
+ * @link https://wordpress.org/support/topic/add-support-for-ibid-notation/
  * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
- * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+ * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
  * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
- * @see <https://wordpress.org/support/topic/borders-25/>
+ * @link https://wordpress.org/support/topic/borders-25/
  * @since 2.3.0  Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
- * @see <https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635>
+ * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
  * @since 2.3.0  rename Priority level tab as Scope and priority   2020-12-26T2222+0100
  * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
  * @since 2.3.0  mention op. cit. abbreviation   2020-12-28T2342+0100
  * @since 2.3.0  add settings for hard links, thanks to @psykonevro and @martinneumannat  2020-12-29T1322+0100
- * @see <https://wordpress.org/support/topic/making-it-amp-compatible/>
- * @see <https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/>
+ * @link https://wordpress.org/support/topic/making-it-amp-compatible/
+ * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
  * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
  * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
- * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
+ * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
  */
 
 /**
@@ -94,8 +94,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Edited:
      * @since 2.1.6  tabs reordered and renamed
-     * @see customization vs configuration
-     * <https://www.linkedin.com/pulse/20140610191154-4746170-configuration-vs-customization-when-and-why-would-i-implement-each>
+     * @link https://www.linkedin.com/pulse/20140610191154-4746170-configuration-vs-customization-when-and-why-would-i-implement-each
      *
      * @since 2.1.6  removed if statement around expert tab
      */
@@ -182,7 +181,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      * Completed:
      * @since 2.1.4: layout and typography options   2020-11-30T0548+0100
      * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
-     * @see <https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/>
+     * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
      */
     public function ReferenceContainer() {
 
@@ -345,14 +344,14 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Edited heading  2020-12-12T1412+0100
      * @since 2.2.0  start/end short codes: more predefined options  2020-12-12T1412+0100
-     * @see <https://wordpress.org/support/topic/doesnt-work-with-mailpoet/>
+     * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
      * @since 2.2.0  3 boxes for clarity  2020-12-12T1422+0100
      * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2019+0100
-     * @see <https://wordpress.org/support/topic/add-support-for-ibid-notation/>
+     * @link https://wordpress.org/support/topic/add-support-for-ibid-notation/
      * @since 2.4.0  added warning about Block Editor escapement disruption  2021-01-02T2324+0100
      * @since 2.4.0  removed the HTML comment tag option  2021-01-02T2325+0100
      * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
-     * @see <https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/>
+     * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
      */
     public function StartEnd() {
         // footnotes start tag short code options:
@@ -564,8 +563,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
      *
      * Edited heading   2020-12-12T1453+0100
      * @since 2.1.1   more settings and notices, thanks to @nikelaos
-     * @see <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>
-     * @see <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>
+     * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
+     * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879
      * @since 2.2.0   dedicated to the excerpt setting and its notices   2020-12-12T1454+0100
      */
     public function Excerpts() {

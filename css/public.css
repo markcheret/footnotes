@@ -24,6 +24,7 @@ Edited:
 @since 2.0.0  Reference container: Collapse button: fix text decoration
 @since 2.0.1  enforce borderless table cells through !important property, thanks to @ragonesi bug report
 @since 2.1.1  Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
+@since 2.1.1  Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents, thanks to @andreasra bug report.
 @since 2.1.6  set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report
 @since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
 @since 2.4.0  validation error warning box

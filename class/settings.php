@@ -6,27 +6,17 @@
  * @author Stefan Herndler
  * @since 1.5.0 14.09.14 10:43
  *
- * Last modified: 2021-01-12T2217+0100
  *
- * Edited:
+ * @lastmodified 2021-02-11T1130+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
- *
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
- *
  * @since 2.1.0  add read-on button label customization  2020-11-08T2149+0100
- *
  * @since 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
- *
  * @since 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
- *
  * @since 2.1.1  fix superscript by making it optional
- *
  * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
- * @link https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/
- *
  * @since 2.1.1  fix ref container by option restoring 3-column layout
- *
  * @since 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
  *
  * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
@@ -68,28 +58,20 @@
  * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
  */
 
-
 /**
- * The class loads all Settings from each WordPress Settings container.
- * It a Setting is not defined yet, the default value will be used.
- * Each Setting will be validated and sanitized when loaded from the container.
+ * Loads the settings values, sets to default values if undefined.
  *
  * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Settings {
 
-
-    /**
-     *       SETTINGS CONTAINER KEY DEFINITIONS
-     */
-
     /**
      * Settings Container Key for the label of the reference container.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_REFERENCE_CONTAINER_NAME = "footnote_inputfield_references_label";
 
@@ -98,21 +80,28 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var bool
+     * @var str
+     * The string is converted to Boolean false if 'no', true if 'yes'.
+     * @see MCI_Footnotes_Convert::toBool()
+     * The type in the variable name is useful to hint the intended use
+     * and IMO should therefore not be changed to _STR_
+     * Else:
+     * @todo Change misleading variable names C_BOOL_… to C_STR_… (that’s how Hungarian screws things up).
+     * @todo Do not convert strings to Booleans: toBool() fixes empty, or empty() must be used everywhere.
      */
     const C_BOOL_REFERENCE_CONTAINER_COLLAPSE = "footnote_inputfield_collapse_references";
 
     /**
-     * Settings Container Key for the positioning of the reference container.
+     * Settings Container Key for the position of the reference container.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_REFERENCE_CONTAINER_POSITION = "footnote_inputfield_reference_container_place";
 
     /**
-     * Settings Container Key to combine identical footnotes.
+     * Settings Container Key for combining identical footnotes.
      *
      * @author Stefan Herndler
      * @since 1.5.0
@@ -121,38 +110,38 @@ class MCI_Footnotes_Settings {
     const C_BOOL_COMBINE_IDENTICAL_FOOTNOTES = "footnote_inputfield_combine_identical";
 
     /**
-     * Settings Container Key for the start of the footnotes short code.
+     * Settings Container Key for the short code of the footnote’s start.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_SHORT_CODE_START = "footnote_inputfield_placeholder_start";
 
     /**
-     * Settings Container Key for the end of the footnotes short code.
+     * Settings Container Key for the short code of the footnote’s end.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_SHORT_CODE_END = "footnote_inputfield_placeholder_end";
 
     /**
-     * Settings Container Key for the user defined start of the footnotes short code.
+     * Settings Container Key for the user-defined short code of the footnotes start.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED = "footnote_inputfield_placeholder_start_user_defined";
 
     /**
-     * Settings Container Key for the user defined end of the footnotes short code.
+     * Settings Container Key for the user-defined short code of the footnotes end.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED = "footnote_inputfield_placeholder_end_user_defined";
 
@@ -161,7 +150,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_COUNTER_STYLE = "footnote_inputfield_counter_style";
 
@@ -170,7 +159,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_LOVE = "footnote_inputfield_love";
 
@@ -179,7 +168,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_BOOL_FOOTNOTES_IN_EXCERPT = "footnote_inputfield_search_in_excerpt";
 
@@ -188,55 +177,61 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.5
-     * @var string
+     * @var str
      *
-     * @since 2.1.6: this setting removed as irrelevant since priority level setting is permanently visible   2020-12-09T2107+0100
+     * @since 2.1.6  This setting removed as irrelevant since priority level settings need permanent visibility.
+     * @datetime 2020-12-09T2107+0100
      */
     const C_BOOL_FOOTNOTES_EXPERT_MODE = "footnote_inputfield_enable_expert_mode";
 
     /**
-     * Settings Container Key for the styling before the footnotes index.
+     * Settings Container Key for the string before the footnote referrer.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_STYLING_BEFORE = "footnote_inputfield_custom_styling_before";
 
     /**
-     * Settings Container Key for the styling after the footnotes index.
+     * Settings Container Key for the string after the footnote referrer.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_STYLING_AFTER = "footnote_inputfield_custom_styling_after";
 
     /**
-     * Settings Container Key for the mouse-over box to be enabled.
+     * Settings Container Key to enable the mouse-over box.
      *
      * @author Stefan Herndler
      * @since 1.5.2
-     * @var string
+     * @var str
      */
     const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED = "footnote_inputfield_custom_mouse_over_box_enabled";
 
     /**
-     * Settings Container Key for alternative tooltip implementation
+     * Settings Container Key to enable the alternative tooltips.
      *
-     * @since 2.1.4
-     * @var string
+     * - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
      *
-     * 2020-11-11T1817+0100
+     * @since 2.1.1
+     * @datetime 2020-11-11T1817+0100
+     *
+     * @reporter @andreasra
+     * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
+     *
+     * @var str
      */
     const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE = "footnote_inputfield_custom_mouse_over_box_alternative";
 
     /**
-     * Settings Container Key for the mouse-over box to display only an excerpt.
+     * Settings Container Key to enable tooltip truncation.
      *
      * @author Stefan Herndler
      * @since 1.5.4
-     * @var string
+     * @var str
      */
     const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = "footnote_inputfield_custom_mouse_over_box_excerpt_enabled";
 
@@ -245,16 +240,16 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.4
-     * @var string
+     * @var str
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = "footnote_inputfield_custom_mouse_over_box_excerpt_length";
 
     /**
-     * Settings Container Key for the mouse-over box to define the positioning.
+     * Settings Container Key for the mouse-over box to define the position.
      *
      * @author Stefan Herndler
      * @since 1.5.7
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION = "footnote_inputfield_custom_mouse_over_box_position";
 
@@ -263,7 +258,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.7
-     * @var string
+     * @var str
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X = "footnote_inputfield_custom_mouse_over_box_offset_x";
 
@@ -272,7 +267,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.7
-     * @var string
+     * @var str
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y = "footnote_inputfield_custom_mouse_over_box_offset_y";
 
@@ -281,7 +276,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.6
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR = "footnote_inputfield_custom_mouse_over_box_color";
 
@@ -290,7 +285,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.6
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = "footnote_inputfield_custom_mouse_over_box_background";
 
@@ -299,7 +294,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.6
-     * @var string
+     * @var str
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH = "footnote_inputfield_custom_mouse_over_box_border_width";
 
@@ -308,7 +303,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.6
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR = "footnote_inputfield_custom_mouse_over_box_border_color";
 
@@ -317,16 +312,16 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.6
-     * @var string
+     * @var str
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS = "footnote_inputfield_custom_mouse_over_box_border_radius";
 
     /**
-     * Settings Container Key for the mouse-over box to define the max width.
+     * Settings Container Key for the mouse-over box to define the max. width.
      *
      * @author Stefan Herndler
      * @since 1.5.6
-     * @var string
+     * @var str
      */
     const C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = "footnote_inputfield_custom_mouse_over_box_max_width";
 
@@ -335,25 +330,25 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.8
-     * @var string
+     * @var str
      */
     const C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR = "footnote_inputfield_custom_mouse_over_box_shadow_color";
 
     /**
-     * Settings Container Key for the Hyperlink arrow.
+     * Settings Container Key for the backlink symbol selection.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_HYPERLINK_ARROW = "footnote_inputfield_custom_hyperlink_symbol";
 
     /**
-     * Settings Container Key for the user defined Hyperlink arrow.
+     * Settings Container Key for the user-defined backlink symbol.
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      */
     const C_STR_HYPERLINK_ARROW_USER_DEFINED = "footnote_inputfield_custom_hyperlink_symbol_user";
 
@@ -362,108 +357,187 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var string
+     * @var str
      *
-     * Edited heading  2020-12-27T1233+0100
-     * Edited:
-     * @since 2.2.2  migrate Custom CSS to a dedicated tab  2020-12-15T0520+0100
-     * @var string|bool
-     *
-     * @since 2.3.0  swap Boolean from 'migration complete' to 'show legacy'  2020-12-27T1233+0100
-     * The Boolean must be false if its setting is contained in the container to be hidden,
-     * because when saving, all missing constants are zeroed, i.e. this is set to false.
+     * @since 1.3.0  Adding: new settings tab for custom CSS settings.
      */
     const C_STR_CUSTOM_CSS                = "footnote_inputfield_custom_css";
+
+    /**
+     * Settings Container Key for the Custom CSS migrated to a dedicated tab.
+     *
+     * @since 2.2.2  Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
+     * @datetime 2020-12-15T0520+0100
+     * @var str
+     */
     const C_STR_CUSTOM_CSS_NEW            = "footnote_inputfield_custom_css_new";
+
+    /**
+     * Settings Container Key to enable display of legacy Custom CSS metaboxes.
+     *
+     * @since 2.2.2
+     * @datetime 2020-12-15T0520+0100
+     * @var str
+     *
+     * @since 2.3.0  swap Boolean from 'migration complete' to 'show legacy'
+     * @datetime 2020-12-27T1233+0100
+     *
+     * The Boolean must be false if its setting is contained in the container to be hidden,
+     * because when saving, all missing constants are emptied, and toBool() converts empty to false.
+     */
     const C_BOOL_CUSTOM_CSS_LEGACY_ENABLE = "footnote_inputfield_custom_css_legacy_enable";
 
     /**
-     * Settings Container Key the activation of the_title hook.
+     * Settings Container Key to enable the 'the_title' hook.
      *
      * @author Stefan Herndler
      * @since 1.5.5
-     * @var string
+     * @var str
      */
     const C_BOOL_EXPERT_LOOKUP_THE_TITLE = "footnote_inputfield_expert_lookup_the_title";
 
     /**
-     * Settings Container Key the activation of the_content hook.
+     * Settings Container Key to enable the 'the_content' hook.
      *
      * @author Stefan Herndler
      * @since 1.5.5
-     * @var string
+     * @var str
      */
     const C_BOOL_EXPERT_LOOKUP_THE_CONTENT = "footnote_inputfield_expert_lookup_the_content";
 
     /**
-     * Settings Container Key the activation of the_excerpt hook.
+     * Settings Container Key to enable the 'the_excerpt' hook.
      *
      * @author Stefan Herndler
      * @since 1.5.5
-     * @var string
+     * @var str
      */
     const C_BOOL_EXPERT_LOOKUP_THE_EXCERPT = "footnote_inputfield_expert_lookup_the_excerpt";
 
     /**
-     * Settings Container Key the activation of widget_title hook.
+     * Settings Container Key to enable the 'widget_title' hook.
      *
      * @author Stefan Herndler
      * @since 1.5.5
-     * @var string
+     * @var str
      */
     const C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE = "footnote_inputfield_expert_lookup_widget_title";
 
     /**
-     * Settings Container Key the activation of widget_text hook.
+     * Settings Container Key to enable the 'widget_text' hook.
      *
      * @author Stefan Herndler
      * @since 1.5.5
-     * @var string
+     * @var str
      */
     const C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT = "footnote_inputfield_expert_lookup_widget_text";
 
     /**
-     * Settings Container Key for the label of the 'Read on' button in truncated tooltips
+     * Settings Container Key for the label of the Read-on button in truncated tooltips.
+     *
+     * - Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
      *
      * @since 2.1.0
-     * @var string
+     * @datetime 2020-11-08T2106+0100
      *
-     * 2020-11-08T2106+0100
+     * @reporter @rovanov
+     * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
+     *
+     * @var str
      */
     const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = "footnote_inputfield_readon_label";
 
     /**
-     * Settings Container Keys for options fixing default layout
+     * Settings Container Key for the referrer element.
+     *
+     * - Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report.
      *
      * @since 2.1.1
-     * @var string
+     * @datetime 2020-11-16T0859+0100
      *
-     * 2020-11-16T0859+0100
-     *
-     * option to enable/disable the superscript element for referrers, thanks to @cwbayer
+     * @reporter @cwbayer
      * @link https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/
+     *
+     * @var str
      */
     const C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS        = "footnotes_inputfield_referrer_superscript_tags";
+
+    /**
+     * Settings Container Key to enable the display of a backlink symbol.
+     *
+     * - Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
+     *
+     * @since 2.1.1
+     *
+     * @reporter @spaceling
+     * @link https://wordpress.org/support/topic/change-the-position-5/page/2/#post-13671138
+     *
+     * @var str
+     */
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = "footnotes_inputfield_reference_container_backlink_symbol_enable";
+
+    /**
+     * Settings Container Key to not display the reference container on the homepage.
+     *
+     * - Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
+     *
+     * @since 2.1.1
+     *
+     * @reporter @dragon013
+     * @link https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/
+     *
+     * @var str
+     */
     const C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE      = "footnotes_inputfield_reference_container_start_page_enable";
+
+    /**
+     * Settings Container Key to enable the legacy layout of the reference container.
+     *
+     * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
+     *
+     * @since 2.1.1
+     *
+     * @var str
+     */
     const C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  = "footnotes_inputfield_reference_container_3column_layout_enable";
+
+    /**
+     * Settings Container Key to get the backlink symbol switch side.
+     *
+     * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
+     *
+     * @since 2.1.1
+     * @datetime 2020-11-16T2024+0100
+     *
+     * @contributor @spaceling
+     * @link https://wordpress.org/support/topic/change-the-position-5/#post-13615994
+     *
+     * @var str
+     */
     const C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH = "footnotes_inputfield_reference_container_backlink_symbol_switch";
 
     /**
-     * Settings Container Keys for hook priority levels
+     * Settings Container Key for 'the_content' hook priority level.
      *
-     * @since 2.1.1 (the_content)
+     * @since 2.1.1
+     * @datetime 2020-11-16T0859+0100
+     *
+     * @var str
+     */
+    const C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_content_priority_level";
+
+    /**
+     * Settings Container Key for '' hook priority level
+     *
      * @since 2.1.2
-     * @var string
+     * @datetime 2020-11-20T0620+0100
      *
-     * 2020-11-16T0859+0100
-     * 2020-11-20T0620+0100
+     * @var str
      */
     const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    = "footnote_inputfield_expert_lookup_the_title_priority_level";
-    const C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_content_priority_level";
-    const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_excerpt_priority_level";
     const C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL = "footnote_inputfield_expert_lookup_widget_title_priority_level";
     const C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_widget_text_priority_level";
+    const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  = "footnote_inputfield_expert_lookup_the_excerpt_priority_level";
 
     /**
      * Settings Container Keys for the link element option
@@ -474,7 +548,7 @@ class MCI_Footnotes_Settings {
      * Settings Container Keys for tooltip display durations
      *
      * @since 2.1.4
-     * @var string|bool|int|flo
+     * @var str|bool|int|flo
      *
      * 2020-11-26T1002+0100
      * 2020-11-30T0427+0100
@@ -511,6 +585,15 @@ class MCI_Footnotes_Settings {
     // page layout support:
     const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT       = "footnotes_inputfield_page_layout_support";
 
+    /**
+     * Scroll offset and duration
+     *
+     * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
+     * - Bugfix: Scroll duration: make configurable to conform to website content and style requirements.
+     *
+     * @since 2.1.4
+     * @datetime 2020-12-05T0538+0100
+     */
     // scroll offset and duration:
     const C_INT_FOOTNOTES_SCROLL_OFFSET             = "footnotes_inputfield_scroll_offset";
     const C_INT_FOOTNOTES_SCROLL_DURATION           = "footnotes_inputfield_scroll_duration";
@@ -539,7 +622,7 @@ class MCI_Footnotes_Settings {
      * Settings Container Key for reference container position shortcode
      *
      * @since 2.2.0
-     * @var string
+     * @var str
      *
      * 2020-12-13T2056+0100
      */
@@ -707,7 +790,7 @@ class MCI_Footnotes_Settings {
             self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR                 => '50',
             self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT                   => 'px',
 
-            // set backlinks column max width:
+            // set backlinks column max. width:
             self::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED           => 'no',
             self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR             => '140',
             self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT               => 'px',
@@ -910,7 +993,7 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.0
      * @param int $p_int_Index Settings Container Array Key Index.
-     * @return string Settings Container name.
+     * @return str Settings Container name.
      */
     public function getContainer($p_int_Index) {
         return $this->a_arr_Container[$p_int_Index];

@@ -1,51 +1,51 @@
 <!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
     /**
      * Yields the reference container start and end including the scroll script.
-     * 
+     *
      * @since Unknown
      * @type object
-     * 
+     *
      * @lastmodified 2021-02-07T0811+0100
-     * 
-     * 
-     * 
+     *
+     *
+     *
      * - Bugfix: Reference container: restore expand/collapse button in the template, thanks to @ragonesi bug report.
-     * 
+     *
      * @since 2.0.2
-     * 
+     *
      * @reporter @ragonesi
      * @link https://wordpress.org/support/topic/hyperlink-symbol-in-reference-container/#post-13587782
-     * 
-     * The expand/collapse button was lost @since 2.0.0 for an unknown reason. 
+     *
+     * The expand/collapse button was lost @since 2.0.0 for an unknown reason.
      * The fix was about restoring the button code (only, while the script remained complete).
      */?>
 -->
-<div 
+<div
     class="speaker-mute footnotes_reference_container"
     >
-    <div 
+    <div
         class="footnote_container_prepare"
         ><[[element]]
-            ><span 
+            ><span
                 class="footnote_reference_container_label pointer"
                 onclick="footnote_expand_collapse_reference_container_[[post_id]]_[[container_id]]();"
                 >[[name]]</span
-            ><span 
+            ><span
                 class="footnote_reference_container_collapse_button"
                 style="[[button-style]]"
                 onclick="footnote_expand_collapse_reference_container_[[post_id]]_[[container_id]]();"
-            >[<a 
-                id="footnote_reference_container_collapse_button_[[post_id]]_[[container_id]]" 
+            >[<a
+                id="footnote_reference_container_collapse_button_[[post_id]]_[[container_id]]"
             >+</a
             >]</span
             ></[[element]]
         ></div
     >
-    <div 
-        id="footnote_references_container_[[post_id]]_[[container_id]]" 
+    <div
+        id="footnote_references_container_[[post_id]]_[[container_id]]"
         style="[[style]]"
     >
-        <table 
+        <table
             class="footnotes_table footnote-reference-container"
         >
             <tbody>

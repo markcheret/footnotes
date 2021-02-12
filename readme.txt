@@ -79,19 +79,24 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.4d5 =
+= 2.5.4d6 =
+- Bugfix: Referrers: fix vertical alignment, font size and position (static) for cross-theme stability, thanks to @tomturowski bug report.
+- Bugfix: Reference container, tooltips: URL wrap: enable the 'word-wrap: anywhere' rule, thanks to @rebelc0de bug report.
+- Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
+- Bugfix: Dashboard: Tooltip dimensions: move from 'Tooltip position' to a dedicated metabox, thanks to @codldmac issue report.
 - Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report.
 - Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
-- Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
+- Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @@theroninjedi47 bug report.
+- Update: Tooltips: Excerpt delimiter: add configuration settings in the dashboard.
 - Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
 - Bugfix: Editor button: Classic Editor text mode: correct label to singular.
-- Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign.
+- Bugfix: Libraries: jQuery Tools: replace double equals sign discouraged in JavaScript with recommended triple equals sign.
 
 = 2.5.3 =
 - Bugfix: Reference container, tooltips: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
 
 = 2.5.2 =
-- Update: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
+- Update: Tooltips: Excerpt delimiter: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
 - Bugfix: Localization: plugin language file name changes effective in version control system.
 
 = 2.5.1 =
@@ -288,7 +293,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.0.6 =
 - Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution.
 - Bugfix: Referrers: delete vertical align tweaks, for cross-theme and user agent compatibility.
-- Bugfix: Reference container: fix line breaking behavior in footnote backlink clusters.
+- Bugfix: Reference container: fix line breaking behavior in footnote number clusters.
 - Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts.
 - Bugfix: Reference container: IDs: slightly increased left padding.
 - Bugfix: Translations: fix spelling error and erroneously changed word in en_GB and en_US.
@@ -310,7 +315,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.0.4 =
 - Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
 - Update: GDPR: Add jQuery UI from WordPress instead of third party.
-- Bugfix: UX: Remove hyperlink addresses from referrers and backlinks wrt browsing history.
+- Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
 - Bugfix: Reference container: remove inconvenient left/right cellpadding.
 - Bugfix: Tooltips: improve layout with inherited font size by lower line height.
 - Bugfix: Tooltips: 'Continue reading' button: disable default underline.

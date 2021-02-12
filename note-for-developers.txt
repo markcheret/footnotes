@@ -1,9 +1,9 @@
 note-for-developers.txt
 @datetime 2020-12-19T0609+0100
-@lastmodified 2021-02-08T0843+0100
+@lastmodified 2021-02-12T0616+0100
 
 
-Footnotes plugin for WordPress, v2.5.3 and later
+Plugin Footnotes for WordPress, v2.5.3 and later
 
 
 A.  Customized template parts
@@ -53,22 +53,24 @@ configurable in the dashboard > Referrers and tooltips > Tooltip timing.
 B.  Customized documentation schema
     ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-In community-based, open source projects, it is important to comprehensively 
+In community-based, open source projects, it is important to comprehensively
 recognize, acknowledge and document how developers, testers and users helped
 build the product.
+https://wordpress.org/support/topic/great-tool-1549/#post-14039334
 
 Note: Per the WordPress Coding Standards, the '@author' tag must not be used.
 https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/
 
-PHPDOC tag:      Role:                 In the changelog:
-
+PHPDOC tag:      Role:                 Acknowledgment in the changelog:
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 @contributor     Provided code.        “thanks to @USERNAME code contribution.”
 
 @reporter        Reported a bug.       “thanks to @USERNAME bug report.”
 @reporter        Reported an issue.    “thanks to @USERNAME issue report.”
 @reporter        Requested a feature.  “thanks to @USERNAME issue report.” (!)
+@reporter        Provided feedback.    “thanks to @USERNAME feedback.”
+@reporter        Provided an example.  “thanks to @USERNAME example provision.”
 
-@user            Provided feedback.    “thanks to @USERNAME feedback.”
 @user            Allowed insight.      “thanks to @USERNAME usage.”
 
 @accountable     Edited the codebase.   -
@@ -77,6 +79,7 @@ PHPDOC tag:      Role:                 In the changelog:
 
 
 PHPDOC tags & custom tags
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 2021-01-24T2310+0100
 2021-02-08T0415+0100
 
@@ -102,46 +105,46 @@ inline {@link}
 Sidepane:
 
 phpDocumentor tags
-    @abstract 
-    @access 
-    @author 
-    @category 
-    @copyright 
-    @deprecated 
-    @example 
-    @final 
-    @filesource 
-    @global 
-    @ignore 
-    @internal 
-    @license 
-    @link 
-    @method 
-    @name 
-    @package 
-    @param 
-    @property 
-    @return 
-    @see 
-    @since 
-    @static 
-    @staticvar 
-    @subpackage 
-    @todo 
-    @tutorial 
-    @uses 
-    @var 
-    @version 
+    @abstract
+    @access
+    @author
+    @category
+    @copyright
+    @deprecated
+    @example
+    @final
+    @filesource
+    @global
+    @ignore
+    @internal
+    @license
+    @link
+    @method
+    @name
+    @package
+    @param
+    @property
+    @return
+    @see
+    @since
+    @static
+    @staticvar
+    @subpackage
+    @todo
+    @tutorial
+    @uses
+    @var
+    @version
 
 phpDocumentor Inline tags
-    inline {@example} 
-    inline {@id} 
-    inline {@internal}} 
-    inline {@inheritdoc} 
-    inline {@link} 
-    inline {@source} 
-    inline {@toc} 
-    inline {@tutorial} 
+    inline {@example}
+    inline {@id}
+    inline {@internal}}
+    inline {@inheritdoc}
+    inline {@link}
+    inline {@source}
+    inline {@toc}
+    inline {@tutorial}
 
 
 ▲ Tags required/recommended by WordPress coding standard:

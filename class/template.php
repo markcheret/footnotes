@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 10:58
  *
  *
- * @lastmodified 2021-02-08T1925+0100
+ * @lastmodified 2021-02-12T1113+0100
  *
  * @since 2.0.3  prettify reference container template
  * @since 2.0.3  replace tab with a space
@@ -194,8 +194,8 @@ class MCI_Footnotes_Template {
      * @since 2.5.4  collapse HTML comments and PHP/JS docblocks (only)
      */
     public function process_template( $template ) {
-        $this->a_str_OriginalContent = preg_replace( '#<!--.+?-->#s', " ", file_get_contents( $template ) );
-        $this->a_str_OriginalContent = preg_replace( '#/\*\*.+?\*/#s', " ", $this->a_str_OriginalContent );
+        $this->a_str_OriginalContent = preg_replace( '#<!--.+?-->#s', "", file_get_contents( $template ) );
+        $this->a_str_OriginalContent = preg_replace( '#/\*\*.+?\*/#s', "", $this->a_str_OriginalContent );
         $this->a_str_OriginalContent = str_replace( "\n", "", $this->a_str_OriginalContent );
         $this->a_str_OriginalContent = str_replace( "\r", "", $this->a_str_OriginalContent );
         $this->a_str_OriginalContent = str_replace( "\t", " ", $this->a_str_OriginalContent );

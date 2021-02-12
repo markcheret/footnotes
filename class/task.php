@@ -7,9 +7,10 @@
  * @since 1.5.0
  *
  *
- * @lastmodified  2021-02-11T0817+0100
+ * @lastmodified  2021-02-12T1100+0100
  *
  * @since 2.0.0  Bugfix: various.
+ * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
  * @since 2.0.5  Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.
  * @since 2.0.5  Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
  * @since 2.0.6  Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution.
@@ -74,6 +75,7 @@
  * @since 2.5.2  Update: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
  * @since 2.5.3  Bugfix: Reference container, tooltips: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
  * @since 2.5.4  Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
+ * @since 2.5.4  Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @@theroninjedi47 bug report.
  * @since 2.5.4  Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
  */
 
@@ -173,16 +175,28 @@ class MCI_Footnotes_Task {
      * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
      * @link https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3 diff
      *
-     * @var bool false; depend on settings
+     * @var bool
      *
      * Streamline process depending on tooltip enabled status.
      * Load tooltip inline script only if jQuery tooltips are enabled.
+     * Actual value depends on settings.
      */
     public static $a_bool_TooltipsEnabled = false;
     public static $a_bool_AlternativeTooltipsEnabled = false;
 
     /**
      * Hard links for AMP compatibility
+	 * 
+     * @since 2.0.0  Bugfix: footnote links script independent.
+	 * 
+	 * 
+	 * - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
+	 * 
+     * @since 2.0.4
+     *
+     * @reporter @theroninjedi47
+     * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
+     *
      *
      * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
      *
@@ -197,12 +211,6 @@ class MCI_Footnotes_Task {
      *
      * The official AMP plugin strips off JavaScript, breaking Footnotes’
      * animated scrolling.
-     *
-     *
-     * @since 2.0.4  remove hard links on user request
-     * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
-     *
-     * @since 2.0.0  add hard links
      */
     public static $a_bool_HardLinksEnable        = false;
     public static $a_str_ReferrerLinkSlug        = 'r';
@@ -239,9 +247,7 @@ class MCI_Footnotes_Task {
     /**
      * Optional link element for footnote referrers and backlinks
      *
-     * @since 2.0.0  add link elements with hard links
-     * @since 2.0.4  remove hard links on user request
-     * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
+     * @since 2.0.0  add link elements along with hard links.
      *
      *
      * - Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.
@@ -261,29 +267,29 @@ class MCI_Footnotes_Task {
      *
      * @since 2.3.0
      * @datetime 2020-12-30T2313+0100
-     * @see self::$a_bool_HardLinksEnable
      *
-     * # Styling
+     * @contributor @martinneumannat
+     * @link https://wordpress.org/support/topic/making-it-amp-compatible/
      *
-     * Link color is preferred for referrers and backlinks.
-     * Setting a global link color is a common feature in WordPress themes.
-     * CSS does not support identifiers for link colors (color: link | hover | active | visited)
-     * These are only supported as pseudo-classes of the link element.
-     * Hence the link element must be present for styling purposes.
-     * But styling these elements with the link color is not universally preferred.
-     * If not, the very presence of the link elements may need to be avoided.
-     *
-     * # Functionality
+     * @reporter @psykonevro
+     * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
      *
      * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
      * Browsers may need to be prevented from logging these clicks in the browsing history,
      * as logging compromises the usability of the 'return to previous' button in browsers.
      * For that purpose, and for scroll animation, this linking is performed by JavaScript.
      *
-     * Link elements also raise further concerns, so that their useless proliferation needs
-     * to be mitigated. By contrast, due to an insufficiency in the CSS standard, real link
-     * elements are required to get the link color, as oppose
-     * this variable keeps its default value if hard links are disabled
+     * Link elements raise concerns, so that mitigating their proliferation may be desired.
+     *
+     * By contrast, due to an insufficiency in the CSS standard, coloring elements with the
+     * theme’s link color requires real link elements and cannot be done with named colors,
+     * as CSS does not support 'color: link|hover|active|visited', after the pseudo-classes
+     * of the link element.
+     *
+     * Yet styling these elements with the link color is not universally preferred, so that
+     * the very presence of these link elements may need to be avoided.
+     *
+     * @see self::$a_bool_HardLinksEnable
      */
     public static $a_str_LinkSpan     = 'span';
     public static $a_str_LinkOpenTag  = '';
@@ -1284,7 +1290,7 @@ class MCI_Footnotes_Task {
             $l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
 
             // get tooltip text if present:
-            self::$a_str_TooltipShortcode = '[[/tooltip]]'; // grab from DB
+            self::$a_str_TooltipShortcode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER);
             self::$a_int_TooltipShortcodeLength = strlen( self::$a_str_TooltipShortcode );
             $l_int_TooltipTextLength = strpos( $l_str_FootnoteText, self::$a_str_TooltipShortcode );
             $l_bool_HasTooltipText = $l_int_TooltipTextLength === false ? false : true;
@@ -1563,9 +1569,11 @@ class MCI_Footnotes_Task {
                     $l_str_FootnoteLinkArgument .= $l_int_Index;
                     $l_str_FootnoteLinkArgument .= '" class="footnote_hard_link"';
 
-                    // compose offset anchor, an empty span child of empty span
-                    // to prevent browsers from drawing tall dotted rectangles:
-                    $l_str_ReferrerAnchorElement  = '<span class="footnote_referrer_base"><span id="';
+					/**
+					 * Compose fragment ID anchor with offset, for use in reference container.
+					 * Empty span, child of empty span, to avoid tall dotted rectangles in browser.
+					 */
+					$l_str_ReferrerAnchorElement  = '<span class="footnote_referrer_base"><span id="';
                     $l_str_ReferrerAnchorElement .= self::$a_str_ReferrerLinkSlug;
                     $l_str_ReferrerAnchorElement .= self::$a_str_PostContainerIdCompound;
                     $l_str_ReferrerAnchorElement .= $l_int_Index;
@@ -1831,7 +1839,7 @@ class MCI_Footnotes_Task {
          * Reference container table row template load
          *
          * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
-		 * 
+         *
          * @since 2.1.1
          * @datetime 2020-11-16T2024+0100
          */
@@ -1905,13 +1913,37 @@ class MCI_Footnotes_Task {
              *
              * If enabled, and for the case the footnote is single, compose hard link:
              */
-            // define variable as empty for the reference container if not enabled:
+            // define anyway:
             $l_str_HardLinkAddress = '';
 
             if (self::$a_bool_HardLinksEnable) {
+				
+				/**
+				 * Use-Backbutton-Hint tooltip, optional and configurable.
+				 * 
+				 * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @@theroninjedi47 bug report.
+				 * 
+				 * @since 2.5.4
+				 * 
+				 * @reporter @@theroninjedi47
+				 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
+				 * 
+				 * When hard links are enabled, clicks on the backlinks are logged in the browsing history.
+				 * This tooltip hints to use the backbutton instead, so the history gets streamlined again.
+				 * @link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
+				 */
+				if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE ) ) ) {
+					$l_str_UseBackbuttonHint  = ' title="';
+					$l_str_UseBackbuttonHint .= MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT);
+					$l_str_UseBackbuttonHint .= '"';
+				} else {
+					$l_str_UseBackbuttonHint = '';
+				}
 
-                // compose fragment ID anchor with offset, for use in reference container, an
-                // empty span child of empty span to avoid tall dotted rectangles in browser:
+				/**
+				 * Compose fragment ID anchor with offset, for use in reference container.
+				 * Empty span, child of empty span, to avoid tall dotted rectangles in browser.
+				 */
                 $l_str_FootnoteAnchorElement  = '<span class="footnote_item_base"><span id="';
                 $l_str_FootnoteAnchorElement .= self::$a_str_FootnoteLinkSlug;
                 $l_str_FootnoteAnchorElement .= self::$a_str_PostContainerIdCompound;
@@ -1923,6 +1955,7 @@ class MCI_Footnotes_Task {
                 $l_str_HardLinkAddress .= self::$a_str_ReferrerLinkSlug;
                 $l_str_HardLinkAddress .= self::$a_str_PostContainerIdCompound;
                 $l_str_HardLinkAddress .= $l_str_FootnoteId . '"';
+                $l_str_HardLinkAddress .= $l_str_UseBackbuttonHint;
 
                 // compose optional opening link tag with optional hard link, mandatory for instance:
                 self::$a_str_LinkOpenTag  = '<a' . $l_str_HardLinkAddress;
@@ -1970,6 +2003,7 @@ class MCI_Footnotes_Task {
                     $l_str_FootnoteReference .= self::$a_str_ReferrerLinkSlug;
                     $l_str_FootnoteReference .= self::$a_str_PostContainerIdCompound;
                     $l_str_FootnoteReference .= $l_str_FootnoteId . '"';
+					$l_str_FootnoteReference .= $l_str_UseBackbuttonHint;
                 }
                 $l_str_FootnoteReference .= ' class="footnote_backlink"';
 
@@ -2038,16 +2072,17 @@ class MCI_Footnotes_Task {
                             $l_str_FootnoteBacklinks .= ' id="footnote_plugin_reference_';
                             $l_str_FootnoteBacklinks .= self::$a_int_PostId;
                             $l_str_FootnoteBacklinks .= '_' . self::$a_int_ReferenceContainerId;
-							$l_str_FootnoteBacklinks .= "_$l_str_FootnoteId\"";
-							
+                            $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId\"";
+
                             // insert the optional hard link address:
                             if (self::$a_bool_HardLinksEnable) {
                                 $l_str_FootnoteBacklinks .= ' href="#';
                                 $l_str_FootnoteBacklinks .= self::$a_str_ReferrerLinkSlug;
                                 $l_str_FootnoteBacklinks .= self::$a_str_PostContainerIdCompound;
                                 $l_str_FootnoteBacklinks .= $l_str_FootnoteId . '"';
-							}
-							
+                                $l_str_FootnoteBacklinks .= $l_str_UseBackbuttonHint;
+                            }
+
                             $l_str_FootnoteBacklinks .= ' class="footnote_backlink"';
                             $l_str_FootnoteBacklinks .= ' onclick="footnote_moveToAnchor_';
                             $l_str_FootnoteBacklinks .= self::$a_int_PostId;
@@ -2055,8 +2090,8 @@ class MCI_Footnotes_Task {
                             $l_str_FootnoteBacklinks .= "('footnote_plugin_tooltip_";
                             $l_str_FootnoteBacklinks .= self::$a_int_PostId;
                             $l_str_FootnoteBacklinks .= '_' . self::$a_int_ReferenceContainerId;
-							$l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
-							
+                            $l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
+
                             // append the offset anchor for optional hard links:
                             if (self::$a_bool_HardLinksEnable) {
                                 $l_str_FootnoteBacklinks .= '<span class="footnote_item_base"><span id="';
@@ -2064,8 +2099,8 @@ class MCI_Footnotes_Task {
                                 $l_str_FootnoteBacklinks .= self::$a_str_PostContainerIdCompound;
                                 $l_str_FootnoteBacklinks .= $l_str_FootnoteId;
                                 $l_str_FootnoteBacklinks .= '" class="footnote_item_anchor"></span></span>';
-							}
-							
+                            }
+
                             $l_str_FootnoteBacklinks .= $l_bool_SymbolSwitch ? '' : $l_str_FootnoteArrow;
                             $l_str_FootnoteBacklinks .= $l_str_FootnoteId;
                             $l_str_FootnoteBacklinks .= $l_bool_SymbolSwitch ? $l_str_FootnoteArrow : '';
@@ -2087,10 +2122,10 @@ class MCI_Footnotes_Task {
             $l_bool_HasTooltipText = $l_int_TooltipTextLength === false ? false : true;
             if ( $l_bool_HasTooltipText ) {
                 $l_str_NotTooltipText = substr( $l_str_FootnoteText, ( $l_int_TooltipTextLength + self::$a_int_TooltipShortcodeLength ) );
-                self::$a_bool_MirrorTooltipText = false; // grab from settings!
+                self::$a_bool_MirrorTooltipText = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE ) );
                 if ( self::$a_bool_MirrorTooltipText ) {
                     $l_str_TooltipText = substr( $l_str_FootnoteText, 0, $l_int_TooltipTextLength );
-                    $l_str_ReferenceTextIntroducer = ' '; // grab from settings!
+                    $l_str_ReferenceTextIntroducer = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR);
                     $l_str_ReferenceText = $l_str_TooltipText . $l_str_ReferenceTextIntroducer . $l_str_NotTooltipText;
                 } else {
                     $l_str_ReferenceText = $l_str_NotTooltipText;
@@ -2099,10 +2134,7 @@ class MCI_Footnotes_Task {
                 $l_str_ReferenceText = $l_str_FootnoteText;
             }
 
-            // replace all placeholders in 'templates/public/reference-container-body.html'
-            // or in 'templates/public/reference-container-body-combi.html'
-            // or in 'templates/public/reference-container-body-3column.html'
-            // or in 'templates/public/reference-container-body-switch.html'
+            // replace all placeholders in table row template:
             $l_obj_Template->replace(
                 array(
 

@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 14:47
  *
  *
- * @lastmodified 2021-02-11T0821+0100
+ * @lastmodified 2021-02-12T1035+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
@@ -150,10 +150,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "hyperlink-arrow", __("Backlink symbol", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "HyperlinkArrow");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "superscript", __("Referrer typesetting and formatting", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "Superscript");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box", __("Tooltips", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBox");
-
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-position", __("Tooltip position", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxPosition");
+        $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-dimensions", __("Tooltip dimensions", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxDimensions");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-timing", __("Tooltip timing", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTiming");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-truncation", __("Tooltip truncation", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxTruncation");
+        $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-text", __("Tooltip text", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxText");
         $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "mouse-over-box-appearance", __("Tooltip appearance", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "MouseOverBoxAppearance");
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE))) {
             $l_arr_MetaBoxes[] = $this->addMetaBox("customize", "custom-css", __("Your existing Custom CSS code", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), "CustomCSS");
@@ -501,6 +502,15 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "separator" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HARD_LINK_IDS_SEPARATOR),
                 "notice-separator" => __("May be empty or any string, for example _, - or +, to distinguish post number, container number and footnote number.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
+                // enable backlink tooltips:
+                "label-backlink-tooltips" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE, __("Enable backlink tooltips:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "backlink-tooltips" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE, $l_arr_Enable),
+                "notice-backlink-tooltips" => __("Hard backlinks get ordinary tooltips hinting to use the backbutton instead.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-backlink-tooltip-text" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT, __("Backlink tooltip text:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "backlink-tooltip-text" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT),
+                "notice-backlink-tooltip-text" => __("Default text is the keyboard shortcut, but you may wish to input a descriptive hint in your language.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
             )
         );
         // display template with replaced placeholders
@@ -709,6 +719,20 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "offset-y-alternative" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y, -500, 500),
                 "notice-offset-y" => __("pixels; negative value for an upwards offset; alternative tooltips: direction depends on position", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
+            )
+        );
+        // display template with replaced placeholders
+        echo $l_obj_Template->getContent();
+    }
+
+    public function MouseOverBoxDimensions() {
+
+        // load template file
+        $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "mouse-over-box-dimensions");
+        // replace all placeholders
+        $l_obj_Template->replace(
+            array(
+
                 "label-max-width" => $this->addLabel(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, __("Maximum width:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "max-width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH, 0, 1280),
                 "width" => $this->addNumBox(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH, 0, 1280),
@@ -773,6 +797,38 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-readon" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL, __("‘Read on’ button label:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "readon" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL),
+
+            )
+        );
+        // display template with replaced placeholders
+        echo $l_obj_Template->getContent();
+    }
+
+    public function MouseOverBoxText() {
+        // options for Yes/No select box:
+        $l_arr_Enabled = array(
+            "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+        );
+
+        // load template file
+        $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "mouse-over-box-text");
+        // replace all placeholders
+        $l_obj_Template->replace(
+            array(
+
+                "label-delimiter" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER, __("Delimiter for dedicated tooltip text:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "delimiter" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER),
+                "notice-delimiter" => __("If the delimiter shortcode is present, the tooltip text will be the part before it.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-mirror" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE, __("Mirror the tooltip in the reference container:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "mirror" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE, $l_arr_Enabled),
+                "notice-mirror" => __("Tooltips may be harder to use on mobiles. This option allows to read it in the reference container.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-separator" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR, __("Separator between tooltip text and footnote text:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "separator" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR),
+                "notice-separator" => __("May be a simple space, or a line break &lt;br /&gt;, or any string in your language.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
 
             )
         );

@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 10:43
  *
  *
- * @lastmodified 2021-02-11T1130+0100
+ * @lastmodified 2021-02-12T0928+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
@@ -105,7 +105,7 @@ class MCI_Footnotes_Settings {
      *
      * @author Stefan Herndler
      * @since 1.5.0
-     * @var bool
+     * @var str
      */
     const C_BOOL_COMBINE_IDENTICAL_FOOTNOTES = "footnote_inputfield_combine_identical";
 
@@ -496,7 +496,6 @@ class MCI_Footnotes_Settings {
      * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
      *
      * @since 2.1.1
-     *
      * @var str
      */
     const C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE  = "footnotes_inputfield_reference_container_3column_layout_enable";
@@ -612,7 +611,7 @@ class MCI_Footnotes_Settings {
      * Unicode-compliant browsers break URLs at slashes.
      *
      * @since 2.1.6
-     * @var bool
+     * @var str
      *
      * 2020-12-09T1554+0100..2020-12-13T1313+0100
      */
@@ -652,7 +651,7 @@ class MCI_Footnotes_Settings {
      * @link https://wordpress.org/support/topic/borders-25/
      *
      * @since 2.2.10
-     * @var bool
+     * @var str
      *
      * 2020-12-25T2311+0100
      */
@@ -679,12 +678,81 @@ class MCI_Footnotes_Settings {
      * Settings container key for shortcode syntax validation
      *
      * @since 2.4.0
-     * @var bool
+     * @var str
      *
      * 2021-01-01T0616+0100
      */
     const C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = "footnotes_inputfield_shortcode_syntax_validation_enable";
 
+    /**
+     * Settings container key to enable a backlink tooltip
+     *
+     * -
+     *
+     * @since 2.5.4
+     *
+     * @reporter
+     * @link
+     *
+     * @var str
+     */
+    const C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE = "footnotes_inputfield_backlink_tooltip_enable";
+
+    /**
+     * Settings container key to configure the backlink tooltip
+     *
+     * -
+     *
+     * @since 2.5.4
+     *
+     * @reporter
+     * @link
+     *
+     * @var str
+     */
+    const C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT = "footnotes_inputfield_backlink_tooltip_text";
+
+    /**
+     * Settings container key to configure the tooltip excerpt delimiter
+     *
+     * -
+     *
+     * @since 2.5.4
+     *
+     * @reporter
+     * @link
+     *
+     * @var str
+     */
+    const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER = "footnotes_inputfield_tooltip_excerpt_delimiter";
+
+    /**
+     * Settings container key to enable mirroring the tooltip excerpt in the reference container
+     *
+     * -
+     *
+     * @since 2.5.4
+     *
+     * @reporter
+     * @link
+     *
+     * @var str
+     */
+    const C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE = "footnotes_inputfield_tooltip_excerpt_mirror_enable";
+
+    /**
+     * Settings container key to configure the tooltip excerpt separator in the reference container
+     *
+     * -
+     *
+     * @since 2.5.4
+     *
+     * @reporter
+     * @link
+     *
+     * @var str
+     */
+    const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR = "footnotes_inputfield_tooltip_excerpt_mirror_separator";
 
 
     /**
@@ -751,6 +819,11 @@ class MCI_Footnotes_Settings {
             self::C_STR_HARD_LINK_IDS_SEPARATOR                       => '+',
             self::C_INT_FOOTNOTES_SCROLL_OFFSET                       => 20,
             self::C_INT_FOOTNOTES_SCROLL_DURATION                     => 380,
+
+            // 2.5.4 fast-tracked:
+            self::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE            => 'yes',
+            self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT               => 'Alt+ ←',
+
 
             self::C_STR_REFERENCE_CONTAINER_NAME                      => 'References',
             self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT             => 'p',
@@ -846,6 +919,12 @@ class MCI_Footnotes_Settings {
 
             // The truncation length is raised from 150 to 200 chars:
             self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH       => 200,
+
+            // 2.5.4 fast-tracked:
+            self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER           => '[[/tooltip]]',
+            self::C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE      => 'no',
+            self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR   => ' — ',
+
 
             // The default position should not be lateral because of the risk
             // the box gets squeezed between note anchor at line end and window edge,

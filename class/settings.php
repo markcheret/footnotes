@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 10:43
  *
  *
- * @lastmodified 2021-02-12T0928+0100
+ * @lastmodified 2021-02-12T1744+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
@@ -757,12 +757,12 @@ class MCI_Footnotes_Settings {
     /**
      * Settings container key to enable superscript style normalization.
      *
-     * -
+     * -Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
      *
      * @since 2.5.4
      *
-     * @reporter
-     * @link
+     * @reporter @tomturowski
+     * @link https://wordpress.org/support/topic/in-line-superscript-ref-rides-to-high/
      *
      * @var str
      */

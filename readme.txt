@@ -81,6 +81,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.5.4 =
 - Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
+- Bugfix: Tooltips: fix jQuery positioning bug moving tooltips out of view and affecting (TablePress tables in) some themes, thanks to @wisenilesh bug report.
 - Bugfix: Reference container, tooltips: URL wrap: enable the 'word-wrap: anywhere' rule, thanks to @rebelc0de bug report.
 - Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
 - Bugfix: Dashboard: Tooltip dimensions: move from 'Tooltip position' to a dedicated metabox, thanks to @codldmac issue report.

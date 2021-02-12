@@ -7,7 +7,7 @@
  * @since 1.5.0
  *
  *
- * @lastmodified  2021-02-12T1100+0100
+ * @lastmodified  2021-02-12T1641+0100
  *
  * @since 2.0.0  Bugfix: various.
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
@@ -74,6 +74,7 @@
  * @since 2.5.1  Bugfix: Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report.
  * @since 2.5.2  Update: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
  * @since 2.5.3  Bugfix: Reference container, tooltips: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
+ * @since 2.5.4  Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to
  * @since 2.5.4  Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
  * @since 2.5.4  Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @@theroninjedi47 bug report.
  * @since 2.5.4  Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
@@ -186,12 +187,12 @@ class MCI_Footnotes_Task {
 
     /**
      * Hard links for AMP compatibility
-	 * 
+     *
      * @since 2.0.0  Bugfix: footnote links script independent.
-	 * 
-	 * 
-	 * - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
-	 * 
+     *
+     *
+     * - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
+     *
      * @since 2.0.4
      *
      * @reporter @theroninjedi47
@@ -571,11 +572,36 @@ class MCI_Footnotes_Task {
      * @since 2.2.5  Bugfix: Reference container: Label: make bottom border an option, thanks to @markhillyer issue report.
      * @since 2.2.5  Bugfix: Reference container: Label: option to select paragraph or heading element, thanks to @markhillyer issue report.
      * @since 2.3.0  Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
+     * @since 2.5.4  Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
      */
     public function wp_head() {
 
         // insert start tag without switching out of PHP:
         echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
+
+        /**
+         * Normalizes the referrers’ vertical alignment and font size.
+         *
+         * - Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
+         *
+         * @since 2.5.4
+         * @datetime 2021-02-12T1631+0100
+         *
+         * @reporter @tomturowski
+         * @link https://wordpress.org/support/topic/in-line-superscript-ref-rides-to-high/
+         *
+         * Cannot be included in external style sheet, as it is only optional.
+         * The scope is variable too: referrers only, or all superscript elements.
+         */
+        $l_str_NormalizeSuperscript = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT );
+        if ( $l_str_NormalizeSuperscript !== 'no' ) {
+            if ( $l_str_NormalizeSuperscript === 'all' ) {
+                echo "sup {";
+            } else {
+                echo ".footnote_plugin_tooltip_text {";
+            }
+            echo "vertical-align: super; font-size: smaller; position: static;}\r\n";
+        }
 
         /**
          * Reference container display on home page
@@ -878,7 +904,7 @@ class MCI_Footnotes_Task {
          * @reporter @andreasra
          * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
          *
-         * Alternative tooltip script: printed formatted, not minified:
+         * The script for alternative tooltips is printed formatted, not minified:
          */
         if ( self::$a_bool_AlternativeTooltipsEnabled ) {
             ?>
@@ -1174,7 +1200,7 @@ class MCI_Footnotes_Task {
          *
          *
          * If footnotes short codes are unbalanced, and syntax validation is not disabled,
-         * prepended a warning to the content; displays de facto beneath the post title.
+         * prepend a warning to the content; displays de facto beneath the post title.
          */
         if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE))) {
 
@@ -1569,11 +1595,11 @@ class MCI_Footnotes_Task {
                     $l_str_FootnoteLinkArgument .= $l_int_Index;
                     $l_str_FootnoteLinkArgument .= '" class="footnote_hard_link"';
 
-					/**
-					 * Compose fragment ID anchor with offset, for use in reference container.
-					 * Empty span, child of empty span, to avoid tall dotted rectangles in browser.
-					 */
-					$l_str_ReferrerAnchorElement  = '<span class="footnote_referrer_base"><span id="';
+                    /**
+                     * Compose fragment ID anchor with offset, for use in reference container.
+                     * Empty span, child of empty span, to avoid tall dotted rectangles in browser.
+                     */
+                    $l_str_ReferrerAnchorElement  = '<span class="footnote_referrer_base"><span id="';
                     $l_str_ReferrerAnchorElement .= self::$a_str_ReferrerLinkSlug;
                     $l_str_ReferrerAnchorElement .= self::$a_str_PostContainerIdCompound;
                     $l_str_ReferrerAnchorElement .= $l_int_Index;
@@ -1917,33 +1943,33 @@ class MCI_Footnotes_Task {
             $l_str_HardLinkAddress = '';
 
             if (self::$a_bool_HardLinksEnable) {
-				
-				/**
-				 * Use-Backbutton-Hint tooltip, optional and configurable.
-				 * 
-				 * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @@theroninjedi47 bug report.
-				 * 
-				 * @since 2.5.4
-				 * 
-				 * @reporter @@theroninjedi47
-				 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
-				 * 
-				 * When hard links are enabled, clicks on the backlinks are logged in the browsing history.
-				 * This tooltip hints to use the backbutton instead, so the history gets streamlined again.
-				 * @link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
-				 */
-				if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE ) ) ) {
-					$l_str_UseBackbuttonHint  = ' title="';
-					$l_str_UseBackbuttonHint .= MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT);
-					$l_str_UseBackbuttonHint .= '"';
-				} else {
-					$l_str_UseBackbuttonHint = '';
-				}
 
-				/**
-				 * Compose fragment ID anchor with offset, for use in reference container.
-				 * Empty span, child of empty span, to avoid tall dotted rectangles in browser.
-				 */
+                /**
+                 * Use-Backbutton-Hint tooltip, optional and configurable.
+                 *
+                 * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @@theroninjedi47 bug report.
+                 *
+                 * @since 2.5.4
+                 *
+                 * @reporter @@theroninjedi47
+                 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
+                 *
+                 * When hard links are enabled, clicks on the backlinks are logged in the browsing history.
+                 * This tooltip hints to use the backbutton instead, so the history gets streamlined again.
+                 * @link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
+                 */
+                if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE ) ) ) {
+                    $l_str_UseBackbuttonHint  = ' title="';
+                    $l_str_UseBackbuttonHint .= MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT);
+                    $l_str_UseBackbuttonHint .= '"';
+                } else {
+                    $l_str_UseBackbuttonHint = '';
+                }
+
+                /**
+                 * Compose fragment ID anchor with offset, for use in reference container.
+                 * Empty span, child of empty span, to avoid tall dotted rectangles in browser.
+                 */
                 $l_str_FootnoteAnchorElement  = '<span class="footnote_item_base"><span id="';
                 $l_str_FootnoteAnchorElement .= self::$a_str_FootnoteLinkSlug;
                 $l_str_FootnoteAnchorElement .= self::$a_str_PostContainerIdCompound;
@@ -2003,7 +2029,7 @@ class MCI_Footnotes_Task {
                     $l_str_FootnoteReference .= self::$a_str_ReferrerLinkSlug;
                     $l_str_FootnoteReference .= self::$a_str_PostContainerIdCompound;
                     $l_str_FootnoteReference .= $l_str_FootnoteId . '"';
-					$l_str_FootnoteReference .= $l_str_UseBackbuttonHint;
+                    $l_str_FootnoteReference .= $l_str_UseBackbuttonHint;
                 }
                 $l_str_FootnoteReference .= ' class="footnote_backlink"';
 

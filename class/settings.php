@@ -675,7 +675,7 @@ class MCI_Footnotes_Settings {
     const C_STR_HARD_LINK_IDS_SEPARATOR           = "footnotes_inputfield_hard_link_ids_separator";
 
     /**
-     * Settings container key for shortcode syntax validation
+     * Settings container key for shortcode syntax validation.
      *
      * @since 2.4.0
      * @var str
@@ -685,7 +685,7 @@ class MCI_Footnotes_Settings {
     const C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = "footnotes_inputfield_shortcode_syntax_validation_enable";
 
     /**
-     * Settings container key to enable a backlink tooltip
+     * Settings container key to enable a backlink tooltip.
      *
      * -
      *
@@ -699,7 +699,7 @@ class MCI_Footnotes_Settings {
     const C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE = "footnotes_inputfield_backlink_tooltip_enable";
 
     /**
-     * Settings container key to configure the backlink tooltip
+     * Settings container key to configure the backlink tooltip.
      *
      * -
      *
@@ -713,7 +713,7 @@ class MCI_Footnotes_Settings {
     const C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT = "footnotes_inputfield_backlink_tooltip_text";
 
     /**
-     * Settings container key to configure the tooltip excerpt delimiter
+     * Settings container key to configure the tooltip excerpt delimiter.
      *
      * -
      *
@@ -727,7 +727,7 @@ class MCI_Footnotes_Settings {
     const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER = "footnotes_inputfield_tooltip_excerpt_delimiter";
 
     /**
-     * Settings container key to enable mirroring the tooltip excerpt in the reference container
+     * Settings container key to enable mirroring the tooltip excerpt in the reference container.
      *
      * -
      *
@@ -741,7 +741,7 @@ class MCI_Footnotes_Settings {
     const C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE = "footnotes_inputfield_tooltip_excerpt_mirror_enable";
 
     /**
-     * Settings container key to configure the tooltip excerpt separator in the reference container
+     * Settings container key to configure the tooltip excerpt separator in the reference container.
      *
      * -
      *
@@ -753,6 +753,20 @@ class MCI_Footnotes_Settings {
      * @var str
      */
     const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR = "footnotes_inputfield_tooltip_excerpt_mirror_separator";
+
+    /**
+     * Settings container key to enable superscript style normalization.
+     *
+     * -
+     *
+     * @since 2.5.4
+     *
+     * @reporter
+     * @link
+     *
+     * @var str
+     */
+    const C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT = "footnotes_inputfield_referrers_normal_superscript";
 
 
     /**
@@ -924,6 +938,7 @@ class MCI_Footnotes_Settings {
             self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER           => '[[/tooltip]]',
             self::C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE      => 'no',
             self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR   => ' — ',
+            self::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT   => 'no',
 
 
             // The default position should not be lateral because of the risk

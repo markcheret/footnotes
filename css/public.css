@@ -8,7 +8,7 @@
 
 /* Version: 2.5.4
 
-Last modified: 2021-02-12T1051+0100
+Last modified: 2021-02-12T1709+0100
 
 
         Classes recommended for Custom CSS are listed in
@@ -177,9 +177,6 @@ Classes:
 
 @since 2.1.1  Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report
 @see <https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/>
-
-@since 2.5.4  Bugfix: Referrers: fix vertical alignment, font size and position (static) for cross-theme stability, thanks to @tomturowski bug report.
-@link https://wordpress.org/support/topic/in-line-superscript-ref-rides-to-high/
 */
 
 .footnote_referrer,
@@ -205,9 +202,6 @@ Classes:
 
 .footnote_plugin_tooltip_text {
     line-height: 0;
-    vertical-align: super;
-    font-size: smaller;
-    position: static;
     cursor: pointer;
 }
 

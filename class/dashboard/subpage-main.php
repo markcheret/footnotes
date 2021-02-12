@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 14:47
  *
  *
- * @lastmodified 2021-02-12T1035+0100
+ * @lastmodified 2021-02-12T1705+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
@@ -615,6 +615,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_arr_Enabled = array(
             "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+		);
+		// options for superscript normalize scope:
+        $l_arr_NormalizeSuperscript = array(
+            "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "referrers" => __("Footnote referrers", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+            "all" => __("All superscript elements", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
         );
         // load template file
         $l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "customize-superscript");
@@ -632,6 +638,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-link" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED, __("Use the link element for referrers and backlinks:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "notice-link" => __("Please find this setting at the end of the reference container settings. The link element is needed to apply the theme’s link color.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "label-normalize" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, __("Normalize vertical alignment and font size:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+                "normalize" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, $l_arr_NormalizeSuperscript),
+                "notice-normalize" => __("Most themes don’t need this fix.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders

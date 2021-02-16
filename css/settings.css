@@ -1,3 +1,4 @@
+/*<?php for docblocks
 /**
  * Created by Stefan Herndler.
  * User: Stefan
@@ -5,39 +6,50 @@
  * Created-Time: 16:21
  * Since: 1.0
  *
- * Version: 2.5.4
- *
- * Last modified: 2021-02-12T1805+0100
+ * @version 2.5.5
+ * @lastmodified 2021-02-16T0033+0100
  */
 
+/**
+ * MCI Footnotes logo
+ *
+ * The classes with 'heading' fix display in dashboard,
+ * where since WordPress 5.5 settings box labels with
+ * spans are displayed as justified not last line.
+ *
+ * @see class/config.php
+ * @see css/dev-common.css
+ */
 
-/************************************************************
-MCI Footnotes logo
-
-The classes with 'heading' fix display in dashboard
-See class/config.php and css/public.css
-*/
-
- .postbox-header {
-    position: relative;
-    padding: 0 20px;
-}
 .footnotes_logo_heading {
     display: inline-block;
     float: left;
     position: absolute;
+    text-decoration: none;
+    font-weight: normal;
 }
 .footnotes_logo_part1_heading {
     left: 20px;
+    color: #2bb975;
 }
 .footnotes_logo_part2_heading {
     left: 51px;
+    color: #545f5a;
 }
 .footnotes_heart_heading {
     color:#ff6d3b;
     font-weight:bold;
     position: absolute;
     left: 96px;
+}
+
+/**
+ * Metabox headings
+ */
+
+.postbox-header {
+    position: relative;
+    padding: 0 20px;
 }
 
 /************************************************************

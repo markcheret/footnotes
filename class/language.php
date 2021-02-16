@@ -42,7 +42,7 @@ class MCI_Footnotes_Language {
      * - Bugfix: Correct function call apply_filters() with all required arguments after PHP 7.1 promoted warning to error, thanks to @matkus2 bug report and code contribution.
      *
      * @since 2.0.0
-     * @datetime 2020-10-26T1609+0100
+     * @date 2020-10-26T1609+0100
      *
      * @contributor @matkus2
      * @link https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/
@@ -87,7 +87,7 @@ class MCI_Footnotes_Language {
      * - Bugfix: Localization: conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report.
      *
      * @since 2.1.6
-     * @datetime 2020-12-08T1931+0100
+     * @date 2020-12-08T1931+0100
      *
      * @reporter @nikelaos
      * @link https://wordpress.org/support/topic/more-feature-ideas/

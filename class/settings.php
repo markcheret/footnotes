@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 10:43
  *
  *
- * @lastmodified 2021-02-12T1744+0100
+ * @lastmodified 2021-02-16T0101+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
@@ -51,7 +51,7 @@
  * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
  *
  * @since 2.3.0  Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
- * @datetime 2020-12-27T1243+0100
+ * @date 2020-12-27T1243+0100
 
  * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
  *
@@ -180,7 +180,7 @@ class MCI_Footnotes_Settings {
      * @var str
      *
      * @since 2.1.6  This setting removed as irrelevant since priority level settings need permanent visibility.
-     * @datetime 2020-12-09T2107+0100
+     * @date 2020-12-09T2107+0100
      */
     const C_BOOL_FOOTNOTES_EXPERT_MODE = "footnote_inputfield_enable_expert_mode";
 
@@ -217,7 +217,7 @@ class MCI_Footnotes_Settings {
      * - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
      *
      * @since 2.1.1
-     * @datetime 2020-11-11T1817+0100
+     * @date 2020-11-11T1817+0100
      *
      * @reporter @andreasra
      * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
@@ -367,7 +367,7 @@ class MCI_Footnotes_Settings {
      * Settings Container Key for the Custom CSS migrated to a dedicated tab.
      *
      * @since 2.2.2  Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
-     * @datetime 2020-12-15T0520+0100
+     * @date 2020-12-15T0520+0100
      * @var str
      */
     const C_STR_CUSTOM_CSS_NEW            = "footnote_inputfield_custom_css_new";
@@ -376,11 +376,11 @@ class MCI_Footnotes_Settings {
      * Settings Container Key to enable display of legacy Custom CSS metaboxes.
      *
      * @since 2.2.2
-     * @datetime 2020-12-15T0520+0100
+     * @date 2020-12-15T0520+0100
      * @var str
      *
      * @since 2.3.0  swap Boolean from 'migration complete' to 'show legacy'
-     * @datetime 2020-12-27T1233+0100
+     * @date 2020-12-27T1233+0100
      *
      * The Boolean must be false if its setting is contained in the container to be hidden,
      * because when saving, all missing constants are emptied, and toBool() converts empty to false.
@@ -438,7 +438,7 @@ class MCI_Footnotes_Settings {
      * - Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
      *
      * @since 2.1.0
-     * @datetime 2020-11-08T2106+0100
+     * @date 2020-11-08T2106+0100
      *
      * @reporter @rovanov
      * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
@@ -453,7 +453,7 @@ class MCI_Footnotes_Settings {
      * - Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report.
      *
      * @since 2.1.1
-     * @datetime 2020-11-16T0859+0100
+     * @date 2020-11-16T0859+0100
      *
      * @reporter @cwbayer
      * @link https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/
@@ -506,7 +506,7 @@ class MCI_Footnotes_Settings {
      * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
      *
      * @since 2.1.1
-     * @datetime 2020-11-16T2024+0100
+     * @date 2020-11-16T2024+0100
      *
      * @contributor @spaceling
      * @link https://wordpress.org/support/topic/change-the-position-5/#post-13615994
@@ -519,7 +519,7 @@ class MCI_Footnotes_Settings {
      * Settings Container Key for 'the_content' hook priority level.
      *
      * @since 2.1.1
-     * @datetime 2020-11-16T0859+0100
+     * @date 2020-11-16T0859+0100
      *
      * @var str
      */
@@ -529,7 +529,7 @@ class MCI_Footnotes_Settings {
      * Settings Container Key for '' hook priority level
      *
      * @since 2.1.2
-     * @datetime 2020-11-20T0620+0100
+     * @date 2020-11-20T0620+0100
      *
      * @var str
      */
@@ -591,7 +591,7 @@ class MCI_Footnotes_Settings {
      * - Bugfix: Scroll duration: make configurable to conform to website content and style requirements.
      *
      * @since 2.1.4
-     * @datetime 2020-12-05T0538+0100
+     * @date 2020-12-05T0538+0100
      */
     // scroll offset and duration:
     const C_INT_FOOTNOTES_SCROLL_OFFSET             = "footnotes_inputfield_scroll_offset";
@@ -848,7 +848,7 @@ class MCI_Footnotes_Settings {
             self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE        => '[[references]]',
             self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE        => 'yes',
 
-            // whether to enqueue additional style sheet:
+            // whether to enqueue additional stylesheet:
             self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT                 => 'none',
 
             // top and bottom margins:

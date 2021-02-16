@@ -6,13 +6,14 @@
  * @author Stefan Herndler
  * @since  1.5.0 12.09.14 10:56
  *
- * Edited:
- * 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
- * 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
- * 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
- * 2.1.6  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
+ * @lastmodified 2021-02-16T0101+0100
  *
- * Last modified:  2021-01-22T0440+0100
+ * @since 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
+ * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
+ * @since 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
+ * @since 2.1.6  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
+ *
+ * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  */
 
 
@@ -115,9 +116,9 @@ abstract class MCI_Footnotes_LayoutEngine {
      */
     protected function addMetaBox($p_str_SectionID, $p_str_ID, $p_str_Title, $p_str_CallbackFunctionName) {
         return array(
-            "parent"   => MCI_Footnotes_Config::C_STR_PLUGIN_NAME . "-" . $p_str_SectionID, 
-            "id"       => $p_str_ID, 
-            "title"    => $p_str_Title, 
+            "parent"   => MCI_Footnotes_Config::C_STR_PLUGIN_NAME . "-" . $p_str_SectionID,
+            "id"       => $p_str_ID,
+            "title"    => $p_str_Title,
             "callback" => $p_str_CallbackFunctionName
         );
     }
@@ -210,13 +211,35 @@ abstract class MCI_Footnotes_LayoutEngine {
         wp_enqueue_script('wp-color-picker');
 
 
-        // register stylesheet
-        // added version # after changes started to settings.css from 2.1.2 on:
-        // automated update of version number for cache busting
-        wp_register_style( 'mci-footnotes-admin-styles', plugins_url('footnotes/css/settings.css'), array(), C_STR_FOOTNOTES_VERSION );
+        /**
+         * Registers and enqueues the dashboard stylesheet.
+         *
+         * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
+         *
+         * @since 2.5.5
+         * @date 2021-02-14T1928+0100
+         *
+         * @reporter @docteurfitness
+         * @link https://wordpress.org/support/topic/simply-speed-optimisation/
+         *
+         * See the public stylesheet enqueuing:
+         * @see class/init.php
+         *
+         * added version # after changes started to settings.css from 2.1.2 on.
+         * automated update of version number for cache busting.
+         * No need to use '-styles' in the handle, as '-css' is appended automatically.
+         */
+        if ( C_BOOL_CSS_PRODUCTION_MODE === true ) {
 
-        // add stylesheet to the output
-        wp_enqueue_style('mci-footnotes-admin-styles');
+            wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_FOOTNOTES_VERSION );
+
+        } else {
+
+            wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.css' ), array(), C_STR_FOOTNOTES_VERSION );
+
+        }
+
+        wp_enqueue_style('mci-footnotes-admin');
     }
 
     /**

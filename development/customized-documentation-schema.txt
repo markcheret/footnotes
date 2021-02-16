@@ -1,57 +1,12 @@
-note-for-developers.txt
-@datetime 2020-12-19T0609+0100
-@lastmodified 2021-02-12T0616+0100
+customized-documentation-schema.txt
+@lastmodified 2021-02-15T2022+0100
 
 
-Plugin Footnotes for WordPress, v2.5.3 and later
+Plugin Footnotes for WordPress, v2.5.4 and later
 
 
-A.  Customized template parts
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-
-Since v2.2.6, Footnotes supports custom templates.
-
-Custom templates may be loaded from a sibling folder 'footnotes-custom'
-or since v2.4.0 from a folder 'templates/footnotes/' in the active theme.
-
-Priority order:
-    1. active theme
-    2. sibling folder
-    3. internal
-
-See footnotes/class/template.php:67..116
-
-
-1. Active theme
-   ‾‾‾‾‾‾‾‾‾‾‾‾
-Please create a folder 'templates/footnotes/' in your child theme and
-store all your public custom templates for Footnotes directly therein.
-
-Existing homonymous templates are loaded instead of their counterparts in
-wp-content/plugins/footnotes/templates/public/.
-
-
-2. Sibling folder
-   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-Please make a sibling of the "footnotes" folder called 'footnotes-custom' and
-the same internal structure and file names as 'footnotes/templates/public/'.
-
-Example for custom tooltips:
-
-footnotes-custom
-└── templates
-    └── public
-        ├── footnote.html
-        └── tooltip.html
-
-Note: The timing parameters in the inline jQuery script 'tooltip.html' are already
-configurable in the dashboard > Referrers and tooltips > Tooltip timing.
-
-
-
-
-B.  Customized documentation schema
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Customized documentation schema
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 In community-based, open source projects, it is important to comprehensively
 recognize, acknowledge and document how developers, testers and users helped
@@ -62,8 +17,10 @@ Note: Per the WordPress Coding Standards, the '@author' tag must not be used.
 https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/
 
 PHPDOC tag:      Role:                 Acknowledgment in the changelog:
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 @contributor     Provided code.        “thanks to @USERNAME code contribution.”
+@contributor     Provided design.      “thanks to @USERNAME design contribution.”
+@contributor     Provided content.     “thanks to @USERNAME design contribution.” (!)
 
 @reporter        Reported a bug.       “thanks to @USERNAME bug report.”
 @reporter        Reported an issue.    “thanks to @USERNAME issue report.”
@@ -185,7 +142,7 @@ https://phpstan.org/blog/generics-in-php-using-phpdocs
 @template
 
 
-▲ Tags supported in Atom TextMate found in VSCode 1.47.3:
+▲ Tags supported in Atom TextMate found in VS Code 1.47.3:
 /usr/share/code/resources/app/extensions/php/syntaxes/php.tmLanguage.json
 Note the 4 tags appended to the list, hence initially missing.
 
@@ -240,7 +197,7 @@ MISSING TAGS:
 @template
 
 
-▲ up-to-date list (standard/WP/PHPStan, custom) as per 2021-02-08T0335+0100:
+▲ up-to-date list (standard/WP/PHPStan, custom):
 
 @api
 @abstract
@@ -301,7 +258,7 @@ MISSING TAGS:
 @user
 
 
-▲ Config (original, missing and added tags):
+▲ Config (original, missing and added tags), example of VS Code
 /usr/share/code/resources/app/extensions/php/syntaxes/php.tmLanguage.json
 
 original:

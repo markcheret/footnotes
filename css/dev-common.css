@@ -1,18 +1,59 @@
+/*<?php for docblocks
 /**
  * Created by Stefan Herndler.
  * User: Stefan
  * Created-Date: 15.05.14
  * Created-Time: 16:21
  * Since: 1.0
- */
-/*<?php for docblocks
-/**
- * @version 2.5.4
- * @lastmodified 2021-02-13T0004+0100
+ * 
+ * @version 2.5.5
+ * @lastmodified 2021-02-16T0159+0100
  *
  *     Classes recommended for Custom CSS:
  *     @see templates/dashboard/customize-css-new.html
  *
+ * System of unified minified style sheets tailored to the needs of the instance.
+ * 
+ * - Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
+ * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
+ *
+ * @since 2.5.5
+ * @date 2021-02-14T1543+0100
+ *
+ * @contributor @docteurfitness
+ * @link https://wordpress.org/support/topic/simply-speed-optimisation/
+ *
+ * @reporter @docteurfitness
+ * @link https://wordpress.org/support/topic/simply-speed-optimisation/
+ *
+ * Six development stylesheets are concatenated to 12 unified stylesheets.
+ * @see development/csscat.sh
+ * Once these are minified, the temporary files are deleted, to streamline 
+ * the plugin’s codebase shipped in production.
+ * The stylesheet file names consist of "footnotes-" and a code showing 
+ * which one of the 5 additional stlesheets enter into its composition:
+ * 
+ * The first part of the code contains 4 letters showing whether tooltips
+ * are enabled, and if so, which implementation: jQuery or alternative:
+ *  nott  ➜ no tooltips           ➜ -
+ *  jqtt  ➜ jQuery tooltips       ➜ dev-tooltips.css
+ *  altt  ➜ alternative tooltips  ➜ dev-tooltips.css & dev-tooltips-alternative.css
+ * 
+ * The second part of the code consists of the 4 letters "brpl", for 
+ * Basic Responsive Page Layout, followed by a digit showing if a fix 
+ * is applied, and if so, which one:
+ *  0  ➜ -
+ *  1  ➜ dev-layout-reference-container.css  ➜ (only)
+ *  2  ➜ dev-layout-entry-content.css        ➜ article without the title
+ *  3  ➜ dev-layout-main-content.css         ➜ the article with its title
+ * 
+ * So you can easily determine which ones of the formatted stylesheets are
+ * relevant to your Footnotes installation under the current preferences.
+ * 
+ * The dashboard stylesheet is minified as-is.
+ * @see class/dashboard/layout.php
+ * 
+ * @since 2.0.0  various.
  * @since 2.0.0  Referrers: vertical align: lower from top: 0.4em to top: 0.6em
  * @since 2.0.0  Tooltips: Font size: set to inherit instead of 13px
  * @since 2.0.0  Tooltips: Continue button: apply distinctive font color and font style
@@ -26,35 +67,6 @@
  * @since 2.4.0  validation error warning box
  * @since 2.5.0  validation error warning box more paragraphs
  */
-
-
-/**
- * MCI Footnotes logo
- *
- * The classes with 'heading' fix display in dashboard,
- * where since WordPress 5.5 settings box labels with
- * spans are displayed as justified not last line.
- *
- * @see class/config.php
- * @see css/settings.css
- */
-
-.footnotes_logo,
-.footnotes_logo:hover,
-.footnotes_logo_heading {
-    text-decoration: none;
-    font-weight: normal;
-}
-
-.footnotes_logo_part1,
-.footnotes_logo_part1_heading {
-    color: #2bb975;
-}
-
-.footnotes_logo_part2,
-.footnotes_logo_part2_heading {
-    color: #545f5a;
-}
 
 /**
  * Validation error warning displayed below post title
@@ -319,7 +331,7 @@ templates/public/reference-container-switch.html
 templates/public/reference-container-3column.html
 
 Optional responsive basic page layout support
-style sheets:
+stylesheets:
 css/layout-reference-container.css
 css/layout-main-content.css
 css/layout-page-content.css
@@ -546,4 +558,34 @@ Link color set to inherit, so referrers/numbers are not grayed out.
     div.post-meta-edit-link-wrapper {
         display: none;
     }
+}
+
+/**
+ * MCI Footnotes logo
+ *
+ * The classes with 'heading' fixing display in dashboard
+ * have all their rules moved to settings.css so as to alleviate
+ * the common stylesheet. Still these rules are only used if the
+ * Footnotes ad link logo is present in the page footer per user
+ * dashboard setting. Making these rules conditional like those 
+ * pertaining to tooltips, either jQuery or alternative, would 
+ * double the number of united minified stylesheets shipped with
+ * the plugin. Hence these are present by default at the bottom.
+ *
+ * @see class/config.php
+ * @see css/settings.css
+ */
+
+.footnotes_logo,
+.footnotes_logo:hover {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.footnotes_logo_part1 {
+    color: #2bb975;
+}
+
+.footnotes_logo_part2 {
+    color: #545f5a;
 }

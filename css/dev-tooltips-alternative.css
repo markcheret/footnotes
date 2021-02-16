@@ -1,0 +1,63 @@
+/*<?php for docblocks
+/**
+ * Additional stylesheet for alternative tooltips.
+ * 
+ * @since 2.5.5
+ * @version 2.5.5
+ * @lastmodified 2021-02-16T0206+0100
+ *
+ * System of unified minified style sheets tailored to the instance.
+ * 
+ * @see full header in dev-common.css.
+ */
+
+
+/**
+ * Alternative tooltips
+ * 
+ * These default position values may be overridden by internal CSS.
+ */
+
+.footnote_referrer.relative {
+    position: relative;
+}
+
+.footnote_tooltip.position {
+    display: unset;
+    position: absolute;
+    bottom: 24px;
+    left: -50px;
+    width: 400px;
+}
+
+/*
+fade-in parameters
+*/
+
+.footnote_tooltip.shown {
+    visibility: visible;
+    opacity: 1;
+    transition-property: visibility opacity;
+    transition-timing-function: linear;
+/*
+property values of settings are inline CSS
+    transition-delay: 0ms;
+    transition-duration: 200ms;
+*/
+}
+
+/*
+fade-out parameters
+*/
+
+.footnote_tooltip.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition-property: visibility opacity;
+    transition-timing-function: linear;
+/*
+property values of settings are inline CSS
+    transition-delay: 400ms;
+    transition-duration: 200ms;
+*/
+}

@@ -1,0 +1,47 @@
+customized-template-stack.txt
+@date 2020-12-19T0609+0100
+@lastmodified 2021-02-15T2027+0100
+
+
+Plugin Footnotes for WordPress, v2.5.3 and later
+
+
+A.  Customized template parts
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+@since 2.2.6  Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
+@since 2.5.0  Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
+
+
+Priority order:
+    1. active theme
+    2. sibling folder
+    3. internal
+
+See footnotes/class/template.php:67..116
+
+
+1. Active theme
+   ‾‾‾‾‾‾‾‾‾‾‾‾
+Please create a folder 'templates/footnotes/' in your child theme and
+store all your public custom templates for Footnotes directly therein.
+
+Existing homonymous templates are loaded instead of their counterparts in
+wp-content/plugins/footnotes/templates/public/.
+
+
+2. Sibling folder
+   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Please make a sibling of the "footnotes" folder called 'footnotes-custom' and
+the same internal structure and file names as 'footnotes/templates/public/'.
+
+Example for custom tooltips:
+
+footnotes-custom
+└── templates
+    └── public
+        ├── footnote.html
+        └── tooltip.html
+
+Note: The timing parameters in the inline jQuery script 'tooltip.html' are already
+configurable in the dashboard > Referrers and tooltips > Tooltip timing.

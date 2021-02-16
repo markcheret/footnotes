@@ -79,6 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.5.5d0 =
+- Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
+- Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
+- Bugfix: Libraries: optimize processes by loading external and internal scripts only if needed, thanks to @docteurfitness issue report.
+
 = 2.5.4 =
 - Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
 - Bugfix: Tooltips: fix jQuery positioning bug moving tooltips out of view and affecting (TablePress tables in) some themes, thanks to @wisenilesh bug report.
@@ -87,7 +92,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Dashboard: Tooltip dimensions: move from 'Tooltip position' to a dedicated metabox, thanks to @codldmac issue report.
 - Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report.
 - Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
-- Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @@theroninjedi47 bug report.
+- Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
 - Update: Tooltips: Excerpt delimiter: add configuration settings in the dashboard.
 - Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
 - Bugfix: Editor button: Classic Editor text mode: correct label to singular.
@@ -137,7 +142,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Referrers and tooltips: correct scope of the line height fix to only affect the referrers, not the tooltip content.
 - Bugfix: Referrers: extend clickable area to the full line height in sync with current pointer shape.
 - Bugfix: Referrers: extend scope of the underline inhibition to be more comprehensive and consistent.
-- Bugfix: Reference container: Basic responsive page layout: edits to one of the optional style sheets.
+- Bugfix: Reference container: Basic responsive page layout: edits to one of the optional stylesheets.
 
 = 2.2.10 =
 - Bugfix: Reference container: add option for table borders to restore pre-2.0.0 design, thanks to @noobishh issue report.
@@ -161,7 +166,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
 
 = 2.2.5 =
-- Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio code contribution.
+- Bugfix: Dashboard: Footnotes numbering: add missing support for Ibid. notation to suggestions, thanks to @meglio design contribution.
 - Bugfix: Reference container: Label: make bottom border an option, thanks to @markhillyer issue report.
 - Bugfix: Reference container: Label: option to select paragraph or heading element, thanks to @markhillyer issue report.
 - Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report.
@@ -179,7 +184,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.2.2 =
 - Bugfix: Dashboard: Link element setting only under General settings > Reference container.
 - Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
-- Bugfix: Reference container: edits to optional basic responsive page layout style sheets.
+- Bugfix: Reference container: edits to optional basic responsive page layout stylesheets.
 
 = 2.2.1 =
 - Bugfix: Dashboard: duplicate moved settings under their legacy tab to account for data structure.
@@ -218,7 +223,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Scroll duration: make configurable to conform to website content and style requirements.
 - Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style.
 - Bugfix: Tooltips: Styling: fix font size issue by adding font size to settings with legacy as default.
-- Bugfix: Reference container: fix layout by optionally enqueuing additional style sheet (depends on theme).
+- Bugfix: Reference container: fix layout by optionally enqueuing additional stylesheet (depends on theme).
 - Bugfix: Reference container: fix layout issues by moving backlink column width to settings.
 - Bugfix: Reference container: make separating and terminating punctuation optional and configurable, thanks to @docteurfitness issue report and code contribution.
 - Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks.
@@ -247,7 +252,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: fix width in mobile view by URL wrapping for Unicode-non-conformant browsers, thanks to @karolszakiel bug report.
 - Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on.
 - Bugfix: Styling: raise Custom CSS priority to override settings.
-- Bugfix: Styling: Tooltips: raise settings priority to override theme style sheets.
+- Bugfix: Styling: Tooltips: raise settings priority to override theme stylesheets.
 
 = 2.1.2 =
 - Bugfix: Reference container: Backlinks: no underline on hover cell when combining identicals is on.
@@ -286,7 +291,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - BUGFIX: Priority level back to PHP_INT_MAX (need to get in touch with other plugins).
 
 = 2.0.7 =
-- BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @@markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
+- BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
 - Update: Set priority level back to 10 assuming it is unproblematic.
 - Update: Added backwards compatible support for legacy arrow and index placeholders in template.
 - Update: Settings defaults adjusted for better and more up-to-date tooltip layout.
@@ -311,7 +316,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: unset width of text column to fix site issues.
 - Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
 - Bugfix: Tooltips: Restore cursor shape 'pointer' over Read-on button after hard link removal.
-- Bugfix: Settings style sheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4).
+- Bugfix: Settings stylesheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4).
 
 = 2.0.4 =
 - Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
@@ -327,7 +332,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: Self-adjusting width of ID column but hidden overflow.
 - Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to  bug report.
 - Bugfix: Fragment IDs: Prepended post ID to footnote number.
-- Bugfix: External style sheets cache busting: add plugin version number argument in enqueuing function call.
+- Bugfix: External stylesheets cache busting: add plugin version number argument in enqueuing function call.
 - Bugfix: Print style: prevent a page break just after the reference container label.
 - Bugfix: Print style: Hide reference collapse button.
 - Update: Reference container: Headline: remove padding before reference container label.

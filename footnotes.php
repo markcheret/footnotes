@@ -4,7 +4,7 @@
     Plugin URI: https://wordpress.org/plugins/footnotes/
     Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
     Author: Mark Cheret
-    Version: 2.5.4
+    Version: 2.5.5d0
     Author URI: http://cheret.de/plugins/footnotes-2/
     Text Domain: footnotes
     Domain Path: /languages
@@ -13,15 +13,15 @@
  *  Copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
 /**
- * Version number for style sheet cache busting.
+ * Version number for stylesheet cache busting.
  *
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-02-12T1804+0100
+ * @lastmodified 2021-02-16T0300+0100
  * @committer @pewgeuges
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.5.4' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.5.5d0' );
 
 /*
     LICENSE NOTICE
@@ -59,3 +59,17 @@ add_filter("plugin_action_links_{$l_str_plugin_file}", array("MCI_Footnotes_Hook
 $g_obj_MCI_Footnotes = new MCI_Footnotes();
 // run the Plugin
 $g_obj_MCI_Footnotes->run();
+
+/**
+ * Sets the stylesheet enqueuing mode for production.
+ * 
+ * @since 2.5.5
+ * @var bool
+ * @see class/init.php
+ * 
+ * In production, a minified CSS file tailored to the settings is enqueued.
+ * 
+ * Developing stylesheets is meant to be easier when this is set to false.
+ * WARNING: This facility is designed for development and must NOT be used in production.
+ */  
+define( 'C_BOOL_CSS_PRODUCTION_MODE', true );

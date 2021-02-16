@@ -1,3 +1,4 @@
+/*<?php for docblocks
 /**
  * Basic responsive layout for the main element
  *
@@ -11,7 +12,7 @@
  * Last modified for v2.2.2  2020-12-15T1004+0100
  * Last modified for v2.2.4  2020-12-16T0625+0100
  *
- * The enqueuing of this style sheet is optional and can be
+ * The enqueuing of this stylesheet is optional and can be
  * enabled in the Reference container settings.
 **/
 
@@ -26,7 +27,7 @@ Therefore, in pages built with Elementor, proper layout is
 applied only to features managed by Elementor, not others.
 
 Footnotes reference containers are near the bottom of main.
-This style sheet lets Footnotes’ reference containers come
+This stylesheet lets Footnotes’ reference containers come
 into the benefit of the basic responsive layout style rules
 that would apply if the page were not built with Elementor.
 

@@ -79,10 +79,12 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.5d0 =
+= 2.5.5 =
 - Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
 - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
 - Bugfix: Libraries: optimize processes by loading external and internal scripts only if needed, thanks to @docteurfitness issue report.
+- Update: Dashboard: add or edit descriptions to the tooltips and tooltip text delimiter settings and the backlink symbol configuration setting.
+- Update: Dashboard: decrease font size and padding of the descriptions.
 
 = 2.5.4 =
 - Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.

@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 10:43
  *
  *
- * @lastmodified 2021-02-16T0101+0100
+ * @lastmodified 2021-02-17T1026+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
@@ -83,11 +83,8 @@ class MCI_Footnotes_Settings {
      * @var str
      * The string is converted to Boolean false if 'no', true if 'yes'.
      * @see MCI_Footnotes_Convert::toBool()
-     * The type in the variable name is useful to hint the intended use
-     * and IMO should therefore not be changed to _STR_
-     * Else:
-     * @todo Change misleading variable names C_BOOL_… to C_STR_… (that’s how Hungarian screws things up).
-     * @todo Do not convert strings to Booleans: toBool() fixes empty, or empty() must be used everywhere.
+     * The type in the variable name is useful to show the intention.
+     * @todo Eventually change misleading variable names C_BOOL_… to C_STR_… (that’s how Hungarian screws things up).
      */
     const C_BOOL_REFERENCE_CONTAINER_COLLAPSE = "footnote_inputfield_collapse_references";
 
@@ -181,6 +178,9 @@ class MCI_Footnotes_Settings {
      *
      * @since 2.1.6  This setting removed as irrelevant since priority level settings need permanent visibility.
      * @date 2020-12-09T2107+0100
+     *
+     * Since the removal of the the_post hook, the tab is no danger zone any longer.
+     * All users, not experts only, need to be able to control relative positioning.
      */
     const C_BOOL_FOOTNOTES_EXPERT_MODE = "footnote_inputfield_enable_expert_mode";
 
@@ -190,6 +190,14 @@ class MCI_Footnotes_Settings {
      * @author Stefan Herndler
      * @since 1.5.0
      * @var str
+     *
+     * The default footnote referrer surroundings should be square brackets:
+     *
+     * - with respect to baseline footnote referrers new option;
+     * - as in English or US American typesetting;
+     * - for better UX thanks to a more button-like appearance;
+     * - for stylistic consistency with the expand-collapse button.
+     *
      */
     const C_STR_FOOTNOTES_STYLING_BEFORE = "footnote_inputfield_custom_styling_before";
 
@@ -223,6 +231,12 @@ class MCI_Footnotes_Settings {
      * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
      *
      * @var str
+     *
+     * These alternative tooltips work around a website related jQuery UI
+     * outage. They are low-script but use the AMP incompatible onmouseover
+     * and onmouseout arguments, along with CSS transitions for fade-in/out.
+     * The very small script is inserted after Footnotes’ internal stylesheet.
+     *
      */
     const C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE = "footnote_inputfield_custom_mouse_over_box_alternative";
 
@@ -678,21 +692,25 @@ class MCI_Footnotes_Settings {
      * Settings container key for shortcode syntax validation.
      *
      * @since 2.4.0
-     * @var str
+     * @date 2021-01-01T0616+0100
      *
-     * 2021-01-01T0616+0100
+     * @var str
      */
     const C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = "footnotes_inputfield_shortcode_syntax_validation_enable";
 
     /**
      * Settings container key to enable a backlink tooltip.
      *
-     * -
+     * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
      *
      * @since 2.5.4
      *
-     * @reporter
-     * @link
+     * @reporter @theroninjedi47
+     * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
+     *
+     * When hard links are enabled, clicks on the backlinks are logged in the browsing history.
+     * This tooltip hints to use the backbutton instead, so the history gets streamlined again.
+     * @link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
      *
      * @var str
      */
@@ -701,12 +719,12 @@ class MCI_Footnotes_Settings {
     /**
      * Settings container key to configure the backlink tooltip.
      *
-     * -
+     * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
      *
      * @since 2.5.4
      *
-     * @reporter
-     * @link
+     * @reporter @theroninjedi47
+     * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
      *
      * @var str
      */
@@ -715,12 +733,19 @@ class MCI_Footnotes_Settings {
     /**
      * Settings container key to configure the tooltip excerpt delimiter.
      *
-     * -
+     * - Update: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
      *
+     * The first implementation used a fixed shortcode provided in the changelog.
+     * But Footnotes’ UI design policy is to make shortcodes freely configurable.
      * @since 2.5.4
      *
-     * @reporter
-     * @link
+     * @reporter @jbj2199
+     * @link https://wordpress.org/support/topic/change-tooltip-text/
+     *
+     * Tooltips can display another content than the footnote entry
+     * in the reference container. The trigger is a shortcode in
+     * the footnote text separating the tooltip text from the note.
+     * That is consistent with what WordPress does for excerpts.
      *
      * @var str
      */
@@ -729,27 +754,21 @@ class MCI_Footnotes_Settings {
     /**
      * Settings container key to enable mirroring the tooltip excerpt in the reference container.
      *
-     * -
-     *
      * @since 2.5.4
-     *
-     * @reporter
-     * @link
-     *
      * @var str
+     *
+     * Tooltips, even jQuery-driven, may be hard to consult on mobiles.
+     * This option allows to find the tooltip content in the reference container too.
+     * @link https://wordpress.org/support/topic/change-tooltip-text/#post-13935050
+     * But this must not be the default behavior.
+     * @link https://wordpress.org/support/topic/change-tooltip-text/#post-13935488
      */
     const C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE = "footnotes_inputfield_tooltip_excerpt_mirror_enable";
 
     /**
      * Settings container key to configure the tooltip excerpt separator in the reference container.
      *
-     * -
-     *
      * @since 2.5.4
-     *
-     * @reporter
-     * @link
-     *
      * @var str
      */
     const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR = "footnotes_inputfield_tooltip_excerpt_mirror_separator";
@@ -894,9 +913,6 @@ class MCI_Footnotes_Settings {
             // excerpt should be disabled:
             self::C_BOOL_FOOTNOTES_IN_EXCERPT                         => 'no',
 
-            // since removal of the_post hook, expert mode is no danger zone
-            // not for experts only; raising awareness about relative positioning
-            // changed default to 'yes':
             self::C_BOOL_FOOTNOTES_EXPERT_MODE                        => 'yes',
 
             self::C_STR_FOOTNOTES_LOVE                                => 'no',
@@ -912,18 +928,11 @@ class MCI_Footnotes_Settings {
 
             self::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS          => 'yes',
 
-            // The default footnote referrer surroundings should be square brackets:
-            // * with respect to baseline footnote referrers new option;
-            // * as in English or US American typesetting;
-            // * for better UX thanks to a more button-like appearance;
-            // * for stylistic consistency with the expand-collapse button;
             self::C_STR_FOOTNOTES_STYLING_BEFORE                      => '[',
             self::C_STR_FOOTNOTES_STYLING_AFTER                       => ']',
 
             self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED             => 'yes',
 
-            // alternative, low-script tooltips using CSS for transitions
-            // in response to user demand for website with jQuery UI outage
             self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE         => 'no',
 
             // The mouse over content truncation should be enabled by default

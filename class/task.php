@@ -575,7 +575,7 @@ class MCI_Footnotes_Task {
      * @since 2.5.4  Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
      */
     public function wp_head() {
-		
+
         // insert start tag without switching out of PHP:
         echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
 

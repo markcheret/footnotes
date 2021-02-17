@@ -679,7 +679,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "alternative" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, $l_arr_Enabled),
                 "notice-alternative" => __("Intended to work around a configuration-related tooltip outage.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 // The placeholder is the name of the plugin as logogram “footnotes”.
-                "description-alternative" => sprintf(__("Some themes inhibit jQuery tooltips. Some may disable CSS transitions as well. Alternative tooltips are triggered by inline JavaScript and animated with CSS transitions. If this option is enabled, %s does not load any external scripts.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>'),
+                "description-alternative" => sprintf(__("These alternative tooltips work around a website related jQuery UI outage. They are low-script but use the AMP incompatible onmouseover  and onmouseout arguments, along with CSS transitions for fade-in/out. The very small script is inserted after Footnotes’ internal stylesheet. When this option is enabled, %s does not load jQuery&nbsp;UI nor jQuery&nbsp;Tools.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>'),
 
             )
         );
@@ -827,6 +827,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_obj_Template->replace(
             array(
 
+                "description-delimiter" => __("Tooltips can display another content than the footnote entry in the reference container. The trigger is a shortcode in the footnote text separating the tooltip text from the note. That is consistent with what WordPress does for excerpts.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
                 "label-delimiter" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER, __("Delimiter for dedicated tooltip text:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "delimiter" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER),
                 "notice-delimiter" => __("If the delimiter shortcode is present, the tooltip text will be the part before it.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
@@ -837,7 +839,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-separator" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR, __("Separator between tooltip text and footnote text:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "separator" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR),
-                "notice-separator" => __("May be a simple space, or a line break &lt;br /&gt;, or any string in your language.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+				"notice-separator" => __("May be a simple space, or a line break &lt;br /&gt;, or any string in your language.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+				
+                "description-mirror" => __("Tooltips, even jQuery-driven, may be hard to consult on mobiles. This option allows to find the tooltip content in the reference container too.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
 
             )
@@ -934,7 +938,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "symbol-options" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::getArrow()),
                 "symbol-custom" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED),
                 "notice-symbol" => __("Your input overrides the selection.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-                "description-symbol" => __("This setting cannot be moved into the reference container settings, because each tab is saved in a different place, so moving a setting breaks user data. Our apologies for having done so with this setting now moved back to the tab it pre-existed under.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "description-symbol" => __("This symbol is used in the reference container. But this setting pre-existed under this tab and cannot be moved to another one.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             )
         );
         // display template with replaced placeholders

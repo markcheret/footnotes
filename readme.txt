@@ -83,6 +83,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
 - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
 - Bugfix: Libraries: optimize processes by loading external and internal scripts only if needed, thanks to @docteurfitness issue report.
+- Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
 - Update: Dashboard: add or edit descriptions to the tooltips and tooltip text delimiter settings and the backlink symbol configuration setting.
 - Update: Dashboard: decrease font size and padding of the descriptions.
 

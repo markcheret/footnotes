@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 14:47
  *
  *
- * @lastmodified 2021-02-12T1705+0100
+ * @lastmodified 2021-02-17T1136+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
@@ -615,8 +615,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
         $l_arr_Enabled = array(
             "yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
-		);
-		// options for superscript normalize scope:
+        );
+        // options for superscript normalize scope:
         $l_arr_NormalizeSuperscript = array(
             "no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
             "referrers" => __("Footnote referrers", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
@@ -679,7 +679,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
                 "alternative" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, $l_arr_Enabled),
                 "notice-alternative" => __("Intended to work around a configuration-related tooltip outage.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
                 // The placeholder is the name of the plugin as logogram “footnotes”.
-                "description-alternative" => sprintf(__("These alternative tooltips work around a website related jQuery UI outage. They are low-script but use the AMP incompatible onmouseover  and onmouseout arguments, along with CSS transitions for fade-in/out. The very small script is inserted after Footnotes’ internal stylesheet. When this option is enabled, %s does not load jQuery&nbsp;UI nor jQuery&nbsp;Tools.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>'),
+                "description-alternative" => sprintf(__("These alternative tooltips work around a website related jQuery UI outage. They are low-script but use the AMP incompatible onmouseover and onmouseout arguments, along with CSS transitions for fade-in/out. The very small script is inserted after Footnotes’ internal stylesheet. When this option is enabled, %s does not load jQuery&nbsp;UI nor jQuery&nbsp;Tools.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>'),
 
             )
         );
@@ -839,9 +839,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
                 "label-separator" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR, __("Separator between tooltip text and footnote text:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
                 "separator" => $this->addTextBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR),
-				"notice-separator" => __("May be a simple space, or a line break &lt;br /&gt;, or any string in your language.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-				
-                "description-mirror" => __("Tooltips, even jQuery-driven, may be hard to consult on mobiles. This option allows to find the tooltip content in the reference container too.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+                "notice-separator" => __("May be a simple space, or a line break &lt;br /&gt;, or any string in your language.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+
+                "description-mirror" => __("Tooltips, even jQuery-driven, may be hard to consult on mobiles. This option allows to read the tooltip content in the reference container too.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
 
             )

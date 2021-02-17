@@ -7,7 +7,7 @@
  * @since 1.5.0
  *
  *
- * @lastmodified  2021-02-16T0055+0100
+ * @lastmodified  2021-02-17T1142+0100
  *
  * @since 2.0.0  Bugfix: various.
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
@@ -78,6 +78,7 @@
  * @since 2.5.4  Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
  * @since 2.5.4  Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
  * @since 2.5.4  Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
+ * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
  */
 
 // If called directly, abort:
@@ -1701,7 +1702,27 @@ class MCI_Footnotes_Task {
             }
             // add offset to the new starting position
             $l_int_PosStart += $l_int_Length + strlen($l_str_EndingTag);
-            $l_int_PosStart = $l_int_Length + strlen($l_str_FootnoteReplaceText);
+
+            /**
+             * Fixes a footnotes numbering bug (happening under de facto rare circumstances).
+             *
+             * - Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
+             *
+             * @since 2.5.5
+             *
+             * @contributor @lolzim
+             * @link https://wordpress.org/support/topic/footnotes-numbered-incorrectly/#post-14062032
+             *
+             * @reporter @rumperuu
+             * @link https://wordpress.org/support/topic/footnotes-numbered-incorrectly/
+             *
+             * This line caused the algorithm to jump back near the post start, disturbing
+             * the order of the footnotes depending on the text before the first footnote,
+             * the length of the first footnote and the length of the footnote and tooltip
+             * templates.
+             */
+            // $l_int_PosStart = $l_int_Length + strlen($l_str_FootnoteReplaceText);
+
         } while (true);
 
         // return content

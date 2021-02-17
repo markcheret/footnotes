@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 10:43
  *
  *
- * @lastmodified 2021-02-17T1026+0100
+ * @lastmodified 2021-02-17T1136+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
@@ -699,7 +699,7 @@ class MCI_Footnotes_Settings {
     const C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = "footnotes_inputfield_shortcode_syntax_validation_enable";
 
     /**
-     * Settings container key to enable a backlink tooltip.
+     * Settings container key to enable backlink tooltips.
      *
      * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
      *
@@ -708,7 +708,8 @@ class MCI_Footnotes_Settings {
      * @reporter @theroninjedi47
      * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
      *
-     * When hard links are enabled, clicks on the backlinks are logged in the browsing history.
+     * When hard links are enabled, clicks on the backlinks are logged in the browsing history,
+     * along with clicks on the referrers.
      * This tooltip hints to use the backbutton instead, so the history gets streamlined again.
      * @link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
      *
@@ -758,7 +759,7 @@ class MCI_Footnotes_Settings {
      * @var str
      *
      * Tooltips, even jQuery-driven, may be hard to consult on mobiles.
-     * This option allows to find the tooltip content in the reference container too.
+     * This option allows to read the tooltip content in the reference container too.
      * @link https://wordpress.org/support/topic/change-tooltip-text/#post-13935050
      * But this must not be the default behavior.
      * @link https://wordpress.org/support/topic/change-tooltip-text/#post-13935488

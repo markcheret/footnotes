@@ -15,28 +15,26 @@ Cheers for the review, folks!
 
 https://www.youtube.com/watch?v=HzHaMAAJwbI
 
-**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of sane defaults but also gives the user control over how their footnotes are being displayed.
-**footnotes** gives you the ability to display decently-formated footnotes on your WordPress Pages or Posts (those footnotes we know from offline publishing).
+**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of current defaults but also empowers you to control how your footnotes are being displayed.
+**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts—those footnotes we know from offline publishing.
 
 = Main Features =
-- Fully customizable **footnotes** shortcode
-- Decide, where your **footnotes** are displayed (position of the *Reference Container*)
-- Add custom CSS to style the appeareance of the **footnotes**
-- Responsive *Reference Container*
-- Mouse-Over Box with clickable links displays your **footnotes** text
-- Automatic numbering of your **footnotes**
-- Choose from a list of symbols to represent your **footnotes**
-- Display the **footnotes** *Reference Container* inside a Widget
-- Button in both the Visual and the Text editor
-  - Add **footnotes** into your Page / Post with ease of use by selecting your text and clicking the button
+- Fully customizable **footnotes** start and end shortcodes;
+- Styled tooltips supporting hyperlinks display **footnotes** or a dedicated text;
+- Responsive *Reference Container* at the end or positioned by shortcode;
+- Display the **footnotes** *Reference Container* inside a Widget;
+- Wide choice of numbering styles;
+- Freely configurable and optional backlink symbol;
+- Configure the **footnotes’** appearance by dashboard settings and Custom CSS style rules;
+- Button in both the Visual and the Text editor to add shortcodes around selection.
 
 = Example Usage =
-This is an example. Please note, that you can customize the shortcode you want to use.
+These are a few examples of possible ways to delimit footnotes:
 
 1. Your awesome text((with an awesome footnote))
 2. Your awesome text[ref]with an awesome footnote[/ref]
 3. Your awesome text`<fn>`with an awesome footnote`</fn>`
-4. Your awesome text `custom-shortcode` with an awesome footnote `custom-shortcode`
+4. Your awesome text`custom-shortcode`with an awesome footnote`custom-shortcode`
 
 = Where to get footnotes? =
 The current version is available on the [WordPress.org plugins platform, Footnotes](https://wordpress.org/plugins/footnotes/).
@@ -44,7 +42,7 @@ The current version is available on the [WordPress.org plugins platform, Footnot
 = Support =
 Please report feature requests, bugs and other support related questions in the [Footnotes section of WordPress Support Forum](https://wordpress.org/support/plugin/footnotes).
 
-Speak your mind, unload your burdens. Notice how we screwed up big time? Bring it to our attention in the above-mentioned [WordPress Forum](https://wordpress.org/support/plugin/footnotes).
+Speak your mind, unload your burden, bring it up, and feel free to [post your rating and review!](https://wordpress.org/support/plugin/footnotes/reviews/).
 
 = Development =
 Development of the plugin is an open process. Latest code is available in the [plugin part of WordPress SVN repository, footnotes/](https://plugins.svn.wordpress.org/footnotes/).
@@ -373,11 +371,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 1.6.5 =
 - Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
 - Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
-- Update: The CSS had been modified in order to show the tooltip numbers a little less higher than text
-- Bugfix: Fixed error on demo in backend
+- Update: The CSS has been modified in order to show the tooltip numbers a little less higher than text
+- Bugfix: Dashboard: fix error on demo under the Preview tab.
 
 = 1.6.4 =
-- Bugfix: The deprecated WP_Widget elements have been replaced
+- Update: replace deprecated function WP_Widget() with recommended __construct(), thanks to @dartiss code contribution.
 - Bugfix: Fixed occasional bug where footnote ordering could be out of sequence
 
 = 1.6.3 =

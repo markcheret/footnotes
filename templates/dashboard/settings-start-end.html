@@ -1,63 +1,63 @@
 <div class="footnotes_description">
-    <p>[[description-escapement]]</p>
+	<p>[[description-escapement]]</p>
 </div>
 <table class="settings_start_end widefat fixed">
-    <tbody>
-        <tr>
-            <td>[[label-short-code-start]]</td>
-            <td>
-                <span>[[short-code-start]]</span>
-                <span>[[short-code-start-user]]</span>
-            </td>
-        </tr>
-        <tr>
-            <td>[[label-short-code-end]]</td>
-            <td>
-                <span>[[short-code-end]]</span>
-                <span>[[short-code-end-user]]</span>
-            </td>
-        </tr>
-    </tbody>
+	<tbody>
+		<tr>
+			<td>[[label-short-code-start]]</td>
+			<td>
+				<span>[[short-code-start]]</span>
+				<span>[[short-code-start-user]]</span>
+			</td>
+		</tr>
+		<tr>
+			<td>[[label-short-code-end]]</td>
+			<td>
+				<span>[[short-code-end]]</span>
+				<span>[[short-code-end-user]]</span>
+			</td>
+		</tr>
+	</tbody>
 </table>
 <div class="footnotes_description">
-    <p>[[description-parentheses]]</p>
+	<p>[[description-parentheses]]</p>
 </div>
 <table class="settings_start_end widefat fixed">
-    <tbody>
-        <tr>
-            <td>[[label-syntax]]</td>
-            <td>[[syntax]] <span class="footnotes_notice">[[notice-syntax]]</span></td>
-        </tr>
-    </tbody>
+	<tbody>
+		<tr>
+			<td>[[label-syntax]]</td>
+			<td>[[syntax]] <span class="footnotes_notice">[[notice-syntax]]</span></td>
+		</tr>
+	</tbody>
 </table>
 <div class="footnotes_description">
-    <p>[[description-syntax]]</p>
+	<p>[[description-syntax]]</p>
 </div>
 <script type="text/javascript">
-    var l_obj_ShortCodeStart = jQuery("#[[short-code-start-id]]");
-    var l_obj_ShortCodeEnd = jQuery("#[[short-code-end-id]]");
-    var l_obj_ShortCodeStartUserDefined = jQuery("#[[short-code-start-user-id]]");
-    var l_obj_ShortCodeEndUserDefined = jQuery("#[[short-code-end-user-id]]");
+	var l_obj_ShortCodeStart = jQuery("#[[short-code-start-id]]");
+	var l_obj_ShortCodeEnd = jQuery("#[[short-code-end-id]]");
+	var l_obj_ShortCodeStartUserDefined = jQuery("#[[short-code-start-user-id]]");
+	var l_obj_ShortCodeEndUserDefined = jQuery("#[[short-code-end-user-id]]");
 
-    function footnotes_Display_UserDefined_Placeholders() {
-        if (l_obj_ShortCodeStart.val() == "userdefined") {
-            l_obj_ShortCodeStartUserDefined.parent().show();
-            l_obj_ShortCodeEndUserDefined.parent().show();
-        } else {
-            l_obj_ShortCodeStartUserDefined.parent().hide();
-            l_obj_ShortCodeEndUserDefined.parent().hide();
-        }
-    }
-    footnotes_Display_UserDefined_Placeholders();
+	function footnotes_Display_UserDefined_Placeholders() {
+		if (l_obj_ShortCodeStart.val() == "userdefined") {
+			l_obj_ShortCodeStartUserDefined.parent().show();
+			l_obj_ShortCodeEndUserDefined.parent().show();
+		} else {
+			l_obj_ShortCodeStartUserDefined.parent().hide();
+			l_obj_ShortCodeEndUserDefined.parent().hide();
+		}
+	}
+	footnotes_Display_UserDefined_Placeholders();
 
-    l_obj_ShortCodeStart.on('change', function() {
-        var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
-        jQuery('#[[short-code-end-id]] option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
-        footnotes_Display_UserDefined_Placeholders();
-    });
-    l_obj_ShortCodeEnd.on('change', function() {
-        var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
-        jQuery('#[[short-code-start-id]] option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
-        footnotes_Display_UserDefined_Placeholders();
-    });
+	l_obj_ShortCodeStart.on('change', function() {
+		var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
+		jQuery('#[[short-code-end-id]] option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
+		footnotes_Display_UserDefined_Placeholders();
+	});
+	l_obj_ShortCodeEnd.on('change', function() {
+		var l_int_SelectedIndex = jQuery(this).prop("selectedIndex");
+		jQuery('#[[short-code-start-id]] option:eq(' + l_int_SelectedIndex + ')').prop('selected', true);
+		footnotes_Display_UserDefined_Placeholders();
+	});
 </script>

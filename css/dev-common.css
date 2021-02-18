@@ -7,7 +7,7 @@
  * Since: 1.0
  * 
  * @version 2.5.5
- * @lastmodified 2021-02-16T0651+0100
+ * @lastmodified 2021-02-18T2026+0100
  *
  *     Classes recommended for Custom CSS:
  *     @see templates/dashboard/customize-css-new.html
@@ -82,31 +82,31 @@
  */
 
 .footnotes_validation_error {
-    border: 4px solid red;
-    padding: 20px 40px;
-    margin: 20px 0;
-    background: #ff000055;
-    text-align: start;
+	border: 4px solid red;
+	padding: 20px 40px;
+	margin: 20px 0;
+	background: #ff000055;
+	text-align: start;
 }
 
 .footnotes_validation_error p:first-child {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
 }
 
 .footnotes_validation_error p:nth-child(2) {
-    font-size: 16px;
-    font-style: italic;
+	font-size: 16px;
+	font-style: italic;
 }
 
 .footnotes_validation_error p:nth-child(3) {
-    font-size: 14px;
-    font-weight: bold;
+	font-size: 14px;
+	font-weight: bold;
 }
 
 .footnotes_validation_error p:last-child {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 /**
@@ -145,9 +145,9 @@
  */
 
 .footnote_url_wrap {
-    word-wrap: anywhere;
-    overflow-wrap: anywhere;
-    word-break: break-all;
+	word-wrap: anywhere;
+	overflow-wrap: anywhere;
+	word-break: break-all;
 }
 
 /**
@@ -168,12 +168,12 @@
 
 .footnote_item_base,
 .footnote_referrer_base {
-    position: absolute;
+	position: absolute;
 }
 
 .footnote_item_anchor,
 .footnote_referrer_anchor {
-    position: relative;
+	position: relative;
 }
 
 /**
@@ -203,9 +203,9 @@
 .main-content .footnote_referrer > a:hover,
 .main-content .footnote_plugin_tooltip_text,
 .main-content .footnote_plugin_tooltip_text:hover {
-    text-decoration: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
+	text-decoration: none !important;
+	border-bottom: none !important;
+	box-shadow: none !important;
 }
 
 /**
@@ -226,8 +226,8 @@
 
 .footnote_plugin_tooltip_text {
 	line-height: 0;
-    position: relative !important;
-    cursor: pointer;
+	position: relative !important;
+	cursor: pointer;
 }
 
 /**
@@ -241,14 +241,14 @@
  */
 
 .footnote_tooltip {
-    display: none;
-    z-index: 2147483647 !important;
-    cursor: auto;
-    text-align: left;
-    padding: 12px;
-    line-height: 1.2;
-    font-weight: normal;
-    font-style: normal;
+	display: none;
+	z-index: 2147483647 !important;
+	cursor: auto;
+	text-align: left;
+	padding: 12px;
+	line-height: 1.2;
+	font-weight: normal;
+	font-style: normal;
 }
 
 /**
@@ -258,15 +258,15 @@
  */
 
 .footnote_referrer.relative {
-    position: relative;
+	position: relative;
 }
 
 .footnote_tooltip.position {
-    display: unset;
-    position: absolute;
-    bottom: 24px;
-    left: -50px;
-    width: 400px;
+	display: unset;
+	position: absolute;
+	bottom: 24px;
+	left: -50px;
+	width: 400px;
 }
 
 /*
@@ -274,14 +274,14 @@ fade-in parameters
 */
 
 .footnote_tooltip.shown {
-    visibility: visible;
-    opacity: 1;
-    transition-property: visibility opacity;
-    transition-timing-function: linear;
+	visibility: visible;
+	opacity: 1;
+	transition-property: visibility opacity;
+	transition-timing-function: linear;
 /*
 property values of settings are inline CSS
-    transition-delay: 0ms;
-    transition-duration: 200ms;
+	transition-delay: 0ms;
+	transition-duration: 200ms;
 */
 }
 
@@ -290,14 +290,14 @@ fade-out parameters
 */
 
 .footnote_tooltip.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition-property: visibility opacity;
-    transition-timing-function: linear;
+	visibility: hidden;
+	opacity: 0;
+	transition-property: visibility opacity;
+	transition-timing-function: linear;
 /*
 property values of settings are inline CSS
-    transition-delay: 400ms;
-    transition-duration: 200ms;
+	transition-delay: 400ms;
+	transition-duration: 200ms;
 */
 }
 
@@ -306,16 +306,16 @@ Read-on button
 */
 
 .footnote_tooltip_continue {
-    font-style: italic;
-    color: green;
-    text-decoration: none !important;
-    cursor: pointer;
-    white-space: nowrap;
+	font-style: italic;
+	color: green;
+	text-decoration: none !important;
+	cursor: pointer;
+	white-space: nowrap;
 }
 
 .footnote_tooltip_continue:hover {
-    color: blue;
-    text-decoration: underline !important;
+	color: blue;
+	text-decoration: underline !important;
 }
 
 
@@ -354,9 +354,9 @@ Classes:
 */
 
 .footnotes_reference_container {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /*
@@ -364,29 +364,29 @@ label
 */
 
 .footnote_container_prepare {
-    display: block !important;
-    padding-top: 24px !important;
+	display: block !important;
+	padding-top: 24px !important;
 }
 
 .footnote_container_prepare > p {
-    line-height: 1.3 !important;
-    margin-top: 1em !important;
-    margin-bottom: 0.25em !important;
-    padding: 0 !important;
-    font-weight: normal !important;
-    /* bottom border optional since 2.2.5 */
-    display: block !important;
-    -webkit-margin-before: 0.83em !important;
-    -webkit-margin-after: 0.83em !important;
-    -webkit-margin-start: 0px !important;
-    -webkit-margin-end: 0px !important;
-    text-align: left !important;
-    vertical-align: middle;
+	line-height: 1.3 !important;
+	margin-top: 1em !important;
+	margin-bottom: 0.25em !important;
+	padding: 0 !important;
+	font-weight: normal !important;
+	/* bottom border optional since 2.2.5 */
+	display: block !important;
+	-webkit-margin-before: 0.83em !important;
+	-webkit-margin-after: 0.83em !important;
+	-webkit-margin-start: 0px !important;
+	-webkit-margin-end: 0px !important;
+	text-align: left !important;
+	vertical-align: middle;
 }
 
 .footnote_container_prepare > p > span:first-child {
-    text-align: left !important;
-    font-size: 1.5em !important;
+	text-align: left !important;
+	font-size: 1.5em !important;
 }
 
 /*
@@ -395,11 +395,11 @@ fully clickable, not sign only
 */
 
 .footnote_reference_container_collapse_button {
-    cursor: pointer;
-    padding: 0 0.5em;
-    font-size: 1.3em !important;
-    vertical-align: 2px;
-    text-decoration: none !important;
+	cursor: pointer;
+	padding: 0 0.5em;
+	font-size: 1.3em !important;
+	vertical-align: 2px;
+	text-decoration: none !important;
 }
 
 h2 > .footnote_reference_container_collapse_button,
@@ -407,12 +407,12 @@ h3 > .footnote_reference_container_collapse_button,
 h4 > .footnote_reference_container_collapse_button,
 h5 > .footnote_reference_container_collapse_button,
 h6 > .footnote_reference_container_collapse_button {
-    font-size: inherit !important;
+	font-size: inherit !important;
 }
 
 .footnote_container_prepare > p > span:last-child a,
 .footnote_reference_container_collapse_button a {
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 /*
@@ -421,8 +421,8 @@ table
 
 .footnote-reference-container,
 .footnotes_table {
-    width: 100%;
-    border: none;
+	width: 100%;
+	border: none;
 }
 
 /*
@@ -438,10 +438,10 @@ footnotes
 .footnote_plugin_index_combi,
 .footnote_plugin_symbol,
 .footnote_plugin_text {
-    border: none !important;
-    text-align: left !important;
-    vertical-align: top !important;
-    padding: 5px 6px 10px 0 !important;
+	border: none !important;
+	text-align: left !important;
+	vertical-align: top !important;
+	padding: 5px 6px 10px 0 !important;
 }
 
 .footnote_backlink,
@@ -452,19 +452,19 @@ footnotes
 .main-content .footnote_backlink:link,
 .main-content .footnote_plugin_link,
 .main-content .footnote_plugin_link:link {
-    text-decoration: none !important;
-    border-bottom: none !important;
+	text-decoration: none !important;
+	border-bottom: none !important;
 }
 
 .footnote_backlink,
 .footnote_plugin_link {
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 .pointer,
 .footnote_index,
 .footnote_backlink {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 /*
@@ -479,12 +479,12 @@ when hovered in some themes, not in others:
 .footnote_backlink:hover,
 .footnote_plugin_link:hover,
 .footnote_plugin_text a:hover {
-    text-decoration: unset;
-    text-decoration: underline; /*deprioritized to ease customization*/
+	text-decoration: unset;
+	text-decoration: underline; /*deprioritized to ease customization*/
 }
 
 .footnote_plugin_text {
-    width: unset;        /*unset width of text column to fix site issues*/
+	width: unset;        /*unset width of text column to fix site issues*/
 }
 
 /*
@@ -499,8 +499,8 @@ These are overridden if settings are enabled.
 
 .footnote_plugin_index,
 .footnote_plugin_index_combi {
-    max-width: 100px;
-    width: 2.5em;
+	max-width: 100px;
+	width: 2.5em;
 }
 
 /*
@@ -509,10 +509,10 @@ Responsive
 
 @media only screen and (max-width: 768px) {
 
-    .footnote_plugin_index,
-    .footnote_plugin_index_combi {
-        max-width: 80px;
-    }
+	.footnote_plugin_index,
+	.footnote_plugin_index_combi {
+		max-width: 80px;
+	}
 }
 
 
@@ -532,31 +532,31 @@ Link color set to inherit, so referrers/numbers are not grayed out.
  */
 
 .footnotes_reference_container {
-    page-break-inside: avoid;
+	page-break-inside: avoid;
 }
 
 @media print {
 
-    .footnote_tooltip,
-    .footnote_reference_container_collapse_button,
-    .footnote_index_arrow {
-        display: none;
-    }
+	.footnote_tooltip,
+	.footnote_reference_container_collapse_button,
+	.footnote_index_arrow {
+		display: none;
+	}
 
-    .footnote_plugin_tooltip_text {
-        color: inherit;
-    }
+	.footnote_plugin_tooltip_text {
+		color: inherit;
+	}
 
-    .footnote_plugin_index a,
-    .footnote_plugin_index_combi a {
-        color: inherit;
-        text-decoration: none !important;
-    }
+	.footnote_plugin_index a,
+	.footnote_plugin_index_combi a {
+		color: inherit;
+		text-decoration: none !important;
+	}
 
-    /* Edit button in WP2020 (added as a service) */
-    div.post-meta-edit-link-wrapper {
-        display: none;
-    }
+	/* Edit button in WP2020 (added as a service) */
+	div.post-meta-edit-link-wrapper {
+		display: none;
+	}
 }
 
 /**
@@ -577,14 +577,14 @@ Link color set to inherit, so referrers/numbers are not grayed out.
 
 .footnotes_logo,
 .footnotes_logo:hover {
-    text-decoration: none;
-    font-weight: normal;
+	text-decoration: none;
+	font-weight: normal;
 }
 
 .footnotes_logo_part1 {
-    color: #2bb975;
+	color: #2bb975;
 }
 
 .footnotes_logo_part2 {
-    color: #545f5a;
+	color: #545f5a;
 }

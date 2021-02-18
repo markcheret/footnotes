@@ -26,7 +26,7 @@ Rationale
 In Hello Elementor Theme, this applies to .site-header, and
 also to .site-main, which is a class of the <main> element,
 at the condition that the page is not built with Elementor:
-        body:not([class*="elementor-page-"])
+		body:not([class*="elementor-page-"])
 Therefore, in pages built with Elementor, proper layout is
 applied only to features managed by Elementor, not others.
 
@@ -47,55 +47,55 @@ Sources:
 .entry-content,
 .entry .entry-content,
 main .entry .entry-content {
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 @media (max-width: 575px) {
 
-    .page-content,
-    .entry-content,
-    .entry .entry-content,
-    main .entry .entry-content {
-        padding: 0 10px;
-    }
+	.page-content,
+	.entry-content,
+	.entry .entry-content,
+	main .entry .entry-content {
+		padding: 0 10px;
+	}
 }
 
 @media (min-width: 576px) {
 
-    .page-content,
-    .entry-content,
-    .entry .entry-content,
-    main .entry .entry-content {
-        max-width: 500px;
-    }
+	.page-content,
+	.entry-content,
+	.entry .entry-content,
+	main .entry .entry-content {
+		max-width: 500px;
+	}
 }
 
 @media (min-width: 768px) {
 
-    .page-content,
-    .entry-content,
-    .entry .entry-content,
-    main .entry .entry-content {
-        max-width: 600px;
-    }
+	.page-content,
+	.entry-content,
+	.entry .entry-content,
+	main .entry .entry-content {
+		max-width: 600px;
+	}
 }
 
 @media (min-width: 992px) {
 
-    .page-content,
-    .entry-content,
-    .entry .entry-content,
-    main .entry .entry-content {
-        max-width: 800px;
-    }
+	.page-content,
+	.entry-content,
+	.entry .entry-content,
+	main .entry .entry-content {
+		max-width: 800px;
+	}
 }
 
 @media (min-width: 1200px) {
 
-    .page-content,
-    .entry-content,
-    .entry .entry-content,
-    main .entry .entry-content {
-        max-width: 960px;
-    }
+	.page-content,
+	.entry-content,
+	.entry .entry-content,
+	main .entry .entry-content {
+		max-width: 960px;
+	}
 }

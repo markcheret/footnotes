@@ -11,7 +11,7 @@
  * It doesn’t matter if the tooltips are jQuery based or alternative.
  * @since 2.5.5
  * @version 2.5.5
- * @lastmodified 2021-02-16T0206+0100
+ * @lastmodified 2021-02-18T2030+0100
  *
  * System of unified minified style sheets tailored to the instance.
  * 
@@ -30,14 +30,14 @@
  */
 
 .footnote_tooltip {
-    display: none;
-    z-index: 2147483647 !important;
-    cursor: auto;
-    text-align: left;
-    padding: 12px;
-    line-height: 1.2;
-    font-weight: normal;
-    font-style: normal;
+	display: none;
+	z-index: 2147483647 !important;
+	cursor: auto;
+	text-align: left;
+	padding: 12px;
+	line-height: 1.2;
+	font-weight: normal;
+	font-style: normal;
 }
 
 /*
@@ -45,14 +45,14 @@ Read-on button
 */
 
 .footnote_tooltip_continue {
-    font-style: italic;
-    color: green;
-    text-decoration: none !important;
-    cursor: pointer;
-    white-space: nowrap;
+	font-style: italic;
+	color: green;
+	text-decoration: none !important;
+	cursor: pointer;
+	white-space: nowrap;
 }
 
 .footnote_tooltip_continue:hover {
-    color: blue;
-    text-decoration: underline !important;
+	color: blue;
+	text-decoration: underline !important;
 }

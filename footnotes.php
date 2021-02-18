@@ -1,13 +1,13 @@
 <?php
 /*
-    Plugin Name: footnotes
-    Plugin URI: https://wordpress.org/plugins/footnotes/
-    Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
-    Author: Mark Cheret
-    Version: 2.5.6d0
-    Author URI: http://cheret.de/plugins/footnotes-2/
-    Text Domain: footnotes
-    Domain Path: /languages
+	Plugin Name: footnotes
+	Plugin URI: https://wordpress.org/plugins/footnotes/
+	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
+	Author: Mark Cheret
+	Version: 2.5.6d1
+	Author URI: http://cheret.de/plugins/footnotes-2/
+	Text Domain: footnotes
+	Domain Path: /languages
 */
 /*
  *  Copyright 2021 Mark Cheret (email: mark@cheret.de)
@@ -18,26 +18,26 @@
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-02-18T1919+0100
+ * @lastmodified 2021-02-18T2048+0100
  * @committer @pewgeuges
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.5.6d0' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.5.6d1' );
 
 /*
-    LICENSE NOTICE
+	LICENSE NOTICE
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 3, as
-    published by the Free Software Foundation.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License, version 3, as
+	published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 /**

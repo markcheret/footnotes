@@ -22,7 +22,7 @@ Rationale
 In Hello Elementor Theme, this applies to .site-header, and
 also to .site-main, which is a class of the <main> element,
 at the condition that the page is not built with Elementor:
-        body:not([class*="elementor-page-"])
+		body:not([class*="elementor-page-"])
 Therefore, in pages built with Elementor, proper layout is
 applied only to features managed by Elementor, not others.
 
@@ -40,55 +40,55 @@ main,
 .main-content,
 .site-main,
 div.hentry {
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 @media (max-width: 575px) {
 
-    main,
-    .main-content,
-    .site-main,
-    div.hentry {
-        padding: 0 10px;
-    }
+	main,
+	.main-content,
+	.site-main,
+	div.hentry {
+		padding: 0 10px;
+	}
 }
 
 @media (min-width: 576px) {
 
-    main,
-    .main-content,
-    .site-main,
-    div.hentry {
-        max-width: 500px;
-    }
+	main,
+	.main-content,
+	.site-main,
+	div.hentry {
+		max-width: 500px;
+	}
 }
 
 @media (min-width: 768px) {
 
-    main,
-    .main-content,
-    .site-main,
-    div.hentry {
-        max-width: 600px;
-    }
+	main,
+	.main-content,
+	.site-main,
+	div.hentry {
+		max-width: 600px;
+	}
 }
 
 @media (min-width: 992px) {
 
-    main,
-    .main-content,
-    .site-main,
-    div.hentry {
-        max-width: 800px;
-    }
+	main,
+	.main-content,
+	.site-main,
+	div.hentry {
+		max-width: 800px;
+	}
 }
 
 @media (min-width: 1200px) {
 
-    main,
-    .main-content,
-    .site-main,
-    div.hentry {
-        max-width: 960px;
-    }
+	main,
+	.main-content,
+	.site-main,
+	div.hentry {
+		max-width: 960px;
+	}
 }

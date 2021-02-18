@@ -21,7 +21,7 @@ Rationale
 In Hello Elementor Theme, this applies to .site-header, and
 also to .site-main, which is a class of the <main> element,
 at the condition that the page is not built with Elementor:
-        body:not([class*="elementor-page-"])
+		body:not([class*="elementor-page-"])
 Therefore, in pages built with Elementor, proper layout is
 applied only to features managed by Elementor, not others.
 
@@ -38,50 +38,50 @@ older browsers not yet supporting CSS variables.
 .entry-content div.footnotes_reference_container,
 .entry-content > .footnotes_reference_container,
 main div.footnotes_reference_container {
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 @media (max-width: 575px) {
 
-    .entry-content div.footnotes_reference_container,
-    .entry-content > .footnotes_reference_container,
-    main div.footnotes_reference_container {
-        padding: 0 10px;
-    }
+	.entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
+	main div.footnotes_reference_container {
+		padding: 0 10px;
+	}
 }
 
 @media (min-width: 576px) {
 
-    .entry-content div.footnotes_reference_container,
-    .entry-content > .footnotes_reference_container,
-    main div.footnotes_reference_container {
-        max-width: 500px;
-    }
+	.entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
+	main div.footnotes_reference_container {
+		max-width: 500px;
+	}
 }
 
 @media (min-width: 768px) {
 
-    .entry-content div.footnotes_reference_container,
-    .entry-content > .footnotes_reference_container,
-    main div.footnotes_reference_container {
-        max-width: 600px;
-    }
+	.entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
+	main div.footnotes_reference_container {
+		max-width: 600px;
+	}
 }
 
 @media (min-width: 992px) {
 
-    .entry-content div.footnotes_reference_container,
-    .entry-content > .footnotes_reference_container,
-    main div.footnotes_reference_container {
-        max-width: 800px;
-    }
+	.entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
+	main div.footnotes_reference_container {
+		max-width: 800px;
+	}
 }
 
 @media (min-width: 1200px) {
 
-    .entry-content div.footnotes_reference_container,
-    .entry-content > .footnotes_reference_container,
-    main div.footnotes_reference_container {
-        max-width: 960px;
-    }
+	.entry-content div.footnotes_reference_container,
+	.entry-content > .footnotes_reference_container,
+	main div.footnotes_reference_container {
+		max-width: 960px;
+	}
 }

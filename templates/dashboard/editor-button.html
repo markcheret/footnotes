@@ -1,62 +1,62 @@
 <!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
-    /**
-     * Footnote button for the Classic Editor text mode.
-     * 
-     * @since 1.3.0
-     * @lastmodified 2021-02-09T0039+0100
-     * 
-     * @since 2.5.4  Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
-     * @since 2.5.4  Bugfix: Editor button: Classic Editor text mode: correct label to singular.
-     */?>
+	/**
+	 * Footnote button for the Classic Editor text mode.
+	 * 
+	 * @since 1.3.0
+	 * @lastmodified 2021-02-18T2043+0100
+	 * 
+	 * @since 2.5.4  Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
+	 * @since 2.5.4  Bugfix: Editor button: Classic Editor text mode: correct label to singular.
+	 */?>
 -->
 <script type="text/javascript">
-    /**
-     * Brackets the selected text with tags in the text area.
-     *
-     * @param string elementID
-     * @param string openTag
-     * @param string closeTag
-     */
-    function MCI_Footnotes_wrapText(elementID, openTag, closeTag) {
-        var textArea = jQuery('#' + elementID);
-        var len = textArea.val().length;
-        var start = textArea[0].selectionStart;
-        var end = textArea[0].selectionEnd;
-        var selectedText = textArea.val().substring(start, end);
-        var replacement = openTag + selectedText + closeTag;
-        textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
-    }
-    /**
-     * Adds a button to the Classic Editor text mode.
-     *
-     * - Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
-     *
-     * @reporter @dpartridge
-     * @link https://wordpress.org/support/topic/qtags-addbutton/
-     * 
-     */
-    if ( QTags ) {
-        QTags.addButton( 'MCI_Footnotes_QuickTag_button', 'footnote', MCI_Footnotes_text_editor_callback );
-    }
+	/**
+	 * Brackets the selected text with tags in the text area.
+	 *
+	 * @param string elementID
+	 * @param string openTag
+	 * @param string closeTag
+	 */
+	function MCI_Footnotes_wrapText(elementID, openTag, closeTag) {
+		var textArea = jQuery('#' + elementID);
+		var len = textArea.val().length;
+		var start = textArea[0].selectionStart;
+		var end = textArea[0].selectionEnd;
+		var selectedText = textArea.val().substring(start, end);
+		var replacement = openTag + selectedText + closeTag;
+		textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
+	}
+	/**
+	 * Adds a button to the Classic Editor text mode.
+	 *
+	 * - Bugfix: Editor button: Classic Editor text mode: try to fix uncaught reference error of “QTags is not defined”, thanks to @dpartridge bug report.
+	 *
+	 * @reporter @dpartridge
+	 * @link https://wordpress.org/support/topic/qtags-addbutton/
+	 * 
+	 */
+	if ( QTags ) {
+		QTags.addButton( 'MCI_Footnotes_QuickTag_button', 'footnote', MCI_Footnotes_text_editor_callback );
+	}
 
-    /**
-     * callback function when the button is clicked
-     * executes a ajax call to get the start and end tag for the footnotes and
-     * adds them in before and after the selected text
-     */
-    function MCI_Footnotes_text_editor_callback() {
-        jQuery.ajax({
-            type: 'POST',
-            url: '/wp-admin/admin-ajax.php',
-            data: {
-                action: 'footnotes_getTags'
-            },
-            success: function(data, textStatus, XMLHttpRequest){
-                var l_arr_Tags = JSON.parse(data);
-                MCI_Footnotes_wrapText("content", l_arr_Tags['start'], l_arr_Tags['end']);
-            },
-            error: function(MLHttpRequest, textStatus, errorThrown){
-            }
-        });
-    }
+	/**
+	 * callback function when the button is clicked
+	 * executes a ajax call to get the start and end tag for the footnotes and
+	 * adds them in before and after the selected text
+	 */
+	function MCI_Footnotes_text_editor_callback() {
+		jQuery.ajax({
+			type: 'POST',
+			url: '/wp-admin/admin-ajax.php',
+			data: {
+				action: 'footnotes_getTags'
+			},
+			success: function(data, textStatus, XMLHttpRequest){
+				var l_arr_Tags = JSON.parse(data);
+				MCI_Footnotes_wrapText("content", l_arr_Tags['start'], l_arr_Tags['end']);
+			},
+			error: function(MLHttpRequest, textStatus, errorThrown){
+			}
+		});
+	}
 </script>

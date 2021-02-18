@@ -7,7 +7,7 @@
  * Since: 1.0
  *
  * @version 2.5.5
- * @lastmodified 2021-02-16T0033+0100
+ * @lastmodified 2021-02-18T2026+0100
  */
 
 /**
@@ -22,25 +22,25 @@
  */
 
 .footnotes_logo_heading {
-    display: inline-block;
-    float: left;
-    position: absolute;
-    text-decoration: none;
-    font-weight: normal;
+	display: inline-block;
+	float: left;
+	position: absolute;
+	text-decoration: none;
+	font-weight: normal;
 }
 .footnotes_logo_part1_heading {
-    left: 20px;
-    color: #2bb975;
+	left: 20px;
+	color: #2bb975;
 }
 .footnotes_logo_part2_heading {
-    left: 51px;
-    color: #545f5a;
+	left: 51px;
+	color: #545f5a;
 }
 .footnotes_heart_heading {
-    color:#ff6d3b;
-    font-weight:bold;
-    position: absolute;
-    left: 96px;
+	color:#ff6d3b;
+	font-weight:bold;
+	position: absolute;
+	left: 96px;
 }
 
 /**
@@ -48,8 +48,8 @@
  */
 
 .postbox-header {
-    position: relative;
-    padding: 0 20px;
+	position: relative;
+	padding: 0 20px;
 }
 
 /************************************************************
@@ -63,28 +63,28 @@ Limited to a number of IDs to not affect all dashboards
 #footnote_inputfield_readon_label,
 #footnote_inputfield_references_label,
 #footnote_inputfield_love {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    width: 80% !important;
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	width: 80% !important;
 }
 
 #footnote_inputfield_reference_container_place {
-    width: 310px;
+	width: 310px;
 }
 
 #footnote_inputfield_counter_style,
 #footnotes_inputfield_page_layout_support {
-    width: 505px;
+	width: 505px;
 }
 
 #footnote_inputfield_placeholder_start,
 #footnote_inputfield_placeholder_end,
 #footnote_inputfield_custom_mouse_over_box_excerpt_length {
-    width: 180px;
+	width: 180px;
 }
 #footnote_inputfield_placeholder_start_user_defined,
 #footnote_inputfield_placeholder_end_user_defined {
-    width: 320px;
+	width: 320px;
 }
 
 #footnote_inputfield_combine_identical,
@@ -103,13 +103,13 @@ Limited to a number of IDs to not affect all dashboards
 #footnotes_inputfield_mouse_over_box_fade_out_duration,
 #footnote_inputfield_custom_mouse_over_box_border_width,
 #footnote_inputfield_custom_mouse_over_box_border_radius {
-    width: 80px;
+	width: 80px;
 }
 
 #footnote_inputfield_custom_hyperlink_symbol,
 #footnotes_inputfield_backlinks_terminator_option,
 #footnotes_inputfield_backlinks_separator_option {
-    width: 230px;
+	width: 230px;
 }
 
 #footnotes_inputfield_reference_container_top_margin,
@@ -117,13 +117,13 @@ Limited to a number of IDs to not affect all dashboards
 #footnotes_inputfield_backlinks_column_width_scalar,
 #footnotes_inputfield_backlinks_column_max_width_scalar,
 #footnotes_inputfield_mouse_over_box_font_size_scalar {
-    width: 85px;
+	width: 85px;
 }
 
 #footnotes_inputfield_backlinks_column_width_unit,
 #footnotes_inputfield_backlinks_column_max_width_unit,
 #footnotes_inputfield_mouse_over_box_font_size_unit {
-    width: 140px;
+	width: 140px;
 }
 
 /************************************************************
@@ -131,44 +131,44 @@ Headings and labels
 */
 
 label {
-    display: inline-block;
+	display: inline-block;
 }
 
 .postbox > h3 {
-    height: 32px !important;
-    line-height: 32px !important;
+	height: 32px !important;
+	line-height: 32px !important;
 }
 
 .postbox > h3 > span {
-    padding: 0 10px;
+	padding: 0 10px;
 }
 
 .postbox > .inside > table {
-    border: none !important;
+	border: none !important;
 }
 
 .postbox > .inside >table > tbody > tr > td:first-child {
-    width: 15% !important;
-    font-weight: bold !important;
+	width: 15% !important;
+	font-weight: bold !important;
 }
 
 .footnote_placeholder_box_container {
-    text-align: center !important;
+	text-align: center !important;
 }
 
 span.footnote_highlight_placeholder {
-    font-weight: bold !important;
-    padding: 0 8px !important;
+	font-weight: bold !important;
+	padding: 0 8px !important;
 }
 
 .footnote_placeholder_box_example {
-    border: 2px solid #2bb975 !important;
-    border-radius: 4px !important;
-    padding: 16px 0 !important;
-    width: 50% !important;
-    display: block !important;
-    margin: 20px auto !important;
-    text-align: center !important;
+	border: 2px solid #2bb975 !important;
+	border-radius: 4px !important;
+	padding: 16px 0 !important;
+	width: 50% !important;
+	display: block !important;
+	margin: 20px auto !important;
+	text-align: center !important;
 }
 
 /************************************************************
@@ -180,22 +180,22 @@ IE doesn’t support nth child, but these are not critical
 */
 .expert_lookup tr th:first-child,
 .expert_lookup tr td:first-child {
-    width: 170px !important;
+	width: 170px !important;
 }
 .expert_lookup tr th:nth-child(2),
 .expert_lookup tr td:nth-child(2) {
-    width: 65px !important;
+	width: 65px !important;
 }
 .expert_lookup tr th:nth-child(3),
 .expert_lookup tr td:nth-child(3) {
-    width: 200px !important;
+	width: 200px !important;
 }
 .expert_lookup tr td:nth-child(3) input {
-    width: 190px;
+	width: 190px;
 }
 .expert_lookup tr th:last-child,
 .expert_lookup tr td:last-child {
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 /*
@@ -216,31 +216,31 @@ The textarea has monospace font, but no other features
 helping edit CSS, like tab support and syntactic colors.
 */
 #customize_css_new tr td:first-child {
-    width: 38% !important;
-    font-weight: normal !important;
+	width: 38% !important;
+	font-weight: normal !important;
 }
 .customize_css_new tr td:first-child span:first-child {
-    font-weight: bold !important;
+	font-weight: bold !important;
 }
 .customize_css_new .list {
-    padding-top: 10px;
+	padding-top: 10px;
 }
 .customize_css_new .list p {
-    font-family: monospace;
-    padding: 0 10px;
-    text-indent: -10px;
-    margin: .5em 0;
+	font-family: monospace;
+	padding: 0 10px;
+	text-indent: -10px;
+	margin: .5em 0;
 }
 
 #footnote_inputfield_custom_css_new {
-    height: 500px;
+	height: 500px;
 }
 #footnote_inputfield_custom_css,
 #footnote_inputfield_custom_css_new {
-    width: 96%;
-    resize: both;
-    overflow: scroll;
-    font-family: monospace;
+	width: 96%;
+	resize: both;
+	overflow: scroll;
+	font-family: monospace;
 }
 
 /************************************************************
@@ -260,9 +260,9 @@ look weird.
 since 2.1.4
 */
 .footnotes_notice {
-    font-style: italic;
-    display: inline-block;
-    text-align: end;
+	font-style: italic;
+	display: inline-block;
+	text-align: end;
 }
 
 /************************************************************
@@ -274,9 +274,9 @@ Use case: more extensive information not fitting into a brief
 notice after the end of the settings box.
 */
 .footnotes_description {
-    padding: 0 4%;
+	padding: 0 4%;
 }
 .footnotes_description p {
-    font-size: 1.06em;
-    font-style: italic;
+	font-size: 1.06em;
+	font-style: italic;
 }

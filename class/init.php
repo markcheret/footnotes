@@ -7,7 +7,7 @@
  * @since 1.5.0 12.09.14 10:56
  *
  *
- * @lastmodified 2021-02-18T2023+0100
+ * @lastmodified 2021-02-19T2031+0100
  *
  * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
@@ -21,6 +21,7 @@
  * @since 2.5.5  Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  * @since 2.5.5  Bugfix: Libraries: optimize processes by loading external and internal scripts only if needed, thanks to @docteurfitness issue report.
+ * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
  */
 
 /**
@@ -180,18 +181,31 @@ class MCI_Footnotes {
 		 *
 		 * The condition about tooltips was missing, only the not-alternative-tooltips part was present.
 		 */
+		// set conditions re-used for stylesheet enqueuing:
+		self::$a_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		self::$a_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
 
 		/**
 		 * Enqueues the jQuery library registered by WordPress.
 		 *
-		 * jQuery is also used for animated scrolling, so it should be loaded by default.
+		 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+		 *
+		 * @since 2.5.6
+		 *
+		 * @reporter @hopper87it
+		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
+		 * 
+		 * jQuery is also used for animated scrolling, so it was loaded by default.
 		 * The function wp_enqueue_script() avoids loading the same library multiple times.
+		 * After adding the alternative reference container, jQuery has become optional,
+		 * but still enabled by default.
 		 */
-		wp_enqueue_script( 'jquery' );
-
-		// set conditions re-used for stylesheet enqueuing:
-		self::$a_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$a_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+		if ( $l_str_ScriptMode == 'jquery' || ( self::$a_bool_TooltipsEnabled && ! self::$a_bool_AlternativeTooltipsEnabled ) ) {
+	
+			wp_enqueue_script( 'jquery' );
+			
+		}
 
 		if ( self::$a_bool_TooltipsEnabled && ! self::$a_bool_AlternativeTooltipsEnabled ) {
 

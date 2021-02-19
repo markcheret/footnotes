@@ -1,0 +1,85 @@
+<!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
+	/**
+	 * Plain JavaScript reference container start and end without scroll script.
+	 *
+	 * @since 2.5.6
+	 * @type object
+	 * @lastmodified 2021-02-19T1545+0100
+	 *
+	 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+	 *
+	 * @since 2.5.6
+	 *
+	 * @reporter @hopper87it
+	 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
+	 *
+	 * The heavy jQuery Core library from WordPress must not be deferred for 
+	 * the jQuery reference container to work, and is detrimental to page speed.
+	 * This alternative works with plain JS but does not support scroll animation.
+	 * The plugin is set to enable hard links when this option is enabled.
+	 */?>
+-->
+<div
+	class="speaker-mute footnotes_reference_container"
+	>
+	<div
+		class="footnote_container_prepare"
+		><[[element]]
+			><span
+				id="footnotes_container_label_expand_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_label pointer"
+				onclick="footnote_expand_reference_container_[[post_id]]_[[container_id]]();"
+				>[[name]]</span
+			><span
+				id="footnotes_container_button_plus_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_collapse_button"
+				style="[[button-style]]"
+				onclick="footnote_expand_reference_container_[[post_id]]_[[container_id]]();"
+			>[+]</span
+			><span
+				id="footnotes_container_label_collapse_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_label pointer"
+				style="display: none;"
+				onclick="footnote_collapse_reference_container_[[post_id]]_[[container_id]]();"
+				>[[name]]</span
+			><span
+				id="footnotes_container_button_minus_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_collapse_button"
+				style="display: none;"
+				onclick="footnote_collapse_reference_container_[[post_id]]_[[container_id]]();"
+			>[−]</span
+			></[[element]]
+		></div
+	>
+	<div
+		id="footnote_references_container_[[post_id]]_[[container_id]]"
+		style="[[style]]"
+	>
+		<table
+			class="footnotes_table footnote-reference-container"
+		>
+			<tbody>
+				[[content]]
+			</tbody>
+		</table>
+	</div>
+</div>
+<script type="text/javascript">
+	function footnote_expand_reference_container_[[post_id]]_[[container_id]]() {
+		document.getElementById('footnote_references_container_[[post_id]]_[[container_id]]').style.display = "inline";
+		document.getElementById('footnotes_container_label_expand_[[post_id]]_[[container_id]]').style.display = "none";
+		document.getElementById('footnotes_container_label_collapse_[[post_id]]_[[container_id]]').style.display = "inline";
+		document.getElementById('footnotes_container_button_plus_[[post_id]]_[[container_id]]').style.display = "none";
+		document.getElementById('footnotes_container_button_minus_[[post_id]]_[[container_id]]').style.display = "inline";
+	}
+	function footnote_collapse_reference_container_[[post_id]]_[[container_id]]() {
+		document.getElementById('footnote_references_container_[[post_id]]_[[container_id]]').style.display = "none";
+		document.getElementById('footnotes_container_label_collapse_[[post_id]]_[[container_id]]').style.display = "none";
+		document.getElementById('footnotes_container_label_expand_[[post_id]]_[[container_id]]').style.display = "inline";
+		document.getElementById('footnotes_container_button_minus_[[post_id]]_[[container_id]]').style.display = "none";
+		document.getElementById('footnotes_container_button_plus_[[post_id]]_[[container_id]]').style.display = "inline";
+	}
+	function footnote_moveToAnchor_[[post_id]]_[[container_id]](p_str_TargetID) {
+		footnote_expand_reference_container_[[post_id]]_[[container_id]]();
+	}
+</script>

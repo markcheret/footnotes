@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 10:43
  *
  *
- * @lastmodified 2021-02-18T2024+0100
+ * @lastmodified 2021-02-19T1608+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
@@ -788,6 +788,20 @@ class MCI_Footnotes_Settings {
 	 */
 	const C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT = "footnotes_inputfield_referrers_normal_superscript";
 
+	/**
+	 * Settings container key to select the script mode for the reference container.
+	 *
+	 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+	 *
+	 * @since 2.5.6
+	 *
+	 * @reporter @hopper87it
+	 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
+	 *
+	 * @var str
+	 */
+	const C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE = "footnotes_inputfield_reference_container_script_mode";
+
 
 	/**
 	 *      SETTINGS STORAGE
@@ -863,6 +877,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT             => 'p',
 			self::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER      => 'yes',
 			self::C_BOOL_REFERENCE_CONTAINER_COLLAPSE                 => 'no',
+			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE     => 'jquery',
 
 			self::C_STR_REFERENCE_CONTAINER_POSITION                  => 'post_end',
 			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE        => '[[references]]',

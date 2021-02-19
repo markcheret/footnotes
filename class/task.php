@@ -7,7 +7,7 @@
  * @since 1.5.0
  *
  *
- * @lastmodified  2021-02-18T2023+0100
+ * @lastmodified  2021-02-19T2030+0100
  *
  * @since 2.0.0  Bugfix: various.
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
@@ -79,6 +79,7 @@
  * @since 2.5.4  Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
  * @since 2.5.4  Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
  * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
+ * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
  */
 
 // If called directly, abort:
@@ -213,6 +214,7 @@ class MCI_Footnotes_Task {
 	 *
 	 * The official AMP plugin strips off JavaScript, breaking Footnotes’
 	 * animated scrolling.
+	 * When the alternative reference container is enabled, hard links are too.
 	 */
 	public static $a_bool_HardLinksEnable        = false;
 	public static $a_str_ReferrerLinkSlug        = 'r';
@@ -728,8 +730,17 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
 		 *
 		 * @since 2.1.4
+		 * 
+		 * @since 2.5.6 hard links are always enabled when the alternative reference container is.
 		 */
 		self::$a_bool_HardLinksEnable = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE));
+		
+		// correct hard links enabled status depending on alternative reference container enabled status:
+		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
+		if ( $l_str_ScriptMode != 'jquery' ) {
+			self::$a_bool_HardLinksEnable = true;
+		}
+		
 		self::$a_int_ScrollOffset = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET));
 		if (self::$a_bool_HardLinksEnable) {
 			echo ".footnote_referrer_anchor, .footnote_item_anchor {bottom: ";
@@ -2253,8 +2264,29 @@ class MCI_Footnotes_Task {
 		 */
 		$l_str_ReferenceContainerLabel = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME);
 
-		// load 'templates/public/reference-container.html':
-		$l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
+		/**
+		 * Select the reference container template according to the script mode.
+		 *
+		 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+		 *
+		 * @since 2.5.6
+		 *
+		 * @reporter @hopper87it
+		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
+		 */
+		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
+		
+		if ( $l_str_ScriptMode == 'jquery' ) {
+
+			// load 'templates/public/reference-container.html':
+			$l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
+			
+		} else {
+			
+			// load 'templates/public/js-reference-container.html':
+			$l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "js-reference-container");
+		}
+		
 		$l_obj_TemplateContainer->replace(
 			array(
 				"post_id"         =>  self::$a_int_PostId,

@@ -6,8 +6,8 @@
  * Created-Time: 16:21
  * Since: 1.0
  * 
- * @version 2.5.5
- * @lastmodified 2021-02-18T2026+0100
+ * @version 2.5.6
+ * @lastmodified 2021-02-19T1523+0100
  *
  *     Classes recommended for Custom CSS:
  *     @see templates/dashboard/customize-css-new.html
@@ -384,8 +384,9 @@ label
 	vertical-align: middle;
 }
 
-.footnote_container_prepare > p > span:first-child {
-	text-align: left !important;
+.footnote_container_prepare > p > span:first-child,
+	.footnote_container_prepare > p > span:nth-child(3) {
+	text-align: start !important;
 	font-size: 1.5em !important;
 }
 

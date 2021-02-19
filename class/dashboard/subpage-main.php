@@ -7,7 +7,7 @@
  * @since 1.5.0 14.09.14 14:47
  *
  *
- * @lastmodified 2021-02-18T2021+0100
+ * @lastmodified 2021-02-19T2011+0100
  *
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
@@ -233,12 +233,17 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 			"em" => __("em", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 			"vw" => __("viewport width", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 		);
-		// options for Yes/No select box:
-		$l_arr_Enabled = array(
-			"yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
-			"no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+		// options for reference container script mode:
+		$l_arr_ScriptMode = array(
+			"jquery" => __("jQuery", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+			"js" => __("plain JavaScript", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
 		);
-
+		// options for Yes/No select box:
+			$l_arr_Enabled = array(
+				"yes" => __("Yes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
+				"no" => __("No", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)
+			);
+	
 		// load template file
 		$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_DASHBOARD, "settings-reference-container");
 		// replace all placeholders
@@ -255,6 +260,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_LayoutEngine {
 
 				"label-collapse" => $this->addLabel(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, __("Collapse by default:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 				"collapse" => $this->addSelectBox(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE, $l_arr_Enabled),
+
+				"label-script" => $this->addLabel(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, __("Script mode:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
+				"script" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, $l_arr_ScriptMode),
+				"notice-script" => __("The plain JavaScript mode does not support scroll animation and will enable hard links with scroll offset.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME),
 
 				"label-position" => $this->addLabel(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __("Default position:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),
 				"position" => $this->addSelectBox(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_Positions),

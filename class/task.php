@@ -7,7 +7,7 @@
  * @since 1.5.0
  *
  *
- * @lastmodified  2021-02-19T2030+0100
+ * @lastmodified  2021-02-20T0438+0100
  *
  * @since 2.0.0  Bugfix: various.
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
@@ -79,7 +79,7 @@
  * @since 2.5.4  Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
  * @since 2.5.4  Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
  * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
- * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+ * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  */
 
 // If called directly, abort:
@@ -828,7 +828,7 @@ class MCI_Footnotes_Task {
 			 * @since 2.2.5
 			 * @date 2020-12-18T1113+0100
 			 */
-			// alternative tooltips:
+			// jQuery tooltips:
 			if ( ! self::$a_bool_AlternativeTooltipsEnabled) {
 
 				// tooltip position:
@@ -838,13 +838,18 @@ class MCI_Footnotes_Task {
 				}
 				echo "}\r\n";
 
+			// alternative tooltips:
 			} else {
 				echo "}\r\n";
 
-				// position:
+				// dimensions:
+				$l_int_AlternativeTooltipWidth = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH ) );
 				echo ".footnote_tooltip.position {";
-				echo " width: " . intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH)) . 'px;';
+				echo " width: " . $l_int_AlternativeTooltipWidth . 'px;';
+				// set also as max-width wrt short tooltip shrinking:
+				echo " max-width: " . $l_int_AlternativeTooltipWidth . 'px;';
 
+				// position:
 				$l_str_AlternativePosition = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION);
 				$l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X));
 
@@ -1650,6 +1655,21 @@ class MCI_Footnotes_Task {
 				} else {
 					$l_str_TooltipContent = '';
 				}
+				
+				/**
+				 * Determine shrink width if alternative tooltips are enabled.
+				 * 
+				 * @since 2.5.6
+				 */
+				$l_str_TooltipStyle = '';
+				if ( self::$a_bool_AlternativeTooltipsEnabled && self::$a_bool_TooltipsEnabled ) {
+					$l_int_TooltipLength = strlen( strip_tags( $l_str_TooltipContent ) );
+					if ( $l_int_TooltipLength < 70 ) {
+						$l_str_TooltipStyle  = ' style="width: ';
+						$l_str_TooltipStyle .= ( $l_int_TooltipLength * .7 );
+						$l_str_TooltipStyle .= 'em;"';
+					}
+				}
 
 				// fill in 'templates/public/footnote.html':
 				$l_obj_Template->replace(
@@ -1664,6 +1684,7 @@ class MCI_Footnotes_Task {
 						"index"          => $l_int_Index,
 						"after"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
 						"anchor-element" => $l_str_ReferrerAnchorElement,
+						"style"          => $l_str_TooltipStyle,
 						"text"           => $l_str_TooltipContent,
 					)
 				);
@@ -2267,12 +2288,15 @@ class MCI_Footnotes_Task {
 		/**
 		 * Select the reference container template according to the script mode.
 		 *
-		 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+		 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
 		 *
 		 * @since 2.5.6
 		 *
 		 * @reporter @hopper87it
 		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
+		 * 
+		 * @reporter @pkverma99
+		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/#post-14076188
 		 */
 		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
 		

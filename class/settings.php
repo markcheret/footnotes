@@ -791,7 +791,7 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key to select the script mode for the reference container.
 	 *
-	 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+	 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
 	 *
 	 * @since 2.5.6
 	 *

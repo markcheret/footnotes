@@ -78,7 +78,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.5.6 =
-- Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it issue report.
+- Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
+- Bugfix: Alternative tooltips: shrink width to short content.
 - Update: Documentation: slightly revise / update the plugin’s welcome page on WordPress.org.
 
 = 2.5.5 =

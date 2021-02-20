@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6.1
 Requires PHP: 5.6
-Stable Tag: 2.5.5
+Stable Tag: 2.5.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,7 +80,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.5.6 =
 - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
 - Bugfix: Alternative tooltips: shrink width to short content.
-- Update: Documentation: slightly revise / update the plugin’s welcome page on WordPress.org.
+- Update: Documentation: slightly revise or update the plugin’s welcome page on WordPress.org.
 
 = 2.5.5 =
 - Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.

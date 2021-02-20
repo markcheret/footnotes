@@ -1,13 +1,11 @@
 {
-		"scripts": {
-			"post-install-cmd": [
-				"PHPCodeChecker\\Installer::postInstall"
-			],
-			"post-update-cmd": [
-				"PHPCodeChecker\\Installer::postInstall"
-			]
-		},
-    "require": {
-        "wickedreports/phpcs-pre-commit-hook": "^0.7.0"
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "wp-coding-standards/wpcs": "^2.3"
+    },
+    "scripts": {
+    	"post-install-cmd": [
+    		"bash _tools/setup.sh"
+    	]
     }
 }

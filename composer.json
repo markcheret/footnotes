@@ -1,0 +1,13 @@
+{
+		"scripts": {
+			"post-install-cmd": [
+				"PHPCodeChecker\\Installer::postInstall"
+			],
+			"post-update-cmd": [
+				"PHPCodeChecker\\Installer::postInstall"
+			]
+		},
+    "require": {
+        "wickedreports/phpcs-pre-commit-hook": "^0.7.0"
+    }
+}

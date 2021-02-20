@@ -51,6 +51,21 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
 
 Unit tests are TODO.
 
+## Getting Started
+
+1. Read the contributing guidelines
+1. Clone this repository (`git clone git@github.com:Rumperuu/footnotes.git`)
+1. Install [Composer](https://getcomposer.org/download/), if you don't have it already
+1. Install dependencies (`composer install`)
+1. Create a new branch from `main` (`git checkout -b <your-descriptive-branch-name>`)
+1. When you're finished, commit your changes to the remote version of your branch
+   and submit a [pull request](https://github.com/Rumperuu/footnotes/pulls).
+
+## Updating Documentation
+
+1. Install [phpDocumentor](https://phpdoc.org/)
+1. Run it (`phpDocumentor -d . -t docs`)
+
 ## Main Features
 
 - Fully customizable **footnotes** start and end shortcodes;

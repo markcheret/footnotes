@@ -1,0 +1,61 @@
+#!/bin/sh
+
+# Modified from: https://github.com/bjornjohansen/wp-pre-commit-hook
+# Also: https://softdiscover.com/wordpress/perfect-setup-for-a-wordpress-project-development/
+
+PROJECT=`php -r "echo dirname(dirname(dirname(realpath('$0'))));"`
+STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php`
+
+# Determine if a file list is passed
+if [ "$#" -eq 1 ]
+then
+    oIFS=$IFS
+    IFS='
+    '
+    SFILES="$1"
+    IFS=$oIFS
+fi
+SFILES=${SFILES:-$STAGED_FILES_CMD}
+
+echo "Checking PHP Lint..."
+for FILE in $SFILES
+do
+    php -l -d display_errors=0 $PROJECT/$FILE
+    if [ $? != 0 ]
+    then
+        echo "Fix the error before commit."
+        exit 1
+    fi
+    FILES="$FILES $PROJECT/$FILE"
+done
+
+if [ -f "$PROJECT/phpcs.ruleset.xml" ]
+then
+    RULESET="$PROJECT/phpcs.ruleset.xml"
+elif [ -f "$PROJECT/phpcs.xml.dist" ]
+then
+    RULESET="$PROJECT/phpcs.xml.dist"
+else
+    RULESET="WordPress"
+fi
+
+if [ "$FILES" != "" ]
+then
+    echo "Checking Code Standard Compliance, using $RULESET as ruleset standard..."
+		./vendor/bin/phpcs --standard="$RULESET" --colors --encoding=utf-8 -n -p $FILES
+		if [ $? != 0 ]
+		then
+				echo "Coding standards errors have been detected. Running phpcbf..."
+				./vendor/bin/phpcbf --standard="$RULESET" --encoding=utf-8 -n -p $FILES
+				git add $FILES
+				echo "Running Code Sniffer again..."
+				./vendor/bin/phpcs --standard="$RULESET" --colors --encoding=utf-8 -n -p $FILES
+				if [ $? != 0 ]
+				then
+						echo "Errors found not fixable automatically. You need to manually fix them."
+						exit 1
+				fi
+		fi
+fi
+
+exit $?

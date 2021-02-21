@@ -5,7 +5,7 @@
  * @filesource
  * @author Stefan Herndler
  * @since 1.5.0 12.09.14 10:56
- * 
+ *
  * Edited:
  * @since 2.2.0    2020-12-12T1223+0100
  */
@@ -24,10 +24,10 @@ class MCI_Footnotes_Hooks {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public static function registerHooks() {
-		register_activation_hook(dirname(__FILE__) . "/../footnotes.php", array("MCI_Footnotes_Hooks", "activatePlugin"));
-		register_deactivation_hook(dirname(__FILE__) . "/../footnotes.php", array("MCI_Footnotes_Hooks", "deactivatePlugin"));
-		register_uninstall_hook(dirname(__FILE__) . "/../footnotes.php", array("MCI_Footnotes_Hooks", "uninstallPlugin"));
+	public static function register_hooks() {
+		register_activation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'MCI_Footnotes_Hooks', 'activate_plugin' ) );
+		register_deactivation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'MCI_Footnotes_Hooks', 'deactivate_plugin' ) );
+		register_uninstall_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'MCI_Footnotes_Hooks', 'uninstall_plugin' ) );
 	}
 
 	/**
@@ -36,8 +36,8 @@ class MCI_Footnotes_Hooks {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public static function activatePlugin() {
-		// currently unused
+	public static function activate_plugin() {
+		// Currently unused.
 	}
 
 	/**
@@ -46,8 +46,8 @@ class MCI_Footnotes_Hooks {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public static function deactivatePlugin() {
-		// currently unused
+	public static function deactivate_plugin() {
+		// Currently unused.
 	}
 
 	/**
@@ -55,21 +55,21 @@ class MCI_Footnotes_Hooks {
 	 *
 	 * @author Stefan Herndler
 	 * @since 1.5.0
-	 * 
-	 * Edit: ClearAll didn’t actually work.
+	 *
+	 * Edit: Clear_all didn’t actually work.
 	 * @since 2.2.0 this function is not called any longer when deleting the plugin
 	 */
-	public static function uninstallPlugin() {
-		// WordPress User has to be logged in
-		if (!is_user_logged_in()) {
-			wp_die(__('You must be logged in to run this script.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
+	public static function uninstall_plugin() {
+		// WordPress User has to be logged in.
+		if ( ! is_user_logged_in() ) {
+			wp_die( __( 'You must be logged in to run this script.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
 		}
-		// WordPress User needs the permission to (un)install plugins
-		if (!current_user_can('install_plugins')) {
-			wp_die(__('You do not have permission to run this script.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
+		// WordPress User needs the permission to (un)install plugins.
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			wp_die( __( 'You do not have permission to run this script.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
 		}
-		// deletes all settings and restore the default values
-		// MCI_Footnotes_Settings::instance()->ClearAll();
+		// Deletes all settings and restore the default values.
+		// MCI_Footnotes_Settings::instance()->Clear_all();.
 	}
 
 	/**
@@ -77,18 +77,18 @@ class MCI_Footnotes_Hooks {
 	 *
 	 * @author Stefan Herndler
 	 * @since 1.5.0
-	 * @param array $p_arr_Links Current Links.
-	 * @param string $p_str_PluginFileName Plugins init file name.
+	 * @param array  $p_arr_links Current Links.
+	 * @param string $p_str_plugin_file_name Plugins init file name.
 	 * @return array
 	 */
-	public static function PluginLinks($p_arr_Links, $p_str_PluginFileName) {
-		// append link to the WordPress Plugin page
-		$p_arr_Links[] = sprintf('<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __('Support', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
-		// append link to the Settings page
-		$p_arr_Links[] = sprintf('<a href="%s">%s</a>', admin_url('admin.php?page=mfmmf-footnotes'), __('Settings', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
-		// append link to the PlayPal Donate function
-		$p_arr_Links[] = sprintf('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __('Donate', MCI_Footnotes_Config::C_STR_PLUGIN_NAME));
-		// return new links
-		return $p_arr_Links;
+	public static function Plugin_links( $p_arr_links, $p_str_plugin_file_name ) {
+		// Append link to the WordPress Plugin page.
+		$p_arr_links[] = sprintf( '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+		// Append link to the Settings page.
+		$p_arr_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=mfmmf-footnotes' ), __( 'Settings', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+		// Append link to the Play_pal Donate function.
+		$p_arr_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+		// Return new links.
+		return $p_arr_links;
 	}
 }

@@ -269,7 +269,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		}
 
 		// Form to submit the active section.
-		echo '<!--suppress Html_unknown_target --><form method="post" action="">';
+		echo '<!--suppress HtmlUnknownTarget --><form method="post" action="">';
 		echo '<input type="hidden" name="save-settings" value="save" />';
 		// Outputs the settings field of the active section.
 		do_settings_sections( $l_arr_active_section['id'] );
@@ -285,8 +285,8 @@ abstract class MCI_Footnotes_Layout_Engine {
 		// Echo JavaScript for the expand/collapse function of the meta boxes.
 		echo '<script type="text/javascript">';
 		echo 'jQuery(document).ready(function ($) {';
-		echo 'jQuery(".mfmmf-color-picker").wp_color_picker();';
-		echo "jQuery('.if-js-closed').remove_class('if-js-closed').add_class('closed');";
+		echo 'jQuery(".mfmmf-color-picker").wpColorPicker();';
+		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
 		echo "postboxes.add_postbox_toggles('" . esc_js( $this->a_str_sub_page_hook ) . "');";
 		echo '});';
 		echo '</script>';
@@ -485,7 +485,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @param string $p_str_setting_name Name of the Settings key to pre fill the text area.
 	 * @return string
 	 */
-	protected function add_text_area( $p_str_setting_name ) {
+	protected function add_textarea( $p_str_setting_name ) {
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(

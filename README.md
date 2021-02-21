@@ -1,3 +1,5 @@
+![footnotes](https://raw.githubusercontent.com/media-competence-institute/footnotes/main/img/footnotes.png)
+
 # footnotes
 
 ## Description
@@ -18,10 +20,20 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
 1. When you're finished, commit your changes to the remote version of your branch
    and submit a [pull request](https://github.com/Rumperuu/footnotes/pulls).
 
+## Checking WP Coding Standard Compliance
+
+1. Run PHP_CodeSniffer on the file(s) you want to check (`./vendor/bin/phpcs --standard="WordPress" --colors --encoding=utf-8 -n -p <file(s)>`)
+1. (If applicable) run the PHP Code Beautifier and Formatter to attempt to automatically fix any errors (`./vendor/bin/phpcbf --standard="WordPress" --encoding=utf-8 -n -p <file(s)>`)
+  - You can run either across the entire project by adding the argument `--ignore=*/vendor/*` and targetting the file `*/**/*.php`
+
 ## Updating Documentation
 
 1. Install [phpDocumentor](https://phpdoc.org/)
 1. Run it (`phpDocumentor -d . -t docs`)
+
+## Testing
+
+Unit tests are TODO.
 
 ## Main Features
 

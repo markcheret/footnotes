@@ -724,7 +724,7 @@ class MCI_Footnotes_Task {
 
 		// Correct hard links enabled status depending on alternative reference container enabled status:.
 		$l_str_script_mode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
-		if ( $l_str_script_mode != 'jquery' ) {
+		if ( 'jquery' !== $l_str_script_mode ) {
 			self::$a_bool_hard_links_enable = true;
 		}
 

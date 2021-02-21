@@ -693,10 +693,10 @@ class MCI_Footnotes_Task {
 			if ( $l_bool_column_max_width_enabled ) {
 
 				$l_int_column_max_width_scalar = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR );
-				$l_str_column_maxWidth_unit    = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT );
+				$l_str_column_max_width_unit    = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT );
 
 				if ( ! empty( $l_int_column_max_width_scalar ) ) {
-					if ( $l_str_column_maxWidth_unit == '%' ) {
+					if ( $l_str_column_max_width_unit == '%' ) {
 						if ( $l_int_column_max_width_scalar > 100 ) {
 							$l_int_column_max_width_scalar = 100;
 						}
@@ -705,7 +705,7 @@ class MCI_Footnotes_Task {
 					$l_int_column_max_width_scalar = 0;
 				}
 
-				echo " max-width: $l_int_column_max_width_scalar$l_str_column_maxWidth_unit !important;";
+				echo " max-width: $l_int_column_max_width_scalar$l_str_column_max_width_unit !important;";
 
 			}
 			echo "}\r\n";

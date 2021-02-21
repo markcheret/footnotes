@@ -12,7 +12,6 @@
  * Last modified: 2021-02-18T2027+0100
  */
 
-
 /**
  * Contains all Plugin Constants. Contains no Method or Property.
  *

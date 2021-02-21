@@ -12,7 +12,6 @@
  * Last modified:  2020-12-12T1541+0100
  */
 
-
 /**
  * Converts data types and Footnotes specific values.
  *
@@ -191,30 +190,30 @@ class MCI_Footnotes_Convert {
 	 * Displays a Variable.
 	 *
 	 * @since 1.5.0
-	 * @param mixed $p_mixed_Value
+	 * @param mixed $p_mixed_value
 	 */
-	public static function debug( $p_mixed_Value ) {
-		if ( empty( $p_mixed_Value ) ) {
-			var_dump( $p_mixed_Value );
+	public static function debug( $p_mixed_value ) {
+		if ( empty( $p_mixed_value ) ) {
+			var_dump( $p_mixed_value );
 
-		} elseif ( is_array( $p_mixed_Value ) ) {
+		} elseif ( is_array( $p_mixed_value ) ) {
 			printf( '<pre>' );
-			print_r( $p_mixed_Value );
+			print_r( $p_mixed_value );
 			printf( '</pre>' );
 
-		} elseif ( is_object( $p_mixed_Value ) ) {
+		} elseif ( is_object( $p_mixed_value ) ) {
 			printf( '<pre>' );
-			print_r( $p_mixed_Value );
+			print_r( $p_mixed_value );
 			printf( '</pre>' );
 
-		} elseif ( is_numeric( $p_mixed_Value ) || is_int( $p_mixed_Value ) ) {
-			var_dump( $p_mixed_Value );
+		} elseif ( is_numeric( $p_mixed_value ) || is_int( $p_mixed_value ) ) {
+			var_dump( $p_mixed_value );
 
-		} elseif ( is_date( $p_mixed_Value ) ) {
-			var_dump( $p_mixed_Value );
+		} elseif ( is_date( $p_mixed_value ) ) {
+			var_dump( $p_mixed_value );
 
 		} else {
-			var_dump( $p_mixed_Value );
+			var_dump( $p_mixed_value );
 		}
 		echo '<br/>';
 	}

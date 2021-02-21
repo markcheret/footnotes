@@ -27,7 +27,6 @@
  * @since 2.5.4  collapse HTML comments and PHP/JS docblocks (only)
  */
 
-
 /**
  * Handles each Template file for the Plugin Frontend (e.g. Settings Dashboard, Public pages, ...).
  * Loads a template file, replaces all Placeholders and returns the replaced file content.

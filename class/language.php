@@ -94,9 +94,7 @@ class MCI_Footnotes_Language {
 	private static function load( $p_str_language_code ) {
 		return load_plugin_textdomain(
 			MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
-			// This argument only fills the gap left by a deprecated argument (since WP2.7):.
 			false,
-			// The plugin basedir is provided; trailing slash would be clipped:.
 			MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages'
 		);
 	}

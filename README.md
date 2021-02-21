@@ -23,8 +23,10 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
 ## Checking WP Coding Standard Compliance
 
 1. Run PHP_CodeSniffer on the file(s) you want to check (`./vendor/bin/phpcs --standard="WordPress" --colors --encoding=utf-8 -n -p <file(s)>`)
-1. (If applicable) run the PHP Code Beautifier and Formatter to attempt to automatically fix any errors (`./vendor/bin/phpcbf --standard="WordPress" --encoding=utf-8 -n -p <file(s)>`)
-  - You can run either across the entire project by adding the argument `--ignore=*/vendor/*` and targetting the file `*/**/*.php`
+1. (If applicable) run the PHP Code Beautifier and Formatter to attempt to automatically fix any errors (`./vendor/bin/phpcbf --standard="WordPress" --encoding=utf-8 -p <file(s)>`)
+  - Add the `-n` flag to ignore warnings (i.e., show only errors)
+	- Add the `-s` flag to show sniff codes (used for disabling errors in the code with `phpcs disable:<sniff code>` — MAKE SURE THAT YOU HAVE `phpcs enable` AT THE EARLIEST POINT POSSIBLE, and provide a justification for disabling the sniff code)
+  - You can run either across the entire project by adding the argument `--ignore=*/vendor/*` and targetting the file `./*.php ./**/*.php`
 
 ## Updating Documentation
 

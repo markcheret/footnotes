@@ -52,7 +52,7 @@ class MCI_Footnotes_Layout_Init {
 		// iterate through each class define in the current script.
 		foreach ( get_declared_classes() as $l_str_class_name ) {
 			// accept only child classes of the layout engine.
-			if ( is_subclass_of( $l_str_class_name, 'MCI_Footnotes_LayoutEngine' ) ) {
+			if ( is_subclass_of( $l_str_class_name, 'MCI_Footnotes_Layout_Engine' ) ) {
 				$l_obj_class = new $l_str_class_name();
 				// append new instance of the layout engine sub class.
 				$this->a_arr_sub_page_classes[ $l_obj_class->getPriority() ] = $l_obj_class;

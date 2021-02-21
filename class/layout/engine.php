@@ -307,9 +307,9 @@ abstract class MCI_Footnotes_Layout_Engine {
 		echo '</div>';
 		// output special javascript for the expand/collapse function of the meta boxes
 		echo '<script type="text/javascript">';
-		echo 'j_query(document).ready(function ($) {';
-		echo 'j_query(".mfmmf-color-picker").wp_color_picker();';
-		echo "j_query('.if-js-closed').remove_class('if-js-closed').add_class('closed');";
+		echo 'jQuery(document).ready(function ($) {';
+		echo 'jQuery(".mfmmf-color-picker").wp_color_picker();';
+		echo "jQuery('.if-js-closed').remove_class('if-js-closed').add_class('closed');";
 		echo "postboxes.add_postbox_toggles('" . $this->a_str_sub_page_hook . "');";
 		echo '});';
 		echo '</script>';

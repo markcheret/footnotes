@@ -214,7 +214,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @var str
 	 *
-	 * These alternative tooltips work around a website related j_query UI
+	 * These alternative tooltips work around a website related jQuery UI
 	 * outage. They are low-script but use the AMP incompatible onmouseover
 	 * and onmouseout arguments, along with CSS transitions for fade-in/out.
 	 * The very small script is inserted after Footnotes’ internal stylesheet.
@@ -722,7 +722,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.5.4
 	 * @var str
 	 *
-	 * Tooltips, even j_query-driven, may be hard to consult on mobiles.
+	 * Tooltips, even jQuery-driven, may be hard to consult on mobiles.
 	 * This option allows to read the tooltip content in the reference container too.
 	 * @link https://wordpress.org/support/topic/change-tooltip-text/#post-13935050
 	 * But this must not be the default behavior.
@@ -755,7 +755,7 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key to select the script mode for the reference container.
 	 *
-	 * - Bugfix: Reference container: optional alternative expanding and collapsing without j_query for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
+	 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
 	 *
 	 * @since 2.5.6
 	 *

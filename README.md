@@ -1,4 +1,4 @@
-![footnotes](https://raw.githubusercontent.com/media-competence-institute/footnotes/main/img/footnotes.png)
+![footnotes](https://raw.githubusercontent.com/markcheret/footnotes/main/img/footnotes.png)
 
 # footnotes
 

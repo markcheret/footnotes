@@ -184,19 +184,19 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 *
 	 * @author Stefan Herndler
 	 * @since 1.5.0
-	 * @param string $p_str_parent_iD Parent section unique id.
+	 * @param string $p_str_parent_id Parent section unique id.
 	 */
-	private function register_meta_boxes( $p_str_parent_iD ) {
+	private function register_meta_boxes( $p_str_parent_id ) {
 		// iterate through each meta box
 		foreach ( $this->get_meta_boxes() as $l_arr_meta_box ) {
-			if ( $l_arr_meta_box['parent'] != $p_str_parent_iD ) {
+			if ( $l_arr_meta_box['parent'] != $p_str_parent_id ) {
 				continue;
 			}
 			add_meta_box(
-				$p_str_parent_iD . '-' . $l_arr_meta_box['id'], // unique id
+				$p_str_parent_id . '-' . $l_arr_meta_box['id'], // unique id
 				$l_arr_meta_box['title'], // meta box title
 				array( $this, $l_arr_meta_box['callback'] ), // callback function to display (echo) the content
-				$p_str_parent_iD, // post type = parent section id
+				$p_str_parent_id, // post type = parent section id
 				'main' // context
 			);
 		}
@@ -258,8 +258,8 @@ abstract class MCI_Footnotes_Layout_Engine {
 		$this->append_scripts();
 		// get current section
 		reset( $this->a_arr_sections );
-		$l_str_active_section_iD = isset( $_GET['t'] ) ? $_GET['t'] : key( $this->a_arr_sections );
-		$l_arr_active_section   = $this->a_arr_sections[ $l_str_active_section_iD ];
+		$l_str_active_section_id = isset( $_GET['t'] ) ? $_GET['t'] : key( $this->a_arr_sections );
+		$l_arr_active_section   = $this->a_arr_sections[ $l_str_active_section_id ];
 		// store settings
 		$l_bool_settings_updated = false;
 		if ( array_key_exists( 'save-settings', $_POST ) ) {
@@ -326,11 +326,11 @@ abstract class MCI_Footnotes_Layout_Engine {
 		$l_arr_new_settings = array();
 		// get current section
 		reset( $this->a_arr_sections );
-		$l_str_active_section_iD = isset( $_GET['t'] ) ? $_GET['t'] : key( $this->a_arr_sections );
-		$l_arr_active_section   = $this->a_arr_sections[ $l_str_active_section_iD ];
+		$l_str_active_section_id = isset( $_GET['t'] ) ? $_GET['t'] : key( $this->a_arr_sections );
+		$l_arr_active_section   = $this->a_arr_sections[ $l_str_active_section_id ];
 
 		// iterate through each value that has to be in the specific container
-		foreach ( MCI_Footnotes_Settings::instance()->get_defaults( $l_arr_active_section['container'] ) as $l_str_key => $l_mixed_Value ) {
+		foreach ( MCI_Footnotes_Settings::instance()->get_defaults( $l_arr_active_section['container'] ) as $l_str_key => $l_mixed_value ) {
 			// setting is available in the POST array, use it
 			if ( array_key_exists( $l_str_key, $_POST ) ) {
 				$l_arr_new_settings[ $l_str_key ] = $_POST[ $l_str_key ];
@@ -349,7 +349,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public function Description() {
+	public function description() {
 		// default no description will be displayed
 	}
 
@@ -361,7 +361,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @param string $p_str_setting_key_name Settings Array key name.
 	 * @return array Contains Settings ID, Settings Name and Settings Value.
 	 */
-	protected function Load_setting( $p_str_setting_key_name ) {
+	protected function load_setting( $p_str_setting_key_name ) {
 		// get current section
 		reset( $this->a_arr_sections );
 		$p_arr_return          = array();
@@ -440,15 +440,15 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @param string $p_str_setting_name Name of the Settings key to pre load the input field.
-	 * @param int    $p_str_maxLength Maximum length of the input, default 999 characters.
+	 * @param int    $p_str_max_length Maximum length of the input, default 999 characters.
 	 * @param bool   $p_bool_readonly Set the input to be read only, default false.
 	 * @param bool   $p_bool_hidden Set the input to be hidden, default false.
 	 * @return string
 	 */
-	protected function add_text_box( $p_str_setting_name, $p_str_maxLength = 999, $p_bool_readonly = false, $p_bool_hidden = false ) {
+	protected function add_text_box( $p_str_setting_name, $p_str_max_length = 999, $p_bool_readonly = false, $p_bool_hidden = false ) {
 		$l_str_style = '';
 		// collect data for given settings field
-		$l_arr_data = $this->Load_setting( $p_str_setting_name );
+		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		if ( $p_bool_hidden ) {
 			$l_str_style .= 'display:none;';
 		}
@@ -456,7 +456,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 			'<input type="text" name="%s" id="%s" maxlength="%d" style="%s" value="%s" %s/>',
 			$l_arr_data['name'],
 			$l_arr_data['id'],
-			$p_str_maxLength,
+			$p_str_max_length,
 			$l_str_style,
 			$l_arr_data['value'],
 			$p_bool_readonly ? 'readonly="readonly"' : ''
@@ -473,7 +473,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 */
 	protected function add_checkbox( $p_str_setting_name ) {
 		// collect data for given settings field
-		$l_arr_data = $this->Load_setting( $p_str_setting_name );
+		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(
 			'<input type="checkbox" name="%s" id="%s" %s/>',
 			$l_arr_data['name'],
@@ -493,7 +493,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 */
 	protected function add_select_box( $p_str_setting_name, $p_arr_options ) {
 		// collect data for given settings field
-		$l_arr_data    = $this->Load_setting( $p_str_setting_name );
+		$l_arr_data    = $this->load_setting( $p_str_setting_name );
 		$l_str_options = '';
 
 		/* loop through all array keys */
@@ -523,7 +523,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 */
 	protected function add_text_area( $p_str_setting_name ) {
 		// collect data for given settings field
-		$l_arr_data = $this->Load_setting( $p_str_setting_name );
+		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(
 			'<textarea name="%s" id="%s">%s</textarea>',
 			$l_arr_data['name'],
@@ -542,7 +542,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 */
 	protected function add_color_selection( $p_str_setting_name ) {
 		// collect data for given settings field
-		$l_arr_data = $this->Load_setting( $p_str_setting_name );
+		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(
 			'<input type="text" name="%s" id="%s" class="mfmmf-color-picker" value="%s"/>',
 			$l_arr_data['name'],
@@ -557,7 +557,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @param string $p_str_setting_name Name of the Settings key to pre load the input field.
-	 * @param int    $p_in_Min Minimum value.
+	 * @param int    $p_in_min Minimum value.
 	 * @param int    $p_int_max Maximum value.
 	 * @param bool   $p_bool_deci  true if 0.1 steps and floating to string, false if integer (default)
 	 * @return string
@@ -565,9 +565,9 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * Edited:
 	 * @since 2.1.4  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-12T1110+0100
 	 */
-	protected function add_num_box( $p_str_setting_name, $p_in_Min, $p_int_max, $p_bool_deci = false ) {
+	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {
 		// collect data for given settings field
-		$l_arr_data = $this->Load_setting( $p_str_setting_name );
+		$l_arr_data = $this->load_setting( $p_str_setting_name );
 
 		if ( $p_bool_deci ) {
 			$l_str_value = number_format( floatval( $l_arr_data['value'] ), 1 );
@@ -576,7 +576,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 				$l_arr_data['name'],
 				$l_arr_data['id'],
 				$l_str_value,
-				$p_in_Min,
+				$p_in_min,
 				$p_int_max
 			);
 		} else {
@@ -585,7 +585,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 				$l_arr_data['name'],
 				$l_arr_data['id'],
 				$l_arr_data['value'],
-				$p_in_Min,
+				$p_in_min,
 				$p_int_max
 			);
 		}

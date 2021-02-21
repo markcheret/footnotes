@@ -81,7 +81,7 @@ class MCI_Footnotes_Hooks {
 	 * @param string $p_str_plugin_file_name Plugins init file name.
 	 * @return array
 	 */
-	public static function Plugin_links( $p_arr_links, $p_str_plugin_file_name ) {
+	public static function plugin_links( $p_arr_links, $p_str_plugin_file_name ) {
 		// Append link to the WordPress Plugin page.
 		$p_arr_links[] = sprintf( '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
 		// Append link to the Settings page.

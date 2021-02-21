@@ -82,30 +82,30 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 	 */
 	public function Diagnostics() {
 		global $wp_version;
-		$l_str_PhpExtensions = '';
+		$l_str_php_extensions = '';
 		// iterate through each PHP extension
-		foreach ( get_loaded_extensions() as $l_int_Index => $l_str_Extension ) {
-			if ( $l_int_Index > 0 ) {
-				$l_str_PhpExtensions .= ' | ';
+		foreach ( get_loaded_extensions() as $l_int_index => $l_str_extension ) {
+			if ( $l_int_index > 0 ) {
+				$l_str_php_extensions .= ' | ';
 			}
-			$l_str_PhpExtensions .= $l_str_Extension . ' ' . phpversion( $l_str_Extension );
+			$l_str_php_extensions .= $l_str_extension . ' ' . phpversion( $l_str_extension );
 		}
 
-		/** @var WP_Theme $l_obj_CurrentTheme */
-		$l_obj_CurrentTheme = wp_get_theme();
+		/** @var WP_Theme $l_obj_current_theme */
+		$l_obj_current_theme = wp_get_theme();
 
-		$l_str_WordPressPlugins = '';
+		$l_str_wordpress_plugins = '';
 		// iterate through each installed WordPress Plugin
-		foreach ( get_plugins() as $l_arr_Plugin ) {
-			$l_str_WordPressPlugins .= '<tr>';
-			$l_str_WordPressPlugins .= '<td>' . $l_arr_Plugin['Name'] . '</td>';
-			$l_str_WordPressPlugins .= '<td>' . $l_arr_Plugin['Version'] . ' [' . $l_arr_Plugin['PluginURI'] . ']' . '</td>';
-			$l_str_WordPressPlugins .= '</tr>';
+		foreach ( get_plugins() as $l_arr_plugin ) {
+			$l_str_wordpress_plugins .= '<tr>';
+			$l_str_wordpress_plugins .= '<td>' . $l_arr_plugin['Name'] . '</td>';
+			$l_str_wordpress_plugins .= '<td>' . $l_arr_plugin['Version'] . ' [' . $l_arr_plugin['PluginURI'] . ']' . '</td>';
+			$l_str_wordpress_plugins .= '</tr>';
 		}
 		// load template file
-		$l_obj_Template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'diagnostics' );
+		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'diagnostics' );
 		// replace all placeholders
-		$l_obj_Template->replace(
+		$l_obj_template->replace(
 			array(
 				'label-server'             => __( 'Server name', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
 				'server'                   => $_SERVER['SERVER_NAME'],
@@ -123,18 +123,18 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 				'memory-limit'             => ini_get( 'memory_limit' ),
 
 				'label-php-extensions'     => __( 'PHP extensions', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
-				'php-extensions'           => $l_str_PhpExtensions,
+				'php-extensions'           => $l_str_php_extensions,
 
 				'label-wordpress'          => __( 'WordPress version', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
 				'wordpress'                => $wp_version,
 
 				'label-theme'              => __( 'Active Theme', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
-				'theme'                    => $l_obj_CurrentTheme->get( 'Name' ) . ' ' . $l_obj_CurrentTheme->get( 'Version' ) . ', ' . $l_obj_CurrentTheme->get( 'Author' ) . ' [' . $l_obj_CurrentTheme->get( 'AuthorURI' ) . ']',
+				'theme'                    => $l_obj_current_theme->get( 'Name' ) . ' ' . $l_obj_current_theme->get( 'Version' ) . ', ' . $l_obj_current_theme->get( 'Author' ) . ' [' . $l_obj_current_theme->get( 'AuthorURI' ) . ']',
 
-				'plugins'                  => $l_str_WordPressPlugins,
+				'plugins'                  => $l_str_wordpress_plugins,
 			)
 		);
 		// display template with replaced placeholders
-		echo $l_obj_Template->getContent();
+		echo $l_obj_template->getContent();
 	}
 }

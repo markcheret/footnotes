@@ -75,11 +75,11 @@ abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 	 * “The called constructor method for WP_Widget in MCI_Footnotes_Widget_ReferenceContainer is deprecated since version 4.3.0! Use __construct() instead.”
 	 */
 	public function __construct() {
-		$l_arr_WidgetOptions  = array(
+		$l_arr_widget_options  = array(
 			'classname'   => __CLASS__,
 			'description' => $this->getDescription(),
 		);
-		$l_arr_ControlOptions = array(
+		$l_arr_control_options = array(
 			'id_base' => strtolower( $this->getID() ),
 			'width'   => $this->getWidgetWidth(),
 		);
@@ -87,8 +87,8 @@ abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 		parent::__construct(
 			strtolower( $this->getID() ), // unique ID for the widget, has to be lowercase
 			$this->getName(), // Plugin name to be displayed
-			$l_arr_WidgetOptions, // Optional Widget Options
-			$l_arr_ControlOptions // Optional Widget Control Options
+			$l_arr_widget_options, // Optional Widget Options
+			$l_arr_control_options // Optional Widget Control Options
 		);
 	}
 }

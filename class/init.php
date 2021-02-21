@@ -191,7 +191,7 @@ class MCI_Footnotes {
 		 * After adding the alternative reference container, j_query has become optional,
 		 * but still enabled by default.
 		 */
-		if ( $l_str_script_mode == 'jquery' || ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) ) {
+		if ( 'jquery' === $l_str_script_mode || ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) ) {
 
 			wp_enqueue_script( 'jquery' );
 
@@ -356,7 +356,7 @@ class MCI_Footnotes {
 			wp_enqueue_style( 'mci-footnotes-alternative', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ), array(), C_STR_FOOTNOTES_VERSION );
 
 			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
-			if ( $l_str_page_layout_option != 'none' ) {
+			if ( 'none' !== $l_str_page_layout_option ) {
 				wp_enqueue_style(
 					'mci-footnotes-layout-' . $l_str_page_layout_option,
 					plugins_url(

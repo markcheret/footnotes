@@ -16,7 +16,7 @@
  */
 function mci_footnotes_require_php_files( $p_str_directory ) {
 	// Append slash at the end of the Directory if not exist.
-	if ( substr( $p_str_directory, -1 ) != '/' ) {
+	if ( '/' !== substr( $p_str_directory, -1 ) ) {
 		$p_str_directory .= '/';
 	}
 	// Het all PHP files inside Directory.
@@ -24,7 +24,7 @@ function mci_footnotes_require_php_files( $p_str_directory ) {
 	// Iterate through each class.
 	foreach ( $l_arr_files as $l_str_file_name ) {
 		// Skip all non *.php files.
-		if ( strtolower( substr( $l_str_file_name, -4 ) ) != '.php' ) {
+		if ( '.php' !== strtolower( substr( $l_str_file_name, -4 ) ) ) {
 			continue;
 		}
 		/** @noinspection PhpIncludeInspection */

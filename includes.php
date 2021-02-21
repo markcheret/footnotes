@@ -19,11 +19,11 @@ function mci_footnotes_require_php_files( $p_str_directory ) {
 	if ( '/' !== substr( $p_str_directory, -1 ) ) {
 		$p_str_directory .= '/';
 	}
-	// Het all PHP files inside Directory.
+	// Get all PHP files inside Directory.
 	$l_arr_files = scandir( $p_str_directory );
 	// Iterate through each class.
 	foreach ( $l_arr_files as $l_str_file_name ) {
-		// Skip all non *.php files.
+		// Skip all non-PHP files.
 		if ( '.php' !== strtolower( substr( $l_str_file_name, -4 ) ) ) {
 			continue;
 		}

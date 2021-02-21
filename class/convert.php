@@ -109,19 +109,19 @@ class MCI_Footnotes_Convert {
 	private static function to_romanic( $p_int_value, $p_bool_upper_case ) {
 		// Table containing all necessary romanic letters.
 		$l_arr_romanic_letters = array(
-			'M' => 1000,
+			'M'  => 1000,
 			'CM' => 900,
-			'D' => 500,
+			'D'  => 500,
 			'CD' => 400,
-			'C' => 100,
+			'C'  => 100,
 			'XC' => 90,
-			'L' => 50,
+			'L'  => 50,
 			'XL' => 40,
-			'X' => 10,
+			'X'  => 10,
 			'IX' => 9,
-			'V' => 5,
+			'V'  => 5,
 			'IV' => 4,
-			'I' => 1,
+			'I'  => 1,
 		);
 		// Return value.
 		$l_str_return = '';
@@ -129,7 +129,7 @@ class MCI_Footnotes_Convert {
 		while ( $p_int_value > 0 ) {
 			foreach ( $l_arr_romanic_letters as $l_str_romanic => $l_int_arabic ) {
 				if ( $p_int_value >= $l_int_arabic ) {
-					$p_int_value -= $l_int_arabic;
+					$p_int_value  -= $l_int_arabic;
 					$l_str_return .= $l_str_romanic;
 					break;
 				}
@@ -197,20 +197,20 @@ class MCI_Footnotes_Convert {
 		if ( empty( $p_mixed_Value ) ) {
 			var_dump( $p_mixed_Value );
 
-		} else if ( is_array( $p_mixed_Value ) ) {
+		} elseif ( is_array( $p_mixed_Value ) ) {
 			printf( '<pre>' );
 			print_r( $p_mixed_Value );
 			printf( '</pre>' );
 
-		} else if ( is_object( $p_mixed_Value ) ) {
+		} elseif ( is_object( $p_mixed_Value ) ) {
 			printf( '<pre>' );
 			print_r( $p_mixed_Value );
 			printf( '</pre>' );
 
-		} else if ( is_numeric( $p_mixed_Value ) || is_int( $p_mixed_Value ) ) {
+		} elseif ( is_numeric( $p_mixed_Value ) || is_int( $p_mixed_Value ) ) {
 			var_dump( $p_mixed_Value );
 
-		} else if ( is_date( $p_mixed_Value ) ) {
+		} elseif ( is_date( $p_mixed_Value ) ) {
 			var_dump( $p_mixed_Value );
 
 		} else {

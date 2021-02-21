@@ -3,7 +3,7 @@
  * Includes the main Class of the Plugin.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 12.09.14 10:56
  *
  * @lastmodified 2021-02-19T2031+0100

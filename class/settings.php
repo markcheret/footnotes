@@ -3,7 +3,7 @@
  * Includes the Settings class to handle all Plugin settings.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 14.09.14 10:43
  *
  * @lastmodified 2021-02-19T1608+0100

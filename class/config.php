@@ -3,7 +3,7 @@
  * Includes the Plugin Constants class to load all Plugin constant vars like Plugin name, etc.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 12.09.14 10:56
  * 
  * Edited for:

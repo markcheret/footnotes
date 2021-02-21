@@ -3,7 +3,7 @@
  * Widget base.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0
  * @date 14.09.14 14:30
  *
@@ -21,7 +21,7 @@
  * @author Stefan Herndler
  * @since 1.5.0
  */
-abstract class MCI_Footnotes_WidgetBase extends WP_Widget {
+abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.

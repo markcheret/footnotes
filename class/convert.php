@@ -186,11 +186,14 @@ class MCI_Footnotes_Convert {
 		return $l_arr_arrows[ $p_int_index ];
 	}
 
+	// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+	// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_print_r
 	/**
 	 * Displays a Variable.
 	 *
 	 * @since 1.5.0
-	 * @param mixed $p_mixed_value
+	 * @param mixed $p_mixed_value The variable to display.
+	 * @return void
 	 */
 	public static function debug( $p_mixed_value ) {
 		if ( empty( $p_mixed_value ) ) {
@@ -217,4 +220,5 @@ class MCI_Footnotes_Convert {
 		}
 		echo '<br/>';
 	}
+	// phpcs:disable
 }

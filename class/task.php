@@ -960,10 +960,10 @@ class MCI_Footnotes_Task {
 		switch ( $l_str_love_me_index ) {
 			// Options named wrt backcompat, simplest is default:.
 			case 'text-1':
-				$l_str_love_me_text = sprintf( __( 'I %2$s %1$s', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_linked_name, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL );
+				$l_str_love_me_text = sprintf( __( 'I %2$s %1$s', 'footnotes' ), $l_str_linked_name, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL );
 				break;
 			case 'text-2':
-				$l_str_love_me_text = sprintf( __( 'This website uses the awesome %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_linked_name );
+				$l_str_love_me_text = sprintf( __( 'This website uses the awesome %s plugin.', 'footnotes' ), $l_str_linked_name );
 				break;
 			case 'text-4':
 				$l_str_love_me_text = sprintf( '%s %s', $l_str_linked_name, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL );
@@ -972,10 +972,10 @@ class MCI_Footnotes_Task {
 				$l_str_love_me_text = sprintf( '%s %s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, $l_str_linked_name );
 				break;
 			case 'text-6':
-				$l_str_love_me_text = sprintf( __( 'This website uses %s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_linked_name );
+				$l_str_love_me_text = sprintf( __( 'This website uses %s.', 'footnotes' ), $l_str_linked_name );
 				break;
 			case 'text-7':
-				$l_str_love_me_text = sprintf( __( 'This website uses the %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_linked_name );
+				$l_str_love_me_text = sprintf( __( 'This website uses the %s plugin.', 'footnotes' ), $l_str_linked_name );
 				break;
 			case 'text-3':
 			default:
@@ -1262,14 +1262,14 @@ class MCI_Footnotes_Task {
 
 				// Compose warning box:.
 				$l_str_syntax_error_warning  = '<div class="footnotes_validation_error"><p>';
-				$l_str_syntax_error_warning .= __( 'WARNING: unbalanced footnote start tag short code found.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME );
+				$l_str_syntax_error_warning .= __( 'WARNING: unbalanced footnote start tag short code found.', 'footnotes' );
 				$l_str_syntax_error_warning .= '</p><p>';
 
 				// Syntax validation setting in the dashboard under the General settings tab:.
-				$l_str_syntax_error_warning .= sprintf( __( 'If this warning is irrelevant, please disable the syntax validation feature in the dashboard under %1$s &gt; %2$s &gt; %3$s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), __( 'General settings', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), __( 'Footnote start and end short codes', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), __( 'Check for balanced shortcodes', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+				$l_str_syntax_error_warning .= sprintf( __( 'If this warning is irrelevant, please disable the syntax validation feature in the dashboard under %1$s &gt; %2$s &gt; %3$s.', 'footnotes' ), __( 'General settings', 'footnotes' ), __( 'Footnote start and end short codes', 'footnotes' ), __( 'Check for balanced shortcodes', 'footnotes' ) );
 
 				$l_str_syntax_error_warning .= '</p><p>';
-				$l_str_syntax_error_warning .= __( 'Unbalanced start tag short code found before:', MCI_Footnotes_Config::C_STR_PLUGIN_NAME );
+				$l_str_syntax_error_warning .= __( 'Unbalanced start tag short code found before:', 'footnotes' );
 				$l_str_syntax_error_warning .= '</p><p>“';
 				$l_str_syntax_error_warning .= $l_str_error_spot_string;
 				$l_str_syntax_error_warning .= '”</p></div>';

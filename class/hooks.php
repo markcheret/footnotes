@@ -62,11 +62,11 @@ class MCI_Footnotes_Hooks {
 	public static function uninstall_plugin() {
 		// WordPress User has to be logged in.
 		if ( ! is_user_logged_in() ) {
-			wp_die( __( 'You must be logged in to run this script.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+			wp_die( __( 'You must be logged in to run this script.', 'footnotes' ) );
 		}
 		// WordPress User needs the permission to (un)install plugins.
 		if ( ! current_user_can( 'install_plugins' ) ) {
-			wp_die( __( 'You do not have permission to run this script.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+			wp_die( __( 'You do not have permission to run this script.', 'footnotes' ) );
 		}
 		// Deletes all settings and restore the default values.
 		// MCI_Footnotes_Settings::instance()->Clear_all();.
@@ -83,11 +83,11 @@ class MCI_Footnotes_Hooks {
 	 */
 	public static function plugin_links( $p_arr_links, $p_str_plugin_file_name ) {
 		// Append link to the WordPress Plugin page.
-		$p_arr_links[] = sprintf( '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+		$p_arr_links[] = sprintf( '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
 		// Append link to the Settings page.
-		$p_arr_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=mfmmf-footnotes' ), __( 'Settings', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+		$p_arr_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=mfmmf-footnotes' ), __( 'Settings', 'footnotes' ) );
 		// Append link to the Play_pal Donate function.
-		$p_arr_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+		$p_arr_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
 		// Return new links.
 		return $p_arr_links;
 	}

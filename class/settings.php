@@ -1094,7 +1094,8 @@ class MCI_Footnotes_Settings {
 	private function load_all() {
 		// Clear current settings.
 		$this->a_arr_settings = array();
-		for ( $i = 0; $i < count( $this->a_arr_container ); $i++ ) {
+		$num_settings         = count( $this->a_arr_container );
+		for ( $i = 0; $i < $num_settings; $i++ ) {
 			// Load settings.
 			$this->a_arr_settings = array_merge( $this->a_arr_settings, $this->load( $i ) );
 		}
@@ -1180,7 +1181,8 @@ class MCI_Footnotes_Settings {
 	 */
 	public function clear_all() {
 		// Iterate through each Settings Container.
-		for ( $i = 0; $i < count( $this->a_arr_container ); $i++ ) {
+		$num_settings = count( $this->a_arr_container );
+		for ( $i = 0; $i < $num_settings; $i++ ) {
 			// Delete the settings container.
 			delete_option( $this->get_container( $i ) );
 		}
@@ -1196,7 +1198,8 @@ class MCI_Footnotes_Settings {
 	 */
 	public function register_settings() {
 		// Register all settings.
-		for ( $i = 0; $i < count( $this->a_arr_container ); $i++ ) {
+		$num_settings = count( $this->a_arr_container );
+		for ( $i = 0; $i < $num_settings; $i++ ) {
 			register_setting( $this->get_container( $i ), $this->get_container( $i ) );
 		}
 	}

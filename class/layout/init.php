@@ -4,14 +4,12 @@
  *
  * @filesource
  * @package footnotes
- * @author Stefan Herndler
  * @since  1.5.0 12.09.14 10:26
  */
 
 /**
  * Handles the Settings interface of the Plugin.
  *
- * @author Stefan Herndler
  * @since  1.5.0
  */
 class MCI_Footnotes_Layout_Init {
@@ -27,7 +25,6 @@ class MCI_Footnotes_Layout_Init {
 	/**
 	 * Plugin main menu name.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var string
 	 */
@@ -36,7 +33,6 @@ class MCI_Footnotes_Layout_Init {
 	/**
 	 * Contains layout engine sub classes.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var array
 	 */
@@ -45,40 +41,36 @@ class MCI_Footnotes_Layout_Init {
 	/**
 	 * Class Constructor. Initializes all WordPress hooks for the Plugin Settings.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 */
 	public function __construct() {
-		// iterate through each class define in the current script.
 		foreach ( get_declared_classes() as $l_str_class_name ) {
-			// accept only child classes of the layout engine.
 			if ( is_subclass_of( $l_str_class_name, 'MCI_Footnotes_Layout_Engine' ) ) {
 				$l_obj_class = new $l_str_class_name();
-				// append new instance of the layout engine sub class.
-				$this->a_arr_sub_page_classes[ $l_obj_class->getPriority() ] = $l_obj_class;
+				// Append new instance of the layout engine sub class.
+				$this->a_arr_sub_page_classes[ $l_obj_class->get_priority() ] = $l_obj_class;
 			}
 		}
 		ksort( $this->a_arr_sub_page_classes );
 
-		// register hooks/actions.
+		// Register hooks/actions.
 		add_action( 'admin_init', array( $this, 'initialize_settings' ) );
 		add_action( 'admin_menu', array( $this, 'register_main_menu' ) );
 		// register AJAX callbacks for Plugin information.
-		add_action( 'wp_ajax_nopriv_footnotes_getPluginInfo', array( $this, 'get_plugin_meta_information' ) );
-		add_action( 'wp_ajax_footnotes_getPluginInfo', array( $this, 'get_plugin_meta_information' ) );
+		add_action( 'wp_ajax_nopriv_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
+		add_action( 'wp_ajax_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 	}
 
 	/**
 	 * Initializes all sub pages and registers the settings.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 */
 	public function initialize_settings() {
-		MCI_Footnotes_Settings::instance()->RegisterSettings();
+		MCI_Footnotes_Settings::instance()->register_settings();
 		// iterate though each sub class of the layout engine and register their sections.
 		foreach ( $this->a_arr_sub_page_classes as $l_obj_layout_engine_sub_class ) {
-			$l_obj_layout_engine_sub_class->registerSections();
+			$l_obj_layout_engine_sub_class->register_sections();
 		}
 	}
 
@@ -86,7 +78,6 @@ class MCI_Footnotes_Layout_Init {
 	 * Registers the new main menu for the WordPress dashboard.
 	 * Registers all sub menu pages for the new main menu.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @see http://codex.wordpress.org/Function_Reference/add_menu_page
 	 */
@@ -120,7 +111,6 @@ class MCI_Footnotes_Layout_Init {
 	/**
 	 * Registers all SubPages for this Plugin.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	private function register_sub_pages() {
@@ -134,14 +124,13 @@ class MCI_Footnotes_Layout_Init {
 	/**
 	 * Displays other Plugins from the developers.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public function display_other_plugins() {
 		printf( '<br/><br/>' );
 		// load template file.
 		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'manfisher' );
-		echo wp_kses_post( $l_obj_template->getContent() );
+		echo wp_kses_post( $l_obj_template->get_content() );
 
 		printf( '<em>visit <a href="https://cheret.de/plugins/footnotes-2/" target="_blank">Mark Cheret</a></em>' );
 		printf( '<br/><br/>' );
@@ -152,7 +141,6 @@ class MCI_Footnotes_Layout_Init {
 	/**
 	 * AJAX call. returns a JSON string containing meta information about a specific WordPress Plugin.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public function get_plugin_meta_information() {
@@ -160,7 +148,7 @@ class MCI_Footnotes_Layout_Init {
 
 		// get plugin internal name from POST data.
 		if ( isset( $_POST['plugin'] ) && 'true' === $_POST['plugin'] ) {
-			$l_str_plugin_name = wp_kses_post( wp_unslash( $_POST['plugin'] ) );
+			$l_str_plugin_name = santitize_option( wp_unslash( $_POST['plugin'] ) );
 		}
 
 		if ( empty( $l_str_plugin_name ) ) {

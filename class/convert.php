@@ -16,7 +16,6 @@
 /**
  * Converts data types and Footnotes specific values.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Convert {
@@ -24,7 +23,6 @@ class MCI_Footnotes_Convert {
 	/**
 	 * Converts a integer into the user-defined counter style for the footnotes.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param int    $p_int_index Index to be converted.
 	 * @param string $p_str_convert_style Style of the new/converted Index.
@@ -55,7 +53,6 @@ class MCI_Footnotes_Convert {
 	 * Converts an integer into latin ascii characters, either lower or upper-case.
 	 * Function available from A to ZZ ( means 676 footnotes at 1 page possible).
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.0-gamma
 	 * @param int  $p_int_value Value/Index to be converted.
 	 * @param bool $p_bool_upper_case True to convert the value to upper case letter, otherwise to lower case.
@@ -87,7 +84,6 @@ class MCI_Footnotes_Convert {
 	/**
 	 * Converts an integer to a leading-0 integer.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.0-gamma
 	 * @param int $p_int_value Value/Index to be converted.
 	 * @return string Value with a leading zero.
@@ -103,7 +99,6 @@ class MCI_Footnotes_Convert {
 	/**
 	 * Converts an integer to a romanic letter.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.0-gamma
 	 * @param int $p_int_value Value/Index to be converted.
 	 * @return string
@@ -150,7 +145,6 @@ class MCI_Footnotes_Convert {
 	/**
 	 * Converts a string depending on its value to a boolean.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.0-beta
 	 * @param string $p_str_value String to be converted to boolean.
 	 * @return bool Boolean representing the string.
@@ -174,7 +168,6 @@ class MCI_Footnotes_Convert {
 	/**
 	 * Get a html Array short code depending on Arrow-Array key index.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.3.2
 	 * @param int $p_int_index Index representing the Arrow. If empty all Arrows are specified.
 	 * @return array|string Array of all Arrows if Index is empty otherwise html tag of a specific arrow.
@@ -197,7 +190,6 @@ class MCI_Footnotes_Convert {
 	/**
 	 * Displays a Variable.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param mixed $p_mixed_Value
 	 */

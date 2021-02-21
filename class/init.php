@@ -165,7 +165,7 @@ class MCI_Footnotes {
 		 *
 		 * The condition about tooltips was missing, only the not-alternative-tooltips part was present.
 		 */
-		// Set conditions re-used for stylesheet enqueuing:.
+		// Set conditions re-used for stylesheet enqueuing.
 		self::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
 		self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
 		$l_str_script_mode                         = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
@@ -264,7 +264,7 @@ class MCI_Footnotes {
 			 * The media scope argument 'all' is the default.
 			 * No need to use '-css' in the handle, as this is appended automatically.
 			 */
-			// Set tooltip mode for use in stylesheet name:.
+			// Set tooltip mode for use in stylesheet name.
 			if ( self::$a_bool_tooltips_enabled ) {
 				if ( self::$a_bool_alternative_tooltips_enabled ) {
 					$l_str_tooltip_mode = 'al';
@@ -278,7 +278,7 @@ class MCI_Footnotes {
 				$l_str_tcomplement  = '-tooltips';
 			}
 
-			// Set basic responsive page layout mode for use in stylesheet name:.
+			// Set basic responsive page layout mode for use in stylesheet name.
 			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			switch ( $l_str_page_layout_option ) {
 				case 'reference-container':
@@ -296,7 +296,7 @@ class MCI_Footnotes {
 					break;
 			}
 
-			// Enqueue the tailored united minified stylesheet:.
+			// Enqueue the tailored united minified stylesheet.
 			wp_enqueue_style(
 				'mci-footnotes-' . $l_str_tooltip_mode . $l_str_tcomplement . '-pagelayout-' . $l_str_page_layout_option,
 				plugins_url(

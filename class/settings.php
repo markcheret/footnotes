@@ -176,7 +176,7 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.0
 	 * @var str
 	 *
-	 * The default footnote referrer surroundings should be square brackets:
+	 * The default footnote referrer surroundings should be square brackets.
 	 *
 	 * - with respect to baseline footnote referrers new option;
 	 * - as in English or US American typesetting;
@@ -530,10 +530,10 @@ class MCI_Footnotes_Settings {
 	 * 2020-12-05T0425+0100
 	 */
 
-	// Link element option:.
+	// Link element option.
 	const C_BOOL_LINK_ELEMENT_ENABLED = 'footnote_inputfield_link_element_enabled';
 
-	// Backlink typography:.
+	// Backlink typography.
 	const C_BOOL_BACKLINKS_SEPARATOR_ENABLED  = 'footnotes_inputfield_backlinks_separator_enabled';
 	const C_STR_BACKLINKS_SEPARATOR_OPTION    = 'footnotes_inputfield_backlinks_separator_option';
 	const C_STR_BACKLINKS_SEPARATOR_CUSTOM    = 'footnotes_inputfield_backlinks_separator_custom';
@@ -541,7 +541,7 @@ class MCI_Footnotes_Settings {
 	const C_STR_BACKLINKS_TERMINATOR_OPTION   = 'footnotes_inputfield_backlinks_terminator_option';
 	const C_STR_BACKLINKS_TERMINATOR_CUSTOM   = 'footnotes_inputfield_backlinks_terminator_custom';
 
-	// Backlink layout:.
+	// Backlink layout.
 	const C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED     = 'footnotes_inputfield_backlinks_column_width_enabled';
 	const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR       = 'footnotes_inputfield_backlinks_column_width_scalar';
 	const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT         = 'footnotes_inputfield_backlinks_column_width_unit';
@@ -550,13 +550,13 @@ class MCI_Footnotes_Settings {
 	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT     = 'footnotes_inputfield_backlinks_column_max_width_unit';
 	const C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED      = 'footnotes_inputfield_backlinks_line_breaks_enabled';
 
-	// Tooltip font size:.
+	// Tooltip font size.
 	// Called mouse over box not tooltip for consistency.
 	const C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED = 'footnotes_inputfield_mouse_over_box_font_size_enabled';
 	const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
 	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     = 'footnotes_inputfield_mouse_over_box_font_size_unit';
 
-	// Page layout support:.
+	// Page layout support.
 	const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT = 'footnotes_inputfield_page_layout_support';
 
 	/**
@@ -568,11 +568,11 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
 	 */
-	// Scroll offset and duration:.
+	// Scroll offset and duration.
 	const C_INT_FOOTNOTES_SCROLL_OFFSET   = 'footnotes_inputfield_scroll_offset';
 	const C_INT_FOOTNOTES_SCROLL_DURATION = 'footnotes_inputfield_scroll_duration';
 
-	// Tooltip display durations:.
+	// Tooltip display durations.
 	// Called mouse over box not tooltip for consistency.
 	const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY     = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
 	const C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION  = 'footnotes_inputfield_mouse_over_box_fade_in_duration';
@@ -785,7 +785,7 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.0
 	 * @var array
 	 *
-	 * Edited:
+	 * Edited.
 	 * 2.2.2  added tab for Custom CSS  2020-12-15T0740+0100
 	 *
 	 * These are the storage container names, one per dashboard tab.
@@ -829,7 +829,7 @@ class MCI_Footnotes_Settings {
 			self::C_INT_FOOTNOTES_SCROLL_OFFSET            => 20,
 			self::C_INT_FOOTNOTES_SCROLL_DURATION          => 380,
 
-			// 2.5.4 fast-tracked:.
+			// 2.5.4 fast-tracked.
 			self::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE => 'yes',
 			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT    => 'Alt+ ←',
 
@@ -844,23 +844,23 @@ class MCI_Footnotes_Settings {
 			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE => '[[references]]',
 			self::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE => 'yes',
 
-			// Whether to enqueue additional stylesheet:.
+			// Whether to enqueue additional stylesheet.
 			self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT      => 'none',
 
-			// Top and bottom margins:.
+			// Top and bottom margins.
 			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN     => 24,
 			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN  => 0,
 
-			// Table cell borders:.
+			// Table cell borders.
 			self::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE => 'no',
 
-			// Backlink symbol:.
+			// Backlink symbol.
 			self::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE => 'no',
 			self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
 			self::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 
 			// Backlink separators and terminators are often not preferred..
-			// But a choice must be provided along with the ability to customize:.
+			// But a choice must be provided along with the ability to customize.
 			self::C_BOOL_BACKLINKS_SEPARATOR_ENABLED       => 'yes',
 			self::C_STR_BACKLINKS_SEPARATOR_OPTION         => 'comma',
 			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM         => '',
@@ -868,26 +868,26 @@ class MCI_Footnotes_Settings {
 			self::C_STR_BACKLINKS_TERMINATOR_OPTION        => 'full_stop',
 			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM        => '',
 
-			// Set backlinks column width:.
+			// Set backlinks column width.
 			self::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED    => 'no',
 			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      => '50',
 			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        => 'px',
 
-			// Set backlinks column max. width:.
+			// Set backlinks column max. width.
 			self::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'no',
 			self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
 			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
 
-			// Whether a <br /> tag is inserted:.
+			// Whether a <br /> tag is inserted.
 			self::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED     => 'no',
 
-			// Whether to enable URL line wrapping:.
+			// Whether to enable URL line wrapping.
 			self::C_BOOL_FOOTNOTE_URL_WRAP_ENABLED         => 'yes',
 
-			// Whether to use link elements:.
+			// Whether to use link elements.
 			self::C_BOOL_LINK_ELEMENT_ENABLED              => 'yes',
 
-			// Excerpt should be disabled:.
+			// Excerpt should be disabled.
 			self::C_BOOL_FOOTNOTES_IN_EXCERPT              => 'no',
 
 			self::C_BOOL_FOOTNOTES_EXPERT_MODE             => 'yes',
@@ -914,13 +914,13 @@ class MCI_Footnotes_Settings {
 
 			// The mouse over content truncation should be enabled by default.
 			// To raise awareness of the functionality and to prevent the screen.
-			// From being filled at mouse-over, and to allow the Continue reading:.
+			// From being filled at mouse-over, and to allow the Continue reading.
 			self::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
 
-			// The truncation length is raised from 150 to 200 chars:.
+			// The truncation length is raised from 150 to 200 chars.
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 200,
 
-			// 2.5.4 fast-tracked:.
+			// 2.5.4 fast-tracked.
 			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER => '[[/tooltip]]',
 			self::C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE => 'no',
 			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR => ' — ',
@@ -929,24 +929,24 @@ class MCI_Footnotes_Settings {
 
 			// The default position should not be lateral because of the risk.
 			// The box gets squeezed between note anchor at line end and window edge,.
-			// And top because reading at the bottom of the window is more likely:.
+			// And top because reading at the bottom of the window is more likely.
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION  => 'top center',
 
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X  => 0,
 			// The vertical offset must be negative for the box not to cover.
-			// The current line of text (web coordinates origin is top left):.
+			// The current line of text (web coordinates origin is top left).
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y  => -7,
 
-			// The width should be limited to start with, for the box to have shape:.
+			// The width should be limited to start with, for the box to have shape.
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
 
-			// Fixed width is for alternative tooltips, cannot reuse max-width nor offsets:.
+			// Fixed width is for alternative tooltips, cannot reuse max-width nor offsets.
 			self::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION => 'top right',
 			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X => -50,
 			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y => 24,
 			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH => 400,
 
-			// Tooltip display durations:.
+			// Tooltip display durations.
 			// Called mouse over box not tooltip for consistency.
 			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY       => 0,
 			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION    => 200,
@@ -962,18 +962,18 @@ class MCI_Footnotes_Settings {
 
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR     => '',
 			// The mouse over box shouldn’t feature a colored background.
-			// By default, due to diverging user preferences. White is neutral:.
+			// By default, due to diverging user preferences. White is neutral.
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#ffffff',
 
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
 
-			// The mouse over box corners mustn’t be rounded as that is outdated:.
+			// The mouse over box corners mustn’t be rounded as that is outdated.
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
 
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
 
-			// Custom CSS migrates to a dedicated tab:.
+			// Custom CSS migrates to a dedicated tab.
 			self::C_STR_CUSTOM_CSS                         => '',
 
 		),
@@ -981,7 +981,7 @@ class MCI_Footnotes_Settings {
 		'footnotes_storage_expert'     => array(
 
 			// These are checkboxes; keyword 'checked' is converted to Boolean true,.
-			// Empty string to false (default):.
+			// Empty string to false (default).
 
 			// Titles should all be enabled by default to prevent users from.
 			// Thinking at first that the feature is broken in post titles..
@@ -1007,7 +1007,7 @@ class MCI_Footnotes_Settings {
 
 			// Initially hard-coded default.
 			// Shows "9223372036854780000" instead of 9223372036854775807 in the numbox.
-			// Empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty:.
+			// Empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty.
 			// <https://github.com/Modernizr/Modernizr/issues/171>.
 			// Interpret -1 as PHP_INT_MAX instead.
 			self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
@@ -1132,7 +1132,7 @@ class MCI_Footnotes_Settings {
 		// Iterate through each setting in the container.
 		foreach ( $l_arr_options as $l_str_key => $l_str_value ) {
 			// Remove all whitespace at the beginning and end of a setting.
-			// Trimming whitespace is ditched:.
+			// Trimming whitespace is ditched.
 			// $l_str_value = trim($l_str_value);.
 			// Write the sanitized value back to the setting container.
 			$l_arr_options[ $l_str_key ] = $l_str_value;

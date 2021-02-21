@@ -43,7 +43,7 @@ class MCI_Footnotes_Language {
 	 * @contributor @matkus2
 	 * @link https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/
 	 *
-	 * Add 3rd (empty) argument in apply_filters() to prevent PHP from throwing an error:
+	 * Add 3rd (empty) argument in apply_filters() to prevent PHP from throwing an error.
 	 * “Fatal error: Uncaught Argument_count_error: Too few arguments to function apply_filters()”
 	 *
 	 * Yet get_locale() is defined w/o parameters in wp-includes/l10n.php:30, and
@@ -53,7 +53,7 @@ class MCI_Footnotes_Language {
 	 * But apply_filters() is defined with a 3rd parameter (and w/o the first one) in
 	 * wp-includes/class-wp-hook.php:264, as public function apply_filters( $value, $args ).
 	 *
-	 * Taking it all together, probably the full function definition would be:
+	 * Taking it all together, probably the full function definition would be.
 	 * public function apply_filters( $tag, $value, $args ).
 	 * In the case of get_locale(), $args is empty.
 	 *
@@ -63,11 +63,11 @@ class MCI_Footnotes_Language {
 	 */
 	public static function load_text_domain() {
 
-		// If language file with localization exists:.
+		// If language file with localization exists.
 		if ( self::load( apply_filters( 'plugin_locale', get_locale(), '' ) ) ) {
 			return;
 		}
-		// Else fall back to British English:.
+		// Else fall back to British English.
 		self::load( 'en_GB' );
 	}
 
@@ -87,7 +87,7 @@ class MCI_Footnotes_Language {
 	 * @reporter @nikelaos
 	 * @link https://wordpress.org/support/topic/more-feature-ideas/
 	 *
-	 * That is done by using load_plugin_textdomain():
+	 * That is done by using load_plugin_textdomain().
 	 * “The .mo file should be named based on the text domain with a dash, and then the locale exactly.”
 	 * @see wp-includes/l10n.php:857
 	 */

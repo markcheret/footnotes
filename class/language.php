@@ -3,7 +3,7 @@
  * Loads text domain of current or default language for localization.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 14.09.14 17:47
  *
  * @lastmodified 2021-02-18T2028+0100

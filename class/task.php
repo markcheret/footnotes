@@ -3,7 +3,7 @@
  * Includes the core function of the Plugin - Search and Replace the Footnotes.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0
  *
  * @lastmodified  2021-02-20T0438+0100

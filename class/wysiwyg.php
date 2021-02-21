@@ -8,11 +8,17 @@
  */
 
 /**
+ * Handles the WSYIWYG-Buttons.
  *
  * @since 1.5.0
  */
 class MCI_Footnotes_WYSIWYG {
 
+	/**
+	 * Registers Button hooks.
+	 *
+	 * @return void
+	 */
 	public static function register_hooks() {
 		add_filter( 'mce_buttons', array( 'MCI_Footnotes_WYSIWYG', 'new_visual_editor_button' ) );
 		add_action( 'admin_print_footer_scripts', array( 'MCI_Footnotes_WYSIWYG', 'new_plain_text_editor_button' ) );
@@ -43,7 +49,7 @@ class MCI_Footnotes_WYSIWYG {
 	 */
 	public static function new_plain_text_editor_button() {
 		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'editor-button' );
-		echo $l_obj_template->get_content();
+		echo wp_kses_post( $l_obj_template->get_content() );
 	}
 
 	/**

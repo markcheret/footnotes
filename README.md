@@ -13,12 +13,12 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
 ## Getting Started
 
 1. Read the contributing guidelines
-1. Clone this repository (`git clone git@github.com:Rumperuu/footnotes.git`)
+1. Clone this repository (`git clone git@github.com:markcheret/footnotes.git`)
 1. Install [Composer](https://getcomposer.org/download/), if you don't have it already
 1. Install dependencies (`composer install`)
 1. Create a new branch from `main` (`git checkout -b <your-descriptive-branch-name>`)
 1. When you're finished, commit your changes to the remote version of your branch
-   and submit a [pull request](https://github.com/Rumperuu/footnotes/pulls).
+   and submit a [pull request](https://github.com/markcheret/footnotes/pulls).
 
 ## Checking WP Coding Standard Compliance
 
@@ -45,7 +45,7 @@ Unit tests are TODO.
 - Display the **footnotes** *Reference Container* inside a Widget;
 - Wide choice of numbering styles;
 - Freely configurable and optional backlink symbol;
-- Configure the **footnotes’** appearance by dashboard settings and Custom CSS style rules;
+- Configure the **footnotes'** appearance by dashboard settings and Custom CSS style rules;
 - Button in both the Visual and the Text editor to add shortcodes around selection.
 
 ## Example Usage
@@ -63,4 +63,4 @@ The current version is available on the [WordPress.org Plugin Directory](https:/
 
 ## Acknowledgements
 
-Huge thanks to every footnotes user, contributor, bug reporter, feature requester and fan!
+Huge thanks to every **footnotes user**, contributor, bug reporter, feature requester and fan!

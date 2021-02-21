@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Includes the Plugin settings menu.
  *
@@ -164,7 +164,7 @@ class MCI_Footnotes_Layout_Init {
 		}
 
 		if ( empty( $l_str_plugin_name ) ) {
-			echo json_encode( array( 'error' => 'Plugin name invalid.' ) );
+			echo wp_json_encode( array( 'error' => 'Plugin name invalid.' ) );
 			exit;
 		}
 		$l_str_url = 'https://api.wordpress.org/plugins/info/1.0/' . $l_str_plugin_name . '.json';
@@ -172,11 +172,11 @@ class MCI_Footnotes_Layout_Init {
 		$l_arr_response = wp_remote_get( $l_str_url );
 		// check if response is valid.
 		if ( is_wp_error( $l_arr_response ) ) {
-			echo json_encode( array( 'error' => 'Error receiving Plugin Information from WordPress.' ) );
+			echo wp_json_encode( array( 'error' => 'Error receiving Plugin Information from WordPress.' ) );
 			exit;
 		}
 		if ( ! array_key_exists( 'body', $l_arr_response ) ) {
-			echo json_encode( array( 'error' => 'Error reading WordPress API response message.' ) );
+			echo wp_json_encode( array( 'error' => 'Error reading WordPress API response message.' ) );
 			exit;
 		}
 		// get the body of the response.
@@ -184,16 +184,16 @@ class MCI_Footnotes_Layout_Init {
 		// get plugin object.
 		$l_arr_plugin = json_decode( $l_str_response, true );
 		if ( empty( $l_arr_plugin ) ) {
-			echo json_encode( array( 'error' => 'Error reading Plugin meta information.<br/>URL: ' . $l_str_url . '<br/>Response: ' . $l_str_response ) );
+			echo wp_json_encode( array( 'error' => 'Error reading Plugin meta information.<br/>URL: ' . $l_str_url . '<br/>Response: ' . $l_str_response ) );
 			exit;
 		}
 
 		$l_int_num_ratings = array_key_exists( 'num_ratings', $l_arr_plugin ) ? intval( $l_arr_plugin['num_ratings'] ) : 0;
-		$l_int_rating     = array_key_exists( 'rating', $l_arr_plugin ) ? floatval( $l_arr_plugin['rating'] ) : 0.0;
-		$l_int_stars      = round( 5 * $l_int_rating / 100.0, 1 );
+		$l_int_rating      = array_key_exists( 'rating', $l_arr_plugin ) ? floatval( $l_arr_plugin['rating'] ) : 0.0;
+		$l_int_stars       = round( 5 * $l_int_rating / 100.0, 1 );
 
 		// return Plugin information as JSON encoded string.
-		echo json_encode(
+		echo wp_json_encode(
 			array(
 				'error'             => '',
 				'PluginDescription' => array_key_exists( 'short_description', $l_arr_plugin ) ? html_entity_decode( $l_arr_plugin['short_description'] ) : 'Error reading Plugin information',

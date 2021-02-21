@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Includes the Plugin Widget to put the Reference Container to the Widget area.
  *
@@ -9,77 +9,70 @@
  * Edited 2.2.0  2020-12-12T2131+0100
  */
 
-
 /**
  * Registers a Widget to put the Reference Container to the widget area.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
-class MCI_Footnotes_Widget_ReferenceContainer extends MCI_Footnotes_Widget_Base {
+class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base {
 
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @return string
 	 */
-	protected function getID() {
+	protected function get_id() {
 		return 'footnotes_widget';
 	}
 
 	/**
 	 * Returns the Public name of the Widget to be displayed in the Configuration page.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @return string
 	 */
-	protected function getName() {
+	protected function get_name() {
 		return MCI_Footnotes_Config::C_STR_PLUGIN_NAME;
 	}
 
 	/**
 	 * Returns the Description of the child widget.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @return string
 	 *
 	 * Edit: curly quotes 2.2.0  2020-12-12T2130+0100
 	 */
-	protected function getDescription() {
+	protected function get_description() {
 		return __( 'The widget defines the position of the reference container if set to “widget area”.', 'footnotes' );
 	}
 
 	/**
 	 * Outputs the Settings of the Widget.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
-	 * @param mixed $instance
+	 * @param mixed $instance The instance of the widget.
 	 * @return void
 	 *
 	 * Edit: curly quotes 2.2.0  2020-12-12T2130+0100
 	 */
 	public function form( $instance ) {
-		echo __( 'The widget defines the position of the reference container if set to “widget area”.', 'footnotes' );
+		echo wp_kses_post( __( 'The widget defines the position of the reference container if set to “widget area”.', 'footnotes' ) );
 	}
 
 	/**
 	 * Outputs the Content of the Widget.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
-	 * @param mixed $args
-	 * @param mixed $instance
+	 * @param mixed $args The widget's arguments.
+	 * @param mixed $instance The instance of the widget.
 	 */
 	public function widget( $args, $instance ) {
 		global $g_obj_mci_footnotes;
-		// reference container positioning is set to "widget area"
-		if ( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) == 'widget' ) {
-			echo $g_obj_mci_footnotes->a_obj_task->ReferenceContainer();
+		// Reference container positioning is set to "widget area".
+		if ( 'widget' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
+			echo wp_kses_post( $g_obj_mci_footnotes->a_obj_task->Reference_Container() );
 		}
 	}
 }

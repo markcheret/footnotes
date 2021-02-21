@@ -67,15 +67,15 @@ class MCI_Footnotes_WYSIWYG {
 	public static function ajax_callback() {
 		// Get start and end tag for the footnotes short code.
 		$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
-		$l_str_ending_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
+		$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
 		if ( $l_str_starting_tag == 'userdefined' || $l_str_ending_tag == 'userdefined' ) {
 			$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
-			$l_str_ending_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
+			$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 		echo wp_json_encode(
 			array(
 				'start' => htmlspecialchars( $l_str_starting_tag ),
-				'end' => htmlspecialchars( $l_str_ending_tag ),
+				'end'   => htmlspecialchars( $l_str_ending_tag ),
 			)
 		);
 		exit;

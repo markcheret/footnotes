@@ -49,7 +49,7 @@ define( 'C_STR_FOOTNOTES_VERSION', '2.5.6d4' );
  */
 
 // Get all common classes and functions
-require_once( dirname( __FILE__ ) . '/includes.php' );
+require_once dirname( __FILE__ ) . '/includes.php';
 
 // add Plugin Links to the "installed plugins" page
 $l_str_plugin_file = 'footnotes/footnotes.php';

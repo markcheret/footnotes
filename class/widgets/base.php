@@ -29,7 +29,7 @@ abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 	 * @since 1.5.0
 	 * @return string
 	 */
-	abstract protected function getID();
+	abstract protected function get_id();
 
 	/**
 	 * Returns the Public name of child Widget to be displayed in the Configuration page.
@@ -37,7 +37,7 @@ abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 	 * @since 1.5.0
 	 * @return string
 	 */
-	abstract protected function getName();
+	abstract protected function get_name();
 
 	/**
 	 * Returns the Description of the child widget.
@@ -45,7 +45,7 @@ abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 	 * @since 1.5.0
 	 * @return string
 	 */
-	abstract protected function getDescription();
+	abstract protected function get_description();
 
 	/**
 	 * Returns the width of the Widget. Default width is 250 pixel.
@@ -53,7 +53,7 @@ abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 	 * @since 1.5.0
 	 * @return int
 	 */
-	protected function getWidgetWidth() {
+	protected function get_widget_width() {
 		return 250;
 	}
 

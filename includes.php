@@ -8,11 +8,11 @@
  */
 
 /**
- * Requires (require_once) all *.php files inside a specific Directory.
+ * Requires (`require_once`) all `*.php` files inside a specific Directory.
  *
  * @author Stefan Herndler
  * @since  1.5.0
- * @param string $p_str_directory Absolute Directory path to lookup for *.php files
+ * @param string $p_str_directory Absolute Directory path to lookup for `*.php` files.
  */
 function mci_footnotes_require_php_files( $p_str_directory ) {
 	// Append slash at the end of the Directory if not exist.

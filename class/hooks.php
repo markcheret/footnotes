@@ -63,8 +63,6 @@ class MCI_Footnotes_Hooks {
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			wp_die( wp_kses_post( __( 'You do not have permission to run this script.', 'footnotes' ) ) );
 		}
-		// Deletes all settings and restore the default values.
-		// MCI_Footnotes_Settings::instance()->Clear_all();.
 	}
 
 	/**
@@ -78,9 +76,9 @@ class MCI_Footnotes_Hooks {
 	public static function plugin_links( $p_arr_links, $p_str_plugin_file_name ) {
 		// Append link to the WordPress Plugin page.
 		$p_arr_links[] = sprintf( '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
-		// Append link to the Settings page.
+		// Append link to the settings page.
 		$p_arr_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=mfmmf-footnotes' ), __( 'Settings', 'footnotes' ) );
-		// Append link to the Play_pal Donate function.
+		// Append link to the PayPal donate function.
 		$p_arr_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
 		// Return new links.
 		return $p_arr_links;

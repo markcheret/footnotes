@@ -82,7 +82,7 @@ class MCI_Footnotes_Template {
 	 * @since 1.5.0
 	 * @param string $p_str_file_type Template file type (take a look on the Class constants).
 	 * @param string $p_str_file_name Template file name inside the Template directory without the file extension.
-	 * @param string $p_str_extension Optional Template file extension (default: html)
+	 * @param string $p_str_extension Optional Template file extension (default: html).
 	 *
 	 * @since 2.2.6  support for custom templates   2020-12-19T0606+0100
 	 * @link https://wordpress.org/support/topic/template-override-filter/
@@ -108,7 +108,8 @@ class MCI_Footnotes_Template {
 		 *
 		 * @since 2.4.0d3
 		 */
-		if ( $template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension ) ) {
+		$template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension );
+		if ( $template ) {
 			$this->process_template( $template );
 		} else {
 			return;
@@ -164,7 +165,7 @@ class MCI_Footnotes_Template {
 	 *
 	 * @since 2.4.0d3
 	 *
-	 * @param string $template
+	 * @param string $template The template to be processed.
 	 * @return void
 	 *
 	 * @since 2.0.3  replace tab with a space
@@ -174,7 +175,7 @@ class MCI_Footnotes_Template {
 	 * @since 2.5.4  collapse HTML comments and PHP/JS docblocks (only)
 	 */
 	public function process_template( $template ) {
-		$this->a_str_original_content = preg_replace( '#<!--.+?-->#s', '', file_get_contents( $template ) );
+		$this->a_str_original_content = preg_replace( '#<!--.+?-->#s', '', wp_remote_get( $template ) );
 		$this->a_str_original_content = preg_replace( '#/\*\*.+?\*/#s', '', $this->a_str_original_content );
 		$this->a_str_original_content = str_replace( "\n", '', $this->a_str_original_content );
 		$this->a_str_original_content = str_replace( "\r", '', $this->a_str_original_content );
@@ -189,9 +190,9 @@ class MCI_Footnotes_Template {
 	 *
 	 * @since 2.4.0d3
 	 *
-	 * @param string $p_str_file_type
-	 * @param string $p_str_file_name
-	 * @param string $p_str_extension
+	 * @param string $p_str_file_type The file type of the template.
+	 * @param string $p_str_file_name The file name of the template.
+	 * @param string $p_str_extension The file extension of the template.
 	 * @return mixed false | template path
 	 */
 	public function get_template( $p_str_file_type, $p_str_file_name, $p_str_extension = 'html' ) {

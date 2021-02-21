@@ -286,7 +286,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		echo '</h2><br/>';
 
 		if ( $l_bool_settings_updated ) {
-			echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
+			echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', 'footnotes' ) );
 		}
 
 		// form to submit the active section

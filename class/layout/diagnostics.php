@@ -45,7 +45,7 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 	 * @return string
 	 */
 	protected function getSubPageTitle() {
-		return __( 'Diagnostics', MCI_Footnotes_Config::C_STR_PLUGIN_NAME );
+		return __( 'Diagnostics', 'footnotes' );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 	 */
 	protected function getSections() {
 		return array(
-			$this->addSection( 'diagnostics', __( 'Diagnostics', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), null, false ),
+			$this->addSection( 'diagnostics', __( 'Diagnostics', 'footnotes' ), null, false ),
 		);
 	}
 
@@ -70,7 +70,7 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 	 */
 	protected function getMetaBoxes() {
 		return array(
-			$this->addMetaBox( 'diagnostics', 'diagnostics', __( 'Displays information about the web server, PHP and WordPress', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), 'Diagnostics' ),
+			$this->addMetaBox( 'diagnostics', 'diagnostics', __( 'Displays information about the web server, PHP and WordPress', 'footnotes' ), 'Diagnostics' ),
 		);
 	}
 
@@ -107,28 +107,28 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 		// replace all placeholders
 		$l_obj_template->replace(
 			array(
-				'label-server'             => __( 'Server name', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-server'             => __( 'Server name', 'footnotes' ),
 				'server'                   => $_SERVER['SERVER_NAME'],
 
-				'label-php'                => __( 'PHP version', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-php'                => __( 'PHP version', 'footnotes' ),
 				'php'                      => phpversion(),
 
-				'label-user-agent'         => __( 'User agent', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-user-agent'         => __( 'User agent', 'footnotes' ),
 				'user-agent'               => $_SERVER['HTTP_USER_AGENT'],
 
-				'label-max-execution-time' => __( 'Max execution time', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
-				'max-execution-time'       => ini_get( 'max_execution_time' ) . ' ' . __( 'seconds', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-max-execution-time' => __( 'Max execution time', 'footnotes' ),
+				'max-execution-time'       => ini_get( 'max_execution_time' ) . ' ' . __( 'seconds', 'footnotes' ),
 
-				'label-memory-limit'       => __( 'Memory limit', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-memory-limit'       => __( 'Memory limit', 'footnotes' ),
 				'memory-limit'             => ini_get( 'memory_limit' ),
 
-				'label-php-extensions'     => __( 'PHP extensions', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-php-extensions'     => __( 'PHP extensions', 'footnotes' ),
 				'php-extensions'           => $l_str_php_extensions,
 
-				'label-wordpress'          => __( 'WordPress version', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-wordpress'          => __( 'WordPress version', 'footnotes' ),
 				'wordpress'                => $wp_version,
 
-				'label-theme'              => __( 'Active Theme', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ),
+				'label-theme'              => __( 'Active Theme', 'footnotes' ),
 				'theme'                    => $l_obj_current_theme->get( 'Name' ) . ' ' . $l_obj_current_theme->get( 'Version' ) . ', ' . $l_obj_current_theme->get( 'Author' ) . ' [' . $l_obj_current_theme->get( 'AuthorURI' ) . ']',
 
 				'plugins'                  => $l_str_wordpress_plugins,

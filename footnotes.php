@@ -44,7 +44,7 @@ define( 'C_STR_FOOTNOTES_VERSION', '2.5.6d4' );
  * Plugin’s main PHP file.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 0.0.1
  */
 
@@ -53,12 +53,12 @@ require_once( dirname( __FILE__ ) . '/includes.php' );
 
 // add Plugin Links to the "installed plugins" page
 $l_str_plugin_file = 'footnotes/footnotes.php';
-add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'MCI_Footnotes_Hooks', 'Plugin_links' ), 10, 2 );
+add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'MCI_Footnotes_Hooks', 'plugin_links' ), 10, 2 );
 
 // initialize the Plugin
-$g_obj_mcI_Footnotes = new MCI_Footnotes();
+$g_obj_mci_footnotes = new MCI_Footnotes();
 // run the Plugin
-$g_obj_mcI_Footnotes->run();
+$g_obj_mci_footnotes->run();
 
 /**
  * Sets the stylesheet enqueuing mode for production.

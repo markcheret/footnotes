@@ -10,17 +10,17 @@
  *
  * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
- * @since 2.0.0  Update: Tooltips: fix disabling bug by loading j_query UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
+ * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
  *
  * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
- * @since 2.0.4  add j_query UI from WordPress   2020-11-01T1902+0100
+ * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
  * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
  * @since 2.1.4  optionally enqueue an extra stylesheet  2020-12-04T2231+0100
  *
  * @since 2.5.5  Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  * @since 2.5.5  Bugfix: Libraries: optimize processes by loading external and internal scripts only if needed, thanks to @docteurfitness issue report.
- * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without j_query for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
+ * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  */
 
 /**
@@ -39,24 +39,18 @@ class MCI_Footnotes {
 	public $a_obj_task = null;
 
 	/**
-	 * Template process and script / stylesheet load optimization.
-	 *
-	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
-	 *
-	 * @since 2.4.0
-	 * @date 2021-01-04T1355+0100
-	 *
-	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
-	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
-	 * @link https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3 diff
+	 * Idenfifies whether tooltips are enabled. Actual value depends on settings.
 	 *
 	 * @var bool
-	 *
-	 * Streamline process depending on tooltip enabled status.
-	 * Load tooltip inline script only if j_query tooltips are enabled.
-	 * Actual value depends on settings.
 	 */
-	public static $a_bool_tooltips_enabled             = false;
+	public static $a_bool_tooltips_enabled = false;
+
+	/**
+	 * Idenfifies whether alternative tooltips are enabled. Actual value depends
+	 * on settings.
+	 *
+	 * @var bool
+	 */
 	public static $a_bool_alternative_tooltips_enabled = false;
 
 	/**
@@ -152,9 +146,9 @@ class MCI_Footnotes {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @since 2.0.0  Update: Tooltips: fix disabling bug by loading j_query UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
+	 * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
 	 * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
-	 * @since 2.0.4  add j_query UI from WordPress   2020-11-01T1902+0100
+	 * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
 	 * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
 	 * @since 2.1.4  optionally enqueue an extra stylesheet  2020-12-04T2231+0100
 	 */
@@ -177,18 +171,18 @@ class MCI_Footnotes {
 		$l_str_script_mode                         = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 
 		/**
-		 * Enqueues the j_query library registered by WordPress.
+		 * Enqueues the jQuery library registered by WordPress.
 		 *
-		 * - Bugfix: Reference container: optional alternative expanding and collapsing without j_query for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
+		 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
 		 *
 		 * @since 2.5.6
 		 *
 		 * @reporter @hopper87it
 		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
 		 *
-		 * j_query is also used for animated scrolling, so it was loaded by default.
+		 * jQuery is also used for animated scrolling, so it was loaded by default.
 		 * The function wp_enqueue_script() avoids loading the same library multiple times.
-		 * After adding the alternative reference container, j_query has become optional,
+		 * After adding the alternative reference container, jQuery has become optional,
 		 * but still enabled by default.
 		 */
 		if ( 'jquery' === $l_str_script_mode || ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) ) {
@@ -200,53 +194,25 @@ class MCI_Footnotes {
 		if ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) {
 
 			/**
-			 * Enqueues the j_query Tools library shipped with the plugin.
+			 * Enqueues the jQuery Tools library shipped with the plugin.
 			 *
-			 * redacted j_query.browser, completed minification;
+			 * Redacted jQuery.browser, completed minification;
 			 * see full header in js/jquery.tools.js
 			 * added versioning 2020-11-18T2150+0100
-			 * not use '-js' in the handle, is appended automatically
+			 * not use '-js' in the handle, is appended automatically.
 			 */
 			wp_enqueue_script(
 				'mci-footnotes-jquery-tools',
 				plugins_url( 'footnotes/js/jquery.tools.min.js' ),
 				array(),
-				'1.2.7.redacted.2'
+				'1.2.7.redacted.2',
+				true
 			);
 
 			/**
-			 * Registers j_query UI from the Java_script Content Delivery Network.
+			 * Enqueues some jQuery UI libraries registered by WordPress.
 			 *
-			 * - Update: Tooltips: fix disabling bug by loading j_query UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
-			 *
-			 * @since 2.0.0
-			 * Alternatively, fetch j_query UI from cdnjs.cloudflare.com:
-			 * @since 2.0.0  add j_query_uI from Cloudflare   2020-10-26T1907+0100
-			 * Used to add j_query UI following @vonpiernik:
-			 * <https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762>:
-			 *
-			 *
-			 * j_query_uI re-enables the tooltip infobox disabled when WPv5.5 was released.
-			 *
-			 * Updated for v2.0.4 by adding j_query UI from WordPress following @check2020de:
-			 * <https://wordpress.org/support/topic/gdpr-issue-with-jquery/>
-			 * See <https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui>
-			 *
-			 * This was enabled in Footnotes v2.0.0 through v2.0.3.
-			 * Re-added for 2.0.9d1 / 2.1.1d0 to look whether it can fix a broken tooltip display.   2020-11-07T1601+0100/2020-11-08T2246+0100
-			 */
-			// Wp_register_script( 'j_query_uI', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', null, null, false ); // In header 2020-11-09T2003+0100.
-			// Wp_enqueue_script( 'j_query_uI' );.
-			/**
-			 * This is then needed instead of the above first instance:
-			 * Add j_query Tools and finish adding j_query_uI:   2020-11-08T1638+0100/2020-11-08T2246+0100
-			 */
-			// Wp_enqueue_script('mci-footnotes-js-jquery-tools', plugins_url('../js/jquery.tools.min.js', __FILE__), ['j_query_uI']);.
-
-			/**
-			 * Enqueues some j_query UI libraries registered by WordPress.
-			 *
-			 * @since 2.0.4  add j_query UI from WordPress   2020-11-01T1902+0100
+			 * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
 			 * If alternative tooltips are enabled, these libraries are not needed.
 			 */
 			wp_enqueue_script( 'jquery-ui-core' );

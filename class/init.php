@@ -41,6 +41,7 @@ class MCI_Footnotes {
 	/**
 	 * Idenfifies whether tooltips are enabled. Actual value depends on settings.
 	 *
+	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
 	 */
 	public static $a_bool_tooltips_enabled = false;
@@ -49,6 +50,7 @@ class MCI_Footnotes {
 	 * Idenfifies whether alternative tooltips are enabled. Actual value depends
 	 * on settings.
 	 *
+	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
 	 */
 	public static $a_bool_alternative_tooltips_enabled = false;

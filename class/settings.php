@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Includes the Settings class to handle all Plugin settings.
  *

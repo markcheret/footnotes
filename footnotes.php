@@ -1,4 +1,5 @@
-<?php
+<?php // phpcs:disable Squiz.Commenting.FileComment.Missing
+// phpcs:disable Squiz.Commenting.FileComment.MissingPackageTag
 /**
 	Plugin Name: footnotes
 	Plugin URI: https://wordpress.org/plugins/footnotes/
@@ -8,7 +9,8 @@
 	Author URI: http://cheret.de/plugins/footnotes-2/
 	Text Domain: footnotes
 	Domain Path: /languages
-*/
+ */
+// phpcs:enable
 
 /*
  *  Copyright 2021 Mark Cheret (email: mark@cheret.de)

@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Handles all WordPress hooks of this Plugin.
  *

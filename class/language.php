@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Loads text domain of current or default language for localization.
  *

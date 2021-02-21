@@ -99,7 +99,8 @@ class MCI_Footnotes_Convert {
 	 * Converts an integer to a romanic letter.
 	 *
 	 * @since 1.0-gamma
-	 * @param int $p_int_value Value/Index to be converted.
+	 * @param int  $p_int_value Value/Index to be converted.
+	 * @param bool $p_bool_upper_case Whether to uppercase.
 	 * @return string
 	 *
 	 * Edited:

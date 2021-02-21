@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Includes the Class to handle the WYSIWYG-Buttons.
  *

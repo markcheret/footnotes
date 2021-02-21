@@ -88,7 +88,6 @@ defined( 'ABSPATH' ) or die;
  * Searches and replaces the footnotes.
  * Generates the reference container.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Task {
@@ -100,7 +99,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Contains all footnotes found on current public page.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var array
 	 */
@@ -109,7 +107,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Flag if the display of 'LOVE FOOTNOTES' is allowed on the current public page.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var bool
 	 */
@@ -118,7 +115,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Prefix for the Footnote html element ID.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.8
 	 * @var string
 	 */
@@ -171,7 +167,6 @@ class MCI_Footnotes_Task {
 	 * @since 2.4.0
 	 * @date 2021-01-04T1355+0100
 	 *
-	 * @author Patrizia Lutz @misfist
 	 *
 	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
 	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
@@ -347,7 +342,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Register WordPress Hooks to replace Footnotes in the content of a public page.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 * @since 1.5.4  Adding: Hooks: support 'the_post' in response to user request for custom post types.
@@ -560,7 +554,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Outputs the custom css to the header of the public page.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 * @since 2.1.1  Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
@@ -936,7 +929,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Displays the 'LOVE FOOTNOTES' slug if enabled.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 * @since 2.2.0  more options  2020-12-11T0506+0100
@@ -988,7 +980,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces footnotes in the post/page title.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_content Widget content.
 	 * @return string Content with replaced footnotes.
@@ -1001,7 +992,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces footnotes in the content of the current page/post.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_content Page/Post content.
 	 * @return string Content with replaced footnotes.
@@ -1014,7 +1004,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces footnotes in the excerpt of the current page/post.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_content Page/Post content.
 	 * @return string Content with replaced footnotes.
@@ -1026,7 +1015,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces footnotes in the widget title.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_content Widget content.
 	 * @return string Content with replaced footnotes.
@@ -1039,7 +1027,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces footnotes in the content of the current widget.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_content Widget content.
 	 * @return string Content with replaced footnotes.
@@ -1052,7 +1039,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces footnotes in each Content var of the current Post object.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.4
 	 * @param array|WP_Post $p_mixed_posts
 	 */
@@ -1071,7 +1057,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replace all Footnotes in a WP_Post object.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @param WP_Post $p_obj_post
 	 * @return WP_Post
@@ -1087,7 +1072,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces all footnotes that occur in the given content.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_content Any string that may contain footnotes to be replaced.
 	 * @param bool   $p_bool_output_references Appends the Reference Container to the output if set to true, default true.
@@ -1161,7 +1145,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Replaces all footnotes in the given content and appends them to the static property.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_content Content to be searched for footnotes.
 	 * @param bool   $p_bool_convert_html_chars html encode settings, default true.
@@ -1783,7 +1766,6 @@ class MCI_Footnotes_Task {
 	/**
 	 * Generates the reference container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @return string
 	 *

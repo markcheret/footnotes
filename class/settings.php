@@ -60,7 +60,6 @@
 /**
  * Loads the settings values, sets to default values if undefined.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Settings {
@@ -68,7 +67,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the label of the reference container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -77,7 +75,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to collapse the reference container by default.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 * The string is converted to Boolean false if 'no', true if 'yes'.
@@ -90,7 +87,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the position of the reference container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -99,7 +95,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for combining identical footnotes.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -108,7 +103,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the short code of the footnote’s start.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -117,7 +111,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the short code of the footnote’s end.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -126,7 +119,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the user-defined short code of the footnotes start.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -135,7 +127,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the user-defined short code of the footnotes end.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -144,7 +135,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the counter style of the footnotes.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -153,7 +143,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the 'I love footnotes' text.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -162,7 +151,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to look for footnotes in post excerpts.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -171,7 +159,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the Expert mode.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.5
 	 * @var str
 	 *
@@ -186,7 +173,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the string before the footnote referrer.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 *
@@ -202,7 +188,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the string after the footnote referrer.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -211,7 +196,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to enable the mouse-over box.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.2
 	 * @var str
 	 */
@@ -240,7 +224,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to enable tooltip truncation.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.4
 	 * @var str
 	 */
@@ -249,7 +232,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the max. length of the enabled excerpt.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.4
 	 * @var str
 	 */
@@ -258,7 +240,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the position.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.7
 	 * @var str
 	 */
@@ -267,7 +248,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the offset (x).
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.7
 	 * @var str
 	 */
@@ -276,7 +256,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the offset (y).
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.7
 	 * @var str
 	 */
@@ -285,7 +264,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the color.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @var str
 	 */
@@ -294,7 +272,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the background color.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @var str
 	 */
@@ -303,7 +280,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the border width.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @var str
 	 */
@@ -312,7 +288,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the border color.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @var str
 	 */
@@ -321,7 +296,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the border radius.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @var str
 	 */
@@ -330,7 +304,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the max. width.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @var str
 	 */
@@ -339,7 +312,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the mouse-over box to define the box-shadow color.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.8
 	 * @var str
 	 */
@@ -348,7 +320,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the backlink symbol selection.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -357,7 +328,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the user-defined backlink symbol.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 */
@@ -366,7 +336,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key for the Custom CSS.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var str
 	 *
@@ -401,7 +370,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to enable the 'the_title' hook.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.5
 	 * @var str
 	 */
@@ -410,7 +378,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to enable the 'the_content' hook.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.5
 	 * @var str
 	 */
@@ -419,7 +386,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to enable the 'the_excerpt' hook.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.5
 	 * @var str
 	 */
@@ -428,7 +394,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to enable the 'widget_title' hook.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.5
 	 * @var str
 	 */
@@ -437,7 +402,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings Container Key to enable the 'widget_text' hook.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.5
 	 * @var str
 	 */
@@ -810,7 +774,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Stores a singleton reference of this class.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @var MCI_Footnotes_Settings
 	 */
@@ -819,7 +782,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Contains all Settings Container names.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var array
 	 *
@@ -838,7 +800,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Contains all Default Settings for each Settings Container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var array
 	 *
@@ -1074,7 +1035,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Contains all Settings from each Settings container as soon as this class is initialized.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var array
 	 */
@@ -1083,7 +1043,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Class Constructor. Loads all Settings from each WordPress Settings container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	private function __construct() {
@@ -1093,7 +1052,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Returns a singleton of this class.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @return MCI_Footnotes_Settings
 	 */
@@ -1109,7 +1067,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Returns the name of a specified Settings Container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param int $p_int_index Settings Container Array Key Index.
 	 * @return str Settings Container name.
@@ -1121,7 +1078,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Returns the default values of a specific Settings Container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.6
 	 * @param int $p_int_index Settings Container Aray Key Index.
 	 * @return array
@@ -1133,7 +1089,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Loads all Settings from each Settings container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	private function load_all() {
@@ -1148,7 +1103,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Loads all Settings from specified Settings Container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param int $p_int_index Settings Container Array Key Index.
 	 * @return array Settings loaded from Container of Default Settings if Settings Container is empty (first usage).
@@ -1189,7 +1143,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Updates a whole Settings container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param int   $p_int_index Index of the Settings container.
 	 * @param array $p_arr_new_values new Settings.
@@ -1206,7 +1159,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Returns the value of specified Settings name.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_key Settings Array Key name.
 	 * @return mixed Value of the Setting on Success or Null in Settings name is invalid.
@@ -1218,7 +1170,6 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Deletes each Settings Container and loads the default values for each Settings Container.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 * Edit: This didn’t actually work.
@@ -1241,7 +1192,6 @@ class MCI_Footnotes_Settings {
 	 * Register all Settings Container for the Plugin Settings Page in the Dashboard.
 	 * Settings Container Label will be the same as the Settings Container Name.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public function register_settings() {

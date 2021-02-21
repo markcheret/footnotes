@@ -32,7 +32,6 @@
  * Handles each Template file for the Plugin Frontend (e.g. Settings Dashboard, Public pages, ...).
  * Loads a template file, replaces all Placeholders and returns the replaced file content.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Template {
@@ -40,7 +39,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Directory name for dashboard templates.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var string
 	 */
@@ -49,7 +47,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Directory name for public templates.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var string
 	 */
@@ -58,7 +55,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Contains the content of the template after initialize.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @var string
 	 */
@@ -67,7 +63,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Contains the content of the template after initialize with replaced place holders.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @var string
 	 */
@@ -76,7 +71,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Plugin Directory
 	 *
-	 * @author Patrizia Lutz @misfist
 	 * @since 2.4.0d3
 	 *
 	 * @var string
@@ -86,7 +80,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Class Constructor. Reads and loads the template file without replace any placeholder.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_file_type Template file type (take a look on the Class constants).
 	 * @param string $p_str_file_name Template file name inside the Template directory without the file extension.
@@ -109,7 +102,6 @@ class MCI_Footnotes_Template {
 		 *
 		 * @since 2.4.0d3
 		 *
-		 * @author Patrizia Lutz @misfist
 		 */
 		$this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
 
@@ -118,7 +110,6 @@ class MCI_Footnotes_Template {
 		 *
 		 * @since 2.4.0d3
 		 *
-		 * @author Patrizia Lutz @misfist
 		 */
 		if ( $template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension ) ) {
 			$this->process_template( $template );
@@ -131,7 +122,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Replace all placeholders specified in array.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @param array $p_arr_placeholders Placeholders (key = placeholder, value = value).
 	 * @return bool True on Success, False if Placeholders invalid.
@@ -156,7 +146,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Reloads the original content of the template file.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 */
 	public function reload() {
@@ -166,7 +155,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Returns the content of the template file with replaced placeholders.
 	 *
-	 * @author Stefan Herndler
 	 * @since  1.5.0
 	 * @return string Template content with replaced placeholders.
 	 */
@@ -177,7 +165,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Process template file
 	 *
-	 * @author Patrizia Lutz @misfist
 	 *
 	 * @since 2.4.0d3
 	 *
@@ -204,7 +191,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Get the template
 	 *
-	 * @author Patrizia Lutz @misfist
 	 *
 	 * @since 2.4.0d3
 	 *

@@ -16,7 +16,6 @@
 /**
  * Contains all Plugin Constants. Contains no Method or Property.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Config {
@@ -24,7 +23,6 @@ class MCI_Footnotes_Config {
 	/**
 	 * Internal Plugin name.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var string
 	 */
@@ -33,7 +31,6 @@ class MCI_Footnotes_Config {
 	/**
 	 * Public Plugin name.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var string
 	 * 
@@ -58,7 +55,6 @@ class MCI_Footnotes_Config {
 	/**
 	 * Html tag for the LOVE symbol.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var string
 	 */
@@ -75,7 +71,6 @@ class MCI_Footnotes_Config {
 	/**
 	 * Short code to DON'T display the 'LOVE ME' slug on certain pages.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var string
 	 */

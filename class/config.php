@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Includes the Plugin Constants class to load all Plugin constant vars like Plugin name, etc.
  *
@@ -18,7 +18,6 @@
  * @since 1.5.0
  */
 class MCI_Footnotes_Config {
-
 	/**
 	 * Internal Plugin name.
 	 *

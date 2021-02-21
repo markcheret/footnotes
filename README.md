@@ -6,9 +6,9 @@
 
 Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/) --- cheers for the review, folks!
 
-**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of current defaults but also empowers you to control how your footnotes are being displayed.
+**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
 
-**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts—those footnotes we know from offline publishing.
+**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts — those footnotes we know from offline publishing.
 
 ## Getting Started
 

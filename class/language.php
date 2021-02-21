@@ -15,7 +15,6 @@
 /**
  * Loads text domain of current or default language for localization.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Language {
@@ -23,7 +22,6 @@ class MCI_Footnotes_Language {
 	/**
 	 * Register WordPress Hook.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public static function register_hooks() {
@@ -34,7 +32,6 @@ class MCI_Footnotes_Language {
 	 * Loads the text domain for current WordPress language if exists.
 	 * Otherwise fallback "en_GB" will be loaded.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 *
@@ -77,7 +74,6 @@ class MCI_Footnotes_Language {
 	/**
 	 * Loads a specific text domain.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.1
 	 * @param string $p_str_language_code Language Code to load a specific text domain.
 	 * @return bool

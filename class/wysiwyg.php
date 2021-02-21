@@ -9,7 +9,6 @@
 
 /**
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_WYSIWYG {
@@ -28,7 +27,6 @@ class MCI_Footnotes_WYSIWYG {
 	/**
 	 * Append a new Button to the WYSIWYG editor of Posts and Pages.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param array $p_arr_buttons pre defined Buttons from WordPress.
 	 * @return array
@@ -41,7 +39,6 @@ class MCI_Footnotes_WYSIWYG {
 	/**
 	 * Add a new button to the plain text editor.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public static function new_plain_text_editor_button() {
@@ -52,7 +49,6 @@ class MCI_Footnotes_WYSIWYG {
 	/**
 	 * Includes the Plugins WYSIWYG editor script.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param array $p_arr_plugins Scripts to be included to the editor.
 	 * @return array
@@ -66,7 +62,6 @@ class MCI_Footnotes_WYSIWYG {
 	 * AJAX Callback function when the Footnotes Button is clicked. Either in the Plain text or Visual editor.
 	 * Returns an JSON encoded array with the Footnotes start and end short code.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public static function ajax_callback() {

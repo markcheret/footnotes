@@ -13,7 +13,6 @@
 /**
  * Registers all WordPress Hooks and executes them on demand.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Hooks {
@@ -21,7 +20,6 @@ class MCI_Footnotes_Hooks {
 	/**
 	 * Registers all WordPress hooks.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public static function register_hooks() {
@@ -33,7 +31,6 @@ class MCI_Footnotes_Hooks {
 	/**
 	 * Executed when the Plugin gets activated.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public static function activate_plugin() {
@@ -43,7 +40,6 @@ class MCI_Footnotes_Hooks {
 	/**
 	 * Executed when the Plugin gets deactivated.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	public static function deactivate_plugin() {
@@ -53,7 +49,6 @@ class MCI_Footnotes_Hooks {
 	/**
 	 * Executed when the Plugin gets uninstalled.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 * Edit: Clear_all didn’t actually work.
@@ -75,7 +70,6 @@ class MCI_Footnotes_Hooks {
 	/**
 	 * Add Links to the Plugin in the "installed Plugins" page.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param array  $p_arr_links Current Links.
 	 * @param string $p_str_plugin_file_name Plugins init file name.

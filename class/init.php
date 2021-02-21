@@ -26,7 +26,6 @@
 /**
  * Entry point of the Plugin. Loads the Dashboard and executes the Task.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes {
@@ -34,7 +33,6 @@ class MCI_Footnotes {
 	/**
 	 * Reference to the Plugin Task object.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @var null|MCI_Footnotes_Task
 	 */
@@ -48,7 +46,6 @@ class MCI_Footnotes {
 	 * @since 2.4.0
 	 * @date 2021-01-04T1355+0100
 	 *
-	 * @author Patrizia Lutz @misfist
 	 *
 	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
 	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
@@ -66,7 +63,6 @@ class MCI_Footnotes {
 	/**
 	 * Executes the Plugin.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 *
@@ -103,7 +99,6 @@ class MCI_Footnotes {
 	/**
 	 * Initializes all Widgets of the Plugin.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 *
@@ -137,7 +132,6 @@ class MCI_Footnotes {
 	/**
 	 * Initializes the Dashboard of the Plugin and loads them.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	private function initialize_dashboard() {
@@ -147,7 +141,6 @@ class MCI_Footnotes {
 	/**
 	 * Initializes the Plugin Task and registers the Task hooks.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
 	private function initialize_task() {
@@ -158,7 +151,6 @@ class MCI_Footnotes {
 	/**
 	 * Registers and enqueues scripts and stylesheets to the public pages.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 * @since 2.0.0  Update: Tooltips: fix disabling bug by loading j_query UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.

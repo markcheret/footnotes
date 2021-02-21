@@ -3,7 +3,7 @@
  * Includes the Class to handle the WYSIWYG-Buttons.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 14.09.14 17:30
  */
 

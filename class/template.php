@@ -3,7 +3,7 @@
  * Includes the Template Engine to load and handle all Template files of the Plugin.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 14.09.14 10:58
  *
  * @lastmodified 2021-02-18T2024+0100

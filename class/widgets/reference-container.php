@@ -3,7 +3,7 @@
  * Includes the Plugin Widget to put the Reference Container to the Widget area.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 14.09.14 14:26
  *
  * Edited 2.2.0  2020-12-12T2131+0100
@@ -16,7 +16,7 @@
  * @author Stefan Herndler
  * @since 1.5.0
  */
-class MCI_Footnotes_Widget_ReferenceContainer extends MCI_Footnotes_WidgetBase {
+class MCI_Footnotes_Widget_ReferenceContainer extends MCI_Footnotes_Widget_Base {
 
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.

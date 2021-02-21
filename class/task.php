@@ -1061,7 +1061,6 @@ class MCI_Footnotes_Task {
 	 * @return WP_Post
 	 */
 	private function replace_post_object( $p_obj_post ) {
-		// MCI_Footnotes_Convert::debug($p_obj_post);.
 		$p_obj_post->post_content          = $this->exec( $p_obj_post->post_content );
 		$p_obj_post->post_content_filtered = $this->exec( $p_obj_post->post_content_filtered );
 		$p_obj_post->post_excerpt          = $this->exec( $p_obj_post->post_excerpt );

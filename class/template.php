@@ -101,7 +101,6 @@ class MCI_Footnotes_Template {
 		 * Define plugin root path
 		 *
 		 * @since 2.4.0d3
-		 *
 		 */
 		$this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
 
@@ -109,7 +108,6 @@ class MCI_Footnotes_Template {
 		 * Modularize functions
 		 *
 		 * @since 2.4.0d3
-		 *
 		 */
 		if ( $template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension ) ) {
 			$this->process_template( $template );
@@ -165,7 +163,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Process template file
 	 *
-	 *
 	 * @since 2.4.0d3
 	 *
 	 * @param string $template
@@ -191,7 +188,6 @@ class MCI_Footnotes_Template {
 	/**
 	 * Get the template
 	 *
-	 *
 	 * @since 2.4.0d3
 	 *
 	 * @param string $p_str_file_type
@@ -211,8 +207,8 @@ class MCI_Footnotes_Template {
 		 * } );
 		 */
 		$template_directory = apply_filters( 'mci_footnotes_template_directory', 'footnotes/templates/' );
-		$custom_directory = apply_filters( 'mci_footnotes_custom_template_directory', 'footnotes-custom/' );
-		$template_name = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
+		$custom_directory   = apply_filters( 'mci_footnotes_custom_template_directory', 'footnotes-custom/' );
+		$template_name      = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
 
 		/**
 		 * Look in active (child) theme

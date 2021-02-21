@@ -28,7 +28,7 @@ function mci_footnotes_require_php_files( $p_str_directory ) {
 			continue;
 		}
 		/** @noinspection PhpIncludeInspection */
-		require_once( $p_str_directory . $l_str_file_name );
+		require_once $p_str_directory . $l_str_file_name;
 	}
 }
 

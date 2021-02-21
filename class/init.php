@@ -46,7 +46,6 @@ class MCI_Footnotes {
 	 * @since 2.4.0
 	 * @date 2021-01-04T1355+0100
 	 *
-	 *
 	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
 	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
 	 * @link https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3 diff
@@ -57,7 +56,7 @@ class MCI_Footnotes {
 	 * Load tooltip inline script only if j_query tooltips are enabled.
 	 * Actual value depends on settings.
 	 */
-	public static $a_bool_tooltips_enabled = false;
+	public static $a_bool_tooltips_enabled             = false;
 	public static $a_bool_alternative_tooltips_enabled = false;
 
 	/**
@@ -173,9 +172,9 @@ class MCI_Footnotes {
 		 * The condition about tooltips was missing, only the not-alternative-tooltips part was present.
 		 */
 		// Set conditions re-used for stylesheet enqueuing:.
-		self::$a_bool_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		self::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
 		self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		$l_str_script_mode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		$l_str_script_mode                         = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 
 		/**
 		 * Enqueues the j_query library registered by WordPress.
@@ -303,14 +302,14 @@ class MCI_Footnotes {
 			if ( self::$a_bool_tooltips_enabled ) {
 				if ( self::$a_bool_alternative_tooltips_enabled ) {
 					$l_str_tooltip_mode = 'al';
-					$l_str_tcomplement = 'ternative-tooltips';
+					$l_str_tcomplement  = 'ternative-tooltips';
 				} else {
 					$l_str_tooltip_mode = 'jq';
-					$l_str_tcomplement = 'uery-tooltips';
+					$l_str_tcomplement  = 'uery-tooltips';
 				}
 			} else {
 				$l_str_tooltip_mode = 'no';
-				$l_str_tcomplement = '-tooltips';
+				$l_str_tcomplement  = '-tooltips';
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name:.

@@ -27,8 +27,10 @@ function mci_footnotes_require_php_files( $p_str_directory ) {
 		if ( '.php' !== strtolower( substr( $l_str_file_name, -4 ) ) ) {
 			continue;
 		}
+		// phpcs:disable Generic.Commenting.DocComment.MissingShort
 		/** @noinspection PhpIncludeInspection */
 		require_once $p_str_directory . $l_str_file_name;
+		// phpcs:enable
 	}
 }
 

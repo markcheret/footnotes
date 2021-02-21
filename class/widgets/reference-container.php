@@ -76,10 +76,10 @@ class MCI_Footnotes_Widget_ReferenceContainer extends MCI_Footnotes_Widget_Base 
 	 * @param mixed $instance
 	 */
 	public function widget( $args, $instance ) {
-		global $g_obj_MCI_Footnotes;
+		global $g_obj_mci_footnotes;
 		// reference container positioning is set to "widget area"
 		if ( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) == 'widget' ) {
-			echo $g_obj_MCI_Footnotes->a_obj_Task->ReferenceContainer();
+			echo $g_obj_mci_footnotes->a_obj_task->ReferenceContainer();
 		}
 	}
 }

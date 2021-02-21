@@ -33,7 +33,7 @@ class MCI_Footnotes_Convert {
 	 * Edited:
 	 * @since 2.2.0  lowercase Roman numerals supported
 	 */
-	public static function Index( $p_int_index, $p_str_convert_style = 'arabic_plain' ) {
+	public static function index( $p_int_index, $p_str_convert_style = 'arabic_plain' ) {
 		switch ( $p_str_convert_style ) {
 			case 'romanic':
 				return self::to_romanic( $p_int_index, true );

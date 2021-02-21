@@ -1141,7 +1141,7 @@ class MCI_Footnotes_Settings {
 		$this->a_arr_settings = array();
 		for ( $i = 0; $i < count( $this->a_arr_container ); $i++ ) {
 			// Load settings.
-			$this->a_arr_settings = array_merge( $this->a_arr_settings, $this->Load( $i ) );
+			$this->a_arr_settings = array_merge( $this->a_arr_settings, $this->load( $i ) );
 		}
 	}
 
@@ -1156,7 +1156,7 @@ class MCI_Footnotes_Settings {
 	 * @since   ditched trimming whitespace from text box content in response to user request.
 	 * @link https://wordpress.org/support/topic/leading-space-in-footnotes-tag/#post-5347966
 	 */
-	private function Load( $p_int_index ) {
+	private function load( $p_int_index ) {
 		// Load all settings from container.
 		$l_arr_options = get_option( $this->get_container( $p_int_index ) );
 		// Load all default settings.
@@ -1227,7 +1227,7 @@ class MCI_Footnotes_Settings {
 	 * done by deleting and reinstalling (see the warning about database backup).
 	 * 2020-12-13T1353+0100
 	 */
-	public function Clear_all() {
+	public function clear_all() {
 		// Iterate through each Settings Container.
 		for ( $i = 0; $i < count( $this->a_arr_container ); $i++ ) {
 			// Delete the settings container.
@@ -1244,7 +1244,7 @@ class MCI_Footnotes_Settings {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public function Register_settings() {
+	public function register_settings() {
 		// Register all settings.
 		for ( $i = 0; $i < count( $this->a_arr_container ); $i++ ) {
 			register_setting( $this->get_container( $i ), $this->get_container( $i ) );

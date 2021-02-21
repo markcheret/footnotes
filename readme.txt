@@ -15,8 +15,8 @@ Cheers for the review, folks!
 
 https://www.youtube.com/watch?v=HzHaMAAJwbI
 
-**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of current defaults but also empowers you to control how your footnotes are being displayed.
-**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts—those footnotes we know from offline publishing.
+**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
+**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts — those footnotes we know from offline publishing.
 
 = Main Features =
 - Fully customizable **footnotes** start and end shortcodes;

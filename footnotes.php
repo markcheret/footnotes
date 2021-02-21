@@ -1,5 +1,5 @@
 <?php
-/*
+/**
 	Plugin Name: footnotes
 	Plugin URI: https://wordpress.org/plugins/footnotes/
 	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
@@ -9,6 +9,7 @@
 	Text Domain: footnotes
 	Domain Path: /languages
 */
+
 /*
  *  Copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
@@ -48,16 +49,16 @@ define( 'C_STR_FOOTNOTES_VERSION', '2.5.6d4' );
  * @since 0.0.1
  */
 
-// Get all common classes and functions
+// Get all common classes and functions.
 require_once dirname( __FILE__ ) . '/includes.php';
 
-// add Plugin Links to the "installed plugins" page
+// Add Plugin Links to the "installed plugins" page.
 $l_str_plugin_file = 'footnotes/footnotes.php';
 add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'MCI_Footnotes_Hooks', 'plugin_links' ), 10, 2 );
 
-// initialize the Plugin
+// Initialize the Plugin.
 $g_obj_mci_footnotes = new MCI_Footnotes();
-// run the Plugin
+// Run the Plugin.
 $g_obj_mci_footnotes->run();
 
 /**

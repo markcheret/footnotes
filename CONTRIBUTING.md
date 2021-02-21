@@ -7,7 +7,7 @@ request the best chance of being accepted:
 
 - To request a new feature or to report a bug, create an 
   [Issue](https://github.com/markcheret/footnotes/issues/new/choose) and choose
-	the correct template
+  the correct template
 
 # Contributing Code
 
@@ -17,11 +17,11 @@ request the best chance of being accepted:
 - create a remote copy of your new branch (`git push`)
 - create a draft [pull request](https://github.com/markcheret/footnotes/compare)
   to merge your branch with `main` — tag any related Issues, and if they are
-	assigned to a Project board, this will automatically move them into the 
-	‘In Progress’ bucket
+  assigned to a Project board, this will automatically move them into the 
+  ‘In Progress’ bucket
 - when you think you're finished, un-draft your pull request — if the PR is 
-	assigned to a Project board, this will automatically move it and any related 
-	Issues into the ‘Review in progress’ bucket
+  assigned to a Project board, this will automatically move it and any related
+  Issues into the ‘Review in progress’ bucket
 
 # Commits
 

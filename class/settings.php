@@ -1057,7 +1057,7 @@ class MCI_Footnotes_Settings {
 	 */
 	public static function instance() {
 		// No instance defined yet, load it.
-		if ( self::$a_obj_instance === null ) {
+		if ( ! self::$a_obj_instance ) {
 			self::$a_obj_instance = new self();
 		}
 		// Return a singleton of this class.

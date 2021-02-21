@@ -24,7 +24,7 @@
  * @author Stefan Herndler
  * @since  1.5.0
  */
-abstract class MCI_Footnotes_LayoutEngine {
+abstract class MCI_Footnotes_Layout_Engine {
 
 	/**
 	 * Stores the Hook connection string for the child sub page.

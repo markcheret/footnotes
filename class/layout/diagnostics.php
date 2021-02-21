@@ -13,7 +13,7 @@
  * @author Stefan Herndler
  * @since 1.5.0
  */
-class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_LayoutEngine {
+class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 
 	/**
 	 * Returns a Priority index. Lower numbers have a higher Priority.

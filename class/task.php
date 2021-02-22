@@ -1054,7 +1054,7 @@ class MCI_Footnotes_Task {
 	public function the_content( $p_str_content ) {
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
-		return $this->exec( $p_str_content, 'post_end' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) );
+		return $this->exec( $p_str_content, 'post_end' === ! ! MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) );
 		// phpcs:enable
 	}
 

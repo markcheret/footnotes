@@ -309,24 +309,25 @@ class MCI_Footnotes_Task {
 	 */
 	public static $a_str_link_close_tag = '';
 
-	/*
-	 * Dedicated tooltip text
+	/**
+	 * Dedicated tooltip text.
 	 *
+	 * - Update: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
+	 *
+	 * @since 2.5.2
+	 * @date 2021-01-19T2223+0100
+	 *
+	 * @reporter @jbj2199
+	 * @link https://wordpress.org/support/topic/change-tooltip-text/
+	 * 
 	 * Tooltips can display another content than the footnote entry
 	 * in the reference container. The trigger is a shortcode in
 	 * the footnote text separating the tooltip text from the note.
 	 * That is consistent with what WordPress does for excerpts.
 	 */
-	/**
-	 * Whether to mirror tooltip text.
-	 *
-	 * @since 2.5.2
-	 * @var bool
-	 */
-	public static $a_bool_mirror_tooltip_text = false;
 
 	/**
-	 * The tooltip shortcode.
+	 * The tooltip delimiter shortcode.
 	 *
 	 * @since 2.5.2
 	 * @var str
@@ -334,12 +335,20 @@ class MCI_Footnotes_Task {
 	public static $a_str_tooltip_shortcode = '[[/tooltip]]';
 
 	/**
-	 * The tooltip length.
+	 * The tooltip delimiter shortcode length.
 	 *
 	 * @since 2.5.2
 	 * @var int
 	 */
 	public static $a_int_tooltip_shortcode_length = 12;
+
+	/**
+	 * Whether to mirror the tooltip text in the reference container.
+	 *
+	 * @since 2.5.2
+	 * @var bool
+	 */
+	public static $a_bool_mirror_tooltip_text = false;
 
 	/**
 	 * Footnote delimiter syntax validation

@@ -43,6 +43,10 @@ class MCI_Footnotes {
 	 *
 	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
+	 *
+	 * @todo Refactor to have defines only here, and use assignments also in class/task.php.
+	 * @todo Account for priority level issues. These variables must be assigned before
+	 * priority level 0.is run in class/task.php.
 	 */
 	public static $a_bool_tooltips_enabled = false;
 
@@ -52,6 +56,8 @@ class MCI_Footnotes {
 	 *
 	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
+	 *
+	 * @todo Refactor to have defines only here, and use assignments also in class/task.php.
 	 */
 	public static $a_bool_alternative_tooltips_enabled = false;
 

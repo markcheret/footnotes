@@ -1066,7 +1066,7 @@ class MCI_Footnotes_Task {
 	 * @return string Content with replaced footnotes.
 	 */
 	public function the_excerpt( $p_str_content ) {
-		return $this->exec( $p_str_content, false, ! ! MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT ) );
+		return $this->exec( $p_str_content, false, ! MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT ) ) );
 	}
 
 	/**

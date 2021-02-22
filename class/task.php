@@ -95,10 +95,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class MCI_Footnotes_Task {
 
 	/**
-	 *        PROPERTIES
-	 */
-
-	/**
 	 * Contains all footnotes found on current public page.
 	 *
 	 * @since 1.5.0
@@ -123,7 +119,7 @@ class MCI_Footnotes_Task {
 	public static $a_str_prefix = '';
 
 	/**
-	 * Infinite scroll / autoload or archive view
+	 * Autoload a.k.a. infinite scroll, or archive view.
 	 *
 	 * - Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution
 	 *
@@ -142,7 +138,7 @@ class MCI_Footnotes_Task {
 	public static $a_int_post_id = 0;
 
 	/**
-	 * Multiple reference containers in content and widgets
+	 * Multiple reference containers in content and widgets.
 	 *
 	 * - Bugfix: Reference container, widget_text hook: support for multiple containers in a page, thanks to @justbecuz bug report.
 	 *
@@ -239,7 +235,7 @@ class MCI_Footnotes_Task {
 	public static $a_str_post_container_id_compound = '';
 
 	/**
-	 * Scroll offset
+	 * Scroll offset.
 	 *
 	 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
 	 *
@@ -351,7 +347,7 @@ class MCI_Footnotes_Task {
 	public static $a_bool_mirror_tooltip_text = false;
 
 	/**
-	 * Footnote delimiter syntax validation
+	 * Footnote delimiter syntax validation.
 	 *
 	 * - Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
 	 *
@@ -369,10 +365,6 @@ class MCI_Footnotes_Task {
 	 * released in urgency to provide AMP compat before 2021.
 	 */
 	public static $a_bool_syntax_error_flag = true;
-
-	/**
-	 *        METHODS
-	 */
 
 	/**
 	 * Register WordPress Hooks to replace Footnotes in the content of a public page.
@@ -395,7 +387,7 @@ class MCI_Footnotes_Task {
 	public function register_hooks() {
 
 		/**
-		 * Priority levels
+		 * Priority levels.
 		 *
 		 * - Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.
 		 *
@@ -472,7 +464,7 @@ class MCI_Footnotes_Task {
 			add_filter( 'the_content', array( $this, 'the_content' ), $l_int_the_content_priority );
 
 			/**
-			 * Hook for category pages
+			 * Hook for category pages.
 			 *
 			 * - Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
 			 *
@@ -492,7 +484,7 @@ class MCI_Footnotes_Task {
 			add_filter( 'term_description', array( $this, 'the_content' ), $l_int_the_content_priority );
 
 			/**
-			 * Hook for popup maker popups
+			 * Hook for popup maker popups.
 			 *
 			 * - Bugfix: Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report.
 			 *
@@ -516,7 +508,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * The the_post hook
+		 * The the_post hook.
 		 *
 		 * - Adding: Hooks: support 'the_post' in response to user request for custom post types.
 		 *
@@ -631,7 +623,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Reference container display on home page
+		 * Reference container display on home page.
 		 *
 		 * - Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
 		 *
@@ -645,7 +637,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Reference container top and bottom margins
+		 * Reference container top and bottom margins.
 		 *
 		 * - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
 		 *
@@ -663,7 +655,7 @@ class MCI_Footnotes_Task {
 		echo "px !important;}\r\n";
 
 		/**
-		 * Reference container label bottom border
+		 * Reference container label bottom border.
 		 *
 		 * - Bugfix: Reference container: Label: make bottom border an option, thanks to @markhillyer issue report.
 		 * - Bugfix: Reference container: Label: option to select paragraph or heading element, thanks to @markhillyer issue report.
@@ -681,7 +673,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Reference container table row borders
+		 * Reference container table row borders.
 		 *
 		 * - Bugfix: Reference container: add option for table borders to restore pre-2.0.0 design, thanks to @noobishh issue report.
 		 *
@@ -750,7 +742,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Hard links scroll offset
+		 * Hard links scroll offset.
 		 *
 		 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
 		 *
@@ -773,7 +765,9 @@ class MCI_Footnotes_Task {
 			echo "vh;}\r\n";
 		}
 
-		// Tooltips.
+		/*
+		 * Tooltips.
+		 */
 		self::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
 		self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
 
@@ -781,10 +775,8 @@ class MCI_Footnotes_Task {
 
 			echo '.footnote_tooltip {';
 
-			// Tooltip appearance.
-
 			/**
-			 * Tooltip font size
+			 * Tooltip appearance: Tooltip font size.
 			 *
 			 * - Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default.
 			 *
@@ -800,37 +792,49 @@ class MCI_Footnotes_Task {
 			}
 			echo ' !important;';
 
-			// Text color.
+			/*
+			 * Tooltip Text color.
+			 */
 			$l_str_color = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR );
 			if ( ! empty( $l_str_color ) ) {
 				printf( ' color: %s !important;', esc_html( $l_str_color ) );
 			}
 
-			// Background color.
+			/*
+			 * Tooltip Background color.
+			 */
 			$l_str_background = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND );
 			if ( ! empty( $l_str_background ) ) {
 				printf( ' background-color: %s !important;', esc_html( $l_str_background ) );
 			}
 
-			// Border width.
+			/*
+			 * Tooltip Border width.
+			 */
 			$l_int_border_width = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH );
 			if ( ! empty( $l_int_border_width ) && intval( $l_int_border_width ) > 0 ) {
 				printf( ' border-width: %dpx !important; border-style: solid !important;', esc_html( $l_int_border_width ) );
 			}
 
-			// Border color.
+			/*
+			 * Tooltip Border color.
+			 */
 			$l_str_border_color = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR );
 			if ( ! empty( $l_str_border_color ) ) {
 				printf( ' border-color: %s !important;', esc_html( $l_str_border_color ) );
 			}
 
-			// Corner radius.
+			/*
+			 * Tooltip Corner radius.
+			 */
 			$l_int_border_radius = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS );
 			if ( ! empty( $l_int_border_radius ) && intval( $l_int_border_radius ) > 0 ) {
 				printf( ' border-radius: %dpx !important;', esc_html( $l_int_border_radius ) );
 			}
 
-			// Shadow color.
+			/*
+			 * Tooltip Shadow color.
+			 */
 			$l_str_box_shadow_color = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR );
 			if ( ! empty( $l_str_box_shadow_color ) ) {
 				printf( ' -webkit-box-shadow: 2px 2px 11px %s;', esc_html( $l_str_box_shadow_color ) );
@@ -839,7 +843,7 @@ class MCI_Footnotes_Task {
 			}
 
 			/**
-			 * Tooltip position and timing
+			 * Tooltip position and timing.
 			 *
 			 * - Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style.
 			 *
@@ -852,18 +856,22 @@ class MCI_Footnotes_Task {
 			 * @since 2.2.5
 			 * @date 2020-12-18T1113+0100
 			 */
-			// jQuery tooltips.
 			if ( ! self::$a_bool_alternative_tooltips_enabled ) {
-
-				// Tooltip position.
+				
+				/*
+				 * jQuery tooltips.
+				 */
 				$l_int_max_width = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
 				if ( ! empty( $l_int_max_width ) && intval( $l_int_max_width ) > 0 ) {
 					printf( ' max-width: %dpx !important;', esc_html( $l_int_max_width ) );
 				}
 				echo "}\r\n";
 
-				// Alternative tooltips.
 			} else {
+				
+				/*
+				 * Alternative tooltips.
+				 */
 				echo "}\r\n";
 
 				// Dimensions.
@@ -892,8 +900,11 @@ class MCI_Footnotes_Task {
 				}
 				echo "}\r\n";
 
-				// Timing.
-				// jQuery tooltip timing is in templates/public/tooltip.html, filled in after line 690 below..
+				/**
+				 * Alternative tooltip timing.
+				 * 
+				 * jQuery tooltip timing @see templates/public/tooltip.html.
+				 */
 				echo ' .footnote_tooltip.shown {';
 				$l_int_fade_in_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );
 				$l_int_fade_in_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
@@ -916,7 +927,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Custom CSS
+		 * Custom CSS.
 		 *
 		 * - Bugfix: Custom CSS: insert new CSS in the public page header element after existing CSS.
 		 *
@@ -989,32 +1000,32 @@ class MCI_Footnotes_Task {
 		switch ( $l_str_love_me_index ) {
 			// Options named wrt backcompat, simplest is default.
 			case 'text-1':
-				/* translators: 2: Link to plugin page 1: Love heart symbol */
+				/* Translators: 2: Link to plugin page 1: Love heart symbol */
 				$l_str_love_me_text = sprintf( __( 'I %2$s %1$s', 'footnotes' ), $l_str_linked_name, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL );
 				break;
 			case 'text-2':
-				/* translators: %s: Link to plugin page */
+				/* Translators: %s: Link to plugin page */
 				$l_str_love_me_text = sprintf( __( 'This website uses the awesome %s plugin.', 'footnotes' ), $l_str_linked_name );
 				break;
 			case 'text-4':
-				/* translators: 1: Link to plugin page 2: Love heart symbol */
+				/* Translators: 1: Link to plugin page 2: Love heart symbol */
 				$l_str_love_me_text = sprintf( '%1$s %2$s', $l_str_linked_name, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL );
 				break;
 			case 'text-5':
-				/* translators: 1: Love heart symbol 2: Link to plugin page */
+				/* Translators: 1: Love heart symbol 2: Link to plugin page */
 				$l_str_love_me_text = sprintf( '%1$s %2$s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, $l_str_linked_name );
 				break;
 			case 'text-6':
-				/* translators: %s: Link to plugin page */
+				/* Translators: %s: Link to plugin page */
 				$l_str_love_me_text = sprintf( __( 'This website uses %s.', 'footnotes' ), $l_str_linked_name );
 				break;
 			case 'text-7':
-				/* translators: %s: Link to plugin page */
+				/* Translators: %s: Link to plugin page */
 				$l_str_love_me_text = sprintf( __( 'This website uses the %s plugin.', 'footnotes' ), $l_str_linked_name );
 				break;
 			case 'text-3':
 			default:
-				/* translators: %s: Link to plugin page */
+				/* Translators: %s: Link to plugin page */
 				$l_str_love_me_text = sprintf( '%s', $l_str_linked_name );
 				break;
 		}
@@ -1137,7 +1148,7 @@ class MCI_Footnotes_Task {
 		$p_str_content = $this->search( $p_str_content, false, $p_bool_hide_footnotes_text );
 
 		/**
-		 * Reference container customized positioning through shortcode
+		 * Reference container customized positioning through shortcode.
 		 *
 		 * - Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
 		 *
@@ -1235,7 +1246,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Footnote delimiter syntax validation
+		 * Footnote delimiter syntax validation.
 		 *
 		 * - Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
 		 *
@@ -1297,7 +1308,7 @@ class MCI_Footnotes_Task {
 				$l_str_syntax_error_warning .= '</p><p>';
 
 				// Syntax validation setting in the dashboard under the General settings tab.
-				/* translators: 1: General Settings 2: Footnote start and end short codes 3: Check for balanced shortcodes */
+				/* Translators: 1: General Settings 2: Footnote start and end short codes 3: Check for balanced shortcodes */
 				$l_str_syntax_error_warning .= sprintf( __( 'If this warning is irrelevant, please disable the syntax validation feature in the dashboard under %1$s &gt; %2$s &gt; %3$s.', 'footnotes' ), __( 'General settings', 'footnotes' ), __( 'Footnote start and end short codes', 'footnotes' ), __( 'Check for balanced shortcodes', 'footnotes' ) );
 
 				$l_str_syntax_error_warning .= '</p><p>';
@@ -1382,7 +1393,7 @@ class MCI_Footnotes_Task {
 			}
 
 			/**
-			 * URL line wrapping for Unicode non conformant browsers
+			 * URL line wrapping for Unicode non conformant browsers.
 			 *
 			 * @since 2.1.1 (CSS)
 			 * @since 2.1.4 (PHP)
@@ -1556,7 +1567,7 @@ class MCI_Footnotes_Task {
 				$l_str_excerpt_text = $l_str_footnote_text;
 
 				/**
-				 * Tooltip truncation
+				 * Tooltip truncation.
 				 *
 				 * - Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
 				 *
@@ -1598,7 +1609,7 @@ class MCI_Footnotes_Task {
 						$l_str_excerpt_text .= '>';
 
 						/**
-						 * Configurable read-on button label
+						 * Configurable read-on button label.
 						 *
 						 * - Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
 						 *
@@ -1615,7 +1626,7 @@ class MCI_Footnotes_Task {
 				}
 
 				/**
-				 * Referrers element superscript or baseline
+				 * Referrers element superscript or baseline.
 				 *
 				 * Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report
 				 *
@@ -1833,7 +1844,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Footnote index backlink symbol
+		 * Footnote index backlink symbol.
 		 *
 		 * - Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
 		 *
@@ -1871,7 +1882,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Backlink separator
+		 * Backlink separator.
 		 *
 		 * - Bugfix: Reference container: make separating and terminating punctuation optional and configurable, thanks to @docteurfitness issue report and code contribution.
 		 *
@@ -1914,7 +1925,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Backlink terminator
+		 * Backlink terminator.
 		 *
 		 * Initially a dot was appended in the table row template.
 		 *
@@ -1949,7 +1960,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Line breaks
+		 * Line breaks.
 		 *
 		 * - Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks.
 		 *
@@ -1964,6 +1975,8 @@ class MCI_Footnotes_Task {
 		$l_str_line_break = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED ) ) ? '<br />' : ' ';
 
 		/**
+		 * Line breaks for source readability.
+		 * 
 		 * For maintenance and support, table rows in the reference container should be
 		 * separated by an empty line. So we add these line breaks for source readability.
 		 * Before the first table row (breaks between rows are ~200 lines below).
@@ -1971,7 +1984,7 @@ class MCI_Footnotes_Task {
 		$l_str_body = "\r\n\r\n";
 
 		/**
-		 * Reference container table row template load
+		 * Reference container table row template load.
 		 *
 		 * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
 		 *
@@ -2006,7 +2019,7 @@ class MCI_Footnotes_Task {
 		}
 
 		/**
-		 * Switch backlink symbol and footnote number
+		 * Switch backlink symbol and footnote number.
 		 *
 		 * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
 		 *
@@ -2045,7 +2058,7 @@ class MCI_Footnotes_Task {
 			$l_str_footnote_id = MCI_Footnotes_Convert::index( ( $l_int_index + 1 ), MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE ) );
 
 			/**
-			 * Case of only one backlink per table row
+			 * Case of only one backlink per table row.
 			 *
 			 * If enabled, and for the case the footnote is single, compose hard link.
 			 */
@@ -2103,7 +2116,7 @@ class MCI_Footnotes_Task {
 			}
 
 			/**
-			 * Support for combining identicals: compose enumerated backlinks
+			 * Support for combining identicals: compose enumerated backlinks.
 			 *
 			 * - Bugfix: Referrers, reference container: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
 			 *
@@ -2314,7 +2327,7 @@ class MCI_Footnotes_Task {
 		$l_bool_collapse_default = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE ) );
 
 		/**
-		 * Reference container label
+		 * Reference container label.
 		 *
 		 * - Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg feedback.
 		 *

@@ -6,25 +6,10 @@
  * @package footnotes
  * @since 1.5.0 14.09.14 10:58
  *
- * @lastmodified 2021-02-18T2024+0100
- *
- * @since 2.0.3  prettify reference container template
- * @since 2.0.3  replace tab with a space
- * @since 2.0.3  replace 2 spaces with 1
- * @since 2.0.4  collapse multiple spaces
- * @since 2.0.6  prettify other templates (footnote, tooltip script, ref container row)
- * @since 2.2.6  delete a space before a closing pointy bracket
- *
- * @since 2.2.6  support for custom templates in fixed location, while failing to add filter thanks to @misfist   2020-12-19T0606+0100
- * @link https://wordpress.org/support/topic/template-override-filter/
- *
- * @since 2.4.0  templates may be in active theme, thanks to @misfist
- * @link https://wordpress.org/support/topic/template-override-filter/#post-13846598
- *
- * @since 2.5.0  Enable template location stack, contributed by @misfist
- * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
- *
- * @since 2.5.4  collapse HTML comments and PHP/JS docblocks (only)
+ * @lastmodified 2021-02-22T1416+0100
+ * 
+ * @since 2.2.6  Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
+ * @since 2.5.0  Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
  */
 
 /**
@@ -83,12 +68,14 @@ class MCI_Footnotes_Template {
 	 * @param string $p_str_file_type Template file type (take a look on the Class constants).
 	 * @param string $p_str_file_name Template file name inside the Template directory without the file extension.
 	 * @param string $p_str_extension Optional Template file extension (default: html).
-	 *
-	 * @since 2.2.6  support for custom templates   2020-12-19T0606+0100
+	 * 
+	 * - Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
+	 * 
+	 * @since 2.2.6
+	 * @date 2020-12-19T0606+0100
+	 * 
+	 * @reporter @misfist
 	 * @link https://wordpress.org/support/topic/template-override-filter/
-	 *
-	 * @since 2.4.0  look for custom template in the active theme first, thanks to @misfist
-	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13846598
 	 */
 	public function __construct( $p_str_file_type, $p_str_file_name, $p_str_extension = 'html' ) {
 		// No template file type and/or file name set.
@@ -97,14 +84,14 @@ class MCI_Footnotes_Template {
 		}
 
 		/**
-		 * Define plugin root path
+		 * Define plugin root path.
 		 *
 		 * @since 2.4.0d3
 		 */
 		$this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
 
 		/**
-		 * Modularize functions
+		 * Modularize functions.
 		 *
 		 * @since 2.4.0d3
 		 */
@@ -161,18 +148,18 @@ class MCI_Footnotes_Template {
 	}
 
 	/**
-	 * Process template file
+	 * Process template file.
 	 *
 	 * @since 2.4.0d3
 	 *
 	 * @param string $template The template to be processed.
 	 * @return void
 	 *
-	 * @since 2.0.3  replace tab with a space
-	 * @since 2.0.3  replace 2 spaces with 1
-	 * @since 2.0.4  collapse multiple spaces
-	 * @since 2.2.6  delete a space before a closing pointy bracket
-	 * @since 2.5.4  collapse HTML comments and PHP/JS docblocks (only)
+	 * @since 2.0.3  Replace tab with a space.
+	 * @since 2.0.3  Replace 2 spaces with 1.
+	 * @since 2.0.4  Collapse multiple spaces.
+	 * @since 2.2.6  Delete a space before a closing pointy bracket.
+	 * @since 2.5.4  Collapse HTML comments and PHP/JS docblocks (only).
 	 */
 	public function process_template( $template ) {
 		$this->a_str_original_content = preg_replace( '#<!--.+?-->#s', '', wp_remote_get( $template ) );
@@ -186,9 +173,15 @@ class MCI_Footnotes_Template {
 	}
 
 	/**
-	 * Get the template
+	 * Get the template.
+	 * 
+	 * - Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
 	 *
-	 * @since 2.4.0d3
+	 * @since 2.4.0d3 Contribution.
+	 * @since 2.5.0   Release.
+	 * 
+	 * @contributor @misfist
+	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
 	 *
 	 * @param string $p_str_file_type The file type of the template.
 	 * @param string $p_str_file_name The file name of the template.
@@ -199,11 +192,11 @@ class MCI_Footnotes_Template {
 		$located = false;
 
 		/**
-		 * The directory change be modified
+		 * The directory can be changed.
 		 *
-		 * @usage to change location of templates to `template_parts/footnotes/':
+		 * @usage to change location of templates to 'template_parts/footnotes/':
 		 * add_filter( 'mci_footnotes_template_directory', function( $directory ) {
-		 *  return 'template_parts/footnotes/;
+		 *  return 'template_parts/footnotes/';
 		 * } );
 		 */
 		$template_directory = apply_filters( 'mci_footnotes_template_directory', 'footnotes/templates/' );
@@ -211,25 +204,25 @@ class MCI_Footnotes_Template {
 		$template_name      = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
 
 		/**
-		 * Look in active (child) theme
+		 * Look in active theme.
 		 */
 		if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name ) ) {
 			$located = trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name;
 
 			/**
-			 * Look in parent theme
+			 * Look in parent theme in case active is child.
 			 */
 		} elseif ( file_exists( trailingslashit( get_template_directory() ) . $template_directory . $template_name ) ) {
 			$located = trailingslashit( get_template_directory() ) . $template_directory . $template_name;
 
 			/**
-			 * Look in custom directory
+			 * Look in custom plugin directory.
 			 */
 		} elseif ( file_exists( trailingslashit( WP_PLUGIN_DIR ) . $custom_directory . 'templates/' . $template_name ) ) {
 			$located = trailingslashit( WP_PLUGIN_DIR ) . $custom_directory . 'templates/' . $template_name;
 
 			/**
-			 * Look in plugin
+			 * Fall back to the templates shipped with the plugin.
 			 */
 		} elseif ( file_exists( $this->plugin_directory . 'templates/' . $template_name ) ) {
 			$located = $this->plugin_directory . 'templates/' . $template_name;

@@ -164,9 +164,21 @@ class MCI_Footnotes_Task {
 	/**
 	 * Whether tooltips are enabled. Actual value depends on settings.
 	 *
+	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
+	 *
 	 * @since 2.4.0
+	 * @date 2021-01-04T1355+0100
+	 *
+	 * @contributor Patrizia Lutz @misfist
+	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
+	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
+	 * @link https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3 diff
 	 *
 	 * @var bool
+	 *
+	 * Template process and script / stylesheet load optimization.
+	 * Streamline process depending on tooltip enabled status.
+	 * Load tooltip inline script only if jQuery tooltips are enabled.
 	 */
 	public static $a_bool_tooltips_enabled = false;
 

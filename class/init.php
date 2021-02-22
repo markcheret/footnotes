@@ -44,9 +44,10 @@ class MCI_Footnotes {
 	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
 	 *
-	 * @todo Refactor to have defines only here, and use assignments also in class/task.php.
-	 * @todo Account for priority level issues. These variables must be assigned before
-	 * priority level 0.is run in class/task.php.
+	 * @todo Refactor to have defines and assignments only in this class,
+	 * then re-use these properties also in class/task.php (and elsewhere).
+	 * Account for priority level issues. These properties must be assigned before
+	 * the hooks—whose priority level may be configured to 0—are called in class/task.php.
 	 */
 	public static $a_bool_tooltips_enabled = false;
 

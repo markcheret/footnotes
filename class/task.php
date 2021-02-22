@@ -315,7 +315,7 @@ class MCI_Footnotes_Task {
 	 *
 	 * @reporter @jbj2199
 	 * @link https://wordpress.org/support/topic/change-tooltip-text/
-	 * 
+	 *
 	 * Tooltips can display another content than the footnote entry
 	 * in the reference container. The trigger is a shortcode in
 	 * the footnote text separating the tooltip text from the note.
@@ -857,7 +857,7 @@ class MCI_Footnotes_Task {
 			 * @date 2020-12-18T1113+0100
 			 */
 			if ( ! self::$a_bool_alternative_tooltips_enabled ) {
-				
+
 				/*
 				 * jQuery tooltips.
 				 */
@@ -868,7 +868,7 @@ class MCI_Footnotes_Task {
 				echo "}\r\n";
 
 			} else {
-				
+
 				/*
 				 * Alternative tooltips.
 				 */
@@ -902,7 +902,7 @@ class MCI_Footnotes_Task {
 
 				/**
 				 * Alternative tooltip timing.
-				 * 
+				 *
 				 * jQuery tooltip timing @see templates/public/tooltip.html.
 				 */
 				echo ' .footnote_tooltip.shown {';
@@ -1976,7 +1976,7 @@ class MCI_Footnotes_Task {
 
 		/**
 		 * Line breaks for source readability.
-		 * 
+		 *
 		 * For maintenance and support, table rows in the reference container should be
 		 * separated by an empty line. So we add these line breaks for source readability.
 		 * Before the first table row (breaks between rows are ~200 lines below).

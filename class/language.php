@@ -44,7 +44,7 @@ class MCI_Footnotes_Language {
 	 * @link https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/
 	 *
 	 * Add 3rd (empty) argument in apply_filters() to prevent PHP from throwing an error.
-	 * “Fatal error: Uncaught Argument_count_error: Too few arguments to function apply_filters()”
+	 * “Fatal error: Uncaught ArgumentCountError: Too few arguments to function apply_filters()”
 	 *
 	 * Yet get_locale() is defined w/o parameters in wp-includes/l10n.php:30, and
 	 * apply_filters() is defined as apply_filters( $tag, $value ) in wp-includes/plugin.php:181.

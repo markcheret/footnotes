@@ -138,6 +138,7 @@ class MCI_Footnotes_Layout_Init {
 		printf( '</div>' );
 	}
 
+	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	/**
 	 * AJAX call. returns a JSON string containing meta information about a specific WordPress Plugin.
 	 *
@@ -147,8 +148,8 @@ class MCI_Footnotes_Layout_Init {
 		// TODO: add nonce verification.
 
 		// get plugin internal name from POST data.
-		if ( isset( $_POST['plugin'] ) && 'true' === $_POST['plugin'] ) {
-			$l_str_plugin_name = santitize_option( wp_unslash( $_POST['plugin'] ) );
+		if ( isset( $_POST['plugin'] ) ) {
+			$l_str_plugin_name = sanitize_text_field( wp_unslash( $_POST['plugin'] ) );
 		}
 
 		if ( empty( $l_str_plugin_name ) ) {
@@ -199,4 +200,5 @@ class MCI_Footnotes_Layout_Init {
 		);
 		exit;
 	}
+	// phpcs:enable
 }

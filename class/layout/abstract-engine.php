@@ -223,6 +223,8 @@ abstract class MCI_Footnotes_Layout_Engine {
 		wp_enqueue_style( 'mci-footnotes-admin' );
 	}
 
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended
+	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	/**
 	 * Displays the content of specific sub page.
 	 *
@@ -291,7 +293,10 @@ abstract class MCI_Footnotes_Layout_Engine {
 		echo '});';
 		echo '</script>';
 	}
+	// phpcs:enable
 
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended
+	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	/**
 	 * Save all Plugin settings.
 	 *
@@ -319,6 +324,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		// Update settings.
 		return MCI_Footnotes_Settings::instance()->save_options( $l_arr_active_section['container'], $l_arr_new_settings );
 	}
+	// phpcs:enable
 
 	/**
 	 * Output the Description of a section. May be overwritten in any section.

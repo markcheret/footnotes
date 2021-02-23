@@ -187,17 +187,41 @@ class MCI_Footnotes_Task {
 	 */
 	public static $a_bool_alternative_tooltips_enabled = false;
 
-	/*
+	/**
+	 * Hard links for AMP compatibility
+	 *
+	 * @since 2.0.0  Bugfix: footnote links script independent.
+	 *
+	 *
+	 * - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
+	 *
+	 * @since 2.0.4
+	 *
+	 * @reporter @theroninjedi47
+	 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
+	 *
+	 *
+	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+	 *
+	 * @since 2.3.0
+	 * @var bool|str|int
+	 *
+	 * @contributor @martinneumannat
+	 * @link https://wordpress.org/support/topic/making-it-amp-compatible/
+	 *
+	 * @reporter @psykonevro
+	 * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
+	 *
 	 * The official AMP plugin strips off JavaScript, breaking Footnotes’
 	 * animated scrolling.
 	 * When the alternative reference container is enabled, hard links are too.
 	 *
-	 * TODO: refactor, these don't need to be class variables.
+	 * Used both in search() and reference_container(), these need to be class variables.
 	 */
 	/**
 	 * Whether hard links are enabled.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var bool
 	 */
 	public static $a_bool_hard_links_enable = false;
@@ -205,7 +229,7 @@ class MCI_Footnotes_Task {
 	/**
 	 * The referrer slug.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var str
 	 */
 	public static $a_str_referrer_link_slug = 'r';
@@ -213,15 +237,15 @@ class MCI_Footnotes_Task {
 	/**
 	 * The footnote slug.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var str
 	 */
 	public static $a_str_footnote_link_slug = 'f';
 
 	/**
-	 * The footnote separator.
+	 * The slug and identifier separator.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var str
 	 */
 	private static $a_str_link_ids_separator = '+';
@@ -229,7 +253,7 @@ class MCI_Footnotes_Task {
 	/**
 	 * Contains the concatenated link.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var str
 	 */
 	public static $a_str_post_container_id_compound = '';

@@ -162,7 +162,9 @@ class MCI_Footnotes_Template {
 	 * @since 2.5.4  Collapse HTML comments and PHP/JS docblocks (only).
 	 */
 	public function process_template( $template ) {
-		$this->a_str_original_content = preg_replace( '#<!--.+?-->#s', '', wp_remote_get( $template ) );
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$this->a_str_original_content = preg_replace( '#<!--.+?-->#s', '', file_get_contents( $template ) );
+		// phpcs:enable
 		$this->a_str_original_content = preg_replace( '#/\*\*.+?\*/#s', '', $this->a_str_original_content );
 		$this->a_str_original_content = str_replace( "\n", '', $this->a_str_original_content );
 		$this->a_str_original_content = str_replace( "\r", '', $this->a_str_original_content );

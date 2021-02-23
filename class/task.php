@@ -289,7 +289,6 @@ class MCI_Footnotes_Task {
 	 *
 	 * @since 2.0.0  add link elements along with hard links.
 	 *
-	 *
 	 * - Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.
 	 *
 	 * @since 2.1.4
@@ -301,7 +300,6 @@ class MCI_Footnotes_Task {
 	 *
 	 * @reporter @docteurfitness
 	 * @link https://wordpress.org/support/topic/update-2-1-3/
-	 *
 	 *
 	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
 	 *

@@ -326,7 +326,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.4 =
 - Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
-- Update: GDPR: Add jQuery UI from WordPress instead of third party.
+- Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
 - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
 - Bugfix: Reference container: remove inconvenient left/right cellpadding.
 - Bugfix: Tooltips: improve layout with inherited font size by lower line height.

@@ -315,15 +315,15 @@ class MCI_Footnotes {
 			// Set tooltip mode for use in stylesheet name.
 			if ( self::$a_bool_tooltips_enabled ) {
 				if ( self::$a_bool_alternative_tooltips_enabled ) {
-					$l_str_tooltip_mode = 'al';
-					$l_str_tcomplement  = 'ternative-tooltips';
+					$l_str_tooltip_mode_short = 'al';
+					$l_str_tooltip_mode_rest  = 'ternative-tooltips';
 				} else {
-					$l_str_tooltip_mode = 'jq';
-					$l_str_tcomplement  = 'uery-tooltips';
+					$l_str_tooltip_mode_short = 'jq';
+					$l_str_tooltip_mode_rest  = 'uery-tooltips';
 				}
 			} else {
-				$l_str_tooltip_mode = 'no';
-				$l_str_tcomplement  = '-tooltips';
+				$l_str_tooltip_mode_short = 'no';
+				$l_str_tooltip_mode_rest  = '-tooltips';
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
@@ -346,9 +346,9 @@ class MCI_Footnotes {
 
 			// Enqueue the tailored united minified stylesheet.
 			wp_enqueue_style(
-				'mci-footnotes-' . $l_str_tooltip_mode . $l_str_tcomplement . '-pagelayout-' . $l_str_page_layout_option,
+				'mci-footnotes-' . $l_str_tooltip_mode_short . $l_str_tooltip_mode_rest . '-pagelayout-' . $l_str_page_layout_option,
 				plugins_url(
-					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode . 'ttbrpl' . $l_str_layout_mode . '.min.css'
+					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'ttbrpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
 				C_STR_FOOTNOTES_VERSION,

@@ -1,11 +1,10 @@
-<?php
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Loads text domain of current or default language for localization.
  *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 1.5.0 14.09.14 17:47
- *
  *
  * @lastmodified 2021-02-18T2028+0100
  *
@@ -16,7 +15,6 @@
 /**
  * Loads text domain of current or default language for localization.
  *
- * @author Stefan Herndler
  * @since 1.5.0
  */
 class MCI_Footnotes_Language {
@@ -24,18 +22,16 @@ class MCI_Footnotes_Language {
 	/**
 	 * Register WordPress Hook.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 */
-	public static function registerHooks() {
-		add_action('plugins_loaded', array("MCI_Footnotes_Language", "loadTextDomain"));
+	public static function register_hooks() {
+		add_action( 'plugins_loaded', array( 'MCI_Footnotes_Language', 'load_text_domain' ) );
 	}
 
 	/**
 	 * Loads the text domain for current WordPress language if exists.
 	 * Otherwise fallback "en_GB" will be loaded.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
 	 *
@@ -47,8 +43,8 @@ class MCI_Footnotes_Language {
 	 * @contributor @matkus2
 	 * @link https://wordpress.org/support/topic/error-missing-parameter-if-using-php-7-1-or-later/
 	 *
-	 * Add 3rd (empty) argument in apply_filters() to prevent PHP from throwing an error:
-	 * “Fatal error: Uncaught ArgumentCountError: Too few arguments to function apply_filters()”
+	 * Add 3rd (empty) argument in apply_filters() to prevent PHP from throwing an error.
+	 * “Fatal error: Uncaught Argument_count_error: Too few arguments to function apply_filters()”
 	 *
 	 * Yet get_locale() is defined w/o parameters in wp-includes/l10n.php:30, and
 	 * apply_filters() is defined as apply_filters( $tag, $value ) in wp-includes/plugin.php:181.
@@ -57,7 +53,7 @@ class MCI_Footnotes_Language {
 	 * But apply_filters() is defined with a 3rd parameter (and w/o the first one) in
 	 * wp-includes/class-wp-hook.php:264, as public function apply_filters( $value, $args ).
 	 *
-	 * Taking it all together, probably the full function definition would be:
+	 * Taking it all together, probably the full function definition would be.
 	 * public function apply_filters( $tag, $value, $args ).
 	 * In the case of get_locale(), $args is empty.
 	 *
@@ -65,22 +61,21 @@ class MCI_Footnotes_Language {
 	 * @link https://www.php.net/manual/en/migration71.incompatible.php
 	 * @link https://www.php.net/manual/en/migration71.incompatible.php#migration71.incompatible.too-few-arguments-exception
 	 */
-	public static function loadTextDomain() {
+	public static function load_text_domain() {
 
-		// if language file with localization exists:
+		// If language file with localization exists.
 		if ( self::load( apply_filters( 'plugin_locale', get_locale(), '' ) ) ) {
 			return;
 		}
-		// else fall back to British English:
-		self::load( "en_GB" );
+		// Else fall back to British English.
+		self::load( 'en_GB' );
 	}
 
 	/**
 	 * Loads a specific text domain.
 	 *
-	 * @author Stefan Herndler
 	 * @since 1.5.1
-	 * @param string $p_str_LanguageCode Language Code to load a specific text domain.
+	 * @param string $p_str_language_code Language Code to load a specific text domain.
 	 * @return bool
 	 *
 	 *
@@ -92,16 +87,14 @@ class MCI_Footnotes_Language {
 	 * @reporter @nikelaos
 	 * @link https://wordpress.org/support/topic/more-feature-ideas/
 	 *
-	 * That is done by using load_plugin_textdomain():
+	 * That is done by using load_plugin_textdomain().
 	 * “The .mo file should be named based on the text domain with a dash, and then the locale exactly.”
 	 * @see wp-includes/l10n.php:857
 	 */
-	private static function load($p_str_LanguageCode) {
+	private static function load( $p_str_language_code ) {
 		return load_plugin_textdomain(
 			MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
-			// This argument only fills the gap left by a deprecated argument (since WP2.7):
 			false,
-			// The plugin basedir is provided; trailing slash would be clipped:
 			MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages'
 		);
 	}

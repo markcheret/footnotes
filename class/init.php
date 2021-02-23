@@ -206,16 +206,22 @@ class MCI_Footnotes {
 			 * Enqueues the jQuery Tools library shipped with the plugin.
 			 *
 			 * Redacted jQuery.browser, completed minification;
-			 * see full header in js/jquery.tools.js
-			 * added versioning 2020-11-18T2150+0100
-			 * not use '-js' in the handle, is appended automatically.
+			 * see full header in js/jquery.tools.js.
+			 *
+			 * Add versioning.
+			 * @since 2.1.2
+			 * @date 2020-11-18T2150+0100
+			 *
+			 * No '-js' in the handle, is appended automatically.
+			 *
+			 * Deferring to the footer breaks jQuery tooltip display.
+			 * @date 2021-02-23T1105+0100
 			 */
 			wp_enqueue_script(
 				'mci-footnotes-jquery-tools',
 				plugins_url( 'footnotes/js/jquery.tools.min.js' ),
 				array(),
 				'1.2.7.redacted.2',
-				true
 			);
 
 			/**

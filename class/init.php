@@ -209,6 +209,7 @@ class MCI_Footnotes {
 			 * see full header in js/jquery.tools.js.
 			 *
 			 * Add versioning.
+			 *
 			 * @since 2.1.2
 			 * @date 2020-11-18T2150+0100
 			 *

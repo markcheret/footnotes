@@ -533,26 +533,26 @@ class MCI_Footnotes_Settings {
 
 	// Backlink typography.
 	const C_STR_BACKLINKS_SEPARATOR_ENABLED  = 'footnotes_inputfield_backlinks_separator_enabled';
-	const C_STR_BACKLINKS_SEPARATOR_OPTION    = 'footnotes_inputfield_backlinks_separator_option';
-	const C_STR_BACKLINKS_SEPARATOR_CUSTOM    = 'footnotes_inputfield_backlinks_separator_custom';
+	const C_STR_BACKLINKS_SEPARATOR_OPTION   = 'footnotes_inputfield_backlinks_separator_option';
+	const C_STR_BACKLINKS_SEPARATOR_CUSTOM   = 'footnotes_inputfield_backlinks_separator_custom';
 	const C_STR_BACKLINKS_TERMINATOR_ENABLED = 'footnotes_inputfield_backlinks_terminator_enabled';
-	const C_STR_BACKLINKS_TERMINATOR_OPTION   = 'footnotes_inputfield_backlinks_terminator_option';
-	const C_STR_BACKLINKS_TERMINATOR_CUSTOM   = 'footnotes_inputfield_backlinks_terminator_custom';
+	const C_STR_BACKLINKS_TERMINATOR_OPTION  = 'footnotes_inputfield_backlinks_terminator_option';
+	const C_STR_BACKLINKS_TERMINATOR_CUSTOM  = 'footnotes_inputfield_backlinks_terminator_custom';
 
 	// Backlink layout.
 	const C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     = 'footnotes_inputfield_backlinks_column_width_enabled';
-	const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR       = 'footnotes_inputfield_backlinks_column_width_scalar';
-	const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT         = 'footnotes_inputfield_backlinks_column_width_unit';
+	const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      = 'footnotes_inputfield_backlinks_column_width_scalar';
+	const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        = 'footnotes_inputfield_backlinks_column_width_unit';
 	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED = 'footnotes_inputfield_backlinks_column_max_width_enabled';
-	const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR   = 'footnotes_inputfield_backlinks_column_max_width_scalar';
-	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT     = 'footnotes_inputfield_backlinks_column_max_width_unit';
+	const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  = 'footnotes_inputfield_backlinks_column_max_width_scalar';
+	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    = 'footnotes_inputfield_backlinks_column_max_width_unit';
 	const C_STR_BACKLINKS_LINE_BREAKS_ENABLED      = 'footnotes_inputfield_backlinks_line_breaks_enabled';
 
 	// Tooltip font size.
 	// Called mouse over box not tooltip for consistency.
 	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED = 'footnotes_inputfield_mouse_over_box_font_size_enabled';
-	const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR   = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
-	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT     = 'footnotes_inputfield_mouse_over_box_font_size_unit';
+	const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR  = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
+	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT    = 'footnotes_inputfield_mouse_over_box_font_size_unit';
 
 	// Page layout support.
 	const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT = 'footnotes_inputfield_page_layout_support';
@@ -617,7 +617,7 @@ class MCI_Footnotes_Settings {
 	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y = 'footnotes_inputfield_alternative_mouse_over_box_offset_y';
 	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    = 'footnotes_inputfield_alternative_mouse_over_box_width';
 
-	const C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT        = 'footnotes_inputfield_reference_container_label_element';
+	const C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT       = 'footnotes_inputfield_reference_container_label_element';
 	const C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER = 'footnotes_inputfield_reference_container_label_bottom_border';
 
 	/**
@@ -644,7 +644,7 @@ class MCI_Footnotes_Settings {
 	 */
 	const C_INT_REFERENCE_CONTAINER_TOP_MARGIN    = 'footnotes_inputfield_reference_container_top_margin';
 	const C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN = 'footnotes_inputfield_reference_container_bottom_margin';
-	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE      = 'footnotes_inputfield_hard_links_enable';
+	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE       = 'footnotes_inputfield_hard_links_enable';
 	const C_STR_REFERRER_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_referrer_fragment_id_slug';
 	const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_footnote_fragment_id_slug';
 	const C_STR_HARD_LINK_IDS_SEPARATOR           = 'footnotes_inputfield_hard_link_ids_separator';
@@ -818,9 +818,9 @@ class MCI_Footnotes_Settings {
 			self::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE => 'yes',
 
 			self::C_STR_FOOTNOTES_COUNTER_STYLE            => 'arabic_plain',
-			self::C_STR_COMBINE_IDENTICAL_FOOTNOTES       => 'yes',
+			self::C_STR_COMBINE_IDENTICAL_FOOTNOTES        => 'yes',
 
-			self::C_STR_FOOTNOTES_HARD_LINKS_ENABLE       => 'no',
+			self::C_STR_FOOTNOTES_HARD_LINKS_ENABLE        => 'no',
 			self::C_STR_REFERRER_FRAGMENT_ID_SLUG          => 'r',
 			self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG          => 'f',
 			self::C_STR_HARD_LINK_IDS_SEPARATOR            => '+',
@@ -828,14 +828,14 @@ class MCI_Footnotes_Settings {
 			self::C_INT_FOOTNOTES_SCROLL_DURATION          => 380,
 
 			// 2.5.4 fast-tracked.
-			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE => 'yes',
+			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE  => 'yes',
 			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT    => 'Alt+ ←',
 
 
 			self::C_STR_REFERENCE_CONTAINER_NAME           => 'References',
 			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT  => 'p',
 			self::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_COLLAPSE      => 'no',
+			self::C_STR_REFERENCE_CONTAINER_COLLAPSE       => 'no',
 			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE => 'jquery',
 
 			self::C_STR_REFERENCE_CONTAINER_POSITION       => 'post_end',
@@ -859,15 +859,15 @@ class MCI_Footnotes_Settings {
 
 			// Backlink separators and terminators are often not preferred..
 			// But a choice must be provided along with the ability to customize.
-			self::C_STR_BACKLINKS_SEPARATOR_ENABLED       => 'yes',
+			self::C_STR_BACKLINKS_SEPARATOR_ENABLED        => 'yes',
 			self::C_STR_BACKLINKS_SEPARATOR_OPTION         => 'comma',
 			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM         => '',
-			self::C_STR_BACKLINKS_TERMINATOR_ENABLED      => 'no',
+			self::C_STR_BACKLINKS_TERMINATOR_ENABLED       => 'no',
 			self::C_STR_BACKLINKS_TERMINATOR_OPTION        => 'full_stop',
 			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM        => '',
 
 			// Set backlinks column width.
-			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED    => 'no',
+			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     => 'no',
 			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      => '50',
 			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        => 'px',
 
@@ -877,18 +877,18 @@ class MCI_Footnotes_Settings {
 			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
 
 			// Whether a <br /> tag is inserted.
-			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED     => 'no',
+			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED      => 'no',
 
 			// Whether to enable URL line wrapping.
-			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED         => 'yes',
+			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED          => 'yes',
 
 			// Whether to use link elements.
-			self::C_STR_LINK_ELEMENT_ENABLED              => 'yes',
+			self::C_STR_LINK_ELEMENT_ENABLED               => 'yes',
 
 			// Excerpt should be disabled.
-			self::C_STR_FOOTNOTES_IN_EXCERPT              => 'no',
+			self::C_STR_FOOTNOTES_IN_EXCERPT               => 'no',
 
-			self::C_STR_FOOTNOTES_EXPERT_MODE             => 'yes',
+			self::C_STR_FOOTNOTES_EXPERT_MODE              => 'yes',
 
 			self::C_STR_FOOTNOTES_LOVE                     => 'no',
 
@@ -906,7 +906,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_FOOTNOTES_STYLING_BEFORE           => '[',
 			self::C_STR_FOOTNOTES_STYLING_AFTER            => ']',
 
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED  => 'yes',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED   => 'yes',
 
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'no',
 
@@ -954,7 +954,7 @@ class MCI_Footnotes_Settings {
 			// Tooltip font size reset to legacy by default since 2.1.4;.
 			// Was set to inherit since 2.1.1 as it overrode custom CSS,.
 			// Is moved to settings since 2.1.4    2020-12-04T1023+0100.
-			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED  => 'yes',
+			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED   => 'yes',
 			self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR    => 13,
 			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT      => 'px',
 
@@ -1024,7 +1024,7 @@ class MCI_Footnotes_Settings {
 		'footnotes_storage_custom_css' => array(
 
 			self::C_STR_CUSTOM_CSS_LEGACY_ENABLE => 'yes',
-			self::C_STR_CUSTOM_CSS_NEW            => '',
+			self::C_STR_CUSTOM_CSS_NEW           => '',
 
 		),
 

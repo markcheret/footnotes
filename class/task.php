@@ -908,7 +908,6 @@ class MCI_Footnotes_Task {
 			 * @date 2020-12-18T1113+0100
 			 */
 			if ( ! self::$a_bool_alternative_tooltips_enabled ) {
-
 				/*
 				 * jQuery tooltips.
 				 */
@@ -919,7 +918,6 @@ class MCI_Footnotes_Task {
 				echo "}\r\n";
 
 			} else {
-
 				/*
 				 * Alternative tooltips.
 				 */
@@ -954,7 +952,7 @@ class MCI_Footnotes_Task {
 				/**
 				 * Alternative tooltip timing.
 				 *
-				 * jQuery tooltip timing @see templates/public/tooltip.html.
+				 * For jQuery tooltip timing @see templates/public/tooltip.html.
 				 */
 				echo ' .footnote_tooltip.shown {';
 				$l_int_fade_in_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );

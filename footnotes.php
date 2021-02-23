@@ -19,8 +19,7 @@
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-02-20T1911+0100
- * @committer @pewgeuges
+ * @lastmodified 2021-02-23T2304+0100
  */
 define( 'C_STR_FOOTNOTES_VERSION', '2.5.6' );
 

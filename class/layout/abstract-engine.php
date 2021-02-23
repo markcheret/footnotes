@@ -235,7 +235,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 
 		// Get the current section.
 		reset( $this->a_arr_sections );
-		$l_str_active_section_id = isset( $_GET['t'] ) ? sanitize_option( wp_unslash( $_GET['t'] ) ) : key( $this->a_arr_sections );
+		$l_str_active_section_id = isset( $_GET['t'] ) ? sanitize_text_field( wp_unslash( $_GET['t'] ) ) : key( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
 		// Store settings.

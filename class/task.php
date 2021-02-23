@@ -284,7 +284,36 @@ class MCI_Footnotes_Task {
 	 */
 	public static $a_int_scroll_offset = 34;
 
-	/*
+	/**
+	 * Optional link element for footnote referrers and backlinks
+	 *
+	 * @since 2.0.0  add link elements along with hard links.
+	 *
+	 *
+	 * - Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.
+	 *
+	 * @since 2.1.4
+	 * @date 2020-11-25T1306+0100
+	 * @date 2020-11-26T1051+0100
+	 *
+	 * @contributor @docteurfitness
+	 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
+	 *
+	 * @reporter @docteurfitness
+	 * @link https://wordpress.org/support/topic/update-2-1-3/
+	 *
+	 *
+	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+	 *
+	 * @since 2.3.0
+	 * @date 2020-12-30T2313+0100
+	 *
+	 * @contributor @martinneumannat
+	 * @link https://wordpress.org/support/topic/making-it-amp-compatible/
+	 *
+	 * @reporter @psykonevro
+	 * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
+	 *
 	 * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
 	 * Browsers may need to be prevented from logging these clicks in the browsing history,
 	 * as logging compromises the usability of the 'return to previous' button in browsers.
@@ -302,13 +331,13 @@ class MCI_Footnotes_Task {
 	 *
 	 * @see self::$a_bool_hard_links_enable
 	 *
-	 * TODO: refactor, these don't need to be class variables.
+	 * Used both in search() and reference_container(), these need to be class variables.
 	 */
 
 	/**
-	 * The span tag.
+	 * The span element name.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var str
 	 */
 	public static $a_str_link_span = 'span';
@@ -316,7 +345,7 @@ class MCI_Footnotes_Task {
 	/**
 	 * The opening tag.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var str
 	 */
 	public static $a_str_link_open_tag = '';
@@ -324,7 +353,7 @@ class MCI_Footnotes_Task {
 	/**
 	 * The closing tag.
 	 *
-	 * @since 2.0.0
+	 * @since 2.3.0
 	 * @var str
 	 */
 	public static $a_str_link_close_tag = '';

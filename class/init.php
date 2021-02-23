@@ -222,6 +222,7 @@ class MCI_Footnotes {
 				plugins_url( 'footnotes/js/jquery.tools.min.js' ),
 				array(),
 				'1.2.7.redacted.2',
+				false
 			);
 
 			/**

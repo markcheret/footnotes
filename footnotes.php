@@ -1,20 +1,18 @@
 <?php // phpcs:disable Squiz.Commenting.FileComment.Missing
 // phpcs:disable Squiz.Commenting.FileComment.MissingPackageTag
 /**
-	Plugin Name: footnotes
-	Plugin URI: https://wordpress.org/plugins/footnotes/
-	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
-	Author: Mark Cheret
-	Version: 2.5.6
-	Author URI: http://cheret.de/plugins/footnotes-2/
-	Text Domain: footnotes
-	Domain Path: /languages
+ * Plugin Name: footnotes
+ * Plugin URI: https://wordpress.org/plugins/footnotes/
+ * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
+ * Author: Mark Cheret
+ * Version: 2.5.6
+ * Author URI: http://cheret.de/plugins/footnotes-2/
+ * Text Domain: footnotes
+ * Domain Path: /languages
+ *
+ * @copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
 // phpcs:enable
-
-/*
- *  Copyright 2021 Mark Cheret (email: mark@cheret.de)
- */
 /**
  * Version number for stylesheet cache busting.
  *

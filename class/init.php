@@ -229,7 +229,38 @@ class MCI_Footnotes {
 			/**
 			 * Enqueues some jQuery UI libraries registered by WordPress.
 			 *
-			 * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
+			 * - Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.	
+			 *	
+			 * @since 2.0.0
+			 *
+			 * @reporter @rajinderverma
+			 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/
+			 *
+			 * @reporter @ericcorbett2
+			 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13324142
+			 *
+			 * @reporter @honlapdavid
+			 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13355421
+			 *
+			 * @reporter @mmallett
+			 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13445437
+			 *
+			 * Fetch jQuery UI from cdnjs.cloudflare.com.
+			 * @since 2.0.0
+			 * @date 2020-10-26T1907+0100
+			 * @contributor @vonpiernik
+			 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762
+			 *
+			 * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.				 * @since 2.1.2
+			 *
+			 * - Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
+			 *
+			 * @since 2.0.4
+			 * @date 2020-11-01T1902+0100
+			 * @reporter @check2020de
+			 * @link https://wordpress.org/support/topic/gdpr-issue-with-jquery/
+			 * @link https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui
+			 *
 			 * If alternative tooltips are enabled, these libraries are not needed.
 			 */
 			wp_enqueue_script( 'jquery-ui-core' );

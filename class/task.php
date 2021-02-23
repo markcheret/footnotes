@@ -1032,7 +1032,9 @@ class MCI_Footnotes_Task {
 	 */
 	public function wp_footer() {
 		if ( 'footer' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
-			echo wp_kses_post( $this->reference_container() );
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $this->reference_container();
+			// phpcs:enable
 		}
 		// Get setting for love and share this plugin.
 		$l_str_love_me_index = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE );
@@ -1078,7 +1080,7 @@ class MCI_Footnotes_Task {
 				$l_str_love_me_text = sprintf( '%s', $l_str_linked_name );
 				break;
 		}
-		echo sprintf( '<div style="text-align:center; color:#acacac;">%s</div>', wp_kses_post( $l_str_love_me_text ) );
+		echo sprintf( '<div style="text-align:center; color:#acacac;">%s</div>', esc_html( $l_str_love_me_text ) );
 	}
 
 	/**

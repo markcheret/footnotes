@@ -130,7 +130,9 @@ class MCI_Footnotes_Layout_Init {
 		printf( '<br/><br/>' );
 		// load template file.
 		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'manfisher' );
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 
 		printf( '<em>visit <a href="https://cheret.de/plugins/footnotes-2/" target="_blank">Mark Cheret</a></em>' );
 		printf( '<br/><br/>' );

@@ -72,7 +72,9 @@ class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base
 		global $g_obj_mci_footnotes;
 		// Reference container positioning is set to "widget area".
 		if ( 'widget' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
-			echo wp_kses_post( $g_obj_mci_footnotes->a_obj_task->Reference_Container() );
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $g_obj_mci_footnotes->a_obj_task->Reference_Container();
+			// phpcs:enable
 		}
 	}
 }

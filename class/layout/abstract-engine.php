@@ -310,12 +310,12 @@ abstract class MCI_Footnotes_Layout_Engine {
 
 		// Get current section.
 		reset( $this->a_arr_sections );
-		$l_str_active_section_id = isset( $_GET['t'] ) ? sanitize_option( wp_unslash( $_GET['t'] ) ) : key( $this->a_arr_sections );
+		$l_str_active_section_id = isset( $_GET['t'] ) ? sanitize_text_field( wp_unslash( $_GET['t'] ) ) : key( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
 		foreach ( MCI_Footnotes_Settings::instance()->get_defaults( $l_arr_active_section['container'] ) as $l_str_key => $l_mixed_value ) {
 			if ( array_key_exists( $l_str_key, $_POST ) ) {
-				$l_arr_new_settings[ $l_str_key ] = sanitize_option( wp_unslash( $_POST[ $l_str_key ] ) );
+				$l_arr_new_settings[ $l_str_key ] = sanitize_text_field( wp_unslash( $_POST[ $l_str_key ] ) );
 			} else {
 				// Setting is not defined in the POST array, define it to avoid the Default value.
 				$l_arr_new_settings[ $l_str_key ] = '';

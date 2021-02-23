@@ -49,7 +49,9 @@ class MCI_Footnotes_WYSIWYG {
 	 */
 	public static function new_plain_text_editor_button() {
 		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'editor-button' );
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**

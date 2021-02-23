@@ -102,12 +102,12 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 		if ( ! isset( $_SERVER['SERVER_NAME'] ) ) {
 			die;
 		} else {
-			$l_str_server_name = wp_kses_post( wp_unslash( $_SERVER['SERVER_NAME'] ) );
+			$l_str_server_name = sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) );
 		}
 		if ( ! isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
 			die;
 		} else {
-			$l_str_http_user_agent = wp_kses_post( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
+			$l_str_http_user_agent = sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
 		}
 
 		// Replace all placeholders.
@@ -140,7 +140,9 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 				'plugins'                  => $l_str_wordpress_plugins,
 			)
 		);
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 }

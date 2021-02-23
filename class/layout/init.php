@@ -56,7 +56,7 @@ class MCI_Footnotes_Layout_Init {
 		// Register hooks/actions.
 		add_action( 'admin_init', array( $this, 'initialize_settings' ) );
 		add_action( 'admin_menu', array( $this, 'register_main_menu' ) );
-		// register AJAX callbacks for Plugin information.
+		// Register AJAX callbacks for Plugin information.
 		add_action( 'wp_ajax_nopriv_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 		add_action( 'wp_ajax_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 	}
@@ -68,7 +68,7 @@ class MCI_Footnotes_Layout_Init {
 	 */
 	public function initialize_settings() {
 		MCI_Footnotes_Settings::instance()->register_settings();
-		// iterate though each sub class of the layout engine and register their sections.
+		// Iterate though each sub class of the layout engine and register their sections.
 		foreach ( $this->a_arr_sub_page_classes as $l_obj_layout_engine_sub_class ) {
 			$l_obj_layout_engine_sub_class->register_sections();
 		}
@@ -83,11 +83,11 @@ class MCI_Footnotes_Layout_Init {
 	 */
 	public function register_main_menu() {
 		global $menu;
-		// iterate through each main menu.
+		// Iterate through each main menu.
 		foreach ( $menu as $l_arr_main_menu ) {
-			// iterate through each main menu attribute.
+			// 3terate through each main menu attribute.
 			foreach ( $l_arr_main_menu as $l_str_attribute ) {
-				// main menu already added, append sub pages and stop.
+				// Main menu already added, append sub pages and stop.
 				if ( self::C_STR_MAIN_MENU_SLUG === $l_str_attribute ) {
 					$this->register_sub_pages();
 					return;
@@ -95,15 +95,15 @@ class MCI_Footnotes_Layout_Init {
 			}
 		}
 
-		// add a new main menu page to the WordPress dashboard.
+		// Add a new main menu page to the WordPress dashboard.
 		add_menu_page(
-			self::C_STR_MAIN_MENU_TITLE, // page title.
-			self::C_STR_MAIN_MENU_TITLE, // menu title.
-			'manage_options', // capability.
-			self::C_STR_MAIN_MENU_SLUG, // menu slug.
-			array( $this, 'display_other_plugins' ), // function.
-			plugins_url( 'footnotes/img/main-menu.png' ), // icon url.
-			null // position.
+			self::C_STR_MAIN_MENU_TITLE,                  // Page title.
+			self::C_STR_MAIN_MENU_TITLE,                  // Menu title.
+			'manage_options',                             // Capability.
+			self::C_STR_MAIN_MENU_SLUG,                   // Menu slug.
+			array( $this, 'display_other_plugins' ),      // Function.
+			plugins_url( 'footnotes/img/main-menu.png' ), // Icon URL.
+			null                                          // Position.
 		);
 		$this->register_sub_pages();
 	}
@@ -114,8 +114,8 @@ class MCI_Footnotes_Layout_Init {
 	 * @since 1.5.0
 	 */
 	private function register_sub_pages() {
-		// first registered sub menu page MUST NOT contain a unique slug suffix.
-		// iterate though each sub class of the layout engine and register their sub page.
+		// First registered sub menu page MUST NOT contain a unique slug suffix.
+		// Iterate though each sub class of the layout engine and register their sub page.
 		foreach ( $this->a_arr_sub_page_classes as $l_obj_layout_engine_sub_class ) {
 			$l_obj_layout_engine_sub_class->register_sub_page();
 		}
@@ -128,7 +128,7 @@ class MCI_Footnotes_Layout_Init {
 	 */
 	public function display_other_plugins() {
 		printf( '<br/><br/>' );
-		// load template file.
+		// Load template file.
 		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'manfisher' );
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $l_obj_template->get_content();
@@ -149,7 +149,7 @@ class MCI_Footnotes_Layout_Init {
 	public function get_plugin_meta_information() {
 		// TODO: add nonce verification.
 
-		// get plugin internal name from POST data.
+		// Get plugin internal name from POST data.
 		if ( isset( $_POST['plugin'] ) ) {
 			$l_str_plugin_name = sanitize_text_field( wp_unslash( $_POST['plugin'] ) );
 		}
@@ -159,9 +159,9 @@ class MCI_Footnotes_Layout_Init {
 			exit;
 		}
 		$l_str_url = 'https://api.wordpress.org/plugins/info/1.0/' . $l_str_plugin_name . '.json';
-		// call URL and collect data.
+		// Call URL and collect data.
 		$l_arr_response = wp_remote_get( $l_str_url );
-		// check if response is valid.
+		// Check if response is valid.
 		if ( is_wp_error( $l_arr_response ) ) {
 			echo wp_json_encode( array( 'error' => 'Error receiving Plugin Information from WordPress.' ) );
 			exit;
@@ -170,9 +170,9 @@ class MCI_Footnotes_Layout_Init {
 			echo wp_json_encode( array( 'error' => 'Error reading WordPress API response message.' ) );
 			exit;
 		}
-		// get the body of the response.
+		// Get the body of the response.
 		$l_str_response = $l_arr_response['body'];
-		// get plugin object.
+		// Get plugin object.
 		$l_arr_plugin = json_decode( $l_str_response, true );
 		if ( empty( $l_arr_plugin ) ) {
 			echo wp_json_encode( array( 'error' => 'Error reading Plugin meta information.<br/>URL: ' . $l_str_url . '<br/>Response: ' . $l_str_response ) );
@@ -183,7 +183,7 @@ class MCI_Footnotes_Layout_Init {
 		$l_int_rating      = array_key_exists( 'rating', $l_arr_plugin ) ? floatval( $l_arr_plugin['rating'] ) : 0.0;
 		$l_int_stars       = round( 5 * $l_int_rating / 100.0, 1 );
 
-		// return Plugin information as JSON encoded string.
+		// Return Plugin information as JSON encoded string.
 		echo wp_json_encode(
 			array(
 				'error'             => '',

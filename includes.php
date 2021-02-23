@@ -18,6 +18,7 @@ function MCI_Footnotes_requirePhpFiles($p_str_Directory) {
 	// append slash at the end of the Directory if not exist
 	if (substr($p_str_Directory, -1) != "/") {
 		$p_str_Directory .= "/";
+
 	}
 	// get all PHP files inside Directory
 	$l_arr_Files = scandir($p_str_Directory);

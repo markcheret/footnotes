@@ -333,7 +333,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				)
 			);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -422,7 +424,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -463,7 +467,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -520,7 +526,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -568,7 +576,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -602,7 +612,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -649,7 +661,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -687,7 +701,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -738,7 +754,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -760,7 +778,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -793,7 +813,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -826,7 +848,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -864,7 +888,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -900,12 +926,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'notice-font-size'        => __( 'By default, the font size is set to equal the surrounding text.', 'footnotes' ),
 
 				'label-color'             => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR, __( 'Text color:', 'footnotes' ) ),
-				'color'                   => $this->addColorSelection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR ),
+				'color'                   => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR ),
 				// translators: %s: Clear or leave empty.
 				'notice-color'            => sprintf( __( 'To use the current theme’s default text color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
 				'label-background'        => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND, __( 'Background color:', 'footnotes' ) ),
-				'background'              => $this->addColorSelection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND ),
+				'background'              => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND ),
 				// translators: %s: Clear or leave empty.
 				'notice-background'       => sprintf( __( 'To use the current theme’s default background color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
@@ -914,7 +940,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'notice-border-width'     => __( 'pixels; 0 for borderless', 'footnotes' ),
 
 				'label-border-color'      => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR, __( 'Border color:', 'footnotes' ) ),
-				'border-color'            => $this->addColorSelection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR ),
+				'border-color'            => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR ),
 				// translators: %s: Clear or leave empty.
 				'notice-border-color'     => sprintf( __( 'To use the current theme’s default border color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
@@ -923,14 +949,16 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'notice-border-radius'    => __( 'pixels; 0 for sharp corners', 'footnotes' ),
 
 				'label-box-shadow-color'  => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR, __( 'Box shadow color:', 'footnotes' ) ),
-				'box-shadow-color'        => $this->addColorSelection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR ),
+				'box-shadow-color'        => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR ),
 				// translators: %s: Clear or leave empty.
 				'notice-box-shadow-color' => sprintf( __( 'To use the current theme’s default box shadow color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -954,14 +982,16 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 				'label-symbol'       => $this->add_label( MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, __( 'Select or input the backlink symbol:', 'footnotes' ) ),
-				'symbol-options'     => $this->add_select_box( MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::getArrow() ),
+				'symbol-options'     => $this->add_select_box( MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW, MCI_Footnotes_Convert::get_arrow() ),
 				'symbol-custom'      => $this->add_text_box( MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED ),
 				'notice-symbol'      => __( 'Your input overrides the selection.', 'footnotes' ),
 				'description-symbol' => __( 'This symbol is used in the reference container. But this setting pre-existed under this tab and cannot be moved to another one.', 'footnotes' ),
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -1008,7 +1038,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -1040,7 +1072,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -1059,7 +1093,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -1100,33 +1136,35 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'head-url'              => __( 'WordPress documentation', 'footnotes' ),
 
 				'label-the-title'       => $this->add_label( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_TITLE, 'the_title' ),
-				'the-title'             => $this->addCheckbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_TITLE ),
+				'the-title'             => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_TITLE ),
 				'priority-the-title'    => $this->add_num_box( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
 				'url-the-title'         => 'https://developer.wordpress.org/reference/hooks/the_title/',
 
 				'label-the-content'     => $this->add_label( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_CONTENT, 'the_content' ),
-				'the-content'           => $this->addCheckbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_CONTENT ),
+				'the-content'           => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_CONTENT ),
 				'priority-the-content'  => $this->add_num_box( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
 				'url-the-content'       => 'https://developer.wordpress.org/reference/hooks/the_content/',
 
 				'label-the-excerpt'     => $this->add_label( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_EXCERPT, 'the_excerpt' ),
-				'the-excerpt'           => $this->addCheckbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_EXCERPT ),
+				'the-excerpt'           => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_EXCERPT ),
 				'priority-the-excerpt'  => $this->add_num_box( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
 				'url-the-excerpt'       => 'https://developer.wordpress.org/reference/functions/the_excerpt/',
 
 				'label-widget-title'    => $this->add_label( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TITLE, 'widget_title' ),
-				'widget-title'          => $this->addCheckbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TITLE ),
+				'widget-title'          => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TITLE ),
 				'priority-widget-title' => $this->add_num_box( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
 				'url-widget-title'      => 'https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_title',
 
 				'label-widget-text'     => $this->add_label( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TEXT, 'widget_text' ),
-				'widget-text'           => $this->addCheckbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TEXT ),
+				'widget-text'           => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TEXT ),
 				'priority-widget-text'  => $this->add_num_box( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
 				'url-widget-text'       => 'https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text',
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -1179,7 +1217,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Call wp_head function to get the Styling of the mouse-over box.
 		$g_obj_mci_footnotes->a_obj_task->wp_head();
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**
@@ -1197,6 +1237,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Display template with replaced placeholders.
-		echo wp_kses_post( $l_obj_template->get_content() );
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 }

@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, aricura, dartiss, docteurfitness, ericakfranz felipelavinz, martinneumannat, matkus2, meglio, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
+Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6.1

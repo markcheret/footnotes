@@ -28,6 +28,7 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
   - Add the `-n` flag to ignore warnings (i.e., show only errors)
   - Add the `-s` flag to show sniff codes (used for disabling errors in the code with `phpcs disable:<sniff code>` — MAKE SURE THAT YOU HAVE `phpcs enable` AT THE EARLIEST POINT POSSIBLE, and provide a justification for disabling the sniff code)
   - You can run either across the entire project by adding the argument `--ignore=*/vendor/*` and targetting the file `./**/*.php`
+    - You may have to enable double-wildcards in your console first (`shopt -s globstar`)
 
 ## Updating Documentation
 

@@ -976,7 +976,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays all settings for the prepended symbol
+	 * Displays all settings for the backlink symbol.
 	 *
 	 * @since 1.5.0
 	 *
@@ -1009,7 +1009,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays the custom css box.
+	 * Displays the Custom CSS box.
 	 *
 	 * @since 1.5.0
 	 *
@@ -1058,7 +1058,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays transitional legacy Custom CSS box.
+	 *
+	 * @since 2.2.2
 	 */
 	public function custom_css_migration() {
 
@@ -1092,7 +1094,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays the new Custom CSS box.
+	 *
+	 * @since 2.2.2
 	 */
 	public function custom_css_new() {
 		// Load template file.

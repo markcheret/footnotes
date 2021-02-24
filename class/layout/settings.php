@@ -258,7 +258,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 					'label-position'       => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __( 'Default position:', 'footnotes' ) ),
 					'position'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_positions ),
-					// translators: %s: at the end of the post.
+					// Translators: %s: at the end of the post.
 					'notice-position'      => sprintf( __( 'To use the position shortcode, please set the position to: %s', 'footnotes' ), '<span style="font-style: normal;">' . __( 'at the end of the post', 'footnotes' ) . '</span>' ),
 
 					'label-shortcode'      => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE, __( 'Position shortcode:', 'footnotes' ) ),
@@ -406,7 +406,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'short-code-end-user'      => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED ),
 
 				// For script showing/hiding user defined text boxes.
-					'short-code-start-id'  => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START,
+				'short-code-start-id'      => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START,
 				'short-code-end-id'        => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END,
 				'short-code-start-user-id' => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED,
 				'short-code-end-user-id'   => MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED,
@@ -551,16 +551,16 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			'text-4' => sprintf( '%s %s', MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL ),
 			// Logo preceded by heart symbol.
 			'text-5' => sprintf( '%s %s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
-			// translators: 2: heart symbol 1: footnotes logogram.
+			// Translators: 2: heart symbol 1: footnotes logogram.
 			'text-1' => sprintf( __( 'I %2$s %1$s', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL ),
-			// translators: %s: Plugin logo.
+			// Translators: %s: Plugin logo.
 			'text-6' => sprintf( __( 'This website uses %s.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
-			// translators: %s: Plugin logo.
+			// Translators: %s: Plugin logo.
 			'text-7' => sprintf( __( 'This website uses the %s plugin.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
-			// translators: %s: Plugin logo.
+			// Translators: %s: Plugin logo.
 			'text-2' => sprintf( __( 'This website uses the awesome %s plugin.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
 			'random' => __( 'randomly determined display of either mention', 'footnotes' ),
-			// translators: 1: Plugin logo.2: heart symbol.
+			// Translators: 1: Plugin logo.2: heart symbol.
 			'no'     => sprintf( __( 'no display of any “%1$s %2$s” mention in the footer', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL ),
 		);
 
@@ -569,10 +569,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				// translators: %s: Plugin logo.
+				// Translators: %s: Plugin logo.
 				'label-love'    => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE, sprintf( __( 'Tell the world you’re using %s:', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ) ),
 				'love'          => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE, $l_arr_love ),
-				// translators: %s: Plugin logo.
+				// Translators: %s: Plugin logo.
 				'label-no-love' => $this->add_text( sprintf( __( 'Shortcode to inhibit the display of the %s mention on specific pages:', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ) ),
 				'no-love'       => $this->add_text( MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG ),
 			)
@@ -609,7 +609,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-excerpts'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, __( 'Display footnotes in excerpts:', 'footnotes' ) ),
 				'excerpts'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, $l_arr_enabled ),
 				'notice-excerpts'      => __( 'The recommended value is No.', 'footnotes' ),
-				// translators: %s: link to the Advanced Excerpt Plugin.
+				// Translators: %s: link to the Advanced Excerpt Plugin.
 				'description-excerpts' => sprintf( __( 'In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.', 'footnotes' ), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank">Advanced Excerpt</a>' ),
 			)
 		);
@@ -697,7 +697,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-alternative'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, __( 'Display alternative tooltips:', 'footnotes' ) ),
 				'alternative'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, $l_arr_enabled ),
 				'notice-alternative'      => __( 'Intended to work around a configuration-related tooltip outage.', 'footnotes' ),
-				// translators: %s: Plugin logo.
+				// Translators: %s: Plugin logo.
 				'description-alternative' => sprintf( __( 'These alternative tooltips work around a website related jQuery UI outage. They are low-script but use the AMP incompatible onmouseover and onmouseout arguments, along with CSS transitions for fade-in/out. The very small script is inserted after Footnotes’ internal stylesheet. When this option is enabled, %s does not load jQuery&nbsp;UI nor jQuery&nbsp;Tools.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 
 			)
@@ -929,12 +929,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-color'             => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR, __( 'Text color:', 'footnotes' ) ),
 				'color'                   => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR ),
-				// translators: %s: Clear or leave empty.
+				// Translators: %s: Clear or leave empty.
 				'notice-color'            => sprintf( __( 'To use the current theme’s default text color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
 				'label-background'        => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND, __( 'Background color:', 'footnotes' ) ),
 				'background'              => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND ),
-				// translators: %s: Clear or leave empty.
+				// Translators: %s: Clear or leave empty.
 				'notice-background'       => sprintf( __( 'To use the current theme’s default background color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
 				'label-border-width'      => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH, __( 'Border width:', 'footnotes' ) ),
@@ -943,7 +943,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-border-color'      => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR, __( 'Border color:', 'footnotes' ) ),
 				'border-color'            => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR ),
-				// translators: %s: Clear or leave empty.
+				// Translators: %s: Clear or leave empty.
 				'notice-border-color'     => sprintf( __( 'To use the current theme’s default border color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
 				'label-border-radius'     => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS, __( 'Rounded corner radius:', 'footnotes' ) ),
@@ -952,7 +952,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-box-shadow-color'  => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR, __( 'Box shadow color:', 'footnotes' ) ),
 				'box-shadow-color'        => $this->add_color_selection( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR ),
-				// translators: %s: Clear or leave empty.
+				// Translators: %s: Clear or leave empty.
 				'notice-box-shadow-color' => sprintf( __( 'To use the current theme’s default box shadow color: %s', 'footnotes' ), __( 'Clear or leave empty.', 'footnotes' ) ),
 
 			)
@@ -1068,7 +1068,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-show-legacy'       => $this->add_label( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_LEGACY_ENABLE, 'Show legacy Custom CSS settings containers:' ),
 				'show-legacy'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_LEGACY_ENABLE, $l_arr_enabled ),
 				'notice-show-legacy'      => __( 'Please set to No when you are done migrating, for the legacy Custom CSS containers to disappear.', 'footnotes' ),
-				// translators: %s: Referres and tooltips.
+				// Translators: %s: Referres and tooltips.
 				'description-show-legacy' => sprintf( __( 'The legacy Custom CSS under the %s tab and its mirror here are emptied, and the select box saved as No, when the settings tab is saved while the settings container is not displayed.', 'footnotes' ), __( 'Referrers and tooltips', 'footnotes' ) ),
 
 			)
@@ -1126,9 +1126,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 				'description-1'         => __( 'The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.', 'footnotes' ),
-				// translators: 1: 99 2: 1200.
+				// Translators: 1: 99; 2: 1200.
 				'description-2'         => sprintf( __( 'For the_content, this figure must be lower than %1$d so that certain strings added by a plugin running at %1$d may not be mistaken as a footnote. This makes also sure that the reference container displays above a feature inserted by a plugin running at %2$d.', 'footnotes' ), 99, 1200 ),
-				// translators: 1: PHP_INT_MAX 2: 0 3: -1 4: 'PHP_INT_MAX'.
+				// Translators: 1: PHP_INT_MAX; 2: 0; 3: -1; 4: 'PHP_INT_MAX'.
 				'description-3'         => sprintf( __( '%1$d is lowest priority, %2$d is highest. To set priority level to lowest, set it to %3$d, interpreted as %1$d, the constant %4$s.', 'footnotes' ), PHP_INT_MAX, 0, -1, 'PHP_INT_MAX' ),
 				'description-4'         => __( 'The widget_text hook must be enabled either when footnotes are present in theme text widgets, or when Elementor accordions or toggles shall have a reference container per section. If they should not, this hook must be disabled.', 'footnotes' ),
 
@@ -1212,7 +1212,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'example-code'   => $l_str_example,
 				'example-string' => '<br/>' . __( 'will be displayed as:', 'footnotes' ),
 				'example'        => $g_obj_mci_footnotes->a_obj_task->exec( $l_str_example, true ),
-				// translators: 1: <a> 2: </a>.
+				// Translators: 1: <a>; 2: </a>.
 				'information'    => sprintf( __( 'For further information please check out our %1$ssupport forum%2$s on WordPress.org.', 'footnotes' ), '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
 			)
 		);

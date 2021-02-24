@@ -1005,21 +1005,26 @@ class MCI_Footnotes_Task {
 		 * @reporter @andreasra
 		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
 		 *
-		 * The script for alternative tooltips is printed formatted, not minified.
+		 * The script for alternative tooltips is printed formatted, not minified,
+		 * for transparency. It isn’t indented though (the PHP open tag neither).
 		 */
 		if ( self::$a_bool_alternative_tooltips_enabled ) {
+
+			// Start internal script.
 			?>
 <script content="text/javascript">
-	function footnote_tooltip_show(footnote_tooltip_id) {
-		document.get_element_by_id(footnote_tooltip_id).class_list.remove('hidden');
-		document.get_element_by_id(footnote_tooltip_id).class_list.add('shown');
+	function footnoteTooltipShow(footnoteTooltipId) {
+		document.getElementById(footnoteTooltipId).classList.remove('hidden');
+		document.getElementById(footnoteTooltipId).classList.add('shown');
 	}
-	function footnote_tooltip_hide(footnote_tooltip_id) {
-		document.get_element_by_id(footnote_tooltip_id).class_list.remove('shown');
-		document.get_element_by_id(footnote_tooltip_id).class_list.add('hidden');
+	function footnoteTooltipHide(footnoteTooltipId) {
+		document.getElementById(footnoteTooltipId).classList.remove('shown');
+		document.getElementById(footnoteTooltipId).classList.add('hidden');
 	}
 </script>
-			<?php
+<?php
+			// End internal script.
+
 		};
 	}
 

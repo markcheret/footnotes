@@ -584,7 +584,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays the excerpt setting
+	 * Displays the excerpt setting.
 	 *
 	 * @since 1.5.0
 	 *
@@ -620,7 +620,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays all settings for the footnote referrers
+	 * Displays all settings for the footnote referrers.
 	 *
 	 * @since 1.5.0
 	 *
@@ -669,7 +669,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays all settings for the footnotes mouse-over box.
+	 * Displays enabled status for the footnotes mouse-over box.
 	 *
 	 * @since 1.5.2
 	 *
@@ -709,7 +709,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays position settings for the footnotes mouse-over box.
+	 *
+	 * @since 2.2.0
 	 */
 	public function mouseover_box_position() {
 
@@ -762,7 +764,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays dimensions setting for the footnotes mouse-over box.
+	 *
+	 * @since 2.2.0
 	 */
 	public function mouseover_box_dimensions() {
 
@@ -786,7 +790,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays timing settings for the footnotes mouse-over box.
+	 *
+	 * @since 2.2.0
 	 */
 	public function mouseover_box_timing() {
 
@@ -821,7 +827,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays truncation settings for the footnotes mouse-over box.
+	 *
+	 * @since 2.2.0
 	 */
 	public function mouseover_box_truncation() {
 		// Options for Yes/No select box.
@@ -856,7 +864,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays dedicated tooltip text settings for the footnotes mouse-over box.
+	 *
+	 * @since 2.2.0
 	 */
 	public function mouseover_box_text() {
 		// Options for Yes/No select box.
@@ -896,7 +906,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays style settings for the footnotes mouse-over box.
+	 *
+	 * @since 2.2.0
 	 */
 	public function mouseover_box_appearance() {
 		// Options for Yes/No select box.

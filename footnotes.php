@@ -1,5 +1,4 @@
-<?php // phpcs:disable Squiz.Commenting.FileComment.Missing
-// phpcs:disable Squiz.Commenting.FileComment.MissingPackageTag
+<?php
 /**
  * Plugin Name: footnotes
  * Plugin URI: https://wordpress.org/plugins/footnotes/
@@ -10,9 +9,10 @@
  * Text Domain: footnotes
  * Domain Path: /languages
  *
+ * @package footnotes
  * @copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
-// phpcs:enable
+
 /**
  * Version number for stylesheet cache busting.
  *

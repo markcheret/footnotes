@@ -5,6 +5,7 @@
  * @filesource
  * @package footnotes
  * @since 1.5.0
+ * @date 14.09.14 10:58
  *
  * @since 2.2.6  Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
  * @since 2.5.0  Adding: Templates: Enable template location stack, thanks to @misfist code contribution.

@@ -4,9 +4,8 @@
  *
  * @filesource
  * @package footnotes
- * @since 1.5.0 14.09.14 10:43
- *
- * @lastmodified 2021-02-19T1608+0100
+ * @since 1.5.0
+ * @date 14.09.14 10:43
  *
  * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
  * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100

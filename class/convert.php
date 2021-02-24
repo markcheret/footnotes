@@ -4,12 +4,10 @@
  *
  * @filesource
  * @package footnotes
- * @since 1.5.0 12.09.14 10:56
+ * @since 1.5.0
+ * @date 12.09.14 10:56
  *
- * Edited:
  * @since 2.2.0  add lowercase Roman   2020-12-12T1540+0100
- *
- * Last modified:  2020-12-12T1541+0100
  */
 
 /**

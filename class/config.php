@@ -4,12 +4,10 @@
  *
  * @filesource
  * @package footnotes
- * @since 1.5.0 12.09.14 10:56
+ * @since 1.5.0
+ * @date 12.09.14 10:56
  *
- * Edited for:
- * 2.0.4  add Public Plugin name for dashboard heading   2020-11-01T0452+0100
- *
- * Last modified: 2021-02-18T2027+0100
+ * @since 2.0.4  add Public Plugin name for dashboard heading   2020-11-01T0452+0100
  */
 
 /**

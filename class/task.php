@@ -1013,13 +1013,13 @@ class MCI_Footnotes_Task {
 			// Start internal script.
 			?>
 <script content="text/javascript">
-	function footnoteTooltipShow(footnoteTooltipId) {
-		document.getElementById(footnoteTooltipId).classList.remove('hidden');
-		document.getElementById(footnoteTooltipId).classList.add('shown');
+	function footnote_tooltip_show(footnote_tooltip_id) {
+		document.getElementById(footnote_tooltip_id).classList.remove('hidden');
+		document.getElementById(footnote_tooltip_id).classList.add('shown');
 	}
-	function footnoteTooltipHide(footnoteTooltipId) {
-		document.getElementById(footnoteTooltipId).classList.remove('shown');
-		document.getElementById(footnoteTooltipId).classList.add('hidden');
+	function footnote_tooltip_hide(footnote_tooltip_id) {
+		document.getElementById(footnote_tooltip_id).classList.remove('shown');
+		document.getElementById(footnote_tooltip_id).classList.add('hidden');
 	}
 </script>
 <?php

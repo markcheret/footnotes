@@ -339,9 +339,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays all options for the footnotes start and end tag short codes
-	 * Displays all options for the footnotes numbering
-	 * Displays all options for the scrolling behavior
+	 * Displays all options for the footnotes start and end tag short codes.
 	 *
 	 * @since 1.5.0
 	 *
@@ -430,7 +428,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays all options for the footnotes numbering.
+	 *
+	 * @since 2.2.0
 	 */
 	public function numbering() {
 		// Define some space for the output.
@@ -473,7 +473,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * TODO: what does this do?
+	 * Displays all options for the scrolling behavior.
+	 *
+	 * @since 2.2.0
 	 */
 	public function scrolling() {
 

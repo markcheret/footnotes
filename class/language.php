@@ -53,7 +53,7 @@ class MCI_Footnotes_Language {
 	 * But apply_filters() is defined with a 3rd parameter (and w/o the first one) in
 	 * wp-includes/class-wp-hook.php:264, as public function apply_filters( $value, $args ).
 	 *
-	 * Taking it all together, probably the full function definition would be.
+	 * Taking it all together, probably the full function definition would be
 	 * public function apply_filters( $tag, $value, $args ).
 	 * In the case of get_locale(), $args is empty.
 	 *

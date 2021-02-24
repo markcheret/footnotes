@@ -4,7 +4,8 @@
  *
  * @filesource
  * @package footnotes
- * @since 1.5.0 12.09.14 10:56
+ * @since 1.5.0
+ * @date 12.09.14 10:56
  *
  * @since 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
  * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100

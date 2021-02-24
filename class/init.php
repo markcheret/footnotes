@@ -73,9 +73,9 @@ class MCI_Footnotes {
 	 * @since 1.6.5
 	 *
 	 * @contributor @felipelavinz
-	 * @link https://github.com/benleyjyc/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793  2021-02-24T1613+0100
+	 * @link https://github.com/benleyjyc/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
 	 * @date 2020-02-25
-	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793  2020-02-25
+	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
 	 *
 	 * @see self::initialize_widgets()
 	 */

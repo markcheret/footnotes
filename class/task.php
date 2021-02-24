@@ -482,7 +482,7 @@ class MCI_Footnotes_Task {
 		 * priority needs to be at least 1200 (i.e. 0 =< $l_int_the_content_priority =< 1200).
 		 *
 		 * PHP_INT_MAX cannot be reset by leaving the number box empty. because browsers
-		 * (Web_kit) don’t allow it, so we must resort to -1.
+		 * (WebKit) don’t allow it, so we must resort to -1.
 		 * @link https://github.com/Modernizr/Modernizr/issues/171
 		 */
 

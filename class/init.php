@@ -4,9 +4,10 @@
  *
  * @filesource
  * @package footnotes
- * @since 1.5.0 12.09.14 10:56
+ * @since 1.5.0
+ * @date 12.09.14 10:56
  *
- * @lastmodified 2021-02-19T2031+0100
+ * @lastmodified 2021-02-24T1617+0100
  *
  * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
@@ -67,13 +68,14 @@ class MCI_Footnotes {
 	 *
 	 * @since 1.5.0
 	 *
-	 *
 	 * - Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
 	 *
 	 * @since 1.6.5
 	 *
 	 * @contributor @felipelavinz
-	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
+	 * @link https://github.com/benleyjyc/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793  2021-02-24T1613+0100
+	 * @date 2020-02-25
+	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793  2020-02-25
 	 *
 	 * @see self::initialize_widgets()
 	 */
@@ -102,7 +104,6 @@ class MCI_Footnotes {
 	 * Initializes all Widgets of the Plugin.
 	 *
 	 * @since 1.5.0
-	 *
 	 *
 	 * - Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution
 	 *

@@ -4,7 +4,8 @@
  *
  * @filesource
  * @package footnotes
- * @since 1.5.0 14.09.14 14:47
+ * @since 1.5.0
+ * @date 14.09.14 14:47
  */
 
 /**

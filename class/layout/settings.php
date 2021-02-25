@@ -3,9 +3,8 @@
  * Includes the Plugin Class to display all Settings.
  *
  * @filesource
- * @since 1.5.0 14.09.14 14:47
- *
- * @lastmodified 2021-02-19T2053+0100
+ * @since 1.5.0
+ * @date 14.09.14 14:47
  *
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100

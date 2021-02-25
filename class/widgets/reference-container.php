@@ -4,9 +4,10 @@
  *
  * @filesource
  * @package footnotes
- * @since 1.5.0 14.09.14 14:26
+ * @since 1.5.0
+ * @date 14.09.14 14:26
  *
- * Edited 2.2.0  2020-12-12T2131+0100
+ * @since 2.2.0  (TBD)  2020-12-12T2131+0100
  */
 
 /**

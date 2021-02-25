@@ -232,4 +232,4 @@ class MCI_Footnotes_Template {
 		return $located;
 	}
 
-} // End of class.
+}

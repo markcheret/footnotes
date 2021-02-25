@@ -7,8 +7,6 @@
  * @since 1.5.0
  * @date 14.09.14 14:30
  *
- * @lastmodified 2021-02-18T0306+0100
- * @date 2021-02-18T0240+0100
  * @since 1.6.4  Update: replace deprecated function WP_Widget() with recommended __construct(), thanks to @dartiss code contribution.
  */
 

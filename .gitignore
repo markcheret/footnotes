@@ -1,1 +1,4 @@
 .phpdoc/
+vendor/
+
+*.bak

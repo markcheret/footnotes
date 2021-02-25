@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "wp-coding-standards/wpcs": "^2.3"
+    },
+    "scripts": {
+    	"post-install-cmd": [
+    		"bash _tools/setup.sh"
+    	]
+    }
+}

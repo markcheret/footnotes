@@ -973,6 +973,7 @@ class MCI_Footnotes_Task {
 			}
 		}
 
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		/**
 		 * Custom CSS.
 		 *
@@ -985,10 +986,11 @@ class MCI_Footnotes_Task {
 		 * Legacy Custom CSS is used until it’s set to disappear after dashboard tab migration.
 		 */
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
-			echo esc_html( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS ) );
+			echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS );
 			echo "\r\n";
 		}
-		echo esc_html( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW ) );
+		echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW );
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		// Insert end tag without switching out of PHP.
 		echo "\r\n</style>\r\n";
@@ -1020,7 +1022,7 @@ class MCI_Footnotes_Task {
 		document.getElementById(footnote_tooltip_id).classList.add('hidden');
 	}
 </script>
-<?php
+			<?php
 			// End internal script.
 
 		};

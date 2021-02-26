@@ -1,5 +1,5 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
+Contributors: mark.cheret, lolzim, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6.1
@@ -83,7 +83,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 = 2.5.6 =
 - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
 - Bugfix: Alternative tooltips: shrink width to short content.
-- Update: Documentation: slightly revise or update the plugin’s welcome page on WordPress.org.
+- Update: Documentation: slightly revise / update the plugin’s welcome page on WordPress.org.
 
 = 2.5.5 =
 - Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
@@ -329,7 +329,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.4 =
 - Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
-- Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
+- Update: GDPR: Add jQuery UI from WordPress instead of third party.
 - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
 - Bugfix: Reference container: remove inconvenient left/right cellpadding.
 - Bugfix: Tooltips: improve layout with inherited font size by lower line height.

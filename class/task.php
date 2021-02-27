@@ -6,8 +6,7 @@
  * @author Stefan Herndler
  * @since 1.5.0
  *
- *
- * @lastmodified  2021-02-20T0438+0100
+ * @lastmodified  2021-02-27T0225+0100
  *
  * @since 2.0.0  Bugfix: various.
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
@@ -80,7 +79,9 @@
  * @since 2.5.4  Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
  * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
  * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
+ * @since 2.5.7  Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
  */
+
 
 // If called directly, abort:
 defined( 'ABSPATH' ) or die;
@@ -156,7 +157,7 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/reset-footnotes-to-1/
 	 * @link https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830
 	 *
-	 * @var int 1; incremented each time after a reference container is inserted
+	 * @var int 1; incremented every time after a reference container is inserted
 	 *
 	 * This ID disambiguates multiple reference containers in a page
 	 * as they may occur when the widget_text hook is active and the page
@@ -730,17 +731,17 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
 		 *
 		 * @since 2.1.4
-		 * 
+		 *
 		 * @since 2.5.6 hard links are always enabled when the alternative reference container is.
 		 */
 		self::$a_bool_HardLinksEnable = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE));
-		
+
 		// correct hard links enabled status depending on alternative reference container enabled status:
 		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
 		if ( $l_str_ScriptMode != 'jquery' ) {
 			self::$a_bool_HardLinksEnable = true;
 		}
-		
+
 		self::$a_int_ScrollOffset = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET));
 		if (self::$a_bool_HardLinksEnable) {
 			echo ".footnote_referrer_anchor, .footnote_item_anchor {bottom: ";
@@ -999,6 +1000,26 @@ class MCI_Footnotes_Task {
 	 * @return string Content with replaced footnotes.
 	 */
 	public function the_content($p_str_Content) {
+
+		/**
+		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
+		 *
+		 * - Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
+		 *
+		 * @since 2.5.7
+		 *
+		 * @reporter @inoruhana
+		 * @link https://wordpress.org/support/topic/footnote-duplicated-in-the-widget/
+		 *
+		 * Under certain circumstances, footnotes were duplicated, because the footnotes list was
+		 * not emptied every time before the search algorithm was run. That happened eg when both
+		 * the reference container resides in the widget area, and the YOAST SEO plugin is active
+		 * and calls the hook the_content to generate the Open Graph description, while Footnotes
+		 * is set to avoid missing out on the footnotes (in the content) by hooking in as soon as
+		 * the_content is called, whereas at post end Footnotes seems to hook in the_content only
+		 * the time it’s the blog engine processing the post for display and appending the refs.
+		 */
+		self::$a_arr_Footnotes = array();
 		// appends the reference container if set to "post_end"
 		return $this->exec($p_str_Content, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "post_end" ? true : false);
 	}
@@ -1655,10 +1676,10 @@ class MCI_Footnotes_Task {
 				} else {
 					$l_str_TooltipContent = '';
 				}
-				
+
 				/**
 				 * Determine shrink width if alternative tooltips are enabled.
-				 * 
+				 *
 				 * @since 2.5.6
 				 */
 				$l_str_TooltipStyle = '';
@@ -2294,23 +2315,23 @@ class MCI_Footnotes_Task {
 		 *
 		 * @reporter @hopper87it
 		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
-		 * 
+		 *
 		 * @reporter @pkverma99
 		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/#post-14076188
 		 */
 		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
-		
+
 		if ( $l_str_ScriptMode == 'jquery' ) {
 
 			// load 'templates/public/reference-container.html':
 			$l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
-			
+
 		} else {
-			
+
 			// load 'templates/public/js-reference-container.html':
 			$l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "js-reference-container");
 		}
-		
+
 		$l_obj_TemplateContainer->replace(
 			array(
 				"post_id"         =>  self::$a_int_PostId,

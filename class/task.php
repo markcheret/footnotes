@@ -6,7 +6,6 @@
  * @author Stefan Herndler
  * @since 1.5.0
  *
- *
  * @lastmodified  2021-02-20T0438+0100
  *
  * @since 2.0.0  Bugfix: various.
@@ -124,7 +123,7 @@ class MCI_Footnotes_Task {
 	 * @since 1.5.8
 	 * @var string
 	 */
-	public static $a_str_Prefix = "";
+	public static $a_str_Prefix = '';
 
 	/**
 	 * Infinite scroll / autoload or archive view
@@ -417,33 +416,32 @@ class MCI_Footnotes_Task {
 		 */
 
 		// get values from settings:
-		$l_int_TheTitlePriority    = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL));
-		$l_int_TheContentPriority  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL));
-		$l_int_TheExcerptPriority  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL));
-		$l_int_WidgetTitlePriority = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL));
-		$l_int_WidgetTextPriority  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL));
+		$l_int_TheTitlePriority    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL ) );
+		$l_int_TheContentPriority  = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL ) );
+		$l_int_TheExcerptPriority  = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL ) );
+		$l_int_WidgetTitlePriority = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL ) );
+		$l_int_WidgetTextPriority  = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL ) );
 
 		// PHP_INT_MAX can be set by -1:
-		$l_int_TheTitlePriority    = ($l_int_TheTitlePriority    == -1) ? PHP_INT_MAX : $l_int_TheTitlePriority   ;
-		$l_int_TheContentPriority  = ($l_int_TheContentPriority  == -1) ? PHP_INT_MAX : $l_int_TheContentPriority ;
-		$l_int_TheExcerptPriority  = ($l_int_TheExcerptPriority  == -1) ? PHP_INT_MAX : $l_int_TheExcerptPriority ;
-		$l_int_WidgetTitlePriority = ($l_int_WidgetTitlePriority == -1) ? PHP_INT_MAX : $l_int_WidgetTitlePriority;
-		$l_int_WidgetTextPriority  = ($l_int_WidgetTextPriority  == -1) ? PHP_INT_MAX : $l_int_WidgetTextPriority ;
-
+		$l_int_TheTitlePriority    = ( $l_int_TheTitlePriority == -1 ) ? PHP_INT_MAX : $l_int_TheTitlePriority;
+		$l_int_TheContentPriority  = ( $l_int_TheContentPriority == -1 ) ? PHP_INT_MAX : $l_int_TheContentPriority;
+		$l_int_TheExcerptPriority  = ( $l_int_TheExcerptPriority == -1 ) ? PHP_INT_MAX : $l_int_TheExcerptPriority;
+		$l_int_WidgetTitlePriority = ( $l_int_WidgetTitlePriority == -1 ) ? PHP_INT_MAX : $l_int_WidgetTitlePriority;
+		$l_int_WidgetTextPriority  = ( $l_int_WidgetTextPriority == -1 ) ? PHP_INT_MAX : $l_int_WidgetTextPriority;
 
 		// append custom css to the header
-		add_filter('wp_head', array($this, "wp_head"), PHP_INT_MAX);
+		add_filter( 'wp_head', array( $this, 'wp_head' ), PHP_INT_MAX );
 
 		// append the love and share me slug to the footer
-		add_filter('wp_footer', array($this, "wp_footer"), PHP_INT_MAX);
+		add_filter( 'wp_footer', array( $this, 'wp_footer' ), PHP_INT_MAX );
 
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE))) {
-			add_filter('the_title', array($this, "the_title"), $l_int_TheTitlePriority);
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_TITLE ) ) ) {
+			add_filter( 'the_title', array( $this, 'the_title' ), $l_int_TheTitlePriority );
 		}
 
 		// configurable priority level for reference container relative positioning; default 98:
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT))) {
-			add_filter('the_content', array($this, "the_content"), $l_int_TheContentPriority);
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_CONTENT ) ) ) {
+			add_filter( 'the_content', array( $this, 'the_content' ), $l_int_TheContentPriority );
 
 			/**
 			 * Hook for category pages
@@ -463,7 +461,7 @@ class MCI_Footnotes_Task {
 			 * For this to happen, WordPress’ built-in partial HTML blocker needs to be disabled.
 			 * @link https://docs.woocommerce.com/document/allow-html-in-term-category-tag-descriptions/
 			 */
-			add_filter('term_description', array($this, "the_content"), $l_int_TheContentPriority);
+			add_filter( 'term_description', array( $this, 'the_content' ), $l_int_TheContentPriority );
 
 			/**
 			 * Hook for popup maker popups
@@ -476,19 +474,18 @@ class MCI_Footnotes_Task {
 			 * @reporter @squatcher
 			 * @link https://wordpress.org/support/topic/footnotes-use-in-popup-maker/
 			 */
-			add_filter('pum_popup_content', array($this, "the_content"), $l_int_TheContentPriority);
+			add_filter( 'pum_popup_content', array( $this, 'the_content' ), $l_int_TheContentPriority );
 		}
 
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT))) {
-			 add_filter('the_excerpt', array($this, "the_excerpt"), $l_int_TheExcerptPriority);
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_THE_EXCERPT ) ) ) {
+			 add_filter( 'the_excerpt', array( $this, 'the_excerpt' ), $l_int_TheExcerptPriority );
 		}
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE))) {
-			add_filter('widget_title', array($this, "widget_title"), $l_int_WidgetTitlePriority);
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE ) ) ) {
+			add_filter( 'widget_title', array( $this, 'widget_title' ), $l_int_WidgetTitlePriority );
 		}
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT))) {
-			add_filter('widget_text', array($this, "widget_text"), $l_int_WidgetTextPriority);
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT ) ) ) {
+			add_filter( 'widget_text', array( $this, 'widget_text' ), $l_int_WidgetTextPriority );
 		}
-
 
 		/**
 		 * The the_post hook
@@ -567,7 +564,6 @@ class MCI_Footnotes_Task {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
-	 *
 	 * @since 2.1.1  Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
 	 * @since 2.1.1  Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
 	 * @since 2.1.3  raise settings priority to override theme stylesheets
@@ -600,9 +596,9 @@ class MCI_Footnotes_Task {
 		$l_str_NormalizeSuperscript = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT );
 		if ( $l_str_NormalizeSuperscript !== 'no' ) {
 			if ( $l_str_NormalizeSuperscript === 'all' ) {
-				echo "sup {";
+				echo 'sup {';
 			} else {
-				echo ".footnote_plugin_tooltip_text {";
+				echo '.footnote_plugin_tooltip_text {';
 			}
 			echo "vertical-align: super; font-size: smaller; position: static;}\r\n";
 		}
@@ -617,7 +613,7 @@ class MCI_Footnotes_Task {
 		 * @reporter @dragon013
 		 * @link https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/
 		 */
-		if (!MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE))) {
+		if ( ! MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE ) ) ) {
 			echo ".home .footnotes_reference_container { display: none; }\r\n";
 		}
 
@@ -631,12 +627,12 @@ class MCI_Footnotes_Task {
 		 * @reporter @hamshe
 		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
 		 */
-		$l_int_ReferenceContainerTopMargin = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_TOP_MARGIN));
-		$l_int_ReferenceContainerBottomMargin = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN));
-		echo ".footnotes_reference_container {margin-top: ";
-		echo empty($l_int_ReferenceContainerTopMargin) ? '0' : $l_int_ReferenceContainerTopMargin;
-		echo "px !important; margin-bottom: ";
-		echo empty($l_int_ReferenceContainerBottomMargin) ? '0' : $l_int_ReferenceContainerBottomMargin;
+		$l_int_ReferenceContainerTopMargin = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_TOP_MARGIN ) );
+		$l_int_ReferenceContainerBottomMargin = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN ) );
+		echo '.footnotes_reference_container {margin-top: ';
+		echo empty( $l_int_ReferenceContainerTopMargin ) ? '0' : $l_int_ReferenceContainerTopMargin;
+		echo 'px !important; margin-bottom: ';
+		echo empty( $l_int_ReferenceContainerBottomMargin ) ? '0' : $l_int_ReferenceContainerBottomMargin;
 		echo "px !important;}\r\n";
 
 		/**
@@ -650,11 +646,10 @@ class MCI_Footnotes_Task {
 		 *
 		 * @reporter @markhillyer
 		 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
-		 *
 		 */
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER))) {
-			echo ".footnote_container_prepare > ";
-			echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT);
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER ) ) ) {
+			echo '.footnote_container_prepare > ';
+			echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT );
 			echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
 		}
 
@@ -669,31 +664,31 @@ class MCI_Footnotes_Task {
 		 * @reporter @noobishh
 		 * @link https://wordpress.org/support/topic/borders-25/
 		 */
-		if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE))) {
-			echo ".footnotes_table, .footnotes_plugin_reference_row {";
-			echo "border: 1px solid #060606;";
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE ) ) ) {
+			echo '.footnotes_table, .footnotes_plugin_reference_row {';
+			echo 'border: 1px solid #060606;';
 			echo " !important;}\r\n";
 			// adapt left padding to the presence of a border:
-			echo ".footnote_plugin_index, .footnote_plugin_index_combi {";
+			echo '.footnote_plugin_index, .footnote_plugin_index_combi {';
 			echo "padding-left: 6px !important}\r\n";
 		}
 
 		// ref container first column width and max-width:
-		$l_bool_ColumnWidthEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED));
-		$l_bool_ColumnMaxWidthEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED));
+		$l_bool_ColumnWidthEnabled = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED ) );
+		$l_bool_ColumnMaxWidthEnabled = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED ) );
 
 		if ( $l_bool_ColumnWidthEnabled || $l_bool_ColumnMaxWidthEnabled ) {
-			echo ".footnote-reference-container { table-layout: fixed; }";
-			echo ".footnote_plugin_index, .footnote_plugin_index_combi {";
+			echo '.footnote-reference-container { table-layout: fixed; }';
+			echo '.footnote_plugin_index, .footnote_plugin_index_combi {';
 
 			if ( $l_bool_ColumnWidthEnabled ) {
 
-				$l_int_ColumnWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR);
-				$l_str_ColumnWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT);
+				$l_int_ColumnWidthScalar = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR );
+				$l_str_ColumnWidthUnit = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT );
 
-				if (!empty($l_int_ColumnWidthScalar)) {
-					if ($l_str_ColumnWidthUnit == '%') {
-						if ($l_int_ColumnWidthScalar > 100) {
+				if ( ! empty( $l_int_ColumnWidthScalar ) ) {
+					if ( $l_str_ColumnWidthUnit == '%' ) {
+						if ( $l_int_ColumnWidthScalar > 100 ) {
 							$l_int_ColumnWidthScalar = 100;
 						}
 					}
@@ -706,12 +701,12 @@ class MCI_Footnotes_Task {
 
 			if ( $l_bool_ColumnMaxWidthEnabled ) {
 
-				$l_int_ColumnMaxWidthScalar = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR);
-				$l_str_ColumnMaxWidthUnit = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT);
+				$l_int_ColumnMaxWidthScalar = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR );
+				$l_str_ColumnMaxWidthUnit = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT );
 
-				if (!empty($l_int_ColumnMaxWidthScalar)) {
-					if ($l_str_ColumnMaxWidthUnit == '%') {
-						if ($l_int_ColumnMaxWidthScalar > 100) {
+				if ( ! empty( $l_int_ColumnMaxWidthScalar ) ) {
+					if ( $l_str_ColumnMaxWidthUnit == '%' ) {
+						if ( $l_int_ColumnMaxWidthScalar > 100 ) {
 							$l_int_ColumnMaxWidthScalar = 100;
 						}
 					}
@@ -722,7 +717,7 @@ class MCI_Footnotes_Task {
 				echo " max-width: $l_int_ColumnMaxWidthScalar$l_str_ColumnMaxWidthUnit !important;";
 
 			}
-		echo "}\r\n";
+			echo "}\r\n";
 		}
 
 		/**
@@ -731,29 +726,28 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
 		 *
 		 * @since 2.1.4
-		 * 
+		 *
 		 * @since 2.5.6 hard links are always enabled when the alternative reference container is.
 		 */
-		self::$a_bool_HardLinksEnable = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE));
-
+		self::$a_bool_HardLinksEnable = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE ) );
 		// correct hard links enabled status depending on alternative reference container enabled status:
-		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
+		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 		if ( $l_str_ScriptMode != 'jquery' ) {
 			self::$a_bool_HardLinksEnable = true;
 		}
 
-		self::$a_int_ScrollOffset = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET));
-		if (self::$a_bool_HardLinksEnable) {
-			echo ".footnote_referrer_anchor, .footnote_item_anchor {bottom: ";
+		self::$a_int_ScrollOffset = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET ) );
+		if ( self::$a_bool_HardLinksEnable ) {
+			echo '.footnote_referrer_anchor, .footnote_item_anchor {bottom: ';
 			echo self::$a_int_ScrollOffset;
 			echo "vh;}\r\n";
 		}
 
 		// tooltips:
-		self::$a_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED));
-		self::$a_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE));
+		self::$a_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		self::$a_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
 
-		if (self::$a_bool_TooltipsEnabled) {
+		if ( self::$a_bool_TooltipsEnabled ) {
 
 			echo '.footnote_tooltip {';
 
@@ -768,52 +762,51 @@ class MCI_Footnotes_Task {
 			 * @date 2020-12-03T0954+0100
 			 */
 			echo ' font-size: ';
-			if(MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED))) {
-				echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR);
-				echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT);
+			if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED ) ) ) {
+				echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR );
+				echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT );
 			} else {
 				echo 'inherit';
 			}
 			echo ' !important;';
 
 			// text color:
-			$l_str_Color = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR);
-			if (!empty($l_str_Color)) {
-				printf(" color: %s !important;", $l_str_Color);
+			$l_str_Color = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR );
+			if ( ! empty( $l_str_Color ) ) {
+				printf( ' color: %s !important;', $l_str_Color );
 			}
 
 			// background color:
-			$l_str_Background = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND);
-			if (!empty($l_str_Background)) {
-				printf(" background-color: %s !important;", $l_str_Background);
+			$l_str_Background = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND );
+			if ( ! empty( $l_str_Background ) ) {
+				printf( ' background-color: %s !important;', $l_str_Background );
 			}
 
 			// border width:
-			$l_int_BorderWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH);
-			if (!empty($l_int_BorderWidth) && intval($l_int_BorderWidth) > 0) {
-				printf(" border-width: %dpx !important; border-style: solid !important;", $l_int_BorderWidth);
+			$l_int_BorderWidth = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH );
+			if ( ! empty( $l_int_BorderWidth ) && intval( $l_int_BorderWidth ) > 0 ) {
+				printf( ' border-width: %dpx !important; border-style: solid !important;', $l_int_BorderWidth );
 			}
 
 			// border color:
-			$l_str_BorderColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR);
-			if (!empty($l_str_BorderColor)) {
-				printf(" border-color: %s !important;", $l_str_BorderColor);
+			$l_str_BorderColor = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR );
+			if ( ! empty( $l_str_BorderColor ) ) {
+				printf( ' border-color: %s !important;', $l_str_BorderColor );
 			}
 
 			// corner radius:
-			$l_int_BorderRadius = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS);
-			if (!empty($l_int_BorderRadius) && intval($l_int_BorderRadius) > 0) {
-				printf(" border-radius: %dpx !important;", $l_int_BorderRadius);
+			$l_int_BorderRadius = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS );
+			if ( ! empty( $l_int_BorderRadius ) && intval( $l_int_BorderRadius ) > 0 ) {
+				printf( ' border-radius: %dpx !important;', $l_int_BorderRadius );
 			}
 
 			// shadow color:
-			$l_str_BoxShadowColor = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR);
-			if (!empty($l_str_BoxShadowColor)) {
-				printf(" -webkit-box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
-				printf(" -moz-box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
-				printf(" box-shadow: 2px 2px 11px %s;", $l_str_BoxShadowColor);
+			$l_str_BoxShadowColor = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR );
+			if ( ! empty( $l_str_BoxShadowColor ) ) {
+				printf( ' -webkit-box-shadow: 2px 2px 11px %s;', $l_str_BoxShadowColor );
+				printf( ' -moz-box-shadow: 2px 2px 11px %s;', $l_str_BoxShadowColor );
+				printf( ' box-shadow: 2px 2px 11px %s;', $l_str_BoxShadowColor );
 			}
-
 
 			/**
 			 * Tooltip position and timing
@@ -830,60 +823,60 @@ class MCI_Footnotes_Task {
 			 * @date 2020-12-18T1113+0100
 			 */
 			// jQuery tooltips:
-			if ( ! self::$a_bool_AlternativeTooltipsEnabled) {
+			if ( ! self::$a_bool_AlternativeTooltipsEnabled ) {
 
 				// tooltip position:
-				$l_int_MaxWidth = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH);
-				if (!empty($l_int_MaxWidth) && intval($l_int_MaxWidth) > 0) {
-					printf(" max-width: %dpx !important;", $l_int_MaxWidth);
+				$l_int_MaxWidth = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
+				if ( ! empty( $l_int_MaxWidth ) && intval( $l_int_MaxWidth ) > 0 ) {
+					printf( ' max-width: %dpx !important;', $l_int_MaxWidth );
 				}
 				echo "}\r\n";
 
-			// alternative tooltips:
+				// alternative tooltips:
 			} else {
 				echo "}\r\n";
 
 				// dimensions:
 				$l_int_AlternativeTooltipWidth = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH ) );
-				echo ".footnote_tooltip.position {";
-				echo " width: " . $l_int_AlternativeTooltipWidth . 'px;';
+				echo '.footnote_tooltip.position {';
+				echo ' width: ' . $l_int_AlternativeTooltipWidth . 'px;';
 				// set also as max-width wrt short tooltip shrinking:
-				echo " max-width: " . $l_int_AlternativeTooltipWidth . 'px;';
+				echo ' max-width: ' . $l_int_AlternativeTooltipWidth . 'px;';
 
 				// position:
-				$l_str_AlternativePosition = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION);
-				$l_int_OffsetX = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X));
+				$l_str_AlternativePosition = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION );
+				$l_int_OffsetX = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X ) );
 
-				if ($l_str_AlternativePosition == 'top left' || $l_str_AlternativePosition == 'bottom left') {
-					echo ' right: ' . ( !empty($l_int_OffsetX) ? $l_int_OffsetX : 0) . 'px;';
+				if ( $l_str_AlternativePosition == 'top left' || $l_str_AlternativePosition == 'bottom left' ) {
+					echo ' right: ' . ( ! empty( $l_int_OffsetX ) ? $l_int_OffsetX : 0 ) . 'px;';
 				} else {
-					echo ' left: ' . ( !empty($l_int_OffsetX) ? $l_int_OffsetX : 0) . 'px;';
+					echo ' left: ' . ( ! empty( $l_int_OffsetX ) ? $l_int_OffsetX : 0 ) . 'px;';
 				}
 
-				$l_int_OffsetY = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y));
+				$l_int_OffsetY = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y ) );
 
-				if ($l_str_AlternativePosition == 'top left' || $l_str_AlternativePosition == 'top right') {
-					echo ' bottom: ' . ( !empty($l_int_OffsetY) ? $l_int_OffsetY : 0) . 'px;';
+				if ( $l_str_AlternativePosition == 'top left' || $l_str_AlternativePosition == 'top right' ) {
+					echo ' bottom: ' . ( ! empty( $l_int_OffsetY ) ? $l_int_OffsetY : 0 ) . 'px;';
 				} else {
-					echo ' top: ' . ( !empty($l_int_OffsetY) ? $l_int_OffsetY : 0) . 'px;';
+					echo ' top: ' . ( ! empty( $l_int_OffsetY ) ? $l_int_OffsetY : 0 ) . 'px;';
 				}
 				echo "}\r\n";
 
 				// timing:
 				// jQuery tooltip timing is in templates/public/tooltip.html, filled in after line 690 below.
 				echo ' .footnote_tooltip.shown {';
-				$l_int_FadeInDelay     = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY    ));
-				$l_int_FadeInDuration  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ));
-				$l_int_FadeInDelay     = !empty($l_int_FadeInDelay    ) ? $l_int_FadeInDelay     : '0';
-				$l_int_FadeInDuration  = !empty($l_int_FadeInDuration ) ? $l_int_FadeInDuration  : '0';
+				$l_int_FadeInDelay     = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );
+				$l_int_FadeInDuration  = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
+				$l_int_FadeInDelay     = ! empty( $l_int_FadeInDelay ) ? $l_int_FadeInDelay : '0';
+				$l_int_FadeInDuration  = ! empty( $l_int_FadeInDuration ) ? $l_int_FadeInDuration : '0';
 				echo " transition-delay: $l_int_FadeInDelay" . 'ms;';
 				echo " transition-duration: $l_int_FadeInDuration" . 'ms;';
 
 				echo '} .footnote_tooltip.hidden {';
-				$l_int_FadeOutDelay    = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY   ));
-				$l_int_FadeOutDuration = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION));
-				$l_int_FadeOutDelay     = !empty($l_int_FadeOutDelay    ) ? $l_int_FadeOutDelay     : '0';
-				$l_int_FadeOutDuration  = !empty($l_int_FadeOutDuration ) ? $l_int_FadeOutDuration  : '0';
+				$l_int_FadeOutDelay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY ) );
+				$l_int_FadeOutDuration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
+				$l_int_FadeOutDelay     = ! empty( $l_int_FadeOutDelay ) ? $l_int_FadeOutDelay : '0';
+				$l_int_FadeOutDuration  = ! empty( $l_int_FadeOutDuration ) ? $l_int_FadeOutDuration : '0';
 				echo " transition-delay: $l_int_FadeOutDelay" . 'ms;';
 				echo " transition-duration: $l_int_FadeOutDuration" . 'ms;';
 
@@ -903,11 +896,11 @@ class MCI_Footnotes_Task {
 		 * Set custom CSS to override settings, not conversely.
 		 * Legacy Custom CSS is used until it’s set to disappear after dashboard tab migration.
 		 */
-		 if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE))) {
-			 echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS);
-			 echo "\r\n";
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
+			echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS );
+			echo "\r\n";
 		}
-		echo MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW);
+		echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW );
 
 		// insert end tag without switching out of PHP:
 		echo "\r\n</style>\r\n";
@@ -936,7 +929,7 @@ class MCI_Footnotes_Task {
 		document.getElementById(footnoteTooltipId).classList.add('hidden');
 	}
 </script>
-<?php
+			<?php
 		};
 	}
 
@@ -946,36 +939,50 @@ class MCI_Footnotes_Task {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 *
-	 *
 	 * @since 2.2.0  more options  2020-12-11T0506+0100
 	 */
 	public function wp_footer() {
-		if (MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "footer") {
+		if ( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) == 'footer' ) {
 			echo $this->ReferenceContainer();
 		}
 		// get setting for love and share this plugin
-		$l_str_LoveMeIndex = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE);
+		$l_str_LoveMeIndex = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE );
 		// check if the admin allows to add a link to the footer
-		if (empty($l_str_LoveMeIndex) || strtolower($l_str_LoveMeIndex) == "no" || !self::$a_bool_AllowLoveMe) {
+		if ( empty( $l_str_LoveMeIndex ) || strtolower( $l_str_LoveMeIndex ) == 'no' || ! self::$a_bool_AllowLoveMe ) {
 			return;
 		}
 		// set a hyperlink to the word "footnotes" in the Love slug
-		$l_str_LinkedName = sprintf('<a href="https://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration:none;">%s</a>', MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME);
+		$l_str_LinkedName = sprintf( '<a href="https://wordpress.org/plugins/footnotes/" target="_blank" style="text-decoration:none;">%s</a>', MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME );
 		// get random love me text
-		if (strtolower($l_str_LoveMeIndex) == "random") {
-			$l_str_LoveMeIndex = "text-" . rand(1,7);
+		if ( strtolower( $l_str_LoveMeIndex ) == 'random' ) {
+			$l_str_LoveMeIndex = 'text-' . rand( 1, 7 );
 		}
-		switch ($l_str_LoveMeIndex) {
+		switch ( $l_str_LoveMeIndex ) {
 			// options named wrt backcompat, simplest is default:
-			case "text-1": $l_str_LoveMeText = sprintf(__('I %2$s %1$s', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL); break;
-			case "text-2": $l_str_LoveMeText = sprintf(__('This website uses the awesome %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName); break;
-			case "text-4": $l_str_LoveMeText = sprintf('%s %s', $l_str_LinkedName, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL); break;
-			case "text-5": $l_str_LoveMeText = sprintf('%s %s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, $l_str_LinkedName); break;
-			case "text-6": $l_str_LoveMeText = sprintf(__('This website uses %s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName); break;
-			case "text-7": $l_str_LoveMeText = sprintf(__('This website uses the %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME), $l_str_LinkedName); break;
-			case "text-3": default: $l_str_LoveMeText = sprintf('%s', $l_str_LinkedName); break;
+			case 'text-1':
+				$l_str_LoveMeText = sprintf( __( 'I %2$s %1$s', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_LinkedName, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL );
+				break;
+			case 'text-2':
+				$l_str_LoveMeText = sprintf( __( 'This website uses the awesome %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_LinkedName );
+				break;
+			case 'text-4':
+				$l_str_LoveMeText = sprintf( '%s %s', $l_str_LinkedName, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL );
+				break;
+			case 'text-5':
+				$l_str_LoveMeText = sprintf( '%s %s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, $l_str_LinkedName );
+				break;
+			case 'text-6':
+				$l_str_LoveMeText = sprintf( __( 'This website uses %s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_LinkedName );
+				break;
+			case 'text-7':
+				$l_str_LoveMeText = sprintf( __( 'This website uses the %s plugin.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), $l_str_LinkedName );
+				break;
+			case 'text-3':
+			default:
+				$l_str_LoveMeText = sprintf( '%s', $l_str_LinkedName );
+				break;
 		}
-		echo sprintf('<div style="text-align:center; color:#acacac;">%s</div>', $l_str_LoveMeText);
+		echo sprintf( '<div style="text-align:center; color:#acacac;">%s</div>', $l_str_LoveMeText );
 	}
 
 	/**
@@ -986,9 +993,9 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Widget content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function the_title($p_str_Content) {
+	public function the_title( $p_str_Content ) {
 		// appends the reference container if set to "post_end"
-		return $this->exec($p_str_Content, false);
+		return $this->exec( $p_str_Content, false );
 	}
 
 	/**
@@ -999,7 +1006,7 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Page/Post content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function the_content($p_str_Content) {
+	public function the_content( $p_str_Content ) {
 		/**
 		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
 		 *
@@ -1019,8 +1026,9 @@ class MCI_Footnotes_Task {
 		 * the time it’s the blog engine processing the post for display and appending the refs.
 		 */
 		self::$a_arr_Footnotes = array();
+
 		// appends the reference container if set to "post_end"
-		return $this->exec($p_str_Content, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "post_end" ? true : false);
+		return $this->exec( $p_str_Content, MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) == 'post_end' ? true : false );
 	}
 
 	/**
@@ -1031,8 +1039,8 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Page/Post content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function the_excerpt($p_str_Content) {
-		return $this->exec($p_str_Content, false, !MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT)));
+	public function the_excerpt( $p_str_Content ) {
+		return $this->exec( $p_str_Content, false, ! MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_IN_EXCERPT ) ) );
 	}
 
 	/**
@@ -1043,9 +1051,9 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Widget content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function widget_title($p_str_Content) {
+	public function widget_title( $p_str_Content ) {
 		// appends the reference container if set to "post_end"
-		return $this->exec($p_str_Content, false);
+		return $this->exec( $p_str_Content, false );
 	}
 
 	/**
@@ -1056,9 +1064,9 @@ class MCI_Footnotes_Task {
 	 * @param string $p_str_Content Widget content.
 	 * @return string Content with replaced footnotes.
 	 */
-	public function widget_text($p_str_Content) {
+	public function widget_text( $p_str_Content ) {
 		// appends the reference container if set to "post_end"
-		return $this->exec($p_str_Content, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION) == "post_end" ? true : false);
+		return $this->exec( $p_str_Content, MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) == 'post_end' ? true : false );
 	}
 
 	/**
@@ -1068,15 +1076,15 @@ class MCI_Footnotes_Task {
 	 * @since 1.5.4
 	 * @param array|WP_Post $p_mixed_Posts
 	 */
-	public function the_post(&$p_mixed_Posts) {
+	public function the_post( &$p_mixed_Posts ) {
 		// single WP_Post object received
-		if (!is_array($p_mixed_Posts)) {
-			$p_mixed_Posts = $this->replacePostObject($p_mixed_Posts);
+		if ( ! is_array( $p_mixed_Posts ) ) {
+			$p_mixed_Posts = $this->replacePostObject( $p_mixed_Posts );
 			return;
 		}
 		// array of WP_Post objects received
-		for($l_int_Index = 0; $l_int_Index < count($p_mixed_Posts); $l_int_Index++) {
-			$p_mixed_Posts[$l_int_Index] = $this->replacePostObject($p_mixed_Posts[$l_int_Index]);
+		for ( $l_int_Index = 0; $l_int_Index < count( $p_mixed_Posts ); $l_int_Index++ ) {
+			$p_mixed_Posts[ $l_int_Index ] = $this->replacePostObject( $p_mixed_Posts[ $l_int_Index ] );
 		}
 	}
 
@@ -1088,11 +1096,11 @@ class MCI_Footnotes_Task {
 	 * @param WP_Post $p_obj_Post
 	 * @return WP_Post
 	 */
-	private function replacePostObject($p_obj_Post) {
-		//MCI_Footnotes_Convert::debug($p_obj_Post);
-		$p_obj_Post->post_content = $this->exec($p_obj_Post->post_content);
-		$p_obj_Post->post_content_filtered = $this->exec($p_obj_Post->post_content_filtered);
-		$p_obj_Post->post_excerpt = $this->exec($p_obj_Post->post_excerpt);
+	private function replacePostObject( $p_obj_Post ) {
+		// MCI_Footnotes_Convert::debug($p_obj_Post);
+		$p_obj_Post->post_content = $this->exec( $p_obj_Post->post_content );
+		$p_obj_Post->post_content_filtered = $this->exec( $p_obj_Post->post_content_filtered );
+		$p_obj_Post->post_excerpt = $this->exec( $p_obj_Post->post_excerpt );
 		return $p_obj_Post;
 	}
 
@@ -1102,20 +1110,19 @@ class MCI_Footnotes_Task {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_Content Any string that may contain footnotes to be replaced.
-	 * @param bool $p_bool_OutputReferences Appends the Reference Container to the output if set to true, default true.
-	 * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
+	 * @param bool   $p_bool_OutputReferences Appends the Reference Container to the output if set to true, default true.
+	 * @param bool   $p_bool_HideFootnotesText Hide footnotes found in the string.
 	 * @return string
-	 *
 	 *
 	 * @since 2.2.0  Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
 	 * @since 2.2.5  Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report.
 	 */
-	public function exec($p_str_Content, $p_bool_OutputReferences = false, $p_bool_HideFootnotesText = false) {
+	public function exec( $p_str_Content, $p_bool_OutputReferences = false, $p_bool_HideFootnotesText = false ) {
 
 		// replace all footnotes in the content, settings are converted to html characters
-		$p_str_Content = $this->search($p_str_Content, true, $p_bool_HideFootnotesText);
+		$p_str_Content = $this->search( $p_str_Content, true, $p_bool_HideFootnotesText );
 		// replace all footnotes in the content, settings are NOT converted to html characters
-		$p_str_Content = $this->search($p_str_Content, false, $p_bool_HideFootnotesText);
+		$p_str_Content = $this->search( $p_str_Content, false, $p_bool_HideFootnotesText );
 
 		/**
 		 * Reference container customized positioning through shortcode
@@ -1136,10 +1143,9 @@ class MCI_Footnotes_Task {
 		 *
 		 * @reporter @hamshe
 		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126
-		 *
 		 */
 		// append the reference container or insert at shortcode:
-		$l_str_ReferenceContainerPositionShortcode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE);
+		$l_str_ReferenceContainerPositionShortcode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE );
 		if ( empty( $l_str_ReferenceContainerPositionShortcode ) ) {
 			$l_str_ReferenceContainerPositionShortcode = '[[references]]';
 		}
@@ -1164,9 +1170,9 @@ class MCI_Footnotes_Task {
 		$p_str_Content = str_replace( $l_str_ReferenceContainerPositionShortcode, '', $p_str_Content );
 
 		// take a look if the LOVE ME slug should NOT be displayed on this page/post, remove the short code if found
-		if (strpos($p_str_Content, MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG) !== false) {
+		if ( strpos( $p_str_Content, MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG ) !== false ) {
 			self::$a_bool_AllowLoveMe = false;
-			$p_str_Content = str_replace(MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG, "", $p_str_Content);
+			$p_str_Content = str_replace( MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG, '', $p_str_Content );
 		}
 		// return the content with replaced footnotes and optional reference container appended:
 		return $p_str_Content;
@@ -1178,8 +1184,8 @@ class MCI_Footnotes_Task {
 	 * @author Stefan Herndler
 	 * @since 1.5.0
 	 * @param string $p_str_Content Content to be searched for footnotes.
-	 * @param bool $p_bool_ConvertHtmlChars html encode settings, default true.
-	 * @param bool $p_bool_HideFootnotesText Hide footnotes found in the string.
+	 * @param bool   $p_bool_ConvertHtmlChars html encode settings, default true.
+	 * @param bool   $p_bool_HideFootnotesText Hide footnotes found in the string.
 	 * @return string
 	 *
 	 * @since 2.0.0  various.
@@ -1188,32 +1194,32 @@ class MCI_Footnotes_Task {
 	 * @since 2.5.0  Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
 	 * @since 2.5.0  Bugfix: Footnote delimiters: Syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
 	 */
-	public function search($p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText) {
+	public function search( $p_str_Content, $p_bool_ConvertHtmlChars, $p_bool_HideFootnotesText ) {
 
 		// post ID to make everything unique wrt infinite scroll and archive view
 		self::$a_int_PostId = get_the_id();
 
 		// contains the index for the next footnote on this page
-		$l_int_FootnoteIndex = count(self::$a_arr_Footnotes) + 1;
+		$l_int_FootnoteIndex = count( self::$a_arr_Footnotes ) + 1;
 
 		// contains the starting position for the lookup of a footnote
 		$l_int_PosStart = 0;
 
 		// get start and end tag for the footnotes short code
-		$l_str_StartingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START);
-		$l_str_EndingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END);
-		if ($l_str_StartingTag == "userdefined" || $l_str_EndingTag == "userdefined") {
-			$l_str_StartingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED);
-			$l_str_EndingTag = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED);
+		$l_str_StartingTag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
+		$l_str_EndingTag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
+		if ( $l_str_StartingTag == 'userdefined' || $l_str_EndingTag == 'userdefined' ) {
+			$l_str_StartingTag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
+			$l_str_EndingTag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 		// decode html special chars
-		if ($p_bool_ConvertHtmlChars) {
-			$l_str_StartingTag = htmlspecialchars($l_str_StartingTag);
-			$l_str_EndingTag = htmlspecialchars($l_str_EndingTag);
+		if ( $p_bool_ConvertHtmlChars ) {
+			$l_str_StartingTag = htmlspecialchars( $l_str_StartingTag );
+			$l_str_EndingTag = htmlspecialchars( $l_str_EndingTag );
 		}
 
 		// if footnotes short code is empty, return the content without changes
-		if (empty($l_str_StartingTag) || empty($l_str_EndingTag)) {
+		if ( empty( $l_str_StartingTag ) || empty( $l_str_EndingTag ) ) {
 			return $p_str_Content;
 		}
 
@@ -1239,7 +1245,7 @@ class MCI_Footnotes_Task {
 		 * If footnotes short codes are unbalanced, and syntax validation is not disabled,
 		 * prepend a warning to the content; displays de facto beneath the post title.
 		 */
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE))) {
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
 
 			// make shortcodes conform to regex syntax:
 			$l_str_StartTagRegex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_StartingTag );
@@ -1276,14 +1282,14 @@ class MCI_Footnotes_Task {
 
 				// compose warning box:
 				$l_str_SyntaxErrorWarning  = '<div class="footnotes_validation_error"><p>';
-				$l_str_SyntaxErrorWarning .= __("WARNING: unbalanced footnote start tag short code found.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME);
+				$l_str_SyntaxErrorWarning .= __( 'WARNING: unbalanced footnote start tag short code found.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME );
 				$l_str_SyntaxErrorWarning .= '</p><p>';
 
 				// syntax validation setting in the dashboard under the General settings tab:
-				$l_str_SyntaxErrorWarning .= sprintf( __("If this warning is irrelevant, please disable the syntax validation feature in the dashboard under %s &gt; %s &gt; %s.", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), __("General settings", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), __("Footnote start and end short codes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME), __("Check for balanced shortcodes", MCI_Footnotes_Config::C_STR_PLUGIN_NAME) );
+				$l_str_SyntaxErrorWarning .= sprintf( __( 'If this warning is irrelevant, please disable the syntax validation feature in the dashboard under %1$s &gt; %2$s &gt; %3$s.', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), __( 'General settings', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), __( 'Footnote start and end short codes', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ), __( 'Check for balanced shortcodes', MCI_Footnotes_Config::C_STR_PLUGIN_NAME ) );
 
 				$l_str_SyntaxErrorWarning .= '</p><p>';
-				$l_str_SyntaxErrorWarning .= __("Unbalanced start tag short code found before:", MCI_Footnotes_Config::C_STR_PLUGIN_NAME);
+				$l_str_SyntaxErrorWarning .= __( 'Unbalanced start tag short code found before:', MCI_Footnotes_Config::C_STR_PLUGIN_NAME );
 				$l_str_SyntaxErrorWarning .= '</p><p>“';
 				$l_str_SyntaxErrorWarning .= $l_str_ErrorSpotString;
 				$l_str_SyntaxErrorWarning .= '”</p></div>';
@@ -1298,15 +1304,14 @@ class MCI_Footnotes_Task {
 			}
 		}
 
-
 		// load referrer templates if footnotes text not hidden:
-		if (!$p_bool_HideFootnotesText) {
+		if ( ! $p_bool_HideFootnotesText ) {
 
 			// load footnote referrer template file:
-			if (self::$a_bool_AlternativeTooltipsEnabled) {
-				$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote-alternative");
+			if ( self::$a_bool_AlternativeTooltipsEnabled ) {
+				$l_obj_Template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote-alternative' );
 			} else {
-				$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "footnote");
+				$l_obj_Template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote' );
 			}
 
 			/**
@@ -1317,14 +1322,13 @@ class MCI_Footnotes_Task {
 			 * @since 2.5.4
 			 * @see self::add_filter('pum_popup_content', array($this, "the_content"), $l_int_TheContentPriority)
 			 */
-			self::$a_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED));
-			self::$a_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE));
+			self::$a_bool_TooltipsEnabled = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+			self::$a_bool_AlternativeTooltipsEnabled = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
 
 			// load tooltip inline script if jQuery tooltips are enabled:
-			if (self::$a_bool_TooltipsEnabled && ! self::$a_bool_AlternativeTooltipsEnabled) {
-				$l_obj_TemplateTooltip = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "tooltip");
+			if ( self::$a_bool_TooltipsEnabled && ! self::$a_bool_AlternativeTooltipsEnabled ) {
+				$l_obj_TemplateTooltip = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'tooltip' );
 			}
-
 		} else {
 			$l_obj_Template = null;
 			$l_obj_TemplateTooltip = null;
@@ -1333,27 +1337,29 @@ class MCI_Footnotes_Task {
 		// search footnotes short codes in the content
 		do {
 			// get first occurrence of the footnote start tag short code:
-			$i_int_LenContent = strlen($p_str_Content);
-			if ($l_int_PosStart > $i_int_LenContent) $l_int_PosStart = $i_int_LenContent;
-			$l_int_PosStart = strpos($p_str_Content, $l_str_StartingTag, $l_int_PosStart);
+			$i_int_LenContent = strlen( $p_str_Content );
+			if ( $l_int_PosStart > $i_int_LenContent ) {
+				$l_int_PosStart = $i_int_LenContent;
+			}
+			$l_int_PosStart = strpos( $p_str_Content, $l_str_StartingTag, $l_int_PosStart );
 			// no short code found, stop here
-			if ($l_int_PosStart === false) {
+			if ( $l_int_PosStart === false ) {
 				break;
 			}
 			// get first occurrence of the footnote end tag short code:
-			$l_int_PosEnd = strpos($p_str_Content, $l_str_EndingTag, $l_int_PosStart);
+			$l_int_PosEnd = strpos( $p_str_Content, $l_str_EndingTag, $l_int_PosStart );
 			// no short code found, stop here
-			if ($l_int_PosEnd === false) {
+			if ( $l_int_PosEnd === false ) {
 				break;
 			}
 			// calculate the length of the footnote
 			$l_int_Length = $l_int_PosEnd - $l_int_PosStart;
 
 			// get footnote text
-			$l_str_FootnoteText = substr($p_str_Content, $l_int_PosStart + strlen($l_str_StartingTag), $l_int_Length - strlen($l_str_StartingTag));
+			$l_str_FootnoteText = substr( $p_str_Content, $l_int_PosStart + strlen( $l_str_StartingTag ), $l_int_Length - strlen( $l_str_StartingTag ) );
 
 			// get tooltip text if present:
-			self::$a_str_TooltipShortcode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER);
+			self::$a_str_TooltipShortcode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER );
 			self::$a_int_TooltipShortcodeLength = strlen( self::$a_str_TooltipShortcode );
 			$l_int_TooltipTextLength = strpos( $l_str_FootnoteText, self::$a_str_TooltipShortcode );
 			$l_bool_HasTooltipText = $l_int_TooltipTextLength === false ? false : true;
@@ -1457,7 +1463,6 @@ class MCI_Footnotes_Task {
 			 * @reporter @bernardzit
 			 * @link https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/#post-13826029
 			 *
-			 *
 			 * @since 2.2.8  Bugfix: Reference container, tooltips: URL wrap: correctly make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
 			 * @date 2020-12-23T1107+0100
 			 *
@@ -1508,15 +1513,15 @@ class MCI_Footnotes_Task {
 			}
 
 			// Text to be displayed instead of the footnote
-			$l_str_FootnoteReplaceText = "";
+			$l_str_FootnoteReplaceText = '';
 
 			// whether hard links are enabled:
-			if (self::$a_bool_HardLinksEnable) {
+			if ( self::$a_bool_HardLinksEnable ) {
 
 				// get the configurable parts:
-				self::$a_str_ReferrerLinkSlug = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERRER_FRAGMENT_ID_SLUG);
-				self::$a_str_FootnoteLinkSlug = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG);
-				self::$a_str_LinkIdsSeparator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_HARD_LINK_IDS_SEPARATOR);
+				self::$a_str_ReferrerLinkSlug = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERRER_FRAGMENT_ID_SLUG );
+				self::$a_str_FootnoteLinkSlug = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG );
+				self::$a_str_LinkIdsSeparator = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_HARD_LINK_IDS_SEPARATOR );
 
 				// streamline ID concatenation:
 				self::$a_str_PostContainerIdCompound  = self::$a_str_LinkIdsSeparator;
@@ -1528,12 +1533,12 @@ class MCI_Footnotes_Task {
 			}
 
 			// display the footnote referrers and the tooltips:
-			if (!$p_bool_HideFootnotesText) {
-				$l_int_Index = MCI_Footnotes_Convert::Index($l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+			if ( ! $p_bool_HideFootnotesText ) {
+				$l_int_Index = MCI_Footnotes_Convert::Index( $l_int_FootnoteIndex, MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE ) );
 
 				// display only a truncated footnote text if option enabled:
-				$l_bool_EnableExcerpt = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED));
-				$l_int_MaxLength = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH));
+				$l_bool_EnableExcerpt = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED ) );
+				$l_int_MaxLength = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH ) );
 
 				// define excerpt text as footnote text by default:
 				$l_str_ExcerptText = $l_str_FootnoteText;
@@ -1554,11 +1559,11 @@ class MCI_Footnotes_Task {
 				 * This is equivalent to the WordPress default excerpt generation, i.e. without a
 				 * custom excerpt and without a delimiter. But WordPress does word count, usually 55.
 				 */
-				if (self::$a_bool_TooltipsEnabled && $l_bool_EnableExcerpt) {
-					$l_str_DummyText = strip_tags($l_str_FootnoteText);
-					if (is_int($l_int_MaxLength) && strlen($l_str_DummyText) > $l_int_MaxLength) {
-						$l_str_ExcerptText  = substr($l_str_DummyText, 0, $l_int_MaxLength);
-						$l_str_ExcerptText  = substr($l_str_ExcerptText, 0, strrpos($l_str_ExcerptText, ' '));
+				if ( self::$a_bool_TooltipsEnabled && $l_bool_EnableExcerpt ) {
+					$l_str_DummyText = strip_tags( $l_str_FootnoteText );
+					if ( is_int( $l_int_MaxLength ) && strlen( $l_str_DummyText ) > $l_int_MaxLength ) {
+						$l_str_ExcerptText  = substr( $l_str_DummyText, 0, $l_int_MaxLength );
+						$l_str_ExcerptText  = substr( $l_str_ExcerptText, 0, strrpos( $l_str_ExcerptText, ' ' ) );
 						$l_str_ExcerptText .= '&nbsp;&#x2026; <';
 						$l_str_ExcerptText .= self::$a_bool_HardLinksEnable ? 'a' : 'span';
 						$l_str_ExcerptText .= ' class="footnote_tooltip_continue" ';
@@ -1569,7 +1574,7 @@ class MCI_Footnotes_Task {
 						$l_str_ExcerptText .= "_$l_int_Index');\"";
 
 						// if enabled, add the hard link fragment ID:
-						if (self::$a_bool_HardLinksEnable) {
+						if ( self::$a_bool_HardLinksEnable ) {
 
 							$l_str_ExcerptText .= ' href="#';
 							$l_str_ExcerptText .= self::$a_str_FootnoteLinkSlug;
@@ -1591,7 +1596,7 @@ class MCI_Footnotes_Task {
 						 * @reporter @rovanov
 						 * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
 						 */
-						$l_str_ExcerptText .= MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL);
+						$l_str_ExcerptText .= MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL );
 
 						$l_str_ExcerptText .= self::$a_bool_HardLinksEnable ? '</a>' : '</span>';
 					}
@@ -1601,6 +1606,7 @@ class MCI_Footnotes_Task {
 				 * Referrers element superscript or baseline
 				 *
 				 * Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report
+				 *
 				 * @since 2.1.1
 				 *
 				 * @reporter @cwbayer
@@ -1608,7 +1614,7 @@ class MCI_Footnotes_Task {
 				 *
 				 * define the HTML element to use for the referrers:
 				 */
-				if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS))) {
+				if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS ) ) ) {
 
 					$l_str_SupSpan = 'sup';
 
@@ -1618,7 +1624,7 @@ class MCI_Footnotes_Task {
 				}
 
 				// whether hard links are enabled:
-				if (self::$a_bool_HardLinksEnable) {
+				if ( self::$a_bool_HardLinksEnable ) {
 
 					self::$a_str_LinkSpan = 'a';
 					self::$a_str_LinkCloseTag = '</a>';
@@ -1660,7 +1666,7 @@ class MCI_Footnotes_Task {
 					$l_str_ReferrerAnchorElement = '';
 
 					// The link element is set independently as it may be needed for styling:
-					if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED)) ) {
+					if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_LINK_ELEMENT_ENABLED ) ) ) {
 
 						self::$a_str_LinkSpan = 'a';
 						self::$a_str_LinkOpenTag = '<a>';
@@ -1675,10 +1681,10 @@ class MCI_Footnotes_Task {
 				} else {
 					$l_str_TooltipContent = '';
 				}
-				
+
 				/**
 				 * Determine shrink width if alternative tooltips are enabled.
-				 * 
+				 *
 				 * @since 2.5.6
 				 */
 				$l_str_TooltipStyle = '';
@@ -1694,18 +1700,18 @@ class MCI_Footnotes_Task {
 				// fill in 'templates/public/footnote.html':
 				$l_obj_Template->replace(
 					array(
-						"link-span"      => self::$a_str_LinkSpan,
-						"post_id"        => self::$a_int_PostId,
-						"container_id"   => self::$a_int_ReferenceContainerId,
-						"note_id"        => $l_int_Index,
-						"hard-link"      => $l_str_FootnoteLinkArgument,
-						"sup-span"       => $l_str_SupSpan,
-						"before"         => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE),
-						"index"          => $l_int_Index,
-						"after"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER),
-						"anchor-element" => $l_str_ReferrerAnchorElement,
-						"style"          => $l_str_TooltipStyle,
-						"text"           => $l_str_TooltipContent,
+						'link-span'      => self::$a_str_LinkSpan,
+						'post_id'        => self::$a_int_PostId,
+						'container_id'   => self::$a_int_ReferenceContainerId,
+						'note_id'        => $l_int_Index,
+						'hard-link'      => $l_str_FootnoteLinkArgument,
+						'sup-span'       => $l_str_SupSpan,
+						'before'         => MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE ),
+						'index'          => $l_int_Index,
+						'after'          => MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_AFTER ),
+						'anchor-element' => $l_str_ReferrerAnchorElement,
+						'style'          => $l_str_TooltipStyle,
+						'text'           => $l_str_TooltipContent,
 					)
 				);
 				$l_str_FootnoteReplaceText = $l_obj_Template->getContent();
@@ -1714,28 +1720,28 @@ class MCI_Footnotes_Task {
 				$l_obj_Template->reload();
 
 				// if standard tooltips are enabled but alternative are not:
-				if (self::$a_bool_TooltipsEnabled && ! self::$a_bool_AlternativeTooltipsEnabled) {
+				if ( self::$a_bool_TooltipsEnabled && ! self::$a_bool_AlternativeTooltipsEnabled ) {
 
-					$l_int_OffsetY         = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y));
-					$l_int_OffsetX         = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X));
-					$l_int_FadeInDelay     = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY    ));
-					$l_int_FadeInDuration  = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ));
-					$l_int_FadeOutDelay    = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY   ));
-					$l_int_FadeOutDuration = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION));
+					$l_int_OffsetY         = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y ) );
+					$l_int_OffsetX         = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X ) );
+					$l_int_FadeInDelay     = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );
+					$l_int_FadeInDuration  = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
+					$l_int_FadeOutDelay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY ) );
+					$l_int_FadeOutDuration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
 
 					// fill in 'templates/public/tooltip.html':
 					$l_obj_TemplateTooltip->replace(
 						array(
-							"post_id"           => self::$a_int_PostId,
-							"container_id"      => self::$a_int_ReferenceContainerId,
-							"note_id"           => $l_int_Index,
-							"position"          => MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION),
-							"offset-y"          => !empty($l_int_OffsetY) ? $l_int_OffsetY : 0,
-							"offset-x"          => !empty($l_int_OffsetX) ? $l_int_OffsetX : 0,
-							"fade-in-delay"     => !empty($l_int_FadeInDelay    ) ? $l_int_FadeInDelay     : 0,
-							"fade-in-duration"  => !empty($l_int_FadeInDuration ) ? $l_int_FadeInDuration  : 0,
-							"fade-out-delay"    => !empty($l_int_FadeOutDelay   ) ? $l_int_FadeOutDelay    : 0,
-							"fade-out-duration" => !empty($l_int_FadeOutDuration) ? $l_int_FadeOutDuration : 0,
+							'post_id'           => self::$a_int_PostId,
+							'container_id'      => self::$a_int_ReferenceContainerId,
+							'note_id'           => $l_int_Index,
+							'position'          => MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION ),
+							'offset-y'          => ! empty( $l_int_OffsetY ) ? $l_int_OffsetY : 0,
+							'offset-x'          => ! empty( $l_int_OffsetX ) ? $l_int_OffsetX : 0,
+							'fade-in-delay'     => ! empty( $l_int_FadeInDelay ) ? $l_int_FadeInDelay : 0,
+							'fade-in-duration'  => ! empty( $l_int_FadeInDuration ) ? $l_int_FadeInDuration : 0,
+							'fade-out-delay'    => ! empty( $l_int_FadeOutDelay ) ? $l_int_FadeOutDelay : 0,
+							'fade-out-duration' => ! empty( $l_int_FadeOutDuration ) ? $l_int_FadeOutDuration : 0,
 						)
 					);
 					$l_str_FootnoteReplaceText .= $l_obj_TemplateTooltip->getContent();
@@ -1743,10 +1749,10 @@ class MCI_Footnotes_Task {
 				}
 			}
 			// replace the footnote with the template
-			$p_str_Content = substr_replace($p_str_Content, $l_str_FootnoteReplaceText, $l_int_PosStart, $l_int_Length + strlen($l_str_EndingTag));
+			$p_str_Content = substr_replace( $p_str_Content, $l_str_FootnoteReplaceText, $l_int_PosStart, $l_int_Length + strlen( $l_str_EndingTag ) );
 
 			// add footnote only if not empty
-			if (!empty($l_str_FootnoteText)) {
+			if ( ! empty( $l_str_FootnoteText ) ) {
 				// set footnote to the output box at the end
 				self::$a_arr_Footnotes[] = $l_str_FootnoteText;
 				// increase footnote index
@@ -1786,9 +1792,9 @@ class MCI_Footnotes_Task {
 			 * footnote and the tooltip. Moreover, it was causing non-trivial process garbage.
 			 */
 			// add offset to the new starting position
-			$l_int_PosStart += $l_int_Length + strlen($l_str_EndingTag);
+			$l_int_PosStart += $l_int_Length + strlen( $l_str_EndingTag );
 
-		} while (true);
+		} while ( true );
 
 		// return content
 		return $p_str_Content;
@@ -1811,10 +1817,9 @@ class MCI_Footnotes_Task {
 	public function ReferenceContainer() {
 
 		// no footnotes have been replaced on this page:
-		if (empty(self::$a_arr_Footnotes)) {
-			return "";
+		if ( empty( self::$a_arr_Footnotes ) ) {
+			return '';
 		}
-
 
 		/**
 		 * Footnote index backlink symbol
@@ -1828,17 +1833,17 @@ class MCI_Footnotes_Task {
 		 *
 		 * If the backlink symbol is enabled:
 		 */
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE))) {
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE ) ) ) {
 
 			// get html arrow
-			$l_str_Arrow = MCI_Footnotes_Convert::getArrow(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW));
+			$l_str_Arrow = MCI_Footnotes_Convert::getArrow( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW ) );
 			// set html arrow to the first one if invalid index defined
-			if (is_array($l_str_Arrow)) {
-				$l_str_Arrow = MCI_Footnotes_Convert::getArrow(0);
+			if ( is_array( $l_str_Arrow ) ) {
+				$l_str_Arrow = MCI_Footnotes_Convert::getArrow( 0 );
 			}
 			// get user defined arrow
-			$l_str_ArrowUserDefined = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED);
-			if (!empty($l_str_ArrowUserDefined)) {
+			$l_str_ArrowUserDefined = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_HYPERLINK_ARROW_USER_DEFINED );
+			if ( ! empty( $l_str_ArrowUserDefined ) ) {
 				$l_str_Arrow = $l_str_ArrowUserDefined;
 			}
 
@@ -1853,7 +1858,6 @@ class MCI_Footnotes_Task {
 			$l_str_FootnoteArrow = '';
 
 		}
-
 
 		/**
 		 * Backlink separator
@@ -1872,22 +1876,27 @@ class MCI_Footnotes_Task {
 		 * Initially a comma was appended in this algorithm for enumerations.
 		 * The comma in enumerations is not generally preferred.
 		 */
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED))) {
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_BACKLINKS_SEPARATOR_ENABLED ) ) ) {
 
 			// check if it is input-configured:
-			$l_str_Separator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM);
+			$l_str_Separator = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM );
 
-			if (empty($l_str_Separator)) {
+			if ( empty( $l_str_Separator ) ) {
 
 				// if it is not, check which option is on:
-				$l_str_SeparatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_OPTION);
-				switch ($l_str_SeparatorOption) {
-					case 'comma'    : $l_str_Separator = ',';              break;
-					case 'semicolon': $l_str_Separator = ';';              break;
-					case 'en_dash'  : $l_str_Separator = '&nbsp;&#x2013;'; break;
+				$l_str_SeparatorOption = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_OPTION );
+				switch ( $l_str_SeparatorOption ) {
+					case 'comma':
+						$l_str_Separator = ',';
+						break;
+					case 'semicolon':
+						$l_str_Separator = ';';
+						break;
+					case 'en_dash':
+						$l_str_Separator = '&nbsp;&#x2013;';
+						break;
 				}
 			}
-
 		} else {
 
 			$l_str_Separator = '';
@@ -1897,31 +1906,36 @@ class MCI_Footnotes_Task {
 		 * Backlink terminator
 		 *
 		 * Initially a dot was appended in the table row template.
+		 *
 		 * @since 2.0.6 a dot after footnote numbers is discarded as not localizable;
 		 * making it optional was envisaged.
 		 * @since 2.1.4 the terminator is optional, has options, and is configurable:
 		 */
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED))) {
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_BACKLINKS_TERMINATOR_ENABLED ) ) ) {
 
 			// check if it is input-configured:
-			$l_str_Terminator = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM);
+			$l_str_Terminator = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM );
 
-			if (empty($l_str_Terminator)) {
+			if ( empty( $l_str_Terminator ) ) {
 
 				// if it is not, check which option is on:
-				$l_str_TerminatorOption = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_OPTION);
-				switch ($l_str_TerminatorOption) {
-					case 'period'     : $l_str_Terminator = '.'; break;
-					case 'parenthesis': $l_str_Terminator = ')'; break;
-					case 'colon'      : $l_str_Terminator = ':'; break;
+				$l_str_TerminatorOption = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_OPTION );
+				switch ( $l_str_TerminatorOption ) {
+					case 'period':
+						$l_str_Terminator = '.';
+						break;
+					case 'parenthesis':
+						$l_str_Terminator = ')';
+						break;
+					case 'colon':
+						$l_str_Terminator = ':';
+						break;
 				}
 			}
-
 		} else {
 
 			$l_str_Terminator = '';
 		}
-
 
 		/**
 		 * Line breaks
@@ -1936,7 +1950,7 @@ class MCI_Footnotes_Task {
 		 * Variable number length and proportional character width require explicit line breaks.
 		 * Otherwise, an ordinary space character offering a line break opportunity is inserted.
 		 */
-		$l_str_LineBreak = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED)) ? '<br />' : ' ';
+		$l_str_LineBreak = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED ) ) ? '<br />' : ' ';
 
 		/**
 		 * For maintenance and support, table rows in the reference container should be
@@ -1944,7 +1958,6 @@ class MCI_Footnotes_Task {
 		 * Before the first table row (breaks between rows are ~200 lines below):
 		 */
 		$l_str_Body = "\r\n\r\n";
-
 
 		/**
 		 * Reference container table row template load
@@ -1956,26 +1969,26 @@ class MCI_Footnotes_Task {
 		 */
 
 		// when combining identical footnotes is turned on, another template is needed:
-		if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
+		if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES ) ) ) {
 			// the combining template allows for backlink clusters and supports cell clicking for single notes:
-			$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-combi");
+			$l_obj_Template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-combi' );
 
 		} else {
 
 			// when 3-column layout is turned on (only available if combining is turned off):
-			if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE))) {
-				$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-3column");
+			if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE ) ) ) {
+				$l_obj_Template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-3column' );
 
 			} else {
 
 				// when switch symbol and index is turned on, and combining and 3-columns are off:
-				if (MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH))) {
-					$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body-switch");
+				if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH ) ) ) {
+					$l_obj_Template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-switch' );
 
 				} else {
 
 					// default is the standard template:
-					$l_obj_Template = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container-body");
+					$l_obj_Template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body' );
 
 				}
 			}
@@ -1998,26 +2011,26 @@ class MCI_Footnotes_Task {
 		 * @since 2.1.4
 		 * @date 2020-11-26T1633+0100
 		 */
-		$l_bool_SymbolSwitch = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH));
+		$l_bool_SymbolSwitch = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH ) );
 
 		// loop through all footnotes found in the page
-		for ($l_int_Index = 0; $l_int_Index < count(self::$a_arr_Footnotes); $l_int_Index++) {
+		for ( $l_int_Index = 0; $l_int_Index < count( self::$a_arr_Footnotes ); $l_int_Index++ ) {
 
 			// get footnote text
-			$l_str_FootnoteText = self::$a_arr_Footnotes[$l_int_Index];
+			$l_str_FootnoteText = self::$a_arr_Footnotes[ $l_int_Index ];
 
 			// if footnote is empty, go to the next one;
 			// With combine identicals turned on, identicals will be deleted and are skipped:
-			if (empty($l_str_FootnoteText)) {
+			if ( empty( $l_str_FootnoteText ) ) {
 				continue;
 			}
 
 			// generate content of footnote index cell
-			$l_int_FirstFootnoteIndex = ($l_int_Index + 1);
+			$l_int_FirstFootnoteIndex = ( $l_int_Index + 1 );
 
 			// get the footnote index string and
 			// keep supporting legacy index placeholder:
-			$l_str_FootnoteId  = MCI_Footnotes_Convert::Index(($l_int_Index + 1),  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+			$l_str_FootnoteId  = MCI_Footnotes_Convert::Index( ( $l_int_Index + 1 ), MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE ) );
 
 			/**
 			 * Case of only one backlink per table row
@@ -2027,7 +2040,7 @@ class MCI_Footnotes_Task {
 			// define anyway:
 			$l_str_HardLinkAddress = '';
 
-			if (self::$a_bool_HardLinksEnable) {
+			if ( self::$a_bool_HardLinksEnable ) {
 
 				/**
 				 * Use-Backbutton-Hint tooltip, optional and configurable.
@@ -2045,7 +2058,7 @@ class MCI_Footnotes_Task {
 				 */
 				if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE ) ) ) {
 					$l_str_UseBackbuttonHint  = ' title="';
-					$l_str_UseBackbuttonHint .= MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT);
+					$l_str_UseBackbuttonHint .= MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT );
 					$l_str_UseBackbuttonHint .= '"';
 				} else {
 					$l_str_UseBackbuttonHint = '';
@@ -2077,7 +2090,6 @@ class MCI_Footnotes_Task {
 				$l_str_FootnoteAnchorElement = '';
 			}
 
-
 			/**
 			 * Support for combining identicals: compose enumerated backlinks
 			 *
@@ -2101,7 +2113,7 @@ class MCI_Footnotes_Task {
 			$l_str_FootnoteBacklinks = '';
 			$l_str_FootnoteReference = '';
 
-			if ( MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES))) {
+			if ( MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_COMBINE_IDENTICAL_FOOTNOTES ) ) ) {
 
 				// ID, optional hard link address, and class:
 				$l_str_FootnoteReference  = '<' . self::$a_str_LinkSpan;
@@ -2109,7 +2121,7 @@ class MCI_Footnotes_Task {
 				$l_str_FootnoteReference .= self::$a_int_PostId;
 				$l_str_FootnoteReference .= '_' . self::$a_int_ReferenceContainerId;
 				$l_str_FootnoteReference .= "_$l_str_FootnoteId\"";
-				if (self::$a_bool_HardLinksEnable) {
+				if ( self::$a_bool_HardLinksEnable ) {
 					$l_str_FootnoteReference .= ' href="#';
 					$l_str_FootnoteReference .= self::$a_str_ReferrerLinkSlug;
 					$l_str_FootnoteReference .= self::$a_str_PostContainerIdCompound;
@@ -2127,7 +2139,6 @@ class MCI_Footnotes_Task {
 				$l_str_BacklinkEvent .= '_' . self::$a_int_ReferenceContainerId;
 				$l_str_BacklinkEvent .= "_$l_str_FootnoteId');\"";
 
-
 				// the dedicated template enumerating backlinks uses another variable:
 				$l_str_FootnoteBacklinks  = $l_str_FootnoteReference;
 
@@ -2137,13 +2148,13 @@ class MCI_Footnotes_Task {
 				$l_str_FootnoteReference .= '>';
 
 				// append the optional offset anchor for hard links:
-				if (self::$a_bool_HardLinksEnable) {
+				if ( self::$a_bool_HardLinksEnable ) {
 					$l_str_FootnoteReference .= $l_str_FootnoteAnchorElement;
 					$l_str_FootnoteBacklinks .= $l_str_FootnoteAnchorElement;
 				}
 
 				// continue both single note and notes cluster, depending on switch option status:
-				if ($l_bool_SymbolSwitch) {
+				if ( $l_bool_SymbolSwitch ) {
 
 					$l_str_FootnoteReference .= "$l_str_FootnoteId$l_str_FootnoteArrow";
 					$l_str_FootnoteBacklinks .= "$l_str_FootnoteId$l_str_FootnoteArrow";
@@ -2158,22 +2169,22 @@ class MCI_Footnotes_Task {
 				// If that is the only footnote with this text, we’re almost done.
 
 				// check if it isn't the last footnote in the array:
-				if ($l_int_FirstFootnoteIndex < count(self::$a_arr_Footnotes)) {
+				if ( $l_int_FirstFootnoteIndex < count( self::$a_arr_Footnotes ) ) {
 
 					// get all footnotes that haven't passed yet:
-					for ($l_int_CheckIndex = $l_int_FirstFootnoteIndex; $l_int_CheckIndex < count(self::$a_arr_Footnotes); $l_int_CheckIndex++) {
+					for ( $l_int_CheckIndex = $l_int_FirstFootnoteIndex; $l_int_CheckIndex < count( self::$a_arr_Footnotes ); $l_int_CheckIndex++ ) {
 
 						// check if a further footnote is the same as the actual one:
-						if ($l_str_FootnoteText == self::$a_arr_Footnotes[$l_int_CheckIndex]) {
+						if ( $l_str_FootnoteText == self::$a_arr_Footnotes[ $l_int_CheckIndex ] ) {
 
 							// if so, set the further footnote as empty so it won't be displayed later:
-							self::$a_arr_Footnotes[$l_int_CheckIndex] = "";
+							self::$a_arr_Footnotes[ $l_int_CheckIndex ] = '';
 
 							// set the flag to true for the combined status:
 							$l_bool_FlagCombined = true;
 
 							// update the footnote ID:
-							$l_str_FootnoteId = MCI_Footnotes_Convert::Index(($l_int_CheckIndex + 1), MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE));
+							$l_str_FootnoteId = MCI_Footnotes_Convert::Index( ( $l_int_CheckIndex + 1 ), MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE ) );
 
 							// resume composing the backlinks enumeration:
 							$l_str_FootnoteBacklinks .= "$l_str_Separator</";
@@ -2186,7 +2197,7 @@ class MCI_Footnotes_Task {
 							$l_str_FootnoteBacklinks .= "_$l_str_FootnoteId\"";
 
 							// insert the optional hard link address:
-							if (self::$a_bool_HardLinksEnable) {
+							if ( self::$a_bool_HardLinksEnable ) {
 								$l_str_FootnoteBacklinks .= ' href="#';
 								$l_str_FootnoteBacklinks .= self::$a_str_ReferrerLinkSlug;
 								$l_str_FootnoteBacklinks .= self::$a_str_PostContainerIdCompound;
@@ -2204,7 +2215,7 @@ class MCI_Footnotes_Task {
 							$l_str_FootnoteBacklinks .= "_$l_str_FootnoteId');\">";
 
 							// append the offset anchor for optional hard links:
-							if (self::$a_bool_HardLinksEnable) {
+							if ( self::$a_bool_HardLinksEnable ) {
 								$l_str_FootnoteBacklinks .= '<span class="footnote_item_base"><span id="';
 								$l_str_FootnoteBacklinks .= self::$a_str_FootnoteLinkSlug;
 								$l_str_FootnoteBacklinks .= self::$a_str_PostContainerIdCompound;
@@ -2236,7 +2247,7 @@ class MCI_Footnotes_Task {
 				self::$a_bool_MirrorTooltipText = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE ) );
 				if ( self::$a_bool_MirrorTooltipText ) {
 					$l_str_TooltipText = substr( $l_str_FootnoteText, 0, $l_int_TooltipTextLength );
-					$l_str_ReferenceTextIntroducer = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR);
+					$l_str_ReferenceTextIntroducer = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR );
 					$l_str_ReferenceText = $l_str_TooltipText . $l_str_ReferenceTextIntroducer . $l_str_NotTooltipText;
 				} else {
 					$l_str_ReferenceText = $l_str_NotTooltipText;
@@ -2250,27 +2261,27 @@ class MCI_Footnotes_Task {
 				array(
 
 					// placeholder used in all templates:
-					"text"            => $l_str_ReferenceText,
+					'text'            => $l_str_ReferenceText,
 
 					// used in standard layout W/O COMBINED FOOTNOTES:
-					"post_id"         => self::$a_int_PostId,
-					"container_id"    => self::$a_int_ReferenceContainerId,
-					"note_id"         => MCI_Footnotes_Convert::Index($l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE)),
-					"link-start"      => self::$a_str_LinkOpenTag,
-					"link-end"        => self::$a_str_LinkCloseTag,
-					"link-span"       => self::$a_str_LinkSpan,
-					"terminator"      => $l_str_Terminator,
-					"anchor-element"  => $l_str_FootnoteAnchorElement,
-					"hard-link"       => $l_str_HardLinkAddress,
+					'post_id'         => self::$a_int_PostId,
+					'container_id'    => self::$a_int_ReferenceContainerId,
+					'note_id'         => MCI_Footnotes_Convert::Index( $l_int_FirstFootnoteIndex, MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_COUNTER_STYLE ) ),
+					'link-start'      => self::$a_str_LinkOpenTag,
+					'link-end'        => self::$a_str_LinkCloseTag,
+					'link-span'       => self::$a_str_LinkSpan,
+					'terminator'      => $l_str_Terminator,
+					'anchor-element'  => $l_str_FootnoteAnchorElement,
+					'hard-link'       => $l_str_HardLinkAddress,
 
 					// used in standard layout WITH COMBINED IDENTICALS TURNED ON:
-					"pointer"         => $l_bool_FlagCombined ? '' : ' pointer',
-					"event"           => $l_bool_FlagCombined ? '' : $l_str_BacklinkEvent,
-					"backlinks"       => $l_bool_FlagCombined ? $l_str_FootnoteBacklinks : $l_str_FootnoteReference,
+					'pointer'         => $l_bool_FlagCombined ? '' : ' pointer',
+					'event'           => $l_bool_FlagCombined ? '' : $l_str_BacklinkEvent,
+					'backlinks'       => $l_bool_FlagCombined ? $l_str_FootnoteBacklinks : $l_str_FootnoteReference,
 
 					// Legacy placeholders for use in legacy layout templates:
-					"arrow"           => $l_str_FootnoteArrow,
-					"index"           => $l_str_FootnoteId,
+					'arrow'           => $l_str_FootnoteArrow,
+					'index'           => $l_str_FootnoteId,
 				)
 			);
 
@@ -2284,10 +2295,10 @@ class MCI_Footnotes_Task {
 		}
 
 		// call again for robustness when priority levels don’t match any longer:
-		self::$a_int_ScrollOffset = intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET));
+		self::$a_int_ScrollOffset = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET ) );
 
 		// streamline:
-		$l_bool_CollapseDefault = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE));
+		$l_bool_CollapseDefault = MCI_Footnotes_Convert::toBool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE ) );
 
 		/**
 		 * Reference container label
@@ -2303,7 +2314,7 @@ class MCI_Footnotes_Task {
 		 * In case of empty label that would apply to the left half button character.
 		 * Hence the point in setting an empty label to U+202F NARROW NO-BREAK SPACE.
 		 */
-		$l_str_ReferenceContainerLabel = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME);
+		$l_str_ReferenceContainerLabel = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME );
 
 		/**
 		 * Select the reference container template according to the script mode.
@@ -2314,31 +2325,30 @@ class MCI_Footnotes_Task {
 		 *
 		 * @reporter @hopper87it
 		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
-		 * 
+		 *
 		 * @reporter @pkverma99
 		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/#post-14076188
 		 */
-		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE);
-
+		$l_str_ScriptMode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 		if ( $l_str_ScriptMode == 'jquery' ) {
 			// load 'templates/public/reference-container.html':
-			$l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "reference-container");
+			$l_obj_TemplateContainer = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container' );
 		} else {
 			// load 'templates/public/js-reference-container.html':
-			$l_obj_TemplateContainer = new MCI_Footnotes_Template(MCI_Footnotes_Template::C_STR_PUBLIC, "js-reference-container");
+			$l_obj_TemplateContainer = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'js-reference-container' );
 		}
-		
+
 		$l_obj_TemplateContainer->replace(
 			array(
-				"post_id"         =>  self::$a_int_PostId,
-				"container_id"    =>  self::$a_int_ReferenceContainerId,
-				"element"         =>  MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT),
-				"name"            =>  empty($l_str_ReferenceContainerLabel) ? '&#x202F;' : $l_str_ReferenceContainerLabel,
-				"button-style"    => !$l_bool_CollapseDefault ? 'display: none;' : '',
-				"style"           =>  $l_bool_CollapseDefault ? 'display: none;' : '',
-				"content"         =>  $l_str_Body,
-				"scroll-offset"   =>  (self::$a_int_ScrollOffset / 100),
-				"scroll-duration" =>  intval(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION)),
+				'post_id'         => self::$a_int_PostId,
+				'container_id'    => self::$a_int_ReferenceContainerId,
+				'element'         => MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT ),
+				'name'            => empty( $l_str_ReferenceContainerLabel ) ? '&#x202F;' : $l_str_ReferenceContainerLabel,
+				'button-style'    => ! $l_bool_CollapseDefault ? 'display: none;' : '',
+				'style'           => $l_bool_CollapseDefault ? 'display: none;' : '',
+				'content'         => $l_str_Body,
+				'scroll-offset'   => ( self::$a_int_ScrollOffset / 100 ),
+				'scroll-duration' => intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION ) ),
 			)
 		);
 

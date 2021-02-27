@@ -6,6 +6,8 @@
  * @package footnotes
  * @since 1.5.0
  *
+ * @lastmodified  2021-02-20T0438+0100
+ *
  * @since 2.0.0  Bugfix: various.
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
  * @since 2.0.5  Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.
@@ -77,6 +79,7 @@
  * @since 2.5.4  Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
  * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
  * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
+ * @since 2.5.7  Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
  */
 
 // If called directly, abort.
@@ -147,7 +150,7 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/reset-footnotes-to-1/
 	 * @link https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830
 	 *
-	 * @var int 1; incremented each time after a reference container is inserted
+	 * @var int 1; incremented every time after a reference container is inserted
 	 *
 	 * This ID disambiguates multiple reference containers in a page
 	 * as they may occur when the widget_text hook is active and the page
@@ -682,6 +685,7 @@ class MCI_Footnotes_Task {
 		 * @link https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/
 		 */
 		if ( ! MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE ) ) ) {
+
 			echo ".home .footnotes_reference_container { display: none; }\r\n";
 		}
 
@@ -752,7 +756,6 @@ class MCI_Footnotes_Task {
 			echo '.footnote_plugin_index, .footnote_plugin_index_combi {';
 
 			if ( $l_bool_column_width_enabled ) {
-
 				$l_int_column_width_scalar = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR );
 				$l_str_column_width_unit   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT );
 
@@ -770,7 +773,6 @@ class MCI_Footnotes_Task {
 			}
 
 			if ( $l_bool_column_max_width_enabled ) {
-
 				$l_int_column_max_width_scalar = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR );
 				$l_str_column_max_width_unit   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT );
 
@@ -821,7 +823,6 @@ class MCI_Footnotes_Task {
 		self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
 
 		if ( self::$a_bool_tooltips_enabled ) {
-
 			echo '.footnote_tooltip {';
 
 			/**
@@ -914,7 +915,6 @@ class MCI_Footnotes_Task {
 					printf( ' max-width: %dpx !important;', esc_html( $l_int_max_width ) );
 				}
 				echo "}\r\n";
-
 			} else {
 				/*
 				 * Alternative tooltips.
@@ -967,7 +967,6 @@ class MCI_Footnotes_Task {
 				$l_int_fade_out_duration = ! empty( $l_int_fade_out_duration ) ? $l_int_fade_out_duration : '0';
 				echo ' transition-delay: ' . esc_html( $l_int_fade_out_delay ) . 'ms;';
 				echo ' transition-duration: ' . esc_html( $l_int_fade_out_duration ) . 'ms;';
-
 				echo "}\r\n";
 
 			}
@@ -1023,8 +1022,6 @@ class MCI_Footnotes_Task {
 	}
 </script>
 			<?php
-			// End internal script.
-
 		};
 	}
 
@@ -1108,6 +1105,26 @@ class MCI_Footnotes_Task {
 	 * @return string Content with replaced footnotes.
 	 */
 	public function the_content( $p_str_content ) {
+		/**
+		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
+		 *
+		 * - Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
+		 *
+		 * @since 2.5.7
+		 *
+		 * @reporter @inoruhana
+		 * @link https://wordpress.org/support/topic/footnote-duplicated-in-the-widget/
+		 *
+		 * Under certain circumstances, footnotes were duplicated, because the footnotes list was
+		 * not emptied every time before the search algorithm was run. That happened eg when both
+		 * the reference container resides in the widget area, and the YOAST SEO plugin is active
+		 * and calls the hook the_content to generate the Open Graph description, while Footnotes
+		 * is set to avoid missing out on the footnotes (in the content) by hooking in as soon as
+		 * the_content is called, whereas at post end Footnotes seems to hook in the_content only
+		 * the time it’s the blog engine processing the post for display and appending the refs.
+		 */
+		self::$a_arr_footnotes = array();
+
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, 'post_end' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) );

@@ -228,8 +228,8 @@ class MCI_Footnotes {
 			/**
 			 * Enqueues some jQuery UI libraries registered by WordPress.
 			 *
-			 * - Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.	
-			 *	
+			 * - Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
+			 *
 			 * @since 2.0.0
 			 *
 			 * @reporter @rajinderverma
@@ -250,7 +250,7 @@ class MCI_Footnotes {
 			 * @contributor @vonpiernik
 			 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762
 			 *
-			 * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.				 * @since 2.1.2
+			 * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.                * @since 2.1.2
 			 *
 			 * - Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
 			 *

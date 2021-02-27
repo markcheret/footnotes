@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Includes the Plugin Widget to put the Reference Container to the Widget area.
  *
@@ -59,7 +59,7 @@ class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base
 	 * Edit: curly quotes 2.2.0  2020-12-12T2130+0100
 	 */
 	public function form( $instance ) {
-		echo wp_kses_post( __( 'The widget defines the position of the reference container if set to “widget area”.', 'footnotes' ) );
+		echo __( 'The widget defines the position of the reference container if set to “widget area”.', 'footnotes' );
 	}
 
 	/**

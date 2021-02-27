@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Includes the core function of the Plugin - Search and Replace the Footnotes.
  *
@@ -702,9 +702,9 @@ class MCI_Footnotes_Task {
 		$l_int_reference_container_top_margin    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_TOP_MARGIN ) );
 		$l_int_reference_container_bottom_margin = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN ) );
 		echo '.footnotes_reference_container {margin-top: ';
-		echo empty( $l_int_reference_container_top_margin ) ? '0' : esc_html( $l_int_reference_container_top_margin );
+		echo empty( $l_int_reference_container_top_margin ) ? '0' : $l_int_reference_container_top_margin;
 		echo 'px !important; margin-bottom: ';
-		echo empty( $l_int_reference_container_bottom_margin ) ? '0' : esc_html( $l_int_reference_container_bottom_margin );
+		echo empty( $l_int_reference_container_bottom_margin ) ? '0' : $l_int_reference_container_bottom_margin;
 		echo "px !important;}\r\n";
 
 		/**
@@ -721,7 +721,7 @@ class MCI_Footnotes_Task {
 		 */
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER ) ) ) {
 			echo '.footnote_container_prepare > ';
-			echo esc_html( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT ) );
+			echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT );
 			echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
 		}
 
@@ -769,7 +769,7 @@ class MCI_Footnotes_Task {
 					$l_int_column_width_scalar = 0;
 				}
 
-				echo ' width: ' . esc_html( $l_int_column_width_scalar ) . esc_html( $l_str_column_width_unit ) . ' !important;';
+				echo ' width: ' . $l_int_column_width_scalar . $l_str_column_width_unit . ' !important;';
 			}
 
 			if ( $l_bool_column_max_width_enabled ) {
@@ -786,7 +786,7 @@ class MCI_Footnotes_Task {
 					$l_int_column_max_width_scalar = 0;
 				}
 
-				echo ' max-width: ' . esc_html( $l_int_column_max_width_scalar ) . esc_html( $l_str_column_max_width_unit ) . ' !important;';
+				echo ' max-width: ' . $l_int_column_max_width_scalar . $l_str_column_max_width_unit . ' !important;';
 
 			}
 			echo "}\r\n";
@@ -812,7 +812,7 @@ class MCI_Footnotes_Task {
 		self::$a_int_scroll_offset = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET ) );
 		if ( self::$a_bool_hard_links_enable ) {
 			echo '.footnote_referrer_anchor, .footnote_item_anchor {bottom: ';
-			echo esc_html( self::$a_int_scroll_offset );
+			echo self::$a_int_scroll_offset;
 			echo "vh;}\r\n";
 		}
 
@@ -835,8 +835,8 @@ class MCI_Footnotes_Task {
 			 */
 			echo ' font-size: ';
 			if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED ) ) ) {
-				echo esc_html( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR ) );
-				echo esc_html( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT ) );
+				echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR );
+				echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT );
 			} else {
 				echo 'inherit';
 			}
@@ -847,7 +847,7 @@ class MCI_Footnotes_Task {
 			 */
 			$l_str_color = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR );
 			if ( ! empty( $l_str_color ) ) {
-				printf( ' color: %s !important;', esc_html( $l_str_color ) );
+				printf( ' color: %s !important;', $l_str_color );
 			}
 
 			/*
@@ -855,7 +855,7 @@ class MCI_Footnotes_Task {
 			 */
 			$l_str_background = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND );
 			if ( ! empty( $l_str_background ) ) {
-				printf( ' background-color: %s !important;', esc_html( $l_str_background ) );
+				printf( ' background-color: %s !important;', $l_str_background );
 			}
 
 			/*
@@ -863,7 +863,7 @@ class MCI_Footnotes_Task {
 			 */
 			$l_int_border_width = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH );
 			if ( ! empty( $l_int_border_width ) && intval( $l_int_border_width ) > 0 ) {
-				printf( ' border-width: %dpx !important; border-style: solid !important;', esc_html( $l_int_border_width ) );
+				printf( ' border-width: %dpx !important; border-style: solid !important;', $l_int_border_width );
 			}
 
 			/*
@@ -871,7 +871,7 @@ class MCI_Footnotes_Task {
 			 */
 			$l_str_border_color = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR );
 			if ( ! empty( $l_str_border_color ) ) {
-				printf( ' border-color: %s !important;', esc_html( $l_str_border_color ) );
+				printf( ' border-color: %s !important;', $l_str_border_color );
 			}
 
 			/*
@@ -879,7 +879,7 @@ class MCI_Footnotes_Task {
 			 */
 			$l_int_border_radius = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS );
 			if ( ! empty( $l_int_border_radius ) && intval( $l_int_border_radius ) > 0 ) {
-				printf( ' border-radius: %dpx !important;', esc_html( $l_int_border_radius ) );
+				printf( ' border-radius: %dpx !important;', $l_int_border_radius );
 			}
 
 			/*
@@ -887,9 +887,9 @@ class MCI_Footnotes_Task {
 			 */
 			$l_str_box_shadow_color = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR );
 			if ( ! empty( $l_str_box_shadow_color ) ) {
-				printf( ' -webkit-box-shadow: 2px 2px 11px %s;', esc_html( $l_str_box_shadow_color ) );
-				printf( ' -moz-box-shadow: 2px 2px 11px %s;', esc_html( $l_str_box_shadow_color ) );
-				printf( ' box-shadow: 2px 2px 11px %s;', esc_html( $l_str_box_shadow_color ) );
+				printf( ' -webkit-box-shadow: 2px 2px 11px %s;', $l_str_box_shadow_color );
+				printf( ' -moz-box-shadow: 2px 2px 11px %s;', $l_str_box_shadow_color );
+				printf( ' box-shadow: 2px 2px 11px %s;', $l_str_box_shadow_color );
 			}
 
 			/**
@@ -912,7 +912,7 @@ class MCI_Footnotes_Task {
 				 */
 				$l_int_max_width = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
 				if ( ! empty( $l_int_max_width ) && intval( $l_int_max_width ) > 0 ) {
-					printf( ' max-width: %dpx !important;', esc_html( $l_int_max_width ) );
+					printf( ' max-width: %dpx !important;', $l_int_max_width );
 				}
 				echo "}\r\n";
 			} else {
@@ -924,26 +924,26 @@ class MCI_Footnotes_Task {
 				// Dimensions.
 				$l_int_alternative_tooltip_width = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH ) );
 				echo '.footnote_tooltip.position {';
-				echo ' width: ' . esc_html( $l_int_alternative_tooltip_width ) . 'px;';
+				echo ' width: ' . $l_int_alternative_tooltip_width . 'px;';
 				// Set also as max-width wrt short tooltip shrinking.
-				echo ' max-width: ' . esc_html( $l_int_alternative_tooltip_width ) . 'px;';
+				echo ' max-width: ' . $l_int_alternative_tooltip_width . 'px;';
 
 				// Position.
 				$l_str_alternative_position = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION );
 				$l_int_offset_x             = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X ) );
 
 				if ( 'top left' === $l_str_alternative_position || 'bottom left' === $l_str_alternative_position ) {
-					echo ' right: ' . ( ! empty( $l_int_offset_x ) ? esc_html( $l_int_offset_x ) : 0 ) . 'px;';
+					echo ' right: ' . ( ! empty( $l_int_offset_x ) ? $l_int_offset_x : 0 ) . 'px;';
 				} else {
-					echo ' left: ' . ( ! empty( $l_int_offset_x ) ? esc_html( $l_int_offset_x ) : 0 ) . 'px;';
+					echo ' left: ' . ( ! empty( $l_int_offset_x ) ? $l_int_offset_x : 0 ) . 'px;';
 				}
 
 				$l_int_offset_y = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y ) );
 
 				if ( 'top left' === $l_str_alternative_position || 'top right' === $l_str_alternative_position ) {
-					echo ' bottom: ' . ( ! empty( $l_int_offset_y ) ? esc_html( $l_int_offset_y ) : 0 ) . 'px;';
+					echo ' bottom: ' . ( ! empty( $l_int_offset_y ) ? $l_int_offset_y : 0 ) . 'px;';
 				} else {
-					echo ' top: ' . ( ! empty( $l_int_offset_y ) ? esc_html( $l_int_offset_y ) : 0 ) . 'px;';
+					echo ' top: ' . ( ! empty( $l_int_offset_y ) ? $l_int_offset_y : 0 ) . 'px;';
 				}
 				echo "}\r\n";
 
@@ -957,22 +957,21 @@ class MCI_Footnotes_Task {
 				$l_int_fade_in_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
 				$l_int_fade_in_delay    = ! empty( $l_int_fade_in_delay ) ? $l_int_fade_in_delay : '0';
 				$l_int_fade_in_duration = ! empty( $l_int_fade_in_duration ) ? $l_int_fade_in_duration : '0';
-				echo ' transition-delay: ' . esc_html( $l_int_fade_in_delay ) . 'ms;';
-				echo ' transition-duration: ' . esc_html( $l_int_fade_in_duration ) . 'ms;';
+				echo ' transition-delay: ' . $l_int_fade_in_delay . 'ms;';
+				echo ' transition-duration: ' . $l_int_fade_in_duration . 'ms;';
 
 				echo '} .footnote_tooltip.hidden {';
 				$l_int_fade_out_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY ) );
 				$l_int_fade_out_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
 				$l_int_fade_out_delay    = ! empty( $l_int_fade_out_delay ) ? $l_int_fade_out_delay : '0';
 				$l_int_fade_out_duration = ! empty( $l_int_fade_out_duration ) ? $l_int_fade_out_duration : '0';
-				echo ' transition-delay: ' . esc_html( $l_int_fade_out_delay ) . 'ms;';
-				echo ' transition-duration: ' . esc_html( $l_int_fade_out_duration ) . 'ms;';
+				echo ' transition-delay: ' . $l_int_fade_out_delay . 'ms;';
+				echo ' transition-duration: ' . $l_int_fade_out_duration . 'ms;';
 				echo "}\r\n";
 
 			}
 		}
 
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		/**
 		 * Custom CSS.
 		 *
@@ -989,7 +988,6 @@ class MCI_Footnotes_Task {
 			echo "\r\n";
 		}
 		echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_CUSTOM_CSS_NEW );
-		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		// Insert end tag without switching out of PHP.
 		echo "\r\n</style>\r\n";
@@ -1034,9 +1032,7 @@ class MCI_Footnotes_Task {
 	 */
 	public function wp_footer() {
 		if ( 'footer' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
-			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $this->reference_container();
-			// phpcs:enable
 		}
 		// Get setting for love and share this plugin.
 		$l_str_love_me_index = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE );
@@ -1082,7 +1078,7 @@ class MCI_Footnotes_Task {
 				$l_str_love_me_text = sprintf( '%s', $l_str_linked_name );
 				break;
 		}
-		echo sprintf( '<div style="text-align:center; color:#acacac;">%s</div>', esc_html( $l_str_love_me_text ) );
+		echo sprintf( '<div style="text-align:center; color:#acacac;">%s</div>', $l_str_love_me_text );
 	}
 
 	/**
@@ -1128,7 +1124,7 @@ class MCI_Footnotes_Task {
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, 'post_end' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) );
-		// phpcs:enable
+		// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
 	}
 
 	/**
@@ -1165,7 +1161,7 @@ class MCI_Footnotes_Task {
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, 'post_end' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ? true : false );
-		// phpcs:enable
+		// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
 	}
 
 	/**

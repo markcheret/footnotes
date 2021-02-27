@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Handles all WordPress hooks of this Plugin.
  *
@@ -58,11 +58,11 @@ class MCI_Footnotes_Hooks {
 	public static function uninstall_plugin() {
 		// WordPress User has to be logged in.
 		if ( ! is_user_logged_in() ) {
-			wp_die( wp_kses_post( __( 'You must be logged in to run this script.', 'footnotes' ) ) );
+			wp_die( __( 'You must be logged in to run this script.', 'footnotes' ) );
 		}
 		// WordPress User needs the permission to (un)install plugins.
 		if ( ! current_user_can( 'install_plugins' ) ) {
-			wp_die( wp_kses_post( __( 'You do not have permission to run this script.', 'footnotes' ) ) );
+			wp_die( __( 'You do not have permission to run this script.', 'footnotes' ) );
 		}
 	}
 

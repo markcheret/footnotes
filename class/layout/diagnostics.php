@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Includes the Plugin Class to display Diagnostics.
  *
@@ -94,7 +94,7 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 			$l_str_wordpress_plugins .= '<td>' . $l_arr_plugin['Name'] . '</td>';
 			// phpcs:disable Generic.Strings.UnnecessaryStringConcat.Found
 			$l_str_wordpress_plugins .= '<td>' . $l_arr_plugin['Version'] . ' [' . $l_arr_plugin['PluginURI'] . ']' . '</td>';
-			// phpcs:enable
+			// phpcs:enable Generic.Strings.UnnecessaryStringConcat.Found
 			$l_str_wordpress_plugins .= '</tr>';
 		}
 		// Load template file.
@@ -103,12 +103,12 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 		if ( ! isset( $_SERVER['SERVER_NAME'] ) ) {
 			die;
 		} else {
-			$l_str_server_name = sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) );
+			$l_str_server_name = wp_unslash( $_SERVER['SERVER_NAME'] );
 		}
 		if ( ! isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
 			die;
 		} else {
-			$l_str_http_user_agent = sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
+			$l_str_http_user_agent = wp_unslash( $_SERVER['HTTP_USER_AGENT'] );
 		}
 
 		// Replace all placeholders.
@@ -141,9 +141,7 @@ class MCI_Footnotes_Layout_Diagnostics extends MCI_Footnotes_Layout_Engine {
 				'plugins'                  => $l_str_wordpress_plugins,
 			)
 		);
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		// Display template with replaced placeholders.
 		echo $l_obj_template->get_content();
-		// phpcs:enable
 	}
 }

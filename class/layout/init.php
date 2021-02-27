@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 /**
  * Includes the Plugin settings menu.
  *
@@ -133,7 +133,7 @@ class MCI_Footnotes_Layout_Init {
 		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'manfisher' );
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $l_obj_template->get_content();
-		// phpcs:enable
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		printf( '<em>visit <a href="https://cheret.de/plugins/footnotes-2/" target="_blank">Mark Cheret</a></em>' );
 		printf( '<br/><br/>' );
@@ -152,7 +152,7 @@ class MCI_Footnotes_Layout_Init {
 
 		// Get plugin internal name from POST data.
 		if ( isset( $_POST['plugin'] ) ) {
-			$l_str_plugin_name = sanitize_text_field( wp_unslash( $_POST['plugin'] ) );
+			$l_str_plugin_name = wp_unslash( $_POST['plugin'] );
 		}
 
 		if ( empty( $l_str_plugin_name ) ) {
@@ -203,5 +203,5 @@ class MCI_Footnotes_Layout_Init {
 		);
 		exit;
 	}
-	// phpcs:enable
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
 }

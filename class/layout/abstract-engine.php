@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Includes Layout Engine for the admin dashboard.
  *
@@ -224,8 +224,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		wp_enqueue_style( 'mci-footnotes-admin' );
 	}
 
-	// phpcs:disable WordPress.Security.NonceVerification.Recommended
-	// phpcs:disable WordPress.Security.NonceVerification.Missing
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
 	 * Displays the content of specific sub page.
 	 *
@@ -238,7 +237,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 
 		// Get the current section.
 		reset( $this->a_arr_sections );
-		$l_str_active_section_id = isset( $_GET['t'] ) ? sanitize_text_field( wp_unslash( $_GET['t'] ) ) : key( $this->a_arr_sections );
+		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : key( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
 		// Store settings.
@@ -259,16 +258,16 @@ abstract class MCI_Footnotes_Layout_Engine {
 			$l_str_tab_active = ( $l_str_id === $l_arr_active_section['id'] ) ? ' nav-tab-active' : '';
 			echo sprintf(
 				'<a class="nav-tab%s" href="?page=%s&t=%s">%s</a>',
-				esc_attr( ( $l_str_id === $l_arr_active_section['id'] ) ? ' nav-tab-active' : '' ),
-				esc_attr( MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug() ),
-				esc_attr( $l_str_id ),
-				esc_attr( $l_arr_description['title'] )
+				( $l_str_id === $l_arr_active_section['id'] ) ? ' nav-tab-active' : '',
+				MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug(),
+				$l_str_id,
+				$l_arr_description['title']
 			);
 		}
 		echo '</h2><br/>';
 
 		if ( $l_bool_settings_updated ) {
-			echo sprintf( '<div id="message" class="updated">%s</div>', esc_html( __( 'Settings saved', 'footnotes' ) ) );
+			echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', 'footnotes' ) );
 		}
 
 		// Form to submit the active section.
@@ -290,14 +289,13 @@ abstract class MCI_Footnotes_Layout_Engine {
 		echo 'jQuery(document).ready(function ($) {';
 		echo 'jQuery(".mfmmf-color-picker").wpColorPicker();';
 		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
-		echo "postboxes.add_postbox_toggles('" . esc_js( $this->a_str_sub_page_hook ) . "');";
+		echo "postboxes.add_postbox_toggles('" . $this->a_str_sub_page_hook . "');";
 		echo '});';
 		echo '</script>';
 	}
-	// phpcs:enable
+	// phpcs:enable  WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 
-	// phpcs:disable WordPress.Security.NonceVerification.Recommended
-	// phpcs:disable WordPress.Security.NonceVerification.Missing
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
 	 * Save all Plugin settings.
 	 *
@@ -311,12 +309,12 @@ abstract class MCI_Footnotes_Layout_Engine {
 
 		// Get current section.
 		reset( $this->a_arr_sections );
-		$l_str_active_section_id = isset( $_GET['t'] ) ? sanitize_text_field( wp_unslash( $_GET['t'] ) ) : key( $this->a_arr_sections );
+		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : key( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
 		foreach ( MCI_Footnotes_Settings::instance()->get_defaults( $l_arr_active_section['container'] ) as $l_str_key => $l_mixed_value ) {
 			if ( array_key_exists( $l_str_key, $_POST ) ) {
-				$l_arr_new_settings[ $l_str_key ] = sanitize_text_field( wp_unslash( $_POST[ $l_str_key ] ) );
+				$l_arr_new_settings[ $l_str_key ] = wp_unslash( $_POST[ $l_str_key ] );
 			} else {
 				// Setting is not defined in the POST array, define it to avoid the Default value.
 				$l_arr_new_settings[ $l_str_key ] = '';
@@ -325,7 +323,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		// Update settings.
 		return MCI_Footnotes_Settings::instance()->save_options( $l_arr_active_section['container'], $l_arr_new_settings );
 	}
-	// phpcs:enable
+	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 
 	/**
 	 * Output the Description of a section. May be overwritten in any section.
@@ -349,7 +347,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		$p_arr_return          = array();
 		$p_arr_return['id']    = sprintf( '%s', $p_str_setting_key_name );
 		$p_arr_return['name']  = sprintf( '%s', $p_str_setting_key_name );
-		$p_arr_return['value'] = esc_attr( MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name ) );
+		$p_arr_return['value'] = MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name );
 		return $p_arr_return;
 	}
 

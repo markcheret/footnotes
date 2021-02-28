@@ -6,12 +6,14 @@
  * Created-Time: 16:21
  * Since: 1.0
  * 
- * @version 2.5.6
- * @lastmodified 2021-02-19T1523+0100
+ * @version 2.5.8
+ * @lastmodified 2021-02-28T1320+0100
  *
  *     Classes recommended for Custom CSS:
  *     @see templates/dashboard/customize-css-new.html
- *
+ */
+
+/**
  * System of unified minified style sheets tailored to the needs of the instance.
  * 
  * - Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
@@ -230,94 +232,6 @@
 	cursor: pointer;
 }
 
-/**
- * Tooltips
- * 
- * - Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report.
- * 
- * @since 2.1.6
- * @reporter @russianicons
- * @link https://wordpress.org/support/topic/counter-styles-not-working/#post-13767299
- */
-
-.footnote_tooltip {
-	display: none;
-	z-index: 2147483647 !important;
-	cursor: auto;
-	text-align: left;
-	padding: 12px;
-	line-height: 1.2;
-	font-weight: normal;
-	font-style: normal;
-}
-
-/**
- * Alternative tooltips
- * 
- * These default position values may be overridden by internal CSS.
- */
-
-.footnote_referrer.relative {
-	position: relative;
-}
-
-.footnote_tooltip.position {
-	display: unset;
-	position: absolute;
-	bottom: 24px;
-	left: -50px;
-	width: 400px;
-}
-
-/*
-fade-in parameters
-*/
-
-.footnote_tooltip.shown {
-	visibility: visible;
-	opacity: 1;
-	transition-property: visibility opacity;
-	transition-timing-function: linear;
-/*
-property values of settings are inline CSS
-	transition-delay: 0ms;
-	transition-duration: 200ms;
-*/
-}
-
-/*
-fade-out parameters
-*/
-
-.footnote_tooltip.hidden {
-	visibility: hidden;
-	opacity: 0;
-	transition-property: visibility opacity;
-	transition-timing-function: linear;
-/*
-property values of settings are inline CSS
-	transition-delay: 400ms;
-	transition-duration: 200ms;
-*/
-}
-
-/*
-Read-on button
-*/
-
-.footnote_tooltip_continue {
-	font-style: italic;
-	color: green;
-	text-decoration: none !important;
-	cursor: pointer;
-	white-space: nowrap;
-}
-
-.footnote_tooltip_continue:hover {
-	color: blue;
-	text-decoration: underline !important;
-}
-
 
 /*****************************************************
 Footnote reference container
@@ -359,9 +273,15 @@ Classes:
 	box-sizing: border-box;
 }
 
-/*
-label
-*/
+/**
+ * Reference container label.
+ * 
+ * - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.
+ * 
+ * @since 2.5.8
+ * @reporter @arahmanshaalan
+ * @link https://wordpress.org/support/topic/right-to-left-text-problem/
+ */
 
 .footnote_container_prepare {
 	display: block !important;
@@ -380,7 +300,7 @@ label
 	-webkit-margin-after: 0.83em !important;
 	-webkit-margin-start: 0px !important;
 	-webkit-margin-end: 0px !important;
-	text-align: left !important;
+	text-align: start !important;
 	vertical-align: middle;
 }
 
@@ -426,23 +346,44 @@ table
 	border: none;
 }
 
-/*
-footnotes
-
-@since 2.0.0  borderless table cells, thanks to @ragonesi bug report
-@see <https://wordpress.org/support/topic/thin-box-around-notes-in-reference-container/>
-@since 2.0.1  enforce borderless text cells through !important property, thanks to @ragonesi bug report
-@see <https://wordpress.org/support/topic/box-around-c-references-container/>
-*/
+/**
+ * Footnotes list.
+ * 
+ * - Bugfix: Reference container: no borders around footnotes, thanks to @ragonesi bug report.
+ * 
+ * @since 2.0.0
+ * @reporter @ragonesi
+ * @link https://wordpress.org/support/topic/thin-box-around-notes-in-reference-container/
+ * 
+ * - Bugfix: Reference container: enforce borderless table cells, thanks to @ragonesi bug report.
+ * 
+ * @since 2.0.1
+ * @reporter @ragonesi
+ * @link https://wordpress.org/support/topic/box-around-c-references-container/
+ * 
+ * - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.
+ * - Bugfix: Layout: support right-to-left writing direction by enabling mirrored paddings on HTML dir="rtl" pages, thanks to @arahmanshaalan bug report.
+ * 
+ * @since 2.5.8
+ * @reporter @arahmanshaalan
+ * @link https://wordpress.org/support/topic/right-to-left-text-problem/
+ */
 
 .footnote_plugin_index,
 .footnote_plugin_index_combi,
 .footnote_plugin_symbol,
 .footnote_plugin_text {
 	border: none !important;
-	text-align: left !important;
+	text-align: start !important;
 	vertical-align: top !important;
 	padding: 5px 6px 10px 0 !important;
+}
+
+html[dir="rtl"] .footnote_plugin_index,
+html[dir="rtl"] .footnote_plugin_index_combi,
+html[dir="rtl"] .footnote_plugin_symbol,
+html[dir="rtl"] .footnote_plugin_text {
+	padding: 5px 0 10px 6px !important;
 }
 
 .footnote_backlink,

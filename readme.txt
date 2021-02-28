@@ -1,10 +1,10 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, misfist, rumperuu, spaceling, vonpiernik, pewgeuges
+Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.6.1
 Requires PHP: 5.6
-Stable Tag: 2.5.7
+Stable Tag: 2.5.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,8 +15,8 @@ Cheers for the review, folks!
 
 https://www.youtube.com/watch?v=HzHaMAAJwbI
 
-**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of current defaults but also empowers you to control how your footnotes are being displayed.
-**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts—those footnotes we know from offline publishing.
+**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
+**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts — those footnotes we know from offline publishing.
 
 = Main Features =
 - Fully customizable **footnotes** start and end shortcodes;
@@ -76,6 +76,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.5.8 =
+- Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.
+- Bugfix: Layout: support right-to-left writing direction by enabling mirrored paddings on HTML dir="rtl" pages, thanks to @arahmanshaalan bug report.
 
 = 2.5.7 =
 - Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
@@ -329,7 +333,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.4 =
 - Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
-- Update: GDPR: Add jQuery UI from WordPress instead of third party.
+- Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
 - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
 - Bugfix: Reference container: remove inconvenient left/right cellpadding.
 - Bugfix: Tooltips: improve layout with inherited font size by lower line height.
@@ -369,7 +373,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Debug printed posts and pages
 - Bugfix: Display of combined identical notes
 - Update: Adjusted scrolling time and offset
-- Bugfix: No borders around footnotes in the container
+- Bugfix: Reference container: no borders around footnotes, thanks to @ragonesi bug report.
 - Bugfix: Mouse-over box display timing
 - Update: Translations: revised de_AT, de_DE, en_GB, en_US, es_ES
 

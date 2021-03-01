@@ -1,17 +1,18 @@
 <?php
-/*
-	Plugin Name: footnotes
-	Plugin URI: https://wordpress.org/plugins/footnotes/
-	Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
-	Author: Mark Cheret
-	Version: 2.5.8
-	Author URI: http://cheret.de/plugins/footnotes-2/
-	Text Domain: footnotes
-	Domain Path: /languages
-*/
-/*
- *  Copyright 2021 Mark Cheret (email: mark@cheret.de)
+/**
+ * Plugin Name: footnotes
+ * Plugin URI: https://wordpress.org/plugins/footnotes/
+ * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
+ * Author: Mark Cheret
+ * Version: 2.5.9d1
+ * Author URI: http://cheret.de/plugins/footnotes-2/
+ * Text Domain: footnotes
+ * Domain Path: /languages
+ *
+ * @package footnotes
+ * @copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
+
 /**
  * Version number for stylesheet cache busting.
  *
@@ -20,7 +21,7 @@
  * @var str
  * @lastmodified 2021-02-28T1345+0100
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.5.8' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.5.9d1' );
 
 /*
 	LICENSE NOTICE
@@ -41,34 +42,34 @@ define( 'C_STR_FOOTNOTES_VERSION', '2.5.8' );
 
 /**
  * Plugin’s main PHP file.
- * 
+ *
  * @filesource
- * @author Stefan Herndler
+ * @package footnotes
  * @since 0.0.1
  */
 
-// Get all common classes and functions
-require_once(dirname(__FILE__) . "/includes.php");
+// Get all common classes and functions.
+require_once dirname( __FILE__ ) . '/includes.php';
 
-// add Plugin Links to the "installed plugins" page
+// Add Plugin Links to the "installed plugins" page.
 $l_str_plugin_file = 'footnotes/footnotes.php';
-add_filter("plugin_action_links_{$l_str_plugin_file}", array("MCI_Footnotes_Hooks", "PluginLinks"), 10, 2);
+add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'MCI_Footnotes_Hooks', 'plugin_links' ), 10, 2 );
 
-// initialize the Plugin
-$g_obj_MCI_Footnotes = new MCI_Footnotes();
-// run the Plugin
-$g_obj_MCI_Footnotes->run();
+// Initialize the Plugin.
+$g_obj_mci_footnotes = new MCI_Footnotes();
+// Run the Plugin.
+$g_obj_mci_footnotes->run();
 
 /**
  * Sets the stylesheet enqueuing mode for production.
- * 
+ *
  * @since 2.5.5
  * @var bool
  * @see class/init.php
- * 
+ *
  * In production, a minified CSS file tailored to the settings is enqueued.
- * 
+ *
  * Developing stylesheets is meant to be easier when this is set to false.
  * WARNING: This facility designed for development must NOT be used in production.
- */  
+ */
 define( 'C_BOOL_CSS_PRODUCTION_MODE', true );

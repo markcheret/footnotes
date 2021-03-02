@@ -77,6 +77,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.5.10 =
+- Bugfix: Revert to 2.5.8. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
+
 = 2.5.8 =
 - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.
 - Bugfix: Layout: support right-to-left writing direction by enabling mirrored paddings on HTML dir="rtl" pages, thanks to @arahmanshaalan bug report.

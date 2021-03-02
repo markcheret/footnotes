@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
  * Author: Mark Cheret
- * Version: 2.5.10d1
+ * Version: 2.5.11d0
  * Author URI: http://cheret.de/plugins/footnotes-2/
  * Text Domain: footnotes
  * Domain Path: /languages
@@ -21,7 +21,7 @@
  * @var str
  * @lastmodified 2021-02-28T1345+0100
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.5.10d1' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.5.11d0' );
 
 /*
 	LICENSE NOTICE

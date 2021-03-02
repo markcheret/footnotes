@@ -77,6 +77,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.5.10 =
+- Bugfix: Revert to 2.5.8. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
+
 = 2.5.9 =
 - Bugfix: Dashboard: unescape quotation marks in Custom CSS text area and input boxes, thanks to @rumperuu code contribution.
 - Update: Codebase: compliance to WordPress coding standards, thanks to @rumperuu code contribution.

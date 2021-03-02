@@ -21,7 +21,7 @@
  * @var str
  * @lastmodified 2021-02-28T1345+0100
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.5.11d0' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.5.10' );
 
 /*
 	LICENSE NOTICE

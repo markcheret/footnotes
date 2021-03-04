@@ -79,7 +79,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.5.11 =
 - Bugfix: Dashboard: unescape quotation marks in Custom CSS text area and input boxes, thanks to @rumperuu code contribution.
-- Update: Codebase: compliance to WordPress coding standards, thanks to @rumperuu code contribution.
+- Update: Codebase: compliance to WordPress Coding Standards, thanks to @rumperuu code contribution.
 - Adding: Documentation: additional readme in markdown format for use with GitHub, thanks to @rumperuu code contribution.
 - Adding: Documentation: help and support for individual contributors through Contributing Guidelines, thanks to @rumperuu code contribution.
 - Adding: Development: pre-commit hook for WordPress projects, modified from @bjornjohansen, thanks to @rumperuu code contribution.

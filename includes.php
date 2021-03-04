@@ -35,5 +35,5 @@ function mci_footnotes_require_php_files( $p_str_directory ) {
 }
 
 mci_footnotes_require_php_files( dirname( __FILE__ ) . '/class' );
-mci_footnotes_require_php_files( dirname( __FILE__ ) . '/class/layout' );
+mci_footnotes_require_php_files( dirname( __FILE__ ) . '/class/dashboard' );
 mci_footnotes_require_php_files( dirname( __FILE__ ) . '/class/widgets' );

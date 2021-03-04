@@ -77,15 +77,15 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.10 =
-- Bugfix: Revert to 2.5.8. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
-
-= 2.5.9 =
+= 2.5.11 =
 - Bugfix: Dashboard: unescape quotation marks in Custom CSS text area and input boxes, thanks to @rumperuu code contribution.
 - Update: Codebase: compliance to WordPress coding standards, thanks to @rumperuu code contribution.
 - Adding: Documentation: additional readme in markdown format for use with GitHub, thanks to @rumperuu code contribution.
 - Adding: Documentation: help and support for individual contributors through Contributing Guidelines, thanks to @rumperuu code contribution.
 - Adding: Development: pre-commit hook for WordPress projects, modified from @bjornjohansen, thanks to @rumperuu code contribution.
+
+= 2.5.10 =
+- Bugfix: Revert to 2.5.8. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
 
 = 2.5.8 =
 - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.

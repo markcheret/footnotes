@@ -44,8 +44,8 @@ define( 'C_STR_PACKAGE_VERSION', '2.5.11d1' );
  * - Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
  * 
  * @version 2.5.10 (reversion to @version 2.5.8)
- * @date 2021-03-01 11:09:29 +0000
  * @revision 2483464
+ * @timestamp 2021-03-01 11:09:29 +0000
  * @link https://plugins.trac.wordpress.org/changeset/2483464/footnotes/trunk
  * 
  * @reporter @little-shiva

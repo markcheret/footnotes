@@ -5,8 +5,9 @@ Requires at least: 3.9
 Tested up to: 5.6.1
 Requires PHP: 5.6
 Stable Tag: 2.5.10
+Package Version: 2.5.11d1
 License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
@@ -19,7 +20,7 @@ https://www.youtube.com/watch?v=HzHaMAAJwbI
 **footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts — those footnotes we know from offline publishing.
 
 = Main Features =
-- Fully customizable **footnotes** start and end shortcodes;
+- Fully customizable **footnote** start and end shortcodes;
 - Styled tooltips supporting hyperlinks display **footnotes** or a dedicated text;
 - Responsive *Reference Container* at the end or positioned by shortcode;
 - Display the **footnotes** *Reference Container* inside a Widget;
@@ -78,14 +79,18 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.5.11 =
+- Adding: Documentation: Readme: 'Package Version' field for information, after the 'Stable Tag' field parsed for release information.
 - Bugfix: Dashboard: unescape quotation marks in Custom CSS text area and input boxes, thanks to @rumperuu code contribution.
 - Update: Codebase: compliance to WordPress Coding Standards, thanks to @rumperuu code contribution.
 - Adding: Documentation: additional readme in markdown format for use with GitHub, thanks to @rumperuu code contribution.
-- Adding: Documentation: help and support for individual contributors through Contributing Guidelines, thanks to @rumperuu code contribution.
+- Adding: Documentation: help and support for contributors through Contributing Guidelines, thanks to @rumperuu code contribution.
 - Adding: Development: pre-commit hook for WordPress projects, modified from @bjornjohansen, thanks to @rumperuu code contribution.
 
 = 2.5.10 =
-- Bugfix: Revert to 2.5.8. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
+- Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
+
+= 2.5.9d1 =
+- Update: Codebase: accident. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
 
 = 2.5.8 =
 - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.

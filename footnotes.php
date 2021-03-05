@@ -19,10 +19,11 @@
  * Please keep this constant in sync with the Version in the header above,
  * and also in sync with the Package Version in the header of the readme.
  *     DO NOT SYNC THE STABLE TAG VALUE WITH THE PACKAGE VERSION VALUE.
+ * @see full docblock below.
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-03-05T0427+0100
+ * @lastmodified 2021-03-05T0457+0100
  */
 define( 'C_STR_PACKAGE_VERSION', '2.5.11d1' );
 
@@ -36,6 +37,7 @@ define( 'C_STR_PACKAGE_VERSION', '2.5.11d1' );
  * - Adding: Documentation: Readme: 'Package Version' field for information, after the 'Stable Tag' field parsed for release information.
  * 
  * @since 2.5.11
+ * @see C_STR_PACKAGE_VERSION
  * @see readme.txt
  * @link https://meta.trac.wordpress.org/ticket/5645#comment:5
  * 

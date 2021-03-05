@@ -79,18 +79,18 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.5.11 =
-- Adding: Documentation: Readme: 'Package Version' field for information, after the 'Stable Tag' field parsed for release information.
-- Bugfix: Dashboard: unescape quotation marks in Custom CSS text area and input boxes, thanks to @rumperuu code contribution.
-- Update: Codebase: compliance to WordPress Coding Standards, thanks to @rumperuu code contribution.
+- Adding: Documentation: Readme: Header: 'Package Version' field for information, after the 'Stable Tag' field (parsed for release configuration), to prevent further misuse.
+- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution during the codebase conformance overhaul.
+- Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
 - Adding: Documentation: additional readme in markdown format for use with GitHub, thanks to @rumperuu code contribution.
-- Adding: Documentation: help and support for contributors through Contributing Guidelines, thanks to @rumperuu code contribution.
+- Adding: Documentation: help and support for contributors by the means of Contributing Guidelines, thanks to @rumperuu code contribution.
 - Adding: Development: pre-commit hook for WordPress projects, modified from @bjornjohansen, thanks to @rumperuu code contribution.
 
 = 2.5.10 =
-- Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
+- Bugfix: Codebase: revert to 2.5.8 with apologies (below), thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
 
 = 2.5.9d1 =
-- Update: Codebase: accident. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
+- Update: Codebase: accidental release of trunk/, tagged when 2.5.10 was released 3½ h later. OUR APOLOGIES, PLEASE, FOR THE 2.5.9d1 PLUGIN 'Stable Tag' MISHAP.
 
 = 2.5.8 =
 - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.

@@ -4,8 +4,10 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.6.1
 Requires PHP: 5.6
-Stable Tag: 2.5.10
 Package Version: 2.5.11d1
+Tagged Version: 2.5.10
+Stable Tag: 2.5.10
+CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,11 +81,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.5.11 =
-- Adding: Documentation: Readme: Header: 'Package Version' field for information, after the 'Stable Tag' field (parsed for release configuration), to prevent further misuse.
+- Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
+- Adding: Documentation: Readme.txt: informative 'Tagged Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
+- Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
 - Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution during the codebase conformance overhaul.
 - Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
-- Adding: Documentation: additional readme in markdown format for use with GitHub, thanks to @rumperuu code contribution.
-- Adding: Documentation: help and support for contributors by the means of Contributing Guidelines, thanks to @rumperuu code contribution.
+- Adding: Documentation: additional readme in markdown format 'README.md' for use with GitHub, thanks to @rumperuu code contribution.
+- Adding: Documentation: help and support for contributors by the means of Contributing Guidelines 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
 - Adding: Development: pre-commit hook for WordPress projects, modified from @bjornjohansen, thanks to @rumperuu code contribution.
 
 = 2.5.10 =

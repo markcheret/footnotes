@@ -23,23 +23,24 @@
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-03-05T0457+0100
+ * @lastmodified 2021-03-08T1008+0100
  */
 define( 'C_STR_PACKAGE_VERSION', '2.5.11d1' );
 
 /**
- * Package Version vs Stable Tag version.
+ * Version numbers in a WordPress plugin readme.txt header.
+ * 
+ * - Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
+ * - Adding: Documentation: Readme.txt: informative 'Tagged Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
+ * - Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
+ * 
+ * @since 2.5.11
+ * @see readme.txt
+ * @link https://meta.trac.wordpress.org/ticket/5652
  * 
  * WordPress plugin readmes are usually lacking the version number of the package.
  * In Footnotes, this has been included after the stable tag had been mistaken for
  * the package version, given that state-of-the-art readmes have that information.
- * 
- * - Adding: Documentation: Readme: 'Package Version' field for information, after the 'Stable Tag' field parsed for release information.
- * 
- * @since 2.5.11
- * @see C_STR_PACKAGE_VERSION
- * @see readme.txt
- * @link https://meta.trac.wordpress.org/ticket/5645#comment:5
  * 
  * - Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
  * 

@@ -2,7 +2,7 @@
     "name": "markcheret/footnotes",
     "scripts": {
         "build": "./_tools/build.sh",
-    	"post-install-cmd": "./_tools/setup.sh"
+        "post-install-cmd": "./_tools/setup.sh"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",

@@ -29,12 +29,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: footnotes
-            path: dist/footnotes-${{ github.event.release.tag_name }}.zip
+            path: footnotes-${{ github.event.release.tag_name }}.zip
             
       - name: Upload archive to release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: dist/footnotes-${{ github.event.release.tag_name }}.zip application/zip
+          args: footnotes-${{ github.event.release.tag_name }}.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

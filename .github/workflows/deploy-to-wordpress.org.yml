@@ -18,7 +18,7 @@ jobs:
           composer run build
 
       - name: Create artifact
-        uses: montudor/action-zip@stable
+        uses: montudor/action-zip@v0.1.0
         with:
           args: zip -X -r dist/footnotes.zip dist
 

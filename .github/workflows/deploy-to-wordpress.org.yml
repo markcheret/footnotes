@@ -1,18 +1,13 @@
-# This is a basic workflow to help you get started with Actions
 name: Deploy to WordPress.org
 on:
   release:
     types: [published]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   tag:
     name: New release
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

@@ -22,7 +22,7 @@ jobs:
       - name: Create release archive
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r dist/footnotes-${{ github.event.release.tag_name }}.zip dist/*
+          args: zip -X -r dist/footnotes-${{ github.event.release.tag_name }}.zip dist
 
       - name: Upload archive as artifact
         uses: actions/upload-artifact@v2

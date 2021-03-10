@@ -37,7 +37,7 @@ jobs:
             name: footnotes
             path: dist/footnotes.zip
             
-     	- name: Upload to release
+      - name: Upload to release
         uses: JasonEtco/upload-to-release@master
         with:
           args: dist/footnotes.zip application/zip

@@ -1,4 +1,6 @@
-name: Deploy to WordPress.org
+name: Issue new release
+
+# Action runs when a new release is published.
 on:
   release:
     types: [published]
@@ -21,7 +23,7 @@ jobs:
       - name: Create artifact
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r footnotes.zip . 
+          args: zip -X -r footnotes-${{ github.event.release.tag_name }}.zip . 
 
       #- name: WordPress Plugin Deploy
       #  id: deploy
@@ -36,11 +38,11 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: footnotes
-            path: dist/footnotes.zip
+            path: dist/footnotes-${{ github.event.release.tag_name }}.zip
             
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: dist/footnotes.zip application/zip
+          args: dist/footnotes-${{ github.event.release.tag_name }}.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

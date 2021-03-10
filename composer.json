@@ -1,11 +1,11 @@
 {
+    "name": "markcheret/footnotes",
+    "scripts": {
+        "build": "./_tools/build.sh",
+    	"post-install-cmd": "./_tools/setup.sh"
+    },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "wp-coding-standards/wpcs": "^2.3"
-    },
-    "scripts": {
-    	"post-install-cmd": [
-    		"bash _tools/setup.sh"
-    	]
     }
 }

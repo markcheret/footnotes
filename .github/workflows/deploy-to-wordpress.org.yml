@@ -12,26 +12,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      #- name: Build
-        #run: |
-          #composer install
-          #composer run build
+      - name: Build
+        run: |
+          composer install --no-dev --optimize-autoloader
+          composer run build
 
-      - name: WordPress Plugin Deploy
-        id: deploy
-        uses: 10up/action-wordpress-plugin-deploy@stable
+      - name: Create artifact
+        uses: montudor/action-zip@stable
         with:
-          generate-zip: true
-        env:
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          args: zip -X -r dist/footnotes.zip dist
+
+      #- name: WordPress Plugin Deploy
+      #  id: deploy
+     #   uses: 10up/action-wordpress-plugin-deploy@stable
+      #  with:
+      #    generate-zip: true
+     #   env:
+      #    SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+      #    SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           
-      - name: Upload release assets
-        uses: actions/upload-release-asset@v1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+            name: footnotes
+            path: dist/footnotes.zip
+            
+     	- name: Upload to release
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: dist/footnotes.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{github.workspace}}/${{ github.event.repository.name }}.zip
-          asset_name: ${{ github.event.repository.name }}.zip
-          asset_content_type: application/zip

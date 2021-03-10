@@ -16,11 +16,12 @@ jobs:
         run: |
           composer install --no-dev --optimize-autoloader
           composer run build
+          cd dist
 
       - name: Create artifact
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r dist/footnotes.zip dist
+          args: zip -X -r footnotes.zip . 
 
       #- name: WordPress Plugin Deploy
       #  id: deploy

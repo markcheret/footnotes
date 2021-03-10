@@ -18,23 +18,22 @@ jobs:
         run: |
           composer install --no-dev --optimize-autoloader
           composer run build
-          cd dist
 
       - name: Create release archive
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r footnotes-${{ github.event.release.tag_name }}.zip . 
+          args: (cd dist && zip -X -r footnotes-${{ github.event.release.tag_name }}.zip .)
 
       - name: Upload archive as artifact
         uses: actions/upload-artifact@v2
         with:
             name: footnotes-${{ github.event.release.tag_name }}
-            path: footnotes-${{ github.event.release.tag_name }}.zip
+            path: dist/footnotes-${{ github.event.release.tag_name }}.zip
             
       - name: Upload archive to release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: footnotes-${{ github.event.release.tag_name }}.zip application/zip
+          args: dist/footnotes-${{ github.event.release.tag_name }}.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

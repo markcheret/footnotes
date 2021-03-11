@@ -30,6 +30,18 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
   - You can run either across the entire project by adding the argument `--ignore=*/vendor/*` and targetting the file `./**/*.php`
     - You may have to enable double-wildcards in your console first (`shopt -s globstar`)
 
+## Building
+
+1. Run `_tools/build-stylesheets.sh -c` to concatenate stylesheets
+1. Manually minify the output files in `css/tmp/`, saving them as `.min.css` files
+  - The intention is to replace this with automated minification, meaning that
+    all of these steps can be rolled into a single `build` command.
+1. Run `_tools/build-stylesheets.sh -d` to deploy the minified files to `dist/`
+  - **this will delete any existing `dist/` folder**
+1. Run `composer run build` to move over the remaining files to `dist/`
+  - Currently, the files to include in a distribution are hard-coded in `_tools/build.sh`
+  - The intention is to replace this with a proper parsing of the `.distignore` file
+
 ## Updating Documentation
 
 1. Install [phpDocumentor](https://phpdoc.org/)

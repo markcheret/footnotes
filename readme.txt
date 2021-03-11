@@ -2,7 +2,7 @@
 Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.6.1
+Tested up to: 5.7
 Requires PHP: 5.6
 Stable Tag: 2.5.10
 License: GPLv3 or later

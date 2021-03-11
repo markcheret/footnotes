@@ -66,20 +66,17 @@ elif [[ $1 == "-d" ]]; then
 	
 else
 
-	echo "Concatenates, minifies (TODO) and deploys stylesheets for distribution."
-	echo ""	
-	echo "12 unified style sheets are concatenated out of these files:"
-	echo ""
-	echo "\`dev-common.css\`"
-	echo "\`dev-tooltips.css\`"
-	echo "\`dev-tooltips-alternative.css\`"
-	echo "\`dev-layout-reference-container.css\`"
-	echo "\`dev-layout-entry-content.css\`"
-	echo "\`dev-layout-main-content.css\`"
-	echo ""
-	echo "Command: \`-c\`: Concatenate \`dev-*\` CSS files into temporary directory."
-	echo "Command: \`-m\`: Minify files (TODO)."
-	echo "Command: \`-d\`: Deploy minified files to \`dist/css/\` and remove temporary files."
-	echo "No command, \"--help\", or anything else: Output this help section."
+	echo -e "Concatenates, minifies (TODO) and deploys stylesheets for distribution.\n"
+	echo -e "12 unified style sheets are concatenated out of these files:\n"
+	echo    "\`dev-common.css\`"
+	echo    "\`dev-tooltips.css\`"
+	echo    "\`dev-tooltips-alternative.css\`"
+	echo    "\`dev-layout-reference-container.css\`"
+	echo    "\`dev-layout-entry-content.css\`"
+	echo -e "\`dev-layout-main-content.css\`\n"
+	echo    "Command: \`-c\`: Concatenate \`dev-*\` CSS files into temporary directory."
+	echo    "Command: \`-m\`: Minify files (TODO)."
+	echo    "Command: \`-d\`: Deploy minified files to \`dist/css/\` and remove temporary files."
+	echo    "No command, \"--help\", or anything else: Output this help section."
 	
 fi

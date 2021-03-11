@@ -5,7 +5,7 @@ Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
 Package Version: 2.5.11d2
-Tagged Version: 2.5.10
+Version: 2.5.10
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -82,7 +82,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.5.11 =
 - Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
-- Adding: Documentation: Readme.txt: informative 'Tagged Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
+- Adding: Documentation: Readme.txt: informative 'Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
 - Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
 - Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution during the codebase conformance overhaul.
 - Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.

@@ -223,7 +223,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.2.0 =
 - Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
-- Adding: Start/end short codes: more predefined options.
+- Adding: Dashboard: Footnote delimiters: more predefined options.
 - Adding: Numbering styles: lowercase Roman numerals support.
 - Update: Priority levels: update the notice in the dashboard Priority tab.
 - Update: Dashboard: Tooltip settings: group into 3 thematic containers.

@@ -2,9 +2,9 @@
 Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.6.1
+Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.11d1
+Package Version: 2.5.11d2
 Tagged Version: 2.5.10
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.

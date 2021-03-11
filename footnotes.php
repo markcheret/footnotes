@@ -14,31 +14,101 @@
  */
 
 /**
- * Version number for stylesheet cache busting.
+ * Package Version number for stylesheet cache busting.
+ *
+ * Please keep this constant in sync with the Version in the header above,
+ * and also in sync with the Package Version in the header of the readme.
+ *     DO NOT SYNC THE STABLE TAG VALUE WITH THE PACKAGE VERSION VALUE.
  *
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-03-04T0526+0100
+ * @lastmodified 2021-03-11T0623+0100
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.5.11d1' );
+define( 'C_STR_PACKAGE_VERSION', '2.5.11d1' );
 
-/*
-	LICENSE NOTICE
-
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 3, as
-	published by the Free Software Foundation.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+/**
+ * Version numbers in a WordPress plugin readme.txt header.
+ *
+ * - Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
+ * - Adding: Documentation: Readme.txt: informative 'Tagged Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
+ * - Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
+ *
+ * @since 2.5.11
+ * @see readme.txt
+ * @link https://meta.trac.wordpress.org/ticket/5652
+ *
+ * Package Version   Actual version string.
+ *                   May identify a development version.
+ *                   A 'd' series is suffixed to incremented bugfix version.
+ *
+ * Tagged Version    Refers to the latest tag.
+ *                   Typically the best available version.
+ *                   May not be released, due to release frequency concerns.
+ *
+ * Stable Tag        Parsed in trunk/ for release configuration.
+ *                   Must not be greater than the Version in MAIN.php header.
+ *
+ * WordPress plugin readmes are usually lacking the version number of the package.
+ * In Footnotes, this has been included after the stable tag had been mistaken for
+ * the package version, given that state-of-the-art readmes have that information.
+ *
+ * - Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
+ *
+ * @version 2.5.10 (reversion to @version 2.5.8)
+ * @revision 2483464
+ * @timestamp 2021-03-01 11:09:29 +0000
+ * @link https://plugins.trac.wordpress.org/changeset/2483464/footnotes/trunk
+ *
+ * @reporter @little-shiva
+ * @link https://wordpress.org/support/topic/footnotes-broke-two-of-my-client-sites/
+ *
+ * @reporter @watershare
+ * @link https://wordpress.org/support/topic/latest-update-broke-my-site-19/
+ *
+ * @reporter @adjayabdg
+ * @link https://wordpress.org/support/topic/latest-update-broke-my-site-19/#post-14115531
+ *
+ * @reporter @staho
+ * @link https://wordpress.org/support/topic/version-2-5-9d1-breaks-wp-down/
+ *
+ * @reporter @frav8
+ * @link https://wordpress.org/support/topic/version-2-5-9d1-breaks-wp-down/#post-14115614
+ *
+ * @reporter @voregnev
+ * @link https://wordpress.org/support/topic/version-2-5-9d1-breaks-wp-down/#post-14115632
+ *
+ * @reporter @dsl225
+ * @link https://wordpress.org/support/topic/version-2-5-9d1-breaks-wp-down/#post-14115820
+ *
+ * @reporter @alexclassroom
+ * @link https://wordpress.org/support/topic/version-2-5-9d1-breaks-wp-down/#post-14115860
+ *
+ * @reporter @a223123131
+ * @link https://wordpress.org/support/topic/version-2-5-9d1-breaks-wp-down/#post-14115906
+ * @link https://wordpress.org/support/topic/update-breaks-layout-3/
+ * @link https://wordpress.org/support/topic/bugs-in-every-2nd-update/#post-14116804
+ *
+ * @reporter @codldmac
+ * @link https://wordpress.org/support/topic/crashed-my-site-104/
+ *
+ * The accidental release of 2.5.9d1 was due to 3 factors:
+ *
+ * 1. The codebase got overhauled for the sake of WordPress Coding Standards compliance,
+ *    one requirement of which is that files be named after the name of the class in them;
+ * 2. The renamed folder was not added to Subversion version control due to an unexpected
+ *    unfamiliarity with the system and its command line interface;
+ * 3. The Stable Tag field in the Readme header was used for the package version because
+ *    the related field is lacking, and the use of file headers for release configuration
+ *    is uncommon.
+ *
+ * @link https://wordpress.org/support/topic/2-5-10-reverts-2-5-9d1-and-apologies/
+ * @link https://wordpress.org/support/topic/2-5-10-reverts-2-5-9d1-and-apologies/#post-14119440
+ * @link https://github.com/markcheret/footnotes/issues/55
+ * @link https://meta.trac.wordpress.org/ticket/5645
+ * @link https://wordpress.org/plugins/readme.txt
+ * @link https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/
+ */
 
 /**
  * Plugin’s main PHP file.

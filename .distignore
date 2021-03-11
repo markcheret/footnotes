@@ -19,9 +19,6 @@ phpunit.xml.dist
 multisite.xml
 multisite.xml.dist
 phpcs.ruleset.xml
-CONTRIBUTING.md
-README.md
-SECURITY.md
 LICENSE
 wp-cli.local.yml
 tests

@@ -1,11 +1,13 @@
 {
+    "name": "markcheret/footnotes",
+    "description": "footnotes aims to be the all-in-one solution for displaying an automatically-generated list of references on your WordPress Page or Post.",
+    "license": "GPL-3.0-or-later",
+    "scripts": {
+        "build": "./_tools/build.sh",
+        "post-install-cmd": "./_tools/setup.sh"
+    },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "wp-coding-standards/wpcs": "^2.3"
-    },
-    "scripts": {
-    	"post-install-cmd": [
-    		"bash _tools/setup.sh"
-    	]
     }
 }

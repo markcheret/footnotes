@@ -1,5 +1,6 @@
 .phpdoc/
 vendor/
+dist/
 
 *.bak
 authors.txt

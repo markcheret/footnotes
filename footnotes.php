@@ -4,7 +4,9 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
  * Author: Mark Cheret
- * Version: 2.5.11d2
+ * Package V.: 2.5.11d2
+ * Version: 2.5.10
+ * CAUTION: THIS V. FIELD IS PARSED FOR UPDATE CONFIGURATION.
  * Author URI: http://cheret.de/plugins/footnotes-2/
  * Text Domain: footnotes
  * Domain Path: /languages
@@ -16,38 +18,39 @@
 /**
  * Package Version number for stylesheet cache busting.
  *
- * Please keep this constant in sync with the Version in the header above,
- * and also in sync with the Package Version in the header of the readme.
- *     DO NOT SYNC THE STABLE TAG VALUE WITH THE PACKAGE VERSION VALUE.
+ * Please keep this constant in sync with the Package Version in the header above
+ * and in the header of the readme, but not necessarily with the other Version.
  *
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-03-11T1544+0100
+ * @lastmodified 2021-03-11T2202+0100
  */
 define( 'C_STR_PACKAGE_VERSION', '2.5.11d2' );
 
 /**
- * Version numbers in a WordPress plugin readme.txt header.
+ * Version numbers in WordPress plugin readme.txt and main PHP headers.
  *
  * - Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
- * - Adding: Documentation: Readme.txt: informative 'Tagged Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
+ * - Adding: Documentation: Readme.txt: informative 'Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
  * - Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
  *
  * @since 2.5.11
  * @see readme.txt
  * @link https://meta.trac.wordpress.org/ticket/5652
  *
- * Package Version   Actual version string.
+ * Package Version   Actual version string, informative only.
  *                   May identify a development version.
  *                   A 'd' series is suffixed to incremented bugfix version.
+ *                   Used for style sheet cache busting.
  *
- * Tagged Version    Refers to the latest tag.
+ * Version           Parsed in the main PHP file header for update configuration.
+ *                   Refers to the latest tag.
  *                   Typically the best available version.
  *                   May not be released, due to release frequency concerns.
  *
- * Stable Tag        Parsed in trunk/ for release configuration.
- *                   Must not be greater than the Version in MAIN.php header.
+ * Stable Tag        Parsed in the readme.txt in trunk/ for release configuration.
+ *                   May be smaller than Version, avoiding too frequent releases.
  *
  * WordPress plugin readmes are usually lacking the version number of the package.
  * In Footnotes, this has been included after the stable tag had been mistaken for

@@ -1,5 +1,5 @@
 customized-documentation-schema.txt
-@lastmodified 2021-02-15T2022+0100
+@lastmodified 2021-03-05T0501+0100
 
 
 Plugin Footnotes for WordPress, v2.5.4 and later
@@ -255,10 +255,12 @@ MISSING TAGS:
 @modified
 @publisher
 @reporter
+@revision
+@timestamp
 @user
 
 
-▲ Config (original, missing and added tags), example of VS Code
+▲ Config (original, missing and added tags), example of VS Code.
 /usr/share/code/resources/app/extensions/php/syntaxes/php.tmLanguage.json
 
 original:
@@ -274,4 +276,4 @@ PHPStan:
 |extends|implements|template
 
 custom:
-|accountable|bib|biblio|callback|commit|committer|contributor|courtesy|date|datetime|lastmodified|modified|publisher|reporter|user
+|accountable|bib|biblio|callback|commit|committer|contributor|courtesy|date|datetime|lastmodified|modified|publisher|reporter|revision|timestamp|user

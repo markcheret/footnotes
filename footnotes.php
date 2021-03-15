@@ -130,4 +130,4 @@ $g_obj_mci_footnotes->run();
  * Developing stylesheets is meant to be easier when this is set to false.
  * WARNING: This facility designed for development must NOT be used in production.
  */
-define( 'C_BOOL_CSS_PRODUCTION_MODE', true );
+define( 'C_BOOL_CSS_PRODUCTION_MODE', false );

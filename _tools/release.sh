@@ -235,6 +235,9 @@ echo -e "$CHANGELOG_MESSAGE" '\n'
 echo -e "Changes made to local \`trunk/\`:\n"
 svn stat tmp/trunk/
 echo ""
+echo -e "\`readme.txt\` header:\n"
+head tmp/trunk/readme.txt
+echo ""
 read -p "Is this all correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 
 # Step 7(d): Push to remote `trunk/` (provided the flag is set)

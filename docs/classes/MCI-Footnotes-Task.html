@@ -51,9 +51,13 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
-                                    </section>
+            </section>
 
+        <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -70,7 +74,7 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/Default.html">Default</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -78,6 +82,12 @@
     MCI_Footnotes_Task
 
     
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
+                            </ul>
+        </div>
     
     
     </h2>
@@ -85,7 +95,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 </aside>
 
             <p class="phpdocumentor-summary">Searches and replaces the footnotes.</p>
@@ -100,15 +110,6 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -131,144 +132,144 @@
 
 <dl class="phpdocumentor-table-of-contents">
                 <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_arr_Footnotes">$a_arr_Footnotes</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_arr_footnotes">$a_arr_footnotes</a>
     <span>
                 &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
 <dd>Contains all footnotes found on current public page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_AllowLoveMe">$a_bool_AllowLoveMe</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_allow_love_me">$a_bool_allow_love_me</a>
     <span>
                 &nbsp;: bool            </span>
 </dt>
 <dd>Flag if the display of &#039;LOVE FOOTNOTES&#039; is allowed on the current public page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_AlternativeTooltipsEnabled">$a_bool_AlternativeTooltipsEnabled</a>
-    <span>
-                &nbsp;: mixed            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_HardLinksEnable">$a_bool_HardLinksEnable</a>
-    <span>
-                &nbsp;: bool|<abbr title="\str">str</abbr>|int            </span>
-</dt>
-<dd>Hard links for AMP compatibility</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_MirrorTooltipText">$a_bool_MirrorTooltipText</a>
-    <span>
-                &nbsp;: mixed            </span>
-</dt>
-<dd>Dedicated tooltip text</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_SyntaxErrorFlag">$a_bool_SyntaxErrorFlag</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_alternative_tooltips_enabled">$a_bool_alternative_tooltips_enabled</a>
     <span>
                 &nbsp;: bool            </span>
 </dt>
-<dd>Footnote delimiter syntax validation</dd>
+<dd>Whether alternative tooltips are enabled. Actual value depends on settings.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_TooltipsEnabled">$a_bool_TooltipsEnabled</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_hard_links_enable">$a_bool_hard_links_enable</a>
     <span>
                 &nbsp;: bool            </span>
 </dt>
-<dd>Template process optimization</dd>
+<dd>Whether hard links are enabled.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_int_PostId">$a_int_PostId</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_mirror_tooltip_text">$a_bool_mirror_tooltip_text</a>
+    <span>
+                &nbsp;: bool            </span>
+</dt>
+<dd>Whether to mirror the tooltip text in the reference container.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_syntax_error_flag">$a_bool_syntax_error_flag</a>
+    <span>
+                &nbsp;: bool            </span>
+</dt>
+<dd>Footnote delimiter syntax validation.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/MCI-Footnotes-Task.html#property_a_bool_tooltips_enabled">$a_bool_tooltips_enabled</a>
+    <span>
+                &nbsp;: bool            </span>
+</dt>
+<dd>Whether tooltips are enabled. Actual value depends on settings.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/MCI-Footnotes-Task.html#property_a_int_post_id">$a_int_post_id</a>
     <span>
                 &nbsp;: int            </span>
 </dt>
-<dd>Infinite scroll / autoload or archive view</dd>
+<dd>Autoload a.k.a. infinite scroll, or archive view.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_int_ReferenceContainerId">$a_int_ReferenceContainerId</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_int_reference_container_id">$a_int_reference_container_id</a>
     <span>
                 &nbsp;: int            </span>
 </dt>
-<dd>Multiple reference containers in content and widgets</dd>
+<dd>Multiple reference containers in content and widgets.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_int_ScrollOffset">$a_int_ScrollOffset</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_int_scroll_offset">$a_int_scroll_offset</a>
     <span>
                 &nbsp;: int            </span>
 </dt>
-<dd>Scroll offset</dd>
+<dd>Scroll offset.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_int_TooltipShortcodeLength">$a_int_TooltipShortcodeLength</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_int_tooltip_shortcode_length">$a_int_tooltip_shortcode_length</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: int            </span>
 </dt>
-<dd></dd>
+<dd>The tooltip delimiter shortcode length.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_FootnoteLinkSlug">$a_str_FootnoteLinkSlug</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_footnote_link_slug">$a_str_footnote_link_slug</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The footnote slug.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkCloseTag">$a_str_LinkCloseTag</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_close_tag">$a_str_link_close_tag</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The closing tag.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkIdsSeparator">$a_str_LinkIdsSeparator</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_open_tag">$a_str_link_open_tag</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The opening tag.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkOpenTag">$a_str_LinkOpenTag</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_span">$a_str_link_span</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The span element name.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkSpan">$a_str_LinkSpan</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_post_container_id_compound">$a_str_post_container_id_compound</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
 </dt>
-<dd>Optional link element for footnote referrers and backlinks</dd>
+<dd>Contains the concatenated link.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_PostContainerIdCompound">$a_str_PostContainerIdCompound</a>
-    <span>
-                &nbsp;: mixed            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_Prefix">$a_str_Prefix</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_prefix">$a_str_prefix</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>Prefix for the Footnote html element ID.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_ReferrerLinkSlug">$a_str_ReferrerLinkSlug</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_referrer_link_slug">$a_str_referrer_link_slug</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The referrer slug.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes-Task.html#property_a_str_TooltipShortcode">$a_str_TooltipShortcode</a>
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_tooltip_shortcode">$a_str_tooltip_shortcode</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The tooltip delimiter shortcode.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_ids_separator">$a_str_link_ids_separator</a>
+    <span>
+                &nbsp;: <abbr title="\str">str</abbr>            </span>
+</dt>
+<dd>The slug and identifier separator.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MCI-Footnotes-Task.html#method_exec">exec()</a>
@@ -278,14 +279,14 @@
 <dd>Replaces all footnotes that occur in the given content.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Task.html#method_ReferenceContainer">ReferenceContainer()</a>
+    <a href="classes/MCI-Footnotes-Task.html#method_reference_container">reference_container()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
 <dd>Generates the reference container.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Task.html#method_registerHooks">registerHooks()</a>
+    <a href="classes/MCI-Footnotes-Task.html#method_register_hooks">register_hooks()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -355,7 +356,7 @@
 <dd>Outputs the custom css to the header of the public page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/MCI-Footnotes-Task.html#method_replacePostObject">replacePostObject()</a>
+    <a href="classes/MCI-Footnotes-Task.html#method_replace_post_object">replace_post_object()</a>
     <span>
                         &nbsp;: <abbr title="\WP_Post">WP_Post</abbr>    </span>
 </dt>
@@ -380,16 +381,16 @@
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_arr_Footnotes">
-        $a_arr_Footnotes
-        <a href="classes/MCI-Footnotes-Task.html#property_a_arr_Footnotes" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_arr_footnotes">
+        $a_arr_footnotes
+        <a href="classes/MCI-Footnotes-Task.html#property_a_arr_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">108</span>
+    <span class="phpdocumentor-element-found-in__line">104</span>
 </aside>
 
         <p class="phpdocumentor-summary">Contains all footnotes found on current public page.</p>
@@ -397,7 +398,7 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
-    <span class="phpdocumentor-signature__name">$a_arr_Footnotes</span>
+    <span class="phpdocumentor-signature__name">$a_arr_footnotes</span>
      = <span class="phpdocumentor-signature__default-value">array()</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -409,15 +410,6 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -436,16 +428,16 @@
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_AllowLoveMe">
-        $a_bool_AllowLoveMe
-        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_AllowLoveMe" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_allow_love_me">
+        $a_bool_allow_love_me
+        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_allow_love_me" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 </aside>
 
         <p class="phpdocumentor-summary">Flag if the display of &#039;LOVE FOOTNOTES&#039; is allowed on the current public page.</p>
@@ -453,7 +445,7 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_AllowLoveMe</span>
+    <span class="phpdocumentor-signature__name">$a_bool_allow_love_me</span>
      = <span class="phpdocumentor-signature__default-value">	rue</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -465,15 +457,6 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -492,54 +475,24 @@
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_AlternativeTooltipsEnabled">
-        $a_bool_AlternativeTooltipsEnabled
-        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_AlternativeTooltipsEnabled" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_alternative_tooltips_enabled">
+        $a_bool_alternative_tooltips_enabled
+        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_alternative_tooltips_enabled" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">188</span>
+    <span class="phpdocumentor-element-found-in__line">189</span>
 </aside>
 
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_bool_AlternativeTooltipsEnabled</span>
-     = <span class="phpdocumentor-signature__default-value">alse</span></code>
-
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_HardLinksEnable">
-        $a_bool_HardLinksEnable
-        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_HardLinksEnable" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">219</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Hard links for AMP compatibility</p>
+        <p class="phpdocumentor-summary">Whether alternative tooltips are enabled. Actual value depends on settings.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool|<abbr title="\str">str</abbr>|int</span>
-    <span class="phpdocumentor-signature__name">$a_bool_HardLinksEnable</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$a_bool_alternative_tooltips_enabled</span>
      = <span class="phpdocumentor-signature__default-value">alse</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -554,85 +507,9 @@
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Bugfix: footnote links script independent.</p>
-<ul>
-<li>Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.</li>
-</ul>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.0.4</span>
+                                            <span class="phpdocumentor-tag-link">2.4.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.3.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">reporter</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@theroninjedi47</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">reporter</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@psykonevro</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/"> <ul>
-<li>Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.</li>
-</ul>
- </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/making-it-amp-compatible/"> https://wordpress.org/support/topic/making-it-amp-compatible/ </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/"> <p>The official AMP plugin strips off JavaScript, breaking Footnotes’
-animated scrolling.
-When the alternative reference container is enabled, hard links are too.</p>
- </a>
-                    
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">contributor</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@martinneumannat</p>
-</section>
 
                                     </dd>
                         </dl>
@@ -645,30 +522,74 @@ When the alternative reference container is enabled, hard links are too.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_MirrorTooltipText">
-        $a_bool_MirrorTooltipText
-        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_MirrorTooltipText" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_hard_links_enable">
+        $a_bool_hard_links_enable
+        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_hard_links_enable" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">318</span>
+    <span class="phpdocumentor-element-found-in__line">228</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Dedicated tooltip text</p>
+        <p class="phpdocumentor-summary">Whether hard links are enabled.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_bool_MirrorTooltipText</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$a_bool_hard_links_enable</span>
      = <span class="phpdocumentor-signature__default-value">alse</span></code>
 
-        <section class="phpdocumentor-description"><ul>
-<li>Update: Tooltips: ability to display dedicated content before <code class="prettyprint">[[/tooltip]]</code>, thanks to @jbj2199 issue report.</li>
-</ul>
-</section>
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.3.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_mirror_tooltip_text">
+        $a_bool_mirror_tooltip_text
+        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_mirror_tooltip_text" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">399</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Whether to mirror the tooltip text in the reference container.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$a_bool_mirror_tooltip_text</span>
+     = <span class="phpdocumentor-signature__default-value">alse</span></code>
+
+        <section class="phpdocumentor-description"></section>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -685,35 +606,6 @@ When the alternative reference container is enabled, hard links are too.</p>
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">date</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>2021-01-19T2223+0100</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">reporter</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@jbj2199</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/change-tooltip-text/"> <p>Tooltips can display another content than the footnote entry
-in the reference container. The trigger is a shortcode in
-the footnote text separating the tooltip text from the note.
-That is consistent with what WordPress does for excerpts.</p>
- </a>
-                    
-                                    </dd>
                         </dl>
 
 </article>
@@ -724,24 +616,24 @@ That is consistent with what WordPress does for excerpts.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_SyntaxErrorFlag">
-        $a_bool_SyntaxErrorFlag
-        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_SyntaxErrorFlag" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_syntax_error_flag">
+        $a_bool_syntax_error_flag
+        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_syntax_error_flag" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">340</span>
+    <span class="phpdocumentor-element-found-in__line">419</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Footnote delimiter syntax validation</p>
+        <p class="phpdocumentor-summary">Footnote delimiter syntax validation.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_SyntaxErrorFlag</span>
+    <span class="phpdocumentor-signature__name">$a_bool_syntax_error_flag</span>
      = <span class="phpdocumentor-signature__default-value">	rue</span></code>
 
         <section class="phpdocumentor-description"><ul>
@@ -783,24 +675,24 @@ That is consistent with what WordPress does for excerpts.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_TooltipsEnabled">
-        $a_bool_TooltipsEnabled
-        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_TooltipsEnabled" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_tooltips_enabled">
+        $a_bool_tooltips_enabled
+        <a href="classes/MCI-Footnotes-Task.html#property_a_bool_tooltips_enabled" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">187</span>
+    <span class="phpdocumentor-element-found-in__line">180</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Template process optimization</p>
+        <p class="phpdocumentor-summary">Whether tooltips are enabled. Actual value depends on settings.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_TooltipsEnabled</span>
+    <span class="phpdocumentor-signature__name">$a_bool_tooltips_enabled</span>
      = <span class="phpdocumentor-signature__default-value">alse</span></code>
 
         <section class="phpdocumentor-description"><ul>
@@ -833,7 +725,7 @@ That is consistent with what WordPress does for excerpts.</p>
 
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
+                    <span class="phpdocumentor-tag__name">contributor</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -874,24 +766,24 @@ That is consistent with what WordPress does for excerpts.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_int_PostId">
-        $a_int_PostId
-        <a href="classes/MCI-Footnotes-Task.html#property_a_int_PostId" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_int_post_id">
+        $a_int_post_id
+        <a href="classes/MCI-Footnotes-Task.html#property_a_int_post_id" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">145</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Infinite scroll / autoload or archive view</p>
+        <p class="phpdocumentor-summary">Autoload a.k.a. infinite scroll, or archive view.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$a_int_PostId</span>
+    <span class="phpdocumentor-signature__name">$a_int_post_id</span>
      = <span class="phpdocumentor-signature__default-value">0</span></code>
 
         <section class="phpdocumentor-description"><ul>
@@ -935,7 +827,7 @@ That is consistent with what WordPress does for excerpts.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                                         <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/auto-load-post-compatibility-update/"> <p>As multiple posts are appended to each other, functions and fragment IDs must be disambiguated.
-post ID to make everything unique wrt infinite scroll and archive view:</p>
+post ID to make everything unique wrt infinite scroll and archive view.</p>
  </a>
                     
                                     </dd>
@@ -958,24 +850,24 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_int_ReferenceContainerId">
-        $a_int_ReferenceContainerId
-        <a href="classes/MCI-Footnotes-Task.html#property_a_int_ReferenceContainerId" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_int_reference_container_id">
+        $a_int_reference_container_id
+        <a href="classes/MCI-Footnotes-Task.html#property_a_int_reference_container_id" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">165</span>
+    <span class="phpdocumentor-element-found-in__line">159</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Multiple reference containers in content and widgets</p>
+        <p class="phpdocumentor-summary">Multiple reference containers in content and widgets.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$a_int_ReferenceContainerId</span>
+    <span class="phpdocumentor-signature__name">$a_int_reference_container_id</span>
      = <span class="phpdocumentor-signature__default-value">1</span></code>
 
         <section class="phpdocumentor-description"><ul>
@@ -1040,24 +932,24 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_int_ScrollOffset">
-        $a_int_ScrollOffset
-        <a href="classes/MCI-Footnotes-Task.html#property_a_int_ScrollOffset" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_int_scroll_offset">
+        $a_int_scroll_offset
+        <a href="classes/MCI-Footnotes-Task.html#property_a_int_scroll_offset" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">249</span>
+    <span class="phpdocumentor-element-found-in__line">286</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Scroll offset</p>
+        <p class="phpdocumentor-summary">Scroll offset.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$a_int_ScrollOffset</span>
+    <span class="phpdocumentor-signature__name">$a_int_scroll_offset</span>
      = <span class="phpdocumentor-signature__default-value">34</span></code>
 
         <section class="phpdocumentor-description"><ul>
@@ -1145,27 +1037,44 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_int_TooltipShortcodeLength">
-        $a_int_TooltipShortcodeLength
-        <a href="classes/MCI-Footnotes-Task.html#property_a_int_TooltipShortcodeLength" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_int_tooltip_shortcode_length">
+        $a_int_tooltip_shortcode_length
+        <a href="classes/MCI-Footnotes-Task.html#property_a_int_tooltip_shortcode_length" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">320</span>
+    <span class="phpdocumentor-element-found-in__line">391</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The tooltip delimiter shortcode length.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_int_TooltipShortcodeLength</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$a_int_tooltip_shortcode_length</span>
      = <span class="phpdocumentor-signature__default-value">12</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.5.2</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1175,27 +1084,44 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_FootnoteLinkSlug">
-        $a_str_FootnoteLinkSlug
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_FootnoteLinkSlug" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_footnote_link_slug">
+        $a_str_footnote_link_slug
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_footnote_link_slug" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">221</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The footnote slug.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_FootnoteLinkSlug</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_footnote_link_slug</span>
      = <span class="phpdocumentor-signature__default-value">&#039;f&#039;</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.3.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1205,27 +1131,44 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_LinkCloseTag">
-        $a_str_LinkCloseTag
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkCloseTag" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_link_close_tag">
+        $a_str_link_close_tag
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_close_tag" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">300</span>
+    <span class="phpdocumentor-element-found-in__line">358</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The closing tag.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_LinkCloseTag</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_link_close_tag</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.3.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1235,57 +1178,44 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_LinkIdsSeparator">
-        $a_str_LinkIdsSeparator
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkIdsSeparator" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_link_open_tag">
+        $a_str_link_open_tag
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_open_tag" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">222</span>
+    <span class="phpdocumentor-element-found-in__line">350</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The opening tag.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_LinkIdsSeparator</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;+&#039;</span></code>
-
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_str_LinkOpenTag">
-        $a_str_LinkOpenTag
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkOpenTag" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">299</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_LinkOpenTag</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_link_open_tag</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.3.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1295,24 +1225,24 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_LinkSpan">
-        $a_str_LinkSpan
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_LinkSpan" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_link_span">
+        $a_str_link_span
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_span" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">298</span>
+    <span class="phpdocumentor-element-found-in__line">342</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Optional link element for footnote referrers and backlinks</p>
+        <p class="phpdocumentor-summary">The span element name.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_LinkSpan</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_link_span</span>
      = <span class="phpdocumentor-signature__default-value">&#039;span&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1327,144 +1257,8 @@ post ID to make everything unique wrt infinite scroll and archive view:</p>
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>add link elements along with hard links.</p>
-<ul>
-<li>Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.</li>
-</ul>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.1.4</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">date</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>2020-11-25T1306+0100</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">date</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>2020-11-26T1051+0100</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">date</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>2020-12-30T2313+0100</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">contributor</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@docteurfitness</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">contributor</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@martinneumannat</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/update-2-1-3/#post-13704194"> https://wordpress.org/support/topic/update-2-1-3/#post-13704194 </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/update-2-1-3/"> <ul>
-<li>Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.</li>
-</ul>
- </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/making-it-amp-compatible/"> https://wordpress.org/support/topic/making-it-amp-compatible/ </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/"> <p>Although widely used for that purpose, hyperlinks are disliked for footnote linking.
-Browsers may need to be prevented from logging these clicks in the browsing history,
-as logging compromises the usability of the 'return to previous' button in browsers.
-For that purpose, and for scroll animation, this linking is performed by JavaScript.</p>
-<p>Link elements raise concerns, so that mitigating their proliferation may be desired.</p>
-<p>By contrast, due to an insufficiency in the CSS standard, coloring elements with the
-theme’s link color requires real link elements and cannot be done with named colors,
-as CSS does not support 'color: link|hover|active|visited', after the pseudo-classes
-of the link element.</p>
-<p>Yet styling these elements with the link color is not universally preferred, so that
-the very presence of these link elements may need to be avoided.</p>
- </a>
-                    
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">reporter</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@docteurfitness</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">reporter</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@psykonevro</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\self::$a_bool_HardLinksEnable">self::$a_bool_HardLinksEnable</abbr></span>
-                                        
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
@@ -1478,55 +1272,25 @@ the very presence of these link elements may need to be avoided.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_PostContainerIdCompound">
-        $a_str_PostContainerIdCompound
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_PostContainerIdCompound" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_post_container_id_compound">
+        $a_str_post_container_id_compound
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_post_container_id_compound" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">223</span>
+    <span class="phpdocumentor-element-found-in__line">260</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">Contains the concatenated link.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_PostContainerIdCompound</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_post_container_id_compound</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
-
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_str_Prefix">
-        $a_str_Prefix
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_Prefix" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">126</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Prefix for the Footnote html element ID.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_Prefix</span>
-     = <span class="phpdocumentor-signature__default-value">&quot;&quot;</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -1537,15 +1301,53 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
+                    <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_prefix">
+        $a_str_prefix
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_prefix" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Prefix for the Footnote html element ID.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$a_str_prefix</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1564,27 +1366,44 @@ the very presence of these link elements may need to be avoided.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_ReferrerLinkSlug">
-        $a_str_ReferrerLinkSlug
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_ReferrerLinkSlug" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_referrer_link_slug">
+        $a_str_referrer_link_slug
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_referrer_link_slug" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">220</span>
+    <span class="phpdocumentor-element-found-in__line">236</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The referrer slug.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_ReferrerLinkSlug</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_referrer_link_slug</span>
      = <span class="phpdocumentor-signature__default-value">&#039;r&#039;</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.3.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1594,27 +1413,91 @@ the very presence of these link elements may need to be avoided.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_TooltipShortcode">
-        $a_str_TooltipShortcode
-        <a href="classes/MCI-Footnotes-Task.html#property_a_str_TooltipShortcode" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_tooltip_shortcode">
+        $a_str_tooltip_shortcode
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_tooltip_shortcode" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">319</span>
+    <span class="phpdocumentor-element-found-in__line">383</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The tooltip delimiter shortcode.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$a_str_TooltipShortcode</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_tooltip_shortcode</span>
      = <span class="phpdocumentor-signature__default-value">&#039;[[/tooltip]]&#039;</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.5.2</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_a_str_link_ids_separator">
+        $a_str_link_ids_separator
+        <a href="classes/MCI-Footnotes-Task.html#property_a_str_link_ids_separator" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">252</span>
+</aside>
+
+        <p class="phpdocumentor-summary">The slug and identifier separator.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__name">$a_str_link_ids_separator</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;+&#039;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.3.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
 </article>
             </section>
@@ -1637,21 +1520,21 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1093</span>
+    <span class="phpdocumentor-element-found-in__line">1212</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces all footnotes that occur in the given content.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">exec</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_Content</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_OutputReferences</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_HideFootnotesText</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">exec</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_output_references</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_Content</span>
+                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1660,7 +1543,7 @@ the very presence of these link elements may need to be avoided.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_OutputReferences</span>
+                <span class="phpdocumentor-signature__argument__name">$p_bool_output_references</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1669,7 +1552,7 @@ the very presence of these link elements may need to be avoided.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_HideFootnotesText</span>
+                <span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1686,15 +1569,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1738,21 +1612,21 @@ the very presence of these link elements may need to be avoided.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_ReferenceContainer">
-        ReferenceContainer()
-        <a href="classes/MCI-Footnotes-Task.html#method_ReferenceContainer" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_reference_container">
+        reference_container()
+        <a href="classes/MCI-Footnotes-Task.html#method_reference_container" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1791</span>
+    <span class="phpdocumentor-element-found-in__line">1908</span>
 </aside>
 
         <p class="phpdocumentor-summary">Generates the reference container.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">ReferenceContainer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">reference_container</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -1764,15 +1638,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1856,21 +1721,21 @@ the very presence of these link elements may need to be avoided.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_registerHooks">
-        registerHooks()
-        <a href="classes/MCI-Footnotes-Task.html#method_registerHooks" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_register_hooks">
+        register_hooks()
+        <a href="classes/MCI-Footnotes-Task.html#method_register_hooks" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">367</span>
+    <span class="phpdocumentor-element-found-in__line">439</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register WordPress Hooks to replace Footnotes in the content of a public page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">registerHooks</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">register_hooks</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -1882,15 +1747,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2041,21 +1897,21 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1171</span>
+    <span class="phpdocumentor-element-found-in__line">1288</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces all footnotes in the given content and appends them to the static property.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">search</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_Content</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_ConvertHtmlChars</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_HideFootnotesText</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">search</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_convert_html_chars</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_Content</span>
+                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2064,7 +1920,7 @@ the very presence of these link elements may need to be avoided.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_ConvertHtmlChars</span>
+                <span class="phpdocumentor-signature__argument__name">$p_bool_convert_html_chars</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2073,7 +1929,7 @@ the very presence of these link elements may need to be avoided.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_HideFootnotesText</span>
+                <span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2090,15 +1946,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2179,21 +2026,21 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1001</span>
+    <span class="phpdocumentor-element-found-in__line">1103</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the content of the current page/post.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">the_content</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_Content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">the_content</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_Content</span>
+                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2210,15 +2057,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2250,21 +2088,21 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1014</span>
+    <span class="phpdocumentor-element-found-in__line">1137</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the excerpt of the current page/post.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">the_excerpt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_Content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">the_excerpt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_Content</span>
+                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2281,15 +2119,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2321,25 +2150,26 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1051</span>
+    <span class="phpdocumentor-element-found-in__line">1173</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in each Content var of the current Post object.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">the_post</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\WP_Post">WP_Post</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$p_mixed_Posts</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">the_post</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\WP_Post">WP_Post</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$p_mixed_posts</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_mixed_Posts</span>
+                <span class="phpdocumentor-signature__argument__name">$p_mixed_posts</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|<abbr title="\WP_Post">WP_Post</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>The current Post object.</p>
+</section>
 
             </dd>
             </dl>
@@ -2351,15 +2181,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2390,21 +2211,21 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">988</span>
+    <span class="phpdocumentor-element-found-in__line">1091</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the post/page title.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">the_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_Content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">the_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_Content</span>
+                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2421,15 +2242,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2461,21 +2273,21 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1039</span>
+    <span class="phpdocumentor-element-found-in__line">1160</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the content of the current widget.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">widget_text</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_Content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">widget_text</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_Content</span>
+                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2492,15 +2304,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2532,21 +2335,21 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1026</span>
+    <span class="phpdocumentor-element-found-in__line">1148</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the widget title.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">widget_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_Content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">widget_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_Content</span>
+                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2563,15 +2366,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2603,7 +2397,7 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">951</span>
+    <span class="phpdocumentor-element-found-in__line">1033</span>
 </aside>
 
         <p class="phpdocumentor-summary">Displays the &#039;LOVE FOOTNOTES&#039; slug if enabled.</p>
@@ -2622,15 +2416,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2671,7 +2456,7 @@ the very presence of these link elements may need to be avoided.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">580</span>
+    <span class="phpdocumentor-element-found-in__line">648</span>
 </aside>
 
         <p class="phpdocumentor-summary">Outputs the custom css to the header of the public page.</p>
@@ -2690,15 +2475,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2812,32 +2588,33 @@ the very presence of these link elements may need to be avoided.</p>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_replacePostObject">
-        replacePostObject()
-        <a href="classes/MCI-Footnotes-Task.html#method_replacePostObject" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_replace_post_object">
+        replace_post_object()
+        <a href="classes/MCI-Footnotes-Task.html#method_replace_post_object" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/task.php"><a href="files/class-task.html"><abbr title="class/task.php">task.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1071</span>
+    <span class="phpdocumentor-element-found-in__line">1193</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replace all Footnotes in a WP_Post object.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">replacePostObject</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\WP_Post">WP_Post</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_obj_Post</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\WP_Post">WP_Post</abbr></span></code>
+                <span class="phpdocumentor-signature__name">replace_post_object</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\WP_Post">WP_Post</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_obj_post</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\WP_Post">WP_Post</abbr></span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_obj_Post</span>
+                <span class="phpdocumentor-signature__argument__name">$p_obj_post</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\WP_Post">WP_Post</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>The Post object.</p>
+</section>
 
             </dd>
             </dl>
@@ -2849,15 +2626,6 @@ the very presence of these link elements may need to be avoided.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">

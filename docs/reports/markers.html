@@ -52,9 +52,13 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
-                                    </section>
+            </section>
 
+        <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -80,13 +84,13 @@
                     <h3>Table of Contents</h3>
             <table class="phpdocumentor-table_of_contents">
                                                             <tr>
-                            <td class="phpdocumentor-cell"><a href="reports/markers.html#class/settings.php">class/settings.php</a></td>
-                            <td class="phpdocumentor-cell">1</td>
+                            <td class="phpdocumentor-cell"><a href="reports/markers.html#class/init.php">class/init.php</a></td>
+                            <td class="phpdocumentor-cell">2</td>
                         </tr>
                                                 </table>
         
-                    <a id="class/settings.php"></a>
-            <h3><abbr title="class/settings.php">settings.php</abbr></h3>
+                    <a id="class/init.php"></a>
+            <h3><abbr title="class/init.php">init.php</abbr></h3>
             <table>
                 <thead>
                 <tr>
@@ -98,8 +102,16 @@
                 <tbody>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">89</td>
-                        <td class="phpdocumentor-cell">Eventually change misleading variable names C_BOOL_… to C_STR_… (that’s how Hungarian screws things up).</td>
+                        <td class="phpdocumentor-cell">51</td>
+                        <td class="phpdocumentor-cell">Refactor to have defines and assignments only in this class,
+then re-use these properties also in class/task.php (and elsewhere).
+Account for priority level issues. These properties must be assigned before
+the hooks—whose priority level may be configured to 0—are called in class/task.php.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">62</td>
+                        <td class="phpdocumentor-cell">Refactor to have defines only here, and use assignments also in class/task.php.</td>
                     </tr>
                                 </tbody>
             </table>

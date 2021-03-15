@@ -171,10 +171,10 @@ echo "- Pre-release flags set."
 
 # Step 6: Tag the release
 
-#echo "- Tagging release..."
-#git tag -a $DEVELOPMENT_VERSION -m "Pre-release of version $DEVELOPMENT_VERSION"
-#git push --tags
-#echo "- Release tagged."
+echo "- Tagging release..."
+git tag -a $DEVELOPMENT_VERSION -m "Pre-release of version $DEVELOPMENT_VERSION"
+git push --tags
+echo "- Release tagged."
 
 # Step 7: Push release to SVN repo.
 

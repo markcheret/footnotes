@@ -238,7 +238,6 @@ read -p "Is this all correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIR
 
 if [[ $1 == "-c" ]]; then
 	svn ci -m "$CHANGELOG_MESSAGE"
-	svn cp trunk tags/$PRERELEASE_VERSION
 else echo "- Commit flag not set, skipping commit step."
 fi
 

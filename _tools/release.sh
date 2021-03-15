@@ -199,7 +199,7 @@ echo "- Release tagged."
 echo -e "\nThe helper will now guide you through the steps to push the new release to the WordPress Plugin Directory SVN repository."
 echo "For the time being, this part of the process shall remain (mostly) manual."
 read -p "Are you ready to continue? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
-unset CONFIRM
+
 echo "Creating local copy of SVN repo..."
 svn checkout https://plugins.svn.wordpress.org/footnotes tmp --depth immediates
 svn update --quiet tmp/trunk --set-depth infinity
@@ -210,7 +210,6 @@ echo -e "Local copy created.\n"
 echo -e "Copying files from \`dist/\` to SVN \`trunk/\`...\n"
 rsync -avhic dist/ tmp/trunk/ --delete | grep -v "^\."
 read -p "Does the above list of changes look correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
-unset CONFIRM
 echo -e "Copying complete.\n"
 
 # Step 7(c): Set a release message

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Building Plugin..."
 
@@ -7,11 +7,11 @@ echo "Building Plugin..."
 # minimised stylesheet files already in `dist/css/`.
 echo "Building stylesheets..."
 ./_tools/build-stylesheets.sh -c
-if [[ $? != 0 ]]; then echo "Concatenation failed!"; exit 1; fi
+if [ $? != 0 ]; then echo "Concatenation failed!"; exit 1; fi
 ./_tools/build-stylesheets.sh -m
-if [[ $? != 0 ]]; then echo "Minification failed!"; exit 1; fi
+if [ $? != 0 ]; then echo "Minification failed!"; exit 1; fi
 ./_tools/build-stylesheets.sh -d
-if [[ $? != 0 ]]; then echo "Deployment failed!"; exit 1; fi
+if [ $? != 0 ]; then echo "Deployment failed!"; exit 1; fi
 echo "Stylesheet build complete."
 
 # Moves everything else over to `dist/`

@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.11d2
+Package Version: 2.5.11d3
 Version: 2.5.10
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
@@ -81,14 +81,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.5.11 =
-- Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
-- Adding: Documentation: Readme.txt: informative 'Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
-- Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
-- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution during the codebase conformance overhaul.
+- Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
+- Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
+- Update: Documentation: Readme.txt: informative 'Package Version' field in sync with the 'Package V.' field added in the 'footnotes.php' file header.
+- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution in the standards compliance overhaul.
 - Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
-- Adding: Documentation: additional readme in markdown format 'README.md' for use with GitHub, thanks to @rumperuu code contribution.
-- Adding: Documentation: help and support for contributors by the means of Contributing Guidelines 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
-- Adding: Development: pre-commit hook for WordPress projects, modified from @bjornjohansen, thanks to @rumperuu code contribution.
+- Update: Documentation: help and support for contributors by the means of Contributing Guidelines in 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
+- Update: Documentation: additional readme in markdown format 'README.md' for use with the code repository on GitHub, thanks to @rumperuu code contribution.
+- Update: Documentation: move 'customized-template-stack.txt' and 'customized-documentation-schema.txt' from the 'development/' folder to root.
 
 = 2.5.10 =
 - Bugfix: Codebase: revert to 2.5.8 with apologies (below), thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
@@ -351,7 +351,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Settings stylesheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4).
 
 = 2.0.4 =
-- Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
+- Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
 - Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
 - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
 - Bugfix: Reference container: remove inconvenient left/right cellpadding.
@@ -362,7 +362,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.3 =
 - Bugfix: Reference container: Self-adjusting width of ID column but hidden overflow.
-- Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to  bug report.
+- Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to @mmallett issue report.
 - Bugfix: Fragment IDs: Prepended post ID to footnote number.
 - Bugfix: External stylesheets cache busting: add plugin version number argument in enqueuing function call.
 - Bugfix: Print style: prevent a page break just after the reference container label.
@@ -521,7 +521,6 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: language EN and DE
 - Adding: Setting to customize the hyperlink symbol in der reference container for each footnote reference
 - Adding: Setting to enter a user defined hyperlink symbol
-- 
 
 = 1.3.1 =
 - Bugfix: Allow settings to be empty

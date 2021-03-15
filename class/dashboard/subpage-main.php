@@ -978,12 +978,23 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * Displays all settings for the backlink symbol.
 	 *
 	 * @since 1.5.0
+	 * 
+	 * - Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
+	 * 
+	 * @since 2.0.0
+	 * The former 'hyperlink arrow' is incompatible with combined identical footnotes.
 	 *
-	 * Edited heading for v2.0.4
-	 *
-	 * The former 'hyperlink arrow', incompatible with combined identical footnotes,
-	 * became 'prepended arrow' in v2.0.3 after a user complaint about missing backlinking semantics
-	 * of the footnote number.
+	 * - Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to @mmallett issue report.
+	 * 
+	 * @since 2.0.3
+	 * 
+	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
+	 * 
+	 * @since 2.0.4
+	 * @date 2020-11-02T2115+0100
+	 * 
+	 * @reporter @mmallett
+	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
 	 *
 	 * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
 	 * @since 2.2.1 and 2.2.4  back here

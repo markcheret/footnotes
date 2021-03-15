@@ -7,18 +7,11 @@
  * @since 1.5.0
  * @date 14.09.14 10:43
  *
- * @since 2.0.4  restore arrow settings  2020-11-02T2115+0100
- * @since 2.0.7  remove hook the_post  2020-11-06T1342+0100
- * @since 2.1.0  add read-on button label customization  2020-11-08T2149+0100
- * @since 2.1.1  fix tooltips on site by alternative  2020-11-11T1819+0100
- * @since 2.1.1  fix disabling backlink symbol  2020-11-16T2021+0100
- * @since 2.1.1  fix superscript by making it optional
- * @since 2.1.1  fix start pages by option to hide ref container, thanks to @dragon013
- * @since 2.1.1  fix ref container by option restoring 3-column layout
- * @since 2.1.1  fix ref container by option to switch index/symbol  2020-11-16T2022+0100
+ * @since 2.0.0  Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
+ * @since 2.0.4  Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
+ * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
+ * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
  *
- * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
- * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
  *
  * @since 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  *
@@ -50,7 +43,7 @@
  *
  * @since 2.3.0  Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
  * @date 2020-12-27T1243+0100
-
+ *
  * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
  *
  * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
@@ -150,6 +143,11 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.0
 	 * @var str
+	 * 
+	 * - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+	 * 
+	 * @reporter @nikelaos
+	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
 	 */
 	const C_STR_FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
 
@@ -164,6 +162,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * Since the removal of the the_post hook, the tab is no danger zone any longer.
 	 * All users, not experts only, need to be able to control relative positioning.
+	 * @date 2020-11-06T1342+0100
 	 */
 	const C_STR_FOOTNOTES_EXPERT_MODE = 'footnote_inputfield_enable_expert_mode';
 
@@ -319,6 +318,14 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.0
 	 * @var str
+	 * 
+	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
+	 * 
+	 * @since 2.0.4
+	 * @date 2020-11-02T2115+0100
+	 * 
+	 * @reporter @mmallett
+	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
 	 */
 	const C_STR_HYPERLINK_ARROW = 'footnote_inputfield_custom_hyperlink_symbol';
 
@@ -337,6 +344,7 @@ class MCI_Footnotes_Settings {
 	 * @var str
 	 *
 	 * @since 1.3.0  Adding: new settings tab for custom CSS settings.
+	 * Custom CSS migrates to a dedicated tab.
 	 */
 	const C_STR_CUSTOM_CSS = 'footnote_inputfield_custom_css';
 
@@ -494,86 +502,269 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-11-16T0859+0100
 	 *
 	 * @var str
+	 * Priority level of the_content and of widget_text as the only relevant.
+	 * Hooks must be less than 99 because social buttons may yield scripts.
+	 * That contain the strings '((' and '))', i.e. the default footnote.
+	 * Start and end short codes, causing issues with fake footnotes..
 	 */
 	const C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_content_priority_level';
 
 	/**
-	 * Settings Container Key for '' hook priority level
+	 * Settings Container Key for 'the_title' hook priority level.
+	 *
+	 * @since 2.1.2
+	 * @date 2020-11-20T0620+0100
+	 *
+	 * @var str
+	 * Initially hard-coded default.
+	 * Shows "9223372036854780000" instead of 9223372036854775807 in the numbox.
+	 * Empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty.
+	 * <https://github.com/Modernizr/Modernizr/issues/171>.
+	 * Interpret -1 as PHP_INT_MAX instead.
+	 */
+	const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    = 'footnote_inputfield_expert_lookup_the_title_priority_level';
+
+	/**
+	 * Settings Container Key for 'widget_title' hook priority level.
 	 *
 	 * @since 2.1.2
 	 * @date 2020-11-20T0620+0100
 	 *
 	 * @var str
 	 */
-	const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    = 'footnote_inputfield_expert_lookup_the_title_priority_level';
 	const C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_widget_title_priority_level';
+
+	/**
+	 * Settings Container Key for 'widget_text' hook priority level.
+	 *
+	 * @since 2.1.2
+	 * @date 2020-11-20T0620+0100
+	 *
+	 * @var str
+	 */
 	const C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  = 'footnote_inputfield_expert_lookup_widget_text_priority_level';
+
+	/**
+	 * Settings Container Key for 'the_excerpt' hook priority level.
+	 *
+	 * @since 2.1.2
+	 * @date 2020-11-20T0620+0100
+	 *
+	 * @var str
+	 */
 	const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  = 'footnote_inputfield_expert_lookup_the_excerpt_priority_level';
 
 	/**
-	 * Settings Container Keys for the link element option
-	 * Settings Container Keys for backlink typography and layout
-	 * Settings Container Keys for tooltip font size
-	 * Settings Container Keys for page layout support
-	 * Settings Container Keys for scroll offset and duration
-	 * Settings Container Keys for tooltip display durations
+	 * Settings Container Keys for the link element option.
+	 *
+	 * @since 2.1.4
+	 * @var str
+	 * Whether to use link elements.
+	 * Link element option.
+	 */
+	const C_STR_LINK_ELEMENT_ENABLED = 'footnote_inputfield_link_element_enabled';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str
+	 * Backlink typography.
+	 * Backlink separators and terminators are often not preferred..
+	 * But a choice must be provided along with the ability to customize.
+	 */
+	const C_STR_BACKLINKS_SEPARATOR_ENABLED  = 'footnotes_inputfield_backlinks_separator_enabled';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str
+	 */
+	const C_STR_BACKLINKS_SEPARATOR_OPTION   = 'footnotes_inputfield_backlinks_separator_option';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str
+	 */
+	const C_STR_BACKLINKS_SEPARATOR_CUSTOM   = 'footnotes_inputfield_backlinks_separator_custom';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str
+	 */
+	const C_STR_BACKLINKS_TERMINATOR_ENABLED = 'footnotes_inputfield_backlinks_terminator_enabled';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str
+	 */
+	const C_STR_BACKLINKS_TERMINATOR_OPTION  = 'footnotes_inputfield_backlinks_terminator_option';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
 	 *
 	 * @since 2.1.4
 	 * @var str|bool|int|flo
-	 *
-	 * 2020-11-26T1002+0100
-	 * 2020-11-30T0427+0100
-	 * 2020-12-03T0501+0100
-	 * 2020-12-05T0425+0100
 	 */
-
-	// Link element option.
-	const C_STR_LINK_ELEMENT_ENABLED = 'footnote_inputfield_link_element_enabled';
-
-	// Backlink typography.
-	const C_STR_BACKLINKS_SEPARATOR_ENABLED  = 'footnotes_inputfield_backlinks_separator_enabled';
-	const C_STR_BACKLINKS_SEPARATOR_OPTION   = 'footnotes_inputfield_backlinks_separator_option';
-	const C_STR_BACKLINKS_SEPARATOR_CUSTOM   = 'footnotes_inputfield_backlinks_separator_custom';
-	const C_STR_BACKLINKS_TERMINATOR_ENABLED = 'footnotes_inputfield_backlinks_terminator_enabled';
-	const C_STR_BACKLINKS_TERMINATOR_OPTION  = 'footnotes_inputfield_backlinks_terminator_option';
 	const C_STR_BACKLINKS_TERMINATOR_CUSTOM  = 'footnotes_inputfield_backlinks_terminator_custom';
 
-	// Backlink layout.
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 * Set backlinks column width.
+	 * Backlink layout.
+	 */
 	const C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     = 'footnotes_inputfield_backlinks_column_width_enabled';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 */
 	const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      = 'footnotes_inputfield_backlinks_column_width_scalar';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 */
 	const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        = 'footnotes_inputfield_backlinks_column_width_unit';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 * Set backlinks column max. width.
+	 */
 	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED = 'footnotes_inputfield_backlinks_column_max_width_enabled';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 */
 	const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  = 'footnotes_inputfield_backlinks_column_max_width_scalar';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 */
 	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    = 'footnotes_inputfield_backlinks_column_max_width_unit';
+
+	/**
+	 * Settings Container Keys for backlink typography and layout.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 * Whether a <br /> tag is inserted.
+	 */
 	const C_STR_BACKLINKS_LINE_BREAKS_ENABLED      = 'footnotes_inputfield_backlinks_line_breaks_enabled';
 
-	// Tooltip font size.
-	// Called mouse over box not tooltip for consistency.
+	/**
+	 * Settings Container Keys for tooltip font size.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 * Tooltip font size.
+	 * Called mouse over box not tooltip for consistency.
+	 * Tooltip font size reset to legacy by default since 2.1.4;.
+	 * Was set to inherit since 2.1.1 as it overrode custom CSS,.
+	 * Is moved to settings since 2.1.4    2020-12-04T1023+0100.
+	 */
 	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED = 'footnotes_inputfield_mouse_over_box_font_size_enabled';
+
+	/**
+	 * Settings Container Keys for tooltip font size.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 */
 	const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR  = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
+
+	/**
+	 * Settings Container Keys for tooltip font size.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 */
 	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT    = 'footnotes_inputfield_mouse_over_box_font_size_unit';
 
-	// Page layout support.
+	/**
+	 * Settings Container Keys for page layout support.
+	 *
+	 * @since 2.1.4
+	 * @var str|bool|int|flo
+	 * Whether to enqueue additional stylesheet.
+	 * Page layout support.
+	 */
 	const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT = 'footnotes_inputfield_page_layout_support';
 
 	/**
-	 * Scroll offset and duration
+	 * Settings Container Keys for scroll offset.
 	 *
 	 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
+	 *
+	 * @since 2.1.4
+	 * @date 2020-12-05T0538+0100
+	 */
+	const C_INT_FOOTNOTES_SCROLL_OFFSET   = 'footnotes_inputfield_scroll_offset';
+
+	/**
+	 * Settings Container Keys for scroll duration.
+	 *
 	 * - Bugfix: Scroll duration: make configurable to conform to website content and style requirements.
 	 *
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
 	 */
-	// Scroll offset and duration.
-	const C_INT_FOOTNOTES_SCROLL_OFFSET   = 'footnotes_inputfield_scroll_offset';
 	const C_INT_FOOTNOTES_SCROLL_DURATION = 'footnotes_inputfield_scroll_duration';
 
-	// Tooltip display durations.
-	// Called mouse over box not tooltip for consistency.
+	/**
+	 * Settings Container Keys for tooltip display durations.
+	 *
+	 * @since 2.1.4
+	 * @date 2020-12-05T0538+0100
+	 * Called mouse over box not tooltip for consistency.
+	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY     = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
+
+	/**
+	 * Settings Container Keys for tooltip display durations.
+	 *
+	 * @since 2.1.4
+	 * @date 2020-12-05T0538+0100
+	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION  = 'footnotes_inputfield_mouse_over_box_fade_in_duration';
+
+	/**
+	 * Settings Container Keys for tooltip display durations.
+	 *
+	 * @since 2.1.4
+	 * @date 2020-12-05T0538+0100
+	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY    = 'footnotes_inputfield_mouse_over_box_fade_out_delay';
+
+	/**
+	 * Settings Container Keys for tooltip display durations.
+	 *
+	 * @since 2.1.4
+	 * @date 2020-12-05T0538+0100
+	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION = 'footnotes_inputfield_mouse_over_box_fade_out_duration';
 
 	/**
@@ -600,23 +791,69 @@ class MCI_Footnotes_Settings {
 	const C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE = 'footnote_inputfield_reference_container_position_shortcode';
 
 	/**
-	 * Settings Container Keys for alternative tooltip position
-	 * Settings Container Keys for reference container label element, thanks to @markhillyer
+	 * Settings Container Keys for alternative tooltip position.
+	 *
+	 * @since 2.2.5
+	 * @var int
+	 *
+	 * 2020-12-17T0746+0100
+	 * Fixed width is for alternative tooltips, cannot reuse max-width nor offsets.
+	 */
+	const C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION = 'footnotes_inputfield_alternative_mouse_over_box_position';
+
+	/**
+	 * Settings Container Keys for alternative tooltip position.
+	 *
+	 * @since 2.2.5
+	 * @var int
+	 *
+	 * 2020-12-17T0746+0100
+	 */
+	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X = 'footnotes_inputfield_alternative_mouse_over_box_offset_x';
+
+	/**
+	 * Settings Container Keys for alternative tooltip position.
+	 *
+	 * @since 2.2.5
+	 * @var int
+	 *
+	 * 2020-12-17T0746+0100
+	 */
+	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y = 'footnotes_inputfield_alternative_mouse_over_box_offset_y';
+
+	/**
+	 * Settings Container Keys for alternative tooltip position.
+	 *
+	 * @since 2.2.5
+	 * @var int
+	 *
+	 * 2020-12-17T0746+0100
+	 */
+	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    = 'footnotes_inputfield_alternative_mouse_over_box_width';
+
+
+	/**
+	 * Settings Container Keys for reference container label element, thanks to @markhillyer.
 	 *
 	 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
 	 *
 	 * @since 2.2.5
 	 * @var int
 	 *
-	 * 2020-12-17T0746+0100
 	 * 2020-12-18T1509+0100
 	 */
-	const C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION = 'footnotes_inputfield_alternative_mouse_over_box_position';
-	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X = 'footnotes_inputfield_alternative_mouse_over_box_offset_x';
-	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y = 'footnotes_inputfield_alternative_mouse_over_box_offset_y';
-	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    = 'footnotes_inputfield_alternative_mouse_over_box_width';
-
 	const C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT       = 'footnotes_inputfield_reference_container_label_element';
+
+	/**
+	 * Settings Container Keys for reference container label element, thanks to @markhillyer.
+	 *
+	 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
+	 *
+	 * @since 2.2.5
+	 * @var int
+	 *
+	 * 2020-12-18T1509+0100
+	 */
 	const C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER = 'footnotes_inputfield_reference_container_label_bottom_border';
 
 	/**
@@ -632,9 +869,7 @@ class MCI_Footnotes_Settings {
 	const C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE = 'footnotes_inputfield_reference_container_row_borders_enable';
 
 	/**
-	 * Settings container keys for reference container top and bottom margins
-	 * Settings container keys for hard link enabling
-	 * Settings container keys for hard link anchors in referrers and footnotes
+	 * Settings container keys for reference container top margin.
 	 *
 	 * @since 2.3.0
 	 * @var int|bool|str
@@ -642,10 +877,55 @@ class MCI_Footnotes_Settings {
 	 * 2020-12-29T0914+0100
 	 */
 	const C_INT_REFERENCE_CONTAINER_TOP_MARGIN    = 'footnotes_inputfield_reference_container_top_margin';
+
+	/**
+	 * Settings container keys for reference container bottom margin.
+	 *
+	 * @since 2.3.0
+	 * @var int|bool|str
+	 *
+	 * 2020-12-29T0914+0100
+	 */
 	const C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN = 'footnotes_inputfield_reference_container_bottom_margin';
+
+	/**
+	 * Settings container keys for hard link enabling.
+	 *
+	 * @since 2.3.0
+	 * @var int|bool|str
+	 *
+	 * 2020-12-29T0914+0100
+	 */
 	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE       = 'footnotes_inputfield_hard_links_enable';
+
+	/**
+	 * Settings container keys for hard link anchors in referrers and footnotes.
+	 *
+	 * @since 2.3.0
+	 * @var int|bool|str
+	 *
+	 * 2020-12-29T0914+0100
+	 */
 	const C_STR_REFERRER_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_referrer_fragment_id_slug';
+
+	/**
+	 * Settings container keys for hard link anchors in referrers and footnotes.
+	 *
+	 * @since 2.3.0
+	 * @var int|bool|str
+	 *
+	 * 2020-12-29T0914+0100
+	 */
 	const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_footnote_fragment_id_slug';
+
+	/**
+	 * Settings container keys for hard link anchors in referrers and footnotes.
+	 *
+	 * @since 2.3.0
+	 * @var int|bool|str
+	 *
+	 * 2020-12-29T0914+0100
+	 */
 	const C_STR_HARD_LINK_IDS_SEPARATOR           = 'footnotes_inputfield_hard_link_ids_separator';
 
 	/**
@@ -800,230 +1080,173 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.0
 	 * @var array
 	 *
-	 * Edited multiple times.
-	 *
-	 * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
-	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
+	 * Comments are moved to constant docblocks.
 	 */
 	private $a_arr_default = array(
 
-		'footnotes_storage'            => array(
+		// General settings.
+		'footnotes_storage'             => array(
 
-			self::C_STR_FOOTNOTES_SHORT_CODE_START         => '((',
-			self::C_STR_FOOTNOTES_SHORT_CODE_END           => '))',
-			self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
-			self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
+			// Footnote start and end short codes.
+			self::C_STR_FOOTNOTES_SHORT_CODE_START                    => '((',
+			self::C_STR_FOOTNOTES_SHORT_CODE_END                      => '))',
+			self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED       => '',
+			self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED         => '',
+			self::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE   => 'yes',
 
-			self::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE => 'yes',
+			// Footnotes numbering.
+			self::C_STR_FOOTNOTES_COUNTER_STYLE                       => 'arabic_plain',
+			self::C_STR_COMBINE_IDENTICAL_FOOTNOTES                   => 'yes',
 
-			self::C_STR_FOOTNOTES_COUNTER_STYLE            => 'arabic_plain',
-			self::C_STR_COMBINE_IDENTICAL_FOOTNOTES        => 'yes',
+			// Scrolling behavior.
+			self::C_INT_FOOTNOTES_SCROLL_OFFSET                       => 20,
+			self::C_INT_FOOTNOTES_SCROLL_DURATION                     => 380,
+			self::C_STR_FOOTNOTES_HARD_LINKS_ENABLE                   => 'no',
+			self::C_STR_REFERRER_FRAGMENT_ID_SLUG                     => 'r',
+			self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG                     => 'f',
+			self::C_STR_HARD_LINK_IDS_SEPARATOR                       => '+',
+			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE             => 'yes',
+			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT               => 'Alt+ ←',
 
-			self::C_STR_FOOTNOTES_HARD_LINKS_ENABLE        => 'no',
-			self::C_STR_REFERRER_FRAGMENT_ID_SLUG          => 'r',
-			self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG          => 'f',
-			self::C_STR_HARD_LINK_IDS_SEPARATOR            => '+',
-			self::C_INT_FOOTNOTES_SCROLL_OFFSET            => 20,
-			self::C_INT_FOOTNOTES_SCROLL_DURATION          => 380,
+			// Reference container.
+			self::C_STR_REFERENCE_CONTAINER_NAME                      => 'References',
+			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT             => 'p',
+			self::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER       => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_COLLAPSE                  => 'no',
+			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE     => 'jquery',
+			self::C_STR_REFERENCE_CONTAINER_POSITION                  => 'post_end',
+			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE        => '[[references]]',
+			self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE         => 'yes',
+			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN                => 24,
+			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN             => 0,
+			self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT                 => 'none',
+			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED                     => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE    => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH    => 'no',
+			self::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE     => 'no',
+			self::C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE        => 'no',
 
-			// 2.5.4 fast-tracked.
-			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE  => 'yes',
-			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT    => 'Alt+ ←',
+			self::C_STR_BACKLINKS_SEPARATOR_ENABLED                   => 'yes',
+			self::C_STR_BACKLINKS_SEPARATOR_OPTION                    => 'comma',
+			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM                    => '',
 
+			self::C_STR_BACKLINKS_TERMINATOR_ENABLED                  => 'no',
+			self::C_STR_BACKLINKS_TERMINATOR_OPTION                   => 'full_stop',
+			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM                   => '',
 
-			self::C_STR_REFERENCE_CONTAINER_NAME           => 'References',
-			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT  => 'p',
-			self::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_COLLAPSE       => 'no',
-			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE => 'jquery',
+			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED                => 'no',
+			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR                 => '50',
+			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT                   => 'px',
 
-			self::C_STR_REFERENCE_CONTAINER_POSITION       => 'post_end',
-			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE => '[[references]]',
-			self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE => 'yes',
+			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED            => 'no',
+			self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR             => '140',
+			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT               => 'px',
 
-			// Whether to enqueue additional stylesheet.
-			self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT      => 'none',
+			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED                 => 'no',
+			self::C_STR_LINK_ELEMENT_ENABLED                          => 'yes',
 
-			// Top and bottom margins.
-			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN     => 24,
-			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN  => 0,
+			// Footnotes in excerpts.
+			self::C_STR_FOOTNOTES_IN_EXCERPT                          => 'no',
 
-			// Table cell borders.
-			self::C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE => 'no',
+			// Footnotes love.
+			self::C_STR_FOOTNOTES_LOVE                                => 'no',
+
+			// Deprecated.
+			self::C_STR_FOOTNOTES_EXPERT_MODE                         => 'yes',
+
+		),
+
+		// Referrers and tooltips.
+		'footnotes_storage_custom'      => array(
 
 			// Backlink symbol.
-			self::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE => 'no',
-			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
+			self::C_STR_HYPERLINK_ARROW                               => '&#8593;',
+			self::C_STR_HYPERLINK_ARROW_USER_DEFINED                  => '',
 
-			// Backlink separators and terminators are often not preferred..
-			// But a choice must be provided along with the ability to customize.
-			self::C_STR_BACKLINKS_SEPARATOR_ENABLED        => 'yes',
-			self::C_STR_BACKLINKS_SEPARATOR_OPTION         => 'comma',
-			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM         => '',
-			self::C_STR_BACKLINKS_TERMINATOR_ENABLED       => 'no',
-			self::C_STR_BACKLINKS_TERMINATOR_OPTION        => 'full_stop',
-			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM        => '',
+			// Referrer typesetting and formatting.
+			self::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS           => 'yes',
+			self::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT         => 'no',
+			self::C_STR_FOOTNOTES_STYLING_BEFORE                      => '[',
+			self::C_STR_FOOTNOTES_STYLING_AFTER                       => ']',
 
-			// Set backlinks column width.
-			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     => 'no',
-			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      => '50',
-			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        => 'px',
+			// Tooltips.
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED              => 'yes',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE          => 'no',
 
-			// Set backlinks column max. width.
-			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'no',
-			self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
-			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
-
-			// Whether a <br /> tag is inserted.
-			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED      => 'no',
-
-			// Whether to enable URL line wrapping.
-			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED          => 'yes',
-
-			// Whether to use link elements.
-			self::C_STR_LINK_ELEMENT_ENABLED               => 'yes',
-
-			// Excerpt should be disabled.
-			self::C_STR_FOOTNOTES_IN_EXCERPT               => 'no',
-
-			self::C_STR_FOOTNOTES_EXPERT_MODE              => 'yes',
-
-			self::C_STR_FOOTNOTES_LOVE                     => 'no',
-
-		),
-
-		'footnotes_storage_custom'     => array(
-
-			self::C_STR_HYPERLINK_ARROW                    => '&#8593;',
-			self::C_STR_HYPERLINK_ARROW_USER_DEFINED       => '',
-
-			self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL     => 'Continue reading',
-
-			self::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS => 'yes',
-
-			self::C_STR_FOOTNOTES_STYLING_BEFORE           => '[',
-			self::C_STR_FOOTNOTES_STYLING_AFTER            => ']',
-
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED   => 'yes',
-
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'no',
-
-			// The mouse over content truncation should be enabled by default.
-			// To raise awareness of the functionality and to prevent the screen.
-			// From being filled at mouse-over, and to allow the Continue reading.
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
-
-			// The truncation length is raised from 150 to 200 chars.
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 200,
-
-			// 2.5.4 fast-tracked.
-			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER => '[[/tooltip]]',
-			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE => 'no',
-			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR => ' — ',
-			self::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT => 'no',
-
-
-			// The default position should not be lateral because of the risk.
-			// The box gets squeezed between note anchor at line end and window edge,.
-			// And top because reading at the bottom of the window is more likely.
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION  => 'top center',
-
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X  => 0,
-			// The vertical offset must be negative for the box not to cover.
-			// The current line of text (web coordinates origin is top left).
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y  => -7,
-
-			// The width should be limited to start with, for the box to have shape.
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
-
-			// Fixed width is for alternative tooltips, cannot reuse max-width nor offsets.
+			// Tooltip position.
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION             => 'top center',
 			self::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION => 'top right',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X             => 0,
 			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X => -50,
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y             => -7,
 			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y => 24,
-			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH => 400,
 
-			// Tooltip display durations.
-			// Called mouse over box not tooltip for consistency.
-			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY       => 0,
-			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION    => 200,
-			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY      => 400,
-			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION   => 200,
+			// Tooltip dimensions.
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH            => 450,
+			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    => 400,
 
-			// Tooltip font size reset to legacy by default since 2.1.4;.
-			// Was set to inherit since 2.1.1 as it overrode custom CSS,.
-			// Is moved to settings since 2.1.4    2020-12-04T1023+0100.
-			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED   => 'yes',
-			self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR    => 13,
-			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT      => 'px',
+			// Tooltip timing.
+			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY                  => 0,
+			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION               => 200,
+			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY                 => 400,
+			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION              => 200,
 
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR     => '',
-			// The mouse over box shouldn’t feature a colored background.
-			// By default, due to diverging user preferences. White is neutral.
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#ffffff',
+			// Tooltip truncation.
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED      => 'yes',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH       => 200,
+			self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL                => 'Continue reading',
 
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
+			// Tooltip text.
+			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER           => '[[/tooltip]]',
+			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE       => 'no',
+			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR    => ' — ',
 
-			// The mouse over box corners mustn’t be rounded as that is outdated.
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
+			// Tooltip appearance.
+			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED              => 'yes',
+			self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR               => 13,
+			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT                 => 'px',
 
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR                => '',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND           => '#ffffff',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH         => 1,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR         => '#cccc99',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS        => 0,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR         => '#666666',
 
-			// Custom CSS migrates to a dedicated tab.
-			self::C_STR_CUSTOM_CSS                         => '',
-
-		),
-
-		'footnotes_storage_expert'     => array(
-
-			// These are checkboxes; keyword 'checked' is converted to Boolean true,.
-			// Empty string to false (default).
-
-			// Titles should all be enabled by default to prevent users from.
-			// Thinking at first that the feature is broken in post titles..
-			// See <https://wordpress.org/support/topic/more-feature-ideas/>.
-			// Yet in titles, footnotes are still buggy, because WordPress.
-			// Uses the title string in menus and in the title element..
-			self::C_STR_EXPERT_LOOKUP_THE_TITLE    => '',
-
-			self::C_STR_EXPERT_LOOKUP_THE_CONTENT  => 'checked',
-
-			// And the_excerpt is disabled by default following @nikelaos in.
-			// <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>.
-			// <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>.
-			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT  => '',
-
-			self::C_STR_EXPERT_LOOKUP_WIDGET_TITLE => '',
-
-			// The widget_text hook must be disabled by default, because it causes.
-			// Multiple reference containers to appear in Elementor accordions, but.
-			// It must be enabled if multiple reference containers are desired, as.
-			// In Elementor toggles..
-			self::C_STR_EXPERT_LOOKUP_WIDGET_TEXT  => '',
-
-			// Initially hard-coded default.
-			// Shows "9223372036854780000" instead of 9223372036854775807 in the numbox.
-			// Empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty.
-			// <https://github.com/Modernizr/Modernizr/issues/171>.
-			// Interpret -1 as PHP_INT_MAX instead.
-			self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
-
-			// Priority level of the_content and of widget_text as the only relevant.
-			// Hooks must be less than 99 because social buttons may yield scripts.
-			// That contain the strings '((' and '))', i.e. the default footnote.
-			// Start and end short codes, causing issues with fake footnotes..
-			self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL => 98,
-			self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL => PHP_INT_MAX,
-			self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
-			self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL => 98,
+			// Your existing Custom CSS code.
+			self::C_STR_CUSTOM_CSS                                    => '',
 
 		),
 
-		'footnotes_storage_custom_css' => array(
+		// Scope and priority
+		'footnotes_storage_expert'      => array(
 
-			self::C_STR_CUSTOM_CSS_LEGACY_ENABLE => 'yes',
-			self::C_STR_CUSTOM_CSS_NEW           => '',
+			// WordPress hooks with priority level.
+			self::C_STR_EXPERT_LOOKUP_THE_TITLE                       => '',
+			self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL        => PHP_INT_MAX,
+
+			self::C_STR_EXPERT_LOOKUP_THE_CONTENT                     => 'checked',
+			self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL      => 98,
+
+			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT                     => '',
+			self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL      => PHP_INT_MAX,
+
+			self::C_STR_EXPERT_LOOKUP_WIDGET_TITLE                    => '',
+			self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL     => PHP_INT_MAX,
+
+			self::C_STR_EXPERT_LOOKUP_WIDGET_TEXT                     => '',
+			self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL      => 98,
+
+		),
+
+		// Custom CSS.
+		'footnotes_storage_custom_css'  => array(
+
+			// Your existing Custom CSS code.
+			self::C_STR_CUSTOM_CSS_LEGACY_ENABLE                      => 'yes',
+
+			// Custom CSS.
+			self::C_STR_CUSTOM_CSS_NEW                                => '',
 
 		),
 

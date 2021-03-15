@@ -42,7 +42,7 @@ elif [[ $1 == "-m" ]]; then
 	# `rmdir`, which will throw us an error if we have any minified files that
 	# haven't been moved over to `dist/css/` for whatever reason. As it currently
 	# stands, we have no error checking in place.
-	echo "Please minify the stylesheets in `css/tmp/`, saving them in the same location with the `.min.css` file extension."
+	echo "Please minify the stylesheets in \`css/tmp/\`, saving them in the same location with the \`.min.css\` file extension."
 	read -p "Are you ready to continue? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 	exit 0
 	
@@ -56,12 +56,11 @@ elif [[ $1 == "-d" ]]; then
 	mkdir -p ./dist/css
 	for f in ./css/tmp/*.min.css;	do
 		filename=$(basename $f .css)
-		echo Moving $filename
 		cp $f ./dist/css
 		#mv $f ./dist/css
-		echo $filename Moved
+		echo -e '\t' $filename".css moved."
 	done
-	echo "Deleting temporary files..."
+	#echo "Deleting temporary files..."
 	#rm -r ./css/tmp
 	echo "Minified stylesheets added to build."
 	exit 0

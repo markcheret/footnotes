@@ -350,7 +350,11 @@ class MCI_Footnotes {
 					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'ttbrpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
-				C_STR_PACKAGE_VERSION,
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__ )
+					) . 'css/footnotes-' . $l_str_tooltip_mode_short . 'ttbrpl' . $l_str_layout_mode . '.min.css'
+				),
 				'all'
 			);
 
@@ -364,9 +368,36 @@ class MCI_Footnotes {
 			 *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
-			wp_enqueue_style( 'mci-footnotes-common', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ), array(), C_STR_PACKAGE_VERSION );
-			wp_enqueue_style( 'mci-footnotes-tooltips', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ), array(), C_STR_PACKAGE_VERSION );
-			wp_enqueue_style( 'mci-footnotes-alternative', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ), array(), C_STR_PACKAGE_VERSION );
+			wp_enqueue_style(
+				'mci-footnotes-common',
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ),
+				array(),
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__ )
+					) . 'css/dev-common.css'
+				)
+			);
+			wp_enqueue_style(
+				'mci-footnotes-tooltips',
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ),
+				array(),
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__ )
+					) . 'css/dev-tooltips.css'
+				)
+			);
+			wp_enqueue_style(
+				'mci-footnotes-alternative',
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
+				array(),
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__ )
+					) . 'css/dev-tooltips-alternative.css'
+				)
+			);
 
 			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			if ( 'none' !== $l_str_page_layout_option ) {
@@ -376,7 +407,11 @@ class MCI_Footnotes {
 						MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					array(),
-					C_STR_PACKAGE_VERSION,
+					filemtime(
+						plugin_dir_path(
+							dirname( __FILE__ )
+						) . 'css/dev-layout-' . $l_str_page_layout_option . '.css'
+					),
 					'all'
 				);
 			}

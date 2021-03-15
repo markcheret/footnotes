@@ -64,7 +64,6 @@ echo "- Checking versions..."
 
 STABLE_TAG="$(grep "Stable Tag:" readme.txt)"
 ROOT_HEADER_VERSION="$(grep " Version:" footnotes.php | grep -Po " Version: \d+\.\d+(\.\d+)?[a-z]?$")"
-ROOT_VARIABLE_VERSION="$(grep "define( 'C_STR_PACKAGE_VERSION'," footnotes.php)"
 JS_VERSION="$(grep "version :" js/wysiwyg-editor.js)"
 
 # Step 3(b): Check that all version declarations exists
@@ -79,11 +78,6 @@ if [[ -z $ROOT_HEADER_VERSION ]]; then
 	exit 1
 else echo "- 'Version' field set in \`footnotes.php\` file header."
 fi
-if [[ -z $ROOT_VARIABLE_VERSION ]]; then
-	echo "ERR: No \`C_STR_PACKAGE_VERSION\` variable found in \`footnotes.php\`!"
-	exit 1
-else echo "- \`C_STR_PACKAGE_VERSION\` variable set in \`footnotes.php\`."
-fi
 if [[ -z $JS_VERSION ]]; then
 	echo "ERR: No \`version\` variable found in \`js/wysiwyg-editor.js\`!"
 	exit 1
@@ -91,11 +85,12 @@ else echo "- \`version\` variable set in \`js/wysiwyg-editor.js\`."
 fi
 
 # Step 3(c)(1): Check that all development versions match
+# NB: This doesn't currently do anything as there is only one place where the
+# development version is listed.
 
-if [[ "$(echo $ROOT_VARIABLE_VERSION $JS_VERSION | grep -Poc '\d+\.\d+(\.\d+)?')" != 1 ]]; then
+if [[ "$(echo $JS_VERSION | grep -Poc '\d+\.\d+(\.\d+)?')" != 1 ]]; then
 	echo "ERR: Development version mismatch!"
 	echo -e "The following versions were found:\n"
-	echo -e '\t' $ROOT_VARIABLE_VERSION
 	echo -e '\t' $JS_VERSION '\n'
 	echo "Please ensure that all development versions match and re-run this command."
 	exit 1
@@ -116,16 +111,16 @@ fi
 
 # Step 3(d): Check that the development version is correctly flagged as such
 
-if [[ "$(echo $ROOT_VARIABLE_VERSION | grep -Poc '\d+d')" != 1 ]]; then
+if [[ "$(echo $JS_VERSION | grep -Poc '\d+d')" != 1 ]]; then
 	echo "ERR: Development version flag not set!"
 	echo -e "The following version was found:\n"
-	echo -e '\t' $ROOT_VARIABLE_VERSION '\n'
+	echo -e '\t' $JS_VERSION '\n'
 	echo "Please ensure that the development flag ('d') is set and re-run this command."
 	exit 1
 else echo "- Development version flag is set."
 fi
 
-DEVELOPMENT_VERSION="$(echo $ROOT_VARIABLE_VERSION | grep -Po '\d+\.\d+(\.\d+)?')"
+DEVELOPMENT_VERSION="$(echo $JS_VERSION | grep -Po '\d+\.\d+(\.\d+)?')"
 
 echo -e "- Development version:" $DEVELOPMENT_VERSION
 
@@ -181,7 +176,6 @@ echo -e "- Build complete.\n"
 
 echo "- Setting pre-release version flags..."
 PRERELEASE_VERSION=$DEVELOPMENT_VERSION'p'
-sed -i "s/$ROOT_VARIABLE_VERSION/define( 'C_STR_PACKAGE_VERSION', '$PRERELEASE_VERSION'/g" dist/footnotes.php 
 sed -i "s/$JS_VERSION/version : \"$PRERELEASE_VERSION\"/g" dist/js/wysiwyg-editor.js
 echo "- Pre-release flags set." 
 

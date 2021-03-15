@@ -16,19 +16,6 @@
  */
 
 /**
- * Package Version number for stylesheet cache busting.
- *
- * Please keep this constant in sync with the Package Version in the header above
- * and in the header of the readme, but not necessarily with the other Version.
- *
- * @since 2.1.4
- * @since 2.5.3 (Hungarian)
- * @var str
- * @lastmodified 2021-03-11T2202+0100
- */
-define( 'C_STR_PACKAGE_VERSION', '2.5.11d3' );
-
-/**
  * Version numbers in WordPress plugin readme.txt and main PHP headers.
  *
  * - Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.

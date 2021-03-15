@@ -7,7 +7,7 @@
  * Package V.: 2.5.11d3
  * Version: 2.5.10
  * CAUTION: THIS V. FIELD IS PARSED FOR UPDATE CONFIGURATION.
- * Author URI: http://cheret.de/plugins/footnotes-2/
+ * Author URI: https://cheret.org/footnotes/
  * Text Domain: footnotes
  * Domain Path: /languages
  *

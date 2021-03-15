@@ -11,6 +11,7 @@
  * @since 2.0.4  Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
  * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
  * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+ * 
  *
  *
  * @since 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
@@ -43,7 +44,7 @@
  *
  * @since 2.3.0  Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
  * @date 2020-12-27T1243+0100
- *
+
  * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
  *
  * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
@@ -131,12 +132,28 @@ class MCI_Footnotes_Settings {
 	const C_STR_FOOTNOTES_COUNTER_STYLE = 'footnote_inputfield_counter_style';
 
 	/**
-	 * Settings Container Key for the 'I love footnotes' text.
+	 * Settings Container Key for the backlink symbol selection.
+	 *
+	 * @since 1.5.0
+	 * @var str
+	 * 
+	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
+	 * 
+	 * @since 2.0.4
+	 * @date 2020-11-02T2115+0100
+	 * 
+	 * @reporter @mmallett
+	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
+	 */
+	const C_STR_HYPERLINK_ARROW = 'footnote_inputfield_custom_hyperlink_symbol';
+
+	/**
+	 * Settings Container Key for the user-defined backlink symbol.
 	 *
 	 * @since 1.5.0
 	 * @var str
 	 */
-	const C_STR_FOOTNOTES_LOVE = 'footnote_inputfield_love';
+	const C_STR_HYPERLINK_ARROW_USER_DEFINED = 'footnote_inputfield_custom_hyperlink_symbol_user';
 
 	/**
 	 * Settings Container Key to look for footnotes in post excerpts.
@@ -150,21 +167,6 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
 	 */
 	const C_STR_FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
-
-	/**
-	 * Settings Container Key for the Expert mode.
-	 *
-	 * @since 1.5.5
-	 * @var str
-	 *
-	 * @since 2.1.6  This setting removed as irrelevant since priority level settings need permanent visibility.
-	 * @date 2020-12-09T2107+0100
-	 *
-	 * Since the removal of the the_post hook, the tab is no danger zone any longer.
-	 * All users, not experts only, need to be able to control relative positioning.
-	 * @date 2020-11-06T1342+0100
-	 */
-	const C_STR_FOOTNOTES_EXPERT_MODE = 'footnote_inputfield_enable_expert_mode';
 
 	/**
 	 * Settings Container Key for the string before the footnote referrer.
@@ -190,6 +192,25 @@ class MCI_Footnotes_Settings {
 	const C_STR_FOOTNOTES_STYLING_AFTER = 'footnote_inputfield_custom_styling_after';
 
 	/**
+	 * Settings Container Key for the Custom CSS.
+	 *
+	 * @since 1.5.0
+	 * @var str
+	 *
+	 * @since 1.3.0  Adding: new settings tab for custom CSS settings.
+	 * Custom CSS migrates to a dedicated tab.
+	 */
+	const C_STR_CUSTOM_CSS = 'footnote_inputfield_custom_css';
+
+	/**
+	 * Settings Container Key for the 'I love footnotes' text.
+	 *
+	 * @since 1.5.0
+	 * @var str
+	 */
+	const C_STR_FOOTNOTES_LOVE = 'footnote_inputfield_love';
+
+	/**
 	 * Settings Container Key to enable the mouse-over box.
 	 *
 	 * @since 1.5.2
@@ -198,30 +219,13 @@ class MCI_Footnotes_Settings {
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED = 'footnote_inputfield_custom_mouse_over_box_enabled';
 
 	/**
-	 * Settings Container Key to enable the alternative tooltips.
-	 *
-	 * - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
-	 *
-	 * @since 2.1.1
-	 * @date 2020-11-11T1817+0100
-	 *
-	 * @reporter @andreasra
-	 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
-	 *
-	 * @var str
-	 *
-	 * These alternative tooltips work around a website related jQuery UI
-	 * outage. They are low-script but use the AMP incompatible onmouseover
-	 * and onmouseout arguments, along with CSS transitions for fade-in/out.
-	 * The very small script is inserted after Footnotes’ internal stylesheet.
-	 */
-	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE = 'footnote_inputfield_custom_mouse_over_box_alternative';
-
-	/**
 	 * Settings Container Key to enable tooltip truncation.
 	 *
 	 * @since 1.5.4
 	 * @var str
+	 * The mouse over content truncation should be enabled by default.
+	 * To raise awareness of the functionality and to prevent the screen.
+	 * From being filled at mouse-over, and to allow the Continue reading.
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = 'footnote_inputfield_custom_mouse_over_box_excerpt_enabled';
 
@@ -230,32 +234,81 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.4
 	 * @var str
+	 * The truncation length is raised from 150 to 200 chars.
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = 'footnote_inputfield_custom_mouse_over_box_excerpt_length';
 
 	/**
-	 * Settings Container Key for the mouse-over box to define the position.
+	 * Settings Container Key to enable the 'the_title' hook.
 	 *
-	 * @since 1.5.7
+	 * @since 1.5.5
 	 * @var str
+	 * These are checkboxes; keyword 'checked' is converted to Boolean true,.
+	 * Empty string to false (default).
+	 * Titles should all be enabled by default to prevent users from.
+	 * Thinking at first that the feature is broken in post titles..
+	 * See <https://wordpress.org/support/topic/more-feature-ideas/>.
+	 * Yet in titles, footnotes are still buggy, because WordPress.
+	 * Uses the title string in menus and in the title element..
 	 */
-	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION = 'footnote_inputfield_custom_mouse_over_box_position';
+	const C_STR_EXPERT_LOOKUP_THE_TITLE = 'footnote_inputfield_expert_lookup_the_title';
 
 	/**
-	 * Settings Container Key for the mouse-over box to define the offset (x).
+	 * Settings Container Key to enable the 'the_content' hook.
 	 *
-	 * @since 1.5.7
+	 * @since 1.5.5
 	 * @var str
 	 */
-	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X = 'footnote_inputfield_custom_mouse_over_box_offset_x';
+	const C_STR_EXPERT_LOOKUP_THE_CONTENT = 'footnote_inputfield_expert_lookup_the_content';
 
 	/**
-	 * Settings Container Key for the mouse-over box to define the offset (y).
+	 * Settings Container Key to enable the 'the_excerpt' hook.
 	 *
-	 * @since 1.5.7
+	 * @since 1.5.5
+	 * @var str
+	 *
+	 * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
+	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
+	 * And the_excerpt is disabled by default following @nikelaos in.
+	 * <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>.
+	 * <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>.
+	 */
+	const C_STR_EXPERT_LOOKUP_THE_EXCERPT = 'footnote_inputfield_expert_lookup_the_excerpt';
+
+	/**
+	 * Settings Container Key to enable the 'widget_title' hook.
+	 *
+	 * @since 1.5.5
 	 * @var str
 	 */
-	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y = 'footnote_inputfield_custom_mouse_over_box_offset_y';
+	const C_STR_EXPERT_LOOKUP_WIDGET_TITLE = 'footnote_inputfield_expert_lookup_widget_title';
+
+	/**
+	 * Settings Container Key to enable the 'widget_text' hook.
+	 *
+	 * @since 1.5.5
+	 * @var str
+	 * The widget_text hook must be disabled by default, because it causes.
+	 * Multiple reference containers to appear in Elementor accordions, but.
+	 * It must be enabled if multiple reference containers are desired, as.
+	 * In Elementor toggles..
+	 */
+	const C_STR_EXPERT_LOOKUP_WIDGET_TEXT = 'footnote_inputfield_expert_lookup_widget_text';
+
+	/**
+	 * Settings Container Key for the Expert mode.
+	 *
+	 * @since 1.5.5
+	 * @var str
+	 *
+	 * @since 2.1.6  This setting removed as irrelevant since priority level settings need permanent visibility.
+	 * @date 2020-12-09T2107+0100
+	 *
+	 * Since the removal of the the_post hook, the tab is no danger zone any longer.
+	 * All users, not experts only, need to be able to control relative positioning.
+	 * @date 2020-11-06T1342+0100
+	 */
+	const C_STR_FOOTNOTES_EXPERT_MODE = 'footnote_inputfield_enable_expert_mode';
 
 	/**
 	 * Settings Container Key for the mouse-over box to define the color.
@@ -270,6 +323,12 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.6
 	 * @var str
+	 *
+	 * #fff7a7 hard-coded 1.2.5..1.5.5
+	 * #fff7a7 default 1.5.6..2.0.6
+	 * #ffffff default 2.0.7..2.5.10
+	 * The mouse over box shouldn’t feature a colored background.
+	 * By default, due to diverging user preferences. White is neutral.
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = 'footnote_inputfield_custom_mouse_over_box_background';
 
@@ -294,6 +353,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.6
 	 * @var str
+	 * The mouse over box corners mustn’t be rounded as that is outdated.
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS = 'footnote_inputfield_custom_mouse_over_box_border_radius';
 
@@ -302,8 +362,38 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.6
 	 * @var str
+	 * The width should be limited to start with, for the box to have shape.
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = 'footnote_inputfield_custom_mouse_over_box_max_width';
+
+	/**
+	 * Settings Container Key for the mouse-over box to define the position.
+	 *
+	 * @since 1.5.7
+	 * @var str
+	 * The default position should not be lateral because of the risk.
+	 * The box gets squeezed between note anchor at line end and window edge,.
+	 * And top because reading at the bottom of the window is more likely.
+	 */
+	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION = 'footnote_inputfield_custom_mouse_over_box_position';
+
+	/**
+	 * Settings Container Key for the mouse-over box to define the offset (x).
+	 *
+	 * @since 1.5.7
+	 * @var str
+	 */
+	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X = 'footnote_inputfield_custom_mouse_over_box_offset_x';
+
+	/**
+	 * Settings Container Key for the mouse-over box to define the offset (y).
+	 *
+	 * @since 1.5.7
+	 * @var str
+	 * The vertical offset must be negative for the box not to cover.
+	 * The current line of text (web coordinates origin is top left).
+	 */
+	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y = 'footnote_inputfield_custom_mouse_over_box_offset_y';
 
 	/**
 	 * Settings Container Key for the mouse-over box to define the box-shadow color.
@@ -312,105 +402,6 @@ class MCI_Footnotes_Settings {
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR = 'footnote_inputfield_custom_mouse_over_box_shadow_color';
-
-	/**
-	 * Settings Container Key for the backlink symbol selection.
-	 *
-	 * @since 1.5.0
-	 * @var str
-	 * 
-	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
-	 * 
-	 * @since 2.0.4
-	 * @date 2020-11-02T2115+0100
-	 * 
-	 * @reporter @mmallett
-	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
-	 */
-	const C_STR_HYPERLINK_ARROW = 'footnote_inputfield_custom_hyperlink_symbol';
-
-	/**
-	 * Settings Container Key for the user-defined backlink symbol.
-	 *
-	 * @since 1.5.0
-	 * @var str
-	 */
-	const C_STR_HYPERLINK_ARROW_USER_DEFINED = 'footnote_inputfield_custom_hyperlink_symbol_user';
-
-	/**
-	 * Settings Container Key for the Custom CSS.
-	 *
-	 * @since 1.5.0
-	 * @var str
-	 *
-	 * @since 1.3.0  Adding: new settings tab for custom CSS settings.
-	 * Custom CSS migrates to a dedicated tab.
-	 */
-	const C_STR_CUSTOM_CSS = 'footnote_inputfield_custom_css';
-
-	/**
-	 * Settings Container Key for the Custom CSS migrated to a dedicated tab.
-	 *
-	 * @since 2.2.2  Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
-	 * @date 2020-12-15T0520+0100
-	 * @var str
-	 */
-	const C_STR_CUSTOM_CSS_NEW = 'footnote_inputfield_custom_css_new';
-
-	/**
-	 * Settings Container Key to enable display of legacy Custom CSS metaboxes.
-	 *
-	 * @since 2.2.2
-	 * @date 2020-12-15T0520+0100
-	 * @var str
-	 *
-	 * @since 2.3.0  swap Boolean from 'migration complete' to 'show legacy'
-	 * @date 2020-12-27T1233+0100
-	 *
-	 * The Boolean must be false if its setting is contained in the container to be hidden,
-	 * because when saving, all missing constants are emptied, and to_bool() converts empty to false.
-	 */
-	const C_STR_CUSTOM_CSS_LEGACY_ENABLE = 'footnote_inputfield_custom_css_legacy_enable';
-
-	/**
-	 * Settings Container Key to enable the 'the_title' hook.
-	 *
-	 * @since 1.5.5
-	 * @var str
-	 */
-	const C_STR_EXPERT_LOOKUP_THE_TITLE = 'footnote_inputfield_expert_lookup_the_title';
-
-	/**
-	 * Settings Container Key to enable the 'the_content' hook.
-	 *
-	 * @since 1.5.5
-	 * @var str
-	 */
-	const C_STR_EXPERT_LOOKUP_THE_CONTENT = 'footnote_inputfield_expert_lookup_the_content';
-
-	/**
-	 * Settings Container Key to enable the 'the_excerpt' hook.
-	 *
-	 * @since 1.5.5
-	 * @var str
-	 */
-	const C_STR_EXPERT_LOOKUP_THE_EXCERPT = 'footnote_inputfield_expert_lookup_the_excerpt';
-
-	/**
-	 * Settings Container Key to enable the 'widget_title' hook.
-	 *
-	 * @since 1.5.5
-	 * @var str
-	 */
-	const C_STR_EXPERT_LOOKUP_WIDGET_TITLE = 'footnote_inputfield_expert_lookup_widget_title';
-
-	/**
-	 * Settings Container Key to enable the 'widget_text' hook.
-	 *
-	 * @since 1.5.5
-	 * @var str
-	 */
-	const C_STR_EXPERT_LOOKUP_WIDGET_TEXT = 'footnote_inputfield_expert_lookup_widget_text';
 
 	/**
 	 * Settings Container Key for the label of the Read-on button in truncated tooltips.
@@ -426,6 +417,26 @@ class MCI_Footnotes_Settings {
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = 'footnote_inputfield_readon_label';
+
+	/**
+	 * Settings Container Key to enable the alternative tooltips.
+	 *
+	 * - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
+	 *
+	 * @since 2.1.1
+	 * @date 2020-11-11T1817+0100
+	 *
+	 * @reporter @andreasra
+	 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
+	 *
+	 * @var str
+	 *
+	 * These alternative tooltips work around a website related jQuery UI
+	 * outage. They are low-script but use the AMP incompatible onmouseover
+	 * and onmouseout arguments, along with CSS transitions for fade-in/out.
+	 * The very small script is inserted after Footnotes’ internal stylesheet.
+	 */
+	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE = 'footnote_inputfield_custom_mouse_over_box_alternative';
 
 	/**
 	 * Settings Container Key for the referrer element.
@@ -448,6 +459,7 @@ class MCI_Footnotes_Settings {
 	 * - Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
 	 *
 	 * @since 2.1.1
+	 * @date 2020-11-16T2021+0100
 	 *
 	 * @reporter @spaceling
 	 * @link https://wordpress.org/support/topic/change-the-position-5/page/2/#post-13671138
@@ -768,7 +780,7 @@ class MCI_Footnotes_Settings {
 	const C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION = 'footnotes_inputfield_mouse_over_box_fade_out_duration';
 
 	/**
-	 * Settings Container Key for URL wrap option
+	 * Settings Container Key for URL wrap option.
 	 *
 	 * This is made optional because it causes weird line breaks.
 	 * Unicode-compliant browsers break URLs at slashes.
@@ -781,7 +793,7 @@ class MCI_Footnotes_Settings {
 	const C_STR_FOOTNOTE_URL_WRAP_ENABLED = 'footnote_inputfield_url_wrap_enabled';
 
 	/**
-	 * Settings Container Key for reference container position shortcode
+	 * Settings Container Key for reference container position shortcode.
 	 *
 	 * @since 2.2.0
 	 * @var str
@@ -789,6 +801,30 @@ class MCI_Footnotes_Settings {
 	 * 2020-12-13T2056+0100
 	 */
 	const C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE = 'footnote_inputfield_reference_container_position_shortcode';
+
+	/**
+	 * Settings Container Key for the Custom CSS migrated to a dedicated tab.
+	 *
+	 * @since 2.2.2  Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
+	 * @date 2020-12-15T0520+0100
+	 * @var str
+	 */
+	const C_STR_CUSTOM_CSS_NEW = 'footnote_inputfield_custom_css_new';
+
+	/**
+	 * Settings Container Key to enable display of legacy Custom CSS metaboxes.
+	 *
+	 * @since 2.2.2
+	 * @date 2020-12-15T0520+0100
+	 * @var str
+	 *
+	 * @since 2.3.0  swap Boolean from 'migration complete' to 'show legacy'
+	 * @date 2020-12-27T1233+0100
+	 *
+	 * The Boolean must be false if its setting is contained in the container to be hidden,
+	 * because when saving, all missing constants are emptied, and to_bool() converts empty to false.
+	 */
+	const C_STR_CUSTOM_CSS_LEGACY_ENABLE = 'footnote_inputfield_custom_css_legacy_enable';
 
 	/**
 	 * Settings Container Keys for alternative tooltip position.
@@ -857,7 +893,7 @@ class MCI_Footnotes_Settings {
 	const C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER = 'footnotes_inputfield_reference_container_label_bottom_border';
 
 	/**
-	 * Settings Container Key for table cell borders, thanks to @noobishh
+	 * Settings Container Key for table cell borders, thanks to @noobishh.
 	 *
 	 * @link https://wordpress.org/support/topic/borders-25/
 	 *
@@ -1045,7 +1081,7 @@ class MCI_Footnotes_Settings {
 
 
 	/**
-	 *      SETTINGS STORAGE
+	 *      SETTINGS STORAGE.
 	 */
 
 	/**

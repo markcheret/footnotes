@@ -51,13 +51,9 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                    </section>
 
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
-                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -74,7 +70,7 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="packages/Default.html">Default</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -82,12 +78,6 @@
     MCI_Footnotes_Layout_Init
 
     
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-                            </ul>
-        </div>
     
     
     </h2>
@@ -95,7 +85,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 </aside>
 
             <p class="phpdocumentor-summary">Handles the Settings interface of the Plugin.</p>
@@ -109,6 +99,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -133,23 +132,23 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/MCI-Footnotes-Layout-Init.html#constant_C_STR_MAIN_MENU_SLUG">C_STR_MAIN_MENU_SLUG</a>
     <span>
-        &nbsp;= &#039;mfmmf&#039;                    </span>
+        &nbsp;= &quot;mfmmf&quot;                    </span>
 </dt>
 <dd>Slug for the Plugin main menu.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/MCI-Footnotes-Layout-Init.html#constant_C_STR_MAIN_MENU_TITLE">C_STR_MAIN_MENU_TITLE</a>
     <span>
-        &nbsp;= &#039;ManFisher&#039;                    </span>
+        &nbsp;= &quot;ManFisher&quot;                    </span>
 </dt>
 <dd>Plugin main menu name.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/MCI-Footnotes-Layout-Init.html#property_a_arr_sub_page_classes">$a_arr_sub_page_classes</a>
+    <a href="classes/MCI-Footnotes-Layout-Init.html#property_a_arr_SubPageClasses">$a_arr_SubPageClasses</a>
     <span>
                 &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd>Contains layout engine sub classes.</dd>
+<dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MCI-Footnotes-Layout-Init.html#method___construct">__construct()</a>
@@ -159,35 +158,35 @@
 <dd>Class Constructor. Initializes all WordPress hooks for the Plugin Settings.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Layout-Init.html#method_display_other_plugins">display_other_plugins()</a>
+    <a href="classes/MCI-Footnotes-Layout-Init.html#method_displayOtherPlugins">displayOtherPlugins()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>Displays other Plugins from the developers.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Layout-Init.html#method_get_plugin_meta_information">get_plugin_meta_information()</a>
+    <a href="classes/MCI-Footnotes-Layout-Init.html#method_getPluginMetaInformation">getPluginMetaInformation()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>AJAX call. returns a JSON string containing meta information about a specific WordPress Plugin.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Layout-Init.html#method_initialize_settings">initialize_settings()</a>
+    <a href="classes/MCI-Footnotes-Layout-Init.html#method_initializeSettings">initializeSettings()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>Initializes all sub pages and registers the settings.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Layout-Init.html#method_register_main_menu">register_main_menu()</a>
+    <a href="classes/MCI-Footnotes-Layout-Init.html#method_registerMainMenu">registerMainMenu()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>Registers the new main menu for the WordPress dashboard.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/MCI-Footnotes-Layout-Init.html#method_register_sub_pages">register_sub_pages()</a>
+    <a href="classes/MCI-Footnotes-Layout-Init.html#method_registerSubPages">registerSubPages()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -212,7 +211,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 </aside>
 
         <p class="phpdocumentor-summary">Slug for the Plugin main menu.</p>
@@ -221,7 +220,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">C_STR_MAIN_MENU_SLUG</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;mfmmf&#039;</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;mfmmf&quot;</span>
 </code>
 
 
@@ -234,6 +233,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -254,7 +262,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 </aside>
 
         <p class="phpdocumentor-summary">Plugin main menu name.</p>
@@ -263,7 +271,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">C_STR_MAIN_MENU_TITLE</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;ManFisher&#039;</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;ManFisher&quot;</span>
 </code>
 
 
@@ -276,6 +284,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -302,24 +319,23 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_arr_sub_page_classes">
-        $a_arr_sub_page_classes
-        <a href="classes/MCI-Footnotes-Layout-Init.html#property_a_arr_sub_page_classes" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_arr_SubPageClasses">
+        $a_arr_SubPageClasses
+        <a href="classes/MCI-Footnotes-Layout-Init.html#property_a_arr_SubPageClasses" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Contains layout engine sub classes.</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
-    <span class="phpdocumentor-signature__name">$a_arr_sub_page_classes</span>
+    <span class="phpdocumentor-signature__name">$a_arr_SubPageClasses</span>
      = <span class="phpdocumentor-signature__default-value">array()</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -331,6 +347,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -362,7 +387,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 </aside>
 
         <p class="phpdocumentor-summary">Class Constructor. Initializes all WordPress hooks for the Plugin Settings.</p>
@@ -381,6 +406,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -404,21 +438,21 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_display_other_plugins">
-        display_other_plugins()
-        <a href="classes/MCI-Footnotes-Layout-Init.html#method_display_other_plugins" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_displayOtherPlugins">
+        displayOtherPlugins()
+        <a href="classes/MCI-Footnotes-Layout-Init.html#method_displayOtherPlugins" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">130</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 </aside>
 
         <p class="phpdocumentor-summary">Displays other Plugins from the developers.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">display_other_plugins</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">displayOtherPlugins</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -430,6 +464,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -453,21 +496,21 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_get_plugin_meta_information">
-        get_plugin_meta_information()
-        <a href="classes/MCI-Footnotes-Layout-Init.html#method_get_plugin_meta_information" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getPluginMetaInformation">
+        getPluginMetaInformation()
+        <a href="classes/MCI-Footnotes-Layout-Init.html#method_getPluginMetaInformation" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">150</span>
+    <span class="phpdocumentor-element-found-in__line">161</span>
 </aside>
 
         <p class="phpdocumentor-summary">AJAX call. returns a JSON string containing meta information about a specific WordPress Plugin.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">get_plugin_meta_information</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">getPluginMetaInformation</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -479,6 +522,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -502,21 +554,21 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_initialize_settings">
-        initialize_settings()
-        <a href="classes/MCI-Footnotes-Layout-Init.html#method_initialize_settings" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_initializeSettings">
+        initializeSettings()
+        <a href="classes/MCI-Footnotes-Layout-Init.html#method_initializeSettings" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initializes all sub pages and registers the settings.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">initialize_settings</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">initializeSettings</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -528,6 +580,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -551,21 +612,21 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_register_main_menu">
-        register_main_menu()
-        <a href="classes/MCI-Footnotes-Layout-Init.html#method_register_main_menu" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_registerMainMenu">
+        registerMainMenu()
+        <a href="classes/MCI-Footnotes-Layout-Init.html#method_registerMainMenu" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 </aside>
 
         <p class="phpdocumentor-summary">Registers the new main menu for the WordPress dashboard.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">register_main_menu</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">registerMainMenu</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"><p>Registers all sub menu pages for the new main menu.</p>
 </section>
@@ -578,6 +639,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -610,21 +680,21 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_register_sub_pages">
-        register_sub_pages()
-        <a href="classes/MCI-Footnotes-Layout-Init.html#method_register_sub_pages" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_registerSubPages">
+        registerSubPages()
+        <a href="classes/MCI-Footnotes-Layout-Init.html#method_registerSubPages" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/dashboard/init.php"><a href="files/class-dashboard-init.html"><abbr title="class/dashboard/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">128</span>
 </aside>
 
         <p class="phpdocumentor-summary">Registers all SubPages for this Plugin.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">register_sub_pages</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">registerSubPages</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -636,6 +706,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">

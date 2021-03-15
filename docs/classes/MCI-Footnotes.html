@@ -51,13 +51,9 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                    </section>
 
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
-                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -74,7 +70,7 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="packages/Default.html">Default</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -82,12 +78,6 @@
     MCI_Footnotes
 
     
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-                            </ul>
-        </div>
     
     
     </h2>
@@ -95,7 +85,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 </aside>
 
             <p class="phpdocumentor-summary">Entry point of the Plugin. Loads the Dashboard and executes the Task.</p>
@@ -109,6 +99,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -131,36 +130,35 @@
 
 <dl class="phpdocumentor-table-of-contents">
                 <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes.html#property_a_bool_alternative_tooltips_enabled">$a_bool_alternative_tooltips_enabled</a>
+    <a href="classes/MCI-Footnotes.html#property_a_bool_AlternativeTooltipsEnabled">$a_bool_AlternativeTooltipsEnabled</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/MCI-Footnotes.html#property_a_bool_TooltipsEnabled">$a_bool_TooltipsEnabled</a>
     <span>
                 &nbsp;: bool            </span>
 </dt>
-<dd>Idenfifies whether alternative tooltips are enabled. Actual value depends
-on settings.</dd>
+<dd>Template process and script / stylesheet load optimization.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes.html#property_a_bool_tooltips_enabled">$a_bool_tooltips_enabled</a>
-    <span>
-                &nbsp;: bool            </span>
-</dt>
-<dd>Idenfifies whether tooltips are enabled. Actual value depends on settings.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/MCI-Footnotes.html#property_a_obj_task">$a_obj_task</a>
+    <a href="classes/MCI-Footnotes.html#property_a_obj_Task">$a_obj_Task</a>
     <span>
                 &nbsp;: null|<a href="classes/MCI-Footnotes-Task.html"><abbr title="\MCI_Footnotes_Task">MCI_Footnotes_Task</abbr></a>            </span>
 </dt>
 <dd>Reference to the Plugin Task object.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes.html#method_initialize_widgets">initialize_widgets()</a>
+    <a href="classes/MCI-Footnotes.html#method_initializeWidgets">initializeWidgets()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>Initializes all Widgets of the Plugin.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes.html#method_register_public">register_public()</a>
+    <a href="classes/MCI-Footnotes.html#method_registerPublic">registerPublic()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -174,14 +172,14 @@ on settings.</dd>
 <dd>Executes the Plugin.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/MCI-Footnotes.html#method_initialize_dashboard">initialize_dashboard()</a>
+    <a href="classes/MCI-Footnotes.html#method_initializeDashboard">initializeDashboard()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>Initializes the Dashboard of the Plugin and loads them.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/MCI-Footnotes.html#method_initialize_task">initialize_task()</a>
+    <a href="classes/MCI-Footnotes.html#method_initializeTask">initializeTask()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -206,54 +204,27 @@ on settings.</dd>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_alternative_tooltips_enabled">
-        $a_bool_alternative_tooltips_enabled
-        <a href="classes/MCI-Footnotes.html#property_a_bool_alternative_tooltips_enabled" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_AlternativeTooltipsEnabled">
+        $a_bool_AlternativeTooltipsEnabled
+        <a href="classes/MCI-Footnotes.html#property_a_bool_AlternativeTooltipsEnabled" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Idenfifies whether alternative tooltips are enabled. Actual value depends
-on settings.</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_alternative_tooltips_enabled</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$a_bool_AlternativeTooltipsEnabled</span>
      = <span class="phpdocumentor-signature__default-value">alse</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">contributor</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Patrizia Lutz @misfist</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">todo</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Refactor to have defines only here, and use assignments also in class/task.php.</p>
-</section>
-
-                                    </dd>
-                        </dl>
+    
 
 </article>
                     <article
@@ -263,27 +234,30 @@ on settings.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_tooltips_enabled">
-        $a_bool_tooltips_enabled
-        <a href="classes/MCI-Footnotes.html#property_a_bool_tooltips_enabled" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_bool_TooltipsEnabled">
+        $a_bool_TooltipsEnabled
+        <a href="classes/MCI-Footnotes.html#property_a_bool_TooltipsEnabled" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Idenfifies whether tooltips are enabled. Actual value depends on settings.</p>
+        <p class="phpdocumentor-summary">Template process and script / stylesheet load optimization.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_tooltips_enabled</span>
+    <span class="phpdocumentor-signature__name">$a_bool_TooltipsEnabled</span>
      = <span class="phpdocumentor-signature__default-value">alse</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><ul>
+<li>Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.</li>
+</ul>
+</section>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -292,7 +266,25 @@ on settings.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">contributor</span>
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.4.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">date</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>2021-01-04T1355+0100</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -301,16 +293,27 @@ on settings.</p>
 
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">todo</span>
+                    <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Refactor to have defines and assignments only in this class,
-then re-use these properties also in class/task.php (and elsewhere).
-Account for priority level issues. These properties must be assigned before
-the hooks—whose priority level may be configured to 0—are called in class/task.php.</p>
-</section>
-
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/template-override-filter/#post-13864301"> https://wordpress.org/support/topic/template-override-filter/#post-13864301 </a>
+                    
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">link</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/misfist/footnotes/releases/tag/2.4.0d3"> <p>repository</p>
+ </a>
+                    
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">link</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3"> <p>diff</p>
+ </a>
+                    
                                     </dd>
                         </dl>
 
@@ -322,16 +325,16 @@ the hooks—whose priority level may be configured to 0—are called in class/ta
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_obj_task">
-        $a_obj_task
-        <a href="classes/MCI-Footnotes.html#property_a_obj_task" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_a_obj_Task">
+        $a_obj_Task
+        <a href="classes/MCI-Footnotes.html#property_a_obj_Task" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 </aside>
 
         <p class="phpdocumentor-summary">Reference to the Plugin Task object.</p>
@@ -339,7 +342,7 @@ the hooks—whose priority level may be configured to 0—are called in class/ta
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">null|<a href="classes/MCI-Footnotes-Task.html"><abbr title="\MCI_Footnotes_Task">MCI_Footnotes_Task</abbr></a></span>
-    <span class="phpdocumentor-signature__name">$a_obj_task</span>
+    <span class="phpdocumentor-signature__name">$a_obj_Task</span>
      = <span class="phpdocumentor-signature__default-value">
 ull</span></code>
 
@@ -352,6 +355,15 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -376,21 +388,21 @@ ull</span></code>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_initialize_widgets">
-        initialize_widgets()
-        <a href="classes/MCI-Footnotes.html#method_initialize_widgets" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_initializeWidgets">
+        initializeWidgets()
+        <a href="classes/MCI-Footnotes.html#method_initializeWidgets" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">129</span>
+    <span class="phpdocumentor-element-found-in__line">134</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initializes all Widgets of the Plugin.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">initialize_widgets</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">initializeWidgets</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -402,6 +414,15 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -493,7 +514,7 @@ and use the bare register_widget() here.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><abbr title="\self::run()">self::run()</abbr></span>
                                         
-                                                 <section class="phpdocumentor-description"><p>Also, the visibility of initialize_widgets() is not private any longer.</p>
+                                                 <section class="phpdocumentor-description"><p>Also, the visibility of initializeWidgets() is not private any longer.</p>
 </section>
 
                                     </dd>
@@ -512,21 +533,21 @@ and use the bare register_widget() here.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_register_public">
-        register_public()
-        <a href="classes/MCI-Footnotes.html#method_register_public" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_registerPublic">
+        registerPublic()
+        <a href="classes/MCI-Footnotes.html#method_registerPublic" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">163</span>
+    <span class="phpdocumentor-element-found-in__line">171</span>
 </aside>
 
         <p class="phpdocumentor-summary">Registers and enqueues scripts and stylesheets to the public pages.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">register_public</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">registerPublic</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -538,6 +559,15 @@ and use the bare register_widget() here.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -618,7 +648,7 @@ and use the bare register_widget() here.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">80</span>
+    <span class="phpdocumentor-element-found-in__line">83</span>
 </aside>
 
         <p class="phpdocumentor-summary">Executes the Plugin.</p>
@@ -637,6 +667,15 @@ and use the bare register_widget() here.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -670,30 +709,14 @@ and use the bare register_widget() here.</p>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/benleyjyc/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793"> https://github.com/benleyjyc/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793 </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
                                                                                                         <a class="phpdocumentor-tag-link" href="https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793"> https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793 </a>
                     
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">date</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>2020-02-25</p>
-</section>
-
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\self::initialize_widgets()">self::initialize_widgets()</abbr></span>
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\self::initializeWidgets()">self::initializeWidgets()</abbr></span>
                                         
                                                  <section class="phpdocumentor-description"></section>
 
@@ -713,21 +736,21 @@ and use the bare register_widget() here.</p>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_initialize_dashboard">
-        initialize_dashboard()
-        <a href="classes/MCI-Footnotes.html#method_initialize_dashboard" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_initializeDashboard">
+        initializeDashboard()
+        <a href="classes/MCI-Footnotes.html#method_initializeDashboard" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">138</span>
+    <span class="phpdocumentor-element-found-in__line">144</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initializes the Dashboard of the Plugin and loads them.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">initialize_dashboard</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">initializeDashboard</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -739,6 +762,15 @@ and use the bare register_widget() here.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -762,21 +794,21 @@ and use the bare register_widget() here.</p>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_initialize_task">
-        initialize_task()
-        <a href="classes/MCI-Footnotes.html#method_initialize_task" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_initializeTask">
+        initializeTask()
+        <a href="classes/MCI-Footnotes.html#method_initializeTask" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="class/init.php"><a href="files/class-init.html"><abbr title="class/init.php">init.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">147</span>
+    <span class="phpdocumentor-element-found-in__line">154</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initializes the Plugin Task and registers the Task hooks.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">initialize_task</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">initializeTask</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -788,6 +820,15 @@ and use the bare register_widget() here.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">

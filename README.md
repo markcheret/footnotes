@@ -4,7 +4,7 @@
 
 ## Description
 
-Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/) --- cheers for the review, folks!
+Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wordpress-plugins-you-dont-know-about/) — cheers for the review, folks!
 
 **footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
 
@@ -14,21 +14,19 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
 
 1. Read the contributing guidelines
 1. Clone this repository (`git clone git@github.com:markcheret/footnotes.git`)
-  - We recommend that you use [VVV](https://varyingvagrantvagrants.org/) for your development environment
+    - We recommend that you use [VVV](https://varyingvagrantvagrants.org/) for your local testing environment
 1. Install [Composer](https://getcomposer.org/download/), if you don't have it already
 1. Install dependencies (`composer install`)
-1. Create a new branch from `main` (`git checkout -b <your-descriptive-branch-name>`)
-1. When you're finished, commit your changes to the remote version of your branch
-   and submit a [pull request](https://github.com/markcheret/footnotes/pulls).
+    - You will have to install `php-mbstring` manually if you do not already have it.
 
-## Checking WP Coding Standard Compliance
+## Code Formatting
 
-1. Run PHP_CodeSniffer on the file(s) you want to check (`./vendor/bin/phpcs --standard="WordPress" --colors --encoding=utf-8 -n -p <file(s)>`)
-1. (If applicable) run the PHP Code Beautifier and Formatter to attempt to automatically fix any errors (`./vendor/bin/phpcbf --standard="WordPress" --encoding=utf-8 -p <file(s)>`)
-  - Add the `-n` flag to ignore warnings (i.e., show only errors)
-  - Add the `-s` flag to show sniff codes (used for disabling errors in the code with `phpcs disable:<sniff code>` — MAKE SURE THAT YOU HAVE `phpcs enable` AT THE EARLIEST POINT POSSIBLE, and provide a justification for disabling the sniff code)
-  - You can run either across the entire project by adding the argument `--ignore=*/vendor/*` and targetting the file `./**/*.php`
-    - You may have to enable double-wildcards in your console first (`shopt -s globstar`)
+1. Run `composer run lint-php` to lint all PHP files
+1. Run `composer run lint-php:fix` to attempt to automatically fix errors and warnings
+
+## Releasing
+
+1. Run `composer run release`
 
 ## Building
 
@@ -44,8 +42,7 @@ Featured on [wpmudev](http://premium.wpmudev.org/blog/12-surprisingly-useful-wor
 
 ## Updating Documentation
 
-1. Install [phpDocumentor](https://phpdoc.org/)
-1. Run it (`phpDocumentor -d . -t docs`)
+1. Run `composer run docs`
 
 ## Testing
 
@@ -66,8 +63,8 @@ Unit tests are TODO.
 
 These are a few examples of possible ways to delimit footnotes:
 
-1. Your awesome text((with an awesome footnote))
-2. Your awesome text[ref]with an awesome footnote[/ref]
+1. Your awesome text`((`with an awesome footnote`))`
+2. Your awesome text`[ref]`with an awesome footnote`[/ref]`
 3. Your awesome text`<fn>`with an awesome footnote`</fn>`
 4. Your awesome text`custom-shortcode`with an awesome footnote`custom-shortcode`
 

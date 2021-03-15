@@ -135,7 +135,7 @@ class MCI_Footnotes_Layout_Init {
 		echo $l_obj_template->get_content();
 		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 
-		printf( '<em>visit <a href="https://cheret.de/plugins/footnotes-2/" target="_blank">Mark Cheret</a></em>' );
+		printf( '<em>visit <a href="https://cheret.org/footnotes/" target="_blank">Mark Cheret</a></em>' );
 		printf( '<br/><br/>' );
 
 		printf( '</div>' );

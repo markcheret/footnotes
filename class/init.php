@@ -304,9 +304,6 @@ class MCI_Footnotes {
 			 * @since 2.0.3  add versioning of public.css for cache busting.
 			 * @date 2020-10-29T1413+0100
 			 * Plugin version number is needed for busting browser caches after each plugin update.
-			 * @since 2.1.4  automate passing version number for cache busting.
-			 * @date 2020-11-30T0646+0100
-			 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
 			 *
 			 * The media scope argument 'all' is the default.
 			 * No need to use '-css' in the handle, as this is appended automatically.

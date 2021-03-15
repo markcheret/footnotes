@@ -142,7 +142,7 @@ fi
 
 STABLE_VERSION="$(echo $STABLE_TAG | grep -Po '\d+\.\d+(\.\d+)?$')"
 
-echo -e "- Stable version:" $STABLE_VERSION
+echo "- Stable version:" $STABLE_VERSION
 
 # Step 3(f): Check that the 'Stable Tag' field points to a real tag on the SVN repo.
 
@@ -174,7 +174,7 @@ echo -e "- Version check complete.\n"
 
 echo "- Building Plugin..."
 composer run build
-if [[ $? != 0 ]]; then echo "Build failed!"; exit 1; fi
+if [ $? != 0 ]; then echo "Build failed!"; exit 1; fi
 echo -e "- Build complete.\n"
 
 # Step 5: Update the version to pre-release

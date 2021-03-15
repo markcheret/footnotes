@@ -4,6 +4,21 @@
 # process of issuing new releases of the Plugin, both to reduce the risk of
 # procedural errors and to provide a framework for future incremental
 # automation.
+#
+# Step 1: Ensure the local copy has checked out the `main` branch
+# Step 2: Ensure local copy of `main` is up-to-date with remote
+# Step 3: Check versioning
+# Step 3(a): Get all version declarations
+# Step 3(b): Check that all version declarations exists
+# Step 3(c)(1): Check that all development versions match
+# Step 3(c)(2): Check that all stable versions match
+# Step 3(d): Check that the development version is correctly flagged as such
+# Step 3(e): Check that the 'Stable Tag' field is set to a stable version
+# Step 3(f): Check that the 'Stable Tag' field points to a real tag on the SVN repo.
+# Step 3(g): Check that the changelog is up-to-date
+# Step 4: Build the Plugin
+# Step 5: Update the version to pre-release
+# Step 6: Tag the release
 
 echo "Welcome to the footnotes release helper!"
 echo "========================================"
@@ -39,6 +54,7 @@ fi
 # Step 3: Check versioning
 
 # Step 3(a): Get all version declarations
+
 # NOTE: I'm not sure why, but if you try to get the root header
 # version without piping it through the second `grep` command,
 # you'll end up with a list of files before the version 

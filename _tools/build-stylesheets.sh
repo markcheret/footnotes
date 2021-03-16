@@ -60,6 +60,14 @@ elif [[ $1 == "-d" ]]; then
 		#mv $f ./dist/css
 		echo -e '\t' $filename".css moved."
 	done
+	# NB: We currently distribute both the minified and unminified stylesheets
+	# with the Plugin.
+	for f in ./css/tmp/*.css;	do
+		filename=$(basename $f .css)
+		cp $f ./dist/css
+		#mv $f ./dist/css
+		echo -e '\t' $filename".css moved."
+	done
 	#echo "Deleting temporary files..."
 	#rm -r ./css/tmp
 	echo "Minified stylesheets added to build."

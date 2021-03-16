@@ -6,8 +6,8 @@
  * Created-Time: 16:21
  * Since: 1.0
  * 
- * @version 2.5.8
- * @lastmodified 2021-02-28T1320+0100
+ * @version 2.6.0
+ * @lastmodified 2021-03-16T1529+0100
  *
  *     Classes recommended for Custom CSS:
  *     @see templates/dashboard/customize-css-new.html
@@ -37,9 +37,10 @@
  * 
  * The first part of the code contains 4 letters showing whether tooltips
  * are enabled, and if so, which implementation: jQuery or alternative:
- *  nott  ➜ no tooltips           ➜ -
- *  jqtt  ➜ jQuery tooltips       ➜ dev-tooltips.css
- *  altt  ➜ alternative tooltips  ➜ dev-tooltips.css & dev-tooltips-alternative.css
+ *  ampt  ➜ AMP compatible tooltips  ➜ dev-tooltips.css & dev-amp-tooltips.css
+ *  jqtt  ➜ jQuery tooltips          ➜ dev-tooltips.css
+ *  altt  ➜ alternative tooltips     ➜ dev-tooltips.css & dev-tooltips-alternative.css
+ *  nott  ➜ no tooltips              ➜ -
  * 
  * The second part of the code consists of the 4 letters "brpl", for 
  * Basic Responsive Page Layout, followed by a digit showing if a fix 
@@ -65,6 +66,7 @@
  * @since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
  * @since 2.4.0  validation error warning box
  * @since 2.5.0  validation error warning box more paragraphs
+ * @since 2.5.11 AMP compatible tooltips and reference container
  */
 
 /**
@@ -271,6 +273,14 @@ Classes:
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+.collapsed {
+	display: none;
+}
+
+.unfolded {
+	display: inline;
 }
 
 /**

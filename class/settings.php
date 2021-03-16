@@ -11,8 +11,8 @@
  * @since 2.0.4  Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
  * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
  * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
- * 
  *
+ * **Revision of the docblocks is in progress.**
  *
  * @since 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
  *
@@ -136,12 +136,12 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.0
 	 * @var str
-	 * 
+	 *
 	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
-	 * 
+	 *
 	 * @since 2.0.4
 	 * @date 2020-11-02T2115+0100
-	 * 
+	 *
 	 * @reporter @mmallett
 	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
 	 */
@@ -160,9 +160,9 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.0
 	 * @var str
-	 * 
+	 *
 	 * - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
-	 * 
+	 *
 	 * @reporter @nikelaos
 	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
 	 */
@@ -324,11 +324,19 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.6
 	 * @var str
 	 *
-	 * #fff7a7 hard-coded 1.2.5..1.5.5
-	 * #fff7a7 default 1.5.6..2.0.6
-	 * #ffffff default 2.0.7..2.5.10
+	 * - Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @reporter @4msc
+	 * @link https://wordpress.org/support/topic/tooltip-not-showing-on-dark-theme-with-white-text/
+	 *
+	 * 1.2.5..1.5.5  #fff7a7 hard-coded
+	 * 1.5.6..2.0.6  #fff7a7 setting default
+	 * 2.0.7..2.5.10 #ffffff setting default
 	 * The mouse over box shouldn’t feature a colored background.
 	 * By default, due to diverging user preferences. White is neutral.
+	 * Theme default background color is best.
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = 'footnote_inputfield_custom_mouse_over_box_background';
 
@@ -1079,6 +1087,24 @@ class MCI_Footnotes_Settings {
 	 */
 	const C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE = 'footnotes_inputfield_reference_container_script_mode';
 
+	/**
+	 * Settings container key to enable AMP compatibility mode.
+	 *
+	 * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @contributor @milindmore22
+	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+	 *
+	 * @contributor @westonruter
+	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
+	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799580854
+	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799582394
+	 */
+	const C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE = 'footnotes_inputfield_amp_compatibility_enable';
+
 
 	/**
 	 *      SETTINGS STORAGE.
@@ -1122,6 +1148,9 @@ class MCI_Footnotes_Settings {
 
 		// General settings.
 		'footnotes_storage'             => array(
+
+			// AMP compatibility.
+			self::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE            => '',
 
 			// Footnote start and end short codes.
 			self::C_STR_FOOTNOTES_SHORT_CODE_START                    => '((',
@@ -1243,7 +1272,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT                 => 'px',
 
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR                => '',
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND           => '#ffffff',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND           => '',
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH         => 1,
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR         => '#cccc99',
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS        => 0,

@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.11d4
-Version: 2.5.10
+Package Version: 2.6.0d1
+Version: 2.6.0
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -80,7 +80,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.5.11 =
+= 2.6.0 =
+- Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+- Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+- Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
 - Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
 - Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
 - Update: Documentation: Readme.txt: informative 'Package Version' field in sync with the 'Package V.' field added in the 'footnotes.php' file header.

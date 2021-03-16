@@ -1,0 +1,60 @@
+/*<?php for docblocks
+/**
+ * Additional stylesheet for alternative tooltips.
+ * 
+ * @since 2.5.5
+ * @version 2.6.0
+ * @lastmodified 2021-02-18T2029+0100
+ *
+ * System of unified minified style sheets tailored to the instance.
+ * 
+ * @see full header in dev-common.css.
+ */
+
+/**
+ * AMP compatible tooltips.
+ * 
+ * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+ * 
+ * @since 2.6.0
+ * 
+ * @contributor @milindmore22
+ * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+ * 
+ * @contributor @westonruter
+ * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
+ * 
+ */
+
+span.footnote_referrer > span.footnote_tooltip {
+	visibility:hidden;
+	opacity:"0";
+	transition-property: visibility opacity;
+	transition-delay: 500ms;
+	transition-duration: 1s;
+}
+
+span.footnote_referrer:focus-within > span.footnote_tooltip,
+span.footnote_referrer:hover > span.footnote_tooltip {
+	visibility:visible;
+	opacity:1;
+	transition-property: visibility opacity;
+	transition-delay: 0;
+	transition-duration: 200ms;
+}
+
+/**
+ * These default position values may be overridden by internal CSS.
+ */
+
+.footnote_referrer.relative {
+	position: relative;
+}
+
+.footnote_tooltip.position {
+	display: unset;
+	position: absolute;
+	bottom: 24px;
+	left: -50px;
+	width: 400px;
+}

@@ -1,0 +1,62 @@
+<!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
+	/**
+	 * Reference container template to enable AMP compatibility mode.
+	 *
+	 * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @contributor @milindmore22
+	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+	 *
+	 * @contributor @westonruter
+	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
+	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799580854
+	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799582394
+	 *
+	 * Using the `tap` event.
+	 * @link https://amp.dev/documentation/guides-and-tutorials/learn/amp-actions-and-events
+	 * Using the `toggleClass` action.
+	 * @link https://amp.dev/documentation/guides-and-tutorials/learn/amp-actions-and-events/#*-(all-elements)
+	 */?>
+-->
+<div
+	class="speaker-mute footnotes_reference_container"
+	>
+	<div
+		class="footnote_container_prepare"
+		><[[element]]
+			><span
+				id="footnotes_container_label_expand_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_label pointer"
+				on="tap:footnote_references_container_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_plus_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_minus_[[post_id]]_[[container_id]].toggleClass(class=collapsed)"
+				>[[name]]</span
+			><span
+				id="footnotes_container_button_plus_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_collapse_button"
+				on="tap:footnote_references_container_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_plus_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_minus_[[post_id]]_[[container_id]].toggleClass(class=collapsed)"
+			>[+]</span
+			><span
+			></span
+			><span
+				id="footnotes_container_button_minus_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_collapse_button collapsed"
+				on="tap:footnote_references_container_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_plus_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_minus_[[post_id]]_[[container_id]].toggleClass(class=collapsed)"
+			>[−]</span
+			></[[element]]
+		></div
+	>
+	<div
+		id="footnote_references_container_[[post_id]]_[[container_id]]"
+		class="collapsed"
+	>
+		<table
+			class="footnotes_table footnote-reference-container"
+		>
+			<tbody>
+				[[content]]
+			</tbody>
+		</table>
+	</div>
+</div>

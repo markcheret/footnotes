@@ -80,6 +80,8 @@
  * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
  * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  * @since 2.5.7  Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
+ * @since 2.6.0  Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+ * @since 2.6.0  Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
  */
 
 // If called directly, abort.
@@ -157,36 +159,6 @@ class MCI_Footnotes_Task {
 	 * is built with Elementor and has an accordion or similar toggle sections.
 	 */
 	public static $a_int_reference_container_id = 1;
-
-	/**
-	 * Whether tooltips are enabled. Actual value depends on settings.
-	 *
-	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
-	 *
-	 * @since 2.4.0
-	 * @date 2021-01-04T1355+0100
-	 *
-	 * @contributor Patrizia Lutz @misfist
-	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
-	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
-	 * @link https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3 diff
-	 *
-	 * @var bool
-	 *
-	 * Template process and script / stylesheet load optimization.
-	 * Streamline process depending on tooltip enabled status.
-	 * Load tooltip inline script only if jQuery tooltips are enabled.
-	 */
-	public static $a_bool_tooltips_enabled = false;
-
-	/**
-	 * Whether alternative tooltips are enabled. Actual value depends on settings.
-	 *
-	 * @since 2.4.0
-	 *
-	 * @var bool
-	 */
-	public static $a_bool_alternative_tooltips_enabled = false;
 
 	/**
 	 * Hard links for AMP compatibility
@@ -736,7 +708,7 @@ class MCI_Footnotes_Task {
 		 * @reporter @noobishh
 		 * @link https://wordpress.org/support/topic/borders-25/
 		 *
-		 * TODO: use `wp_add_inline_style()` or something like that instead.
+		 * @todo Use `wp_add_inline_style()` or something like that instead.
 		 */
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE ) ) ) {
 			echo '.footnotes_table, .footnotes_plugin_reference_row {';
@@ -804,8 +776,7 @@ class MCI_Footnotes_Task {
 		self::$a_bool_hard_links_enable = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE ) );
 
 		// Correct hard links enabled status depending on alternative reference container enabled status.
-		$l_str_script_mode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
-		if ( 'jquery' !== $l_str_script_mode ) {
+		if ( 'jquery' !== MCI_Footnotes::$a_str_script_mode ) {
 			self::$a_bool_hard_links_enable = true;
 		}
 
@@ -819,10 +790,10 @@ class MCI_Footnotes_Task {
 		/*
 		 * Tooltips.
 		 */
-		self::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+		MCI_Footnotes::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		MCI_Footnotes::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
 
-		if ( self::$a_bool_tooltips_enabled ) {
+		if ( MCI_Footnotes::$a_bool_tooltips_enabled ) {
 			echo '.footnote_tooltip {';
 
 			/**
@@ -900,13 +871,12 @@ class MCI_Footnotes_Task {
 			 * @since 2.1.4
 			 * @date 2020-12-06T1320+0100
 			 *
-			 *
 			 * - Update: Tooltips: Alternative tooltips: connect to position/timing settings (for themes not supporting jQuery tooltips).
 			 *
 			 * @since 2.2.5
 			 * @date 2020-12-18T1113+0100
 			 */
-			if ( ! self::$a_bool_alternative_tooltips_enabled ) {
+			if ( ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
 				/*
 				 * jQuery tooltips.
 				 */
@@ -948,7 +918,7 @@ class MCI_Footnotes_Task {
 				echo "}\r\n";
 
 				/**
-				 * Alternative tooltip timing.
+				 * AMP compatible and alternative tooltip timing.
 				 *
 				 * For jQuery tooltip timing @see templates/public/tooltip.html.
 				 */
@@ -1005,7 +975,7 @@ class MCI_Footnotes_Task {
 		 * The script for alternative tooltips is printed formatted, not minified,
 		 * for transparency. It isn’t indented though (the PHP open tag neither).
 		 */
-		if ( self::$a_bool_alternative_tooltips_enabled ) {
+		if ( MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
 
 			// Start internal script.
 			?>
@@ -1396,32 +1366,48 @@ class MCI_Footnotes_Task {
 			}
 		}
 
-		// Load referrer templates if footnotes text not hidden.
+		/**
+		 * Load footnote referrer template file.
+		 */
+
+		// On the condition that the footnote text is not hidden.
 		if ( ! $p_bool_hide_footnotes_text ) {
 
-			// Load footnote referrer template file.
-			if ( self::$a_bool_alternative_tooltips_enabled ) {
-				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote-alternative' );
-			} else {
-				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote' );
-			}
+			// Whether AMP compatibility mode is enabled.
+			if ( MCI_Footnotes::$a_bool_amp_enabled ) {
 
-			/**
-			 * Call Boolean again for robustness when priority levels don’t match any longer.
-			 *
-			 * - Bugfix: Tooltips: fix display in Popup Maker popups by correcting a coding error.
-			 *
-			 * @since 2.5.4
-			 * @see self::add_filter('pum_popup_content', array($this, "the_content"), $l_int_the_content_priority)
-			 */
-			self::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-			self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+				// Whether first clicking a referrer needs to expand the reference container.
+				if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
+
+					// Load 'templates/public/amp-footnote-expand.html'.
+					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-footnote-expand' );
+
+				} else {
+
+					// Load 'templates/public/amp-footnote-expand.html'.
+					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-footnote' );
+				}
+
+			} elseif ( MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
+
+				// Load 'templates/public/amp-footnote-expand.html'.
+				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote-alternative' );
+
+			} else {
+
+				// Load 'templates/public/amp-footnote-expand.html'.
+				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote' );
+
+			}
 
 			// Load tooltip inline script if jQuery tooltips are enabled.
-			if ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) {
+			if ( MCI_Footnotes::$a_bool_tooltips_enabled && ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
+				
 				$l_obj_template_tooltip = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'tooltip' );
 			}
+			
 		} else {
+			
 			$l_obj_template         = null;
 			$l_obj_template_tooltip = null;
 		}
@@ -1651,7 +1637,7 @@ class MCI_Footnotes_Task {
 				 * This is equivalent to the WordPress default excerpt generation, i.e. without a
 				 * custom excerpt and without a delimiter. But WordPress does word count, usually 55.
 				 */
-				if ( self::$a_bool_tooltips_enabled && $l_bool_enable_excerpt ) {
+				if ( MCI_Footnotes::$a_bool_tooltips_enabled && $l_bool_enable_excerpt ) {
 					$l_str_dummy_text = wp_strip_all_tags( $l_str_footnote_text );
 					if ( is_int( $l_int_max_length ) && strlen( $l_str_dummy_text ) > $l_int_max_length ) {
 						$l_str_excerpt_text  = substr( $l_str_dummy_text, 0, $l_int_max_length );
@@ -1768,7 +1754,7 @@ class MCI_Footnotes_Task {
 				}
 
 				// Determine tooltip content.
-				if ( self::$a_bool_tooltips_enabled ) {
+				if ( MCI_Footnotes::$a_bool_tooltips_enabled ) {
 					$l_str_tooltip_content = $l_bool_has_tooltip_text ? $l_str_tooltip_text : $l_str_excerpt_text;
 				} else {
 					$l_str_tooltip_content = '';
@@ -1780,7 +1766,7 @@ class MCI_Footnotes_Task {
 				 * @since 2.5.6
 				 */
 				$l_str_tooltip_style = '';
-				if ( self::$a_bool_alternative_tooltips_enabled && self::$a_bool_tooltips_enabled ) {
+				if ( MCI_Footnotes::$a_bool_alternative_tooltips_enabled && MCI_Footnotes::$a_bool_tooltips_enabled ) {
 					$l_int_tooltip_length = strlen( wp_strip_all_tags( $l_str_tooltip_content ) );
 					if ( $l_int_tooltip_length < 70 ) {
 						$l_str_tooltip_style  = ' style="width: ';
@@ -1812,7 +1798,7 @@ class MCI_Footnotes_Task {
 				$l_obj_template->reload();
 
 				// If standard tooltips are enabled but alternative are not.
-				if ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) {
+				if ( MCI_Footnotes::$a_bool_tooltips_enabled && ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
 
 					$l_int_offset_y          = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y ) );
 					$l_int_offset_x          = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X ) );
@@ -2411,22 +2397,23 @@ class MCI_Footnotes_Task {
 		 */
 		$l_str_reference_container_label = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_NAME );
 
-		/**
-		 * Select the reference container template according to the script mode.
-		 *
-		 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
-		 *
-		 * @since 2.5.6
-		 *
-		 * @reporter @hopper87it
-		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
-		 *
-		 * @reporter @pkverma99
-		 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/#post-14076188
-		 */
-		$l_str_script_mode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		// Select the reference container template.
+		// Whether AMP compatibility mode is enabled.
+		if ( MCI_Footnotes::$a_bool_amp_enabled ) {
 
-		if ( 'jquery' === $l_str_script_mode ) {
+			// Whether the reference container is collapsed by default.
+			if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
+
+				// Load 'templates/public/amp-reference-container-collapsed.html'.
+				$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container-collapsed' );
+
+			} else {
+
+				// Load 'templates/public/amp-reference-container.html'.
+				$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container' );
+			}
+
+		} elseif ( 'jquery' === MCI_Footnotes::$a_str_script_mode ) {
 
 			// Load 'templates/public/reference-container.html'.
 			$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container' );

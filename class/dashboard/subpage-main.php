@@ -131,6 +131,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_arr_meta_boxes = array();
 
 		// Sync box name with mirror in task.php.
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility', 'footnotes' ), 'amp_compat' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'start-end', __( 'Footnote start and end short codes', 'footnotes' ), 'start_end' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'Numbering' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'Scrolling' );
@@ -162,6 +163,31 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'how-to', 'donate', __( 'Help us to improve our Plugin', 'footnotes' ), 'donate' );
 
 		return $l_arr_meta_boxes;
+	}
+
+	/**
+	 * Displays the AMP compatibility mode option.
+	 *
+	 * @since 2.6.0
+	 */
+	public function amp_compat() {
+
+		// Load template file.
+		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'settings-amp' );
+		// Replace all placeholders.
+		$l_obj_template->replace(
+			array(
+				'label-amp'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE, __( 'Enable AMP compatibility mode:', 'footnotes' ) ),
+				'amp'             => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
+				'notice-amp'      => __( 'This option enables hard links with scroll offset.', 'footnotes' ),
+				// Translators: '%s' is the logogram of Footnotes.
+				'description-amp' => sprintf( __( '%s is now fully functional on AMP pages and websites in all modes including Standard mode, except animated scrolling but with scroll offset in screen height per cent as configured, styled tooltips and reference container expand/collapse.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
+			)
+		);
+		// Display template with replaced placeholders.
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
 	}
 
 	/**

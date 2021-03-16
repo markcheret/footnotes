@@ -1,7 +1,7 @@
 /**
  * Created by Stefan on 24.05.14.
- * 
- * 
+ *
+ *
  * Edit: be careful to maintain version number near EOF   2020-12-11T1225+0100
  */
 
@@ -60,7 +60,7 @@
 		 * The current keys are longname, author, authorurl, infourl and version.
 		 *
 		 * @return {Object} Name/value array containing information about the plugin.
-		 * 
+		 *
 		 * Edit: needs update the version number manually   2020-12-11T1224+0100
 		 */
 		getInfo : function() {
@@ -69,7 +69,7 @@
 				author : 'Mark Cheret',
 				authorurl : 'https://cheret.org/footnotes/',
 				infourl : 'https://wordpress.org/plugins/footnotes/',
-				version : "2.5.10"
+				version : "2.6.0"
 			};
 		}
 	});

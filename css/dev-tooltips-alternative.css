@@ -39,7 +39,7 @@ fade-in parameters
 	transition-property: visibility opacity;
 	transition-timing-function: linear;
 /*
-property values of settings are inline CSS
+Property values of settings are internal CSS.
 	transition-delay: 0ms;
 	transition-duration: 200ms;
 */

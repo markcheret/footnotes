@@ -39,7 +39,7 @@ class MCI_Footnotes {
 
 	/**
 	 * Allows to determine whether tooltips are enabled.
-	 * The actual value of these properties is configurable and depends on settings.
+	 * The actual value of these properties is configurable.
 	 *
 	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
 	 *

@@ -4,7 +4,7 @@
  * 
  * @since 2.5.5
  * @version 2.6.0
- * @lastmodified 2021-02-18T2029+0100
+ * @lastmodified 2021-03-16T2340+0100
  *
  * System of unified minified style sheets tailored to the instance.
  * 
@@ -30,8 +30,11 @@ span.footnote_referrer > span.footnote_tooltip {
 	visibility:hidden;
 	opacity:"0";
 	transition-property: visibility opacity;
+/*
+Property values of settings are internal CSS.
 	transition-delay: 500ms;
 	transition-duration: 1s;
+*/
 }
 
 span.footnote_referrer:focus-within > span.footnote_tooltip,
@@ -39,8 +42,11 @@ span.footnote_referrer:hover > span.footnote_tooltip {
 	visibility:visible;
 	opacity:1;
 	transition-property: visibility opacity;
+/*
+Property values of settings are internal CSS.
 	transition-delay: 0;
 	transition-duration: 200ms;
+*/
 }
 
 /**

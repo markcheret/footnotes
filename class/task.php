@@ -921,9 +921,9 @@ class MCI_Footnotes_Task {
 				 * For jQuery tooltip timing @see templates/public/tooltip.html.
 				 */
 				if ( MCI_Footnotes::$a_bool_amp_enabled ) {
-					echo '} span.footnote_referrer > span.footnote_tooltip {';
+					echo 'span.footnote_referrer > span.footnote_tooltip {';
 				} else {
-					echo '} .footnote_tooltip.hidden {';
+					echo '.footnote_tooltip.hidden {';
 				}
 				$l_int_fade_out_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY ) );
 				$l_int_fade_out_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
@@ -936,7 +936,7 @@ class MCI_Footnotes_Task {
 				if ( MCI_Footnotes::$a_bool_amp_enabled ) {
 					echo 'span.footnote_referrer:focus-within > span.footnote_tooltip, span.footnote_referrer:hover > span.footnote_tooltip {';
 				} else {
-					echo ' .footnote_tooltip.shown {';
+					echo '.footnote_tooltip.shown {';
 				}
 				$l_int_fade_in_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );
 				$l_int_fade_in_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
@@ -944,6 +944,7 @@ class MCI_Footnotes_Task {
 				$l_int_fade_in_duration = ! empty( $l_int_fade_in_duration ) ? $l_int_fade_in_duration : '0';
 				echo ' transition-delay: ' . $l_int_fade_in_delay . 'ms;';
 				echo ' transition-duration: ' . $l_int_fade_in_duration . 'ms;';
+				echo "}\r\n";
 
 			}
 		}

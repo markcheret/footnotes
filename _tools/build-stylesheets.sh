@@ -51,7 +51,7 @@ elif [[ $1 == "-d" ]]; then
 	# NOTE: I've temporarily replaced the `mv` command
 	# with `cp` and disabled the `rm` command, so the minified
 	# files won't be removed from the source directory.
-	echo "Deploying minified files to \`dist/css/\`..."
+	echo "Deploying minified stylesheets to \`dist/css/\`..."
 	rm -r ./dist
 	mkdir -p ./dist/css
 	for f in ./css/tmp/*.min.css;	do
@@ -60,17 +60,20 @@ elif [[ $1 == "-d" ]]; then
 		#mv $f ./dist/css
 		echo -e '\t' $filename".css moved."
 	done
-	# NB: We currently distribute both the minified and unminified stylesheets
-	# with the Plugin.
-	for f in ./css/tmp/*.css;	do
+	
+	# NB: We currently distribute both the minified + concatenated and the 
+	# unminified + unconcatenated stylesheets with the Plugin.
+	echo "Deploying development stylesheets to \`dist/css/\`..."
+	for f in ./css/tmp/dev-*.css;	do
 		filename=$(basename $f .css)
 		cp $f ./dist/css
 		#mv $f ./dist/css
 		echo -e '\t' $filename".css moved."
 	done
+	
 	#echo "Deleting temporary files..."
 	#rm -r ./css/tmp
-	echo "Minified stylesheets added to build."
+	echo "All stylesheets added to build."
 	exit 0
 	
 else

@@ -4,9 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
  * Author: Mark Cheret
- * Package V.: 2.5.11d2
  * Version: 2.5.10
- * CAUTION: THIS V. FIELD IS PARSED FOR UPDATE CONFIGURATION.
  * Author URI: https://cheret.org/footnotes/
  * Text Domain: footnotes
  * Domain Path: /languages
@@ -14,19 +12,6 @@
  * @package footnotes
  * @copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
-
-/**
- * Package Version number for stylesheet cache busting.
- *
- * Please keep this constant in sync with the Package Version in the header above
- * and in the header of the readme, but not necessarily with the other Version.
- *
- * @since 2.1.4
- * @since 2.5.3 (Hungarian)
- * @var str
- * @lastmodified 2021-03-11T2202+0100
- */
-define( 'C_STR_PACKAGE_VERSION', '2.5.11d2' );
 
 /**
  * Version numbers in WordPress plugin readme.txt and main PHP headers.
@@ -145,4 +130,4 @@ $g_obj_mci_footnotes->run();
  * Developing stylesheets is meant to be easier when this is set to false.
  * WARNING: This facility designed for development must NOT be used in production.
  */
-define( 'C_BOOL_CSS_PRODUCTION_MODE', true );
+define( 'C_BOOL_CSS_PRODUCTION_MODE', false );

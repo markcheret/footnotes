@@ -4,10 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.11d2
-Version: 2.5.10
 Stable Tag: 2.5.10
-CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,14 +78,14 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.5.11 =
-- Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
-- Adding: Documentation: Readme.txt: informative 'Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
-- Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
-- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution during the codebase conformance overhaul.
+- Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
+- Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
+- Update: Documentation: Readme.txt: informative 'Package Version' field in sync with the 'Package V.' field added in the 'footnotes.php' file header.
+- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution in the standards compliance overhaul.
 - Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
-- Adding: Documentation: additional readme in markdown format 'README.md' for use with GitHub, thanks to @rumperuu code contribution.
-- Adding: Documentation: help and support for contributors by the means of Contributing Guidelines 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
-- Adding: Development: pre-commit hook for WordPress projects, modified from @bjornjohansen, thanks to @rumperuu code contribution.
+- Update: Documentation: help and support for contributors by the means of Contributing Guidelines in 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
+- Update: Documentation: additional readme in markdown format 'README.md' for use with the code repository on GitHub, thanks to @rumperuu code contribution.
+- Update: Documentation: move 'customized-template-stack.txt' and 'customized-documentation-schema.txt' from the 'development/' folder to root.
 
 = 2.5.10 =
 - Bugfix: Codebase: revert to 2.5.8 with apologies (below), thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.

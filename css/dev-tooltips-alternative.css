@@ -4,17 +4,18 @@
  * 
  * @since 2.5.5
  * @version 2.6.0
- * @lastmodified 2021-03-16T1531+0100
+ * @lastmodified 2021-03-17T1552+0100
  *
  * System of unified minified style sheets tailored to the instance.
  * 
- * @see full header in dev-common.css.
+ * @see dev-common.css.
  */
 
 /**
- * Alternative tooltips
+ * Position.
  * 
- * These default position values may be overridden by internal CSS.
+ * Values are defined by internal CSS.
+ * @see class/task.php
  */
 
 .footnote_referrer.relative {
@@ -24,13 +25,19 @@
 .footnote_tooltip.position {
 	display: unset;
 	position: absolute;
+/*
 	bottom: 24px;
 	left: -50px;
 	width: 400px;
+*/
 }
 
-/*
-fade-in parameters
+/**
+ * Timing; fade-in/fade-out parameters.
+ * 
+ * To streamline internal CSS, immutable rules are in external stylesheet.
+ * Property values of settings are internal CSS.
+ * @see class/task.php
 */
 
 .footnote_tooltip.shown {
@@ -39,15 +46,10 @@ fade-in parameters
 	transition-property: visibility opacity;
 	transition-timing-function: linear;
 /*
-Property values of settings are internal CSS.
 	transition-delay: 0ms;
 	transition-duration: 200ms;
 */
 }
-
-/*
-fade-out parameters
-*/
 
 .footnote_tooltip.hidden {
 	visibility: hidden;
@@ -55,7 +57,6 @@ fade-out parameters
 	transition-property: visibility opacity;
 	transition-timing-function: linear;
 /*
-property values of settings are inline CSS
 	transition-delay: 400ms;
 	transition-duration: 200ms;
 */

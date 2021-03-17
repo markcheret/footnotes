@@ -861,7 +861,7 @@ class MCI_Footnotes_Task {
 			}
 
 			/**
-			 * Tooltip position and timing.
+			 * Tooltip position, dimensions and timing.
 			 *
 			 * - Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style.
 			 *
@@ -874,28 +874,44 @@ class MCI_Footnotes_Task {
 			 * @date 2020-12-18T1113+0100
 			 */
 			if ( ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled && ! MCI_Footnotes::$a_bool_amp_enabled ) {
-				/*
-				 * jQuery tooltips.
+
+				/**
+				 * Dimensions of jQuery tooltips.
+				 *
+				 * Position and timing of jQuery tooltips are script defined.
+				 * @see templates/public/tooltip.html.
 				 */
 				$l_int_max_width = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
 				if ( ! empty( $l_int_max_width ) && intval( $l_int_max_width ) > 0 ) {
 					printf( ' max-width: %dpx !important;', $l_int_max_width );
 				}
 				echo "}\r\n";
+
 			} else {
+
 				/*
 				 * AMP compatible and alternative tooltips.
 				 */
 				echo "}\r\n";
 
-				// Dimensions.
+				/**
+				 * Dimensions.
+				 *
+				 * @see 'Determine shrink width if alternative tooltips are enabled'.
+				 */
 				$l_int_alternative_tooltip_width = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH ) );
 				echo '.footnote_tooltip.position {';
 				echo ' width: ' . $l_int_alternative_tooltip_width . 'px;';
+
 				// Set also as max-width wrt short tooltip shrinking.
 				echo ' max-width: ' . $l_int_alternative_tooltip_width . 'px;';
 
-				// Position.
+				/**
+				 * Position.
+				 *
+				 * @see dev-amp-tooltips.css.
+				 * @see dev-tooltips-alternative.css.
+				 */
 				$l_str_alternative_position = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION );
 				$l_int_offset_x             = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X ) );
 
@@ -914,38 +930,54 @@ class MCI_Footnotes_Task {
 				}
 				echo "}\r\n";
 
+				/*
+				 * Timing.
+				 */
+				$l_int_fade_in_delay     = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );
+				$l_int_fade_in_delay     = ! empty( $l_int_fade_in_delay ) ? $l_int_fade_in_delay : '0';
+				$l_int_fade_in_duration  = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
+				$l_int_fade_in_duration  = ! empty( $l_int_fade_in_duration ) ? $l_int_fade_in_duration : '0';
+				$l_int_fade_out_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY ) );
+				$l_int_fade_out_delay    = ! empty( $l_int_fade_out_delay ) ? $l_int_fade_out_delay : '0';
+				$l_int_fade_out_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
+				$l_int_fade_out_duration = ! empty( $l_int_fade_out_duration ) ? $l_int_fade_out_duration : '0';
+
 				/**
-				 * AMP compatible and alternative tooltip timing.
-				 * 
-				 * @see dev-amp-tooltips.css or dev-tooltips-alternative.css.
-				 * For jQuery tooltip timing @see templates/public/tooltip.html.
+				 * AMP compatible tooltips.
+				 *
+				 * To streamline internal CSS, immutable rules are in external stylesheet.
+				 * @see dev-amp-tooltips.css.
 				 */
 				if ( MCI_Footnotes::$a_bool_amp_enabled ) {
+
 					echo 'span.footnote_referrer > span.footnote_tooltip {';
-				} else {
-					echo '.footnote_tooltip.hidden {';
-				}
-				$l_int_fade_out_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY ) );
-				$l_int_fade_out_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
-				$l_int_fade_out_delay    = ! empty( $l_int_fade_out_delay ) ? $l_int_fade_out_delay : '0';
-				$l_int_fade_out_duration = ! empty( $l_int_fade_out_duration ) ? $l_int_fade_out_duration : '0';
-				echo ' transition-delay: ' . $l_int_fade_out_delay . 'ms;';
-				echo ' transition-duration: ' . $l_int_fade_out_duration . 'ms;';
-				echo "}\r\n";
+					echo 'transition-delay: ' . $l_int_fade_out_delay . 'ms;';
+					echo 'transition-duration: ' . $l_int_fade_out_duration . 'ms;';
+					echo "}\r\n";
 
-				if ( MCI_Footnotes::$a_bool_amp_enabled ) {
 					echo 'span.footnote_referrer:focus-within > span.footnote_tooltip, span.footnote_referrer:hover > span.footnote_tooltip {';
-				} else {
-					echo '.footnote_tooltip.shown {';
-				}
-				$l_int_fade_in_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );
-				$l_int_fade_in_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
-				$l_int_fade_in_delay    = ! empty( $l_int_fade_in_delay ) ? $l_int_fade_in_delay : '0';
-				$l_int_fade_in_duration = ! empty( $l_int_fade_in_duration ) ? $l_int_fade_in_duration : '0';
-				echo ' transition-delay: ' . $l_int_fade_in_delay . 'ms;';
-				echo ' transition-duration: ' . $l_int_fade_in_duration . 'ms;';
-				echo "}\r\n";
+					echo 'transition-delay: ' . $l_int_fade_in_delay . 'ms;';
+					echo 'transition-duration: ' . $l_int_fade_in_duration . 'ms;';
+					echo "}\r\n";
 
+				/**
+				 * Alternative tooltips.
+				 *
+				 * To streamline internal CSS, immutable rules are in external stylesheet.
+				 * @see dev-tooltips-alternative.css.
+				 */
+				} else {
+
+					echo '.footnote_tooltip.hidden {';
+					echo 'transition-delay: ' . $l_int_fade_out_delay . 'ms;';
+					echo 'transition-duration: ' . $l_int_fade_out_duration . 'ms;';
+					echo "}\r\n";
+
+					echo '.footnote_tooltip.shown {';
+					echo 'transition-delay: ' . $l_int_fade_in_delay . 'ms;';
+					echo 'transition-duration: ' . $l_int_fade_in_duration . 'ms;';
+					echo "}\r\n";
+				}
 			}
 		}
 
@@ -1409,12 +1441,12 @@ class MCI_Footnotes_Task {
 
 			// Load tooltip inline script if jQuery tooltips are enabled.
 			if ( MCI_Footnotes::$a_bool_tooltips_enabled && ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
-				
+
 				$l_obj_template_tooltip = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'tooltip' );
 			}
-			
+
 		} else {
-			
+
 			$l_obj_template         = null;
 			$l_obj_template_tooltip = null;
 		}

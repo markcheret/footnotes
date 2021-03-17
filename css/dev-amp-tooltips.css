@@ -4,11 +4,11 @@
  * 
  * @since 2.5.5
  * @version 2.6.0
- * @lastmodified 2021-03-16T2340+0100
+ * @lastmodified 2021-03-17T1627+0100
  *
  * System of unified minified style sheets tailored to the instance.
  * 
- * @see full header in dev-common.css.
+ * @see dev-common.css.
  */
 
 /**
@@ -24,14 +24,16 @@
  * @contributor @westonruter
  * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
  * 
+ * To streamline internal CSS, immutable rules are in external stylesheet.
+ * Property values of settings are internal CSS.
+ * @see class/task.php
  */
 
 span.footnote_referrer > span.footnote_tooltip {
-	visibility:hidden;
-	opacity:"0";
+	visibility: hidden;
+	opacity: 0;
 	transition-property: visibility opacity;
 /*
-Property values of settings are internal CSS.
 	transition-delay: 500ms;
 	transition-duration: 1s;
 */
@@ -39,18 +41,20 @@ Property values of settings are internal CSS.
 
 span.footnote_referrer:focus-within > span.footnote_tooltip,
 span.footnote_referrer:hover > span.footnote_tooltip {
-	visibility:visible;
-	opacity:1;
+	visibility: visible;
+	opacity: 1;
 	transition-property: visibility opacity;
 /*
-Property values of settings are internal CSS.
 	transition-delay: 0;
 	transition-duration: 200ms;
 */
 }
 
 /**
- * These default position values may be overridden by internal CSS.
+ * Position.
+ * 
+ * Values are defined by internal CSS.
+ * @see class/task.php
  */
 
 .footnote_referrer.relative {
@@ -60,7 +64,9 @@ Property values of settings are internal CSS.
 .footnote_tooltip.position {
 	display: unset;
 	position: absolute;
+/*
 	bottom: 24px;
 	left: -50px;
 	width: 400px;
+*/
 }

@@ -181,7 +181,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'amp'             => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
 				'notice-amp'      => __( 'This option enables hard links with configurable scroll offset in % window height.', 'footnotes' ),
 				// Translators: '%s' is the logogram of the 'Footnotes' plugin.
-				'description-amp' => sprintf( __( '%s becomes AMP compatible if this box is checked, but without scroll animation and fade-in/fade-out. Styled tooltips show up if enabled, and the reference container expands also on clicking a referrer if it’s collapsed by default.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
+				'description-amp' => sprintf( __( '%s is AMP compatible (without scroll animation) when this box is checked. Styled tooltips are displayed with fade-in/fade-out effect if enabled, and the reference container expands also on clicking a referrer if it’s collapsed by default.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 			)
 		);
 		// Display template with replaced placeholders.

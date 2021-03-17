@@ -64,7 +64,7 @@ elif [[ $1 == "-d" ]]; then
 	# NB: We currently distribute both the minified + concatenated and the 
 	# unminified + unconcatenated stylesheets with the Plugin.
 	echo "Deploying development stylesheets to \`dist/css/\`..."
-	for f in ./css/tmp/dev-*.css;	do
+	for f in ./css/dev-*.css;	do
 		filename=$(basename $f .css)
 		cp $f ./dist/css
 		#mv $f ./dist/css

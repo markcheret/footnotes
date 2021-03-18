@@ -198,7 +198,7 @@ class MCI_Footnotes_Task {
 	 * @since 2.3.0
 	 * @var bool
 	 */
-	public static $a_bool_hard_links_enable = false;
+	public static $a_bool_hard_links_enabled = false;
 
 	/**
 	 * The referrer slug.
@@ -301,7 +301,7 @@ class MCI_Footnotes_Task {
 	 * Yet styling these elements with the link color is not universally preferred, so that
 	 * the very presence of these link elements may need to be avoided.
 	 *
-	 * @see self::$a_bool_hard_links_enable
+	 * @see self::$a_bool_hard_links_enabled
 	 *
 	 * Used both in search() and reference_container(), these need to be class variables.
 	 */
@@ -774,15 +774,15 @@ class MCI_Footnotes_Task {
 		 *
 		 * @since 2.5.6 hard links are always enabled when the alternative reference container is.
 		 */
-		self::$a_bool_hard_links_enable = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE ) );
+		self::$a_bool_hard_links_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE ) );
 
-		// Correct hard links enabled status depending on alternative reference container enabled status.
-		if ( 'jquery' !== MCI_Footnotes::$a_str_script_mode ) {
-			self::$a_bool_hard_links_enable = true;
+		// Correct hard links enabled status depending on AMP compatible or alternative reference container enabled status.
+		if ( MCI_Footnotes::$a_bool_amp_enabled || 'jquery' !== MCI_Footnotes::$a_str_script_mode ) {
+			self::$a_bool_hard_links_enabled = true;
 		}
 
 		self::$a_int_scroll_offset = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET ) );
-		if ( self::$a_bool_hard_links_enable ) {
+		if ( self::$a_bool_hard_links_enabled ) {
 			echo '.footnote_referrer_anchor, .footnote_item_anchor {bottom: ';
 			echo self::$a_int_scroll_offset;
 			echo "vh;}\r\n";
@@ -902,7 +902,7 @@ class MCI_Footnotes_Task {
 				 */
 				$l_int_alternative_tooltip_width = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH ) );
 				echo '.footnote_tooltip.position {';
-				echo ' width: ' . $l_int_alternative_tooltip_width . 'px;';
+				echo ' width: max-content; ';
 
 				// Set also as max-width wrt short tooltip shrinking.
 				echo ' max-width: ' . $l_int_alternative_tooltip_width . 'px;';
@@ -1406,9 +1406,13 @@ class MCI_Footnotes_Task {
 			}
 		}
 
-		/**
+		/*
 		 * Load footnote referrer template file.
 		 */
+		
+		// Set to null in case anyone is not needed.
+		$l_obj_template         = null;
+		$l_obj_template_tooltip = null;
 
 		// On the condition that the footnote text is not hidden.
 		if ( ! $p_bool_hide_footnotes_text ) {
@@ -1424,32 +1428,25 @@ class MCI_Footnotes_Task {
 
 				} else {
 
-					// Load 'templates/public/amp-footnote-expand.html'.
+					// Load 'templates/public/amp-footnote.html'.
 					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-footnote' );
 				}
 
 			} elseif ( MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
 
-				// Load 'templates/public/amp-footnote-expand.html'.
+				// Load 'templates/public/footnote-alternative.html'.
 				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote-alternative' );
 
+			// Else jQuery tooltips are enabled.
 			} else {
 
-				// Load 'templates/public/amp-footnote-expand.html'.
+				// Load 'templates/public/footnote.html'.
 				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote' );
 
-			}
-
-			// Load tooltip inline script if jQuery tooltips are enabled.
-			if ( MCI_Footnotes::$a_bool_tooltips_enabled && ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
-
+				// Load tooltip inline script.
 				$l_obj_template_tooltip = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'tooltip' );
 			}
 
-		} else {
-
-			$l_obj_template         = null;
-			$l_obj_template_tooltip = null;
 		}
 
 		// Search footnotes short codes in the content.
@@ -1634,7 +1631,7 @@ class MCI_Footnotes_Task {
 			$l_str_footnote_replace_text = '';
 
 			// Whether hard links are enabled.
-			if ( self::$a_bool_hard_links_enable ) {
+			if ( self::$a_bool_hard_links_enabled ) {
 
 				// Get the configurable parts.
 				self::$a_str_referrer_link_slug = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERRER_FRAGMENT_ID_SLUG );
@@ -1683,7 +1680,7 @@ class MCI_Footnotes_Task {
 						$l_str_excerpt_text  = substr( $l_str_dummy_text, 0, $l_int_max_length );
 						$l_str_excerpt_text  = substr( $l_str_excerpt_text, 0, strrpos( $l_str_excerpt_text, ' ' ) );
 						$l_str_excerpt_text .= '&nbsp;&#x2026; <';
-						$l_str_excerpt_text .= self::$a_bool_hard_links_enable ? 'a' : 'span';
+						$l_str_excerpt_text .= self::$a_bool_hard_links_enabled ? 'a' : 'span';
 						$l_str_excerpt_text .= ' class="footnote_tooltip_continue" ';
 						$l_str_excerpt_text .= 'onclick="footnote_move_to_anchor_' . self::$a_int_post_id;
 						$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
@@ -1692,7 +1689,7 @@ class MCI_Footnotes_Task {
 						$l_str_excerpt_text .= "_$l_int_index');\"";
 
 						// If enabled, add the hard link fragment ID.
-						if ( self::$a_bool_hard_links_enable ) {
+						if ( self::$a_bool_hard_links_enabled ) {
 
 							$l_str_excerpt_text .= ' href="#';
 							$l_str_excerpt_text .= self::$a_str_footnote_link_slug;
@@ -1716,7 +1713,7 @@ class MCI_Footnotes_Task {
 						 */
 						$l_str_excerpt_text .= MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL );
 
-						$l_str_excerpt_text .= self::$a_bool_hard_links_enable ? '</a>' : '</span>';
+						$l_str_excerpt_text .= self::$a_bool_hard_links_enabled ? '</a>' : '</span>';
 					}
 				}
 
@@ -1742,7 +1739,7 @@ class MCI_Footnotes_Task {
 				}
 
 				// Whether hard links are enabled.
-				if ( self::$a_bool_hard_links_enable ) {
+				if ( self::$a_bool_hard_links_enabled ) {
 
 					self::$a_str_link_span      = 'a';
 					self::$a_str_link_close_tag = '</a>';
@@ -1837,8 +1834,8 @@ class MCI_Footnotes_Task {
 				// Reset the template.
 				$l_obj_template->reload();
 
-				// If standard tooltips are enabled but alternative are not.
-				if ( MCI_Footnotes::$a_bool_tooltips_enabled && ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
+				// If standard tooltips are enabled but neither AMP nor alternative are.
+				if ( MCI_Footnotes::$a_bool_tooltips_enabled && ! MCI_Footnotes::$a_bool_amp_enabled && ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
 
 					$l_int_offset_y          = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y ) );
 					$l_int_offset_x          = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X ) );
@@ -2086,29 +2083,64 @@ class MCI_Footnotes_Task {
 		 * @since 2.1.1
 		 * @date 2020-11-16T2024+0100
 		 */
-
-		// When combining identical footnotes is turned on, another template is needed.
-		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) ) ) {
-			// The combining template allows for backlink clusters and supports cell clicking for single notes.
-			$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-combi' );
-
-		} else {
-
-			// When 3-column layout is turned on (only available if combining is turned off).
-			if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE ) ) ) {
-				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-3column' );
+		$l_bool_combine_identical_footnotes = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) );
+		
+		// AMP compatibility requires a full set of AMP compatible table row templates.
+		if ( MCI_Footnotes::$a_bool_amp_enabled ) {
+			
+			// When combining identical footnotes is turned on, another template is needed.
+			if ( $l_bool_combine_identical_footnotes ) {
+				
+				// The combining template allows for backlink clusters and supports cell clicking for single notes.
+				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container-body-combi' );
 
 			} else {
 
-				// When switch symbol and index is turned on, and combining and 3-columns are off.
-				if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH ) ) ) {
-					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-switch' );
+				// When 3-column layout is turned on (only available if combining is turned off).
+				if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE ) ) ) {
+					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container-body-3column' );
 
 				} else {
 
-					// Default is the standard template.
-					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body' );
+					// When switch symbol and index is turned on, and combining and 3-columns are off.
+					if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH ) ) ) {
+						$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container-body-switch' );
 
+					} else {
+
+						// Default is the standard template.
+						$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container-body' );
+
+					}
+				}
+			}
+			
+		} else {
+			
+			// When combining identical footnotes is turned on, another template is needed.
+			if ( $l_bool_combine_identical_footnotes ) {
+				
+				// The combining template allows for backlink clusters and supports cell clicking for single notes.
+				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-combi' );
+
+			} else {
+
+				// When 3-column layout is turned on (only available if combining is turned off).
+				if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE ) ) ) {
+					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-3column' );
+
+				} else {
+
+					// When switch symbol and index is turned on, and combining and 3-columns are off.
+					if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH ) ) ) {
+						$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-switch' );
+
+					} else {
+
+						// Default is the standard template.
+						$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body' );
+
+					}
 				}
 			}
 		}
@@ -2160,7 +2192,7 @@ class MCI_Footnotes_Task {
 			// Define anyway.
 			$l_str_hard_link_address = '';
 
-			if ( self::$a_bool_hard_links_enable ) {
+			if ( self::$a_bool_hard_links_enabled ) {
 
 				/**
 				 * Use-Backbutton-Hint tooltip, optional and configurable.
@@ -2233,7 +2265,7 @@ class MCI_Footnotes_Task {
 			$l_str_footnote_backlinks = '';
 			$l_str_footnote_reference = '';
 
-			if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) ) ) {
+			if ( $l_bool_combine_identical_footnotes ) {
 
 				// ID, optional hard link address, and class.
 				$l_str_footnote_reference  = '<' . self::$a_str_link_span;
@@ -2241,7 +2273,7 @@ class MCI_Footnotes_Task {
 				$l_str_footnote_reference .= self::$a_int_post_id;
 				$l_str_footnote_reference .= '_' . self::$a_int_reference_container_id;
 				$l_str_footnote_reference .= "_$l_str_footnote_id\"";
-				if ( self::$a_bool_hard_links_enable ) {
+				if ( self::$a_bool_hard_links_enabled ) {
 					$l_str_footnote_reference .= ' href="#';
 					$l_str_footnote_reference .= self::$a_str_referrer_link_slug;
 					$l_str_footnote_reference .= self::$a_str_post_container_id_compound;
@@ -2268,7 +2300,7 @@ class MCI_Footnotes_Task {
 				$l_str_footnote_reference .= '>';
 
 				// Append the optional offset anchor for hard links.
-				if ( self::$a_bool_hard_links_enable ) {
+				if ( self::$a_bool_hard_links_enabled ) {
 					$l_str_footnote_reference .= $l_str_footnote_anchor_element;
 					$l_str_footnote_backlinks .= $l_str_footnote_anchor_element;
 				}
@@ -2318,7 +2350,7 @@ class MCI_Footnotes_Task {
 							$l_str_footnote_backlinks .= "_$l_str_footnote_id\"";
 
 							// Insert the optional hard link address.
-							if ( self::$a_bool_hard_links_enable ) {
+							if ( self::$a_bool_hard_links_enabled ) {
 								$l_str_footnote_backlinks .= ' href="#';
 								$l_str_footnote_backlinks .= self::$a_str_referrer_link_slug;
 								$l_str_footnote_backlinks .= self::$a_str_post_container_id_compound;
@@ -2336,7 +2368,7 @@ class MCI_Footnotes_Task {
 							$l_str_footnote_backlinks .= "_$l_str_footnote_id');\">";
 
 							// Append the offset anchor for optional hard links.
-							if ( self::$a_bool_hard_links_enable ) {
+							if ( self::$a_bool_hard_links_enabled ) {
 								$l_str_footnote_backlinks .= '<span class="footnote_item_base"><span id="';
 								$l_str_footnote_backlinks .= self::$a_str_footnote_link_slug;
 								$l_str_footnote_backlinks .= self::$a_str_post_container_id_compound;

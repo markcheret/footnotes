@@ -1,6 +1,8 @@
 <!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
 	/**
-	 * Table row template for uncombined footnotes with the backlink symbol appended.
+	 * AMP compatible table row template for uncombined footnotes with the backlink symbol appended.
+	 * 
+	 * @since 2.6.0
 	 *
 	 * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
 	 *
@@ -28,7 +30,6 @@
 		scope="row"
 		id="footnote_plugin_reference_[[post_id]]_[[container_id]]_[[note_id]]"
 		class="footnote_plugin_index pointer"
-		onclick="footnote_moveToAnchor_[[post_id]]_[[container_id]]('footnote_plugin_tooltip_[[post_id]]_[[container_id]]_[[note_id]]');"
 		><[[link-span]]
 			role="button"
 			tabindex="0"

@@ -1,13 +1,8 @@
 <!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
 	/**
-	 * Table row template for uncombined footnotes with the backlink symbol appended.
-	 *
-	 * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
-	 *
-	 * @since 2.1.1
-	 *
-	 * @contributor @spaceling
-	 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13615994
+	 * AMP compatible table row template with legacy extra column for backlink symbol, uncombined footnotes.
+	 * 
+	 * @since 2.6.0
 	 *
 	 * - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
 	 *
@@ -26,18 +21,26 @@
 <tr class="footnotes_plugin_reference_row">
 	<th
 		scope="row"
-		id="footnote_plugin_reference_[[post_id]]_[[container_id]]_[[note_id]]"
-		class="footnote_plugin_index pointer"
-		onclick="footnote_moveToAnchor_[[post_id]]_[[container_id]]('footnote_plugin_tooltip_[[post_id]]_[[container_id]]_[[note_id]]');"
+		class="footnote_plugin_index"
 		><[[link-span]]
 			role="button"
 			tabindex="0"
-			class="footnote_plugin_link"
+			id="footnote_plugin_reference_[[post_id]]_[[container_id]]_[[note_id]]"
+			class="footnote_index"
 			[[hard-link]]
-			>[[index]][[terminator]][[arrow]]</[[link-span]]
+			>[[index]][[terminator]]</[[link-span]]
 		>[[anchor-element]]</td
 	>
 	<td
+		class="footnote_plugin_symbol"
+		><[[link-span]]
+			class="footnote_backlink"
+			[[hard-link]]
+			>[[arrow]]</[[link-span]]
+		></td
+	>
+	<td
 		class="footnote_plugin_text"
-	>[[text]]</td>
+		>[[text]]</td
+	>
 </tr>

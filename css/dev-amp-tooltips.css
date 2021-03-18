@@ -1,25 +1,14 @@
 /*<?php for docblocks
 /**
- * Additional stylesheet for alternative tooltips.
+ * Additional stylesheet for AMP compatible tooltips.
  * 
- * @since 2.5.5
- * @version 2.6.0
- * @lastmodified 2021-03-17T1627+0100
- *
- * System of unified minified style sheets tailored to the instance.
- * 
- * @see dev-common.css.
- */
-
-/**
- * AMP compatible tooltips.
- * 
- * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+ * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
+ * - Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
  * 
  * @since 2.6.0
  * 
  * @contributor @milindmore22
- * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+ * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
  * 
  * @contributor @westonruter
  * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
@@ -27,6 +16,9 @@
  * To streamline internal CSS, immutable rules are in external stylesheet.
  * Property values of settings are internal CSS.
  * @see class/task.php
+ *
+ * System of unified minified style sheets tailored to the instance.
+ * @see dev-common.css.
  */
 
 span.footnote_referrer > span.footnote_tooltip {

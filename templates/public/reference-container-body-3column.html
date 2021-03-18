@@ -1,9 +1,28 @@
 <!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
 	/**
+	 * Table row template with legacy extra column for backlink symbol, uncombined footnotes.
+	 *
+	 * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
+	 *
+	 * @since 2.1.1
+	 *
+	 * - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @contributor @derivationfr
+	 * @link https://wordpress.org/support/topic/enhance-accesibility-by-using-instead-of/
+	 * @link https://a11y-101.com/development/tables
+	 *
+	 * For assistive technologies to improve accessibility by reading tables in a meaningful manner,
+	 * the tables must be marked up properly using table header elements for header rows and header
+	 * columns as applicable.
+	 * The table caption must also be present for screen readers but may be hidden to sighted users.
 	 */?>
 -->
 <tr class="footnotes_plugin_reference_row">
-	<td
+	<th
+		scope="row"
 		class="footnote_plugin_index"
 		><[[link-span]]
 			id="footnote_plugin_reference_[[post_id]]_[[container_id]]_[[note_id]]"
@@ -13,7 +32,7 @@
 			>[[index]][[terminator]]</[[link-span]]
 		>[[anchor-element]]</td
 	>
-	<td 
+	<td
 		class="footnote_plugin_symbol"
 		><[[link-span]]
 			onclick="footnote_moveToAnchor_[[post_id]]_[[container_id]]('footnote_plugin_tooltip_[[post_id]]_[[container_id]]_[[note_id]]');"
@@ -22,7 +41,7 @@
 			>[[arrow]]</[[link-span]]
 		></td
 	>
-	<td 
+	<td
 		class="footnote_plugin_text"
 		>[[text]]</td
 	>

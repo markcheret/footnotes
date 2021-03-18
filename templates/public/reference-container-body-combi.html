@@ -1,14 +1,36 @@
 <!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
 	/**
+	 * Table row template with the ability to have combined footnotes.
+	 *
+	 * - Bugfix: Referrers, reference container: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
+	 *
+	 * @since 2.1.1
+	 *
+	 * @reporter @happyches
+	 * @link https://wordpress.org/support/topic/custom-css-for-jumbled-references/
+	 *
+	 * - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @contributor @derivationfr
+	 * @link https://wordpress.org/support/topic/enhance-accesibility-by-using-instead-of/
+	 * @link https://a11y-101.com/development/tables
+	 *
+	 * For assistive technologies to improve accessibility by reading tables in a meaningful manner,
+	 * the tables must be marked up properly using table header elements for header rows and header
+	 * columns as applicable.
+	 * The table caption must also be present for screen readers but may be hidden to sighted users.
 	 */?>
 -->
 <tr class="footnotes_plugin_reference_row">
-	<td
+	<th
+		scope="row"
 		class="footnote_plugin_index_combi[[pointer]]"
 		[[event]]
 		>[[backlinks]]</td
 	>
-	<td 
+	<td
 		class="footnote_plugin_text"
 		>[[text]]</td>
 </tr>

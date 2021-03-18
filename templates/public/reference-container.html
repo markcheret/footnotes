@@ -2,12 +2,8 @@
 	/**
 	 * Yields the reference container start and end including the scroll script.
 	 *
-	 * @since Unknown
+	 * @since unknown
 	 * @type object
-	 *
-	 * @lastmodified 2021-02-18T2046+0100
-	 *
-	 *
 	 *
 	 * - Bugfix: Reference container: restore expand/collapse button in the template, thanks to @ragonesi bug report.
 	 *
@@ -18,6 +14,19 @@
 	 *
 	 * The expand/collapse button was lost @since 2.0.0 for an unknown reason.
 	 * The fix was about restoring the button code (only, while the script remained complete).
+	 *
+	 * - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @contributor @derivationfr
+	 * @link https://wordpress.org/support/topic/enhance-accesibility-by-using-instead-of/
+	 * @link https://a11y-101.com/development/tables
+	 *
+	 * For assistive technologies to improve accessibility by reading tables in a meaningful manner,
+	 * the tables must be marked up properly using table header elements for header rows and header
+	 * columns as applicable.
+	 * The table caption must also be present for screen readers but may be hidden to sighted users.
 	 */?>
 -->
 <div
@@ -27,6 +36,8 @@
 		class="footnote_container_prepare"
 		><[[element]]
 			><span
+				role="button"
+				tabindex="0"
 				class="footnote_reference_container_label pointer"
 				onclick="footnote_expand_collapse_reference_container_[[post_id]]_[[container_id]]();"
 				>[[name]]</span
@@ -44,10 +55,12 @@
 	<div
 		id="footnote_references_container_[[post_id]]_[[container_id]]"
 		style="[[style]]"
-	>
-		<table
+		><table
 			class="footnotes_table footnote-reference-container"
-		>
+			><caption
+				class="accessibility"
+				>[[caption]]</caption
+			>
 			<tbody>
 				[[content]]
 			</tbody>

@@ -2,7 +2,8 @@
 	/**
 	 * Footnote template to enable AMP compatibility mode.
 	 *
-	 * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+	 * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
+	 * - Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
 	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
 	 *
 	 * @since 2.6.0
@@ -14,16 +15,14 @@
 	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
 	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799580854
 	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799582394
-	 * 
-	 * Using the `tap` event.
-	 * @link https://amp.dev/documentation/guides-and-tutorials/learn/amp-actions-and-events
-	 * Using the `toggleClass` action.
 	 * @link https://amp.dev/documentation/guides-and-tutorials/learn/amp-actions-and-events/#*-(all-elements)
 	 */?>
 -->
 <span
 	class="footnote_referrer relative"
 	><[[link-span]]
+		role="button"
+		tabindex="0"
 		on="tap:footnote_references_container_[[post_id]]_[[container_id]].toggleClass(class=collapsed, force=false),footnotes_container_button_plus_[[post_id]]_[[container_id]].toggleClass(class=collapsed, force=true),footnotes_container_button_minus_[[post_id]]_[[container_id]].toggleClass(class=collapsed, force=false)"
 		[[hard-link]]
 		><[[sup-span]]

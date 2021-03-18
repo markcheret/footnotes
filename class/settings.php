@@ -1090,7 +1090,8 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key to enable AMP compatibility mode.
 	 *
-	 * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+	 * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
+	 * - Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
 	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
 	 *
 	 * @since 2.6.0

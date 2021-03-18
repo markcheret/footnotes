@@ -1,12 +1,31 @@
 <!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
 	/**
+	 * Alternative footnote template with plain JS tooltips and CSS transitions.
+	 *
+	 * - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
+	 *
+	 * @since 2.1.1
+	 *
+	 * @reporter @andreasra
+	 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
+	 *
+	 * - Bugfix: Tooltips: Alternative tooltips: add missing accessibility, thanks to @derivationfr issue report.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @reporter @derivationfr
+	 * @link https://wordpress.org/support/topic/enhance-accesibility-by-using-instead-of/
 	 */?>
 -->
 <span
 	class="footnote_referrer relative"
 	onmouseover="footnote_tooltip_show('footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]')"
+	onfocus="footnote_tooltip_show('footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]')"
 	onmouseout="footnote_tooltip_hide('footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]')"
+	onfocusout="footnote_tooltip_hide('footnote_plugin_tooltip_text_[[post_id]]_[[container_id]]_[[note_id]]')"
 	><[[link-span]]
+		role="button"
+		tabindex="0"
 		onclick="footnote_moveToAnchor_[[post_id]]_[[container_id]]('footnote_plugin_reference_[[post_id]]_[[container_id]]_[[note_id]]');"
 		[[hard-link]]
 		><[[sup-span]]

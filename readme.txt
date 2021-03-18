@@ -1,10 +1,10 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
+Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, milindmore22, westonruter, dartiss, derivationfr, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.6.0d5
+Package Version: 2.6.0d6
 Version: 2.6.0d
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
@@ -81,8 +81,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.6.0 =
-- Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
 - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+- Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
+- Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
+- Bugfix: Tooltips: AMP tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
+- Bugfix: Tooltips: Alternative tooltips: add missing accessibility, thanks to @derivationfr issue report.
 - Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
 - Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
 - Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
@@ -150,7 +153,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Readme/documentation: update or fix URLs in Download, Support and Development sections.
 
 = 2.5.0 =
-- Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
+- Adding: Templates: Enable template location stack, thanks to @misfist issue report and code contribution.
 - Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
 - Bugfix: Footnote delimiters: Syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
 - Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
@@ -169,7 +172,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'.
 
 = 2.3.0 =
-- Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+- Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
 - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
 - Bugfix: Referrers and backlinks: more effectively remove unwanted underline by disabling box shadow used instead of bottom border, thanks to @klusik feedback.
 - Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
@@ -332,7 +335,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Settings defaults adjusted for better and more up-to-date tooltip layout.
 
 = 2.0.6 =
-- Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution.
+- Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness issue report and code contribution.
 - Bugfix: Referrers: delete vertical align tweaks, for cross-theme and user agent compatibility.
 - Bugfix: Reference container: fix line breaking behavior in footnote number clusters.
 - Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts.

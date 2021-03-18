@@ -8,7 +8,7 @@
  * @date 14.09.14 10:58
  *
  * @since 2.2.6  Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
- * @since 2.5.0  Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
+ * @since 2.5.0  Adding: Templates: Enable template location stack, thanks to @misfist issue report and code contribution.
  */
 
 /**
@@ -176,7 +176,7 @@ class MCI_Footnotes_Template {
 	/**
 	 * Get the template.
 	 *
-	 * - Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
+	 * - Adding: Templates: Enable template location stack, thanks to @misfist issue report and code contribution.
 	 *
 	 * @since 2.4.0d3 Contribution.
 	 * @since 2.5.0   Release.

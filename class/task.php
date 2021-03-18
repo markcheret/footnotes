@@ -12,7 +12,7 @@
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
  * @since 2.0.5  Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.
  * @since 2.0.5  Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
- * @since 2.0.6  Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution.
+ * @since 2.0.6  Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness issue report and code contribution.
  * @since 2.0.6  Bugfix: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility).
  * @since 2.0.6  Bugfix: Reference container: fix line breaking behavior in footnote number clusters.
  * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
@@ -59,7 +59,7 @@
  * @since 2.2.10 Bugfix: Reference container: add option for table borders to restore pre-2.0.0 design, thanks to @noobishh issue report.
  * @since 2.2.10 Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs.
  * @since 2.3.0  Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
- * @since 2.3.0  Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+ * @since 2.3.0  Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
  * @since 2.3.0  Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
  * @since 2.4.0  Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
  * @since 2.4.0  Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report.
@@ -80,7 +80,8 @@
  * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
  * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  * @since 2.5.7  Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
- * @since 2.6.0  Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 and @westonruter code contributions.
+ * @since 2.6.0  Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
+ * @since 2.6.0  Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
  * @since 2.6.0  Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
  */
 
@@ -124,7 +125,7 @@ class MCI_Footnotes_Task {
 	/**
 	 * Autoload a.k.a. infinite scroll, or archive view.
 	 *
-	 * - Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution
+	 * - Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness issue report and code contribution
 	 *
 	 * @since 2.0.6
 	 * @var int
@@ -174,7 +175,7 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
 	 *
 	 *
-	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
 	 *
 	 * @since 2.3.0
 	 * @var bool|str|int
@@ -274,7 +275,7 @@ class MCI_Footnotes_Task {
 	 * @reporter @docteurfitness
 	 * @link https://wordpress.org/support/topic/update-2-1-3/
 	 *
-	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
 	 *
 	 * @since 2.3.0
 	 * @date 2020-12-30T2313+0100
@@ -2471,6 +2472,7 @@ class MCI_Footnotes_Task {
 				'name'            => empty( $l_str_reference_container_label ) ? '&#x202F;' : $l_str_reference_container_label,
 				'button-style'    => ! $l_bool_collapse_default ? 'display: none;' : '',
 				'style'           => $l_bool_collapse_default ? 'display: none;' : '',
+				'caption'         => empty( $l_str_reference_container_label ) ? 'References' : $l_str_reference_container_label,
 				'content'         => $l_str_body,
 				'scroll-offset'   => ( self::$a_int_scroll_offset / 100 ),
 				'scroll-duration' => intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION ) ),

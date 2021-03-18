@@ -7,7 +7,7 @@
  * Since: 1.0
  * 
  * @version 2.6.0
- * @lastmodified 2021-03-16T1529+0100
+ * @lastmodified 2021-03-18T0448+0100
  *
  *     Classes recommended for Custom CSS:
  *     @see templates/dashboard/customize-css-new.html
@@ -66,7 +66,7 @@
  * @since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
  * @since 2.4.0  validation error warning box
  * @since 2.5.0  validation error warning box more paragraphs
- * @since 2.5.11 AMP compatible tooltips and reference container
+ * @since 2.6.0  AMP compatible tooltips and reference container
  */
 
 /**
@@ -157,7 +157,7 @@
 /**
  * Optional hard links: anchors with scroll offset
  *
- * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+ * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
  *
  * @since 2.3.0
  * @contributor @martinneumannat
@@ -354,6 +354,19 @@ table
 .footnotes_table {
 	width: 100%;
 	border: none;
+}
+
+/*
+caption
+*/
+
+caption.accessibility {
+	text-align: start;
+	height: 1px;
+	width: 1px;
+	white-space: nowrap;
+	overflow: hidden;
+	color: #ffffff00;
 }
 
 /**

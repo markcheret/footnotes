@@ -279,7 +279,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 					'label-script'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, __( 'Script mode:', 'footnotes' ) ),
 					'script'               => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, $l_arr_script_mode ),
-					'notice-script'        => __( 'The plain JavaScript mode does not support scroll animation and will enable hard links with scroll offset.', 'footnotes' ),
+					'notice-script'        => __( 'The plain JavaScript mode does not support scroll animation and will enable hard links with configurable scroll offset.', 'footnotes' ),
 
 					'label-position'       => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __( 'Default position:', 'footnotes' ) ),
 					'position'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_positions ),

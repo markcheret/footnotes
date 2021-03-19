@@ -326,7 +326,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
 	 *
-	 * @since 2.6.0
+	 * @since 2.5.11
 	 *
 	 * @reporter @4msc
 	 * @link https://wordpress.org/support/topic/tooltip-not-showing-on-dark-theme-with-white-text/
@@ -1094,7 +1094,7 @@ class MCI_Footnotes_Settings {
 	 * - Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
 	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
 	 *
-	 * @since 2.6.0
+	 * @since 2.5.11 (draft)
 	 *
 	 * @contributor @milindmore22
 	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933

@@ -130,8 +130,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	protected function get_meta_boxes() {
 		$l_arr_meta_boxes = array();
 
-		// Sync box name with mirror in task.php.
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility', 'footnotes' ), 'amp_compat' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility (draft status only; debugging not complete)', 'footnotes' ), 'amp_compat' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'start-end', __( 'Footnote start and end short codes', 'footnotes' ), 'start_end' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'Numbering' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'Scrolling' );
@@ -168,7 +167,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	/**
 	 * Displays the AMP compatibility mode option.
 	 *
-	 * @since 2.6.0
+	 * @since 2.5.11 (draft)
 	 */
 	public function amp_compat() {
 
@@ -181,7 +180,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'amp'             => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
 				'notice-amp'      => __( 'This option enables hard links with configurable scroll offset in % window height.', 'footnotes' ),
 				// Translators: '%s' is the logogram of the 'Footnotes' plugin.
-				'description-amp' => sprintf( __( '%s is AMP compatible (without scroll animation) when this box is checked. Styled tooltips are displayed with fade-in/fade-out effect if enabled, and the reference container expands also on clicking a referrer if it’s collapsed by default.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
+				'description-amp' => sprintf( __( '%s shall become AMP compatible thanks to @milindmore22 and @westonruter code contributions.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 			)
 		);
 		// Display template with replaced placeholders.

@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.6.0d7
-Version: 2.6.0d
+Package Version: 2.5.11d5
+Version: 2.5.11d
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -80,12 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
-= 2.6.0 =
-- Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+= 2.5.11 =
+- Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
 - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
-- Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
-- Bugfix: Tooltips: AMP tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
-- Bugfix: Tooltips: Alternative tooltips: add missing accessibility, thanks to @derivationfr issue report.
 - Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
 - Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
 - Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.

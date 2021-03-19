@@ -6,8 +6,8 @@
  * Created-Time: 16:21
  * Since: 1.0
  * 
- * @version 2.6.0
- * @lastmodified 2021-03-18T0448+0100
+ * @version 2.5.11
+ * @lastmodified 2021-03-19T2214+0100
  *
  *     Classes recommended for Custom CSS:
  *     @see templates/dashboard/customize-css-new.html
@@ -66,7 +66,7 @@
  * @since 2.3.0  offset anchors for optional hard links, thanks to @psychonevro @martinneumannat bug reports
  * @since 2.4.0  validation error warning box
  * @since 2.5.0  validation error warning box more paragraphs
- * @since 2.6.0  AMP compatible tooltips and reference container
+ * @since 2.5.11 Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
  */
 
 /**
@@ -356,9 +356,19 @@ table
 	border: none;
 }
 
-/*
-caption
-*/
+/**
+ * Table caption.
+ * 
+ * - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
+ * 
+ * @since 2.5.11
+ *
+ * @contributor @derivationfr
+ * @link https://wordpress.org/support/topic/enhance-accesibility-by-using-instead-of/
+ * @link https://a11y-101.com/development/tables
+ *
+ * The table caption must be present for screen readers but may be hidden to sighted users.
+ */
 
 caption.accessibility {
 	text-align: start;

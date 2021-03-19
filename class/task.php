@@ -80,9 +80,7 @@
  * @since 2.5.5  Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
  * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  * @since 2.5.7  Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
- * @since 2.6.0  Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
- * @since 2.6.0  Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
- * @since 2.6.0  Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+ * @since 2.5.11 Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
  */
 
 // If called directly, abort.
@@ -1111,6 +1109,7 @@ class MCI_Footnotes_Task {
 	 * @return string Content with replaced footnotes.
 	 */
 	public function the_content( $p_str_content ) {
+
 		/**
 		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
 		 *
@@ -1237,7 +1236,6 @@ class MCI_Footnotes_Task {
 		 * @reporter @hamshe
 		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/
 		 *
-		 *
 		 * - Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report.
 		 *
 		 * @since 2.2.5
@@ -1331,7 +1329,6 @@ class MCI_Footnotes_Task {
 		 *
 		 * @since 2.4.0
 		 *
-		 *
 		 * - Bugfix: Footnote delimiters: Syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
 		 * - Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
 		 * - Bugfix: Footnote delimiters: Syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
@@ -1342,15 +1339,16 @@ class MCI_Footnotes_Task {
 		 * @reporter @andreasra
 		 * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
 		 *
-		 *
 		 * If footnotes short codes are unbalanced, and syntax validation is not disabled,
 		 * prepend a warning to the content; displays de facto beneath the post title.
+		 *
+		 * The delimiter shortcode regex forms are also used later below.
 		 */
-		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
+		// Make shortcodes conform to regex syntax.
+		$l_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_starting_tag );
+		$l_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_ending_tag );
 
-			// Make shortcodes conform to regex syntax.
-			$l_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_starting_tag );
-			$l_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_ending_tag );
+		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
 
 			// Apply different regex depending on whether start shortcode is double/triple opening parenthesis.
 			if ( '((' === $l_str_starting_tag || '(((' === $l_str_starting_tag ) {
@@ -1406,10 +1404,30 @@ class MCI_Footnotes_Task {
 			}
 		}
 
+		/**
+		 * Patch to allow footnotes in input field labels.
+		 *
+		 * - Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
+		 *
+		 * @since 2.5.11
+		 *
+		 * @reporter @bogosavljev
+		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/
+		 *
+		 * When the HTML 'input' element 'value' attribute value
+		 * is derived from 'label', footnotes need to be removed
+		 * in the value of 'value'.
+		 */
+		$l_str_value_regex = '#(<input [^>]+?value=["\'][^>]+?)' . $l_str_start_tag_regex . '[^>]+?' . $l_str_end_tag_regex . '#';
+
+		do {
+			$p_str_content = preg_replace( $l_str_value_regex, '$1', $p_str_content );
+		} while ( preg_match( $l_str_value_regex, $p_str_content ) );
+
 		/*
 		 * Load footnote referrer template file.
 		 */
-		
+
 		// Set to null in case anyone is not needed.
 		$l_obj_template         = null;
 		$l_obj_template_tooltip = null;
@@ -1682,7 +1700,10 @@ class MCI_Footnotes_Task {
 						$l_str_excerpt_text .= '&nbsp;&#x2026; <';
 						$l_str_excerpt_text .= self::$a_bool_hard_links_enabled ? 'a' : 'span';
 						$l_str_excerpt_text .= ' class="footnote_tooltip_continue" ';
-						$l_str_excerpt_text .= 'onclick="footnote_move_to_anchor_' . self::$a_int_post_id;
+
+						// Reverted wrong linting 2021-03-20T0032+0100.
+						$l_str_excerpt_text .= 'onclick="footnote_moveToAnchor_' . self::$a_int_post_id;
+
 						$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
 						$l_str_excerpt_text .= '(\'footnote_plugin_reference_' . self::$a_int_post_id;
 						$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
@@ -1834,7 +1855,7 @@ class MCI_Footnotes_Task {
 				// Reset the template.
 				$l_obj_template->reload();
 
-				// If standard tooltips are enabled but neither AMP nor alternative are.
+				// If tooltips are enabled but neither AMP nor alternative are.
 				if ( MCI_Footnotes::$a_bool_tooltips_enabled && ! MCI_Footnotes::$a_bool_amp_enabled && ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
 
 					$l_int_offset_y          = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y ) );
@@ -2084,13 +2105,13 @@ class MCI_Footnotes_Task {
 		 * @date 2020-11-16T2024+0100
 		 */
 		$l_bool_combine_identical_footnotes = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) );
-		
+
 		// AMP compatibility requires a full set of AMP compatible table row templates.
 		if ( MCI_Footnotes::$a_bool_amp_enabled ) {
-			
+
 			// When combining identical footnotes is turned on, another template is needed.
 			if ( $l_bool_combine_identical_footnotes ) {
-				
+
 				// The combining template allows for backlink clusters and supports cell clicking for single notes.
 				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container-body-combi' );
 
@@ -2114,12 +2135,12 @@ class MCI_Footnotes_Task {
 					}
 				}
 			}
-			
+
 		} else {
-			
+
 			// When combining identical footnotes is turned on, another template is needed.
 			if ( $l_bool_combine_identical_footnotes ) {
-				
+
 				// The combining template allows for backlink clusters and supports cell clicking for single notes.
 				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container-body-combi' );
 
@@ -2282,8 +2303,12 @@ class MCI_Footnotes_Task {
 				}
 				$l_str_footnote_reference .= ' class="footnote_backlink"';
 
-				// The click event goes in the table cell if footnote remains single.
-				$l_str_backlink_event  = ' onclick="footnote_move_to_anchor_';
+				/*
+				 * The click event goes in the table cell if footnote remains single.
+				 */
+				// Reverted wrong linting 2021-03-20T0032+0100.
+				$l_str_backlink_event  = ' onclick="footnote_moveToAnchor_';
+
 				$l_str_backlink_event .= self::$a_int_post_id;
 				$l_str_backlink_event .= '_' . self::$a_int_reference_container_id;
 				$l_str_backlink_event .= "('footnote_plugin_tooltip_";
@@ -2359,7 +2384,10 @@ class MCI_Footnotes_Task {
 							}
 
 							$l_str_footnote_backlinks .= ' class="footnote_backlink"';
-							$l_str_footnote_backlinks .= ' onclick="footnote_move_to_anchor_';
+
+							// Reverted wrong linting 2021-03-20T0032+0100.
+							$l_str_footnote_backlinks .= ' onclick="footnote_moveToAnchor_';
+
 							$l_str_footnote_backlinks .= self::$a_int_post_id;
 							$l_str_footnote_backlinks .= '_' . self::$a_int_reference_container_id;
 							$l_str_footnote_backlinks .= "('footnote_plugin_tooltip_";

@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.11d5
+Package Version: 2.5.11d6
 Version: 2.5.11d
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
@@ -84,11 +84,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
 - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
 - Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
+- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution in the standards compliance overhaul.
 - Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
 - Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
 - Update: Documentation: Readme.txt: informative 'Package Version' field in sync with the 'Package V.' field added in the 'footnotes.php' file header.
-- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution in the standards compliance overhaul.
 - Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
+- Bugfix: Tooltips: Styling: protect padding against removal in surroundings with explicit zero padding.
+- Bugfix: Tooltips: Display: CSS transitions: fix syntax error.
 - Update: Documentation: help and support for contributors by the means of Contributing Guidelines in 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
 - Update: Documentation: additional readme in markdown format 'README.md' for use with the code repository on GitHub, thanks to @rumperuu code contribution.
 - Update: Documentation: move 'customized-template-stack.txt' and 'customized-documentation-schema.txt' from the 'development/' folder to root.

@@ -41,7 +41,7 @@
 .footnote_tooltip.shown {
 	visibility: visible;
 	opacity: 1;
-	transition-property: visibility opacity;
+	transition-property: visibility, opacity;
 	transition-timing-function: linear;
 /*
 	transition-delay: 0ms;
@@ -52,7 +52,7 @@
 .footnote_tooltip.hidden {
 	visibility: hidden;
 	opacity: 0;
-	transition-property: visibility opacity;
+	transition-property: visibility, opacity;
 	transition-timing-function: linear;
 /*
 	transition-delay: 400ms;

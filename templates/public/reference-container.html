@@ -87,14 +87,26 @@
 			footnote_collapse_reference_container_[[post_id]]_[[container_id]]();
 		}
 	}
+	function footnote_moveToReference_[[post_id]]_[[container_id]](p_str_TargetID) {
+		footnote_expand_reference_container_[[post_id]]_[[container_id]]();
+		var l_obj_Target = jQuery('#' + p_str_TargetID);
+		if (l_obj_Target.length) {
+			jQuery( 'html, body' ).delay( [[scroll-down-delay]] );
+			jQuery('html, body').animate({
+				scrollTop: l_obj_Target.offset().top - window.innerHeight * [[scroll-offset]]
+			},
+			[[scroll-down-duration]]);
+		}
+	}
 	function footnote_moveToAnchor_[[post_id]]_[[container_id]](p_str_TargetID) {
 		footnote_expand_reference_container_[[post_id]]_[[container_id]]();
 		var l_obj_Target = jQuery('#' + p_str_TargetID);
 		if (l_obj_Target.length) {
+			jQuery( 'html, body' ).delay( [[scroll-up-delay]] );
 			jQuery('html, body').animate({
 				scrollTop: l_obj_Target.offset().top - window.innerHeight * [[scroll-offset]]
 			},
-			[[scroll-duration]]);
+			[[scroll-up-duration]]);
 		}
 	}
 </script>

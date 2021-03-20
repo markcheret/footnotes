@@ -4,7 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.11d6
+Package Version: 2.5.11d7
 Version: 2.5.11d
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
@@ -88,7 +88,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
 - Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
 - Update: Documentation: Readme.txt: informative 'Package Version' field in sync with the 'Package V.' field added in the 'footnotes.php' file header.
-- Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
+- Update: Codebase: make PHP code comply to WordPress PHP Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
+- Bugfix: Forms: mitigate the adverse effect of clicking footnote referrers in labels of input elements by an optional, configurable scroll down delay.
+- Bugfix: Scroll durations: mitigate the downside of delayed scrolling down by optionally enabling asymmetric scroll durations (e.g. fast down, slower up).
+- Update: Scroll delays: add a setting to configure also a scroll up delay for completeness.
 - Bugfix: Tooltips: Styling: protect padding against removal in surroundings with explicit zero padding.
 - Bugfix: Tooltips: Display: CSS transitions: fix syntax error.
 - Update: Documentation: help and support for contributors by the means of Contributing Guidelines in 'CONTRIBUTING.md', thanks to @rumperuu code contribution.

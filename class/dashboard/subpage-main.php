@@ -139,7 +139,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'love', MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, 'Love' );
 
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'hyperlink-arrow', __( 'Backlink symbol', 'footnotes' ), 'hyperlink_arrow' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrer typesetting and formatting', 'footnotes' ), 'superscript' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrers', 'footnotes' ), 'superscript' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box', __( 'Tooltips', 'footnotes' ), 'mouseover_box' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-position', __( 'Tooltip position', 'footnotes' ), 'mouseover_box_position' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-dimensions', __( 'Tooltip dimensions', 'footnotes' ), 'mouseover_box_dimensions' );
@@ -521,12 +521,29 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-scroll-duration'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
 				'scroll-duration'              => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
-				'notice-scroll-duration'       => __( 'milliseconds; instantly if hard links are enabled and JavaScript is disabled', 'footnotes' ),
+				'notice-scroll-duration'       => __( 'milliseconds; if asymmetric scroll durations are enabled, this is the scroll up duration', 'footnotes' ),
+
+				// Enable scroll duration asymmetricity.
+				'label-asymmetricity'          => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, __( 'Enable asymmetric scroll durations:', 'footnotes' ) ),
+				'asymmetricity'                => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, $l_arr_enable ),
+				'notice-asymmetricity'         => __( 'With this option, scrolling down may take longer than up, or conversely.', 'footnotes' ),
+
+				'label-scroll-down-duration'   => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, __( 'Scroll down duration:', 'footnotes' ) ),
+				'scroll-down-duration'         => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, 0, 20000 ),
+				'notice-scroll-down-duration'  => __( 'milliseconds', 'footnotes' ),
+
+				'label-scroll-down-delay'      => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, __( 'Scroll down delay:', 'footnotes' ) ),
+				'scroll-down-delay'            => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, 0, 20000 ),
+				'notice-scroll-down-delay'     => __( 'milliseconds; helps raise awareness that clicking referrers in form labels toggles input elements', 'footnotes' ),
+
+				'label-scroll-up-delay'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, __( 'Scroll up delay:', 'footnotes' ) ),
+				'scroll-up-delay'              => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, 0, 20000 ),
+				'notice-scroll-up-delay'       => __( 'milliseconds; usually not recommended', 'footnotes' ),
 
 				// Enable hard links for AMP compat.
 				'label-hard-links'             => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE, __( 'Enable hard links:', 'footnotes' ) ),
 				'hard-links'                   => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE, $l_arr_enable ),
-				'notice-hard-links'            => __( 'Hard links are indispensable for AMP compatibility and allow to link to footnotes.', 'footnotes' ),
+				'notice-hard-links'            => __( 'Hard links disable jQuery delays but have the same scroll offset, and allow to share footnotes (accessed if the list is not collapsed by default).', 'footnotes' ),
 
 				'label-footnote'               => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG, __( 'Fragment identifier slug for footnotes:', 'footnotes' ) ),
 				'footnote'                     => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG ),

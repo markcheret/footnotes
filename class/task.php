@@ -2513,29 +2513,58 @@ class MCI_Footnotes_Task {
 				$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container' );
 			}
 
-		} elseif ( 'jquery' === MCI_Footnotes::$a_str_script_mode ) {
-
-			// Load 'templates/public/reference-container.html'.
-			$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container' );
-
-		} else {
+		} elseif ( 'js' === MCI_Footnotes::$a_str_script_mode ) {
 
 			// Load 'templates/public/js-reference-container.html'.
 			$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'js-reference-container' );
+
+		} else {
+
+			// Load 'templates/public/reference-container.html'.
+			$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'reference-container' );
+		}
+
+		$l_int_scroll_offset        = '';
+		$l_int_scroll_down_delay    = '';
+		$l_int_scroll_down_duration = '';
+		$l_int_scroll_up_delay      = '';
+		$l_int_scroll_up_duration   = '';
+
+		if ( 'jquery' === MCI_Footnotes::$a_str_script_mode ) {
+
+			$l_int_scroll_offset        = ( self::$a_int_scroll_offset / 100 );
+			$l_int_scroll_up_duration   = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION ) );
+
+			if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY ) ) ) {
+
+				$l_int_scroll_down_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION ) );
+
+			} else {
+
+				$l_int_scroll_down_duration = $l_int_scroll_up_duration;
+
+			}
+
+			$l_int_scroll_down_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY ) );
+			$l_int_scroll_up_delay      = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY ) );
+
 		}
 
 		$l_obj_template_container->replace(
 			array(
-				'post_id'         => self::$a_int_post_id,
-				'container_id'    => self::$a_int_reference_container_id,
-				'element'         => MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT ),
-				'name'            => empty( $l_str_reference_container_label ) ? '&#x202F;' : $l_str_reference_container_label,
-				'button-style'    => ! $l_bool_collapse_default ? 'display: none;' : '',
-				'style'           => $l_bool_collapse_default ? 'display: none;' : '',
-				'caption'         => empty( $l_str_reference_container_label ) ? 'References' : $l_str_reference_container_label,
-				'content'         => $l_str_body,
-				'scroll-offset'   => ( self::$a_int_scroll_offset / 100 ),
-				'scroll-duration' => intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION ) ),
+				'post_id'              => self::$a_int_post_id,
+				'container_id'         => self::$a_int_reference_container_id,
+				'element'              => MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT ),
+				'name'                 => empty( $l_str_reference_container_label ) ? '&#x202F;' : $l_str_reference_container_label,
+				'button-style'         => ! $l_bool_collapse_default ? 'display: none;' : '',
+				'style'                => $l_bool_collapse_default ? 'display: none;' : '',
+				'caption'              => empty( $l_str_reference_container_label ) ? 'References' : $l_str_reference_container_label,
+				'content'              => $l_str_body,
+				'scroll-offset'        => $l_int_scroll_offset,
+				'scroll-down-delay'    => $l_int_scroll_down_delay,
+				'scroll-down-duration' => $l_int_scroll_down_duration,
+				'scroll-up-delay'      => $l_int_scroll_up_delay,
+				'scroll-up-duration'   => $l_int_scroll_up_duration,
 			)
 		);
 

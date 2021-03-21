@@ -130,7 +130,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	protected function get_meta_boxes() {
 		$l_arr_meta_boxes = array();
 
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility (draft status only; debugging not complete)', 'footnotes' ), 'amp_compat' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility (draft; accessibility not yet debugged)', 'footnotes' ), 'amp_compat' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'start-end', __( 'Footnote start and end short codes', 'footnotes' ), 'start_end' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'Numbering' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'Scrolling' );
@@ -176,11 +176,13 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				'label-amp'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE, __( 'Enable AMP compatibility mode:', 'footnotes' ) ),
-				'amp'             => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
-				'notice-amp'      => __( 'This option enables hard links with configurable scroll offset in % window height.', 'footnotes' ),
+				// Translators: '%s' is the link text 'AMP-WP' linked to the plugin’s front page on WordPress.org.
+				'description-1-amp' => sprintf( __( 'The official %s plugin is required when this option is enabled.', 'footnotes' ), '<span style="font-style: normal;"><a href="https://wordpress.org/plugins/amp/">AMP-WP</a></span>' ),
+				'label-amp'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE, __( 'Enable AMP compatibility mode:', 'footnotes' ) ),
+				'amp'               => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
+				'notice-amp'        => __( 'This option enables hard links with configurable scroll offset in % window height.', 'footnotes' ),
 				// Translators: '%s' is the logogram of the 'Footnotes' plugin.
-				'description-amp' => sprintf( __( '%s shall become AMP compatible thanks to @milindmore22 and @westonruter code contributions.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
+				'description-2-amp' => sprintf( __( '%s shall become AMP compatible thanks to @milindmore22 and @westonruter code contributions.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 			)
 		);
 		// Display template with replaced placeholders.

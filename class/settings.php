@@ -666,7 +666,6 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @var str
-	 * Set backlinks column max. width.
 	 */
 	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED = 'footnotes_inputfield_backlinks_column_max_width_enabled';
 
@@ -674,7 +673,7 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the backlinks column max width scalar.
 	 *
 	 * @since 2.1.4
-	 * @var str
+	 * @var int
 	 */
 	const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  = 'footnotes_inputfield_backlinks_column_max_width_scalar';
 
@@ -712,7 +711,7 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the scalar value of the tooltip font size.
 	 *
 	 * @since 2.1.4
-	 * @var str
+	 * @var flo
 	 */
 	const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR  = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
 
@@ -741,6 +740,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
+	 * @var int
 	 */
 	const C_INT_FOOTNOTES_SCROLL_OFFSET   = 'footnotes_inputfield_scroll_offset';
 
@@ -751,6 +751,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
+	 * @var int
 	 */
 	const C_INT_FOOTNOTES_SCROLL_DURATION = 'footnotes_inputfield_scroll_duration';
 
@@ -759,6 +760,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
+	 * @var int
 	 * Called mouse over box not tooltip for consistency.
 	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY     = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
@@ -768,6 +770,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
+	 * @var int
 	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION  = 'footnotes_inputfield_mouse_over_box_fade_in_duration';
 
@@ -776,6 +779,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
+	 * @var int
 	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY    = 'footnotes_inputfield_mouse_over_box_fade_out_delay';
 
@@ -784,6 +788,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
+	 * @var int
 	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION = 'footnotes_inputfield_mouse_over_box_fade_out_duration';
 
@@ -794,9 +799,8 @@ class MCI_Footnotes_Settings {
 	 * Unicode-compliant browsers break URLs at slashes.
 	 *
 	 * @since 2.1.6
+	 * @date 2020-12-09T1554+0100..2020-12-13T1313+0100
 	 * @var str
-	 *
-	 * 2020-12-09T1554+0100..2020-12-13T1313+0100
 	 */
 	const C_STR_FOOTNOTE_URL_WRAP_ENABLED = 'footnote_inputfield_url_wrap_enabled';
 
@@ -804,9 +808,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for reference container position shortcode.
 	 *
 	 * @since 2.2.0
+	 * @date 2020-12-13T2056+0100
 	 * @var str
-	 *
-	 * 2020-12-13T2056+0100
 	 */
 	const C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE = 'footnote_inputfield_reference_container_position_shortcode';
 
@@ -838,9 +841,9 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for alternative tooltip position.
 	 *
 	 * @since 2.2.5
-	 * @var int
+	 * @date 2020-12-17T0746+0100
+	 * @var str
 	 *
-	 * 2020-12-17T0746+0100
 	 * Fixed width is for alternative tooltips, cannot reuse max-width nor offsets.
 	 */
 	const C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION = 'footnotes_inputfield_alternative_mouse_over_box_position';
@@ -849,9 +852,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for alternative tooltip x offset.
 	 *
 	 * @since 2.2.5
+	 * @date 2020-12-17T0746+0100
 	 * @var int
-	 *
-	 * 2020-12-17T0746+0100
 	 */
 	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X = 'footnotes_inputfield_alternative_mouse_over_box_offset_x';
 
@@ -859,9 +861,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for alternative tooltip y offset.
 	 *
 	 * @since 2.2.5
+	 * @date 2020-12-17T0746+0100
 	 * @var int
-	 *
-	 * 2020-12-17T0746+0100
 	 */
 	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y = 'footnotes_inputfield_alternative_mouse_over_box_offset_y';
 
@@ -869,9 +870,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for alternative tooltip width.
 	 *
 	 * @since 2.2.5
+	 * @date 2020-12-17T0746+0100
 	 * @var int
-	 *
-	 * 2020-12-17T0746+0100
 	 */
 	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    = 'footnotes_inputfield_alternative_mouse_over_box_width';
 
@@ -885,9 +885,8 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
 	 *
 	 * @since 2.2.5
-	 * @var int
-	 *
-	 * 2020-12-18T1509+0100
+	 * @date 2020-12-18T1509+0100
+	 * @var str
 	 */
 	const C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT       = 'footnotes_inputfield_reference_container_label_element';
 
@@ -901,7 +900,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.2.5
 	 * @date 2020-12-18T1509+0100
-	 * @var int
+	 * @var str
 	 */
 	const C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER = 'footnotes_inputfield_reference_container_label_bottom_border';
 
@@ -951,9 +950,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key to enable hard links.
 	 *
 	 * @since 2.3.0
+	 * @date 2020-12-29T0914+0100
 	 * @var str
-	 *
-	 * 2020-12-29T0914+0100
 	 */
 	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE       = 'footnotes_inputfield_hard_links_enable';
 
@@ -961,9 +959,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for hard link anchors in referrers and footnotes.
 	 *
 	 * @since 2.3.0
+	 * @date 2020-12-29T0914+0100
 	 * @var str
-	 *
-	 * 2020-12-29T0914+0100
 	 */
 	const C_STR_REFERRER_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_referrer_fragment_id_slug';
 
@@ -971,9 +968,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for hard link anchors in referrers and footnotes.
 	 *
 	 * @since 2.3.0
+	 * @date 2020-12-29T0914+0100
 	 * @var str
-	 *
-	 * 2020-12-29T0914+0100
 	 */
 	const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_footnote_fragment_id_slug';
 
@@ -981,9 +977,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for hard link anchors in referrers and footnotes.
 	 *
 	 * @since 2.3.0
+	 * @date 2020-12-29T0914+0100
 	 * @var str
-	 *
-	 * 2020-12-29T0914+0100
 	 */
 	const C_STR_HARD_LINK_IDS_SEPARATOR           = 'footnotes_inputfield_hard_link_ids_separator';
 
@@ -992,7 +987,6 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.4.0
 	 * @date 2021-01-01T0616+0100
-	 *
 	 * @var str
 	 */
 	const C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = 'footnotes_inputfield_shortcode_syntax_validation_enable';
@@ -1002,17 +996,16 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
 	 *
-	 * @since 2.5.4
-	 *
 	 * @reporter @theroninjedi47
 	 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
+	 *
+	 * @since 2.5.4
+	 * @var str
 	 *
 	 * When hard links are enabled, clicks on the backlinks are logged in the browsing history,
 	 * along with clicks on the referrers.
 	 * This tooltip hints to use the backbutton instead, so the history gets streamlined again.
 	 * @link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
-	 *
-	 * @var str
 	 */
 	const C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE = 'footnotes_inputfield_backlink_tooltip_enable';
 
@@ -1021,11 +1014,10 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
 	 *
-	 * @since 2.5.4
-	 *
 	 * @reporter @theroninjedi47
 	 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
 	 *
+	 * @since 2.5.4
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT = 'footnotes_inputfield_backlink_tooltip_text';
@@ -1038,17 +1030,16 @@ class MCI_Footnotes_Settings {
 	 * The first implementation used a fixed shortcode provided in the changelog.
 	 * But Footnotes’ UI design policy is to make shortcodes freely configurable.
 	 *
-	 * @since 2.5.4
-	 *
 	 * @reporter @jbj2199
 	 * @link https://wordpress.org/support/topic/change-tooltip-text/
+	 *
+	 * @since 2.5.4
+	 * @var str
 	 *
 	 * Tooltips can display another content than the footnote entry
 	 * in the reference container. The trigger is a shortcode in
 	 * the footnote text separating the tooltip text from the note.
 	 * That is consistent with what WordPress does for excerpts.
-	 *
-	 * @var str
 	 */
 	const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER = 'footnotes_inputfield_tooltip_excerpt_delimiter';
 
@@ -1079,11 +1070,10 @@ class MCI_Footnotes_Settings {
 	 *
 	 * -Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
 	 *
-	 * @since 2.5.4
-	 *
 	 * @reporter @tomturowski
 	 * @link https://wordpress.org/support/topic/in-line-superscript-ref-rides-to-high/
 	 *
+	 * @since 2.5.4
 	 * @var str
 	 */
 	const C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT = 'footnotes_inputfield_referrers_normal_superscript';
@@ -1093,11 +1083,10 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
 	 *
-	 * @since 2.5.6
-	 *
 	 * @reporter @hopper87it
 	 * @link https://wordpress.org/support/topic/footnotes-wp-rocket/
 	 *
+	 * @since 2.5.6
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE = 'footnotes_inputfield_reference_container_script_mode';
@@ -1109,8 +1098,6 @@ class MCI_Footnotes_Settings {
 	 * - Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
 	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
 	 *
-	 * @since 2.5.11 (draft)
-	 *
 	 * @contributor @milindmore22
 	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
 	 *
@@ -1119,6 +1106,7 @@ class MCI_Footnotes_Settings {
 	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799580854
 	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799582394
 	 *
+	 * @since 2.5.11 (draft)
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE = 'footnotes_inputfield_amp_compatibility_enable';

@@ -33,6 +33,11 @@
 	 * the tables must be marked up properly using table header elements for header rows and header
 	 * columns as applicable.
 	 * The table caption must also be present for screen readers but may be hidden to sighted users.
+	 *
+	 * - Bugfix: Backlinks: reflect scroll functions down/up differentiation across the template set, thanks to @bogosavljev bug report.
+	 *
+	 * @reporter @bogosavljef
+	 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14214720
 	 */?>
 -->
 <div
@@ -48,7 +53,7 @@
 				class="footnote_reference_container_label pointer"
 				onclick="footnote_expand_reference_container_[[post_id]]_[[container_id]]();"
 				onkeydown="footnote_expand_reference_container_[[post_id]]_[[container_id]]();"
-s				>[[name]]</span
+				>[[name]]</span
 			><span
 				role="button"
 				tabindex="0"
@@ -111,5 +116,8 @@ s				>[[name]]</span
 	}
 	function footnote_moveToReference_[[post_id]]_[[container_id]](p_str_TargetID) {
 		footnote_expand_reference_container_[[post_id]]_[[container_id]]();
+	}
+	function footnote_moveToAnchor_[[post_id]]_[[container_id]](p_str_TargetID) {
+		/* defined to keep using standard row templates */
 	}
 </script>

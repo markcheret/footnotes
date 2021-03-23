@@ -620,6 +620,24 @@ class MCI_Footnotes_Task {
 
 		// Insert start tag without switching out of PHP.
 		echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
+		
+		/**
+		 * Enables CSS smooth scrolling.
+		 * 
+		 * - Update: Scrolling: CSS-based smooth scroll behavior (optional), thanks to @paulgpetty and @bogosavljev issue reports.
+		 * 
+		 * @reporter @paulgpetty
+		 * @link https://wordpress.org/support/topic/functionally-great/#post-13607795
+		 * 
+		 * @reporter @bogosavljev
+		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14214720
+		 * 
+		 * @since 2.5.12
+		 * Native smooth scrolling only works in recent browsers.
+		 */
+		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING ) ) ) {
+			echo "html {scroll-behavior: smooth;}\r\n";
+		}
 
 		/**
 		 * Normalizes the referrers’ vertical alignment and font size.
@@ -1423,6 +1441,46 @@ class MCI_Footnotes_Task {
 		do {
 			$p_str_content = preg_replace( $l_str_value_regex, '$1', $p_str_content );
 		} while ( preg_match( $l_str_value_regex, $p_str_content ) );
+
+		/**
+		 * Optionally moves footnotes outside at the end of the label element.
+		 *
+		 * - Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally moving footnotes after the end of the label.
+		 *
+		 * @since 2.5.12
+		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14212318
+		 */
+		$l_str_label_issue_solution = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION );
+
+		if ( 'move' === $l_str_label_issue_solution ) {
+
+			$l_str_move_regex = '#(<label ((?!</label).)+?)(' . $l_str_start_tag_regex . '((?!</label).)+?' . $l_str_end_tag_regex . ')(((?!</label).)*?</label>)#';
+
+			do {
+				$p_str_content = preg_replace( $l_str_move_regex, '$1$5<span class="moved_footnote">$3</span>', $p_str_content );
+			} while ( preg_match( $l_str_move_regex, $p_str_content ) );
+		}
+
+		/**
+		 * Optionally disconnects labels with footnotes from their input element.
+		 *
+		 * - Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally disconnecting those labels.
+		 *
+		 * @since 2.5.12
+		 * This only edits those labels’ 'for' value that have footnotes,
+		 * but leaves all other labels (those without footnotes) alone.
+		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14212318
+		 */
+		if ( 'disconnect' === $l_str_label_issue_solution ) {
+
+			$l_str_disconnect_text     = 'optionally-disconnected-from-input-field-to-prevent-toggling-while-clicking-footnote-referrer_';
+
+			$p_str_content = preg_replace(
+				'#(<label [^>]+?for=["\'])(((?!</label).)+' . $l_str_start_tag_regex . ')#',
+				 '$1' . $l_str_disconnect_text . '$2',
+				 $p_str_content
+			);
+		}
 
 		/*
 		 * Load footnote referrer template file.

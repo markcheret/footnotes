@@ -132,14 +132,16 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility (draft; accessibility not yet debugged)', 'footnotes' ), 'amp_compat' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'start-end', __( 'Footnote start and end short codes', 'footnotes' ), 'start_end' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'Numbering' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'Scrolling' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'numbering' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'scrolling' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'hard-links', __( 'URL fragment ID configuration', 'footnotes' ), 'hard_links' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'reference-container', __( 'Reference container', 'footnotes' ), 'reference_container' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'excerpts', __( 'Footnotes in excerpts', 'footnotes' ), 'excerpts' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'love', MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, 'Love' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'love', MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, 'love' );
 
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'hyperlink-arrow', __( 'Backlink symbol', 'footnotes' ), 'hyperlink_arrow' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrers', 'footnotes' ), 'superscript' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'label-solution', __( 'Referrers in labels', 'footnotes' ), 'label_solution' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box', __( 'Tooltips', 'footnotes' ), 'mouseover_box' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-position', __( 'Tooltip position', 'footnotes' ), 'mouseover_box_position' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-dimensions', __( 'Tooltip dimensions', 'footnotes' ), 'mouseover_box_dimensions' );
@@ -280,7 +282,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 					'label-script'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, __( 'Script mode:', 'footnotes' ) ),
 					'script'               => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, $l_arr_script_mode ),
-					'notice-script'        => __( 'The plain JavaScript mode does not support scroll animation and will enable hard links with configurable scroll offset.', 'footnotes' ),
+					'notice-script'        => __( 'The plain JavaScript mode will enable hard links with configurable scroll offset.', 'footnotes' ),
 
 					'label-position'       => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __( 'Default position:', 'footnotes' ) ),
 					'position'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_positions ),
@@ -505,7 +507,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 */
 	public function scrolling() {
 
-		// Options for enabling hard links for AMP compat.
+		// Options for enabling scroll duration asymmetricity.
 		$l_arr_enable = array(
 			'yes' => __( 'Yes', 'footnotes' ),
 			'no'  => __( 'No', 'footnotes' ),
@@ -517,32 +519,63 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 
+				'label-scroll-css'          => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, __( 'CSS-based smooth scrolling:', 'footnotes' ) ),
+				'scroll-css'                => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, $l_arr_enable ),
+				'notice-scroll-css'         => __( 'May slightly disturb jQuery scrolling and is therefore disabled by default. Works in recent browsers.', 'footnotes' ),
+
 				'label-scroll-offset'          => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, __( 'Scroll offset:', 'footnotes' ) ),
 				'scroll-offset'                => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, 0, 100 ),
 				'notice-scroll-offset'         => __( 'per cent from the upper edge of the window', 'footnotes' ),
 
 				'label-scroll-duration'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
 				'scroll-duration'              => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
-				'notice-scroll-duration'       => __( 'milliseconds; if asymmetric scroll durations are enabled, this is the scroll up duration', 'footnotes' ),
+				'notice-scroll-duration'       => __( 'milliseconds. If asymmetric scroll durations are enabled, this is the scroll-up duration.', 'footnotes' ),
 
 				// Enable scroll duration asymmetricity.
-				'label-asymmetricity'          => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, __( 'Enable asymmetric scroll durations:', 'footnotes' ) ),
-				'asymmetricity'                => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, $l_arr_enable ),
-				'notice-asymmetricity'         => __( 'With this option, scrolling down may take longer than up, or conversely.', 'footnotes' ),
+				'label-scroll-asymmetricity'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, __( 'Enable asymmetric scroll durations:', 'footnotes' ) ),
+				'scroll-asymmetricity'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, $l_arr_enable ),
+				'notice-scroll-asymmetricity'  => __( 'With this option enabled, scrolling up may take longer than down, or conversely.', 'footnotes' ),
 
-				'label-scroll-down-duration'   => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, __( 'Scroll down duration:', 'footnotes' ) ),
+				'label-scroll-down-duration'   => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, __( 'Scroll-down duration:', 'footnotes' ) ),
 				'scroll-down-duration'         => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, 0, 20000 ),
 				'notice-scroll-down-duration'  => __( 'milliseconds', 'footnotes' ),
 
-				'label-scroll-down-delay'      => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, __( 'Scroll down delay:', 'footnotes' ) ),
+				'label-scroll-down-delay'      => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, __( 'Scroll-down delay:', 'footnotes' ) ),
 				'scroll-down-delay'            => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, 0, 20000 ),
-				'notice-scroll-down-delay'     => __( 'milliseconds; helps raise awareness that clicking referrers in form labels toggles input elements', 'footnotes' ),
+				'notice-scroll-down-delay'     => __( 'milliseconds. Useful to see the effect on input elements when referrers without hard links are clicked in form labels.', 'footnotes' ),
 
-				'label-scroll-up-delay'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, __( 'Scroll up delay:', 'footnotes' ) ),
+				'label-scroll-up-delay'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, __( 'Scroll-up delay:', 'footnotes' ) ),
 				'scroll-up-delay'              => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, 0, 20000 ),
-				'notice-scroll-up-delay'       => __( 'milliseconds; usually not recommended', 'footnotes' ),
+				'notice-scroll-up-delay'       => __( 'milliseconds. Less useful than the scroll-down delay.', 'footnotes' ),
 
-				// Enable hard links for AMP compat.
+			)
+		);
+		// Display template with replaced placeholders.
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
+	}
+
+	/**
+	 * Displays all options for the fragment identifier configuration.
+	 *
+	 * @since 2.2.0  in scrolling().
+	 * @since 2.5.12 separate metabox.
+	 */
+	public function hard_links() {
+
+		// Options for enabling hard links for AMP compat.
+		$l_arr_enable = array(
+			'yes' => __( 'Yes', 'footnotes' ),
+			'no'  => __( 'No', 'footnotes' ),
+		);
+
+		// Load template file.
+		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'settings-hard-links' );
+		// Replace all placeholders.
+		$l_obj_template->replace(
+			array(
+
 				'label-hard-links'             => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE, __( 'Enable hard links:', 'footnotes' ) ),
 				'hard-links'                   => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE, $l_arr_enable ),
 				'notice-hard-links'            => __( 'Hard links disable jQuery delays but have the same scroll offset, and allow to share footnotes (accessed if the list is not collapsed by default).', 'footnotes' ),
@@ -566,7 +599,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-backlink-tooltip-text'  => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT, __( 'Backlink tooltip text:', 'footnotes' ) ),
 				'backlink-tooltip-text'        => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT ),
-				'notice-backlink-tooltip-text' => __( 'Default text is the keyboard shortcut, but you may wish to input a descriptive hint in your language.', 'footnotes' ),
+				'notice-backlink-tooltip-text' => __( 'Default text is the keyboard shortcut; may be a localized descriptive hint.', 'footnotes' ),
 
 			)
 		);
@@ -691,6 +724,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-superscript' => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, __( 'Display footnote referrers in superscript:', 'footnotes' ) ),
 				'superscript'       => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, $l_arr_enabled ),
 
+				'label-normalize'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, __( 'Normalize vertical alignment and font size:', 'footnotes' ) ),
+				'normalize'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, $l_arr_normalize_superscript ),
+				'notice-normalize'  => __( 'Most themes don’t need this fix.', 'footnotes' ),
+
 				'label-before'      => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE, __( 'At the start of the footnote referrers:', 'footnotes' ) ),
 				'before'            => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE ),
 
@@ -699,10 +736,35 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-link'        => $this->add_label( MCI_Footnotes_Settings::C_STR_LINK_ELEMENT_ENABLED, __( 'Use the link element for referrers and backlinks:', 'footnotes' ) ),
 				'notice-link'       => __( 'Please find this setting at the end of the reference container settings. The link element is needed to apply the theme’s link color.', 'footnotes' ),
+			)
+		);
+		// Display template with replaced placeholders.
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $l_obj_template->get_content();
+		// phpcs:enable
+	}
 
-				'label-normalize'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, __( 'Normalize vertical alignment and font size:', 'footnotes' ) ),
-				'normalize'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, $l_arr_normalize_superscript ),
-				'notice-normalize'  => __( 'Most themes don’t need this fix.', 'footnotes' ),
+	/**
+	 * Displays the setting for the input label issue solution.
+	 *
+	 * @since 2.5.12
+	 */
+	public function label_solution() {
+		// Options for the input label issue solution.
+		$l_arr_issue_solutions = array(
+			'none'       => __( '0. No problem or solved otherwise', 'footnotes' ),
+			'move'       => __( 'A. Footnotes are moved out and appended after the label’s end (recommended)', 'footnotes' ),
+			'disconnect' => __( 'B. Labels with footnotes are disconnected from input element (discouraged)', 'footnotes' ),
+		);
+		// Load template file.
+		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'configure-label-solution' );
+		// Replace all placeholders.
+		$l_obj_template->replace(
+			array(
+				'description-1-selection' => __( 'Clicking a footnote referrer in an input element label toggles the input except when hard links are enabled. In jQuery mode, the recommended solution is to move footnotes and append them after the label (option A).', 'footnotes' ),
+				'label-selection'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION, __( 'Solve input label issue:', 'footnotes' ) ),
+				'selection'               => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION, $l_arr_issue_solutions ),
+				'description-2-selection' => __( 'Option B is discouraged because disconnecting a label from its input element may compromise accessibility. This option is a last resort in case footnotes must absolutely stay inside the label. (Using jQuery ‘event.stopPropagation’ failed.)', 'footnotes' ),
 			)
 		);
 		// Display template with replaced placeholders.

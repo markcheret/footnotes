@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.11
-Version: 2.5.11
+Package Version: 2.5.12
+Version: 2.5.12
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -79,6 +79,17 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.5.12 =
+- Update: Scrolling: CSS-based smooth scroll behavior (optional), thanks to @paulgpetty and @bogosavljev issue reports.
+- Bugfix: Backlinks: reflect scroll functions down/up differentiation across the template set, thanks to @bogosavljev bug report.
+- Bugfix: Referrers: Hard links: enforce scroll offset with '!important' property for surroundings specifying otherwise, thanks to @bogosavljev bug report.
+- Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally moving footnotes after the end of the label.
+- Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally disconnecting those labels.
+- Bugfix: Scroll offset: correct syntax error in the main style sheet.
+- Bugfix: Reference container: correct new syntax errors in the 8 reference container row templates.
+- Bugfix: Reference container: correct a new typo in the JavaScript reference container template.
+- Update: Dashboard: General settings: split a dedicated 'URL fragment ID configuration' metabox off the 'Scrolling behavior' metabox.
 
 = 2.5.11 =
 - Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.

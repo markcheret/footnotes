@@ -1143,6 +1143,35 @@ class MCI_Footnotes_Settings {
 	 */
 	const C_INT_FOOTNOTES_SCROLL_UP_DELAY = 'footnotes_inputfield_scroll_up_delay';
 
+	/**
+	 * Settings container key to set the solution of the input element label issue.
+	 *
+	 * @since 2.5.12
+	 * @var str
+	 * If hard links are not enabled, clicking a referrer in an input element label
+	 * toggles the state of the input element the label is connected to.
+	 * Beside hard links, other solutions include moving footnotes off the label and
+	 * append them, or disconnecting this label from the input element (discouraged).
+	 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14212318
+	 */
+	const C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION = 'footnotes_inputfield_label_issue_solution';
+		
+	/**
+	 * Settings container key to enable CSS smooth scrolling.
+	 * 
+	 * - Update: Scrolling: CSS-based smooth scroll behavior (optional), thanks to @paulgpetty and @bogosavljev issue reports.
+	 * 
+	 * @reporter @paulgpetty
+	 * @link https://wordpress.org/support/topic/functionally-great/#post-13607795
+	 * 
+	 * @reporter @bogosavljev
+	 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14214720
+	 * 
+	 * @since 2.5.12
+	 * Native smooth scrolling only works in recent browsers.
+	 */
+	const C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING = 'footnotes_inputfield_css_smooth_scrolling';
+
 
 	/**
 	 *      SETTINGS STORAGE.
@@ -1202,6 +1231,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_COMBINE_IDENTICAL_FOOTNOTES                   => 'yes',
 
 			// Scrolling behavior.
+			self::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING                => 'no',
 			self::C_INT_FOOTNOTES_SCROLL_OFFSET                       => 20,
 			self::C_INT_FOOTNOTES_SCROLL_DURATION                     => 380,
 			self::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY       => 'no',
@@ -1270,11 +1300,14 @@ class MCI_Footnotes_Settings {
 			self::C_STR_HYPERLINK_ARROW                               => '&#8593;',
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED                  => '',
 
-			// Referrer typesetting and formatting.
+			// Referrers.
 			self::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS           => 'yes',
 			self::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT         => 'no',
 			self::C_STR_FOOTNOTES_STYLING_BEFORE                      => '[',
 			self::C_STR_FOOTNOTES_STYLING_AFTER                       => ']',
+			
+			// Referrers in labels.
+			self::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION                => 'none',
 
 			// Tooltips.
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED              => 'yes',

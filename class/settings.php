@@ -7,47 +7,11 @@
  * @since 1.5.0
  * @date 14.09.14 10:43
  *
+ * The constants are ordered by ascending version so their docblocks can replace most of this list.
  * @since 2.0.0  Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
  * @since 2.0.4  Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
  * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
  * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
- *
- * **Revision of the docblocks is in progress.**
- *
- * @since 2.1.3  fix ref container positioning by priority level  2020-11-17T0205+0100
- *
- * @since 2.1.4  more settings container keys  2020-12-03T0955+0100
- *
- * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1606+0100
- *
- * @since 2.1.6  set default priority level of the_content to 98 to prevent plugin conflict, thanks to @marthalindeman   2020-12-10T0447+0100
- *
- * @since 2.2.0  reference container custom position shortcode, thanks to @hamshe   2020-12-13T2056+0100
- * @link https://wordpress.org/support/topic/reference-container-in-elementor/
- *
- * @since 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
- *
- * @since 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1256+0100
- *
- * @since 2.2.5  alternative tooltip position settings  2020-12-17T0907+0100
- *
- * @since 2.2.5  options for reference container label element and bottom border, thanks to @markhillyer    2020-12-18T1455+0100
- * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
- *
- * @since 2.2.9  set default priority level of widget_text to 98 like for the_content (since 2.1.6), thanks to @marthalindeman   2020-12-25T1646+0100
- *
- * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
- * @link https://wordpress.org/support/topic/borders-25/
- *
- * @since 2.3.0  reference container: settings for top (and bottom) margin, thanks to @hamshe
- * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
- *
- * @since 2.3.0  Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
- * @date 2020-12-27T1243+0100
-
- * @since 2.3.0  referrers, reference container: settings for anchor slugs  2020-12-31T1429+0100
- *
- * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
  */
 
 /**
@@ -135,15 +99,15 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the backlink symbol selection.
 	 *
 	 * @since 1.5.0
-	 * @var str
 	 *
 	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
 	 *
-	 * @since 2.0.4
-	 * @date 2020-11-02T2115+0100
-	 *
 	 * @reporter @mmallett
 	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
+	 *
+	 * @since 2.0.4
+	 * @date 2020-11-02T2115+0100
+	 * @var str
 	 */
 	const C_STR_HYPERLINK_ARROW = 'footnote_inputfield_custom_hyperlink_symbol';
 
@@ -158,13 +122,13 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key to look for footnotes in post excerpts.
 	 *
-	 * @since 1.5.0
-	 * @var str
-	 *
 	 * - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
 	 *
 	 * @reporter @nikelaos
 	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
+	 *
+	 * @since 1.5.0
+	 * @var str
 	 */
 	const C_STR_FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
 
@@ -180,6 +144,7 @@ class MCI_Footnotes_Settings {
 	 * - as in English or US American typesetting;
 	 * - for better UX thanks to a more button-like appearance;
 	 * - for stylistic consistency with the expand-collapse button.
+	 *
 	 */
 	const C_STR_FOOTNOTES_STYLING_BEFORE = 'footnote_inputfield_custom_styling_before';
 
@@ -198,7 +163,6 @@ class MCI_Footnotes_Settings {
 	 * @var str
 	 *
 	 * @since 1.3.0  Adding: new settings tab for custom CSS settings.
-	 * Custom CSS migrates to a dedicated tab.
 	 */
 	const C_STR_CUSTOM_CSS = 'footnote_inputfield_custom_css';
 
@@ -223,9 +187,10 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.4
 	 * @var str
-	 * The mouse over content truncation should be enabled by default.
-	 * To raise awareness of the functionality and to prevent the screen.
-	 * From being filled at mouse-over, and to allow the Continue reading.
+	 *
+	 * The mouse over content truncation should be enabled by default
+	 * to raise awareness of the functionality and to prevent the screen
+	 * from being filled at mouse-over, and to allow the Continue reading.
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = 'footnote_inputfield_custom_mouse_over_box_excerpt_enabled';
 
@@ -233,8 +198,9 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the max. length of the enabled excerpt.
 	 *
 	 * @since 1.5.4
-	 * @var str
-	 * The truncation length is raised from 150 to 200 chars.
+	 * @var int
+	 *
+	 * @since 2.0.7  Increase default truncation length from 150 to 200 chars.
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = 'footnote_inputfield_custom_mouse_over_box_excerpt_length';
 
@@ -243,13 +209,17 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.5
 	 * @var str
-	 * These are checkboxes; keyword 'checked' is converted to Boolean true,.
-	 * Empty string to false (default).
-	 * Titles should all be enabled by default to prevent users from.
-	 * Thinking at first that the feature is broken in post titles..
-	 * See <https://wordpress.org/support/topic/more-feature-ideas/>.
-	 * Yet in titles, footnotes are still buggy, because WordPress.
-	 * Uses the title string in menus and in the title element..
+	 *
+	 * These are checkboxes; keyword 'checked' is converted to Boolean true,
+	 * empty string to false (default).
+	 *
+	 * Hooks should all be enabled by default to prevent users from
+	 * thinking at first that the feature is broken in post titles.
+	 * @link https://wordpress.org/support/topic/more-feature-ideas/
+	 *
+	 * Yet in titles, footnotes are still buggy, because WordPress
+	 * uses the title string in menus and in the title element, but
+	 * Footnotes doesn’t delete footnotes therein.
 	 */
 	const C_STR_EXPERT_LOOKUP_THE_TITLE = 'footnote_inputfield_expert_lookup_the_title';
 
@@ -265,13 +235,16 @@ class MCI_Footnotes_Settings {
 	 * Settings container key to enable the 'the_excerpt' hook.
 	 *
 	 * @since 1.5.5
-	 * @var str
 	 *
-	 * @since 2.1.3  excerpt hook: disable by default, thanks to @nikelaos
+	 * - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+	 *
+	 * @reporter @nikelaos
 	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
-	 * And the_excerpt is disabled by default following @nikelaos in.
-	 * <https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879>.
-	 * <https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068>.
+	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879
+	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
+	 *
+	 * @since 2.1.3
+	 * @var str
 	 */
 	const C_STR_EXPERT_LOOKUP_THE_EXCERPT = 'footnote_inputfield_expert_lookup_the_excerpt';
 
@@ -288,10 +261,11 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.5
 	 * @var str
-	 * The widget_text hook must be disabled by default, because it causes.
-	 * Multiple reference containers to appear in Elementor accordions, but.
-	 * It must be enabled if multiple reference containers are desired, as.
-	 * In Elementor toggles..
+	 *
+	 * The widget_text hook must be disabled by default, because it causes
+	 * multiple reference containers to appear in Elementor accordions, but
+	 * it must be enabled if multiple reference containers are desired, as
+	 * in Elementor toggles.
 	 */
 	const C_STR_EXPERT_LOOKUP_WIDGET_TEXT = 'footnote_inputfield_expert_lookup_widget_text';
 
@@ -322,21 +296,23 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the background color.
 	 *
 	 * @since 1.5.6
-	 * @var str
 	 *
 	 * - Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
-	 *
-	 * @since 2.5.11
 	 *
 	 * @reporter @4msc
 	 * @link https://wordpress.org/support/topic/tooltip-not-showing-on-dark-theme-with-white-text/
 	 *
-	 * 1.2.5..1.5.5  #fff7a7 hard-coded
-	 * 1.5.6..2.0.6  #fff7a7 setting default
-	 * 2.0.7..2.5.10 #ffffff setting default
+	 * @since 2.5.11
+	 *
 	 * The mouse over box shouldn’t feature a colored background.
 	 * By default, due to diverging user preferences. White is neutral.
 	 * Theme default background color is best.
+	 *
+	 * @since 1.2.5..1.5.5  #fff7a7 hard-coded.
+	 * @since 1.5.6..2.0.6  #fff7a7 setting default.
+	 * @since 2.0.7..2.5.10 #ffffff setting default.
+	 *
+	 * @var str
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = 'footnote_inputfield_custom_mouse_over_box_background';
 
@@ -344,7 +320,7 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the border width.
 	 *
 	 * @since 1.5.6
-	 * @var str
+	 * @var int
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH = 'footnote_inputfield_custom_mouse_over_box_border_width';
 
@@ -360,8 +336,9 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the border radius.
 	 *
 	 * @since 1.5.6
-	 * @var str
-	 * The mouse over box corners mustn’t be rounded as that is outdated.
+	 * @var int
+	 *
+	 * @since 2.0.7  The mouse over box corners mustn’t be rounded as that is outdated.
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS = 'footnote_inputfield_custom_mouse_over_box_border_radius';
 
@@ -369,7 +346,9 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the max. width.
 	 *
 	 * @since 1.5.6
-	 * @var str
+	 * @var int
+	 *
+	 * @since 2.0.7  Set default width 450.
 	 * The width should be limited to start with, for the box to have shape.
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = 'footnote_inputfield_custom_mouse_over_box_max_width';
@@ -379,9 +358,10 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 1.5.7
 	 * @var str
-	 * The default position should not be lateral because of the risk.
-	 * The box gets squeezed between note anchor at line end and window edge,.
-	 * And top because reading at the bottom of the window is more likely.
+	 *
+	 * The default position should not be lateral because of the risk
+	 * the box gets squeezed between note anchor at line end and window edge,
+	 * and top because reading at the bottom of the window is more likely.
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION = 'footnote_inputfield_custom_mouse_over_box_position';
 
@@ -389,7 +369,7 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the offset (x).
 	 *
 	 * @since 1.5.7
-	 * @var str
+	 * @var int
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X = 'footnote_inputfield_custom_mouse_over_box_offset_x';
 
@@ -397,8 +377,9 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the offset (y).
 	 *
 	 * @since 1.5.7
-	 * @var str
-	 * The vertical offset must be negative for the box not to cover.
+	 * @var int
+	 *
+	 * The vertical offset must be negative for the box not to cover
 	 * The current line of text (web coordinates origin is top left).
 	 */
 	const C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y = 'footnote_inputfield_custom_mouse_over_box_offset_y';
@@ -416,12 +397,11 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
 	 *
-	 * @since 2.1.0
-	 * @date 2020-11-08T2106+0100
-	 *
 	 * @reporter @rovanov
 	 * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
 	 *
+	 * @since 2.1.0
+	 * @date 2020-11-08T2106+0100
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_TOOLTIP_READON_LABEL = 'footnote_inputfield_readon_label';
@@ -431,12 +411,11 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
 	 *
-	 * @since 2.1.1
-	 * @date 2020-11-11T1817+0100
-	 *
 	 * @reporter @andreasra
 	 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
 	 *
+	 * @since 2.1.1
+	 * @date 2020-11-11T1817+0100
 	 * @var str
 	 *
 	 * These alternative tooltips work around a website related jQuery UI
@@ -451,12 +430,11 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report.
 	 *
-	 * @since 2.1.1
-	 * @date 2020-11-16T0859+0100
-	 *
 	 * @reporter @cwbayer
 	 * @link https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/
 	 *
+	 * @since 2.1.1
+	 * @date 2020-11-16T0859+0100
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS = 'footnotes_inputfield_referrer_superscript_tags';
@@ -466,12 +444,11 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
 	 *
-	 * @since 2.1.1
-	 * @date 2020-11-16T2021+0100
-	 *
 	 * @reporter @spaceling
 	 * @link https://wordpress.org/support/topic/change-the-position-5/page/2/#post-13671138
 	 *
+	 * @since 2.1.1
+	 * @date 2020-11-16T2021+0100
 	 * @var str
 	 */
 	const C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = 'footnotes_inputfield_reference_container_backlink_symbol_enable';
@@ -481,11 +458,10 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
 	 *
-	 * @since 2.1.1
-	 *
 	 * @reporter @dragon013
 	 * @link https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/
 	 *
+	 * @since 2.1.1
 	 * @var str
 	 */
 	const C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE = 'footnotes_inputfield_reference_container_start_page_enable';
@@ -505,12 +481,11 @@ class MCI_Footnotes_Settings {
 	 *
 	 * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
 	 *
-	 * @since 2.1.1
-	 * @date 2020-11-16T2024+0100
-	 *
 	 * @contributor @spaceling
 	 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13615994
 	 *
+	 * @since 2.1.1
+	 * @date 2020-11-16T2024+0100
 	 * @var str
 	 */
 	const C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH = 'footnotes_inputfield_reference_container_backlink_symbol_switch';
@@ -518,29 +493,67 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key for 'the_content' hook priority level.
 	 *
+	 * - Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.
+	 *
+	 * @contributor @spaceling
+	 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13608594
+	 *
+	 * @reporter @june01
+	 * @link https://wordpress.org/support/topic/change-the-position-5/
+	 *
+	 * @reporter @imeson
+	 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13538345
+	 *
+	 * @since 2.0.5
+	 * @date 2020-11-02T0330+0100
+	 * @link https://codex.wordpress.org/Plugin_API/#Hook_in_your_Filter
+	 *
+	 * - Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report.
+	 *
+	 * @reporter @imeson
+	 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13538345
+	 *
 	 * @since 2.1.1
 	 * @date 2020-11-16T0859+0100
+	 * 
+	 * - Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman bug report.
+	 * 
+	 * @reporter @marthalindeman
+	 * @link https://wordpress.org/support/topic/code-showing-up-in-references/
+	 * 
+	 * @since 2.1.6
+	 * @date 2020-12-10T0447+0100
+	 * 
+	 * Priority level of the_content and of widget_text as the only relevant
+	 * hooks must be less than 99 because social buttons may yield scripts
+	 * that contain the strings '((' and '))', i.e. the default footnote
+	 * start and end short codes, causing issues with fake footnotes.
 	 *
-	 * @var str
-	 * Priority level of the_content and of widget_text as the only relevant.
-	 * Hooks must be less than 99 because social buttons may yield scripts.
-	 * That contain the strings '((' and '))', i.e. the default footnote.
-	 * Start and end short codes, causing issues with fake footnotes..
+	 * Setting the_content priority to 10 instead of PHP_INT_MAX i.e. 9223372036854775807
+	 * makes the footnotes reference container display beneath the post and above other
+	 * features added by other plugins, e.g. related post lists and social buttons.
+	 *
+	 * For YARPP to display related posts below the Footnotes reference container,
+	 * priority needs to be at least 1200 (i.e. 0 =< $l_int_the_content_priority =< 1200).
+	 *
+	 * PHP_INT_MAX cannot be reset by leaving the number box empty. because browsers
+	 * (WebKit) don’t allow it, so we must resort to -1.
+	 * @link https://github.com/Modernizr/Modernizr/issues/171
+	 * @var int
 	 */
 	const C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_content_priority_level';
-
+	
 	/**
 	 * Settings container key for 'the_title' hook priority level.
 	 *
+	 * - Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos bug report.
+	 *
+	 * @reporter @nikelaos
+	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705
+	 *
 	 * @since 2.1.2
 	 * @date 2020-11-20T0620+0100
-	 *
-	 * @var str
-	 * Initially hard-coded default.
-	 * Shows "9223372036854780000" instead of 9223372036854775807 in the numbox.
-	 * Empty should be interpreted as PHP_INT_MAX, but a numbox cannot be set to empty.
-	 * <https://github.com/Modernizr/Modernizr/issues/171>.
-	 * Interpret -1 as PHP_INT_MAX instead.
+	 * @var int
 	 */
 	const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    = 'footnote_inputfield_expert_lookup_the_title_priority_level';
 
@@ -549,8 +562,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.2
 	 * @date 2020-11-20T0620+0100
-	 *
-	 * @var str
+	 * @var int
 	 */
 	const C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_widget_title_priority_level';
 
@@ -559,8 +571,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.2
 	 * @date 2020-11-20T0620+0100
-	 *
-	 * @var str
+	 * @var int
 	 */
 	const C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  = 'footnote_inputfield_expert_lookup_widget_text_priority_level';
 
@@ -569,28 +580,35 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.2
 	 * @date 2020-11-20T0620+0100
-	 *
-	 * @var str
+	 * @var int
 	 */
 	const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  = 'footnote_inputfield_expert_lookup_the_excerpt_priority_level';
 
 	/**
 	 * Settings container key for the link element option.
+	 * 
+	 * - Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.
+	 * 
+	 * @contributor @docteurfitness
+	 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
 	 *
 	 * @since 2.1.4
 	 * @var str
-	 * Whether to use link elements.
-	 * Link element option.
 	 */
 	const C_STR_LINK_ELEMENT_ENABLED = 'footnote_inputfield_link_element_enabled';
 
 	/**
 	 * Settings container key to enable the presence of a backlink separator.
+	 * 
+	 * - Bugfix: Reference container: make separating and terminating punctuation optional and configurable, thanks to @docteurfitness issue report and code contribution.
+	 * 
+	 * @contributor @docteurfitness
+	 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
 	 *
 	 * @since 2.1.4
 	 * @var str
-	 * Backlink typography.
-	 * Backlink separators and terminators are often not preferred..
+	 *
+	 * Backlink separators and terminators are often not preferred.
 	 * But a choice must be provided along with the ability to customize.
 	 */
 	const C_STR_BACKLINKS_SEPARATOR_ENABLED  = 'footnotes_inputfield_backlinks_separator_enabled';
@@ -640,8 +658,6 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @var str
-	 * Set backlinks column width.
-	 * Backlink layout.
 	 */
 	const C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     = 'footnotes_inputfield_backlinks_column_width_enabled';
 
@@ -698,12 +714,12 @@ class MCI_Footnotes_Settings {
 	 * Settings container key to enable setting the tooltip font size.
 	 *
 	 * @since 2.1.4
+	 * @date 2020-12-04T1023+0100.
 	 * @var str
-	 * Tooltip font size.
+	 *
+	 * Tooltip font size reset to legacy by default since 2.1.4;
+	 * Was set to inherit since 2.1.1 as it overrode custom CSS,
 	 * Called mouse over box not tooltip for consistency.
-	 * Tooltip font size reset to legacy by default since 2.1.4;.
-	 * Was set to inherit since 2.1.1 as it overrode custom CSS,.
-	 * Is moved to settings since 2.1.4    2020-12-04T1023+0100.
 	 */
 	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED = 'footnotes_inputfield_mouse_over_box_font_size_enabled';
 
@@ -728,8 +744,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.4
 	 * @var str
-	 * Whether to enqueue additional stylesheet.
-	 * Page layout support.
+	 * Whether to concatenate an additional stylesheet.
 	 */
 	const C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT = 'footnotes_inputfield_page_layout_support';
 
@@ -761,7 +776,6 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @date 2020-12-05T0538+0100
 	 * @var int
-	 * Called mouse over box not tooltip for consistency.
 	 */
 	const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY     = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
 
@@ -799,13 +813,18 @@ class MCI_Footnotes_Settings {
 	 * Unicode-compliant browsers break URLs at slashes.
 	 *
 	 * @since 2.1.6
-	 * @date 2020-12-09T1554+0100..2020-12-13T1313+0100
+	 * @date 2020-12-09T1606+0100
 	 * @var str
 	 */
 	const C_STR_FOOTNOTE_URL_WRAP_ENABLED = 'footnote_inputfield_url_wrap_enabled';
 
 	/**
 	 * Settings container key for reference container position shortcode.
+	 *
+	 * - Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
+	 * 
+	 * @reporter @hamshe  
+	 * @link https://wordpress.org/support/topic/reference-container-in-elementor/
 	 *
 	 * @since 2.2.0
 	 * @date 2020-12-13T2056+0100
@@ -816,7 +835,9 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key for the Custom CSS migrated to a dedicated tab.
 	 *
-	 * @since 2.2.2  Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
+	 * - Update: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
+	 * 
+	 * @since 2.2.2 
 	 * @date 2020-12-15T0520+0100
 	 * @var str
 	 */
@@ -829,7 +850,9 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-15T0520+0100
 	 * @var str
 	 *
-	 * @since 2.3.0  swap Boolean from 'migration complete' to 'show legacy'
+	 * - Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
+	 * 
+	 * @since 2.3.0
 	 * @date 2020-12-27T1233+0100
 	 *
 	 * The Boolean must be false if its setting is contained in the container to be hidden,
@@ -924,7 +947,7 @@ class MCI_Footnotes_Settings {
 	 * - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
 	 *
 	 * @reporter @hamshe
-	 * @link https://wordpress.org/support/topic/reference-container-in-elementor/
+	 * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
 	 *
 	 * @since 2.3.0
 	 * @date 2020-12-29T0914+0100
@@ -938,7 +961,7 @@ class MCI_Footnotes_Settings {
 	 * - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
 	 *
 	 * @reporter @hamshe
-	 * @link https://wordpress.org/support/topic/reference-container-in-elementor/
+	 * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
 	 *
 	 * @since 2.3.0
 	 * @date 2020-12-29T0914+0100
@@ -949,14 +972,24 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key to enable hard links.
 	 *
+	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
+	 *
+	 * @contributor @martinneumannat
+	 * @link https://wordpress.org/support/topic/making-it-amp-compatible/
+	 *
+	 * @reporter @psykonevro
+	 * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
+	 *
 	 * @since 2.3.0
 	 * @date 2020-12-29T0914+0100
 	 * @var str
+	 * 
+	 * When the alternative reference container is enabled, hard links are too.
 	 */
 	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE       = 'footnotes_inputfield_hard_links_enable';
 
 	/**
-	 * Settings container key for hard link anchors in referrers and footnotes.
+	 * Settings container key for the fragment ID slug in referrers.
 	 *
 	 * @since 2.3.0
 	 * @date 2020-12-29T0914+0100
@@ -965,7 +998,7 @@ class MCI_Footnotes_Settings {
 	const C_STR_REFERRER_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_referrer_fragment_id_slug';
 
 	/**
-	 * Settings container key for hard link anchors in referrers and footnotes.
+	 * Settings container key for the fragment ID slug in footnotes.
 	 *
 	 * @since 2.3.0
 	 * @date 2020-12-29T0914+0100
@@ -974,7 +1007,7 @@ class MCI_Footnotes_Settings {
 	const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_footnote_fragment_id_slug';
 
 	/**
-	 * Settings container key for hard link anchors in referrers and footnotes.
+	 * Settings container key for the ID separator in fragment IDs.
 	 *
 	 * @since 2.3.0
 	 * @date 2020-12-29T0914+0100
@@ -983,7 +1016,7 @@ class MCI_Footnotes_Settings {
 	const C_STR_HARD_LINK_IDS_SEPARATOR           = 'footnotes_inputfield_hard_link_ids_separator';
 
 	/**
-	 * Settings container key for shortcode syntax validation.
+	 * Settings container key to enable shortcode syntax validation.
 	 *
 	 * @since 2.4.0
 	 * @date 2021-01-01T0616+0100
@@ -1155,18 +1188,18 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14212318
 	 */
 	const C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION = 'footnotes_inputfield_label_issue_solution';
-		
+
 	/**
 	 * Settings container key to enable CSS smooth scrolling.
-	 * 
+	 *
 	 * - Update: Scrolling: CSS-based smooth scroll behavior (optional), thanks to @paulgpetty and @bogosavljev issue reports.
-	 * 
+	 *
 	 * @reporter @paulgpetty
 	 * @link https://wordpress.org/support/topic/functionally-great/#post-13607795
-	 * 
+	 *
 	 * @reporter @bogosavljev
 	 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14214720
-	 * 
+	 *
 	 * @since 2.5.12
 	 * Native smooth scrolling only works in recent browsers.
 	 */
@@ -1305,7 +1338,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT         => 'no',
 			self::C_STR_FOOTNOTES_STYLING_BEFORE                      => '[',
 			self::C_STR_FOOTNOTES_STYLING_AFTER                       => ']',
-			
+
 			// Referrers in labels.
 			self::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION                => 'none',
 

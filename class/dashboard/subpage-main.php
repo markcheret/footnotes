@@ -179,12 +179,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 				// Translators: '%s' is the link text 'AMP-WP' linked to the plugin’s front page on WordPress.org.
-				'description-1-amp' => sprintf( __( 'The official %s plugin is required when this option is enabled.', 'footnotes' ), '<span style="font-style: normal;"><a href="https://wordpress.org/plugins/amp/">AMP-WP</a></span>' ),
+				'description-1-amp' => sprintf( __( 'The official %s plugin is required when this option is enabled.', 'footnotes' ), '<a href="https://wordpress.org/plugins/amp/" target="_blank" style="font-style: normal;">AMP-WP</a>' ),
 				'label-amp'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE, __( 'Enable AMP compatibility mode:', 'footnotes' ) ),
 				'amp'               => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
-				'notice-amp'        => __( 'This option enables hard links with configurable scroll offset in % window height.', 'footnotes' ),
+				'notice-amp'        => __( 'This option enables hard links with configurable scroll offset in % viewport height.', 'footnotes' ),
 				// Translators: '%s' is the logogram of the 'Footnotes' plugin.
-				'description-2-amp' => sprintf( __( '%s shall become AMP compatible thanks to @milindmore22 and @westonruter code contributions.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
+				'description-2-amp' => sprintf( __( '%s shall become AMP compatible thanks to @milindmore22 and @westonruter code contributions. [After the related items are added to the changelog, a more detailed feature description shall replace this provisional announcement.]', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 			)
 		);
 		// Display template with replaced placeholders.
@@ -423,7 +423,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 
-				'description-escapement'   => __( 'WARNING: Short codes with closing pointy brackets are disabled in the new WordPress Block Editor that disrupts the traditional balanced escapement applied by WordPress Classic Editor.', 'footnotes' ),
+				'description-escapement'   => __( 'CAUTION: When using short codes with pointy brackets, all footnotes should be added in the same editor and mode. Short codes are processed 1st with balanced escapement (Classic Editor), 2nd with unbalanced escapement (Block Editor), and 3rd without escapement (text mode).', 'footnotes' ),
 
 				'label-short-code-start'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, __( 'Footnote start tag short code:', 'footnotes' ) ),
 				'short-code-start'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, $l_arr_shortcode_start ),
@@ -525,7 +525,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-scroll-offset'          => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, __( 'Scroll offset:', 'footnotes' ) ),
 				'scroll-offset'                => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, 0, 100 ),
-				'notice-scroll-offset'         => __( 'per cent from the upper edge of the window', 'footnotes' ),
+				'notice-scroll-offset'         => __( 'per cent from the upper edge of the viewport', 'footnotes' ),
 
 				'label-scroll-duration'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
 				'scroll-duration'              => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
@@ -685,8 +685,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-excerpts'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, __( 'Display footnotes in excerpts:', 'footnotes' ) ),
 				'excerpts'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, $l_arr_enabled ),
 				'notice-excerpts'      => __( 'The recommended value is No.', 'footnotes' ),
-				// Translators: %s: link to the Advanced Excerpt Plugin.
-				'description-excerpts' => sprintf( __( 'In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.', 'footnotes' ), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank">Advanced Excerpt</a>' ),
+				// Translators: %s: link text 'Advanced Excerpt' linked to the plugin’s WordPress.org front page.
+				'description-excerpts' => sprintf( __( 'In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.', 'footnotes' ), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank" style="font-style: normal;">Advanced Excerpt</a>' ),
 			)
 		);
 		// Display template with replaced placeholders.

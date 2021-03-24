@@ -372,11 +372,13 @@ table
 
 caption.accessibility {
 	text-align: start;
-	height: 1px;
-	width: 1px;
-	white-space: nowrap;
-	overflow: hidden;
-	color: #ffffff00;
+	margin-top: -2px !important;
+	height: 1px !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	color: #ffffff00 !important;
+	background-color: #ffffff00 !important;
 }
 
 /**
@@ -401,6 +403,10 @@ caption.accessibility {
  * @reporter @arahmanshaalan
  * @link https://wordpress.org/support/topic/right-to-left-text-problem/
  */
+
+.footnotes_table .footnotes_plugin_reference_row th {
+	background-color: inherit !important;
+}
 
 .footnote_plugin_index,
 .footnote_plugin_index_combi,

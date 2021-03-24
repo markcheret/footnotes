@@ -4,29 +4,31 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
  * Author: Mark Cheret
- * Package V.: 2.5.12
- * Version: 2.5.12
+ * Package V.: 2.5.13
+ * Version: 2.5.13
  * CAUTION: THIS V. FIELD IS PARSED FOR UPDATE CONFIGURATION.
  * Author URI: https://cheret.org/footnotes/
  * Text Domain: footnotes
  * Domain Path: /languages
- *
  * @package footnotes
  * @copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
-
 /**
  * Package Version number for stylesheet cache busting.
  *
- * Please keep this constant in sync with the Package Version in the header above
- * and in the header of the readme, but not necessarily with the other Version.
- *
+ * Please keep this string in sync with the PACKAGE Version ('Package V.').
+ * Please mirror the 'Version' (NOT 'Package V.') in js/wysiwyg-editor.js.
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-03-22T0416+0100
+ * @lastmodified 2021-03-24T2213+0100
  */
-define( 'C_STR_PACKAGE_VERSION', '2.5.12' );
+define( 'C_STR_PACKAGE_VERSION', '2.5.13' );
+/**
+ * Enables toggling the stylesheet enqueuing mode from production (true) to development (false).
+ * @see Full docblock below next.
+ */
+define( 'C_BOOL_CSS_PRODUCTION_MODE', true );
 
 /**
  * Version numbers in WordPress plugin readme.txt and main PHP headers.
@@ -114,6 +116,22 @@ define( 'C_STR_PACKAGE_VERSION', '2.5.12' );
  */
 
 /**
+ * Enables toggling the stylesheet enqueuing mode from production (true) to development (false).
+ *
+ * @since 2.5.5
+ * @var bool   true:  production mode.
+ *             false: development mode.
+ * @see class/init.php
+ *
+ * In production, a minified CSS file tailored to the settings is enqueued.
+ *
+ * Developing stylesheets is meant to be easier when this is set to false.
+ * WARNING: This facility designed for development must NOT be used in production.
+ * 
+ * @see constant define near version constant above.
+ */
+
+/**
  * Plugin’s main PHP file.
  *
  * @filesource
@@ -132,17 +150,3 @@ add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'MCI_Footnotes_Ho
 $g_obj_mci_footnotes = new MCI_Footnotes();
 // Run the Plugin.
 $g_obj_mci_footnotes->run();
-
-/**
- * Sets the stylesheet enqueuing mode for production.
- *
- * @since 2.5.5
- * @var bool
- * @see class/init.php
- *
- * In production, a minified CSS file tailored to the settings is enqueued.
- *
- * Developing stylesheets is meant to be easier when this is set to false.
- * WARNING: This facility designed for development must NOT be used in production.
- */
-define( 'C_BOOL_CSS_PRODUCTION_MODE', true );

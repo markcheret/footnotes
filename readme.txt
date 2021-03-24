@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.12
-Version: 2.5.12
+Package Version: 2.5.13
+Version: 2.5.13
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -79,6 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.5.13 =
+- Bugfix: Dashboard: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
+- Bugfix: Footnote delimiter short codes: debug closing pointy brackets in the Block Editor by accounting for unbalanced HTML escapement.
+- Update: Dashboard: General settings: Footnote start and end short codes: update information about short codes using pointy brackets.
 
 = 2.5.12 =
 - Update: Scrolling: CSS-based smooth scroll behavior (optional), thanks to @paulgpetty and @bogosavljev issue reports.
@@ -234,7 +239,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.2.2 =
 - Bugfix: Dashboard: Link element setting only under General settings > Reference container.
-- Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
+- Update: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
 - Bugfix: Reference container: edits to optional basic responsive page layout stylesheets.
 
 = 2.2.1 =
@@ -297,8 +302,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels.
 
 = 2.1.3 =
-- Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets.
 - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+- Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets.
 - Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy.
 - Bugfix: Reference container: fix width in mobile view by URL wrapping for Unicode-non-conformant browsers, thanks to @karolszakiel bug report.
 - Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on.

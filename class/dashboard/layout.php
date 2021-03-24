@@ -211,7 +211,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * automated update of version number for cache busting.
 		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
 		 */
-		if ( C_BOOL_CSS_PRODUCTION_MODE === true ) {
+		if ( true === C_BOOL_CSS_PRODUCTION_MODE ) {
 
 			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_PACKAGE_VERSION );
 
@@ -458,8 +458,14 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * Returns the html tag for a select box.
 	 *
 	 * @since  1.5.0
-	 * @param string $p_str_setting_name Name of the Settings key to pre select the current value.
-	 * @param array  $p_arr_options Possible options to be selected.
+	 * 
+	 * - Bugfix: Dashboard: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
+	 * 
+	 * @reporter @lolzim
+	 * 
+	 * @since 2.5.13
+	 * @param string $p_str_setting_name  Name of the Settings key to pre select the current value.
+	 * @param array  $p_arr_options       Possible options to be selected.
 	 * @return string
 	 */
 	protected function add_select_box( $p_str_setting_name, $p_arr_options ) {
@@ -467,11 +473,14 @@ abstract class MCI_Footnotes_Layout_Engine {
 		$l_arr_data    = $this->load_setting( $p_str_setting_name );
 		$l_str_options = '';
 
+		// Loop through all array keys.
 		foreach ( $p_arr_options as $l_str_value => $l_str_caption ) {
 			$l_str_options .= sprintf(
 				'<option value="%s" %s>%s</option>',
 				$l_str_value,
-				$l_str_value === $l_arr_data['value'] ? 'selected' : '',
+				
+				// Only check for equality, not identity, WRT arrows.
+				$l_str_value == $l_arr_data['value'] ? 'selected' : '',
 				$l_str_caption
 			);
 		}

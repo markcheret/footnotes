@@ -4,9 +4,9 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.15
-Version: 2.5.15
-Stable Tag: 2.5.10
+Package Version: 2.6.0
+Version: 2.6.0
+Stable Tag: 2.6.0
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -79,6 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.6.0 =
+- Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+- Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
+- Bugfix: Tooltips: AMP tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
 
 = 2.5.15 =
 - Bugfix: Dashboard: General settings: Footnote start and end short codes: debug select box for shortcodes with pointy brackets.

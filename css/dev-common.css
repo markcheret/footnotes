@@ -350,10 +350,10 @@ h6 > .footnote_reference_container_collapse_button {
 table
 */
 
-.footnote-reference-container,
-.footnotes_table {
-	width: 100%;
-	border: none;
+.footnotes_table,
+.footnote-reference-container {
+	width: 100% !important;
+	border: none !important;
 }
 
 /**
@@ -370,7 +370,7 @@ table
  * The table caption must be present for screen readers but may be hidden to sighted users.
  */
 
-caption.accessibility {
+.footnotes_table caption.accessibility {
 	text-align: start;
 	margin-top: -2px !important;
 	height: 1px !important;

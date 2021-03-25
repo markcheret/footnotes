@@ -81,6 +81,7 @@
  * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  * @since 2.5.7  Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
  * @since 2.5.11 Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
+ * @since 2.5.14 Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
  */
 
 // If called directly, abort.
@@ -1168,12 +1169,8 @@ class MCI_Footnotes_Task {
 	 */
 	public function exec( $p_str_content, $p_bool_output_references = false, $p_bool_hide_footnotes_text = false ) {
 
-		// Process content, escape HTML special characters in delimiter shortcodes.
-		$p_str_content = $this->search( $p_str_content, true, true, $p_bool_hide_footnotes_text );
-		// Process content, escape HTML special characters except greater-than sign in delimiter shortcodes.
-		$p_str_content = $this->search( $p_str_content, true, false, $p_bool_hide_footnotes_text );
-		// Process content, not escape any HTML special characters in delimiter shortcodes.
-		$p_str_content = $this->search( $p_str_content, false, true, $p_bool_hide_footnotes_text );
+		// Process content.
+		$p_str_content = $this->search( $p_str_content, $p_bool_hide_footnotes_text );
 
 		/**
 		 * Reference container customized positioning through shortcode.
@@ -1233,7 +1230,6 @@ class MCI_Footnotes_Task {
 	 *
 	 * @since 1.5.0
 	 * @param string $p_str_content              Any content to be searched for footnotes.
-	 * @param bool   $p_bool_convert_html_chars  HTML escape delimiter shortcodes.
 	 * @param bool   $p_bool_hide_footnotes_text Hide footnotes found in the string.
 	 * @return string
 	 *
@@ -1243,26 +1239,19 @@ class MCI_Footnotes_Task {
 	 * @since 2.5.0  Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
 	 * @since 2.5.0  Bugfix: Footnote delimiters: Syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
 	 *
-	 * - Bugfix: Footnote delimiter short codes: debug closing pointy brackets in the Block Editor by accounting for unbalanced HTML escapement.
+	 * - Bugfix: Footnote delimiter short codes: debug closing pointy brackets in the Block Editor by accounting for unbalanced HTML escapement, thanks to @patrick_here @alifarahani8000 bug reports.
 	 *
+	 * @reporter @patrick_here
+	 * @link https://wordpress.org/support/topic/how-to-add-footnotes-shortcode-in-elementor/
+	 *
+	 * @reporter @alifarahani8000
+	 * @link https://wordpress.org/support/topic/after-version-2-5-10-the-ref-or-tags-are-not-longer-working/
+	 * 
 	 * @since 2.5.13
-	 * @param bool $p_bool_balanced_html_escapement  Use the Classic Editor visual mode escapement schema.
-	 * While the Classic Editor (visual mode) escapes both pointy brackets,
-	 * the Block Editor enforces balanced escapement only in text mode. In
-	 * visual mode, the Block Editor does not escape the greater-than sign.
 	 */
-	public function search( $p_str_content, $p_bool_convert_html_chars, $p_bool_balanced_html_escapement, $p_bool_hide_footnotes_text ) {
+	public function search( $p_str_content, $p_bool_hide_footnotes_text ) {
 
-		// Post ID to make everything unique wrt infinite scroll and archive view.
-		self::$a_int_post_id = get_the_id();
-
-		// Contains the index for the next footnote on this page.
-		$l_int_footnote_index = count( self::$a_arr_footnotes ) + 1;
-
-		// Contains the starting position for the lookup of a footnote.
-		$l_int_pos_start = 0;
-
-		// Get start and end tag for the footnotes short code.
+		// Get footnotes start and end tag short codes.
 		$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
 		$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
 		if ( 'userdefined' === $l_str_starting_tag || 'userdefined' === $l_str_ending_tag ) {
@@ -1270,28 +1259,66 @@ class MCI_Footnotes_Task {
 			$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 
-		// Escape HTML special chars.
-		if ( $p_bool_convert_html_chars ) {
-
-			if ( $p_bool_balanced_html_escapement ) {
-				// The post has been written in the Classic Editor visual mode.
-				$l_str_starting_tag = htmlspecialchars( $l_str_starting_tag );
-				$l_str_ending_tag   = htmlspecialchars( $l_str_ending_tag );
-
-			} else {
-				// The post has been written in the Block Editor visual mode.
-				$l_str_starting_tag = str_replace( '&gt;', '>', htmlspecialchars( $l_str_starting_tag ) );
-				$l_str_ending_tag   = str_replace( '&gt;', '>', htmlspecialchars( $l_str_ending_tag ) );
-			}
-		}
-
-		// If footnotes short code is empty, return the content without changes.
+		// If any footnotes short code is empty, return the content without changes.
 		if ( empty( $l_str_starting_tag ) || empty( $l_str_ending_tag ) ) {
 			return $p_str_content;
 		}
+		
+		// Make shortcodes conform to regex syntax.
+		$l_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_starting_tag );
+		$l_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_ending_tag );
 
 		/**
-		 * Footnote delimiter syntax validation.
+		 *  Harmonize the various HTML escapement schemas if applicable.
+		 * 
+		 * - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
+		 *
+		 * @reporter @patrick_here
+		 * @link https://wordpress.org/support/topic/how-to-add-footnotes-shortcode-in-elementor/
+		 *
+		 * @reporter @alifarahani8000
+		 * @link https://wordpress.org/support/topic/after-version-2-5-10-the-ref-or-tags-are-not-longer-working/
+		 *
+		 * @reporter @gova
+		 * @link https://wordpress.org/support/topic/footnotes-content-number-not-sequential/
+		 * 
+		 * @since 2.1.14
+		 * While the Classic Editor (visual mode) escapes both pointy brackets,
+		 * the Block Editor enforces balanced escapement only in text mode. In
+		 * visual mode, the Block Editor does not escape the greater-than sign.
+		 */
+		if ( preg_match( '#[&"\'<>]#', $l_str_starting_tag . $l_str_ending_tag ) ) {
+		
+			$l_str_harmonized_start_tag       = '{[(|fnote_stt|)]}';
+			$l_str_harmonized_end_tag         = '{[(|fnote_end|)]}';
+			$l_str_harmonized_start_tag_regex = '\{\[\(\|fnote_stt\|\)\]\}';
+			$l_str_harmonized_end_tag_regex   = '\{\[\(\|fnote_end\|\)\]\}';
+
+			// Harmonize footnotes without escaping any HTML special characters in delimiter shortcodes.
+			// The footnote has been added in the Block Editor code editor (doesn’t work in Classic Editor text mode).
+			$p_str_content = str_replace( $l_str_starting_tag, $l_str_harmonized_start_tag, $p_str_content );
+			$p_str_content = str_replace( $l_str_ending_tag  , $l_str_harmonized_end_tag  , $p_str_content );
+
+			// Harmonize footnotes while escaping HTML special characters in delimiter shortcodes.
+			// The footnote has been added in the Classic Editor visual mode.
+			$p_str_content = str_replace( htmlspecialchars( $l_str_starting_tag ), $l_str_harmonized_start_tag, $p_str_content );
+			$p_str_content = str_replace( htmlspecialchars( $l_str_ending_tag   ), $l_str_harmonized_end_tag  , $p_str_content );
+
+			// Harmonize footnotes while escaping HTML special characters except greater-than sign in delimiter shortcodes.
+			// The footnote has been added in the Block Editor visual mode.
+			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_starting_tag ) ), $l_str_harmonized_start_tag, $p_str_content );
+			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_ending_tag   ) ), $l_str_harmonized_end_tag  , $p_str_content );
+
+			// Update the delimiter shortcodes.
+			$l_str_starting_tag    = $l_str_harmonized_start_tag;
+			$l_str_ending_tag      = $l_str_harmonized_end_tag;
+			$l_str_start_tag_regex = $l_str_harmonized_start_tag_regex;
+			$l_str_end_tag_regex   = $l_str_harmonized_end_tag_regex;
+
+		}
+
+		/**
+		 * Checks for balanced footnote delimiters; delimiter syntax validation.
 		 *
 		 * - Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
 		 *
@@ -1308,12 +1335,8 @@ class MCI_Footnotes_Task {
 		 * @date 2021-01-07T0824+0100
 		 * If footnotes short codes are unbalanced, and syntax validation is not disabled,
 		 * prepend a warning to the content; displays de facto beneath the post title.
-		 * The delimiter shortcode regex forms are also used later below.
 		 */
-		// Make shortcodes conform to regex syntax.
-		$l_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_starting_tag );
-		$l_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\*\.\?\!])#', '\\\\$1', $l_str_ending_tag );
-
+		// If enabled.
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
 
 			// Apply different regex depending on whether start shortcode is double/triple opening parenthesis.
@@ -1429,6 +1452,17 @@ class MCI_Footnotes_Task {
 				 $p_str_content
 			);
 		}
+
+		
+
+		// Post ID to make everything unique wrt infinite scroll and archive view.
+		self::$a_int_post_id = get_the_id();
+		
+		// Contains the index for the next footnote on this page.
+		$l_int_footnote_index = count( self::$a_arr_footnotes ) + 1;
+
+		// Contains the starting position for the lookup of a footnote.
+		$l_int_pos_start = 0;
 
 		/*
 		 * Load footnote referrer template file.

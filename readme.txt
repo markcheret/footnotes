@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.13
-Version: 2.5.13
+Package Version: 2.5.14
+Version: 2.5.14
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -79,6 +79,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.5.14 =
+- Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
+- Update: Dashboard: General settings: Footnote start and end short codes: delete comment on pointy brackets.
 
 = 2.5.13 =
 - Bugfix: Dashboard: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.

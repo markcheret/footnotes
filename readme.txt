@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.5.14
-Version: 2.5.14
+Package Version: 2.5.15
+Version: 2.5.15
 Stable Tag: 2.5.10
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -80,12 +80,16 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.5.15 =
+- Bugfix: Dashboard: General settings: Footnote start and end short codes: debug select box for shortcodes with pointy brackets.
+- Update: Dashboard: General settings: Footnote start and end short codes: add information about pointy brackets.
+
 = 2.5.14 =
 - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
 - Update: Dashboard: General settings: Footnote start and end short codes: delete comment on pointy brackets.
 
 = 2.5.13 =
-- Bugfix: Dashboard: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
+- Bugfix: Dashboard: Referrers and tooltips: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
 - Bugfix: Footnote delimiter short codes: debug closing pointy brackets in the Block Editor by accounting for unbalanced HTML escapement.
 - Update: Dashboard: General settings: Footnote start and end short codes: update information about short codes using pointy brackets.
 

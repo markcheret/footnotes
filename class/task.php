@@ -1263,10 +1263,6 @@ class MCI_Footnotes_Task {
 		if ( empty( $l_str_starting_tag ) || empty( $l_str_ending_tag ) ) {
 			return $p_str_content;
 		}
-		
-		// Make shortcodes conform to regex syntax.
-		$l_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_starting_tag );
-		$l_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_ending_tag );
 
 		/**
 		 *  Harmonize the various HTML escapement schemas if applicable.
@@ -1284,15 +1280,14 @@ class MCI_Footnotes_Task {
 		 * 
 		 * @since 2.1.14
 		 * While the Classic Editor (visual mode) escapes both pointy brackets,
-		 * the Block Editor enforces balanced escapement only in text mode. In
-		 * visual mode, the Block Editor does not escape the greater-than sign.
+		 * the Block Editor enforces balanced escapement only in code editor mode 
+		 * when the opening tag is already escaped. In visual mode, the Block Editor 
+		 * does not escape the greater-than sign.
 		 */
 		if ( preg_match( '#[&"\'<>]#', $l_str_starting_tag . $l_str_ending_tag ) ) {
 		
 			$l_str_harmonized_start_tag       = '{[(|fnote_stt|)]}';
 			$l_str_harmonized_end_tag         = '{[(|fnote_end|)]}';
-			$l_str_harmonized_start_tag_regex = '\{\[\(\|fnote_stt\|\)\]\}';
-			$l_str_harmonized_end_tag_regex   = '\{\[\(\|fnote_end\|\)\]\}';
 
 			// Harmonize footnotes without escaping any HTML special characters in delimiter shortcodes.
 			// The footnote has been added in the Block Editor code editor (doesn’t work in Classic Editor text mode).
@@ -1312,9 +1307,16 @@ class MCI_Footnotes_Task {
 			// Update the delimiter shortcodes.
 			$l_str_starting_tag    = $l_str_harmonized_start_tag;
 			$l_str_ending_tag      = $l_str_harmonized_end_tag;
-			$l_str_start_tag_regex = $l_str_harmonized_start_tag_regex;
-			$l_str_end_tag_regex   = $l_str_harmonized_end_tag_regex;
+			
+			// Assign the regex-conformant shortcodes.
+			$l_str_start_tag_regex = '\{\[\(\|fnote_stt\|\)\]\}';
+			$l_str_end_tag_regex   = '\{\[\(\|fnote_end\|\)\]\}';
 
+		} else {
+		
+			// Make shortcodes conform to regex syntax.
+			$l_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_starting_tag );
+			$l_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_ending_tag );
 		}
 
 		/**
@@ -2585,7 +2587,7 @@ class MCI_Footnotes_Task {
 				'name'                 => empty( $l_str_reference_container_label ) ? '&#x202F;' : $l_str_reference_container_label,
 				'button-style'         => ! $l_bool_collapse_default ? 'display: none;' : '',
 				'style'                => $l_bool_collapse_default ? 'display: none;' : '',
-				'caption'              => empty( $l_str_reference_container_label ) ? 'References' : $l_str_reference_container_label,
+				'caption'              => ( empty( $l_str_reference_container_label ) || ' ' === $l_str_reference_container_label ) ? 'References' : $l_str_reference_container_label,
 				'content'              => $l_str_body,
 				'scroll-offset'        => $l_int_scroll_offset,
 				'scroll-down-delay'    => $l_int_scroll_down_delay,

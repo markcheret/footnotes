@@ -4,8 +4,8 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
  * Author: Mark Cheret
- * Package V.: 2.5.14
- * Version: 2.5.14
+ * Package V.: 2.5.15
+ * Version: 2.5.15
  * CAUTION: THIS V. FIELD IS PARSED FOR UPDATE CONFIGURATION.
  * Author URI: https://cheret.org/footnotes/
  * Text Domain: footnotes
@@ -21,9 +21,9 @@
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-03-25T0349+0100
+ * @lastmodified 2021-03-25T1138+0100
  */
-define( 'C_STR_PACKAGE_VERSION', '2.5.14' );
+define( 'C_STR_PACKAGE_VERSION', '2.5.15' );
 /**
  * Enables toggling the stylesheet enqueuing mode from production (true) to development (false).
  * @see Full docblock below next.

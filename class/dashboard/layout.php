@@ -458,11 +458,11 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * Returns the html tag for a select box.
 	 *
 	 * @since  1.5.0
-	 * 
-	 * - Bugfix: Dashboard: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
-	 * 
+	 *
+	 * - Bugfix: Dashboard: Referrers and tooltips: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
+	 *
 	 * @reporter @lolzim
-	 * 
+	 *
 	 * @since 2.5.13
 	 * @param string $p_str_setting_name  Name of the Settings key to pre select the current value.
 	 * @param array  $p_arr_options       Possible options to be selected.
@@ -478,9 +478,9 @@ abstract class MCI_Footnotes_Layout_Engine {
 			$l_str_options .= sprintf(
 				'<option value="%s" %s>%s</option>',
 				$l_str_value,
-				
-				// Only check for equality, not identity, WRT arrows.
-				$l_str_value == $l_arr_data['value'] ? 'selected' : '',
+				// Now we need to escape the data, WRT shortcodes with pointy brackets.
+				// Only check for equality, not identity, WRT backlink symbol arrows.
+				$l_str_value == htmlspecialchars( $l_arr_data['value'] ) ? 'selected' : '',
 				$l_str_caption
 			);
 		}

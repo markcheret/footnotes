@@ -422,6 +422,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
+				// Translators: The 2 placeholders are the &lt;ref&gt;&lt;/ref&gt; and &lt;fn&gt;&lt;/fn&gt; shortcodes.
+				'description-escapement'   => sprintf( __( 'The problems with shortcodes with pointy brackets have been solved. We apologize for the longlasting bugs making the %s and %s shortcodes close to unusable.', 'footnotes' ), '&lt;ref&gt;&lt;/ref&gt;', '&lt;fn&gt;&lt;/fn&gt;' ),
 
 				'label-short-code-start'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, __( 'Footnote start tag short code:', 'footnotes' ) ),
 				'short-code-start'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, $l_arr_shortcode_start ),

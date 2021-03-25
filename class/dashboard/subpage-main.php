@@ -423,8 +423,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 
-				'description-escapement'   => __( 'CAUTION: When using short codes with pointy brackets, all footnotes should be added in the same editor and mode. Short codes are processed 1st with balanced escapement (Classic Editor), 2nd with unbalanced escapement (Block Editor), and 3rd without escapement (text mode).', 'footnotes' ),
-
 				'label-short-code-start'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, __( 'Footnote start tag short code:', 'footnotes' ) ),
 				'short-code-start'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, $l_arr_shortcode_start ),
 				'short-code-start-user'    => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED ),

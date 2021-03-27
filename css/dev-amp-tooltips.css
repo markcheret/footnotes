@@ -1,18 +1,19 @@
 /*<?php for docblocks
 /**
  * Additional stylesheet for AMP compatible tooltips.
- * 
+ *
  * - Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
  * - Bugfix: Tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
- * 
+ *
  * @since 2.5.11 (draft)
- * 
+ * @since 2.6.0  (release)
+ *
  * @contributor @milindmore22
  * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
- * 
+ *
  * @contributor @westonruter
  * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
- * 
+ *
  * To streamline internal CSS, immutable rules are in external stylesheet.
  * Property values of settings are internal CSS.
  * @see class/task.php
@@ -44,7 +45,7 @@ span.footnote_referrer:hover > span.footnote_tooltip {
 
 /**
  * Position.
- * 
+ *
  * Values are defined by internal CSS.
  * @see class/task.php
  */

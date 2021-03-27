@@ -170,6 +170,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * Displays the AMP compatibility mode option.
 	 *
 	 * @since 2.5.11 (draft)
+	 * @since 2.6.0  (release)
 	 */
 	public function amp_compat() {
 
@@ -1084,21 +1085,21 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * Displays all settings for the backlink symbol.
 	 *
 	 * @since 1.5.0
-	 * 
+	 *
 	 * - Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
-	 * 
+	 *
 	 * @since 2.0.0
 	 * The former 'hyperlink arrow' is incompatible with combined identical footnotes.
 	 *
 	 * - Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to @mmallett issue report.
-	 * 
+	 *
 	 * @since 2.0.3
-	 * 
+	 *
 	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
-	 * 
+	 *
 	 * @since 2.0.4
 	 * @date 2020-11-02T2115+0100
-	 * 
+	 *
 	 * @reporter @mmallett
 	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
 	 *
@@ -1345,7 +1346,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'example-string' => '<br/>' . __( 'will be displayed as:', 'footnotes' ),
 				'example'        => $g_obj_mci_footnotes->a_obj_task->exec( $l_str_example, true ),
 				// Translators: 1: <a>; 2: </a>.
-				'information'    => sprintf( __( 'For further information please check out our %1$ssupport forum%2$s on WordPress.org.', 'footnotes' ), '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
+				'information'    => sprintf( __( 'For further information please check out our %1$ssupport forum%2$s on WordPress.org.', 'footnotes' ), '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
 			)
 		);
 		// Call wp_head function to get the Styling of the mouse-over box.

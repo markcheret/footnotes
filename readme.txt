@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.6.0
-Version: 2.6.0
+Package Version: 2.6.1
+Version: 2.6.1
 Stable Tag: 2.6.0
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -79,6 +79,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.6.1 =
+- Bugfix: Tooltips: Styling: Font color: set to black for maximum contrast with respect to white default background, thanks to 4msc bug report.
+- Bugfix: Tooltips: Styling: Background color: set default value back to white because empty doesn’t work out as expected.
 
 = 2.6.0 =
 - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
@@ -518,7 +522,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Removed unnecessary hidden inputs from the Settings page
 - Update: Merged public CSS files to reduce the output and improve the performance
 - Update: Translations (EN and DE)
-- Bugfix: Removed the 'trim' function to allow whitespaces at the beginning and end of each setting
+- Bugfix: Removed the 'trim' function to allow leading and trailing whitespace in settings text boxes, thanks to @compasscare bug report.
 - Bugfix: Convert the footnotes short code to HTML special chars when adding them into the page/post editor (visual and text)
 - Bugfix: Detailed error messages if other Plugins can't be loaded. Also added empty strings as default values to avoid 'undefined'
 

@@ -84,6 +84,7 @@ class MCI_Footnotes {
 	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
 	 *
 	 * @since 2.5.11 (draft)
+	 * @since 2.6.0  (release)
 	 *
 	 * @contributor @milindmore22
 	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
@@ -434,11 +435,11 @@ class MCI_Footnotes {
 			 */
 			wp_enqueue_style( 'mci-footnotes-common', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ), array(), C_STR_PACKAGE_VERSION );
 			wp_enqueue_style( 'mci-footnotes-tooltips', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ), array(), C_STR_PACKAGE_VERSION );
-			
+
 			if ( self::$a_bool_amp_enabled ) {
 				wp_enqueue_style( 'mci-footnotes-amp', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ), array(), C_STR_PACKAGE_VERSION );
 			}
-			
+
 			if ( self::$a_bool_alternative_tooltips_enabled ) {
 				wp_enqueue_style( 'mci-footnotes-alternative', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ), array(), C_STR_PACKAGE_VERSION );
 			}

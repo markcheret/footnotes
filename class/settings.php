@@ -288,6 +288,14 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the color.
 	 *
 	 * @since 1.5.6
+	 * 
+	 * - Bugfix: Tooltips: Styling: Font color: set to black for maximum contrast with respect to white default background, thanks to 4msc bug report.
+	 * 
+	 * @reporter @4msc
+	 * @link https://wordpress.org/support/topic/tooltip-not-showing-on-dark-theme-with-white-text/
+	 *
+	 * @since 2.6.1
+	 * @see C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR = 'footnote_inputfield_custom_mouse_over_box_color';
@@ -296,6 +304,11 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the background color.
 	 *
 	 * @since 1.5.6
+	 * @since 1.2.5..1.5.5  #fff7a7 hard-coded.
+	 * @since 1.5.6..2.0.6  #fff7a7 setting default.
+	 * The mouse over box shouldn’t feature a colored background.
+	 * By default, due to diverging user preferences. White is neutral.
+	 * @since 2.0.7..2.5.10 #ffffff setting default.
 	 *
 	 * - Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
 	 *
@@ -303,15 +316,11 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/tooltip-not-showing-on-dark-theme-with-white-text/
 	 *
 	 * @since 2.5.11
-	 *
-	 * The mouse over box shouldn’t feature a colored background.
-	 * By default, due to diverging user preferences. White is neutral.
 	 * Theme default background color is best.
-	 *
-	 * @since 1.2.5..1.5.5  #fff7a7 hard-coded.
-	 * @since 1.5.6..2.0.6  #fff7a7 setting default.
-	 * @since 2.0.7..2.5.10 #ffffff setting default.
-	 *
+	 * But theme default background color doesn’t seem to exist.
+	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/#post-14241849
+	 * @since 2.6.1  default #ffffff again along with #000000 as font color.
+	 * @see C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = 'footnote_inputfield_custom_mouse_over_box_background';
@@ -515,15 +524,15 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.1
 	 * @date 2020-11-16T0859+0100
-	 * 
+	 *
 	 * - Bugfix: Priority levels: set the_content priority level to 98 to prevent plugin conflict, thanks to @marthalindeman bug report.
-	 * 
+	 *
 	 * @reporter @marthalindeman
 	 * @link https://wordpress.org/support/topic/code-showing-up-in-references/
-	 * 
+	 *
 	 * @since 2.1.6
 	 * @date 2020-12-10T0447+0100
-	 * 
+	 *
 	 * Priority level of the_content and of widget_text as the only relevant
 	 * hooks must be less than 99 because social buttons may yield scripts
 	 * that contain the strings '((' and '))', i.e. the default footnote
@@ -542,7 +551,7 @@ class MCI_Footnotes_Settings {
 	 * @var int
 	 */
 	const C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_content_priority_level';
-	
+
 	/**
 	 * Settings container key for 'the_title' hook priority level.
 	 *
@@ -586,9 +595,9 @@ class MCI_Footnotes_Settings {
 
 	/**
 	 * Settings container key for the link element option.
-	 * 
+	 *
 	 * - Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.
-	 * 
+	 *
 	 * @contributor @docteurfitness
 	 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
 	 *
@@ -599,9 +608,9 @@ class MCI_Footnotes_Settings {
 
 	/**
 	 * Settings container key to enable the presence of a backlink separator.
-	 * 
+	 *
 	 * - Bugfix: Reference container: make separating and terminating punctuation optional and configurable, thanks to @docteurfitness issue report and code contribution.
-	 * 
+	 *
 	 * @contributor @docteurfitness
 	 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
 	 *
@@ -822,8 +831,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for reference container position shortcode.
 	 *
 	 * - Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
-	 * 
-	 * @reporter @hamshe  
+	 *
+	 * @reporter @hamshe
 	 * @link https://wordpress.org/support/topic/reference-container-in-elementor/
 	 *
 	 * @since 2.2.0
@@ -836,8 +845,8 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the Custom CSS migrated to a dedicated tab.
 	 *
 	 * - Update: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
-	 * 
-	 * @since 2.2.2 
+	 *
+	 * @since 2.2.2
 	 * @date 2020-12-15T0520+0100
 	 * @var str
 	 */
@@ -851,7 +860,7 @@ class MCI_Footnotes_Settings {
 	 * @var str
 	 *
 	 * - Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
-	 * 
+	 *
 	 * @since 2.3.0
 	 * @date 2020-12-27T1233+0100
 	 *
@@ -983,7 +992,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.3.0
 	 * @date 2020-12-29T0914+0100
 	 * @var str
-	 * 
+	 *
 	 * When the alternative reference container is enabled, hard links are too.
 	 */
 	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE       = 'footnotes_inputfield_hard_links_enable';
@@ -1140,6 +1149,7 @@ class MCI_Footnotes_Settings {
 	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799582394
 	 *
 	 * @since 2.5.11 (draft)
+	 * @since 2.6.0  (release)
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE = 'footnotes_inputfield_amp_compatibility_enable';
@@ -1379,8 +1389,8 @@ class MCI_Footnotes_Settings {
 			self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR               => 13,
 			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT                 => 'px',
 
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR                => '',
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND           => '',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR                => '#000000',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND           => '#ffffff',
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH         => 1,
 			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR         => '#cccc99',
 			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS        => 0,
@@ -1495,14 +1505,18 @@ class MCI_Footnotes_Settings {
 	}
 
 	/**
-	 * Loads all Settings from specified Settings Container.
+	 * Loads all settings from specified settings container.
 	 *
 	 * @since 1.5.0
-	 * @param int $p_int_index Settings Container Array Key Index.
-	 * @return array Settings loaded from Container of Default Settings if Settings Container is empty (first usage).
 	 *
-	 * @since   ditched trimming whitespace from text box content in response to user request.
-	 * @link https://wordpress.org/support/topic/leading-space-in-footnotes-tag/#post-5347966
+	 * - Bugfix: Removed the 'trim' function to allow leading and trailing whitespace in settings text boxes, thanks to @compasscare bug report.
+	 * 
+	 * @reporter @compasscare
+	 * @link https://wordpress.org/support/topic/leading-space-in-footnotes-tag/
+	 * 
+	 * @since 1.5.2
+	 * @param int $p_int_index  Settings container array key index.
+	 * @return array            Settings loaded from defaults if container is empty (first usage).
 	 */
 	private function load( $p_int_index ) {
 		// Load all settings from container.
@@ -1521,14 +1535,6 @@ class MCI_Footnotes_Settings {
 				// Define the setting with its default value.
 				$l_arr_options[ $l_str_key ] = $l_str_value;
 			}
-		}
-		// Iterate through each setting in the container.
-		foreach ( $l_arr_options as $l_str_key => $l_str_value ) {
-			// Remove all whitespace at the beginning and end of a setting.
-			// Trimming whitespace is ditched.
-			// $l_str_value = trim($l_str_value);.
-			// Write the sanitized value back to the setting container.
-			$l_arr_options[ $l_str_key ] = $l_str_value;
 		}
 		// Return settings loaded from Container.
 		return $l_arr_options;

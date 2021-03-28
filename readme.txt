@@ -80,6 +80,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.6.2 =
+- Bugfix: Excerpts: debug the 'No' option by generating excerpts from scratch without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
+- Bugfix: Tooltips: Continue reading: debug link for AMP compatibility mode.
+
 = 2.6.1 =
 - Bugfix: Tooltips: Styling: Font color: set to black for maximum contrast with respect to white default background, thanks to 4msc bug report.
 - Bugfix: Tooltips: Styling: Background color: set default value back to white because empty doesn’t work out as expected.

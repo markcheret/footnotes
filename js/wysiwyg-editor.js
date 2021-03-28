@@ -69,7 +69,7 @@
 				author : 'Mark Cheret',
 				authorurl : 'https://cheret.org/footnotes/',
 				infourl : 'https://wordpress.org/plugins/footnotes/',
-				version : "2.6.1"
+				version : "2.6.2"
 			};
 		}
 	});

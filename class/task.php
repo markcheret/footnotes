@@ -353,7 +353,43 @@ class MCI_Footnotes_Task {
 	public static $a_bool_mirror_tooltip_text = false;
 
 	/**
-	 * Footnote delimiter syntax validation.
+	 * Footnote delimiter start short code.
+	 *
+	 * @since 1.5.0 (constant, variable)
+	 * @since 2.6.2 (property)
+	 * @var str
+	 */
+	public static $a_str_start_tag = '';
+
+	/**
+	 * Footnote delimiter end short code.
+	 *
+	 * @since 1.5.0 (constant, variable)
+	 * @since 2.6.2 (property)
+	 * @var str
+	 */
+	public static $a_str_end_tag = '';
+
+	/**
+	 * Footnote delimiter start short code in regex format.
+	 *
+	 * @since 2.4.0 (variable)
+	 * @since 2.6.2 (property)
+	 * @var str
+	 */
+	public static $a_str_start_tag_regex = '';
+
+	/**
+	 * Footnote delimiter end short code in regex format.
+	 *
+	 * @since 2.4.0 (variable)
+	 * @since 2.6.2 (property)
+	 * @var str
+	 */
+	public static $a_str_end_tag_regex = '';
+
+	/**
+	 * Footnote delimiter syntax validation enabled.
 	 *
 	 * - Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
 	 *
@@ -407,18 +443,18 @@ class MCI_Footnotes_Task {
 		$l_int_widget_text_priority  = ( -1 === $l_int_widget_text_priority ) ? PHP_INT_MAX : $l_int_widget_text_priority;
 
 		// Append custom css to the header.
-		add_filter( 'wp_head', array( $this, 'wp_head' ), PHP_INT_MAX );
+		add_filter( 'wp_head', array( $this, 'footnotes_output_head' ), PHP_INT_MAX );
 
 		// Append the love and share me slug to the footer.
-		add_filter( 'wp_footer', array( $this, 'wp_footer' ), PHP_INT_MAX );
+		add_filter( 'wp_footer', array( $this, 'footnotes_output_footer' ), PHP_INT_MAX );
 
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_TITLE ) ) ) {
-			add_filter( 'the_title', array( $this, 'the_title' ), $l_int_the_title_priority );
+			add_filter( 'the_title', array( $this, 'footnotes_in_title' ), $l_int_the_title_priority );
 		}
 
 		// Configurable priority level for reference container relative positioning; default 98.
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_CONTENT ) ) ) {
-			add_filter( 'the_content', array( $this, 'the_content' ), $l_int_the_content_priority );
+			add_filter( 'the_content', array( $this, 'footnotes_in_content' ), $l_int_the_content_priority );
 
 			/**
 			 * Hook for category pages.
@@ -438,7 +474,7 @@ class MCI_Footnotes_Task {
 			 * For this to happen, WordPress’ built-in partial HTML blocker needs to be disabled.
 			 * @link https://docs.woocommerce.com/document/allow-html-in-term-category-tag-descriptions/
 			 */
-			add_filter( 'term_description', array( $this, 'the_content' ), $l_int_the_content_priority );
+			add_filter( 'term_description', array( $this, 'footnotes_in_content' ), $l_int_the_content_priority );
 
 			/**
 			 * Hook for popup maker popups.
@@ -451,17 +487,18 @@ class MCI_Footnotes_Task {
 			 * @since 2.5.1
 			 * @date 2021-01-18T2038+0100
 			 */
-			add_filter( 'pum_popup_content', array( $this, 'the_content' ), $l_int_the_content_priority );
+			add_filter( 'pum_popup_content', array( $this, 'footnotes_in_content' ), $l_int_the_content_priority );
 		}
 
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_EXCERPT ) ) ) {
-			add_filter( 'the_excerpt', array( $this, 'the_excerpt' ), $l_int_the_excerpt_priority );
+			add_filter(     'the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
+			add_filter( 'get_the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
 		}
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TITLE ) ) ) {
-			add_filter( 'widget_title', array( $this, 'widget_title' ), $l_int_widget_title_priority );
+			add_filter( 'widget_title', array( $this, 'footnotes_in_widget_title' ), $l_int_widget_title_priority );
 		}
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TEXT ) ) ) {
-			add_filter( 'widget_text', array( $this, 'widget_text' ), $l_int_widget_text_priority );
+			add_filter( 'widget_text', array( $this, 'footnotes_in_widget_text' ), $l_int_widget_text_priority );
 		}
 
 		/**
@@ -548,7 +585,7 @@ class MCI_Footnotes_Task {
 	 * @since 2.3.0  Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
 	 * @since 2.5.4  Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
 	 */
-	public function wp_head() {
+	public function footnotes_output_head() {
 
 		// Insert start tag without switching out of PHP.
 		echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
@@ -991,7 +1028,7 @@ class MCI_Footnotes_Task {
 	 * @since 2.2.0  More options.
 	 * @date 2020-12-11T0506+0100
 	 */
-	public function wp_footer() {
+	public function footnotes_output_footer() {
 		if ( 'footer' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
 			echo $this->reference_container();
 		}
@@ -1046,10 +1083,10 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the post/page title.
 	 *
 	 * @since 1.5.0
-	 * @param string $p_str_content Widget content.
-	 * @return string Content with replaced footnotes.
+	 * @param string  $p_str_content  Title.
+	 * @return string $p_str_content  Title with replaced footnotes.
 	 */
-	public function the_title( $p_str_content ) {
+	public function footnotes_in_title( $p_str_content ) {
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, false );
 	}
@@ -1058,10 +1095,10 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the content of the current page/post.
 	 *
 	 * @since 1.5.0
-	 * @param string $p_str_content Page/Post content.
-	 * @return string Content with replaced footnotes.
+	 * @param string  $p_str_content  Page/Post content.
+	 * @return string $p_str_content  Content with replaced footnotes.
 	 */
-	public function the_content( $p_str_content ) {
+	public function footnotes_in_content( $p_str_content ) {
 
 		/**
 		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
@@ -1089,24 +1126,63 @@ class MCI_Footnotes_Task {
 	}
 
 	/**
-	 * Replaces footnotes in the excerpt of the current page/post.
+	 * Replaces existing excerpt with new from scratch if enabled, else does nothing.
 	 *
 	 * @since 1.5.0
-	 * @param string $p_str_content Page/Post content.
-	 * @return string Content with replaced footnotes.
+	 * @param string  $p_str_excerpt  Excerpt content.
+	 * @return string $p_str_excerpt  Excerpt as-is.
+	 * The input is already the processed excerpt, no more foonotes to search.
 	 */
-	public function the_excerpt( $p_str_content ) {
-		return $this->exec( $p_str_content, false, ! MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT ) ) );
+	public function footnotes_in_excerpt( $p_str_excerpt ) {
+		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT ) ) ) {
+			return $this->exec( $p_str_excerpt, false, true );
+		} else {
+			return $this->generate_excerpt( $p_str_excerpt );
+		}
+	}
+
+	/**
+	 * Generates excerpt from scratch.
+	 *
+	 * @since 2.6.2
+	 * @param string  $p_str_content          The post.
+	 * @param bool    $p_bool_keep_footnotes  Whether to keep or remove footnotes.
+	 * @return string $p_str_excerpt          An excerpt of the post.
+	 * Applies WordPress excerpt processing.
+	 * @link https://developer.wordpress.org/reference/functions/wp_trim_excerpt/
+	 */
+	public function generate_excerpt( $p_str_content ) {
+
+		// Discard existing excerpt and start from scratch.
+		$l_str_content  = get_the_content( get_the_id() );
+
+		// Get delimiter shortcodes and harmonize them.
+		$p_str_content = self::harmonize_delimiters( $p_str_content );
+
+		// Remove footnotes.
+		$p_str_content = preg_replace( '#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#', '', $l_str_content );
+
+		// Apply WordPress excerpt processing.
+		$p_str_content = strip_shortcodes( $p_str_content );
+		$p_str_content = excerpt_remove_blocks( $p_str_content );
+		$p_str_content = apply_filters( 'the_content', $p_str_content );
+		$p_str_content = str_replace( ']]>', ']]&gt;', $p_str_content );
+		$l_int_excerpt_length = (int) _x( '55', 'excerpt_length' );
+		$l_int_excerpt_length = (int) apply_filters( 'excerpt_length', $l_int_excerpt_length );
+		$l_str_excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$p_str_content = wp_trim_words( $p_str_content, $l_int_excerpt_length, $l_str_excerpt_more );
+		
+		return $p_str_content;
 	}
 
 	/**
 	 * Replaces footnotes in the widget title.
 	 *
 	 * @since 1.5.0
-	 * @param string $p_str_content Widget content.
-	 * @return string Content with replaced footnotes.
+	 * @param string  $p_str_content  Widget content.
+	 * @return string $p_str_content  Content with replaced footnotes.
 	 */
-	public function widget_title( $p_str_content ) {
+	public function footnotes_in_widget_title( $p_str_content ) {
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, false );
 	}
@@ -1115,10 +1191,10 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the content of the current widget.
 	 *
 	 * @since 1.5.0
-	 * @param string $p_str_content Widget content.
-	 * @return string Content with replaced footnotes.
+	 * @param string  $p_str_content  Widget content.
+	 * @return string $p_str_content  Content with replaced footnotes.
 	 */
-	public function widget_text( $p_str_content ) {
+	public function footnotes_in_widget_text( $p_str_content ) {
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, 'post_end' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ? true : false );
@@ -1126,44 +1202,11 @@ class MCI_Footnotes_Task {
 	}
 
 	/**
-	 * Replaces footnotes in each Content var of the current Post object.
-	 *
-	 * @since 1.5.4
-	 * @param array|WP_Post $p_mixed_posts The current Post object.
-	 */
-	public function the_post( &$p_mixed_posts ) {
-		// Single WP_Post object received.
-		if ( ! is_array( $p_mixed_posts ) ) {
-			$p_mixed_posts = $this->replace_post_object( $p_mixed_posts );
-			return;
-		}
-		$num_posts = count( $p_mixed_posts );
-		// Array of WP_Post objects received.
-		for ( $l_int_index = 0; $l_int_index < $num_posts; $l_int_index++ ) {
-			$p_mixed_posts[ $l_int_index ] = $this->replace_post_object( $p_mixed_posts[ $l_int_index ] );
-		}
-	}
-
-	/**
-	 * Replace all Footnotes in a WP_Post object.
-	 *
-	 * @since 1.5.6
-	 * @param WP_Post $p_obj_post The Post object.
-	 * @return WP_Post
-	 */
-	private function replace_post_object( $p_obj_post ) {
-		$p_obj_post->post_content          = $this->exec( $p_obj_post->post_content );
-		$p_obj_post->post_content_filtered = $this->exec( $p_obj_post->post_content_filtered );
-		$p_obj_post->post_excerpt          = $this->exec( $p_obj_post->post_excerpt );
-		return $p_obj_post;
-	}
-
-	/**
 	 * Replaces all footnotes that occur in the given content.
 	 *
 	 * @since 1.5.0
-	 * @param string $p_str_content Any string that may contain footnotes to be replaced.
-	 * @param bool   $p_bool_output_references Appends the Reference Container to the output if set to true, default true.
+	 * @param string $p_str_content              Any string that may contain footnotes to be replaced.
+	 * @param bool   $p_bool_output_references   Appends the Reference Container to the output if set to true, default true.
 	 * @param bool   $p_bool_hide_footnotes_text Hide footnotes found in the string.
 	 * @return string
 	 */
@@ -1226,6 +1269,83 @@ class MCI_Footnotes_Task {
 	}
 
 	/**
+	 * Brings the delimiters and harmonizes their various HTML escapement schemas.
+	 *
+	 * - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
+	 *
+	 * @reporter @patrick_here
+	 * @link https://wordpress.org/support/topic/how-to-add-footnotes-shortcode-in-elementor/
+	 *
+	 * @reporter @alifarahani8000
+	 * @link https://wordpress.org/support/topic/after-version-2-5-10-the-ref-or-tags-are-not-longer-working/
+	 *
+	 * @reporter @gova
+	 * @link https://wordpress.org/support/topic/footnotes-content-number-not-sequential/
+	 *
+	 * @since 2.1.14
+	 * While the Classic Editor (visual mode) escapes both pointy brackets,
+	 * the Block Editor enforces balanced escapement only in code editor mode
+	 * when the opening tag is already escaped. In visual mode, the Block Editor
+	 * does not escape the greater-than sign.
+	 */
+	public function harmonize_delimiters( $p_str_content ) {
+
+		// Get footnotes start and end tag short codes.
+		$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
+		$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
+		if ( 'userdefined' === $l_str_starting_tag || 'userdefined' === $l_str_ending_tag ) {
+			$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
+			$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
+		}
+
+		// If any footnotes short code is empty, return the content without changes.
+		if ( empty( $l_str_starting_tag ) || empty( $l_str_ending_tag ) ) {
+			return $p_str_content;
+		}
+
+		if ( preg_match( '#[&"\'<>]#', $l_str_starting_tag . $l_str_ending_tag ) ) {
+
+			$l_str_harmonized_start_tag       = '{[(|fnote_stt|)]}';
+			$l_str_harmonized_end_tag         = '{[(|fnote_end|)]}';
+
+			// Harmonize footnotes without escaping any HTML special characters in delimiter shortcodes.
+			// The footnote has been added in the Block Editor code editor (doesn’t work in Classic Editor text mode).
+			$p_str_content = str_replace( $l_str_starting_tag, $l_str_harmonized_start_tag, $p_str_content );
+			$p_str_content = str_replace( $l_str_ending_tag  , $l_str_harmonized_end_tag  , $p_str_content );
+
+			// Harmonize footnotes while escaping HTML special characters in delimiter shortcodes.
+			// The footnote has been added in the Classic Editor visual mode.
+			$p_str_content = str_replace( htmlspecialchars( $l_str_starting_tag ), $l_str_harmonized_start_tag, $p_str_content );
+			$p_str_content = str_replace( htmlspecialchars( $l_str_ending_tag   ), $l_str_harmonized_end_tag  , $p_str_content );
+
+			// Harmonize footnotes while escaping HTML special characters except greater-than sign in delimiter shortcodes.
+			// The footnote has been added in the Block Editor visual mode.
+			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_starting_tag ) ), $l_str_harmonized_start_tag, $p_str_content );
+			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_ending_tag   ) ), $l_str_harmonized_end_tag  , $p_str_content );
+
+			// Assign the delimiter shortcodes.
+			self::$a_str_start_tag    = $l_str_harmonized_start_tag;
+			self::$a_str_end_tag      = $l_str_harmonized_end_tag;
+
+			// Assign the regex-conformant shortcodes.
+			self::$a_str_start_tag_regex = '\{\[\(\|fnote_stt\|\)\]\}';
+			self::$a_str_end_tag_regex   = '\{\[\(\|fnote_end\|\)\]\}';
+
+		} else {
+
+			// Assign the delimiter shortcodes.
+			self::$a_str_start_tag    = $l_str_starting_tag;
+			self::$a_str_end_tag      = $l_str_ending_tag;
+
+			// Make shortcodes conform to regex syntax.
+			self::$a_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', self::$a_str_start_tag );
+			self::$a_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', self::$a_str_end_tag );
+		}
+
+		return $p_str_content;
+	}
+
+	/**
 	 * Replaces all footnotes in the given content and appends them to the static property.
 	 *
 	 * @since 1.5.0
@@ -1246,78 +1366,13 @@ class MCI_Footnotes_Task {
 	 *
 	 * @reporter @alifarahani8000
 	 * @link https://wordpress.org/support/topic/after-version-2-5-10-the-ref-or-tags-are-not-longer-working/
-	 * 
+	 *
 	 * @since 2.5.13
 	 */
 	public function search( $p_str_content, $p_bool_hide_footnotes_text ) {
 
-		// Get footnotes start and end tag short codes.
-		$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
-		$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
-		if ( 'userdefined' === $l_str_starting_tag || 'userdefined' === $l_str_ending_tag ) {
-			$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
-			$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
-		}
-
-		// If any footnotes short code is empty, return the content without changes.
-		if ( empty( $l_str_starting_tag ) || empty( $l_str_ending_tag ) ) {
-			return $p_str_content;
-		}
-
-		/**
-		 *  Harmonize the various HTML escapement schemas if applicable.
-		 * 
-		 * - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
-		 *
-		 * @reporter @patrick_here
-		 * @link https://wordpress.org/support/topic/how-to-add-footnotes-shortcode-in-elementor/
-		 *
-		 * @reporter @alifarahani8000
-		 * @link https://wordpress.org/support/topic/after-version-2-5-10-the-ref-or-tags-are-not-longer-working/
-		 *
-		 * @reporter @gova
-		 * @link https://wordpress.org/support/topic/footnotes-content-number-not-sequential/
-		 * 
-		 * @since 2.1.14
-		 * While the Classic Editor (visual mode) escapes both pointy brackets,
-		 * the Block Editor enforces balanced escapement only in code editor mode 
-		 * when the opening tag is already escaped. In visual mode, the Block Editor 
-		 * does not escape the greater-than sign.
-		 */
-		if ( preg_match( '#[&"\'<>]#', $l_str_starting_tag . $l_str_ending_tag ) ) {
-		
-			$l_str_harmonized_start_tag       = '{[(|fnote_stt|)]}';
-			$l_str_harmonized_end_tag         = '{[(|fnote_end|)]}';
-
-			// Harmonize footnotes without escaping any HTML special characters in delimiter shortcodes.
-			// The footnote has been added in the Block Editor code editor (doesn’t work in Classic Editor text mode).
-			$p_str_content = str_replace( $l_str_starting_tag, $l_str_harmonized_start_tag, $p_str_content );
-			$p_str_content = str_replace( $l_str_ending_tag  , $l_str_harmonized_end_tag  , $p_str_content );
-
-			// Harmonize footnotes while escaping HTML special characters in delimiter shortcodes.
-			// The footnote has been added in the Classic Editor visual mode.
-			$p_str_content = str_replace( htmlspecialchars( $l_str_starting_tag ), $l_str_harmonized_start_tag, $p_str_content );
-			$p_str_content = str_replace( htmlspecialchars( $l_str_ending_tag   ), $l_str_harmonized_end_tag  , $p_str_content );
-
-			// Harmonize footnotes while escaping HTML special characters except greater-than sign in delimiter shortcodes.
-			// The footnote has been added in the Block Editor visual mode.
-			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_starting_tag ) ), $l_str_harmonized_start_tag, $p_str_content );
-			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_ending_tag   ) ), $l_str_harmonized_end_tag  , $p_str_content );
-
-			// Update the delimiter shortcodes.
-			$l_str_starting_tag    = $l_str_harmonized_start_tag;
-			$l_str_ending_tag      = $l_str_harmonized_end_tag;
-			
-			// Assign the regex-conformant shortcodes.
-			$l_str_start_tag_regex = '\{\[\(\|fnote_stt\|\)\]\}';
-			$l_str_end_tag_regex   = '\{\[\(\|fnote_end\|\)\]\}';
-
-		} else {
-		
-			// Make shortcodes conform to regex syntax.
-			$l_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_starting_tag );
-			$l_str_end_tag_regex   = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', $l_str_ending_tag );
-		}
+		// Get delimiter shortcodes and harmonize them.
+		$p_str_content = self::harmonize_delimiters( $p_str_content );
 
 		/**
 		 * Checks for balanced footnote delimiters; delimiter syntax validation.
@@ -1342,15 +1397,15 @@ class MCI_Footnotes_Task {
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
 
 			// Apply different regex depending on whether start shortcode is double/triple opening parenthesis.
-			if ( '((' === $l_str_starting_tag || '(((' === $l_str_starting_tag ) {
+			if ( '((' === self::$a_str_start_tag || '(((' === self::$a_str_start_tag ) {
 
 				// This prevents from catching a script containing e.g. a double opening parenthesis.
-				$l_str_validation_regex = '#' . $l_str_start_tag_regex . '(((?!' . $l_str_end_tag_regex . ')[^\{\}])*?)(' . $l_str_start_tag_regex . '|$)#s';
+				$l_str_validation_regex = '#' . self::$a_str_start_tag_regex . '(((?!' . self::$a_str_end_tag_regex . ')[^\{\}])*?)(' . self::$a_str_start_tag_regex . '|$)#s';
 
 			} else {
 
 				// Catch all only if the start shortcode is not double/triple opening parenthesis, i.e. is unlikely to occur in scripts.
-				$l_str_validation_regex = '#' . $l_str_start_tag_regex . '(((?!' . $l_str_end_tag_regex . ').)*?)(' . $l_str_start_tag_regex . '|$)#s';
+				$l_str_validation_regex = '#' . self::$a_str_start_tag_regex . '(((?!' . self::$a_str_end_tag_regex . ').)*?)(' . self::$a_str_start_tag_regex . '|$)#s';
 			}
 
 			// Check syntax and get error locations.
@@ -1408,7 +1463,7 @@ class MCI_Footnotes_Task {
 		 * is derived from 'label', footnotes need to be removed
 		 * in the value of 'value'.
 		 */
-		$l_str_value_regex = '#(<input [^>]+?value=["\'][^>]+?)' . $l_str_start_tag_regex . '[^>]+?' . $l_str_end_tag_regex . '#';
+		$l_str_value_regex = '#(<input [^>]+?value=["\'][^>]+?)' . self::$a_str_start_tag_regex . '[^>]+?' . self::$a_str_end_tag_regex . '#';
 
 		do {
 			$p_str_content = preg_replace( $l_str_value_regex, '$1', $p_str_content );
@@ -1426,7 +1481,7 @@ class MCI_Footnotes_Task {
 
 		if ( 'move' === $l_str_label_issue_solution ) {
 
-			$l_str_move_regex = '#(<label ((?!</label).)+?)(' . $l_str_start_tag_regex . '((?!</label).)+?' . $l_str_end_tag_regex . ')(((?!</label).)*?</label>)#';
+			$l_str_move_regex = '#(<label ((?!</label).)+?)(' . self::$a_str_start_tag_regex . '((?!</label).)+?' . self::$a_str_end_tag_regex . ')(((?!</label).)*?</label>)#';
 
 			do {
 				$p_str_content = preg_replace( $l_str_move_regex, '$1$5<span class="moved_footnote">$3</span>', $p_str_content );
@@ -1449,17 +1504,15 @@ class MCI_Footnotes_Task {
 			$l_str_disconnect_text     = 'optionally-disconnected-from-input-field-to-prevent-toggling-while-clicking-footnote-referrer_';
 
 			$p_str_content = preg_replace(
-				'#(<label [^>]+?for=["\'])(((?!</label).)+' . $l_str_start_tag_regex . ')#',
+				'#(<label [^>]+?for=["\'])(((?!</label).)+' . self::$a_str_start_tag_regex . ')#',
 				 '$1' . $l_str_disconnect_text . '$2',
 				 $p_str_content
 			);
 		}
 
-		
-
 		// Post ID to make everything unique wrt infinite scroll and archive view.
 		self::$a_int_post_id = get_the_id();
-		
+
 		// Contains the index for the next footnote on this page.
 		$l_int_footnote_index = count( self::$a_arr_footnotes ) + 1;
 
@@ -1516,13 +1569,13 @@ class MCI_Footnotes_Task {
 			if ( $l_int_pos_start > $i_int_len_content ) {
 				$l_int_pos_start = $i_int_len_content;
 			}
-			$l_int_pos_start = strpos( $p_str_content, $l_str_starting_tag, $l_int_pos_start );
+			$l_int_pos_start = strpos( $p_str_content, self::$a_str_start_tag, $l_int_pos_start );
 			// No short code found, stop here.
 			if ( ! $l_int_pos_start ) {
 				break;
 			}
 			// Get first occurrence of the footnote end tag short code.
-			$l_int_pos_end = strpos( $p_str_content, $l_str_ending_tag, $l_int_pos_start );
+			$l_int_pos_end = strpos( $p_str_content, self::$a_str_end_tag, $l_int_pos_start );
 			// No short code found, stop here.
 			if ( ! $l_int_pos_end ) {
 				break;
@@ -1531,7 +1584,7 @@ class MCI_Footnotes_Task {
 			$l_int_length = $l_int_pos_end - $l_int_pos_start;
 
 			// Get footnote text.
-			$l_str_footnote_text = substr( $p_str_content, $l_int_pos_start + strlen( $l_str_starting_tag ), $l_int_length - strlen( $l_str_starting_tag ) );
+			$l_str_footnote_text = substr( $p_str_content, $l_int_pos_start + strlen( self::$a_str_start_tag ), $l_int_length - strlen( self::$a_str_start_tag ) );
 
 			// Get tooltip text if present.
 			self::$a_str_tooltip_shortcode        = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER );
@@ -1738,13 +1791,31 @@ class MCI_Footnotes_Task {
 						$l_str_excerpt_text .= self::$a_bool_hard_links_enabled ? 'a' : 'span';
 						$l_str_excerpt_text .= ' class="footnote_tooltip_continue" ';
 
-						// Reverted wrong linting 2021-03-20T0032+0100.
-						$l_str_excerpt_text .= 'onclick="footnote_moveToAnchor_' . self::$a_int_post_id;
+						// If AMP compatibility mode is enabled.
+						if ( MCI_Footnotes::$a_bool_amp_enabled ) {
 
-						$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
-						$l_str_excerpt_text .= '(\'footnote_plugin_reference_' . self::$a_int_post_id;
-						$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
-						$l_str_excerpt_text .= "_$l_int_index');\"";
+							// If the reference container is also collapsed by default.
+							if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
+
+								$l_str_excerpt_text .= ' on="tap:footnote_references_container_';
+								$l_str_excerpt_text .= self::$a_int_post_id . '_' . self::$a_int_reference_container_id;
+								$l_str_excerpt_text .= '.toggleClass(class=collapsed, force=false),footnotes_container_button_plus_';
+								$l_str_excerpt_text .= self::$a_int_post_id . '_' . self::$a_int_reference_container_id;
+								$l_str_excerpt_text .= '.toggleClass(class=collapsed, force=true),footnotes_container_button_minus_';
+								$l_str_excerpt_text .= self::$a_int_post_id . '_' . self::$a_int_reference_container_id;
+								$l_str_excerpt_text .= '.toggleClass(class=collapsed, force=false)"';
+							}
+
+						} else {
+
+							// Don’t add onclick event in AMP compatibility mode.
+							// Reverted wrong linting 2021-03-20T0032+0100.
+							$l_str_excerpt_text .= ' onclick="footnote_moveToReference_' . self::$a_int_post_id;
+							$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
+							$l_str_excerpt_text .= '(\'footnote_plugin_reference_' . self::$a_int_post_id;
+							$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
+							$l_str_excerpt_text .= "_$l_int_index');\"";
+						}
 
 						// If enabled, add the hard link fragment ID.
 						if ( self::$a_bool_hard_links_enabled ) {
@@ -1920,7 +1991,7 @@ class MCI_Footnotes_Task {
 				}
 			}
 			// Replace the footnote with the template.
-			$p_str_content = substr_replace( $p_str_content, $l_str_footnote_replace_text, $l_int_pos_start, $l_int_length + strlen( $l_str_ending_tag ) );
+			$p_str_content = substr_replace( $p_str_content, $l_str_footnote_replace_text, $l_int_pos_start, $l_int_length + strlen( self::$a_str_end_tag ) );
 
 			// Add footnote only if not empty.
 			if ( ! empty( $l_str_footnote_text ) ) {
@@ -1962,7 +2033,7 @@ class MCI_Footnotes_Task {
 			 * footnote and the tooltip. Moreover, it was causing non-trivial process garbage.
 			 */
 			// Add offset to the new starting position.
-			$l_int_pos_start += $l_int_length + strlen( $l_str_ending_tag );
+			$l_int_pos_start += $l_int_length + strlen( self::$a_str_end_tag );
 
 		} while ( true );
 

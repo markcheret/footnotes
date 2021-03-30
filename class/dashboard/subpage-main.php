@@ -687,7 +687,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'excerpts'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, $l_arr_enabled ),
 				'notice-excerpts'      => __( 'The recommended value is No.', 'footnotes' ),
 				// Translators: %s: link text 'Advanced Excerpt' linked to the plugin’s WordPress.org front page.
-				'description-excerpts' => sprintf( __( 'In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.', 'footnotes' ), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank" style="font-style: normal;">Advanced Excerpt</a>' ),
+				'description-excerpts' => sprintf( __( 'In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes can be disabled in excerpts. To do so, please set this option to No.', 'footnotes' ), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank" style="font-style: normal;">Advanced Excerpt</a>' ),
 			)
 		);
 		// Display template with replaced placeholders.

@@ -14,14 +14,14 @@
  * - Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
  * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  *
- * @since 2.5.5
- * @date 2021-02-14T1543+0100
+ * @reporter @docteurfitness
+ * @link https://wordpress.org/support/topic/simply-speed-optimisation/
  *
  * @contributor @docteurfitness
  * @link https://wordpress.org/support/topic/simply-speed-optimisation/
  *
- * @reporter @docteurfitness
- * @link https://wordpress.org/support/topic/simply-speed-optimisation/
+ * @since 2.5.5
+ * @date 2021-02-14T1543+0100
  *
  * Six development stylesheets are concatenated to 12 unified stylesheets.
  * The unminified development stylesheets are distributed for reference.
@@ -217,15 +217,17 @@
  *
  * - Bugfix: Referrers: line height 0 to fix superscript, thanks to @cwbayer bug report.
  *
- * @since 2.1.1
  * @reporter @cwbayer
  * @link https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/
  *
+ * @since 2.1.1
+ *
  * - Bugfix: Tooltips: fix jQuery positioning bug moving tooltips out of view and affecting (TablePress tables in) some themes, thanks to @wisenilesh bug report.
  *
- * @since 2.5.4
  * @reporter @wisenilesh
  * @link https://wordpress.org/support/topic/footnotes-not-working-properly-inside-the-tables-of-tablepress-plugin/
+ *
+ * @since 2.5.4
  */
 
 .footnote_plugin_tooltip_text {
@@ -288,9 +290,10 @@ Classes:
  *
  * - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.
  *
- * @since 2.5.8
  * @reporter @arahmanshaalan
  * @link https://wordpress.org/support/topic/right-to-left-text-problem/
+ *
+ * @since 2.5.8
  */
 
 .footnote_container_prepare {
@@ -382,31 +385,48 @@ table
 }
 
 /**
- * Footnotes list.
+ * Footnotes list, table header cells.
+ *
+ * - Bugfix: Reference container: debug footnotes number text color in the table header cells required for accessibility, thanks to @spaceling bug report.
+ *
+ * @reporter @spaceling
+ * @link https://wordpress.org/support/topic/footnote-numbers-not-visible-in-2-6-0/
+ *
+ * @since 2.6.3
+ * The background was fixed but not the text color.
+ * The color mustn’t be inherited as that would disable link color.
+ */
+
+.footnotes_table .footnotes_plugin_reference_row th {
+	color: unset !important;
+	background-color: inherit !important;
+}
+
+/**
+ * Footnotes list, table cell borders.
  *
  * - Bugfix: Reference container: no borders around footnotes, thanks to @ragonesi bug report.
  *
- * @since 2.0.0
  * @reporter @ragonesi
  * @link https://wordpress.org/support/topic/thin-box-around-notes-in-reference-container/
  *
+ * @since 2.0.0
+ *
  * - Bugfix: Reference container: enforce borderless table cells, thanks to @ragonesi bug report.
  *
- * @since 2.0.1
  * @reporter @ragonesi
  * @link https://wordpress.org/support/topic/box-around-c-references-container/
+ *
+ * @since 2.0.1
  *
  * - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.
  * - Bugfix: Layout: support right-to-left writing direction by enabling mirrored paddings on HTML dir="rtl" pages, thanks to @arahmanshaalan bug report.
  *
- * @since 2.5.8
  * @reporter @arahmanshaalan
  * @link https://wordpress.org/support/topic/right-to-left-text-problem/
+ *
+ * @since 2.5.8
  */
-
-.footnotes_table .footnotes_plugin_reference_row th {
-	background-color: inherit !important;
-}
 
 .footnote_plugin_index,
 .footnote_plugin_index_combi,

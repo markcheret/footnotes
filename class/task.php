@@ -1135,7 +1135,7 @@ class MCI_Footnotes_Task {
 	 */
 	public function footnotes_in_excerpt( $p_str_excerpt ) {
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT ) ) ) {
-			return $this->exec( $p_str_excerpt, false, true );
+			return $this->generate_excerpt_with_footnotes( $p_str_excerpt );
 		} else {
 			return $this->generate_excerpt( $p_str_excerpt );
 		}
@@ -1144,35 +1144,153 @@ class MCI_Footnotes_Task {
 	/**
 	 * Generates excerpt from scratch.
 	 *
+	 * - Bugfix: Excerpts: debug the 'No' option by generating excerpts from scratch without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
+	 *
+	 * @reporter @nikelaos
+	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/
+	 * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
+	 *
+	 * @reporter @markcheret
+	 * @link https://wordpress.org/support/topic/footnotes-now-appear-in-summaries-even-though-this-is-marked-no/
+	 *
+	 * @reporter @martinneumannat
+	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
+	 *
 	 * @since 2.6.2
-	 * @param string  $p_str_content          The post.
-	 * @param bool    $p_bool_keep_footnotes  Whether to keep or remove footnotes.
-	 * @return string $p_str_excerpt          An excerpt of the post.
-	 * Applies WordPress excerpt processing.
+	 * @param string  $p_str_content  The post.
+	 * @return string $p_str_content  An excerpt of the post.
+	 * Applies full WordPress excerpt processing.
 	 * @link https://developer.wordpress.org/reference/functions/wp_trim_excerpt/
+	 * @link https://developer.wordpress.org/reference/functions/wp_trim_words/
 	 */
 	public function generate_excerpt( $p_str_content ) {
 
 		// Discard existing excerpt and start from scratch.
-		$l_str_content  = get_the_content( get_the_id() );
+		$p_str_content  = get_the_content( get_the_id() );
 
-		// Get delimiter shortcodes and harmonize them.
-		$p_str_content = self::harmonize_delimiters( $p_str_content );
+		// Get delimiter shortcodes and unify them.
+		$p_str_content = self::unify_delimiters( $p_str_content );
 
 		// Remove footnotes.
-		$p_str_content = preg_replace( '#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#', '', $l_str_content );
+		$p_str_content = preg_replace( '#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#', '', $p_str_content );
 
 		// Apply WordPress excerpt processing.
 		$p_str_content = strip_shortcodes( $p_str_content );
 		$p_str_content = excerpt_remove_blocks( $p_str_content );
+
+		// Here the footnotes would be processed as part of WordPress content processing.
 		$p_str_content = apply_filters( 'the_content', $p_str_content );
+
+		// According to Advanced Excerpt, this is some kind of precaution against malformed CDATA in RSS feeds.
 		$p_str_content = str_replace( ']]>', ']]&gt;', $p_str_content );
+
 		$l_int_excerpt_length = (int) _x( '55', 'excerpt_length' );
 		$l_int_excerpt_length = (int) apply_filters( 'excerpt_length', $l_int_excerpt_length );
 		$l_str_excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+
+		// Function wp_trim_words() calls wp_strip_all_tags() that wrecks the footnotes.
 		$p_str_content = wp_trim_words( $p_str_content, $l_int_excerpt_length, $l_str_excerpt_more );
-		
+
 		return $p_str_content;
+	}
+
+	/**
+	 * Generates excerpt with footnotes from scratch.
+	 *
+	 * - Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes from scratch, thanks to @nikelaos @martinneumannat bug reports.
+	 *
+	 * @reporter @nikelaos
+	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/
+	 * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
+	 *
+	 * @reporter @martinneumannat
+	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
+	 *
+	 * @since 2.6.3
+	 * @param string  $p_str_content  The post.
+	 * @return string $p_str_content  An excerpt of the post.
+	 * Does not apply full WordPress excerpt processing.
+	 * @see self::generate_excerpt()
+	 * Uses information and some code from Advanced Excerpt.
+	 * @link https://wordpress.org/plugins/advanced-excerpt/
+	 */
+	public function generate_excerpt_with_footnotes( $p_str_content ) {
+
+		// Discard existing excerpt and start from scratch.
+		$p_str_content  = get_the_content( get_the_id() );
+
+		// Get delimiter shortcodes and unify them.
+		$p_str_content = self::unify_delimiters( $p_str_content );
+
+		// Apply WordPress excerpt processing.
+		$p_str_content = strip_shortcodes( $p_str_content );
+		$p_str_content = excerpt_remove_blocks( $p_str_content );
+
+		// But do not process footnotes at this point; do only this.
+		$p_str_content = str_replace( ']]>', ']]&gt;', $p_str_content );
+
+		// Prepare the excerpt length argument.
+		$l_int_excerpt_length = (int) _x( '55', 'excerpt_length' );
+		$l_int_excerpt_length = (int) apply_filters( 'excerpt_length', $l_int_excerpt_length );
+
+		// Prepare the Read-on string.
+		$l_str_excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+
+		// Safeguard the footnotes.
+		preg_match_all( '#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#', $p_str_content, $p_arr_saved_footnotes );
+
+		// Prevent the footnotes from altering the excerpt.
+		$p_str_content = preg_replace( '#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#', '5ED84D6', $p_str_content );
+
+		// Replace line breaking markup with a separator.
+		$l_str_separator = ' — ';
+		$p_str_content = preg_replace( '#<br *>#', $l_str_separator, $p_str_content );
+		$p_str_content = preg_replace( '#<br */>#', $l_str_separator, $p_str_content );
+		$p_str_content = preg_replace( '#<(p|li|div)[^>]*>#', $l_str_separator, $p_str_content );
+		$p_str_content = preg_replace( '#' . $l_str_separator . '#', '', $p_str_content, 1 );
+		$p_str_content = preg_replace( '#</(p|li|div) *>#', '', $p_str_content );
+		$p_str_content = preg_replace( '#[\r\n]#', '', $p_str_content );
+
+		// To count words like Advanced Excerpt does it.
+		$l_arr_tokens = array();
+		$l_str_output = '';
+		$l_int_counter = 0;
+
+		// Tokenize into tags and words as in Advanced Excerpt.
+		preg_match_all( '#(<[^>]+>|[^<>\s]+)\s*#u', $p_str_content, $l_arr_tokens );
+
+		// Count words following one option of Advanced Excerpt.
+		foreach ( $l_arr_tokens[0] as $l_str_token ) {
+
+			if ( $l_int_counter >= $l_int_excerpt_length ) {
+				break;
+			}
+			// If token is not a tag, increment word count.
+			if ( '<' !== $l_str_token[0] ) {
+				$l_int_counter++;
+			}
+			// Append the token to the output.
+			$l_str_output .= $l_str_token;
+		}
+
+		// Complete unbalanced markup, used by Advanced Excerpt.
+		$p_str_content = force_balance_tags( $l_str_output );
+
+		// Readd footnotes in excerpt.
+		$l_int_index = 0;
+		while ( 0 !== preg_match( '#5ED84D6#', $p_str_content ) ) {
+			$p_str_content = preg_replace( '#5ED84D6#', $p_arr_saved_footnotes[0][ $l_int_index ], $p_str_content, 1 );
+			$l_int_index++;
+		}
+
+		// Append the Read-on string as in wp_trim_words().
+		$p_str_content .= $l_str_excerpt_more;
+
+		// Process readded footnotes without appending the reference container.
+		$p_str_content = self::exec( $p_str_content, false );
+
+		return $p_str_content;
+
 	}
 
 	/**
@@ -1269,9 +1387,9 @@ class MCI_Footnotes_Task {
 	}
 
 	/**
-	 * Brings the delimiters and harmonizes their various HTML escapement schemas.
+	 * Brings the delimiters and unifies their various HTML escapement schemas.
 	 *
-	 * - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
+	 * - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema unification, thanks to @patrick_here @alifarahani8000 @gova bug reports.
 	 *
 	 * @reporter @patrick_here
 	 * @link https://wordpress.org/support/topic/how-to-add-footnotes-shortcode-in-elementor/
@@ -1288,7 +1406,7 @@ class MCI_Footnotes_Task {
 	 * when the opening tag is already escaped. In visual mode, the Block Editor
 	 * does not escape the greater-than sign.
 	 */
-	public function harmonize_delimiters( $p_str_content ) {
+	public function unify_delimiters( $p_str_content ) {
 
 		// Get footnotes start and end tag short codes.
 		$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
@@ -1371,8 +1489,8 @@ class MCI_Footnotes_Task {
 	 */
 	public function search( $p_str_content, $p_bool_hide_footnotes_text ) {
 
-		// Get delimiter shortcodes and harmonize them.
-		$p_str_content = self::harmonize_delimiters( $p_str_content );
+		// Get delimiter shortcodes and unify them.
+		$p_str_content = self::unify_delimiters( $p_str_content );
 
 		/**
 		 * Checks for balanced footnote delimiters; delimiter syntax validation.
@@ -1513,8 +1631,8 @@ class MCI_Footnotes_Task {
 		// Post ID to make everything unique wrt infinite scroll and archive view.
 		self::$a_int_post_id = get_the_id();
 
-		// Contains the index for the next footnote on this page.
-		$l_int_footnote_index = count( self::$a_arr_footnotes ) + 1;
+		// Resets the footnote number.
+		$l_int_footnote_index = 1;
 
 		// Contains the starting position for the lookup of a footnote.
 		$l_int_pos_start = 0;

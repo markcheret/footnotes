@@ -4,8 +4,8 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.6.1
-Version: 2.6.1
+Package Version: 2.6.3d0
+Version: 2.6.3
 Stable Tag: 2.6.0
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
@@ -80,6 +80,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.6.3 =
+- Bugfix: Reference container: debug footnotes number text color in the table header cells required for accessibility, thanks to @spaceling bug report.
+- Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes from scratch, thanks to @nikelaos @martinneumannat bug reports.
+
 = 2.6.2 =
 - Bugfix: Excerpts: debug the 'No' option by generating excerpts from scratch without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
 - Bugfix: Tooltips: Continue reading: debug link for AMP compatibility mode.
@@ -98,7 +102,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: General settings: Footnote start and end short codes: add information about pointy brackets.
 
 = 2.5.14 =
-- Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
+- Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema unification, thanks to @patrick_here @alifarahani8000 @gova bug reports.
 - Update: Dashboard: General settings: Footnote start and end short codes: delete comment on pointy brackets.
 
 = 2.5.13 =

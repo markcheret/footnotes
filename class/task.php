@@ -1223,7 +1223,7 @@ class MCI_Footnotes_Task {
 		preg_match_all(
 			'#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#',
 			$p_str_content,
-			$p_arr_saved_footnotes,
+			$p_arr_saved_footnotes
 		);
 
 		// Prevent the footnotes from altering the excerpt: previously hard-coded '5ED84D6'.
@@ -1231,7 +1231,7 @@ class MCI_Footnotes_Task {
 		$p_str_content = preg_replace(
 			'#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#',
 			$l_int_placeholder,
-			$p_str_content,
+			$p_str_content
 		);
 
 		// Replace line breaking markup with a separator.
@@ -1275,7 +1275,7 @@ class MCI_Footnotes_Task {
 				'#' . $l_int_placeholder . '#',
 				$p_arr_saved_footnotes[0][ $l_int_index ],
 				$p_str_content,
-				1,
+				1
 			);
 			$l_int_index++;
 		}

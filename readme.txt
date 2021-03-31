@@ -4,9 +4,9 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.6.3
-Version: 2.6.3
-Stable Tag: 2.6.3
+Package Version: 2.6.4
+Version: 2.6.4
+Stable Tag: 2.6.4
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -80,6 +80,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.6.4 =
+- Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom bug report.
+
 = 2.6.3 =
 - Bugfix: Reference container: debug footnotes number text color in the table header cells required for accessibility, thanks to @spaceling bug report.
 - Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes on the basis of the posts, thanks to @nikelaos @martinneumannat bug reports.
@@ -92,7 +95,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Tooltips: Continue reading: debug link for AMP compatibility mode.
 
 = 2.6.1 =
-- Bugfix: Tooltips: Styling: Font color: set to black for maximum contrast with respect to white default background, thanks to 4msc bug report.
+- Bugfix: Tooltips: Styling: Font color: set default value to black for maximum contrast on default white background color, thanks to 4msc bug report.
 - Bugfix: Tooltips: Styling: Background color: set default value back to white because empty doesn’t work out as expected.
 
 = 2.6.0 =

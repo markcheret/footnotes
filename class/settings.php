@@ -128,6 +128,9 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
 	 *
 	 * @since 1.5.0
+	 * @since 2.6.2  Debug No option.
+	 * @since 2.6.3  Enable by default after debugging both Yes and No options.
+	 * @see C_STR_EXPERT_LOOKUP_THE_EXCERPT
 	 * @var str
 	 */
 	const C_STR_FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
@@ -244,6 +247,8 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
 	 *
 	 * @since 2.1.3
+	 * @since 2.6.3  Enable by default after debugging the 'Footnotes in excerpts' setting.
+	 * @see C_STR_FOOTNOTES_IN_EXCERPT
 	 * @var str
 	 */
 	const C_STR_EXPERT_LOOKUP_THE_EXCERPT = 'footnote_inputfield_expert_lookup_the_excerpt';
@@ -1326,7 +1331,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_LINK_ELEMENT_ENABLED                          => 'yes',
 
 			// Footnotes in excerpts.
-			self::C_STR_FOOTNOTES_IN_EXCERPT                          => 'no',
+			self::C_STR_FOOTNOTES_IN_EXCERPT                          => 'yes',
 
 			// Footnotes love.
 			self::C_STR_FOOTNOTES_LOVE                                => 'no',
@@ -1411,7 +1416,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_EXPERT_LOOKUP_THE_CONTENT                     => 'checked',
 			self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL      => 98,
 
-			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT                     => '',
+			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT                     => 'checked',
 			self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL      => PHP_INT_MAX,
 
 			self::C_STR_EXPERT_LOOKUP_WIDGET_TITLE                    => '',

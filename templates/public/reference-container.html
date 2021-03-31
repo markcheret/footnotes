@@ -86,9 +86,6 @@
 		}
 	}
 	function footnote_moveToReference_[[post_id]]_[[container_id]](p_str_TargetID) {
-		jQuery( 'span' ).click( function( event ) {
-			event.stopPropagation();
-		});
 		footnote_expand_reference_container_[[post_id]]_[[container_id]]();
 		var l_obj_Target = jQuery('#' + p_str_TargetID);
 		if (l_obj_Target.length) {

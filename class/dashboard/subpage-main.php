@@ -526,7 +526,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-scroll-offset'          => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, __( 'Scroll offset:', 'footnotes' ) ),
 				'scroll-offset'                => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, 0, 100 ),
-				'notice-scroll-offset'         => __( 'per cent from the upper edge of the viewport', 'footnotes' ),
+				'notice-scroll-offset'         => __( 'per cent viewport height from the upper edge', 'footnotes' ),
 
 				'label-scroll-duration'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
 				'scroll-duration'              => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
@@ -630,11 +630,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			'text-5' => sprintf( '%s %s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
 			// Translators: 2: heart symbol 1: footnotes logogram.
 			'text-1' => sprintf( __( 'I %2$s %1$s', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL ),
-			// Translators: %s: Plugin logo.
+			// Translators: %s: Footnotes plugin logo.
 			'text-6' => sprintf( __( 'This website uses %s.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
-			// Translators: %s: Plugin logo.
+			// Translators: %s: Footnotes plugin logo.
 			'text-7' => sprintf( __( 'This website uses the %s plugin.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
-			// Translators: %s: Plugin logo.
+			// Translators: %s: Footnotes plugin logo.
 			'text-2' => sprintf( __( 'This website uses the awesome %s plugin.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
 			'random' => __( 'randomly determined display of either mention', 'footnotes' ),
 			// Translators: 1: Plugin logo.2: heart symbol.
@@ -646,10 +646,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				// Translators: %s: Plugin logo.
+				// Translators: %s: Footnotes plugin logo.
 				'label-love'    => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE, sprintf( __( 'Tell the world you’re using %s:', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ) ),
 				'love'          => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE, $l_arr_love ),
-				// Translators: %s: Plugin logo.
+				// Translators: %s: Footnotes plugin logo.
 				'label-no-love' => $this->add_text( sprintf( __( 'Shortcode to inhibit the display of the %s mention on specific pages:', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ) ),
 				'no-love'       => $this->add_text( MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG ),
 			)
@@ -685,9 +685,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			array(
 				'label-excerpts'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, __( 'Display footnotes in excerpts:', 'footnotes' ) ),
 				'excerpts'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, $l_arr_enabled ),
-				'notice-excerpts'      => __( 'The recommended value is No.', 'footnotes' ),
+				'notice-excerpts'      => __( 'For this setting to be effective, the hook the_excerpt must be enabled under Scope and priority.', 'footnotes' ),
 				// Translators: %s: link text 'Advanced Excerpt' linked to the plugin’s WordPress.org front page.
-				'description-excerpts' => sprintf( __( 'In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes can be disabled in excerpts. To do so, please set this option to No.', 'footnotes' ), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank" style="font-style: normal;">Advanced Excerpt</a>' ),
+				// Translators: %s: Footnotes plugin logo.
+				'description-excerpts' => sprintf( __( 'Both to display footnotes and to not display footnotes in excerpts, the %s plugin generates excerpts on the basis of the posts to ensure that footnotes are handled and don’t impact the excerpt length.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 			)
 		);
 		// Display template with replaced placeholders.
@@ -803,7 +804,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-alternative'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, __( 'Display alternative tooltips:', 'footnotes' ) ),
 				'alternative'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, $l_arr_enabled ),
 				'notice-alternative'      => __( 'Intended to work around a configuration-related tooltip outage.', 'footnotes' ),
-				// Translators: %s: Plugin logo.
+				// Translators: %s: Footnotes plugin logo.
 				'description-alternative' => sprintf( __( 'These alternative tooltips work around a website related jQuery UI outage. They are low-script but use the AMP incompatible onmouseover and onmouseout arguments, along with CSS transitions for fade-in/out. The very small script is inserted after Footnotes’ internal stylesheet. When this option is enabled, %s does not load jQuery&nbsp;UI nor jQuery&nbsp;Tools.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 
 			)

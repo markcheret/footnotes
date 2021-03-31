@@ -1100,25 +1100,6 @@ class MCI_Footnotes_Task {
 	 */
 	public function footnotes_in_content( $p_str_content ) {
 
-		/**
-		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
-		 *
-		 * - Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
-		 *
-		 * @reporter @inoruhana
-		 * @link https://wordpress.org/support/topic/footnote-duplicated-in-the-widget/
-		 *
-		 * @since 2.5.7
-		 * Under certain circumstances, footnotes were duplicated, because the footnotes list was
-		 * not emptied every time before the search algorithm was run. That happened eg when both
-		 * the reference container resides in the widget area, and the YOAST SEO plugin is active
-		 * and calls the hook the_content to generate the Open Graph description, while Footnotes
-		 * is set to avoid missing out on the footnotes (in the content) by hooking in as soon as
-		 * the_content is called, whereas at post end Footnotes seems to hook in the_content only
-		 * the time it’s the blog engine processing the post for display and appending the refs.
-		 */
-		self::$a_arr_footnotes = array();
-
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, 'post_end' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) );
@@ -1126,12 +1107,14 @@ class MCI_Footnotes_Task {
 	}
 
 	/**
-	 * Replaces existing excerpt with new from scratch if enabled, else does nothing.
+	 * Replaces existing excerpt with a new one generated on the basis of the post.
 	 *
 	 * @since 1.5.0
 	 * @param string  $p_str_excerpt  Excerpt content.
 	 * @return string $p_str_excerpt  Excerpt as-is.
-	 * The input is already the processed excerpt, no more foonotes to search.
+	 * The input was already the processed excerpt, no more footnotes to search.
+	 * @since 2.6.2  Debug No option.
+	 * @since 2.6.3  Debug Yes option, the setting becomes fully effective.
 	 */
 	public function footnotes_in_excerpt( $p_str_excerpt ) {
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT ) ) ) {
@@ -1142,9 +1125,9 @@ class MCI_Footnotes_Task {
 	}
 
 	/**
-	 * Generates excerpt from scratch.
+	 * Generates excerpt on the basis of the post.
 	 *
-	 * - Bugfix: Excerpts: debug the 'No' option by generating excerpts from scratch without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
+	 * - Bugfix: Excerpts: debug the 'No' option by generating excerpts on the basis of the post without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
 	 *
 	 * @reporter @nikelaos
 	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/
@@ -1165,7 +1148,7 @@ class MCI_Footnotes_Task {
 	 */
 	public function generate_excerpt( $p_str_content ) {
 
-		// Discard existing excerpt and start from scratch.
+		// Discard existing excerpt and start on the basis of the post.
 		$p_str_content  = get_the_content( get_the_id() );
 
 		// Get delimiter shortcodes and unify them.
@@ -1195,9 +1178,9 @@ class MCI_Footnotes_Task {
 	}
 
 	/**
-	 * Generates excerpt with footnotes from scratch.
+	 * Generates excerpt with footnotes on the basis of the post.
 	 *
-	 * - Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes from scratch, thanks to @nikelaos @martinneumannat bug reports.
+	 * - Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes on the basis of the posts, thanks to @nikelaos @martinneumannat bug reports.
 	 *
 	 * @reporter @nikelaos
 	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/
@@ -1216,7 +1199,7 @@ class MCI_Footnotes_Task {
 	 */
 	public function generate_excerpt_with_footnotes( $p_str_content ) {
 
-		// Discard existing excerpt and start from scratch.
+		// Discard existing excerpt and start on the basis of the post.
 		$p_str_content  = get_the_content( get_the_id() );
 
 		// Get delimiter shortcodes and unify them.
@@ -1237,13 +1220,22 @@ class MCI_Footnotes_Task {
 		$l_str_excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
 
 		// Safeguard the footnotes.
-		preg_match_all( '#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#', $p_str_content, $p_arr_saved_footnotes );
+		preg_match_all(
+			'#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#',
+			$p_str_content,
+			$p_arr_saved_footnotes,
+		);
 
-		// Prevent the footnotes from altering the excerpt.
-		$p_str_content = preg_replace( '#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#', '5ED84D6', $p_str_content );
+		// Prevent the footnotes from altering the excerpt: previously hard-coded '5ED84D6'.
+		$l_int_placeholder = '@' . mt_rand( 100000000, 2147483647 ) . '@';
+		$p_str_content = preg_replace(
+			'#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#',
+			$l_int_placeholder,
+			$p_str_content,
+		);
 
 		// Replace line breaking markup with a separator.
-		$l_str_separator = ' — ';
+		$l_str_separator = ' ';
 		$p_str_content = preg_replace( '#<br *>#', $l_str_separator, $p_str_content );
 		$p_str_content = preg_replace( '#<br */>#', $l_str_separator, $p_str_content );
 		$p_str_content = preg_replace( '#<(p|li|div)[^>]*>#', $l_str_separator, $p_str_content );
@@ -1278,8 +1270,13 @@ class MCI_Footnotes_Task {
 
 		// Readd footnotes in excerpt.
 		$l_int_index = 0;
-		while ( 0 !== preg_match( '#5ED84D6#', $p_str_content ) ) {
-			$p_str_content = preg_replace( '#5ED84D6#', $p_arr_saved_footnotes[0][ $l_int_index ], $p_str_content, 1 );
+		while ( 0 !== preg_match( '#' . $l_int_placeholder . '#', $p_str_content ) ) {
+			$p_str_content = preg_replace(
+				'#' . $l_int_placeholder . '#',
+				$p_arr_saved_footnotes[0][ $l_int_index ],
+				$p_str_content,
+				1,
+			);
 			$l_int_index++;
 		}
 
@@ -1631,6 +1628,30 @@ class MCI_Footnotes_Task {
 		// Post ID to make everything unique wrt infinite scroll and archive view.
 		self::$a_int_post_id = get_the_id();
 
+		/**
+		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
+		 *
+		 * - Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
+		 *
+		 * @reporter @inoruhana
+		 * @link https://wordpress.org/support/topic/footnote-duplicated-in-the-widget/
+		 *
+		 * @since 2.5.7
+		 * Under certain circumstances, footnotes were duplicated, because the footnotes list was
+		 * not emptied every time before the search algorithm was run. That happened eg when both
+		 * the reference container resides in the widget area, and the YOAST SEO plugin is active
+		 * and calls the hook the_content to generate the Open Graph description, while Footnotes
+		 * is set to avoid missing out on the footnotes (in the content) by hooking in as soon as
+		 * the_content is called, whereas at post end Footnotes seems to hook in the_content only
+		 * the time it’s the blog engine processing the post for display and appending the refs.
+		 *
+		 * @since 2.6.3  Move footnotes list reset from footnotes_in_content() to search().
+		 * Emptying the footnotes list only when the_content hook is called is ineffective
+		 * when footnotes are processed in generate_excerpt_with_footnotes().
+		 * Footnotes duplication is prevented also when resetting the list here.
+		 */
+		self::$a_arr_footnotes = array();
+
 		// Resets the footnote number.
 		$l_int_footnote_index = 1;
 
@@ -1641,7 +1662,7 @@ class MCI_Footnotes_Task {
 		 * Load footnote referrer template file.
 		 */
 
-		// Set to null in case anyone is not needed.
+		// Set to null in case all templates are unnecessary.
 		$l_obj_template         = null;
 		$l_obj_template_tooltip = null;
 

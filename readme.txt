@@ -4,9 +4,9 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Package Version: 2.6.3d0
+Package Version: 2.6.3
 Version: 2.6.3
-Stable Tag: 2.6.0
+Stable Tag: 2.6.3
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -19,7 +19,7 @@ Cheers for the review, folks!
 https://www.youtube.com/watch?v=HzHaMAAJwbI
 
 **footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
-**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts — those footnotes we know from offline publishing.
+**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts, as well as in post excerpts with fully functional tooltips if enabled.
 
 = Main Features =
 - Fully customizable **footnote** start and end shortcodes;
@@ -37,7 +37,7 @@ These are a few examples of possible ways to delimit footnotes:
 1. Your awesome text((with an awesome footnote))
 2. Your awesome text[ref]with an awesome footnote[/ref]
 3. Your awesome text`<fn>`with an awesome footnote`</fn>`
-4. Your awesome text`custom-shortcode`with an awesome footnote`custom-shortcode`
+4. Your awesome text`custom-start-shortcode`with an awesome footnote`custom-end-shortcode`
 
 = Where to get footnotes? =
 The current version is available on the [WordPress.org plugins platform, Footnotes](https://wordpress.org/plugins/footnotes/).
@@ -82,7 +82,10 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.6.3 =
 - Bugfix: Reference container: debug footnotes number text color in the table header cells required for accessibility, thanks to @spaceling bug report.
-- Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes from scratch, thanks to @nikelaos @martinneumannat bug reports.
+- Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes on the basis of the posts, thanks to @nikelaos @martinneumannat bug reports.
+- Bugfix: Reference container: debug span elements in backlinks by removing 'event.stopPropagation()' from jQuery scroll down function, thanks to @lolzim bug report.
+- Update: Excerpts: set the default value of the debugged 'Footnotes in excerpts' setting to Yes.
+- Update: Excerpts: enable the hook 'the_excerpt' by default to make the debugged 'Footnotes in excerpts' setting effective.
 
 = 2.6.2 =
 - Bugfix: Excerpts: debug the 'No' option by generating excerpts from scratch without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
@@ -130,6 +133,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
 - Update: Documentation: Readme.txt: informative 'Package Version' field in sync with the 'Package V.' field added in the 'footnotes.php' file header.
 - Update: Codebase: make PHP code comply to WordPress PHP Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
+- Bugfix: Forms: try to prevent the adverse effect of clicking footnote referrers in labels of input elements by 'event.stopPropagation()' in jQuery scroll down function.
 - Bugfix: Forms: mitigate the adverse effect of clicking footnote referrers in labels of input elements by an optional, configurable scroll down delay.
 - Bugfix: Scroll durations: mitigate the downside of delayed scrolling down by optionally enabling asymmetric scroll durations (e.g. fast down, slower up).
 - Update: Scroll delays: add a setting to configure also a scroll up delay for completeness.

@@ -42,13 +42,13 @@
 		},
 
 		/**
-		 * Creates control instances based in the incomming name. This method is normally not
-		 * needed since the addButton method of the tinymce.Editor class is a more easy way of adding buttons
+		 * Creates control instances based on the incoming name. This method is normally not
+		 * needed since the addButton method of the tinymce.Editor class is an easier way of adding buttons,
 		 * but you sometimes need to create more complex controls like listboxes, split buttons etc then this
 		 * method can be used to create those.
 		 *
 		 * @param {String} n Name of the control to create.
-		 * @param {tinymce.ControlManager} cm Control manager to use inorder to create new control.
+		 * @param {tinymce.ControlManager} cm Control manager to use in order to create new control.
 		 * @return {tinymce.ui.Control} New control instance or null if no control was created.
 		 */
 		createControl : function(n, cm) {
@@ -61,7 +61,7 @@
 		 *
 		 * @return {Object} Name/value array containing information about the plugin.
 		 *
-		 * Edit: needs update the version number manually   2020-12-11T1224+0100
+		 * Edit: needs updating the version number manually   2020-12-11T1224+0100
 		 */
 		getInfo : function() {
 			return {
@@ -69,7 +69,7 @@
 				author : 'Mark Cheret',
 				authorurl : 'https://cheret.org/footnotes/',
 				infourl : 'https://wordpress.org/plugins/footnotes/',
-				version : "2.6.4"
+				version : '2.6.5'
 			};
 		}
 	});

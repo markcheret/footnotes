@@ -1151,7 +1151,7 @@ class MCI_Footnotes_Task {
 		// Discard existing excerpt and start on the basis of the post.
 		$p_str_content  = get_the_content( get_the_id() );
 
-		// Get delimiter shortcodes and unify them.
+		// Get footnote delimiter shortcodes and unify them.
 		$p_str_content = self::unify_delimiters( $p_str_content );
 
 		// Remove footnotes.
@@ -1190,6 +1190,19 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
 	 *
 	 * @since 2.6.3
+	 * 
+	 * - Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom @copylefter @lagoon24 bug reports.
+	 * 
+	 * @reporter @scroom
+	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/
+	 * 
+	 * @reporter @copylefter
+	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259151
+	 * 
+	 * @reporter @lagoon24
+	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259396
+	 * 
+	 * @since 2.6.4
 	 * @param string  $p_str_content  The post.
 	 * @return string $p_str_content  An excerpt of the post.
 	 * Does not apply full WordPress excerpt processing.
@@ -1202,7 +1215,7 @@ class MCI_Footnotes_Task {
 		// Discard existing excerpt and start on the basis of the post.
 		$p_str_content  = get_the_content( get_the_id() );
 
-		// Get delimiter shortcodes and unify them.
+		// Get footnote delimiter shortcodes and unify them.
 		$p_str_content = self::unify_delimiters( $p_str_content );
 
 		// Apply WordPress excerpt processing.
@@ -1486,7 +1499,7 @@ class MCI_Footnotes_Task {
 	 */
 	public function search( $p_str_content, $p_bool_hide_footnotes_text ) {
 
-		// Get delimiter shortcodes and unify them.
+		// Get footnote delimiter shortcodes and unify them.
 		$p_str_content = self::unify_delimiters( $p_str_content );
 
 		/**

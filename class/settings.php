@@ -248,6 +248,14 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.3
 	 * @since 2.6.3  Enable by default after debugging the 'Footnotes in excerpts' setting.
+	 * 
+	 * - Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.
+	 * 
+	 * @reporter @mmallett
+	 * @link https://wordpress.org/support/topic/broken-662/
+	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14260969
+	 * 
+	 * @since 2.6.5
 	 * @see C_STR_FOOTNOTES_IN_EXCERPT
 	 * @var str
 	 */
@@ -1416,7 +1424,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_EXPERT_LOOKUP_THE_CONTENT                     => 'checked',
 			self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL      => 98,
 
-			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT                     => 'checked',
+			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT                     => '',
 			self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL      => PHP_INT_MAX,
 
 			self::C_STR_EXPERT_LOOKUP_WIDGET_TITLE                    => '',

@@ -17,7 +17,15 @@ class MCI_Footnotes_WYSIWYG {
 
 	/**
 	 * Registers Button hooks.
+	 * 
+	 * @since 1.5.0
+	 * 
+	 * - Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
+	 * 
+	 * @reporter @gova
+	 * @link https://wordpress.org/support/topic/back-end-footnotes-not-working-400-bad-erro/
 	 *
+	 * @since 2.6.5
 	 * @return void
 	 */
 	public static function register_hooks() {
@@ -26,8 +34,12 @@ class MCI_Footnotes_WYSIWYG {
 
 		add_filter( 'mce_external_plugins', array( 'MCI_Footnotes_WYSIWYG', 'include_scripts' ) );
 
-		add_action( 'wp_ajax_nopriv_footnotes_get_tags', array( 'MCI_Footnotes_WYSIWYG', 'ajax_callback' ) );
-		add_action( 'wp_ajax_footnotes_get_tags', array( 'MCI_Footnotes_WYSIWYG', 'ajax_callback' ) );
+		// phpcs:disable
+		// 'footnotes_getTags' must match its instance in wysiwyg-editor.js.
+		// 'footnotes_getTags' must match its instance in editor-button.html.
+		add_action( 'wp_ajax_nopriv_footnotes_getTags', array( 'MCI_Footnotes_WYSIWYG', 'ajax_callback' ) );
+		add_action( 'wp_ajax_footnotes_getTags', array( 'MCI_Footnotes_WYSIWYG', 'ajax_callback' ) );
+		// phpcs:enable
 	}
 
 
@@ -81,7 +93,7 @@ class MCI_Footnotes_WYSIWYG {
 			$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
 			$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
-		echo wp_json_encode(
+		echo json_encode(
 			array(
 				'start' => htmlspecialchars( $l_str_starting_tag ),
 				'end'   => htmlspecialchars( $l_str_ending_tag ),

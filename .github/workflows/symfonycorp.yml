@@ -1,2 +1,0 @@
-- name: The PHP Security Checker
-  uses: symfonycorp/security-checker-action@v2

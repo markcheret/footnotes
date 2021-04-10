@@ -211,7 +211,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * automated update of version number for cache busting.
 		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
 		 */
-		if ( C_BOOL_CSS_PRODUCTION_MODE === true ) {
+		if ( C_BOOL_CSS_PRODUCTION_MODE ) {
 
 			wp_register_style(
 				'mci-footnotes-admin',
@@ -232,7 +232,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 				array(),
 				filemtime(
 					plugin_dir_path(
-						dirname( __FILE__ )
+						dirname( __FILE__, 2 )
 					) . 'css/settings.css'
 				)
 			);

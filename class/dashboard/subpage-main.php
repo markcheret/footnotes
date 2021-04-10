@@ -1352,7 +1352,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			)
 		);
 		// Call wp_head function to get the Styling of the mouse-over box.
-		$g_obj_mci_footnotes->a_obj_task->wp_head();
+		$g_obj_mci_footnotes->a_obj_task->footnotes_output_head();
 		// Display template with replaced placeholders.
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $l_obj_template->get_content();

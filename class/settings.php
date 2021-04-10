@@ -147,7 +147,6 @@ class MCI_Footnotes_Settings {
 	 * - as in English or US American typesetting;
 	 * - for better UX thanks to a more button-like appearance;
 	 * - for stylistic consistency with the expand-collapse button.
-	 *
 	 */
 	const C_STR_FOOTNOTES_STYLING_BEFORE = 'footnote_inputfield_custom_styling_before';
 
@@ -248,13 +247,13 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.3
 	 * @since 2.6.3  Enable by default after debugging the 'Footnotes in excerpts' setting.
-	 * 
+	 *
 	 * - Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.
-	 * 
+	 *
 	 * @reporter @mmallett
 	 * @link https://wordpress.org/support/topic/broken-662/
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14260969
-	 * 
+	 *
 	 * @since 2.6.5
 	 * @see C_STR_FOOTNOTES_IN_EXCERPT
 	 * @var str
@@ -301,9 +300,9 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the color.
 	 *
 	 * @since 1.5.6
-	 * 
+	 *
 	 * - Bugfix: Tooltips: Styling: Font color: set to black for maximum contrast with respect to white default background, thanks to 4msc bug report.
-	 * 
+	 *
 	 * @reporter @4msc
 	 * @link https://wordpress.org/support/topic/tooltip-not-showing-on-dark-theme-with-white-text/
 	 *
@@ -577,7 +576,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-11-20T0620+0100
 	 * @var int
 	 */
-	const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL    = 'footnote_inputfield_expert_lookup_the_title_priority_level';
+	const C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_title_priority_level';
 
 	/**
 	 * Settings container key for 'widget_title' hook priority level.
@@ -595,7 +594,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-11-20T0620+0100
 	 * @var int
 	 */
-	const C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL  = 'footnote_inputfield_expert_lookup_widget_text_priority_level';
+	const C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_widget_text_priority_level';
 
 	/**
 	 * Settings container key for 'the_excerpt' hook priority level.
@@ -604,7 +603,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-11-20T0620+0100
 	 * @var int
 	 */
-	const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL  = 'footnote_inputfield_expert_lookup_the_excerpt_priority_level';
+	const C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_excerpt_priority_level';
 
 	/**
 	 * Settings container key for the link element option.
@@ -633,7 +632,7 @@ class MCI_Footnotes_Settings {
 	 * Backlink separators and terminators are often not preferred.
 	 * But a choice must be provided along with the ability to customize.
 	 */
-	const C_STR_BACKLINKS_SEPARATOR_ENABLED  = 'footnotes_inputfield_backlinks_separator_enabled';
+	const C_STR_BACKLINKS_SEPARATOR_ENABLED = 'footnotes_inputfield_backlinks_separator_enabled';
 
 	/**
 	 * Settings container key for the backlink separator options.
@@ -641,7 +640,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_BACKLINKS_SEPARATOR_OPTION   = 'footnotes_inputfield_backlinks_separator_option';
+	const C_STR_BACKLINKS_SEPARATOR_OPTION = 'footnotes_inputfield_backlinks_separator_option';
 
 	/**
 	 * Settings container key for a custom backlink separator.
@@ -649,7 +648,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_BACKLINKS_SEPARATOR_CUSTOM   = 'footnotes_inputfield_backlinks_separator_custom';
+	const C_STR_BACKLINKS_SEPARATOR_CUSTOM = 'footnotes_inputfield_backlinks_separator_custom';
 
 	/**
 	 * Settings container key to enable the presence of a backlink terminator.
@@ -665,7 +664,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_BACKLINKS_TERMINATOR_OPTION  = 'footnotes_inputfield_backlinks_terminator_option';
+	const C_STR_BACKLINKS_TERMINATOR_OPTION = 'footnotes_inputfield_backlinks_terminator_option';
 
 	/**
 	 * Settings container key for a custom backlink terminator.
@@ -673,7 +672,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_BACKLINKS_TERMINATOR_CUSTOM  = 'footnotes_inputfield_backlinks_terminator_custom';
+	const C_STR_BACKLINKS_TERMINATOR_CUSTOM = 'footnotes_inputfield_backlinks_terminator_custom';
 
 	/**
 	 * Settings container key to enable the backlinks column width.
@@ -681,7 +680,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     = 'footnotes_inputfield_backlinks_column_width_enabled';
+	const C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED = 'footnotes_inputfield_backlinks_column_width_enabled';
 
 	/**
 	 * Settings container key for the backlinks column width scalar.
@@ -689,7 +688,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var int
 	 */
-	const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      = 'footnotes_inputfield_backlinks_column_width_scalar';
+	const C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR = 'footnotes_inputfield_backlinks_column_width_scalar';
 
 	/**
 	 * Settings container key for the backlinks column width unit.
@@ -697,7 +696,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        = 'footnotes_inputfield_backlinks_column_width_unit';
+	const C_STR_BACKLINKS_COLUMN_WIDTH_UNIT = 'footnotes_inputfield_backlinks_column_width_unit';
 
 	/**
 	 * Settings container key to enable a max width for the backlinks column.
@@ -713,7 +712,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var int
 	 */
-	const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  = 'footnotes_inputfield_backlinks_column_max_width_scalar';
+	const C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR = 'footnotes_inputfield_backlinks_column_max_width_scalar';
 
 	/**
 	 * Settings container key for the backlinks column max width unit.
@@ -721,7 +720,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    = 'footnotes_inputfield_backlinks_column_max_width_unit';
+	const C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT = 'footnotes_inputfield_backlinks_column_max_width_unit';
 
 	/**
 	 * Settings container key to enable line breaks between backlinks.
@@ -730,7 +729,7 @@ class MCI_Footnotes_Settings {
 	 * @var str
 	 * Whether a <br /> tag is inserted.
 	 */
-	const C_STR_BACKLINKS_LINE_BREAKS_ENABLED      = 'footnotes_inputfield_backlinks_line_breaks_enabled';
+	const C_STR_BACKLINKS_LINE_BREAKS_ENABLED = 'footnotes_inputfield_backlinks_line_breaks_enabled';
 
 	/**
 	 * Settings container key to enable setting the tooltip font size.
@@ -751,7 +750,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var flo
 	 */
-	const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR  = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
+	const C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
 
 	/**
 	 * Settings container key for the unit of the tooltip font size.
@@ -759,7 +758,7 @@ class MCI_Footnotes_Settings {
 	 * @since 2.1.4
 	 * @var str
 	 */
-	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT    = 'footnotes_inputfield_mouse_over_box_font_size_unit';
+	const C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT = 'footnotes_inputfield_mouse_over_box_font_size_unit';
 
 	/**
 	 * Settings container key for basic responsive page layout support options.
@@ -779,7 +778,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-05T0538+0100
 	 * @var int
 	 */
-	const C_INT_FOOTNOTES_SCROLL_OFFSET   = 'footnotes_inputfield_scroll_offset';
+	const C_INT_FOOTNOTES_SCROLL_OFFSET = 'footnotes_inputfield_scroll_offset';
 
 	/**
 	 * Settings container key for scroll duration.
@@ -799,7 +798,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-05T0538+0100
 	 * @var int
 	 */
-	const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY     = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
+	const C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
 
 	/**
 	 * Settings container key for tooltip display fade-in duration.
@@ -808,7 +807,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-05T0538+0100
 	 * @var int
 	 */
-	const C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION  = 'footnotes_inputfield_mouse_over_box_fade_in_duration';
+	const C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION = 'footnotes_inputfield_mouse_over_box_fade_in_duration';
 
 	/**
 	 * Settings container key for tooltip display fade-out delay.
@@ -817,7 +816,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-05T0538+0100
 	 * @var int
 	 */
-	const C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY    = 'footnotes_inputfield_mouse_over_box_fade_out_delay';
+	const C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY = 'footnotes_inputfield_mouse_over_box_fade_out_delay';
 
 	/**
 	 * Settings container key for tooltip display fade-out duration.
@@ -918,7 +917,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-17T0746+0100
 	 * @var int
 	 */
-	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    = 'footnotes_inputfield_alternative_mouse_over_box_width';
+	const C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH = 'footnotes_inputfield_alternative_mouse_over_box_width';
 
 
 	/**
@@ -933,7 +932,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-18T1509+0100
 	 * @var str
 	 */
-	const C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT       = 'footnotes_inputfield_reference_container_label_element';
+	const C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT = 'footnotes_inputfield_reference_container_label_element';
 
 	/**
 	 * Settings container key to enable the reference container label bottom border.
@@ -975,7 +974,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-29T0914+0100
 	 * @var int
 	 */
-	const C_INT_REFERENCE_CONTAINER_TOP_MARGIN    = 'footnotes_inputfield_reference_container_top_margin';
+	const C_INT_REFERENCE_CONTAINER_TOP_MARGIN = 'footnotes_inputfield_reference_container_top_margin';
 
 	/**
 	 * Settings container key for reference container bottom margin.
@@ -1008,7 +1007,7 @@ class MCI_Footnotes_Settings {
 	 *
 	 * When the alternative reference container is enabled, hard links are too.
 	 */
-	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE       = 'footnotes_inputfield_hard_links_enable';
+	const C_STR_FOOTNOTES_HARD_LINKS_ENABLE = 'footnotes_inputfield_hard_links_enable';
 
 	/**
 	 * Settings container key for the fragment ID slug in referrers.
@@ -1017,7 +1016,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-29T0914+0100
 	 * @var str
 	 */
-	const C_STR_REFERRER_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_referrer_fragment_id_slug';
+	const C_STR_REFERRER_FRAGMENT_ID_SLUG = 'footnotes_inputfield_referrer_fragment_id_slug';
 
 	/**
 	 * Settings container key for the fragment ID slug in footnotes.
@@ -1026,7 +1025,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-29T0914+0100
 	 * @var str
 	 */
-	const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG         = 'footnotes_inputfield_footnote_fragment_id_slug';
+	const C_STR_FOOTNOTE_FRAGMENT_ID_SLUG = 'footnotes_inputfield_footnote_fragment_id_slug';
 
 	/**
 	 * Settings container key for the ID separator in fragment IDs.
@@ -1035,7 +1034,7 @@ class MCI_Footnotes_Settings {
 	 * @date 2020-12-29T0914+0100
 	 * @var str
 	 */
-	const C_STR_HARD_LINK_IDS_SEPARATOR           = 'footnotes_inputfield_hard_link_ids_separator';
+	const C_STR_HARD_LINK_IDS_SEPARATOR = 'footnotes_inputfield_hard_link_ids_separator';
 
 	/**
 	 * Settings container key to enable shortcode syntax validation.
@@ -1270,179 +1269,179 @@ class MCI_Footnotes_Settings {
 	private $a_arr_default = array(
 
 		// General settings.
-		'footnotes_storage'             => array(
+		'footnotes_storage'            => array(
 
 			// AMP compatibility.
-			self::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE            => '',
+			self::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE => '',
 
 			// Footnote start and end short codes.
-			self::C_STR_FOOTNOTES_SHORT_CODE_START                    => '((',
-			self::C_STR_FOOTNOTES_SHORT_CODE_END                      => '))',
-			self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED       => '',
-			self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED         => '',
-			self::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE   => 'yes',
+			self::C_STR_FOOTNOTES_SHORT_CODE_START         => '((',
+			self::C_STR_FOOTNOTES_SHORT_CODE_END           => '))',
+			self::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
+			self::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
+			self::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE => 'yes',
 
 			// Footnotes numbering.
-			self::C_STR_FOOTNOTES_COUNTER_STYLE                       => 'arabic_plain',
-			self::C_STR_COMBINE_IDENTICAL_FOOTNOTES                   => 'yes',
+			self::C_STR_FOOTNOTES_COUNTER_STYLE            => 'arabic_plain',
+			self::C_STR_COMBINE_IDENTICAL_FOOTNOTES        => 'yes',
 
 			// Scrolling behavior.
-			self::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING                => 'no',
-			self::C_INT_FOOTNOTES_SCROLL_OFFSET                       => 20,
-			self::C_INT_FOOTNOTES_SCROLL_DURATION                     => 380,
-			self::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY       => 'no',
-			self::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION                => 150,
-			self::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY                   => 0,
-			self::C_INT_FOOTNOTES_SCROLL_UP_DELAY                     => 0,
-			self::C_STR_FOOTNOTES_HARD_LINKS_ENABLE                   => 'no',
-			self::C_STR_REFERRER_FRAGMENT_ID_SLUG                     => 'r',
-			self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG                     => 'f',
-			self::C_STR_HARD_LINK_IDS_SEPARATOR                       => '+',
-			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE             => 'yes',
-			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT               => 'Alt+ ←',
+			self::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING     => 'no',
+			self::C_INT_FOOTNOTES_SCROLL_OFFSET            => 20,
+			self::C_INT_FOOTNOTES_SCROLL_DURATION          => 380,
+			self::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY => 'no',
+			self::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION     => 150,
+			self::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY        => 0,
+			self::C_INT_FOOTNOTES_SCROLL_UP_DELAY          => 0,
+			self::C_STR_FOOTNOTES_HARD_LINKS_ENABLE        => 'no',
+			self::C_STR_REFERRER_FRAGMENT_ID_SLUG          => 'r',
+			self::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG          => 'f',
+			self::C_STR_HARD_LINK_IDS_SEPARATOR            => '+',
+			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE  => 'yes',
+			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT    => 'Alt+ ←',
 
 			// Reference container.
-			self::C_STR_REFERENCE_CONTAINER_NAME                      => 'References',
-			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT             => 'p',
-			self::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER       => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_COLLAPSE                  => 'no',
-			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE     => 'jquery',
-			self::C_STR_REFERENCE_CONTAINER_POSITION                  => 'post_end',
-			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE        => '[[references]]',
-			self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE         => 'yes',
-			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN                => 24,
-			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN             => 0,
-			self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT                 => 'none',
-			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED                     => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE    => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH    => 'no',
-			self::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE     => 'no',
-			self::C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE        => 'no',
+			self::C_STR_REFERENCE_CONTAINER_NAME           => 'References',
+			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT  => 'p',
+			self::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_COLLAPSE       => 'no',
+			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE => 'jquery',
+			self::C_STR_REFERENCE_CONTAINER_POSITION       => 'post_end',
+			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE => '[[references]]',
+			self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE => 'yes',
+			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN     => 24,
+			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN  => 0,
+			self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT      => 'none',
+			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED          => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
+			self::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE => 'no',
+			self::C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE => 'no',
 
-			self::C_STR_BACKLINKS_SEPARATOR_ENABLED                   => 'yes',
-			self::C_STR_BACKLINKS_SEPARATOR_OPTION                    => 'comma',
-			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM                    => '',
+			self::C_STR_BACKLINKS_SEPARATOR_ENABLED        => 'yes',
+			self::C_STR_BACKLINKS_SEPARATOR_OPTION         => 'comma',
+			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM         => '',
 
-			self::C_STR_BACKLINKS_TERMINATOR_ENABLED                  => 'no',
-			self::C_STR_BACKLINKS_TERMINATOR_OPTION                   => 'full_stop',
-			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM                   => '',
+			self::C_STR_BACKLINKS_TERMINATOR_ENABLED       => 'no',
+			self::C_STR_BACKLINKS_TERMINATOR_OPTION        => 'full_stop',
+			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM        => '',
 
-			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED                => 'no',
-			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR                 => '50',
-			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT                   => 'px',
+			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     => 'no',
+			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      => '50',
+			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        => 'px',
 
-			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED            => 'no',
-			self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR             => '140',
-			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT               => 'px',
+			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'no',
+			self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
+			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
 
-			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED                 => 'no',
-			self::C_STR_LINK_ELEMENT_ENABLED                          => 'yes',
+			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED      => 'no',
+			self::C_STR_LINK_ELEMENT_ENABLED               => 'yes',
 
 			// Footnotes in excerpts.
-			self::C_STR_FOOTNOTES_IN_EXCERPT                          => 'yes',
+			self::C_STR_FOOTNOTES_IN_EXCERPT               => 'yes',
 
 			// Footnotes love.
-			self::C_STR_FOOTNOTES_LOVE                                => 'no',
+			self::C_STR_FOOTNOTES_LOVE                     => 'no',
 
 			// Deprecated.
-			self::C_STR_FOOTNOTES_EXPERT_MODE                         => 'yes',
+			self::C_STR_FOOTNOTES_EXPERT_MODE              => 'yes',
 
 		),
 
 		// Referrers and tooltips.
-		'footnotes_storage_custom'      => array(
+		'footnotes_storage_custom'     => array(
 
 			// Backlink symbol.
-			self::C_STR_HYPERLINK_ARROW                               => '&#8593;',
-			self::C_STR_HYPERLINK_ARROW_USER_DEFINED                  => '',
+			self::C_STR_HYPERLINK_ARROW                    => '&#8593;',
+			self::C_STR_HYPERLINK_ARROW_USER_DEFINED       => '',
 
 			// Referrers.
-			self::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS           => 'yes',
-			self::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT         => 'no',
-			self::C_STR_FOOTNOTES_STYLING_BEFORE                      => '[',
-			self::C_STR_FOOTNOTES_STYLING_AFTER                       => ']',
+			self::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS => 'yes',
+			self::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT => 'no',
+			self::C_STR_FOOTNOTES_STYLING_BEFORE           => '[',
+			self::C_STR_FOOTNOTES_STYLING_AFTER            => ']',
 
 			// Referrers in labels.
-			self::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION                => 'none',
+			self::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION     => 'none',
 
 			// Tooltips.
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED              => 'yes',
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE          => 'no',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED   => 'yes',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'no',
 
 			// Tooltip position.
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION             => 'top center',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION  => 'top center',
 			self::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION => 'top right',
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X             => 0,
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X  => 0,
 			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X => -50,
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y             => -7,
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y  => -7,
 			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y => 24,
 
 			// Tooltip dimensions.
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH            => 450,
-			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH    => 400,
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
+			self::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH => 400,
 
 			// Tooltip timing.
-			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY                  => 0,
-			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION               => 200,
-			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY                 => 400,
-			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION              => 200,
+			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY       => 0,
+			self::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION    => 200,
+			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY      => 400,
+			self::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION   => 200,
 
 			// Tooltip truncation.
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED      => 'yes',
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH       => 200,
-			self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL                => 'Continue reading',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 200,
+			self::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL     => 'Continue reading',
 
 			// Tooltip text.
-			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER           => '[[/tooltip]]',
-			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE       => 'no',
-			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR    => ' — ',
+			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER => '[[/tooltip]]',
+			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE => 'no',
+			self::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR => ' — ',
 
 			// Tooltip appearance.
-			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED              => 'yes',
-			self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR               => 13,
-			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT                 => 'px',
+			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED   => 'yes',
+			self::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR    => 13,
+			self::C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT      => 'px',
 
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR                => '#000000',
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND           => '#ffffff',
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH         => 1,
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR         => '#cccc99',
-			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS        => 0,
-			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR         => '#666666',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR     => '#000000',
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#ffffff',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
+			self::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
+			self::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
 
 			// Your existing Custom CSS code.
-			self::C_STR_CUSTOM_CSS                                    => '',
+			self::C_STR_CUSTOM_CSS                         => '',
 
 		),
 
-		// Scope and priority
-		'footnotes_storage_expert'      => array(
+		// Scope and priority.
+		'footnotes_storage_expert'     => array(
 
 			// WordPress hooks with priority level.
-			self::C_STR_EXPERT_LOOKUP_THE_TITLE                       => '',
-			self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL        => PHP_INT_MAX,
+			self::C_STR_EXPERT_LOOKUP_THE_TITLE    => '',
+			self::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
 
-			self::C_STR_EXPERT_LOOKUP_THE_CONTENT                     => 'checked',
-			self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL      => 98,
+			self::C_STR_EXPERT_LOOKUP_THE_CONTENT  => 'checked',
+			self::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL => 98,
 
-			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT                     => '',
-			self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL      => PHP_INT_MAX,
+			self::C_STR_EXPERT_LOOKUP_THE_EXCERPT  => '',
+			self::C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL => PHP_INT_MAX,
 
-			self::C_STR_EXPERT_LOOKUP_WIDGET_TITLE                    => '',
-			self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL     => PHP_INT_MAX,
+			self::C_STR_EXPERT_LOOKUP_WIDGET_TITLE => '',
+			self::C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
 
-			self::C_STR_EXPERT_LOOKUP_WIDGET_TEXT                     => '',
-			self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL      => 98,
+			self::C_STR_EXPERT_LOOKUP_WIDGET_TEXT  => '',
+			self::C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL => 98,
 
 		),
 
 		// Custom CSS.
-		'footnotes_storage_custom_css'  => array(
+		'footnotes_storage_custom_css' => array(
 
 			// Your existing Custom CSS code.
-			self::C_STR_CUSTOM_CSS_LEGACY_ENABLE                      => 'yes',
+			self::C_STR_CUSTOM_CSS_LEGACY_ENABLE => 'yes',
 
 			// Custom CSS.
-			self::C_STR_CUSTOM_CSS_NEW                                => '',
+			self::C_STR_CUSTOM_CSS_NEW           => '',
 
 		),
 
@@ -1523,10 +1522,10 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.0
 	 *
 	 * - Bugfix: Removed the 'trim' function to allow leading and trailing whitespace in settings text boxes, thanks to @compasscare bug report.
-	 * 
+	 *
 	 * @reporter @compasscare
 	 * @link https://wordpress.org/support/topic/leading-space-in-footnotes-tag/
-	 * 
+	 *
 	 * @since 1.5.2
 	 * @param int $p_int_index  Settings container array key index.
 	 * @return array            Settings loaded from defaults if container is empty (first usage).

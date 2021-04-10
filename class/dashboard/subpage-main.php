@@ -130,18 +130,16 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	protected function get_meta_boxes() {
 		$l_arr_meta_boxes = array();
 
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility', 'footnotes' ), 'amp_compat' );
+		// Sync box name with mirror in task.php.
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'start-end', __( 'Footnote start and end short codes', 'footnotes' ), 'start_end' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'numbering' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'scrolling' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'hard-links', __( 'URL fragment ID configuration', 'footnotes' ), 'hard_links' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'Numbering' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'Scrolling' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'reference-container', __( 'Reference container', 'footnotes' ), 'reference_container' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'excerpts', __( 'Footnotes in excerpts', 'footnotes' ), 'excerpts' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'love', MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, 'love' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'love', MCI_Footnotes_Config::C_STR_PLUGIN_HEADING_NAME . '&nbsp;' . MCI_Footnotes_Config::C_STR_LOVE_SYMBOL_HEADING, 'Love' );
 
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'hyperlink-arrow', __( 'Backlink symbol', 'footnotes' ), 'hyperlink_arrow' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrers', 'footnotes' ), 'superscript' );
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'label-solution', __( 'Referrers in labels', 'footnotes' ), 'label_solution' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrer typesetting and formatting', 'footnotes' ), 'superscript' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box', __( 'Tooltips', 'footnotes' ), 'mouseover_box' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-position', __( 'Tooltip position', 'footnotes' ), 'mouseover_box_position' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-dimensions', __( 'Tooltip dimensions', 'footnotes' ), 'mouseover_box_dimensions' );
@@ -164,34 +162,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'how-to', 'donate', __( 'Help us to improve our Plugin', 'footnotes' ), 'donate' );
 
 		return $l_arr_meta_boxes;
-	}
-
-	/**
-	 * Displays the AMP compatibility mode option.
-	 *
-	 * @since 2.5.11 (draft)
-	 * @since 2.6.0  (release)
-	 */
-	public function amp_compat() {
-
-		// Load template file.
-		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'settings-amp' );
-		// Replace all placeholders.
-		$l_obj_template->replace(
-			array(
-				// Translators: '%s' is the link text 'AMP-WP' linked to the plugin’s front page on WordPress.org.
-				'description-1-amp' => sprintf( __( 'The official %s plugin is required when this option is enabled.', 'footnotes' ), '<a href="https://wordpress.org/plugins/amp/" target="_blank" style="font-style: normal;">AMP-WP</a>' ),
-				'label-amp'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE, __( 'Enable AMP compatibility mode:', 'footnotes' ) ),
-				'amp'               => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
-				'notice-amp'        => __( 'This option enables hard links with configurable scroll offset in % viewport height.', 'footnotes' ),
-				// Translators: '%s' is the logogram of the 'Footnotes' plugin.
-				'description-2-amp' => sprintf( __( '%s is becoming AMP compatible when this box is checked. Styled tooltips are displayed with fade-in/fade-out effect if enabled, and the reference container expands also on clicking a referrer if it’s collapsed by default.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
-			)
-		);
-		// Display template with replaced placeholders.
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $l_obj_template->get_content();
-		// phpcs:enable
 	}
 
 	/**
@@ -283,7 +253,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 					'label-script'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, __( 'Script mode:', 'footnotes' ) ),
 					'script'               => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, $l_arr_script_mode ),
-					'notice-script'        => __( 'The plain JavaScript mode will enable hard links with configurable scroll offset.', 'footnotes' ),
+					'notice-script'        => __( 'The plain JavaScript mode does not support scroll animation and will enable hard links with scroll offset.', 'footnotes' ),
 
 					'label-position'       => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __( 'Default position:', 'footnotes' ) ),
 					'position'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_positions ),
@@ -423,8 +393,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				// Translators: The 2 placeholders are the &lt;ref&gt;&lt;/ref&gt; and &lt;fn&gt;&lt;/fn&gt; shortcodes.
-				'description-escapement'   => sprintf( __( 'The problems with shortcodes with pointy brackets have been solved. We apologize for the longlasting bugs making the %1$s and %2$s shortcodes close to unusable.', 'footnotes' ), '&lt;ref&gt;&lt;/ref&gt;', '&lt;fn&gt;&lt;/fn&gt;' ),
+
+				'description-escapement'   => __( 'WARNING: Short codes with closing pointy brackets are disabled in the new WordPress Block Editor that disrupts the traditional balanced escapement applied by WordPress Classic Editor.', 'footnotes' ),
 
 				'label-short-code-start'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, __( 'Footnote start tag short code:', 'footnotes' ) ),
 				'short-code-start'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, $l_arr_shortcode_start ),
@@ -508,7 +478,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 */
 	public function scrolling() {
 
-		// Options for enabling scroll duration asymmetricity.
+		// Options for enabling hard links for AMP compat.
 		$l_arr_enable = array(
 			'yes' => __( 'Yes', 'footnotes' ),
 			'no'  => __( 'No', 'footnotes' ),
@@ -520,66 +490,18 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 
-				'label-scroll-css'            => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, __( 'CSS-based smooth scrolling:', 'footnotes' ) ),
-				'scroll-css'                  => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, $l_arr_enable ),
-				'notice-scroll-css'           => __( 'May slightly disturb jQuery scrolling and is therefore disabled by default. Works in recent browsers.', 'footnotes' ),
+				'label-scroll-offset'          => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, __( 'Scroll offset:', 'footnotes' ) ),
+				'scroll-offset'                => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, 0, 100 ),
+				'notice-scroll-offset'         => __( 'per cent from the upper edge of the window', 'footnotes' ),
 
-				'label-scroll-offset'         => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, __( 'Scroll offset:', 'footnotes' ) ),
-				'scroll-offset'               => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, 0, 100 ),
-				'notice-scroll-offset'        => __( 'per cent viewport height from the upper edge', 'footnotes' ),
+				'label-scroll-duration'        => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
+				'scroll-duration'              => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
+				'notice-scroll-duration'       => __( 'milliseconds; instantly if hard links are enabled and JavaScript is disabled', 'footnotes' ),
 
-				'label-scroll-duration'       => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
-				'scroll-duration'             => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
-				'notice-scroll-duration'      => __( 'milliseconds. If asymmetric scroll durations are enabled, this is the scroll-up duration.', 'footnotes' ),
-
-				// Enable scroll duration asymmetricity.
-				'label-scroll-asymmetricity'  => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, __( 'Enable asymmetric scroll durations:', 'footnotes' ) ),
-				'scroll-asymmetricity'        => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, $l_arr_enable ),
-				'notice-scroll-asymmetricity' => __( 'With this option enabled, scrolling up may take longer than down, or conversely.', 'footnotes' ),
-
-				'label-scroll-down-duration'  => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, __( 'Scroll-down duration:', 'footnotes' ) ),
-				'scroll-down-duration'        => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, 0, 20000 ),
-				'notice-scroll-down-duration' => __( 'milliseconds', 'footnotes' ),
-
-				'label-scroll-down-delay'     => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, __( 'Scroll-down delay:', 'footnotes' ) ),
-				'scroll-down-delay'           => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, 0, 20000 ),
-				'notice-scroll-down-delay'    => __( 'milliseconds. Useful to see the effect on input elements when referrers without hard links are clicked in form labels.', 'footnotes' ),
-
-				'label-scroll-up-delay'       => $this->add_label( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, __( 'Scroll-up delay:', 'footnotes' ) ),
-				'scroll-up-delay'             => $this->add_num_box( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, 0, 20000 ),
-				'notice-scroll-up-delay'      => __( 'milliseconds. Less useful than the scroll-down delay.', 'footnotes' ),
-
-			)
-		);
-		// Display template with replaced placeholders.
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $l_obj_template->get_content();
-		// phpcs:enable
-	}
-
-	/**
-	 * Displays all options for the fragment identifier configuration.
-	 *
-	 * @since 2.2.0  in scrolling().
-	 * @since 2.5.12 separate metabox.
-	 */
-	public function hard_links() {
-
-		// Options for enabling hard links for AMP compat.
-		$l_arr_enable = array(
-			'yes' => __( 'Yes', 'footnotes' ),
-			'no'  => __( 'No', 'footnotes' ),
-		);
-
-		// Load template file.
-		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'settings-hard-links' );
-		// Replace all placeholders.
-		$l_obj_template->replace(
-			array(
-
+				// Enable hard links for AMP compat.
 				'label-hard-links'             => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE, __( 'Enable hard links:', 'footnotes' ) ),
 				'hard-links'                   => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE, $l_arr_enable ),
-				'notice-hard-links'            => __( 'Hard links disable jQuery delays but have the same scroll offset, and allow to share footnotes (accessed if the list is not collapsed by default).', 'footnotes' ),
+				'notice-hard-links'            => __( 'Hard links are indispensable for AMP compatibility and allow to link to footnotes.', 'footnotes' ),
 
 				'label-footnote'               => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG, __( 'Fragment identifier slug for footnotes:', 'footnotes' ) ),
 				'footnote'                     => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_FRAGMENT_ID_SLUG ),
@@ -600,7 +522,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-backlink-tooltip-text'  => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT, __( 'Backlink tooltip text:', 'footnotes' ) ),
 				'backlink-tooltip-text'        => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT ),
-				'notice-backlink-tooltip-text' => __( 'Default text is the keyboard shortcut; may be a localized descriptive hint.', 'footnotes' ),
+				'notice-backlink-tooltip-text' => __( 'Default text is the keyboard shortcut, but you may wish to input a descriptive hint in your language.', 'footnotes' ),
 
 			)
 		);
@@ -630,11 +552,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			'text-5' => sprintf( '%s %s', MCI_Footnotes_Config::C_STR_LOVE_SYMBOL, MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
 			// Translators: 2: heart symbol 1: footnotes logogram.
 			'text-1' => sprintf( __( 'I %2$s %1$s', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL ),
-			// Translators: %s: Footnotes plugin logo.
+			// Translators: %s: Plugin logo.
 			'text-6' => sprintf( __( 'This website uses %s.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
-			// Translators: %s: Footnotes plugin logo.
+			// Translators: %s: Plugin logo.
 			'text-7' => sprintf( __( 'This website uses the %s plugin.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
-			// Translators: %s: Footnotes plugin logo.
+			// Translators: %s: Plugin logo.
 			'text-2' => sprintf( __( 'This website uses the awesome %s plugin.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
 			'random' => __( 'randomly determined display of either mention', 'footnotes' ),
 			// Translators: 1: Plugin logo.2: heart symbol.
@@ -646,10 +568,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				// Translators: %s: Footnotes plugin logo.
+				// Translators: %s: Plugin logo.
 				'label-love'    => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE, sprintf( __( 'Tell the world you’re using %s:', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ) ),
 				'love'          => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LOVE, $l_arr_love ),
-				// Translators: %s: Footnotes plugin logo.
+				// Translators: %s: Plugin logo.
 				'label-no-love' => $this->add_text( sprintf( __( 'Shortcode to inhibit the display of the %s mention on specific pages:', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ) ),
 				'no-love'       => $this->add_text( MCI_Footnotes_Config::C_STR_NO_LOVE_SLUG ),
 			)
@@ -685,10 +607,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			array(
 				'label-excerpts'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, __( 'Display footnotes in excerpts:', 'footnotes' ) ),
 				'excerpts'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, $l_arr_enabled ),
-				'notice-excerpts'      => __( 'For this setting to be effective, the hook the_excerpt must be enabled under Scope and priority.', 'footnotes' ),
-				// Translators: %s: link text 'Advanced Excerpt' linked to the plugin’s WordPress.org front page.
-				// Translators: %s: Footnotes plugin logo.
-				'description-excerpts' => sprintf( __( 'Both to display footnotes and to not display footnotes in excerpts, the %s plugin generates excerpts on the basis of the posts to ensure that footnotes are handled and don’t impact the excerpt length.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
+				'notice-excerpts'      => __( 'The recommended value is No.', 'footnotes' ),
+				// Translators: %s: link to the Advanced Excerpt Plugin.
+				'description-excerpts' => sprintf( __( 'In some themes, the %s plugin is indispensable to display footnotes in excerpts. Footnotes cannot be disabled in excerpts. A workaround is to avoid footnotes in the first 55&nbsp;words.', 'footnotes' ), '<a href="https://wordpress.org/plugins/advanced-excerpt/" target="_blank">Advanced Excerpt</a>' ),
 			)
 		);
 		// Display template with replaced placeholders.
@@ -726,10 +647,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-superscript' => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, __( 'Display footnote referrers in superscript:', 'footnotes' ) ),
 				'superscript'       => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS, $l_arr_enabled ),
 
-				'label-normalize'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, __( 'Normalize vertical alignment and font size:', 'footnotes' ) ),
-				'normalize'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, $l_arr_normalize_superscript ),
-				'notice-normalize'  => __( 'Most themes don’t need this fix.', 'footnotes' ),
-
 				'label-before'      => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE, __( 'At the start of the footnote referrers:', 'footnotes' ) ),
 				'before'            => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_STYLING_BEFORE ),
 
@@ -738,35 +655,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				'label-link'        => $this->add_label( MCI_Footnotes_Settings::C_STR_LINK_ELEMENT_ENABLED, __( 'Use the link element for referrers and backlinks:', 'footnotes' ) ),
 				'notice-link'       => __( 'Please find this setting at the end of the reference container settings. The link element is needed to apply the theme’s link color.', 'footnotes' ),
-			)
-		);
-		// Display template with replaced placeholders.
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $l_obj_template->get_content();
-		// phpcs:enable
-	}
 
-	/**
-	 * Displays the setting for the input label issue solution.
-	 *
-	 * @since 2.5.12
-	 */
-	public function label_solution() {
-		// Options for the input label issue solution.
-		$l_arr_issue_solutions = array(
-			'none'       => __( '0. No problem or solved otherwise', 'footnotes' ),
-			'move'       => __( 'A. Footnotes are moved out and appended after the label’s end (recommended)', 'footnotes' ),
-			'disconnect' => __( 'B. Labels with footnotes are disconnected from input element (discouraged)', 'footnotes' ),
-		);
-		// Load template file.
-		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'configure-label-solution' );
-		// Replace all placeholders.
-		$l_obj_template->replace(
-			array(
-				'description-1-selection' => __( 'Clicking a footnote referrer in an input element label toggles the input except when hard links are enabled. In jQuery mode, the recommended solution is to move footnotes and append them after the label (option A).', 'footnotes' ),
-				'label-selection'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION, __( 'Solve input label issue:', 'footnotes' ) ),
-				'selection'               => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION, $l_arr_issue_solutions ),
-				'description-2-selection' => __( 'Option B is discouraged because disconnecting a label from its input element may compromise accessibility. This option is a last resort in case footnotes must absolutely stay inside the label. (Using jQuery ‘event.stopPropagation’ failed.)', 'footnotes' ),
+				'label-normalize'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, __( 'Normalize vertical alignment and font size:', 'footnotes' ) ),
+				'normalize'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT, $l_arr_normalize_superscript ),
+				'notice-normalize'  => __( 'Most themes don’t need this fix.', 'footnotes' ),
 			)
 		);
 		// Display template with replaced placeholders.
@@ -804,7 +696,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'label-alternative'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, __( 'Display alternative tooltips:', 'footnotes' ) ),
 				'alternative'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE, $l_arr_enabled ),
 				'notice-alternative'      => __( 'Intended to work around a configuration-related tooltip outage.', 'footnotes' ),
-				// Translators: %s: Footnotes plugin logo.
+				// Translators: %s: Plugin logo.
 				'description-alternative' => sprintf( __( 'These alternative tooltips work around a website related jQuery UI outage. They are low-script but use the AMP incompatible onmouseover and onmouseout arguments, along with CSS transitions for fade-in/out. The very small script is inserted after Footnotes’ internal stylesheet. When this option is enabled, %s does not load jQuery&nbsp;UI nor jQuery&nbsp;Tools.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 
 			)
@@ -1087,22 +979,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 *
 	 * @since 1.5.0
 	 *
-	 * - Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
+	 * Edited heading for v2.0.4
 	 *
-	 * @since 2.0.0
-	 * The former 'hyperlink arrow' is incompatible with combined identical footnotes.
-	 *
-	 * - Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to @mmallett issue report.
-	 *
-	 * @since 2.0.3
-	 *
-	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
-	 *
-	 * @since 2.0.4
-	 * @date 2020-11-02T2115+0100
-	 *
-	 * @reporter @mmallett
-	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
+	 * The former 'hyperlink arrow', incompatible with combined identical footnotes,
+	 * became 'prepended arrow' in v2.0.3 after a user complaint about missing backlinking semantics
+	 * of the footnote number.
 	 *
 	 * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
 	 * @since 2.2.1 and 2.2.4  back here
@@ -1347,7 +1228,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'example-string' => '<br/>' . __( 'will be displayed as:', 'footnotes' ),
 				'example'        => $g_obj_mci_footnotes->a_obj_task->exec( $l_str_example, true ),
 				// Translators: 1: <a>; 2: </a>.
-				'information'    => sprintf( __( 'For further information please check out our %1$ssupport forum%2$s on WordPress.org.', 'footnotes' ), '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
+				'information'    => sprintf( __( 'For further information please check out our %1$ssupport forum%2$s on WordPress.org.', 'footnotes' ), '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
 			)
 		);
 		// Call wp_head function to get the Styling of the mouse-over box.

@@ -17,11 +17,11 @@ class MCI_Footnotes_WYSIWYG {
 
 	/**
 	 * Registers Button hooks.
-	 * 
+	 *
 	 * @since 1.5.0
-	 * 
+	 *
 	 * - Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
-	 * 
+	 *
 	 * @reporter @gova
 	 * @link https://wordpress.org/support/topic/back-end-footnotes-not-working-400-bad-erro/
 	 *

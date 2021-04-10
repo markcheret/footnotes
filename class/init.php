@@ -72,7 +72,6 @@ class MCI_Footnotes {
 	 * @since 2.4.0
 	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
-	 *
 	 */
 	public static $a_bool_alternative_tooltips_enabled = false;
 
@@ -326,7 +325,6 @@ class MCI_Footnotes {
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 
 			}
-
 		}
 
 		/**
@@ -341,7 +339,7 @@ class MCI_Footnotes {
 		 * The Boolean may be set at the bottom of the plugin’s main PHP file.
 		 * @see footnotes.php
 		 */
-		if ( true === C_BOOL_CSS_PRODUCTION_MODE ) {
+		if ( C_BOOL_CSS_PRODUCTION_MODE ) {
 
 			/**
 			 * Enqueues a minified united external stylesheet in production.
@@ -364,6 +362,7 @@ class MCI_Footnotes {
 			 * @since 2.0.3  add versioning of public.css for cache busting.
 			 * @date 2020-10-29T1413+0100
 			 * Plugin version number is needed for busting browser caches after each plugin update.
+			 *
 			 * @since 2.1.4  automate passing version number for cache busting.
 			 * @date 2020-11-30T0646+0100
 			 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
@@ -387,11 +386,9 @@ class MCI_Footnotes {
 					$l_str_tooltip_mode_long  = 'jquery-tooltips';
 
 				}
-
 			} else {
 				$l_str_tooltip_mode_short = 'nott';
 				$l_str_tooltip_mode_long  = 'no-tooltips';
-
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
@@ -419,7 +416,11 @@ class MCI_Footnotes {
 					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
-				C_STR_PACKAGE_VERSION,
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__ )
+					) . 'css/footnotes-' . $l_str_tooltip_mode_short . 'ttbrpl' . $l_str_layout_mode . '.min.css'
+				),
 				'all'
 			);
 
@@ -433,15 +434,51 @@ class MCI_Footnotes {
 			 *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
-			wp_enqueue_style( 'mci-footnotes-common', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ), array(), C_STR_PACKAGE_VERSION );
-			wp_enqueue_style( 'mci-footnotes-tooltips', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ), array(), C_STR_PACKAGE_VERSION );
+			wp_enqueue_style(
+				'mci-footnotes-common',
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ),
+				array(),
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__ )
+					) . 'css/dev-common.css'
+				)
+			);
+			wp_enqueue_style(
+				'mci-footnotes-tooltips',
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ),
+				array(),
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__ )
+					) . 'css/dev-tooltips.css'
+				)
+			);
 
 			if ( self::$a_bool_amp_enabled ) {
-				wp_enqueue_style( 'mci-footnotes-amp', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ), array(), C_STR_PACKAGE_VERSION );
+				wp_enqueue_style(
+					'mci-footnotes-amp',
+					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ),
+					array(),
+					filemtime(
+						plugin_dir_path(
+							dirname( __FILE__ )
+						) . 'css/dev-amp-tooltips.css'
+					)
+				);
 			}
 
 			if ( self::$a_bool_alternative_tooltips_enabled ) {
-				wp_enqueue_style( 'mci-footnotes-alternative', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ), array(), C_STR_PACKAGE_VERSION );
+				wp_enqueue_style(
+					'mci-footnotes-alternative',
+					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
+					array(),
+					filemtime(
+						plugin_dir_path(
+							dirname( __FILE__ )
+						) . 'css/dev-tooltips-alternative.css'
+					)
+				);
 			}
 
 			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
@@ -452,7 +489,11 @@ class MCI_Footnotes {
 						MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					array(),
-					C_STR_PACKAGE_VERSION,
+					filemtime(
+						plugin_dir_path(
+							dirname( __FILE__ )
+						) . 'css/dev-layout-' . $l_str_page_layout_option . '.css'
+					),
 					'all'
 				);
 			}

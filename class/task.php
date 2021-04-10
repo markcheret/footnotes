@@ -491,7 +491,7 @@ class MCI_Footnotes_Task {
 		}
 
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_EXCERPT ) ) ) {
-			add_filter(     'the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
+			add_filter( 'the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
 			add_filter( 'get_the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
 		}
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TITLE ) ) ) {
@@ -868,6 +868,7 @@ class MCI_Footnotes_Task {
 				 * Dimensions of jQuery tooltips.
 				 *
 				 * Position and timing of jQuery tooltips are script defined.
+				 *
 				 * @see templates/public/tooltip.html.
 				 */
 				$l_int_max_width = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
@@ -877,7 +878,6 @@ class MCI_Footnotes_Task {
 				echo "}\r\n";
 
 			} else {
-
 				/*
 				 * AMP compatible and alternative tooltips.
 				 */
@@ -935,6 +935,7 @@ class MCI_Footnotes_Task {
 				 * AMP compatible tooltips.
 				 *
 				 * To streamline internal CSS, immutable rules are in external stylesheet.
+				 *
 				 * @see dev-amp-tooltips.css.
 				 */
 				if ( MCI_Footnotes::$a_bool_amp_enabled ) {
@@ -949,12 +950,13 @@ class MCI_Footnotes_Task {
 					echo 'transition-duration: ' . $l_int_fade_in_duration . 'ms;';
 					echo "}\r\n";
 
-				/**
-				 * Alternative tooltips.
+					/**
+					 * Alternative tooltips.
+					 *
+					 * To streamline internal CSS, immutable rules are in external stylesheet.
 				 *
-				 * To streamline internal CSS, immutable rules are in external stylesheet.
-				 * @see dev-tooltips-alternative.css.
-				 */
+					 * @see dev-tooltips-alternative.css.
+					 */
 				} else {
 
 					echo '.footnote_tooltip.hidden {';
@@ -1016,7 +1018,8 @@ class MCI_Footnotes_Task {
 		document.getElementById(footnote_tooltip_id).classList.add('hidden');
 	}
 </script>
-<?php // Indenting this PHP open tag would mess up the page source.
+			<?php
+			// Indenting this PHP open tag would mess up the page source.
 			// End internal script.
 		};
 	}
@@ -1083,7 +1086,7 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the post/page title.
 	 *
 	 * @since 1.5.0
-	 * @param string  $p_str_content  Title.
+	 * @param string $p_str_content  Title.
 	 * @return string $p_str_content  Title with replaced footnotes.
 	 */
 	public function footnotes_in_title( $p_str_content ) {
@@ -1095,7 +1098,7 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the content of the current page/post.
 	 *
 	 * @since 1.5.0
-	 * @param string  $p_str_content  Page/Post content.
+	 * @param string $p_str_content  Page/Post content.
 	 * @return string $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_content( $p_str_content ) {
@@ -1110,7 +1113,7 @@ class MCI_Footnotes_Task {
 	 * Replaces existing excerpt with a new one generated on the basis of the post.
 	 *
 	 * @since 1.5.0
-	 * @param string  $p_str_excerpt  Excerpt content.
+	 * @param string $p_str_excerpt  Excerpt content.
 	 * @return string $p_str_excerpt  Excerpt as-is.
 	 * The input was already the processed excerpt, no more footnotes to search.
 	 * @since 2.6.2  Debug No option.
@@ -1140,7 +1143,7 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
 	 *
 	 * @since 2.6.2
-	 * @param string  $p_str_content  The post.
+	 * @param string $p_str_content  The post.
 	 * @return string $p_str_content  An excerpt of the post.
 	 * Applies full WordPress excerpt processing.
 	 * @link https://developer.wordpress.org/reference/functions/wp_trim_excerpt/
@@ -1149,7 +1152,7 @@ class MCI_Footnotes_Task {
 	public function generate_excerpt( $p_str_content ) {
 
 		// Discard existing excerpt and start on the basis of the post.
-		$p_str_content  = get_the_content( get_the_id() );
+		$p_str_content = get_the_content( get_the_id() );
 
 		// Get footnote delimiter shortcodes and unify them.
 		$p_str_content = self::unify_delimiters( $p_str_content );
@@ -1169,7 +1172,7 @@ class MCI_Footnotes_Task {
 
 		$l_int_excerpt_length = (int) _x( '55', 'excerpt_length' );
 		$l_int_excerpt_length = (int) apply_filters( 'excerpt_length', $l_int_excerpt_length );
-		$l_str_excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$l_str_excerpt_more   = apply_filters( 'excerpt_more', ' [&hellip;]' );
 
 		// Function wp_trim_words() calls wp_strip_all_tags() that wrecks the footnotes.
 		$p_str_content = wp_trim_words( $p_str_content, $l_int_excerpt_length, $l_str_excerpt_more );
@@ -1190,20 +1193,20 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
 	 *
 	 * @since 2.6.3
-	 * 
+	 *
 	 * - Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom @copylefter @lagoon24 bug reports.
-	 * 
+	 *
 	 * @reporter @scroom
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/
-	 * 
+	 *
 	 * @reporter @copylefter
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259151
-	 * 
+	 *
 	 * @reporter @lagoon24
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259396
-	 * 
+	 *
 	 * @since 2.6.4
-	 * @param string  $p_str_content  The post.
+	 * @param string $p_str_content  The post.
 	 * @return string $p_str_content  An excerpt of the post.
 	 * Does not apply full WordPress excerpt processing.
 	 * @see self::generate_excerpt()
@@ -1213,7 +1216,7 @@ class MCI_Footnotes_Task {
 	public function generate_excerpt_with_footnotes( $p_str_content ) {
 
 		// Discard existing excerpt and start on the basis of the post.
-		$p_str_content  = get_the_content( get_the_id() );
+		$p_str_content = get_the_content( get_the_id() );
 
 		// Get footnote delimiter shortcodes and unify them.
 		$p_str_content = self::unify_delimiters( $p_str_content );
@@ -1230,7 +1233,7 @@ class MCI_Footnotes_Task {
 		$l_int_excerpt_length = (int) apply_filters( 'excerpt_length', $l_int_excerpt_length );
 
 		// Prepare the Read-on string.
-		$l_str_excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$l_str_excerpt_more = apply_filters( 'excerpt_more', ' [&hellip;]' );
 
 		// Safeguard the footnotes.
 		preg_match_all(
@@ -1241,7 +1244,7 @@ class MCI_Footnotes_Task {
 
 		// Prevent the footnotes from altering the excerpt: previously hard-coded '5ED84D6'.
 		$l_int_placeholder = '@' . mt_rand( 100000000, 2147483647 ) . '@';
-		$p_str_content = preg_replace(
+		$p_str_content     = preg_replace(
 			'#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#',
 			$l_int_placeholder,
 			$p_str_content
@@ -1249,16 +1252,16 @@ class MCI_Footnotes_Task {
 
 		// Replace line breaking markup with a separator.
 		$l_str_separator = ' ';
-		$p_str_content = preg_replace( '#<br *>#', $l_str_separator, $p_str_content );
-		$p_str_content = preg_replace( '#<br */>#', $l_str_separator, $p_str_content );
-		$p_str_content = preg_replace( '#<(p|li|div)[^>]*>#', $l_str_separator, $p_str_content );
-		$p_str_content = preg_replace( '#' . $l_str_separator . '#', '', $p_str_content, 1 );
-		$p_str_content = preg_replace( '#</(p|li|div) *>#', '', $p_str_content );
-		$p_str_content = preg_replace( '#[\r\n]#', '', $p_str_content );
+		$p_str_content   = preg_replace( '#<br *>#', $l_str_separator, $p_str_content );
+		$p_str_content   = preg_replace( '#<br */>#', $l_str_separator, $p_str_content );
+		$p_str_content   = preg_replace( '#<(p|li|div)[^>]*>#', $l_str_separator, $p_str_content );
+		$p_str_content   = preg_replace( '#' . $l_str_separator . '#', '', $p_str_content, 1 );
+		$p_str_content   = preg_replace( '#</(p|li|div) *>#', '', $p_str_content );
+		$p_str_content   = preg_replace( '#[\r\n]#', '', $p_str_content );
 
 		// To count words like Advanced Excerpt does it.
-		$l_arr_tokens = array();
-		$l_str_output = '';
+		$l_arr_tokens  = array();
+		$l_str_output  = '';
 		$l_int_counter = 0;
 
 		// Tokenize into tags and words as in Advanced Excerpt.
@@ -1307,7 +1310,7 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the widget title.
 	 *
 	 * @since 1.5.0
-	 * @param string  $p_str_content  Widget content.
+	 * @param string $p_str_content  Widget content.
 	 * @return string $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_widget_title( $p_str_content ) {
@@ -1319,7 +1322,7 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the content of the current widget.
 	 *
 	 * @since 1.5.0
-	 * @param string  $p_str_content  Widget content.
+	 * @param string $p_str_content  Widget content.
 	 * @return string $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_widget_text( $p_str_content ) {
@@ -1399,6 +1402,8 @@ class MCI_Footnotes_Task {
 	/**
 	 * Brings the delimiters and unifies their various HTML escapement schemas.
 	 *
+	 * @param string $p_str_content TODO.
+	 *
 	 * - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema unification, thanks to @patrick_here @alifarahani8000 @gova bug reports.
 	 *
 	 * @reporter @patrick_here
@@ -1433,27 +1438,27 @@ class MCI_Footnotes_Task {
 
 		if ( preg_match( '#[&"\'<>]#', $l_str_starting_tag . $l_str_ending_tag ) ) {
 
-			$l_str_harmonized_start_tag       = '{[(|fnote_stt|)]}';
-			$l_str_harmonized_end_tag         = '{[(|fnote_end|)]}';
+			$l_str_harmonized_start_tag = '{[(|fnote_stt|)]}';
+			$l_str_harmonized_end_tag   = '{[(|fnote_end|)]}';
 
 			// Harmonize footnotes without escaping any HTML special characters in delimiter shortcodes.
 			// The footnote has been added in the Block Editor code editor (doesn’t work in Classic Editor text mode).
 			$p_str_content = str_replace( $l_str_starting_tag, $l_str_harmonized_start_tag, $p_str_content );
-			$p_str_content = str_replace( $l_str_ending_tag  , $l_str_harmonized_end_tag  , $p_str_content );
+			$p_str_content = str_replace( $l_str_ending_tag, $l_str_harmonized_end_tag, $p_str_content );
 
 			// Harmonize footnotes while escaping HTML special characters in delimiter shortcodes.
 			// The footnote has been added in the Classic Editor visual mode.
 			$p_str_content = str_replace( htmlspecialchars( $l_str_starting_tag ), $l_str_harmonized_start_tag, $p_str_content );
-			$p_str_content = str_replace( htmlspecialchars( $l_str_ending_tag   ), $l_str_harmonized_end_tag  , $p_str_content );
+			$p_str_content = str_replace( htmlspecialchars( $l_str_ending_tag ), $l_str_harmonized_end_tag, $p_str_content );
 
 			// Harmonize footnotes while escaping HTML special characters except greater-than sign in delimiter shortcodes.
 			// The footnote has been added in the Block Editor visual mode.
 			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_starting_tag ) ), $l_str_harmonized_start_tag, $p_str_content );
-			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_ending_tag   ) ), $l_str_harmonized_end_tag  , $p_str_content );
+			$p_str_content = str_replace( str_replace( '&gt;', '>', htmlspecialchars( $l_str_ending_tag ) ), $l_str_harmonized_end_tag, $p_str_content );
 
 			// Assign the delimiter shortcodes.
-			self::$a_str_start_tag    = $l_str_harmonized_start_tag;
-			self::$a_str_end_tag      = $l_str_harmonized_end_tag;
+			self::$a_str_start_tag = $l_str_harmonized_start_tag;
+			self::$a_str_end_tag   = $l_str_harmonized_end_tag;
 
 			// Assign the regex-conformant shortcodes.
 			self::$a_str_start_tag_regex = '\{\[\(\|fnote_stt\|\)\]\}';
@@ -1462,8 +1467,8 @@ class MCI_Footnotes_Task {
 		} else {
 
 			// Assign the delimiter shortcodes.
-			self::$a_str_start_tag    = $l_str_starting_tag;
-			self::$a_str_end_tag      = $l_str_ending_tag;
+			self::$a_str_start_tag = $l_str_starting_tag;
+			self::$a_str_end_tag   = $l_str_ending_tag;
 
 			// Make shortcodes conform to regex syntax.
 			self::$a_str_start_tag_regex = preg_replace( '#([\(\)\{\}\[\]\|\*\.\?\!])#', '\\\\$1', self::$a_str_start_tag );
@@ -1629,12 +1634,12 @@ class MCI_Footnotes_Task {
 		 */
 		if ( 'disconnect' === $l_str_label_issue_solution ) {
 
-			$l_str_disconnect_text     = 'optionally-disconnected-from-input-field-to-prevent-toggling-while-clicking-footnote-referrer_';
+			$l_str_disconnect_text = 'optionally-disconnected-from-input-field-to-prevent-toggling-while-clicking-footnote-referrer_';
 
 			$p_str_content = preg_replace(
 				'#(<label [^>]+?for=["\'])(((?!</label).)+' . self::$a_str_start_tag_regex . ')#',
-				 '$1' . $l_str_disconnect_text . '$2',
-				 $p_str_content
+				'$1' . $l_str_disconnect_text . '$2',
+				$p_str_content
 			);
 		}
 
@@ -1696,13 +1701,12 @@ class MCI_Footnotes_Task {
 					// Load 'templates/public/amp-footnote.html'.
 					$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-footnote' );
 				}
-
 			} elseif ( MCI_Footnotes::$a_bool_alternative_tooltips_enabled ) {
 
 				// Load 'templates/public/footnote-alternative.html'.
 				$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'footnote-alternative' );
 
-			// Else jQuery tooltips are enabled.
+				// Else jQuery tooltips are enabled.
 			} else {
 
 				// Load 'templates/public/footnote.html'.
@@ -1711,7 +1715,6 @@ class MCI_Footnotes_Task {
 				// Load tooltip inline script.
 				$l_obj_template_tooltip = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'tooltip' );
 			}
-
 		}
 
 		// Search footnotes short codes in the content.
@@ -1957,7 +1960,6 @@ class MCI_Footnotes_Task {
 								$l_str_excerpt_text .= self::$a_int_post_id . '_' . self::$a_int_reference_container_id;
 								$l_str_excerpt_text .= '.toggleClass(class=collapsed, force=false)"';
 							}
-
 						} else {
 
 							// Don’t add onclick event in AMP compatibility mode.
@@ -2390,7 +2392,6 @@ class MCI_Footnotes_Task {
 					}
 				}
 			}
-
 		} else {
 
 			// When combining identical footnotes is turned on, another template is needed.
@@ -2560,7 +2561,7 @@ class MCI_Footnotes_Task {
 				 * The click event goes in the table cell if footnote remains single.
 				 */
 				// Reverted wrong linting 2021-03-20T0032+0100.
-				$l_str_backlink_event  = ' onclick="footnote_moveToAnchor_';
+				$l_str_backlink_event = ' onclick="footnote_moveToAnchor_';
 
 				$l_str_backlink_event .= self::$a_int_post_id;
 				$l_str_backlink_event .= '_' . self::$a_int_reference_container_id;
@@ -2764,7 +2765,6 @@ class MCI_Footnotes_Task {
 				// Load 'templates/public/amp-reference-container.html'.
 				$l_obj_template_container = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container' );
 			}
-
 		} elseif ( 'js' === MCI_Footnotes::$a_str_script_mode ) {
 
 			// Load 'templates/public/js-reference-container.html'.
@@ -2784,8 +2784,8 @@ class MCI_Footnotes_Task {
 
 		if ( 'jquery' === MCI_Footnotes::$a_str_script_mode ) {
 
-			$l_int_scroll_offset        = ( self::$a_int_scroll_offset / 100 );
-			$l_int_scroll_up_duration   = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION ) );
+			$l_int_scroll_offset      = ( self::$a_int_scroll_offset / 100 );
+			$l_int_scroll_up_duration = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION ) );
 
 			if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY ) ) ) {
 
@@ -2797,8 +2797,8 @@ class MCI_Footnotes_Task {
 
 			}
 
-			$l_int_scroll_down_delay    = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY ) );
-			$l_int_scroll_up_delay      = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY ) );
+			$l_int_scroll_down_delay = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY ) );
+			$l_int_scroll_up_delay   = intval( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY ) );
 
 		}
 

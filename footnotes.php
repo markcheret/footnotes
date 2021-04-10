@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
  * Author: Mark Cheret
- * Version: 2.5.10
+ * Version: 2.6.5
  * Author URI: https://cheret.org/footnotes/
  * Text Domain: footnotes
  * Domain Path: /languages
@@ -14,33 +14,6 @@
  */
 
 /**
- * Version numbers in WordPress plugin readme.txt and main PHP headers.
- *
- * - Adding: Documentation: Readme.txt: informative 'Package Version' field in sync with the package version currently hidden in the main PHP script header.
- * - Adding: Documentation: Readme.txt: informative 'Version' field pointing a tag folder in SVN for bugfix versions available ahead of the stable tag.
- * - Adding: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this is (unexpectedly) parsed for release configuration.
- *
- * @since 2.5.11
- * @see readme.txt
- * @link https://meta.trac.wordpress.org/ticket/5652
- *
- * Package Version   Actual version string, informative only.
- *                   May identify a development version.
- *                   A 'd' series is suffixed to incremented bugfix version.
- *                   Used for style sheet cache busting.
- *
- * Version           Parsed in the main PHP file header for update configuration.
- *                   Refers to the latest tag.
- *                   Typically the best available version.
- *                   May not be released, due to release frequency concerns.
- *
- * Stable Tag        Parsed in the readme.txt in trunk/ for release configuration.
- *                   May be smaller than Version, avoiding too frequent releases.
- *
- * WordPress plugin readmes are usually lacking the version number of the package.
- * In Footnotes, this has been included after the stable tag had been mistaken for
- * the package version, given that state-of-the-art readmes have that information.
- *
  * - Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
  *
  * @version 2.5.10 (reversion to @version 2.5.8)

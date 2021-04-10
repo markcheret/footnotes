@@ -1,0 +1,75 @@
+<!--<?php//for docblock, @see MCI_Footnotes_Template::process_template()
+	/**
+	 * Reference container template to enable AMP compatibility mode.
+	 *
+	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+	 *
+	 * @since 2.5.11 (draft)
+	 * @since 2.6.0  (release)
+	 *
+	 * @contributor @westonruter
+	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799580854
+	 * @link https://github.com/markcheret/footnotes/issues/48#issuecomment-799582394
+	 * @link https://amp.dev/documentation/guides-and-tutorials/learn/amp-actions-and-events/#*-(all-elements)
+	 *
+	 * - Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
+	 *
+	 * @since 2.5.11
+	 *
+	 * @contributor @derivationfr
+	 * @link https://wordpress.org/support/topic/enhance-accesibility-by-using-instead-of/
+	 * @link https://a11y-101.com/development/tables
+	 *
+	 * For assistive technologies to improve accessibility by reading tables in a meaningful manner,
+	 * the tables must be marked up properly using table header elements for header rows and header
+	 * columns as applicable.
+	 * The table caption must also be present for screen readers but may be hidden to sighted users.
+	 */?>
+-->
+<div
+	class="speaker-mute footnotes_reference_container"
+	>
+	<div
+		class="footnote_container_prepare"
+		><[[element]]
+			><span
+				role="button"
+				tabindex="0"
+				id="footnotes_container_label_expand_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_label pointer"
+				on="tap:footnote_references_container_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_plus_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_minus_[[post_id]]_[[container_id]].toggleClass(class=collapsed)"
+				>[[name]]</span
+			><span
+				role="button"
+				tabindex="0"
+				id="footnotes_container_button_plus_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_collapse_button"
+				on="tap:footnote_references_container_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_plus_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_minus_[[post_id]]_[[container_id]].toggleClass(class=collapsed)"
+			>[+]</span
+			><span
+			></span
+			><span
+				role="button"
+				tabindex="0"
+				id="footnotes_container_button_minus_[[post_id]]_[[container_id]]"
+				class="footnote_reference_container_collapse_button collapsed"
+				on="tap:footnote_references_container_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_plus_[[post_id]]_[[container_id]].toggleClass(class=collapsed),footnotes_container_button_minus_[[post_id]]_[[container_id]].toggleClass(class=collapsed)"
+			>[−]</span
+			></[[element]]
+		></div
+	>
+	<div
+		id="footnote_references_container_[[post_id]]_[[container_id]]"
+		class="collapsed"
+		><table
+			class="footnotes_table footnote-reference-container"
+			><caption
+				class="accessibility"
+				>[[caption]]</caption
+			>
+			<tbody>
+				[[content]]
+			</tbody>
+		</table>
+	</div>
+</div>

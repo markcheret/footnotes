@@ -6,8 +6,6 @@
  * @package footnotes
  * @since 1.5.0
  * @date 14.09.14 14:26
- *
- * @since 2.2.0  (TBD)  2020-12-12T2131+0100
  */
 
 /**
@@ -66,7 +64,7 @@ class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base
 	 * Outputs the Content of the Widget.
 	 *
 	 * @since 1.5.0
-	 * @param mixed $args The widget's arguments.
+	 * @param mixed $args     The widget's arguments.
 	 * @param mixed $instance The instance of the widget.
 	 */
 	public function widget( $args, $instance ) {
@@ -74,7 +72,7 @@ class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base
 		// Reference container positioning is set to "widget area".
 		if ( 'widget' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo $g_obj_mci_footnotes->a_obj_task->Reference_Container();
+			echo $g_obj_mci_footnotes->a_obj_task->reference_container();
 			// phpcs:enable
 		}
 	}

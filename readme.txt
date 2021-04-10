@@ -1,10 +1,10 @@
 === footnotes ===
-Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, dartiss, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
+Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, milindmore22, westonruter, dartiss, derivationfr, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable Tag: 2.5.10
+Stable Tag: 2.6.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,7 +16,7 @@ Cheers for the review, folks!
 https://www.youtube.com/watch?v=HzHaMAAJwbI
 
 **footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
-**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts — those footnotes we know from offline publishing.
+**footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts, as well as in post excerpts with fully functional tooltips if enabled.
 
 = Main Features =
 - Fully customizable **footnote** start and end shortcodes;
@@ -34,7 +34,7 @@ These are a few examples of possible ways to delimit footnotes:
 1. Your awesome text((with an awesome footnote))
 2. Your awesome text[ref]with an awesome footnote[/ref]
 3. Your awesome text`<fn>`with an awesome footnote`</fn>`
-4. Your awesome text`custom-shortcode`with an awesome footnote`custom-shortcode`
+4. Your awesome text`custom-start-shortcode`with an awesome footnote`custom-end-shortcode`
 
 = Where to get footnotes? =
 The current version is available on the [WordPress.org plugins platform, Footnotes](https://wordpress.org/plugins/footnotes/).
@@ -77,15 +77,72 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.6.5 =
+- Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
+- Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.
+
+= 2.6.4 =
+- Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom @copylefter @lagoon24 bug reports.
+
+= 2.6.3 =
+- Bugfix: Reference container: debug footnotes number text color in the table header cells required for accessibility, thanks to @spaceling bug report.
+- Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes on the basis of the posts, thanks to @nikelaos @martinneumannat bug reports.
+- Bugfix: Reference container: debug span elements in backlinks by removing 'event.stopPropagation()' from jQuery scroll down function, thanks to @lolzim bug report.
+- Update: Excerpts: set the default value of the debugged 'Footnotes in excerpts' setting to Yes.
+- Update: Excerpts: enable the hook 'the_excerpt' by default to make the debugged 'Footnotes in excerpts' setting effective.
+
+= 2.6.2 =
+- Bugfix: Excerpts: debug the 'No' option by generating excerpts from scratch without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
+- Bugfix: Tooltips: Continue reading: debug link for AMP compatibility mode.
+
+= 2.6.1 =
+- Bugfix: Tooltips: Styling: Font color: set default value to black for maximum contrast on default white background color, thanks to 4msc bug report.
+- Bugfix: Tooltips: Styling: Background color: set default value back to white because empty doesn’t work out as expected.
+
+= 2.6.0 =
+- Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
+- Adding: Tooltips: make display work purely by style rules for AMP compatibility, thanks to @milindmore22 code contribution.
+- Bugfix: Tooltips: AMP tooltips: enable accessibility by keyboard navigation, thanks to @westonruter code contribution.
+
+= 2.5.15 =
+- Bugfix: Dashboard: General settings: Footnote start and end short codes: debug select box for shortcodes with pointy brackets.
+- Update: Dashboard: General settings: Footnote start and end short codes: add information about pointy brackets.
+
+= 2.5.14 =
+- Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema unification, thanks to @patrick_here @alifarahani8000 @gova bug reports.
+- Update: Dashboard: General settings: Footnote start and end short codes: delete comment on pointy brackets.
+
+= 2.5.13 =
+- Bugfix: Dashboard: Referrers and tooltips: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
+- Bugfix: Footnote delimiter short codes: debug closing pointy brackets in the Block Editor by accounting for unbalanced HTML escapement.
+- Update: Dashboard: General settings: Footnote start and end short codes: update information about short codes using pointy brackets.
+
+= 2.5.12 =
+- Update: Scrolling: CSS-based smooth scroll behavior (optional), thanks to @paulgpetty and @bogosavljev issue reports.
+- Bugfix: Backlinks: reflect scroll functions down/up differentiation across the template set, thanks to @bogosavljev bug report.
+- Bugfix: Referrers: Hard links: enforce scroll offset with '!important' property for surroundings specifying otherwise, thanks to @bogosavljev bug report.
+- Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally moving footnotes after the end of the label.
+- Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally disconnecting those labels.
+- Bugfix: Scroll offset: correct syntax error in the main style sheet.
+- Bugfix: Reference container: correct new syntax errors in the 8 reference container row templates.
+- Bugfix: Reference container: correct a new typo in the JavaScript reference container template.
+- Update: Dashboard: General settings: split a dedicated 'URL fragment ID configuration' metabox off the 'Scrolling behavior' metabox.
+
 = 2.5.11 =
+- Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
+- Bugfix: Reference container: apply web semantics to improve readability for assistive technologies, thanks to @derivationfr issue report and code contribution.
+- Bugfix: Tooltips: Styling: Background color: empty default value to adopt theme background, thanks to 4msc bug report.
+- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution in the standards compliance overhaul.
 - Update: Documentation: Readme.txt: comment line below the 'Stable Tag' field to warn that this field is (unintuitively) parsed for release configuration.
 - Update: Documentation: Readme.txt: informative 'Version' field in sync with 'Version' in 'footnotes.php' for bugfix versions available ahead of the Stable Tag.
 - Update: Documentation: Readme.txt: informative 'Package Version' field in sync with the 'Package V.' field added in the 'footnotes.php' file header.
-- Bugfix: Dashboard: debug text input fields by disabling quotation mark escapement, thanks to @rumperuu code contribution in the standards compliance overhaul.
-- Update: Codebase: make all PHP code comply to WordPress Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
-- Update: Documentation: help and support for contributors by the means of Contributing Guidelines in 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
-- Update: Documentation: additional readme in markdown format 'README.md' for use with the code repository on GitHub, thanks to @rumperuu code contribution.
-- Update: Documentation: move 'customized-template-stack.txt' and 'customized-documentation-schema.txt' from the 'development/' folder to root.
+- Update: Codebase: make PHP code comply to WordPress PHP Coding Standards requirements, thanks to @rumperuu code contribution and refactoring.
+- Bugfix: Forms: try to prevent the adverse effect of clicking footnote referrers in labels of input elements by 'event.stopPropagation()' in jQuery scroll down function.
+- Bugfix: Forms: mitigate the adverse effect of clicking footnote referrers in labels of input elements by an optional, configurable scroll down delay.
+- Bugfix: Scroll durations: mitigate the downside of delayed scrolling down by optionally enabling asymmetric scroll durations (e.g. fast down, slower up).
+- Update: Scroll delays: add a setting to configure also a scroll up delay for completeness.
+- Bugfix: Tooltips: Styling: protect padding against removal in surroundings with explicit zero padding.
+- Bugfix: Tooltips: Display: CSS transitions: fix syntax error.
 
 = 2.5.10 =
 - Bugfix: Codebase: revert to 2.5.8 with apologies (below), thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
@@ -144,7 +201,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Readme/documentation: update or fix URLs in Download, Support and Development sections.
 
 = 2.5.0 =
-- Adding: Templates: Enable template location stack, thanks to @misfist code contribution.
+- Adding: Templates: Enable template location stack, thanks to @misfist issue report and code contribution.
 - Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
 - Bugfix: Footnote delimiters: Syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
 - Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
@@ -163,7 +220,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Reference container: add class 'footnote_plugin_symbol' to disambiguate repurposed class 'footnote_plugin_link'.
 
 = 2.3.0 =
-- Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro bug report, thanks to @martinneumannat code contribution.
+- Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
 - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
 - Bugfix: Referrers and backlinks: more effectively remove unwanted underline by disabling box shadow used instead of bottom border, thanks to @klusik feedback.
 - Bugfix: Dashboard: Custom CSS: swap migration Boolean, meaning 'show legacy' instead of 'migration complete', due to storage data structure constraints.
@@ -212,7 +269,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.2.2 =
 - Bugfix: Dashboard: Link element setting only under General settings > Reference container.
-- Bugfix: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
+- Update: Dashboard: Custom CSS: unearth text area and migrate to dedicated tab as designed.
 - Bugfix: Reference container: edits to optional basic responsive page layout stylesheets.
 
 = 2.2.1 =
@@ -275,8 +332,8 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Dashboard: Expert mode: streamline and update description for hooks and priority levels.
 
 = 2.1.3 =
-- Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets.
 - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+- Bugfix: Hooks: disable widget_text hook by default to fix accordions declaring headings as widgets.
 - Bugfix: Reference container: fix column width when combining turned on by reverting new CSS class to legacy.
 - Bugfix: Reference container: fix width in mobile view by URL wrapping for Unicode-non-conformant browsers, thanks to @karolszakiel bug report.
 - Bugfix: Reference container: table cell backlinking if index is single and combining identicals turned on.
@@ -326,7 +383,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Settings defaults adjusted for better and more up-to-date tooltip layout.
 
 = 2.0.6 =
-- Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness code contribution.
+- Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness issue report and code contribution.
 - Bugfix: Referrers: delete vertical align tweaks, for cross-theme and user agent compatibility.
 - Bugfix: Reference container: fix line breaking behavior in footnote number clusters.
 - Bugfix: Reference container: auto-extending column to fit widest, to fix display with short note texts.
@@ -348,7 +405,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Bugfix: Settings stylesheet: unenqueue to fix input boxes on public pages (enqueued for 2.0.4).
 
 = 2.0.4 =
-- Update: Restore arrow settings to customize or disable the now prepended arrow symbol.
+- Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
 - Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
 - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
 - Bugfix: Reference container: remove inconvenient left/right cellpadding.
@@ -359,7 +416,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.0.3 =
 - Bugfix: Reference container: Self-adjusting width of ID column but hidden overflow.
-- Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to  bug report.
+- Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to @mmallett issue report.
 - Bugfix: Fragment IDs: Prepended post ID to footnote number.
 - Bugfix: External stylesheets cache busting: add plugin version number argument in enqueuing function call.
 - Bugfix: Print style: prevent a page break just after the reference container label.
@@ -478,7 +535,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Removed unnecessary hidden inputs from the Settings page
 - Update: Merged public CSS files to reduce the output and improve the performance
 - Update: Translations (EN and DE)
-- Bugfix: Removed the 'trim' function to allow whitespaces at the beginning and end of each setting
+- Bugfix: Removed the 'trim' function to allow leading and trailing whitespace in settings text boxes, thanks to @compasscare bug report.
 - Bugfix: Convert the footnotes short code to HTML special chars when adding them into the page/post editor (visual and text)
 - Bugfix: Detailed error messages if other Plugins can't be loaded. Also added empty strings as default values to avoid 'undefined'
 
@@ -518,7 +575,6 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: language EN and DE
 - Adding: Setting to customize the hyperlink symbol in der reference container for each footnote reference
 - Adding: Setting to enter a user defined hyperlink symbol
-- 
 
 = 1.3.1 =
 - Bugfix: Allow settings to be empty

@@ -76,7 +76,7 @@ class MCI_Footnotes_Hooks {
 	 */
 	public static function plugin_links( $p_arr_links, $p_str_plugin_file_name ) {
 		// Append link to the WordPress Plugin page.
-		$p_arr_links[] = sprintf( '<a href="http://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
+		$p_arr_links[] = sprintf( '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
 		// Append link to the settings page.
 		$p_arr_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=mfmmf-footnotes' ), __( 'Settings', 'footnotes' ) );
 		// Append link to the PayPal donate function.

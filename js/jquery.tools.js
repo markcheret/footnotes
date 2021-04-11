@@ -213,7 +213,7 @@
 })(jQuery);
 
 (function () {
-	var a = document.all, b = "http://www.adobe.com/go/getflashplayer", c = typeof jQuery === "function", d = /(\d+)[^\d]+(\d+)[^\d]*(\d*)/, e = {width: "100%", height: "100%", id: "_" + ("" + Math.random()).slice(9), allowfullscreen: !0, allowscriptaccess: "always", quality: "high", version: [3, 0], onFail: null, expressInstall: null, w3c: !1, cachebusting: !1};
+	var a = document.all, b = "https://www.adobe.com/go/getflashplayer", c = typeof jQuery === "function", d = /(\d+)[^\d]+(\d+)[^\d]*(\d*)/, e = {width: "100%", height: "100%", id: "_" + ("" + Math.random()).slice(9), allowfullscreen: !0, allowscriptaccess: "always", quality: "high", version: [3, 0], onFail: null, expressInstall: null, w3c: !1, cachebusting: !1};
 	window.attachEvent && window.attachEvent("onbeforeunload", function () {
 		__flash_unloadHandler = function () {
 		}, __flash_savedUnloadHandler = function () {

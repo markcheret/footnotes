@@ -77,6 +77,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.6.6 =
+- Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness bug report.
+
 = 2.6.5 =
 - Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
 - Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.

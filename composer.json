@@ -11,11 +11,14 @@
         "lint-css": "echo TODO",
         "lint-js": "echo TODO",
         "docs": "./vendor/bin/phpdoc -d . -t ./docs --ignore vendor/",
+        "commit": "./vendor/bin/php-commitizen commit -- ./.php-commitizen.php",
         "post-install-cmd": "./_tools/setup.sh"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "wp-coding-standards/wpcs": "^2.3",
-        "phpdocumentor/phpdocumentor": "^3.0"
+        "phpdocumentor/phpdocumentor": "^3.0",
+        "damianopetrungaro/php-commitizen": "^0.2.0",
+        "marcocesarato/php-conventional-changelog": "^1.9"
     }
 }

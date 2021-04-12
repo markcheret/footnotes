@@ -2161,14 +2161,12 @@ class MCI_Footnotes_Task {
 			 * - Bugfix: Fixed occasional bug where footnote ordering could be out of sequence
 			 *
 			 * @since 1.6.4
-			 * @date 2016-06-29T0054+0000
 			 * @committer @dartiss
 			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/task.php?rev=1445718 @dartiss’ class/task.php
 			 * @link https://plugins.trac.wordpress.org/log/footnotes/trunk/class/task.php?rev=1445718 @dartiss re-added class/task.php
 			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class?rev=1445711 class/ w/o task.php
 			 * @link https://plugins.trac.wordpress.org/changeset/1445711/footnotes/trunk/class @dartiss deleted class/task.php
 			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/task.php?rev=1026210 @aricura’s latest class/task.php
-			 *
 			 *
 			 * - Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
 			 *
@@ -2185,9 +2183,14 @@ class MCI_Footnotes_Task {
 			 * A bug disturbing the order of the footnotes depending on the text before the first
 			 * footnote, the length of the first footnote and the length of the templates for the
 			 * footnote and the tooltip. Moreover, it was causing non-trivial process garbage.
+			 *
+			 * @since 2.6.6
+			 * Fix bug that caused some footnotes to not be processed.
+			 * @reporter @docteurfitness
+			 * @link https://wordpress.org/support/topic/problem-since-footnotes-2-5-14/
 			 */
 			// Add offset to the new starting position.
-			$l_int_pos_start += $l_int_length + strlen( self::$a_str_end_tag );
+			$l_int_pos_start += strlen( $l_str_footnote_replace_text );
 
 		} while ( true );
 

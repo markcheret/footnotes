@@ -79,6 +79,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.6.6 =
 - Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness bug report.
+- Bugfix: Display: fix characters that had been mis-encoded.
 
 = 2.6.5 =
 - Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.

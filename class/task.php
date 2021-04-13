@@ -1190,18 +1190,18 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
 	 *
 	 * @since 2.6.3
-	 * 
+	 *
 	 * - Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom @copylefter @lagoon24 bug reports.
-	 * 
+	 *
 	 * @reporter @scroom
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/
-	 * 
+	 *
 	 * @reporter @copylefter
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259151
-	 * 
+	 *
 	 * @reporter @lagoon24
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259396
-	 * 
+	 *
 	 * @since 2.6.4
 	 * @param string  $p_str_content  The post.
 	 * @return string $p_str_content  An excerpt of the post.
@@ -2154,12 +2154,11 @@ class MCI_Footnotes_Task {
 			}
 
 			/**
-			 * Fixes a footnotes numbering bug (happening under de facto rare circumstances).
+			 * Fixes a partial footnotes process outage happening when tooltips are truncated or disabled.
+			 * Fixed a footnotes numbering bug happening under de facto rare circumstances.
 			 *
 			 * - Bugfix: Fixed occasional bug where footnote ordering could be out of sequence
 			 *
-			 * @since 1.6.4
-			 * @date 2016-06-29T0054+0000
 			 * @committer @dartiss
 			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/task.php?rev=1445718 @dartiss’ class/task.php
 			 * @link https://plugins.trac.wordpress.org/log/footnotes/trunk/class/task.php?rev=1445718 @dartiss re-added class/task.php
@@ -2167,6 +2166,8 @@ class MCI_Footnotes_Task {
 			 * @link https://plugins.trac.wordpress.org/changeset/1445711/footnotes/trunk/class @dartiss deleted class/task.php
 			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/task.php?rev=1026210 @aricura’s latest class/task.php
 			 *
+			 * @since 1.6.4
+			 * @date 2016-06-29T0054+0000
 			 *
 			 * - Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
 			 *
@@ -2182,10 +2183,33 @@ class MCI_Footnotes_Task {
 			 * footnote and the length of the last footnote replace text.
 			 * A bug disturbing the order of the footnotes depending on the text before the first
 			 * footnote, the length of the first footnote and the length of the templates for the
-			 * footnote and the tooltip. Moreover, it was causing non-trivial process garbage.
+			 * footnote and the tooltip.
+			 * Deleting both lines instead, to resume the search at the position where it left off,
+			 * would have prevented also the following bug.
+			 *
+			 * - Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness @rkupadhya @offpeakdesign bug reports.
+			 *
+			 * @reporter @docteurfitness
+			 * @link https://wordpress.org/support/topic/problem-since-footnotes-2-5-14/
+			 *
+			 * @reporter @rkupadhya
+			 * @link https://wordpress.org/support/topic/adjacent-footnotes-not-working-sometimes/
+			 *
+			 * @reporter @offpeakdesign
+			 * @link https://wordpress.org/support/topic/character-limit-bug/
+			 *
+			 * @since 2.6.6
+			 * The origin of the bug was present since the beginning (v1.0.0).
+			 * For v1.3.2 the wrong code was refactored but remained wrong,
+			 * and was unaffected by the v1.5.0 refactoring.
+			 * The reason why the numbering disorder reverted to a partial process outage
+			 * since 2.5.14 is that with this version, the plugin stopped processing the
+			 * content multiple times, and started unifying the shortcodes instead, to fix
+			 * the numbering disorder affecting delimiter shortcodes with pointy brackets
+			 * and mixed escapement schemas.
 			 */
 			// Add offset to the new starting position.
-			$l_int_pos_start += $l_int_length + strlen( self::$a_str_end_tag );
+			$l_int_pos_start += strlen( $l_str_footnote_replace_text );
 
 		} while ( true );
 

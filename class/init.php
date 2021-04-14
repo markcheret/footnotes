@@ -339,7 +339,7 @@ class MCI_Footnotes {
 		 * The Boolean may be set at the bottom of the plugin’s main PHP file.
 		 * @see footnotes.php
 		 */
-		if ( C_BOOL_CSS_PRODUCTION_MODE ) {
+		if ( PRODUCTION_ENV ) {
 
 			/**
 			 * Enqueues a minified united external stylesheet in production.

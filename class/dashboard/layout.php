@@ -213,12 +213,12 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 */
 		wp_register_style(
 			'mci-footnotes-admin',
-			plugins_url( 'footnotes/css/settings' . ( ( C_BOOL_CSS_PRODUCTION_MODE ) ? '.min' : '' ) . '.css' ),
+			plugins_url( 'footnotes/css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css' ),
 			array(),
-			( C_BOOL_CSS_PRODUCTION_MODE ) ? C_STR_PACKAGE_VERSION : filemtime(
+			( PRODUCTION_ENV ) ? C_STR_PACKAGE_VERSION : filemtime(
 				plugin_dir_path(
 					dirname( __FILE__ )
-				) . 'css/settings' . ( ( C_BOOL_CSS_PRODUCTION_MODE ) ? '.min' : '' ) . '.css'
+				) . 'css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css'
 			)
 		);
 

@@ -12,7 +12,7 @@ cp -t dist/img img/fn-wysiwyg.png img/main-menu.png
 echo "Copying files..."
 cp -t dist features.txt license.txt readme.txt includes.php wpml-config.xml customized-documentation-schema.txt customized-template-stack.txt CONTRIBUTING.md README.md SECURITY.md
 echo "Setting production flag..."
-sed "s/'C_BOOL_CSS_PRODUCTION_MODE', false/'C_BOOL_CSS_PRODUCTION_MODE', true/g" footnotes.php > dist/footnotes.php
+sed "s/'PRODUCTION_ENV', false/'PRODUCTION_ENV', true/g" footnotes.php > dist/footnotes.php
 echo "Production flag set." 
 
 # TODO: once automatic minification is implemented, this should handle that.

@@ -217,7 +217,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 			array(),
 			( PRODUCTION_ENV ) ? C_STR_PACKAGE_VERSION : filemtime(
 				plugin_dir_path(
-					dirname( __FILE__ )
+					dirname( __FILE__, 2 )
 				) . 'css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css'
 			)
 		);

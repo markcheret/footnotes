@@ -436,7 +436,7 @@ class MCI_Footnotes {
 				array(),
 				filemtime(
 					plugin_dir_path(
-						dirname( __FILE__ )
+						dirname( __FILE__, 1 )
 					) . 'css/dev-common.css'
 				)
 			);
@@ -446,7 +446,7 @@ class MCI_Footnotes {
 				array(),
 				filemtime(
 					plugin_dir_path(
-						dirname( __FILE__ )
+						dirname( __FILE__, 1 )
 					) . 'css/dev-tooltips.css'
 				)
 			);
@@ -458,7 +458,7 @@ class MCI_Footnotes {
 					array(),
 					filemtime(
 						plugin_dir_path(
-							dirname( __FILE__ )
+							dirname( __FILE__, 1 )
 						) . 'css/dev-amp-tooltips.css'
 					)
 				);
@@ -471,7 +471,7 @@ class MCI_Footnotes {
 					array(),
 					filemtime(
 						plugin_dir_path(
-							dirname( __FILE__ )
+							dirname( __FILE__, 1 )
 						) . 'css/dev-tooltips-alternative.css'
 					)
 				);
@@ -487,7 +487,7 @@ class MCI_Footnotes {
 					array(),
 					filemtime(
 						plugin_dir_path(
-							dirname( __FILE__ )
+							dirname( __FILE__, 1 )
 						) . 'css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					'all'

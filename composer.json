@@ -1,7 +1,7 @@
 {
     "name": "markcheret/footnotes",
     "description": "footnotes aims to be the all-in-one solution for displaying an automatically-generated list of references on your WordPress Page or Post.",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-only",
     "scripts": {
         "release": "./_tools/release.sh",
         "release:commit": "composer run release -- -c",

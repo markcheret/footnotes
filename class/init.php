@@ -416,11 +416,7 @@ class MCI_Footnotes {
 					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
-				filemtime(
-					plugin_dir_path(
-						dirname( __FILE__ )
-					) . 'css/footnotes-' . $l_str_tooltip_mode_short . 'ttbrpl' . $l_str_layout_mode . '.min.css'
-				),
+				C_STR_PACKAGE_VERSION,
 				'all'
 			);
 

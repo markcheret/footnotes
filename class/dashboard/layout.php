@@ -211,33 +211,16 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * automated update of version number for cache busting.
 		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
 		 */
-		if ( C_BOOL_CSS_PRODUCTION_MODE ) {
-
-			wp_register_style(
-				'mci-footnotes-admin',
-				plugins_url( 'footnotes/css/settings.min.css' ),
-				array(),
-				filemtime(
-					plugin_dir_path(
-						dirname( __FILE__ )
-					) . 'css/settings.min.css'
-				)
-			);
-
-		} else {
-
-			wp_register_style(
-				'mci-footnotes-admin',
-				plugins_url( 'footnotes/css/settings.css' ),
-				array(),
-				filemtime(
-					plugin_dir_path(
-						dirname( __FILE__, 2 )
-					) . 'css/settings.css'
-				)
-			);
-
-		}
+		wp_register_style(
+			'mci-footnotes-admin',
+			plugins_url( 'footnotes/css/settings' . ( ( C_BOOL_CSS_PRODUCTION_MODE ) ? '.min' : '' ) . '.css' ),
+			array(),
+			( C_BOOL_CSS_PRODUCTION_MODE ) ? C_STR_PACKAGE_VERSION : filemtime(
+				plugin_dir_path(
+					dirname( __FILE__ )
+				) . 'css/settings' . ( ( C_BOOL_CSS_PRODUCTION_MODE ) ? '.min' : '' ) . '.css'
+			)
+		);
 
 		wp_enqueue_style( 'mci-footnotes-admin' );
 	}

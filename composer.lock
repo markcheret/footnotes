@@ -1400,16 +1400,16 @@
         },
         {
             "name": "marcocesarato/php-conventional-changelog",
-            "version": "v1.9.9",
+            "version": "v1.9.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcocesarato/php-conventional-changelog.git",
-                "reference": "072ca71c733cf82dae8e6523aa40f4133c288f8c"
+                "reference": "ecf53957bd84126f024f261c4b2fef4a889aafd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcocesarato/php-conventional-changelog/zipball/072ca71c733cf82dae8e6523aa40f4133c288f8c",
-                "reference": "072ca71c733cf82dae8e6523aa40f4133c288f8c",
+                "url": "https://api.github.com/repos/marcocesarato/php-conventional-changelog/zipball/ecf53957bd84126f024f261c4b2fef4a889aafd2",
+                "reference": "ecf53957bd84126f024f261c4b2fef4a889aafd2",
                 "shasum": ""
             },
             "require": {
@@ -1467,9 +1467,9 @@
             ],
             "support": {
                 "issues": "https://github.com/marcocesarato/php-conventional-changelog/issues",
-                "source": "https://github.com/marcocesarato/php-conventional-changelog/tree/v1.9.9"
+                "source": "https://github.com/marcocesarato/php-conventional-changelog/tree/v1.9.10"
             },
-            "time": "2021-04-02T12:29:26+00:00"
+            "time": "2021-04-13T19:48:52+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -87,7 +87,7 @@ class MCI_Footnotes {
 	 * @since 2.6.0  (release)
 	 *
 	 * @contributor @milindmore22
-	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
 	 *
 	 * @contributor @westonruter
 	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
@@ -366,7 +366,7 @@ class MCI_Footnotes {
 			 * Plugin version number is needed for busting browser caches after each plugin update.
 			 * @since 2.1.4  automate passing version number for cache busting.
 			 * @date 2020-11-30T0646+0100
-			 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
+			 * The constant C_STR_FOOTNOTES_VERSION is defined at start of footnotes.php.
 			 *
 			 * The media scope argument 'all' is the default.
 			 * No need to use '-css' in the handle, as this is appended automatically.
@@ -419,7 +419,7 @@ class MCI_Footnotes {
 					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
-				C_STR_PACKAGE_VERSION,
+				C_STR_FOOTNOTES_VERSION,
 				'all'
 			);
 
@@ -433,15 +433,15 @@ class MCI_Footnotes {
 			 *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
-			wp_enqueue_style( 'mci-footnotes-common', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ), array(), C_STR_PACKAGE_VERSION );
-			wp_enqueue_style( 'mci-footnotes-tooltips', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ), array(), C_STR_PACKAGE_VERSION );
+			wp_enqueue_style( 'mci-footnotes-common', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ), array(), C_STR_FOOTNOTES_VERSION );
+			wp_enqueue_style( 'mci-footnotes-tooltips', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ), array(), C_STR_FOOTNOTES_VERSION );
 
 			if ( self::$a_bool_amp_enabled ) {
-				wp_enqueue_style( 'mci-footnotes-amp', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ), array(), C_STR_PACKAGE_VERSION );
+				wp_enqueue_style( 'mci-footnotes-amp', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ), array(), C_STR_FOOTNOTES_VERSION );
 			}
 
 			if ( self::$a_bool_alternative_tooltips_enabled ) {
-				wp_enqueue_style( 'mci-footnotes-alternative', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ), array(), C_STR_PACKAGE_VERSION );
+				wp_enqueue_style( 'mci-footnotes-alternative', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ), array(), C_STR_FOOTNOTES_VERSION );
 			}
 
 			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
@@ -452,7 +452,7 @@ class MCI_Footnotes {
 						MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					array(),
-					C_STR_PACKAGE_VERSION,
+					C_STR_FOOTNOTES_VERSION,
 					'all'
 				);
 			}

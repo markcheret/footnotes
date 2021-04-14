@@ -122,16 +122,18 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key to look for footnotes in post excerpts.
 	 *
-	 * - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
-	 *
-	 * @reporter @nikelaos
-	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
-	 *
 	 * @since 1.5.0
 	 * @since 2.6.2  Debug No option.
 	 * @since 2.6.3  Enable by default after debugging both Yes and No options.
+	 *
+	 * - Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
+	 *
+	 * @reporter @mfessler
+	 * @link https://github.com/markcheret/footnotes/issues/65
+	 *
+	 * @since 2.7.0
 	 * @see C_STR_EXPERT_LOOKUP_THE_EXCERPT
-	 * @var str
+	 * @var str  Default 'manual'.
 	 */
 	const C_STR_FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
 
@@ -248,13 +250,13 @@ class MCI_Footnotes_Settings {
 	 *
 	 * @since 2.1.3
 	 * @since 2.6.3  Enable by default after debugging the 'Footnotes in excerpts' setting.
-	 * 
+	 *
 	 * - Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.
-	 * 
+	 *
 	 * @reporter @mmallett
 	 * @link https://wordpress.org/support/topic/broken-662/
 	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14260969
-	 * 
+	 *
 	 * @since 2.6.5
 	 * @see C_STR_FOOTNOTES_IN_EXCERPT
 	 * @var str
@@ -301,9 +303,9 @@ class MCI_Footnotes_Settings {
 	 * Settings container key for the mouse-over box to define the color.
 	 *
 	 * @since 1.5.6
-	 * 
+	 *
 	 * - Bugfix: Tooltips: Styling: Font color: set to black for maximum contrast with respect to white default background, thanks to 4msc bug report.
-	 * 
+	 *
 	 * @reporter @4msc
 	 * @link https://wordpress.org/support/topic/tooltip-not-showing-on-dark-theme-with-white-text/
 	 *
@@ -1154,7 +1156,7 @@ class MCI_Footnotes_Settings {
 	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
 	 *
 	 * @contributor @milindmore22
-	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
 	 *
 	 * @contributor @westonruter
 	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
@@ -1224,9 +1226,23 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14214720
 	 *
 	 * @since 2.5.12
+	 * @var str
 	 * Native smooth scrolling only works in recent browsers.
 	 */
 	const C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING = 'footnotes_inputfield_css_smooth_scrolling';
+
+	/**
+	 * Settings container key for the footnote section shortcode.
+	 *
+	 * - Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
+	 *
+	 * @reporter @grflukas
+	 * @link https://wordpress.org/support/topic/multiple-reference-containers-in-single-post/
+	 *
+	 * @since 2.7.0
+	 * @var str
+	 */
+	const C_STR_FOOTNOTE_SECTION_SHORTCODE = 'footnotes_inputfield_section_shortcode';
 
 
 	/**
@@ -1309,6 +1325,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE     => 'jquery',
 			self::C_STR_REFERENCE_CONTAINER_POSITION                  => 'post_end',
 			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE        => '[[references]]',
+			self::C_STR_FOOTNOTE_SECTION_SHORTCODE                    => '[[/footnotesection]]',
 			self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE         => 'yes',
 			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN                => 24,
 			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN             => 0,
@@ -1339,7 +1356,7 @@ class MCI_Footnotes_Settings {
 			self::C_STR_LINK_ELEMENT_ENABLED                          => 'yes',
 
 			// Footnotes in excerpts.
-			self::C_STR_FOOTNOTES_IN_EXCERPT                          => 'yes',
+			self::C_STR_FOOTNOTES_IN_EXCERPT                          => 'manual',
 
 			// Footnotes love.
 			self::C_STR_FOOTNOTES_LOVE                                => 'no',
@@ -1523,10 +1540,10 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.0
 	 *
 	 * - Bugfix: Removed the 'trim' function to allow leading and trailing whitespace in settings text boxes, thanks to @compasscare bug report.
-	 * 
+	 *
 	 * @reporter @compasscare
 	 * @link https://wordpress.org/support/topic/leading-space-in-footnotes-tag/
-	 * 
+	 *
 	 * @since 1.5.2
 	 * @param int $p_int_index  Settings container array key index.
 	 * @return array            Settings loaded from defaults if container is empty (first usage).

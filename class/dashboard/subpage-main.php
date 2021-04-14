@@ -160,7 +160,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		}
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'customcss', 'custom-css-new', __( 'Custom CSS', 'footnotes' ), 'custom_css_new' );
 
-		$l_arr_meta_boxes[] = $this->add_meta_box( 'how-to', 'help', __( 'Brief introduction in how to use the plugin', 'footnotes' ), 'help' );
+		$l_arr_meta_boxes[] = $this->add_meta_box( 'how-to', 'help', __( 'Brief introduction: How to use the plugin', 'footnotes' ), 'help' );
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'how-to', 'donate', __( 'Help us to improve our Plugin', 'footnotes' ), 'donate' );
 
 		return $l_arr_meta_boxes;
@@ -288,11 +288,15 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 					'label-position'       => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, __( 'Default position:', 'footnotes' ) ),
 					'position'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION, $l_arr_positions ),
 					// Translators: %s: at the end of the post.
-					'notice-position'      => sprintf( __( 'To use the position shortcode, please set the position to: %s', 'footnotes' ), '<span style="font-style: normal;">' . __( 'at the end of the post', 'footnotes' ) . '</span>' ),
+					'notice-position'      => sprintf( __( 'To use the position or section shortcode, please set the position to: %s', 'footnotes' ), '<span style="font-style: normal;">' . __( 'at the end of the post', 'footnotes' ) . '</span>' ),
 
 					'label-shortcode'      => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE, __( 'Position shortcode:', 'footnotes' ) ),
 					'shortcode'            => $this->add_text_box( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE ),
 					'notice-shortcode'     => __( 'If present in the content, any shortcode in this text box will be replaced with the reference container.', 'footnotes' ),
+
+					'label-section'        => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE, __( 'Footnote section shortcode:', 'footnotes' ) ),
+					'section'              => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE ),
+					'notice-section'       => __( 'If present in the content, any shortcode in this text box will delimit a section terminated by a reference container.', 'footnotes' ),
 
 					'label-startpage'      => $this->add_label( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE, __( 'Display on start page too:', 'footnotes' ) ),
 					'startpage'            => $this->add_select_box( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE, $l_arr_enabled ),
@@ -358,7 +362,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 					'label-link'           => $this->add_label( MCI_Footnotes_Settings::C_STR_LINK_ELEMENT_ENABLED, __( 'Use the link element for referrers and backlinks:', 'footnotes' ) ),
 					'link'                 => $this->add_select_box( MCI_Footnotes_Settings::C_STR_LINK_ELEMENT_ENABLED, $l_arr_enabled ),
 					'notice-link'          => __( 'The link element is needed to apply the theme’s link color.', 'footnotes' ),
-					'description-link'     => __( 'If the link element is not desired for styling, a simple span is used instead when the above is set to No. The link addresses have been removed. Else footnote clicks are logged in the browsing history and make the back button unusable.', 'footnotes' ),
+					'description-link'     => __( 'If the link element is not desired for styling, a simple span is used instead when the above is set to No.', 'footnotes' ),
 				)
 			);
 		// Display template with replaced placeholders.
@@ -423,8 +427,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				// Translators: The 2 placeholders are the &lt;ref&gt;&lt;/ref&gt; and &lt;fn&gt;&lt;/fn&gt; shortcodes.
-				'description-escapement'   => sprintf( __( 'The problems with shortcodes with pointy brackets have been solved. We apologize for the longlasting bugs making the %s and %s shortcodes close to unusable.', 'footnotes' ), '&lt;ref&gt;&lt;/ref&gt;', '&lt;fn&gt;&lt;/fn&gt;' ),
+				'description-escapement'   => __( 'When delimiters with pointy brackets are used, the diverging escapement schemas will be unified before footnotes are processed.', 'footnotes' ),
 
 				'label-short-code-start'   => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, __( 'Footnote start tag short code:', 'footnotes' ) ),
 				'short-code-start'         => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START, $l_arr_shortcode_start ),
@@ -596,7 +599,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				// Enable backlink tooltips.
 				'label-backlink-tooltips'      => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE, __( 'Enable backlink tooltips:', 'footnotes' ) ),
 				'backlink-tooltips'            => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE, $l_arr_enable ),
-				'notice-backlink-tooltips'     => __( 'Hard backlinks get ordinary tooltips hinting to use the backbutton instead.', 'footnotes' ),
+				'notice-backlink-tooltips'     => __( 'Hard backlinks get ordinary tooltips hinting to use the backbutton instead to keep it usable.', 'footnotes' ),
 
 				'label-backlink-tooltip-text'  => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT, __( 'Backlink tooltip text:', 'footnotes' ) ),
 				'backlink-tooltip-text'        => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT ),
@@ -661,7 +664,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays the excerpt setting.
+	 * Displays the footnotes in excerpt setting.
 	 *
 	 * @since 1.5.0
 	 *
@@ -672,10 +675,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * @since 2.2.0   dedicated to the excerpt setting and its notices   2020-12-12T1454+0100
 	 */
 	public function excerpts() {
-		// Options for Yes/No select box.
-		$l_arr_enabled = array(
-			'yes' => __( 'Yes', 'footnotes' ),
-			'no'  => __( 'No', 'footnotes' ),
+		// Options for options select box.
+		$l_arr_excerpt_mode = array(
+			'yes'     => __( 'Yes, generate excerpts from posts with effectively processed footnotes and other markup', 'footnotes' ),
+			'no'      => __( 'No, generate excerpts from posts but remove all footnotes and output plain text', 'footnotes' ),
+			'manual'  => __( 'Yes but run the process only to display tooltips in manual excerpts with footnote short codes', 'footnotes' ),
 		);
 
 		// Load template file.
@@ -683,12 +687,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				'label-excerpts'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, __( 'Display footnotes in excerpts:', 'footnotes' ) ),
-				'excerpts'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, $l_arr_enabled ),
-				'notice-excerpts'      => __( 'For this setting to be effective, the hook the_excerpt must be enabled under Scope and priority.', 'footnotes' ),
+				'label-excerpts'       => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, __( 'Process footnotes in excerpts:', 'footnotes' ) ),
+				'excerpts'             => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT, $l_arr_excerpt_mode ),
+				'notice-excerpts'      => __( 'If the_excerpt is enabled.', 'footnotes' ),
 				// Translators: %s: link text 'Advanced Excerpt' linked to the plugin’s WordPress.org front page.
 				// Translators: %s: Footnotes plugin logo.
-				'description-excerpts' => sprintf( __( 'Both to display footnotes and to not display footnotes in excerpts, the %s plugin generates excerpts on the basis of the posts to ensure that footnotes are handled and don’t impact the excerpt length.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
+				'description-excerpts' => sprintf( __( 'To not display footnotes in excerpts, the %s plugin generates excerpts on the basis of the posts to be able to remove the footnotes. Else, footnotes may be processed in manual excerpts OR processed based on the posts. — For this setting to be effective, the hook the_excerpt must be enabled under Scope and priority.', 'footnotes' ), '<span style="font-style: normal;">' . MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME . '</span>' ),
 			)
 		);
 		// Display template with replaced placeholders.
@@ -1304,9 +1308,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays a short introduction of the Plugin.
+	 * Displays a short introduction to the Plugin.
 	 *
 	 * @since 1.5.0
+	 *
+	 * @since 2.7.0  Sanitize Lorem Ipsum filler text.
+	 * @link https://blog.prototypr.io/why-testing-with-real-content-is-better-than-lorem-ipsum-c7c79586ee72
 	 */
 	public function Help() {
 		global $g_obj_mci_footnotes;
@@ -1320,19 +1327,19 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			$l_arr_footnote_ending_tag   = $this->load_setting( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 		$l_str_example = 'Hello' . $l_arr_footnote_starting_tag['value'] .
-											'Lorem ipsum dolor sit amet, consetetur sadipscing ' .
-											'elitr, sed diam nonumy eirmod tempor invidunt ut ' .
-											'labore et dolore magna aliquyam erat, sed diam ' .
-											'voluptua. At vero eos et accusam et justo duo dolores ' .
-											'et ea rebum. Stet clita kasd gubergren, no sea ' .
-											'takimata sanctus est Lorem ipsum dolor sit amet. ' .
-											'Lorem ipsum dolor sit amet, consetetur sadipscing ' .
-											'elitr, sed diam nonumy eirmod tempor invidunt ut ' .
-											'labore et dolore magna aliquyam erat, sed diam ' .
-											'voluptua. At vero eos et accusam et justo duo ' .
-											'dolores et ea rebum. Stet clita kasd gubergren, no ' .
-											'sea takimata sanctus est Lorem ipsum dolor sit amet.' .
-											$l_arr_footnote_ending_tag['value'] . ' World!';
+		'Sed ut perspiciatis, unde omnis iste natus error ' .
+		'sit voluptatem accusantium doloremque laudantium, ' .
+		'totam rem aperiam eaque ipsa, quae ab illo ' .
+		'inventore veritatis et quasi architecto beatae ' .
+		'vitae dicta sunt, explicabo. Nemo enim ipsam ' .
+		'voluptatem, quia voluptas sit, aspernatur aut ' .
+		'odit aut fugit, sed quia consequuntur magni ' .
+		'dolores eos, qui ratione voluptatem sequi nesciunt, ' .
+		'neque porro quisquam est, qui dolorem ipsum, quia ' .
+		'dolor sit amet, consectetur, adipisci velit, sed ' .
+		'quia non numquam eius modi tempora incidunt, ut ' .
+		'labore et dolore magnam aliquam quaerat voluptatem.' .
+		$l_arr_footnote_ending_tag['value'] . ' World!';
 
 		// Load template file.
 		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'how-to-help' );
@@ -1346,12 +1353,27 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'example-code'   => $l_str_example,
 				'example-string' => '<br/>' . __( 'will be displayed as:', 'footnotes' ),
 				'example'        => $g_obj_mci_footnotes->a_obj_task->exec( $l_str_example, true ),
-				// Translators: 1: <a>; 2: </a>.
-				'information'    => sprintf( __( 'For further information please check out our %1$ssupport forum%2$s on WordPress.org.', 'footnotes' ), '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
+				// Translators: %1$s, %2$s: anchor element with hyperlink to the Support Forum.
+				'information'    => sprintf( __( 'For further information please check out our %1$sSupport Forum%2$s on WordPress.org.', 'footnotes' ), '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
 			)
 		);
-		// Call wp_head function to get the Styling of the mouse-over box.
-		$g_obj_mci_footnotes->a_obj_task->wp_head();
+
+		/**
+		 * Call footnotes_output_head function to get the Styling of the mouse-over box.
+		 *
+		 * - Bugfix: Dashboard: debug the 'Quick start guide' tab, thanks to @rumperuu bug report.
+		 *
+		 * @reporter @rumperuu
+		 * @link https://github.com/markcheret/footnotes/issues/71
+		 *
+		 * @since 2.7.0
+		 * The name of the callback function ought to be distinct from
+		 * the name of the filtered function.
+		 * When this callback function was renamed, this call went unnoticed.
+		 * @see class/task.php
+		 */
+		$g_obj_mci_footnotes->a_obj_task->footnotes_output_head();
+
 		// Display template with replaced placeholders.
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $l_obj_template->get_content();

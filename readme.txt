@@ -4,9 +4,9 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 7.0
-Package Version: 2.6.6
-Version: 2.6.6
-Stable Tag: 2.6.6
+Package Version: 2.7.0
+Version: 2.7.0
+Stable Tag: 2.7.0
 CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -79,6 +79,11 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 7. Here you can see the **footnotes** Plugin at work. Isn't that plain beautiful?
 
 == Changelog ==
+
+= 2.7.0 =
+- Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
+- Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
+- Bugfix: Dashboard: debug the 'Quick start guide' tab, thanks to @rumperuu bug report.
 
 = 2.6.6 =
 - Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness @rkupadhya @offpeakdesign bug reports.

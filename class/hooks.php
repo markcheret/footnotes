@@ -6,8 +6,6 @@
  * @package footnotes
  * @since 1.5.0
  * @date 12.09.14 10:56
- *
- * @since 2.2.0  (TBD)  2020-12-12T1223+0100
  */
 
 /**
@@ -52,6 +50,7 @@ class MCI_Footnotes_Hooks {
 	 * @since 1.5.0
 	 *
 	 * @since 2.2.0 this function is not called any longer when deleting the plugin.
+	 * @date 2020-12-12T1223+0100
 	 * Note: clear_all() didn’t actually work.
 	 * @see class/settings.php
 	 */

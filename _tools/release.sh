@@ -234,10 +234,11 @@ head tmp/trunk/readme.txt
 echo ""
 read -p "Is this all correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 
-# Step 7(d): Push to remote `trunk/` (provided the flag is set)
+# Step 7(d): Push to remote `trunk/` (provided the flag is set) and GH branch/
 
 if [[ $1 == "-c" ]]; then
 	svn ci -m "$CHANGELOG_MESSAGE"
+	svn copy trunk branches/gh-automation
 else echo "- Commit flag not set, skipping commit step."
 fi
 

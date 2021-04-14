@@ -339,7 +339,7 @@ class MCI_Footnotes {
 		 * The Boolean may be set at the bottom of the plugin’s main PHP file.
 		 * @see footnotes.php
 		 */
-		if ( C_BOOL_CSS_PRODUCTION_MODE ) {
+		if ( PRODUCTION_ENV ) {
 
 			/**
 			 * Enqueues a minified united external stylesheet in production.
@@ -416,11 +416,7 @@ class MCI_Footnotes {
 					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
-				filemtime(
-					plugin_dir_path(
-						dirname( __FILE__ )
-					) . 'css/footnotes-' . $l_str_tooltip_mode_short . 'ttbrpl' . $l_str_layout_mode . '.min.css'
-				),
+				C_STR_PACKAGE_VERSION,
 				'all'
 			);
 
@@ -440,7 +436,7 @@ class MCI_Footnotes {
 				array(),
 				filemtime(
 					plugin_dir_path(
-						dirname( __FILE__ )
+						dirname( __FILE__, 1 )
 					) . 'css/dev-common.css'
 				)
 			);
@@ -450,7 +446,7 @@ class MCI_Footnotes {
 				array(),
 				filemtime(
 					plugin_dir_path(
-						dirname( __FILE__ )
+						dirname( __FILE__, 1 )
 					) . 'css/dev-tooltips.css'
 				)
 			);
@@ -462,7 +458,7 @@ class MCI_Footnotes {
 					array(),
 					filemtime(
 						plugin_dir_path(
-							dirname( __FILE__ )
+							dirname( __FILE__, 1 )
 						) . 'css/dev-amp-tooltips.css'
 					)
 				);
@@ -475,7 +471,7 @@ class MCI_Footnotes {
 					array(),
 					filemtime(
 						plugin_dir_path(
-							dirname( __FILE__ )
+							dirname( __FILE__, 1 )
 						) . 'css/dev-tooltips-alternative.css'
 					)
 				);
@@ -491,7 +487,7 @@ class MCI_Footnotes {
 					array(),
 					filemtime(
 						plugin_dir_path(
-							dirname( __FILE__ )
+							dirname( __FILE__, 1 )
 						) . 'css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					'all'

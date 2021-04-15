@@ -137,4 +137,3 @@ This project is licensed under the [GNU GPL v3][gpl-v3].
 [footnotes-docs]: https://markcheret.github.io/footnotes/
 [gpl-v3]: https://www.gnu.org/licenses/gpl-3.0.en.html
 [mcheret]: mailto:mark@cheret.de
-

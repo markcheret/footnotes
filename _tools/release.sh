@@ -64,7 +64,7 @@ echo "- Checking versions..."
 
 STABLE_TAG="$(grep "Stable Tag:" readme.txt)"
 ROOT_HEADER_VERSION="$(grep " Version:" footnotes.php | grep -Po " Version: \d+\.\d+(\.\d+)?[a-z]?$")"
-JS_VERSION="$(grep "version :" js/wysiwyg-editor.js)"
+JS_VERSION="$(grep "version:" js/wysiwyg-editor.js)"
 
 # Step 3(b): Check that all version declarations exists
 

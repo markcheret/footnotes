@@ -6,7 +6,7 @@
  * @package footnotes
  * @since 1.5.0
  *
- * @since 2.2.0  (TBD)
+ * @since 2.2.0
  */
 
 /**

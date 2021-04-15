@@ -264,11 +264,11 @@ class MCI_Footnotes {
 				 * Add versioning.
 				 *
 				 * @since 2.1.2
-							 *
+				 *
 				 * No '-js' in the handle, is appended automatically.
 				 *
 				 * Deferring to the footer breaks jQuery tooltip display.
-							 */
+				 */
 				wp_enqueue_script(
 					'mci-footnotes-jquery-tools',
 					plugins_url( 'footnotes/js/jquery.tools.min.js' ),
@@ -324,7 +324,7 @@ class MCI_Footnotes {
 		 * Enables enqueuing a new-scheme stylesheet.
 		 *
 		 * @since 2.5.5
-			 *
+		 *
 		 * Enables enqueuing the formatted individual stylesheets if false.
 		 * WARNING: This facility is designed for development and must NOT be used in production.
 		 *
@@ -340,7 +340,7 @@ class MCI_Footnotes {
 			 * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
 			 *
 			 * @since 2.5.5
-					 *
+			 *
 			 * @contributor @docteurfitness
 			 * @link https://wordpress.org/support/topic/simply-speed-optimisation/
 			 *
@@ -351,10 +351,10 @@ class MCI_Footnotes {
 			 * @see class/dashboard/layout.php
 			 *
 			 * @since 2.0.3  add versioning of public.css for cache busting.
-					 * Plugin version number is needed for busting browser caches after each plugin update.
+			 * Plugin version number is needed for busting browser caches after each plugin update.
 			 *
 			 * @since 2.1.4  automate passing version number for cache busting.
-					 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
+			 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
 			 *
 			 * The media scope argument 'all' is the default.
 			 * No need to use '-css' in the handle, as this is appended automatically.
@@ -415,7 +415,7 @@ class MCI_Footnotes {
 			 * Enqueues external stylesheets, ONLY in development now.
 			 *
 			 * @since 2.1.4  optionally enqueue an extra stylesheet.
-					 *
+		   *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
 			wp_enqueue_style(

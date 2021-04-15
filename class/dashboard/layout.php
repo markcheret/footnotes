@@ -198,7 +198,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
 		 *
 		 * @since 2.5.5
-			 *
+		 *
 		 * @reporter @docteurfitness
 		 * @link https://wordpress.org/support/topic/simply-speed-optimisation/
 		 *
@@ -528,8 +528,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @param bool   $p_bool_deci  true if 0.1 steps and floating to string, false if integer (default).
 	 * @return string
 	 *
-	 * Edited:
-	 * @since 2.1.4  step argument and number_format() to allow decimals..
+	 * @since 2.1.4  step argument and number_format() to allow decimals.
 	 */
 	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {
 		// Collect data for given settings field.

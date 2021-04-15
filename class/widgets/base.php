@@ -5,7 +5,6 @@
  * @filesource
  * @package footnotes
  * @since 1.5.0
- * @date 14.09.14 14:30
  *
  * @since 1.6.4  Update: replace deprecated function WP_Widget() with recommended __construct(), thanks to @dartiss code contribution.
  */

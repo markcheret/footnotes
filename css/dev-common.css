@@ -276,12 +276,9 @@ Classes:
 	box-sizing: border-box;
 }
 
-.collapsed {
+.footnotes_reference_container .collapsed,
+.footnote_reference_container_collapse_button.collapsed {
 	display: none;
-}
-
-.unfolded {
-	display: inline;
 }
 
 /**

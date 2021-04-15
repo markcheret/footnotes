@@ -1,5 +1,9 @@
 {
   "scripts": {
+    "format": "npm run format:js",
+    "format:fix": "npm run format:js:fix",
+    "format:js": "prettier --config .prettierrc './js/*.js'",
+    "format:js:fix": "npm run format:js -- --write",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:fix": "npm run lint:js:fix && npm run lint:css:fix",
     "lint:js": "eslint \"./js/*.js\"",

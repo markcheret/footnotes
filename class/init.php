@@ -84,7 +84,7 @@ class MCI_Footnotes {
 	 * @since 2.6.0  (release)
 	 *
 	 * @contributor @milindmore22
-	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
 	 *
 	 * @contributor @westonruter
 	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
@@ -354,7 +354,7 @@ class MCI_Footnotes {
 			 * Plugin version number is needed for busting browser caches after each plugin update.
 			 *
 			 * @since 2.1.4  automate passing version number for cache busting.
-			 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
+			 * The constant C_STR_FOOTNOTES_VERSION is defined at start of footnotes.php.
 			 *
 			 * The media scope argument 'all' is the default.
 			 * No need to use '-css' in the handle, as this is appended automatically.
@@ -405,7 +405,7 @@ class MCI_Footnotes {
 					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
-				C_STR_PACKAGE_VERSION,
+				C_STR_FOOTNOTES_VERSION,
 				'all'
 			);
 

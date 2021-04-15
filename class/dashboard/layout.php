@@ -209,16 +209,15 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * automated update of version number for cache busting.
 		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
 		 */
-		wp_register_style(
-			'mci-footnotes-admin',
-			plugins_url( 'footnotes/css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css' ),
-			array(),
-			( PRODUCTION_ENV ) ? C_STR_PACKAGE_VERSION : filemtime(
-				plugin_dir_path(
-					dirname( __FILE__, 2 )
-				) . 'css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css'
-			)
-		);
+		if ( true === PRODUCTION_ENV ) {
+
+			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_FOOTNOTES_VERSION );
+
+		} else {
+
+			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.css' ), array(), C_STR_FOOTNOTES_VERSION );
+
+		}
 
 		wp_enqueue_style( 'mci-footnotes-admin' );
 	}
@@ -336,9 +335,24 @@ abstract class MCI_Footnotes_Layout_Engine {
 	/**
 	 * Loads specific setting and returns an array with the keys [id, name, value].
 	 *
-	 * @since  1.5.0
+	 * @since 1.5.0
 	 * @param string $p_str_setting_key_name Settings Array key name.
 	 * @return array Contains Settings ID, Settings Name and Settings Value.
+	 *
+	 * @since 2.5.11 Remove escapement function.
+	 * When refactoring the codebase after 2.5.8, all and every output was escaped.
+	 * After noticing that the plugin was broken, all escapement functions were removed.
+	 * @link https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5
+	 * @link https://github.com/markcheret/footnotes/pull/50#issuecomment-787624123
+	 * In that process, this instance of esc_attr() was removed too, so the plugin was
+	 * broken again.
+	 * @link https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5#diff-a8ed6e859c32a18fc10bbbad3b4dd8ce7f43f2378d29471c7638e314ab30f1bdL349-L354
+	 *
+	 * @since 2.5.15 To fix it, the data was escaped in add_select_box() instead.
+	 * @since 2.6.1  Restore esc_attr() in load_setting().
+	 * @see add_select_box()
+	 * This is the only instance of esc_|kses|sanitize in the pre-2.5.11 codebase.
+	 * Removing this did not fix the quotation mark backslash escapement bug.
 	 */
 	protected function load_setting( $p_str_setting_key_name ) {
 		// Get current section.
@@ -346,7 +360,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		$p_arr_return          = array();
 		$p_arr_return['id']    = sprintf( '%s', $p_str_setting_key_name );
 		$p_arr_return['name']  = sprintf( '%s', $p_str_setting_key_name );
-		$p_arr_return['value'] = MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name );
+		$p_arr_return['value'] = esc_attr( MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name ) );
 		return $p_arr_return;
 	}
 
@@ -457,20 +471,31 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * Returns the html tag for a select box.
 	 *
 	 * @since  1.5.0
-	 * @param string $p_str_setting_name Name of the Settings key to pre select the current value.
-	 * @param array  $p_arr_options Possible options to be selected.
+	 *
+	 * - Bugfix: Dashboard: Referrers and tooltips: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
+	 *
+	 * @reporter @lolzim
+	 *
+	 * @since 2.5.13
+	 * @param string $p_str_setting_name  Name of the Settings key to pre select the current value.
+	 * @param array  $p_arr_options       Possible options to be selected.
 	 * @return string
+	 *
+	 * @since 2.5.15 Bugfix: Dashboard: General settings: Footnote start and end short codes: debug select box for shortcodes with pointy brackets.
+	 * @since 2.6.1  Restore esc_attr() in load_setting(), remove htmlspecialchars() here.
 	 */
 	protected function add_select_box( $p_str_setting_name, $p_arr_options ) {
 		// Collect data for given settings field.
 		$l_arr_data    = $this->load_setting( $p_str_setting_name );
 		$l_str_options = '';
 
+		// Loop through all array keys.
 		foreach ( $p_arr_options as $l_str_value => $l_str_caption ) {
 			$l_str_options .= sprintf(
 				'<option value="%s" %s>%s</option>',
 				$l_str_value,
-				$l_str_value === $l_arr_data['value'] ? 'selected' : '',
+				// Only check for equality, not identity, WRT backlink symbol arrows.
+				$l_str_value == $l_arr_data['value'] ? 'selected' : '',
 				$l_str_caption
 			);
 		}
@@ -528,7 +553,8 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @param bool   $p_bool_deci  true if 0.1 steps and floating to string, false if integer (default).
 	 * @return string
 	 *
-	 * @since 2.1.4  step argument and number_format() to allow decimals.
+	 * Edited:
+	 * @since 2.1.4  step argument and number_format() to allow decimals  ..
 	 */
 	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {
 		// Collect data for given settings field.

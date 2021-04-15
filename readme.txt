@@ -3,8 +3,8 @@ Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, mili
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
 Tested up to: 5.7
-Requires PHP: 5.6
-Stable Tag: 2.6.5
+Requires PHP: 7.0
+Stable Tag: 2.7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,9 +77,13 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 == Changelog ==
 
+= 2.7.0 =
+- Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
+- Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
+- Bugfix: Dashboard: debug the 'Quick start guide' tab, thanks to @rumperuu bug report.
+
 = 2.6.6 =
-- Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness bug report.
-- Bugfix: Display: fix characters that had been mis-encoded.
+- Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness @rkupadhya @offpeakdesign bug reports.
 
 = 2.6.5 =
 - Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.

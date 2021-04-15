@@ -120,16 +120,18 @@ class MCI_Footnotes_Settings {
 	/**
 	 * Settings container key to look for footnotes in post excerpts.
 	 *
-	 * - Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
-	 *
-	 * @reporter @nikelaos
-	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
-	 *
 	 * @since 1.5.0
 	 * @since 2.6.2  Debug No option.
 	 * @since 2.6.3  Enable by default after debugging both Yes and No options.
+	 *
+	 * - Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
+	 *
+	 * @reporter @mfessler
+	 * @link https://github.com/markcheret/footnotes/issues/65
+	 *
+	 * @since 2.7.0
 	 * @see C_STR_EXPERT_LOOKUP_THE_EXCERPT
-	 * @var str
+	 * @var str  Default 'manual'.
 	 */
 	const C_STR_FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
 
@@ -1111,7 +1113,7 @@ class MCI_Footnotes_Settings {
 	 * - Adding: Reference container: get expanding and collapsing to work also in AMP compatibility mode, thanks to @westonruter code contribution.
 	 *
 	 * @contributor @milindmore22
-	 * @link @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
+	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785306933
 	 *
 	 * @contributor @westonruter
 	 * @link https://github.com/ampproject/amp-wp/issues/5913#issuecomment-785419655
@@ -1181,9 +1183,23 @@ class MCI_Footnotes_Settings {
 	 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14214720
 	 *
 	 * @since 2.5.12
+	 * @var str
 	 * Native smooth scrolling only works in recent browsers.
 	 */
 	const C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING = 'footnotes_inputfield_css_smooth_scrolling';
+
+	/**
+	 * Settings container key for the footnote section shortcode.
+	 *
+	 * - Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
+	 *
+	 * @reporter @grflukas
+	 * @link https://wordpress.org/support/topic/multiple-reference-containers-in-single-post/
+	 *
+	 * @since 2.7.0
+	 * @var str
+	 */
+	const C_STR_FOOTNOTE_SECTION_SHORTCODE = 'footnotes_inputfield_section_shortcode';
 
 
 	/**
@@ -1259,44 +1275,45 @@ class MCI_Footnotes_Settings {
 			self::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT    => 'Alt+ ←',
 
 			// Reference container.
-			self::C_STR_REFERENCE_CONTAINER_NAME           => 'References',
-			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT  => 'p',
-			self::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_COLLAPSE       => 'no',
-			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE => 'jquery',
-			self::C_STR_REFERENCE_CONTAINER_POSITION       => 'post_end',
-			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE => '[[references]]',
-			self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE => 'yes',
-			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN     => 24,
-			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN  => 0,
-			self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT      => 'none',
-			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED          => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
-			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
-			self::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE => 'no',
-			self::C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE => 'no',
+			self::C_STR_REFERENCE_CONTAINER_NAME                      => 'References',
+			self::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT             => 'p',
+			self::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER       => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_COLLAPSE                  => 'no',
+			self::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE     => 'jquery',
+			self::C_STR_REFERENCE_CONTAINER_POSITION                  => 'post_end',
+			self::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE        => '[[references]]',
+			self::C_STR_FOOTNOTE_SECTION_SHORTCODE                    => '[[/footnotesection]]',
+			self::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE         => 'yes',
+			self::C_INT_REFERENCE_CONTAINER_TOP_MARGIN                => 24,
+			self::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN             => 0,
+			self::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT                 => 'none',
+			self::C_STR_FOOTNOTE_URL_WRAP_ENABLED                     => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE    => 'yes',
+			self::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH    => 'no',
+			self::C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE     => 'no',
+			self::C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE        => 'no',
 
-			self::C_STR_BACKLINKS_SEPARATOR_ENABLED        => 'yes',
-			self::C_STR_BACKLINKS_SEPARATOR_OPTION         => 'comma',
-			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM         => '',
+			self::C_STR_BACKLINKS_SEPARATOR_ENABLED                   => 'yes',
+			self::C_STR_BACKLINKS_SEPARATOR_OPTION                    => 'comma',
+			self::C_STR_BACKLINKS_SEPARATOR_CUSTOM                    => '',
 
-			self::C_STR_BACKLINKS_TERMINATOR_ENABLED       => 'no',
-			self::C_STR_BACKLINKS_TERMINATOR_OPTION        => 'full_stop',
-			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM        => '',
+			self::C_STR_BACKLINKS_TERMINATOR_ENABLED                  => 'no',
+			self::C_STR_BACKLINKS_TERMINATOR_OPTION                   => 'full_stop',
+			self::C_STR_BACKLINKS_TERMINATOR_CUSTOM                   => '',
 
-			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED     => 'no',
-			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR      => '50',
-			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT        => 'px',
+			self::C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED                => 'no',
+			self::C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR                 => '50',
+			self::C_STR_BACKLINKS_COLUMN_WIDTH_UNIT                   => 'px',
 
-			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'no',
-			self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
-			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
+			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED            => 'no',
+			self::C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR             => '140',
+			self::C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT               => 'px',
 
-			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED      => 'no',
-			self::C_STR_LINK_ELEMENT_ENABLED               => 'yes',
+			self::C_STR_BACKLINKS_LINE_BREAKS_ENABLED                 => 'no',
+			self::C_STR_LINK_ELEMENT_ENABLED                          => 'yes',
 
 			// Footnotes in excerpts.
-			self::C_STR_FOOTNOTES_IN_EXCERPT               => 'yes',
+			self::C_STR_FOOTNOTES_IN_EXCERPT                          => 'manual',
 
 			// Footnotes love.
 			self::C_STR_FOOTNOTES_LOVE                     => 'no',

@@ -477,13 +477,22 @@ class MCI_Footnotes_Task {
 			add_filter( 'pum_popup_content', array( $this, 'footnotes_in_content' ), $l_int_the_content_priority );
 		}
 
+		/**
+		 * Adds a filter to the excerpt hook.
+		 *
+		 * @since 1.5.0  The hook 'get_the_excerpt' is filtered too.
+		 * @since 1.5.5  The hook 'get_the_excerpt' is removed but not documented in changelog or docblock.
+		 * @since 2.6.2  The hook 'get_the_excerpt' is readded when attempting to debug excerpt handling.
+		 * @since 2.6.6  The hook 'get_the_excerpt' is removed again because it seems to cause issues in some themes.
+		 */
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_EXCERPT ) ) ) {
 			add_filter( 'the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
-			add_filter( 'get_the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
 		}
+
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TITLE ) ) ) {
 			add_filter( 'widget_title', array( $this, 'footnotes_in_widget_title' ), $l_int_widget_title_priority );
 		}
+
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TEXT ) ) ) {
 			add_filter( 'widget_text', array( $this, 'footnotes_in_widget_text' ), $l_int_widget_text_priority );
 		}
@@ -1076,32 +1085,82 @@ class MCI_Footnotes_Task {
 	 * Replaces footnotes in the content of the current page/post.
 	 *
 	 * @since 1.5.0
+	 *
+	 * - Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
+	 *
+	 * @reporter @grflukas
+	 * @link https://wordpress.org/support/topic/multiple-reference-containers-in-single-post/
+	 *
+	 * @since 2.7.0
 	 * @param string $p_str_content  Page/Post content.
 	 * @return string $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_content( $p_str_content ) {
 
-		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
-		// Appends the reference container if set to "post_end".
-		return $this->exec( $p_str_content, 'post_end' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) );
-		// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
+		$l_str_ref_container_position = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION );
+		$l_str_footnote_section_shortcode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE );
+		$l_int_footnote_section_shortcode_length = strlen( $l_str_footnote_section_shortcode );
+
+		if ( strpos( $p_str_content, $l_str_footnote_section_shortcode ) === false ) {
+
+			// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
+			// Appends the reference container if set to "post_end".
+			return $this->exec( $p_str_content, 'post_end' === $l_str_ref_container_position );
+			// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
+
+		} else {
+
+			$l_str_rest_content = $p_str_content;
+			$l_arr_sections_raw = array();
+			$l_arr_sections_processed = array();
+
+			do {
+				$l_int_section_end = strpos( $l_str_rest_content, $l_str_footnote_section_shortcode );
+				$l_arr_sections_raw[] = substr( $l_str_rest_content, 0, $l_int_section_end );
+				$l_str_rest_content = substr( $l_str_rest_content, $l_int_section_end + $l_int_footnote_section_shortcode_length );
+			} while ( strpos( $l_str_rest_content, $l_str_footnote_section_shortcode ) !== false );
+			$l_arr_sections_raw[] = $l_str_rest_content;
+
+			foreach ( $l_arr_sections_raw as $l_str_section ) {
+				$l_arr_sections_processed[] = self::exec( $l_str_section, true );
+			}
+
+			$p_str_content = implode( $l_arr_sections_processed );
+			return $p_str_content;
+
+		}
 	}
 
 	/**
-	 * Replaces existing excerpt with a new one generated on the basis of the post.
+	 * Processes existing excerpt or replaces it with a new one generated on the basis of the post.
 	 *
 	 * @since 1.5.0
 	 * @param string $p_str_excerpt  Excerpt content.
-	 * @return string $p_str_excerpt  Excerpt as-is.
-	 * The input was already the processed excerpt, no more footnotes to search.
+	 * @return string $p_str_excerpt  Processed or new excerpt.
 	 * @since 2.6.2  Debug No option.
 	 * @since 2.6.3  Debug Yes option, the setting becomes fully effective.
+	 *
+	 * - Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
+	 *
+	 * @reporter @mfessler
+	 * @link https://github.com/markcheret/footnotes/issues/65
+	 *
+	 * @since 2.7.0
+	 * The input was already the processed excerpt, no more footnotes to search.
+	 * But issue #65 brought up that manual excerpts can include processable footnotes.
+	 * Default 'manual' is fallback and is backward compatible with the initial setup.
 	 */
 	public function footnotes_in_excerpt( $p_str_excerpt ) {
-		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT ) ) ) {
+		$l_str_excerpt_mode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT );
+
+		if ( 'yes' === $l_str_excerpt_mode ) {
 			return $this->generate_excerpt_with_footnotes( $p_str_excerpt );
-		} else {
+
+		} elseif ( 'no' === $l_str_excerpt_mode ) {
 			return $this->generate_excerpt( $p_str_excerpt );
+
+		} else {
+			return $this->exec( $p_str_excerpt );
 		}
 	}
 
@@ -2117,7 +2176,8 @@ class MCI_Footnotes_Task {
 			}
 
 			/**
-			 * Fixes a footnotes numbering bug (happening under de facto rare circumstances).
+			 * Fixes a partial footnotes process outage happening when tooltips are truncated or disabled.
+			 * Fixed a footnotes numbering bug happening under de facto rare circumstances.
 			 *
 			 * - Bugfix: Fixed occasional bug where footnote ordering could be out of sequence
 			 *
@@ -2143,12 +2203,30 @@ class MCI_Footnotes_Task {
 			 * footnote and the length of the last footnote replace text.
 			 * A bug disturbing the order of the footnotes depending on the text before the first
 			 * footnote, the length of the first footnote and the length of the templates for the
-			 * footnote and the tooltip. Moreover, it was causing non-trivial process garbage.
+			 * footnote and the tooltip.
+			 * Deleting both lines instead, to resume the search at the position where it left off,
+			 * would have prevented also the following bug.
 			 *
-			 * @since 2.6.6
-			 * Fix bug that caused some footnotes to not be processed.
+			 * - Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness @rkupadhya @offpeakdesign bug reports.
+			 *
 			 * @reporter @docteurfitness
 			 * @link https://wordpress.org/support/topic/problem-since-footnotes-2-5-14/
+			 *
+			 * @reporter @rkupadhya
+			 * @link https://wordpress.org/support/topic/adjacent-footnotes-not-working-sometimes/
+			 *
+			 * @reporter @offpeakdesign
+			 * @link https://wordpress.org/support/topic/character-limit-bug/
+			 *
+			 * @since 2.6.6
+			 * The origin of the bug was present since the beginning (v1.0.0).
+			 * For v1.3.2 the wrong code was refactored but remained wrong,
+			 * and was unaffected by the v1.5.0 refactoring.
+			 * The reason why the numbering disorder reverted to a partial process outage
+			 * since 2.5.14 is that with this version, the plugin stopped processing the
+			 * content multiple times, and started unifying the shortcodes instead, to fix
+			 * the numbering disorder affecting delimiter shortcodes with pointy brackets
+			 * and mixed escapement schemas.
 			 */
 			// Add offset to the new starting position.
 			$l_int_pos_start += strlen( $l_str_footnote_replace_text );

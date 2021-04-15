@@ -1,5 +1,4 @@
 customized-documentation-schema.txt
-@lastmodified 2021-03-05T0501+0100
 
 
 Plugin Footnotes for WordPress, v2.5.4 and later
@@ -37,8 +36,6 @@ PHPDOC tag:      Role:                 Acknowledgment in the changelog:
 
 PHPDOC tags & custom tags
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-2021-01-24T2310+0100
-2021-02-08T0415+0100
 
 ▲ Source for standard tags:
 https://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_tags.pkg.html

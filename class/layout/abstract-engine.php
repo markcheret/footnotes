@@ -6,10 +6,10 @@
  * @package footnotes
  * @since 1.5.0
  *
- * @since 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
- * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
- * @since 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
- * @since 2.1.6  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
+ * @since 2.1.2  add versioning of settings.css for cache busting
+ * @since 2.1.4  automate passing version number for cache busting
+ * @since 2.1.4  optional step argument and support for floating in numbox
+ * @since 2.1.6  fix punctuation-related localization issue in dashboard labels
  *
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  */
@@ -554,7 +554,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @return string
 	 *
 	 * Edited:
-	 * @since 2.1.4  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-12T1110+0100
+	 * @since 2.1.4  step argument and number_format() to allow decimals..
 	 */
 	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {
 		// Collect data for given settings field.

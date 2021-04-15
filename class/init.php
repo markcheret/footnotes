@@ -10,10 +10,10 @@
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
  * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
  *
- * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
- * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
- * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
- * @since 2.1.4  optionally enqueue an extra stylesheet  2020-12-04T2231+0100
+ * @since 2.0.3  add versioning of public.css for cache busting
+ * @since 2.0.4  add jQuery UI from WordPress
+ * @since 2.1.4  automate passing version number for cache busting
+ * @since 2.1.4  optionally enqueue an extra stylesheet
  *
  * @since 2.5.5  Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
@@ -206,10 +206,10 @@ class MCI_Footnotes {
 	 * @since 1.5.0
 	 *
 	 * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
-	 * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
-	 * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
-	 * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
-	 * @since 2.1.4  optionally enqueue an extra stylesheet  2020-12-04T2231+0100
+	 * @since 2.0.3  add versioning of public.css for cache busting
+	 * @since 2.0.4  add jQuery UI from WordPress
+	 * @since 2.1.4  automate passing version number for cache busting
+	 * @since 2.1.4  optionally enqueue an extra stylesheet
 	 */
 	public function register_public() {
 

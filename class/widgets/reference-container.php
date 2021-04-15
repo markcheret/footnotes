@@ -40,7 +40,7 @@ class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base
 	 * @since 1.5.0
 	 * @return string
 	 *
-	 * Edit: curly quotes 2.2.0  2020-12-12T2130+0100
+	 * Edit: curly quotes 2.2.0
 	 */
 	protected function get_description() {
 		return __( 'The widget defines the position of the reference container if set to “widget area”.', 'footnotes' );
@@ -53,7 +53,7 @@ class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base
 	 * @param mixed $instance The instance of the widget.
 	 * @return void
 	 *
-	 * Edit: curly quotes 2.2.0  2020-12-12T2130+0100
+	 * Edit: curly quotes 2.2.0
 	 */
 	public function form( $instance ) {
 		echo __( 'The widget defines the position of the reference container if set to “widget area”.', 'footnotes' );

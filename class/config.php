@@ -6,7 +6,7 @@
  * @package footnotes
  * @since 1.5.0
  *
- * @since 2.0.4  add Public Plugin name for dashboard heading   2020-11-01T0452+0100
+ * @since 2.0.4  add Public Plugin name for dashboard heading
  */
 
 /**

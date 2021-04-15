@@ -5,37 +5,37 @@
  * @filesource
  * @since 1.5.0
  *
- * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
- * @since 2.1.0  read-on button label  2020-11-08T2148+0100
- * @since 2.1.1  options for ref container and alternative tooltips  2020-11-16T2152+0100
+ * @since 2.0.4  restore arrow settings
+ * @since 2.1.0  read-on button label
+ * @since 2.1.1  options for ref container and alternative tooltips
  * @since 2.1.1  Referrers: superscript becomes optional, thanks to @cwbayer bug report
  * @since 2.1.2  priority level settings for all other hooks, thanks to @nikelaos
  * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705
- * @since 2.1.4  settings for ref container, tooltips and scrolling  2020-12-03T0950+0100
- * @since 2.1.6  slight UI reordering   2020-12-09T1114+0100
- * @since 2.1.6  option to disable URL line wrapping   2020-12-09T1604+0100
- * @since 2.1.6  remove expert mode setting as outdated   2020-12-09T2105+0100
+ * @since 2.1.4  settings for ref container, tooltips and scrolling
+ * @since 2.1.6  slight UI reordering
+ * @since 2.1.6  option to disable URL line wrapping
+ * @since 2.1.6  remove expert mode setting as outdated
  * @since 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos
  * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
- * @since 2.2.0  add options, redistribute, update strings   2020-12-12T2135+0100
- * @since 2.2.0  shortcode for reference container custom position   2020-12-13T2055+0100
- * @since 2.2.2  Custom CSS settings container migration  2020-12-15T0709+0100
- * @since 2.2.4  move backlink symbol selection under previous tab  2020-12-16T1244+0100
- * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2021+0100
+ * @since 2.2.0  add options, redistribute, update strings
+ * @since 2.2.0  shortcode for reference container custom position
+ * @since 2.2.2  Custom CSS settings container migration
+ * @since 2.2.4  move backlink symbol selection under previous tab
+ * @since 2.2.5  support for Ibid. notation thanks to @meglio
  * @link https://wordpress.org/support/topic/add-support-for-ibid-notation/
- * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+ * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer
  * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
- * @since 2.2.10 reference container row border option, thanks to @noobishh   2020-12-25T2316+0100
+ * @since 2.2.10 reference container row border option, thanks to @noobishh
  * @link https://wordpress.org/support/topic/borders-25/
  * @since 2.3.0  Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
  * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
- * @since 2.3.0  rename Priority level tab as Scope and priority   2020-12-26T2222+0100
- * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'  2020-12-27T1243+0100
- * @since 2.3.0  mention op. cit. abbreviation   2020-12-28T2342+0100
- * @since 2.3.0  add settings for hard links, thanks to @psykonevro and @martinneumannat  2020-12-29T1322+0100
+ * @since 2.3.0  rename Priority level tab as Scope and priority
+ * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'
+ * @since 2.3.0  mention op. cit. abbreviation
+ * @since 2.3.0  add settings for hard links, thanks to @psykonevro and @martinneumannat
  * @link https://wordpress.org/support/topic/making-it-amp-compatible/
  * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
- * @since 2.4.0  footnote shortcode syntax validation  2021-01-01T0624+0100
+ * @since 2.4.0  footnote shortcode syntax validation
  * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
  * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
  */
@@ -199,8 +199,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * @since 1.5.0
 	 *
 	 * Completed:
-	 * @since 2.1.4: layout and typography options   2020-11-30T0548+0100
-	 * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer   2020-12-18T1447+0100
+	 * @since 2.1.4: layout and typography options
+	 * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer
 	 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
 	 */
 	public function reference_container() {
@@ -371,14 +371,14 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 *
 	 * @since 1.5.0
 	 *
-	 * Edited heading  2020-12-12T1412+0100
-	 * @since 2.2.0  start/end short codes: more predefined options  2020-12-12T1412+0100
+	 * Edited heading
+	 * @since 2.2.0  start/end short codes: more predefined options
 	 * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
-	 * @since 2.2.0  3 boxes for clarity  2020-12-12T1422+0100
-	 * @since 2.2.5  support for Ibid. notation thanks to @meglio   2020-12-17T2019+0100
+	 * @since 2.2.0  3 boxes for clarity
+	 * @since 2.2.5  support for Ibid. notation thanks to @meglio
 	 * @link https://wordpress.org/support/topic/add-support-for-ibid-notation/
-	 * @since 2.4.0  added warning about Block Editor escapement disruption  2021-01-02T2324+0100
-	 * @since 2.4.0  removed the HTML comment tag option  2021-01-02T2325+0100
+	 * @since 2.4.0  added warning about Block Editor escapement disruption
+	 * @since 2.4.0  removed the HTML comment tag option
 	 * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
 	 * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
 	 */
@@ -615,8 +615,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * @since 1.5.0
 	 *
 	 * Edited:
-	 * @since 2.2.0  position-sensitive placeholders to support more locales   2020-12-11T0432+0100
-	 * @since 2.2.0  more options   2020-12-11T0432+0100
+	 * @since 2.2.0  position-sensitive placeholders to support more locales
+	 * @since 2.2.0  more options
 	 */
 	public function love() {
 		// Options for the acknowledgment display in the footer.
@@ -664,11 +664,11 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 *
 	 * @since 1.5.0
 	 *
-	 * Edited heading   2020-12-12T1453+0100
+	 * Edited heading
 	 * @since 2.1.1   more settings and notices, thanks to @nikelaos
 	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
 	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879
-	 * @since 2.2.0   dedicated to the excerpt setting and its notices   2020-12-12T1454+0100
+	 * @since 2.2.0   dedicated to the excerpt setting and its notices
 	 */
 	public function excerpts() {
 		// Options for Yes/No select box.
@@ -701,9 +701,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 *
 	 * @since 1.5.0
 	 *
-	 * Edited heading   2020-12-12T1513+0100
+	 * Edited heading
 	 * @since 2.1.1  option for superscript (optionally baseline referrers)
-	 * @since 2.2.0  option for link element moved here   2020-12-12T1514+0100
+	 * @since 2.2.0  option for link element moved here
 	 */
 	public function superscript() {
 		// Options for Yes/No select box.
@@ -1133,10 +1133,9 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * @since 2.1.6  drop localized notices for CSS classes as the number increased to 16
 	 *        list directly in the template, as CSS is in English anyway
 	 * @see templates/dashboard/customize-css.html
-	 *         2020-12-09T1113+0100
 	 *
-	 * @since 2.2.2  migrate Custom CSS to a dedicated tab   2020-12-15T0506+0100
-	 * @since 2.3.0  say 'copy-paste' instead of 'cut and paste' since cutting is not needed  2020-12-27T1257+0100
+	 * @since 2.2.2  migrate Custom CSS to a dedicated tab
+	 * @since 2.3.0  say 'copy-paste' instead of 'cut and paste' since cutting is not needed
 	 * @since 2.5.1  mention validity while visible, thanks to @rkupadhya bug report
 	 */
 	public function custom_css() {
@@ -1238,8 +1237,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * @since 1.5.5
 	 *
 	 * Edited:
-	 * @since 2.1.1  priority level setting for the_content  2020-11-16T2152+0100
-	 * @since 2.1.4  priority level settings for the other hooks   2020-11-19T1421+0100
+	 * @since 2.1.1  priority level setting for the_content
+	 * @since 2.1.4  priority level settings for the other hooks
 	 *
 	 * priority level was initially hard-coded default
 	 * shows "9223372036854775807" in the numbox
@@ -1247,8 +1246,8 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
 	 * define -1 as PHP_INT_MAX instead
 	 *
-	 * @since 2.2.9  removed the warning about the widget text hook  2020-12-25T0348+0100
-	 * @since 2.2.9  added guidance for the widget text hook  2020-12-25T0353+0100
+	 * @since 2.2.9  removed the warning about the widget text hook
+	 * @since 2.2.9  added guidance for the widget text hook
 	 */
 	public function lookup_hooks() {
 		// Load template file.

@@ -1205,7 +1205,7 @@ class MCI_Footnotes_Settings {
 	 * @var array
 	 *
 	 * Edited.
-	 * 2.2.2  added tab for Custom CSS  2020-12-15T0740+0100
+	 * 2.2.2  added tab for Custom CSS
 	 *
 	 * These are the storage container names, one per dashboard tab.
 	 */
@@ -1546,7 +1546,6 @@ class MCI_Footnotes_Settings {
 	 * @since 2.2.0 this function is not called any longer when deleting the plugin,
 	 * to protect user data against loss, since manually updating a plugin is safer
 	 * done by deleting and reinstalling (see the warning about database backup).
-	 * 2020-12-13T1353+0100
 	 */
 	public function clear_all() {
 		// Iterate through each Settings Container.

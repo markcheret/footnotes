@@ -14,7 +14,7 @@
  * @since 2.0.6  Bugfix: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility).
  * @since 2.0.6  Bugfix: Reference container: fix line breaking behavior in footnote number clusters.
  * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
- * @since 2.0.9  Bugfix: Remove the_post hook  2020-11-08T1839+0100.
+ * @since 2.0.9  Bugfix: Remove the_post hook.
  * @since 2.1.0  Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
  * @since 2.1.1  Bugfix: Referrers, reference container: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
  * @since 2.1.1  Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
@@ -407,7 +407,7 @@ class MCI_Footnotes_Task {
 	 * @since 2.0.5  Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
 	 * @since 2.0.6  Bugfix: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility).
 	 * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
-	 * @since 2.0.7  Bugfix: Set priority level back to 10 assuming it is unproblematic  2020-11-06T1344+0100.
+	 * @since 2.0.7  Bugfix: Set priority level back to 10 assuming it is unproblematic.
 	 * @since 2.0.8  Bugfix: Priority level back to PHP_INT_MAX (need to get in touch with other plugins).
 	 * @since 2.1.0  UPDATE: Hooks: remove 'the_post', the plugin stops supporting this hook.
 	 * @since 2.1.1  Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report.
@@ -1774,7 +1774,7 @@ class MCI_Footnotes_Task {
 			 *
 			 * @since 2.1.6
 					 *
-			 * Even ARIA labels may take a URL as value, so use \w=[\'"] as a catch-all    2020-12-10T1005+0100
+			 * Even ARIA labels may take a URL as value, so use \w=[\'"] as a catch-all
 			 *
 			 * - Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap.
 			 *
@@ -1926,7 +1926,7 @@ class MCI_Footnotes_Task {
 						} else {
 
 							// Don’t add onclick event in AMP compatibility mode.
-							// Reverted wrong linting 2021-03-20T0032+0100.
+							// Reverted wrong linting.
 							$l_str_excerpt_text .= ' onclick="footnote_moveToReference_' . self::$a_int_post_id;
 							$l_str_excerpt_text .= '_' . self::$a_int_reference_container_id;
 							$l_str_excerpt_text .= '(\'footnote_plugin_reference_' . self::$a_int_post_id;
@@ -2518,7 +2518,7 @@ class MCI_Footnotes_Task {
 				/*
 				 * The click event goes in the table cell if footnote remains single.
 				 */
-				// Reverted wrong linting 2021-03-20T0032+0100.
+				// Reverted wrong linting.
 				$l_str_backlink_event = ' onclick="footnote_moveToAnchor_';
 
 				$l_str_backlink_event .= self::$a_int_post_id;
@@ -2597,7 +2597,7 @@ class MCI_Footnotes_Task {
 
 							$l_str_footnote_backlinks .= ' class="footnote_backlink"';
 
-							// Reverted wrong linting 2021-03-20T0032+0100.
+							// Reverted wrong linting.
 							$l_str_footnote_backlinks .= ' onclick="footnote_moveToAnchor_';
 
 							$l_str_footnote_backlinks .= self::$a_int_post_id;

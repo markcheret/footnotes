@@ -49,8 +49,7 @@ class MCI_Footnotes_Hooks {
 	 * @since 1.5.0
 	 *
 	 * @since 2.2.0 this function is not called any longer when deleting the plugin.
-	 * @date 2020-12-12T1223+0100
-	 * Note: clear_all() didn’t actually work.
+	 * Note: clear_all() didn't actually work.
 	 * @see class/settings.php
 	 */
 	public static function uninstall_plugin() {

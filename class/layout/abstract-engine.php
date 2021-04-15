@@ -496,7 +496,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 				'<option value="%s" %s>%s</option>',
 				$l_str_value,
 				// Only check for equality, not identity, WRT backlink symbol arrows.
-				$l_str_value === $l_arr_data['value'] ? 'selected' : '',
+				$l_str_value == $l_arr_data['value'] ? 'selected' : '',
 				$l_str_caption
 			);
 		}

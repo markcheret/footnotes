@@ -120,7 +120,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 *
 	 * @since 2.0.4 to reflect changes in meta box label display since WPv5.5
 	 * spans need position:fixed and become unlocalizable
-	 * fix: logo is kept only in the label that doesn\'t need to be translated:
+	 * fix: logo is kept only in the label that doesn't need to be translated:
 	 * Change string "%s styling" to "Footnotes styling" to fix layout in WPv5.5
 	 * @see details in class/config.php
 	 *
@@ -178,7 +178,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				// Translators: '%s' is the link text 'AMP-WP' linked to the plugin\'s front page on WordPress.org.
+				// Translators: '%s' is the link text 'AMP-WP' linked to the plugin's front page on WordPress.org.
 				'description-1-amp' => sprintf( __( 'The official %s plugin is required when this option is enabled.', 'footnotes' ), '<a href="https://wordpress.org/plugins/amp/" target="_blank" style="font-style: normal;">AMP-WP</a>' ),
 				'label-amp'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE, __( 'Enable AMP compatibility mode:', 'footnotes' ) ),
 				'amp'               => $this->add_checkbox( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),
@@ -236,7 +236,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			);
 			// Options for the terminating punctuation after backlinks.
 			// The Unicode name of RIGHT PARENTHESIS was originally more accurate because.
-			// This character is bidi-mirrored. Let\'s use the Unicode 1.0 name.
+			// This character is bidi-mirrored. Let's use the Unicode 1.0 name.
 			// The wrong names were enforced in spite of Unicode, that subsequently scrambled to correct.
 			$l_arr_terminators = array(
 				'period'      => __( 'FULL STOP', 'footnotes' ),
@@ -449,7 +449,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				'syntax'                   => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE, $l_arr_enable ),
 				'notice-syntax'            => __( 'In the presence of a lone start tag shortcode, a warning displays below the post title.', 'footnotes' ),
 
-				'description-syntax'       => __( 'If the start tag short code is ‘((\' or ‘(((\', it will not be reported as unbalanced if the following string contains braces hinting that it is a script.', 'footnotes' ),
+				'description-syntax'       => __( 'If the start tag short code is \'((\' or \'(((\', it will not be reported as unbalanced if the following string contains braces hinting that it is a script.', 'footnotes' ),
 			)
 		);
 		// Display template with replaced placeholders.
@@ -473,12 +473,12 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		);
 		// Options for the numbering style of the footnotes.
 		$l_arr_counter_style = array(
-			'arabic_plain'   => __( 'plain Arabic numbers', 'footnotes' ) . $l_str_space . '1, 2, 3, 4, 5, …',
-			'arabic_leading' => __( 'zero-padded Arabic numbers', 'footnotes' ) . $l_str_space . '01, 02, 03, 04, 05, …',
-			'latin_low'      => __( 'lowercase Latin letters', 'footnotes' ) . $l_str_space . 'a, b, c, d, e, …',
-			'latin_high'     => __( 'uppercase Latin letters', 'footnotes' ) . $l_str_space . 'A, B, C, D, E, …',
-			'romanic'        => __( 'uppercase Roman numerals', 'footnotes' ) . $l_str_space . 'I, II, III, IV, V, …',
-			'roman_low'      => __( 'lowercase Roman numerals', 'footnotes' ) . $l_str_space . 'i, ii, iii, iv, v, …',
+			'arabic_plain'   => __( 'plain Arabic numbers', 'footnotes' ) . $l_str_space . '1, 2, 3, 4, 5, &hellip;',
+			'arabic_leading' => __( 'zero-padded Arabic numbers', 'footnotes' ) . $l_str_space . '01, 02, 03, 04, 05, &hellip;',
+			'latin_low'      => __( 'lowercase Latin letters', 'footnotes' ) . $l_str_space . 'a, b, c, d, e, &hellip;',
+			'latin_high'     => __( 'uppercase Latin letters', 'footnotes' ) . $l_str_space . 'A, B, C, D, E, &hellip;',
+			'romanic'        => __( 'uppercase Roman numerals', 'footnotes' ) . $l_str_space . 'I, II, III, IV, V, &hellip;',
+			'roman_low'      => __( 'lowercase Roman numerals', 'footnotes' ) . $l_str_space . 'i, ii, iii, iv, v, &hellip;',
 		);
 
 		// Load template file.
@@ -640,7 +640,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			'text-2' => sprintf( __( 'This website uses the awesome %s plugin.', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME ),
 			'random' => __( 'randomly determined display of either mention', 'footnotes' ),
 			// Translators: 1: Plugin logo.2: heart symbol.
-			'no'     => sprintf( __( 'no display of any “%1$s %2$s” mention in the footer', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL ),
+			'no'     => sprintf( __( 'no display of any "%1$s %2$s" mention in the footer', 'footnotes' ), MCI_Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME, MCI_Footnotes_Config::C_STR_LOVE_SYMBOL ),
 		);
 
 		// Load template file.
@@ -766,10 +766,10 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 		// Replace all placeholders.
 		$l_obj_template->replace(
 			array(
-				'description-1-selection' => __( 'Clicking a footnote referrer in an input element label toggles the input except when hard links are enabled. In jQuery mode, the recommended solution is to move footnotes and append them after the label (option A).', 'footnotes' ),
+				'description-1-selection' => __( 'Clicking a footnote referrer in an input element label toggles the input except when hard links are enabled. In jQuery mode, the recommended solution is to move footnotes and append them after the label (option A).', 'footnotes' ),
 				'label-selection'         => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION, __( 'Solve input label issue:', 'footnotes' ) ),
 				'selection'               => $this->add_select_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION, $l_arr_issue_solutions ),
-				'description-2-selection' => __( 'Option B is discouraged because disconnecting a label from its input element may compromise accessibility. This option is a last resort in case footnotes must absolutely stay inside the label. (Using jQuery ‘event.stopPropagation\' failed.)', 'footnotes' ),
+				'description-2-selection' => __( 'Option B is discouraged because disconnecting a label from its input element may compromise accessibility. This option is a last resort in case footnotes must absolutely stay inside the label. (Using jQuery \'event.stopPropagation\' failed.)', 'footnotes' ),
 			)
 		);
 		// Display template with replaced placeholders.
@@ -962,7 +962,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 				// The feature trims back until the last full word.
 				'notice-max-length' => __( 'No weird cuts.', 'footnotes' ),
 
-				'label-readon'      => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL, __( '‘Read on\' button label:', 'footnotes' ) ),
+				'label-readon'      => $this->add_label( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL, __( '\'Read on\' button label:', 'footnotes' ) ),
 				'readon'            => $this->add_text_box( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL ),
 
 			)
@@ -1154,7 +1154,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 
 				// phpcs:disable Squiz.PHP.CommentedOutCode.Found
 				// CSS classes are listed in the template.
-				// Localized notices are dropped to ease translators\' task.
+				// Localized notices are dropped to ease translators' task.
 
 				// "label-class-1" => ".footnote_plugin_tooltip_text",.
 				// "class-1" => $this->add_text(__("superscript, Footnotes index", MCI_Footnotes_Config::C_STR_PLUGIN_NAME)),.
@@ -1345,7 +1345,7 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 			array(
 				'label-start'    => __( 'Start your footnote with the following short code:', 'footnotes' ),
 				'start'          => $l_arr_footnote_starting_tag['value'],
-				'label-end'      => __( '…and end your footnote with this short code:', 'footnotes' ),
+				'label-end'      => __( '&hellip;and end your footnote with this short code:', 'footnotes' ),
 				'end'            => $l_arr_footnote_ending_tag['value'],
 				'example-code'   => $l_str_example,
 				'example-string' => '<br/>' . __( 'will be displayed as:', 'footnotes' ),

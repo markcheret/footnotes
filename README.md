@@ -42,7 +42,7 @@ This Plugin provides:
 1. Read the [contributing guidelines][contributing];
 1. clone this repository (`git clone git@github.com:markcheret/footnotes.git`):
     - we recommend that you use [VVV][vvv] for your local testing environment.
-1. install [Composer][composer], if you don't have it already; and
+1. install [Composer][composer] and [NPM][npm]; and
 1. install all dependencies (`composer install`):
     - you will have to install `php-mbstring` manually if you do not already 
       have it.
@@ -149,6 +149,7 @@ This project is licensed under the [GNU GPL v3][gpl-v3].
 [contributing]: https://github.com/markcheret/footnotes/blob/main/CONTRIBUTING.md
 [vvv]: https://varyingvagrantvagrants.org/
 [composer]: https://getcomposer.org/download/
+[npm]: https://www.npmjs.com/
 [wpcs-php]: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/
 [phpcs]: https://github.com/squizlabs/PHP_CodeSniffer
 [wpcs-js]: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/

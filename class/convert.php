@@ -5,9 +5,8 @@
  * @filesource
  * @package footnotes
  * @since 1.5.0
- * @date 12.09.14 10:56
  *
- * @since 2.2.0  add lowercase Roman   2020-12-12T1540+0100
+ * @since 2.2.0  add lowercase Roman
  */
 
 /**
@@ -102,7 +101,7 @@ class MCI_Footnotes_Convert {
 	 * @return string
 	 *
 	 * Edited:
-	 * @since 2.2.0   optionally lowercase (code from Latin)   2020-12-12T1538+0100
+	 * @since 2.2.0   optionally lowercase (code from Latin)
 	 */
 	private static function to_romanic( $p_int_value, $p_bool_upper_case ) {
 		// Table containing all necessary romanic letters.

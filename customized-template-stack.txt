@@ -1,6 +1,4 @@
 customized-template-stack.txt
-@date 2020-12-19T0609+0100
-@lastmodified 2021-02-15T2027+0100
 
 
 Plugin Footnotes for WordPress, v2.5.3 and later

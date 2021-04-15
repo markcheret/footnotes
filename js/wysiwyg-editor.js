@@ -1,7 +1,7 @@
 /**
  * Created by Stefan on 24.05.14.
  *
- * Edit: be careful to maintain version number near EOF   2020-12-11T1225+0100
+ * Edit: be careful to maintain version number near EOF   
  */
 
 (function() {
@@ -60,7 +60,7 @@
 		 *
 		 * @return {Object} Name/value array containing information about the plugin.
 		 *
-		 * Edit: needs updating the version number manually   2020-12-11T1224+0100
+		 * Edit: needs updating the version number manually   
 		 */
 		getInfo : function() {
 			return {

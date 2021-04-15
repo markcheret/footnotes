@@ -81,7 +81,7 @@
 	border: 4px solid red;
 	padding: 20px 40px;
 	margin: 20px 0;
-	background: #ff000055;
+	background: #f005;
 	text-align: start;
 }
 
@@ -307,18 +307,19 @@ Classes:
 	margin-bottom: 0.25em !important;
 	padding: 0 !important;
 	font-weight: normal !important;
+
 	/* bottom border optional since 2.2.5 */
 	display: block !important;
 	-webkit-margin-before: 0.83em !important;
 	-webkit-margin-after: 0.83em !important;
-	-webkit-margin-start: 0px !important;
-	-webkit-margin-end: 0px !important;
+	-webkit-margin-start: 0 !important;
+	-webkit-margin-end: 0 !important;
 	text-align: start !important;
 	vertical-align: middle;
 }
 
 .footnote_container_prepare > p > span:first-child,
-	.footnote_container_prepare > p > span:nth-child(3) {
+.footnote_container_prepare > p > span:nth-child(3) {
 	text-align: start !important;
 	font-size: 1.5em !important;
 }
@@ -380,8 +381,8 @@ table
 	width: 1px !important;
 	white-space: nowrap !important;
 	overflow: hidden !important;
-	color: #ffffff00 !important;
-	background-color: #ffffff00 !important;
+	color: #fff0 !important;
+	background-color: #fff0 !important;
 }
 
 /**

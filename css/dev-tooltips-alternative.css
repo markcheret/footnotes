@@ -1,18 +1,18 @@
 /*<?php for docblocks
 /**
  * Additional stylesheet for alternative tooltips.
- * 
+ *
  * @since 2.5.5
- 
+
  * System of unified minified style sheets tailored to the instance.
- * 
+ *
  * @see full header in dev-common.css.
  */
 
 
 /**
  * Alternative tooltips
- * 
+ *
  * These default position values may be overridden by internal CSS.
  */
 
@@ -23,7 +23,8 @@
 .footnote_tooltip.position {
 	display: unset;
 	position: absolute;
-/*
+
+	/*
 	bottom: 24px;
 	left: -50px;
 	width: 400px;
@@ -32,7 +33,7 @@
 
 /**
  * Timing; fade-in/fade-out parameters.
- * 
+ *
  * To streamline internal CSS, immutable rules are in external stylesheet.
  * Property values of settings are internal CSS.
  * @see class/task.php
@@ -43,7 +44,8 @@
 	opacity: 1;
 	transition-property: visibility, opacity;
 	transition-timing-function: linear;
-/*
+
+	/*
 	transition-delay: 0ms;
 	transition-duration: 200ms;
 */
@@ -54,7 +56,8 @@
 	opacity: 0;
 	transition-property: visibility, opacity;
 	transition-timing-function: linear;
-/*
+
+	/*
 	transition-delay: 400ms;
 	transition-duration: 200ms;
 */

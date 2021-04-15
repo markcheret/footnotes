@@ -25,7 +25,6 @@
  * Make sure to sync the version number in class/init.php:
  * @version 1.2.7.redacted.2
  *
- * @lastmodified 2021-02-18T2032+0100
  * @accountable @pewgeuges
  *
  * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett @twellve_million bug reports, thanks to @vonpiernik code contribution

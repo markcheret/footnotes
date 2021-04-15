@@ -6,8 +6,6 @@
  * @package footnotes
  * @since 1.5.0
  *
- * @lastmodified  2021-02-20T0438+0100
- *
  * @since 2.0.0  Bugfix: various.
  * @since 2.0.4  Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
  * @since 2.0.5  Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.

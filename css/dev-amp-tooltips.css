@@ -26,7 +26,8 @@ span.footnote_referrer > span.footnote_tooltip {
 	visibility: hidden;
 	opacity: 0;
 	transition-property: visibility, opacity;
-/*
+
+	/*
 	transition-delay: 500ms;
 	transition-duration: 1s;
 */
@@ -37,7 +38,8 @@ span.footnote_referrer:hover > span.footnote_tooltip {
 	visibility: visible;
 	opacity: 1;
 	transition-property: visibility, opacity;
-/*
+
+	/*
 	transition-delay: 0;
 	transition-duration: 200ms;
 */
@@ -57,7 +59,8 @@ span.footnote_referrer:hover > span.footnote_tooltip {
 .footnote_tooltip.position {
 	display: unset;
 	position: absolute;
-/*
+
+	/*
 	bottom: 24px;
 	left: -50px;
 	width: 400px;

@@ -42,7 +42,7 @@ This Plugin provides:
 1. Read the [contributing guidelines][contributing];
 1. clone this repository (`git clone git@github.com:markcheret/footnotes.git`):
     - we recommend that you use [VVV][vvv] for your local testing environment.
-1. install [Composer][composer], if you don't have it already; and
+1. install [Composer][composer] and [NPM][npm]; and
 1. install all dependencies (`composer install`):
     - you will have to install `php-mbstring` manually if you do not already 
       have it.
@@ -80,7 +80,15 @@ Automated testing will be introduced soon.
 This repo. uses pre-commit code formatting and linting on all staged files. 
 This ensures that only style-conformant code can be committed.
 
-The individual commands used by the pre-commit hook can also be called manually:
+The individual commands can also be called manually:
+
+- Run `composer run format` to run all format commands.
+- Run `composer run format:fix` to attempt to automatically fix all formatter warnings
+  and errors.
+
+- Run `composer run lint` to run all linting commands.
+- Run `composer run lint:fix` to attempt to automatically fix all linter warnings and
+  errors.
 
 ### PHP Code
 
@@ -94,13 +102,25 @@ PHP code must follow the [WordPress PHP Coding Standards][wpcs-php].
 
 JavaScript code must follow the [WordPress JavaScript Coding Standards][wpcs-js].
 
-Automated linting and formatting will be introduced soon.
+- Run `composer run format:js` to format all JS files with [Prettier][prettier].
+- Run `composer run format:js:fix` to attempt to automatically fix warnings and errors.
+
+- Run `composer run lint:js` to lint all JS files with [ESLint][eslint].
+- Run `composer run lint:js:fix` to attempt to automatically fix warnings and errors.
+
+Prettier configuration settings are found in `.prettierrc`.
+
+ESLint configuration settings are found in `.eslintrc.js`. File ignore rules are
+found in `.eslintignore`.
   
 ### CSS Stylesheets
 
 JavaScript code must follow the [WordPress CSS Coding Standards][wpcs-css].
 
-Automated linting and formatting will be introduced soon.
+- Run `composer run lint:css` to format all CSS files with [stylelint][stylelint].
+- Run `npcomposerm run lint:css:fix` to attempt to automatically fix warnings and errors.
+
+stylelint configuration settings are found in `.stylelint.json`.
 
 ## Documentation
 
@@ -129,10 +149,14 @@ This project is licensed under the [GNU GPL v3][gpl-v3].
 [contributing]: https://github.com/markcheret/footnotes/blob/main/CONTRIBUTING.md
 [vvv]: https://varyingvagrantvagrants.org/
 [composer]: https://getcomposer.org/download/
+[npm]: https://www.npmjs.com/
 [wpcs-php]: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/
 [phpcs]: https://github.com/squizlabs/PHP_CodeSniffer
 [wpcs-js]: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/
 [wpcs-css]: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/
+[prettier]: https://prettier.io/
+[eslint]: https://eslint.org/
+[stylelint]: https://stylelint.io/
 [phpdocumentor]: https://phpdoc.org/
 [footnotes-docs]: https://markcheret.github.io/footnotes/
 [gpl-v3]: https://www.gnu.org/licenses/gpl-3.0.en.html

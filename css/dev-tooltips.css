@@ -1,9 +1,8 @@
 /*<?php for docblocks
 /**
  * Additional stylesheet needed when tooltips (jQuery or alternative) are enabled.
- * 
+ *
  * @version 2.5.8
- * 
  * System of unified minified style sheets tailored to the instance.
  * @since 2.5.5
  * @see full header in dev-common.css.
@@ -11,15 +10,15 @@
 
 /**
  * Tooltips.
- * 
+ *
  * - Bugfix: Tooltips: set z-index to maximum 2147483647 to address display issues with overlay content, thanks to @russianicons bug report.
- * 
+ *
  * @since 2.1.6
  * @reporter @russianicons
  * @link https://wordpress.org/support/topic/counter-styles-not-working/#post-13767299
- * 
+ *
  * - Bugfix: Layout: support right-to-left writing direction by replacing remaining CSS values 'left' with 'start', thanks to @arahmanshaalan bug report.
- * 
+ *
  * @since 2.5.8
  * @reporter @arahmanshaalan
  * @link https://wordpress.org/support/topic/right-to-left-text-problem/

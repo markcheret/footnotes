@@ -1,5 +1,6 @@
 .phpdoc/
 vendor/
+node_modules/
 dist/
 tmp/
 

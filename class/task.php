@@ -147,7 +147,6 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830
 	 *
 	 * @since 2.2.9
-	 * @date 2020-12-25T0338+0100
 	 * @var int   Incremented every time after a reference container is inserted.
 	 *
 	 * This ID disambiguates multiple reference containers in a page
@@ -220,7 +219,6 @@ class MCI_Footnotes_Task {
 	 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
 	 *
 	 * @since 2.1.4
-	 * @date 2020-12-05T0538+0100
 	 *
 	 * - Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report.
 	 *
@@ -228,8 +226,6 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/2-2-6-breaks-all-footnotes/#post-13857922
 	 *
 	 * @since 2.4.0
-	 * @date 2021-01-03T2055+0100
-	 * @date 2021-01-04T0504+0100
 	 * @var int
 	 *
 	 * Websites may use high fixed headers not contracting at scroll.
@@ -252,8 +248,6 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
 	 *
 	 * @since 2.1.4
-	 * @date 2020-11-25T1306+0100
-	 * @date 2020-11-26T1051+0100
 	 *
 	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
 	 *
@@ -264,7 +258,6 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
 	 *
 	 * @since 2.3.0
-	 * @date 2020-12-30T2313+0100
 	 *
 	 * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
 	 * Browsers may need to be prevented from logging these clicks in the browsing history,
@@ -318,7 +311,6 @@ class MCI_Footnotes_Task {
 	 * @link https://wordpress.org/support/topic/change-tooltip-text/
 	 *
 	 * @since 2.5.2
-	 * @date 2021-01-19T2223+0100
 	 *
 	 * Tooltips can display another content than the footnote entry
 	 * in the reference container. The trigger is a shortcode in
@@ -392,7 +384,6 @@ class MCI_Footnotes_Task {
 	 * - Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
 	 *
 	 * @since 2.4.0
-	 * @date 2021-01-01T0227+0100
 	 *
 	 * @var bool
 	 *
@@ -466,8 +457,7 @@ class MCI_Footnotes_Task {
 			 * @link https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/#post-13864859
 			 *
 			 * @since 2.5.0
-			 * @date 2021-01-05T1402+0100
-			 *
+					 *
 			 * Category pages can have rich HTML content in a term description with article status.
 			 * For this to happen, WordPress’ built-in partial HTML blocker needs to be disabled.
 			 * @link https://docs.woocommerce.com/document/allow-html-in-term-category-tag-descriptions/
@@ -483,8 +473,7 @@ class MCI_Footnotes_Task {
 			 * @link https://wordpress.org/support/topic/footnotes-use-in-popup-maker/
 			 *
 			 * @since 2.5.1
-			 * @date 2021-01-18T2038+0100
-			 */
+					 */
 			add_filter( 'pum_popup_content', array( $this, 'footnotes_in_content' ), $l_int_the_content_priority );
 		}
 
@@ -559,8 +548,7 @@ class MCI_Footnotes_Task {
 		 * - UPDATE: Hooks: remove 'the_post', the plugin stops supporting this hook.
 		 *
 		 * @since 2.1.0
-		 * @date 2020-11-08T1839+0100
-		 * @accountable @pewgeuges
+			 * @accountable @pewgeuges
 		 */
 
 		// Reset stored footnotes when displaying the header.
@@ -615,8 +603,7 @@ class MCI_Footnotes_Task {
 		 * @link https://wordpress.org/support/topic/in-line-superscript-ref-rides-to-high/
 		 *
 		 * @since 2.5.4
-		 * @date 2021-02-12T1631+0100
-		 *
+			 *
 		 * Cannot be included in external stylesheet, as it is only optional.
 		 * The scope is variable too: referrers only, or all superscript elements.
 		 */
@@ -673,8 +660,7 @@ class MCI_Footnotes_Task {
 		 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
 		 *
 		 * @since 2.2.5
-		 * @date 2020-12-18T1447+0100
-		 */
+			 */
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER ) ) ) {
 			echo '.footnote_container_prepare > ';
 			echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT );
@@ -690,8 +676,7 @@ class MCI_Footnotes_Task {
 		 * @link https://wordpress.org/support/topic/borders-25/
 		 *
 		 * @since 2.2.10
-		 * @date 2020-12-25T2304+0100
-		 * Moving this internal CSS to external using `wp_add_inline_style()` is
+			 * Moving this internal CSS to external using `wp_add_inline_style()` is
 		 * discouraged, because that screws up support, and it is pointless from
 		 * a performance point of view. Moreover, that would cause cache busting
 		 * issues as browsers won’t reload these style sheets after settings are
@@ -786,8 +771,7 @@ class MCI_Footnotes_Task {
 			 * - Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default.
 			 *
 			 * @since 2.1.4
-			 * @date 2020-12-03T0954+0100
-			 */
+					 */
 			echo ' font-size: ';
 			if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED ) ) ) {
 				echo MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR );
@@ -853,13 +837,11 @@ class MCI_Footnotes_Task {
 			 * - Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style.
 			 *
 			 * @since 2.1.4
-			 * @date 2020-12-06T1320+0100
-			 *
+					 *
 			 * - Update: Tooltips: Alternative tooltips: connect to position/timing settings (for themes not supporting jQuery tooltips).
 			 *
 			 * @since 2.2.5
-			 * @date 2020-12-18T1113+0100
-			 */
+					 */
 			if ( ! MCI_Footnotes::$a_bool_alternative_tooltips_enabled && ! MCI_Footnotes::$a_bool_amp_enabled ) {
 
 				/**
@@ -976,8 +958,7 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Custom CSS: insert new CSS in the public page header element after existing CSS.
 		 *
 		 * @since 2.2.3
-		 * @date 2020-12-15T1128+0100
-		 *
+			 *
 		 * Set custom CSS to override settings, not conversely.
 		 * Legacy Custom CSS is used until it’s set to disappear after dashboard tab migration.
 		 */
@@ -1027,7 +1008,6 @@ class MCI_Footnotes_Task {
 	 *
 	 * @since 1.5.0
 	 * @since 2.2.0  More options.
-	 * @date 2020-12-11T0506+0100
 	 */
 	public function footnotes_output_footer() {
 		if ( 'footer' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
@@ -1353,16 +1333,14 @@ class MCI_Footnotes_Task {
 		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/
 		 *
 		 * @since 2.2.0
-		 * @date 2020-12-13T2057+0100
-		 *
+			 *
 		 * - Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report.
 		 *
 		 * @reporter @hamshe
 		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126
 		 *
 		 * @since 2.2.5
-		 * @date 2020-12-18T1434+0100
-		 */
+			 */
 		// Append the reference container or insert at shortcode.
 		$l_str_reference_container_position_shortcode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE );
 		if ( empty( $l_str_reference_container_position_shortcode ) ) {
@@ -1520,8 +1498,7 @@ class MCI_Footnotes_Task {
 		 * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
 		 *
 		 * @since 2.5.0
-		 * @date 2021-01-07T0824+0100
-		 * If footnotes short codes are unbalanced, and syntax validation is not disabled,
+			 * If footnotes short codes are unbalanced, and syntax validation is not disabled,
 		 * prepend a warning to the content; displays de facto beneath the post title.
 		 */
 		// If enabled.
@@ -1777,13 +1754,11 @@ class MCI_Footnotes_Task {
 			 * @link https://wordpress.org/support/topic/footnotes-on-mobile-phones/
 			 *
 			 * @since 2.1.3
-			 * @date 2020-11-23
-			 *
+					 *
 			 * - Bugfix: Reference container, tooltips: fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element.
 			 *
 			 * @since 2.1.4
-			 * @date 2020-11-25T0837+0100
-			 * @link https://wordpress.org/support/topic/footnotes-on-mobile-phones/#post-13710682
+					 * @link https://wordpress.org/support/topic/footnotes-on-mobile-phones/#post-13710682
 			 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21 bug report.
 			 *
@@ -1798,23 +1773,20 @@ class MCI_Footnotes_Task {
 			 * @link https://wordpress.org/support/topic/broken-layout-starting-version-2-1-4/
 			 *
 			 * @since 2.1.6
-			 * @date 2020-12-09T1921+0100
-			 *
+					 *
 			 * Even ARIA labels may take a URL as value, so use \w=[\'"] as a catch-all    2020-12-10T1005+0100
 			 *
 			 * - Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap.
 			 *
 			 * @since 2.1.6
-			 * @date 2020-12-09T1606+0100
-			 *
+					 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
 			 *
 			 * @reporter @spiralofhope2
 			 * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/
 			 *
 			 * @since 2.2.6
-			 * @date 2020-12-23T0409+0100
-			 *
+					 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: remove a bug introduced in the regex, thanks to @rjl20 @spaceling @lukashuggenberg @klusik @friedrichnorth @bernardzit bug reports.
 			 *
 			 * @reporter @rjl20
@@ -1836,38 +1808,32 @@ class MCI_Footnotes_Task {
 			 * @link https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/#post-13826029
 			 *
 			 * @since 2.2.7
-			 * @date 2020-12-23T1046+0100
-			 *
+					 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: correctly make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
 			 *
 			 * @reporter @spiralofhope2
 			 * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/
 			 *
 			 * @since 2.2.8
-			 * @date 2020-12-23T1107+0100
-			 * Correct is duplicating the negative lookbehind w/o quotes: '(?<!\w=)'
+					 * Correct is duplicating the negative lookbehind w/o quotes: '(?<!\w=)'
 			 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names.
 			 * - Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference.
 			 *
 			 * @since 2.2.9
-			 * @date 2020-12-24T1956+0100
-			 * @link https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names
-			 * @date 2020-12-25T1251+0100
-			 *
+					 * @link https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names
+					 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs.
 			 *
 			 * @since 2.2.10
-			 * @date 2020-12-25T2220+0100
-			 *
+					 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
 			 *
 			 * @reporter @rumperuu
 			 * @link https://wordpress.org/support/topic/line-wrap-href-regex-bug/
 			 *
 			 * @since 2.5.3
-			 * @date 2021-01-24
-			 * By adding a 3rd negative lookbehind: '(?<!/)'.
+					 * By adding a 3rd negative lookbehind: '(?<!/)'.
 			 *
 			 * - Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
 			 *
@@ -1929,8 +1895,7 @@ class MCI_Footnotes_Task {
 				 * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
 				 *
 				 * @since 2.1.0
-				 * @date 2020-11-08T2146+0100
-				 * If the tooltip truncation option is enabled, it’s done based on character count,
+							 * If the tooltip truncation option is enabled, it’s done based on character count,
 				 * and a trailing incomplete word is cropped.
 				 * This is equivalent to the WordPress default excerpt generation, i.e. without a
 				 * custom excerpt and without a delimiter. But WordPress does word count, usually 55.
@@ -1990,8 +1955,7 @@ class MCI_Footnotes_Task {
 						 * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
 						 *
 						 * @since 2.1.0
-						 * @date 2020-11-08T2146+0100
-						 */
+											 */
 						$l_str_excerpt_text .= MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL );
 
 						$l_str_excerpt_text .= self::$a_bool_hard_links_enabled ? '</a>' : '</span>';
@@ -2053,8 +2017,7 @@ class MCI_Footnotes_Task {
 					 * @link https://wordpress.org/support/topic/wp_debug-php-notice/
 					 *
 					 * @since 2.4.0
-					 * @date 2021-01-04T1622+0100
-					 * If no hyperlink nor offset anchor is needed, initialize as empty.
+									 * If no hyperlink nor offset anchor is needed, initialize as empty.
 					 */
 					$l_str_footnote_link_argument  = '';
 					$l_str_referrer_anchor_element = '';
@@ -2265,8 +2228,7 @@ class MCI_Footnotes_Task {
 		 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
 		 *
 		 * @since 2.1.4
-		 * @date 2020-11-28T1048+0100
-		 * Initially an appended comma was hard-coded in this algorithm for enumerations.
+			 * Initially an appended comma was hard-coded in this algorithm for enumerations.
 		 * The comma in enumerations is not universally preferred.
 		 */
 		if ( MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_BACKLINKS_SEPARATOR_ENABLED ) ) ) {
@@ -2336,8 +2298,7 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks.
 		 *
 		 * @since 2.1.4
-		 * @date 2020-11-28T1049+0100
-		 *
+			 *
 		 * The backlinks of combined footnotes are generally preferred in an enumeration.
 		 * But when few footnotes are identical, stacking the items in list form is better.
 		 * Variable number length and proportional character width require explicit line breaks.
@@ -2360,8 +2321,7 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
 		 *
 		 * @since 2.1.1
-		 * @date 2020-11-16T2024+0100
-		 */
+			 */
 		$l_bool_combine_identical_footnotes = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) );
 
 		// AMP compatibility requires a full set of AMP compatible table row templates.
@@ -2429,8 +2389,7 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
 		 *
 		 * @since 2.1.1
-		 * @date 2020-11-16T2024+0100
-		 *
+			 *
 		 * @contributor @spaceling
 		 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13615994
 		 *
@@ -2438,8 +2397,7 @@ class MCI_Footnotes_Task {
 		 * - Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on.
 		 *
 		 * @since 2.1.4
-		 * @date 2020-11-26T1633+0100
-		 */
+			 */
 		$l_bool_symbol_switch = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH ) );
 
 		// Loop through all footnotes found in the page.
@@ -2528,8 +2486,7 @@ class MCI_Footnotes_Task {
 			 * @link https://wordpress.org/support/topic/custom-css-for-jumbled-references/
 			 *
 			 * @since 2.1.1
-			 * @date 2020-11-14T2233+0100
-			 * Prepare to have single footnotes, where the click event and
+					 * Prepare to have single footnotes, where the click event and
 			 * optional hard link need to be set to cover the table cell,
 			 * for better usability and UX.
 			 */
@@ -2744,8 +2701,7 @@ class MCI_Footnotes_Task {
 		 * @reporter @lukashuggenberg
 		 *
 		 * @since 2.4.0
-		 * @date 2021-01-04T0504+0100
-		 * Themes may drop-cap a first letter of initial paragraphs, like this label.
+			 * Themes may drop-cap a first letter of initial paragraphs, like this label.
 		 * In case of empty label that would apply to the left half button character.
 		 * Hence the point in setting an empty label to U+202F NARROW NO-BREAK SPACE.
 		 */

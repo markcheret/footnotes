@@ -5,7 +5,6 @@
  * @filesource
  * @package footnotes
  * @since 1.5.0
- * @date 12.09.14 10:56
  *
  * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
@@ -44,7 +43,6 @@ class MCI_Footnotes {
 	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
 	 *
 	 * @since 2.4.0
-	 * @date 2021-01-04T1355+0100
 	 *
 	 * @contributor Patrizia Lutz @misfist
 	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
@@ -126,7 +124,6 @@ class MCI_Footnotes {
 	 *
 	 * @contributor @felipelavinz
 	 * @link https://github.com/benleyjyc/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
-	 * @date 2020-02-25
 	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
 	 *
 	 * @see self::initialize_widgets()
@@ -267,13 +264,11 @@ class MCI_Footnotes {
 				 * Add versioning.
 				 *
 				 * @since 2.1.2
-				 * @date 2020-11-18T2150+0100
-				 *
+							 *
 				 * No '-js' in the handle, is appended automatically.
 				 *
 				 * Deferring to the footer breaks jQuery tooltip display.
-				 * @date 2021-02-23T1105+0100
-				 */
+							 */
 				wp_enqueue_script(
 					'mci-footnotes-jquery-tools',
 					plugins_url( 'footnotes/js/jquery.tools.min.js' ),
@@ -303,8 +298,7 @@ class MCI_Footnotes {
 				 *
 				 * Fetch jQuery UI from cdnjs.cloudflare.com.
 				 * @since 2.0.0
-				 * @date 2020-10-26T1907+0100
-				 * @contributor @vonpiernik
+							 * @contributor @vonpiernik
 				 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762
 				 *
 				 * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.                * @since 2.1.2
@@ -312,8 +306,7 @@ class MCI_Footnotes {
 				 * - Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
 				 *
 				 * @since 2.0.4
-				 * @date 2020-11-01T1902+0100
-				 * @reporter @check2020de
+							 * @reporter @check2020de
 				 * @link https://wordpress.org/support/topic/gdpr-issue-with-jquery/
 				 * @link https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui
 				 *
@@ -331,8 +324,7 @@ class MCI_Footnotes {
 		 * Enables enqueuing a new-scheme stylesheet.
 		 *
 		 * @since 2.5.5
-		 * @date 2021-02-14T1512+0100
-		 *
+			 *
 		 * Enables enqueuing the formatted individual stylesheets if false.
 		 * WARNING: This facility is designed for development and must NOT be used in production.
 		 *
@@ -348,8 +340,7 @@ class MCI_Footnotes {
 			 * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
 			 *
 			 * @since 2.5.5
-			 * @date 2021-02-14T1543+0100
-			 *
+					 *
 			 * @contributor @docteurfitness
 			 * @link https://wordpress.org/support/topic/simply-speed-optimisation/
 			 *
@@ -360,12 +351,10 @@ class MCI_Footnotes {
 			 * @see class/dashboard/layout.php
 			 *
 			 * @since 2.0.3  add versioning of public.css for cache busting.
-			 * @date 2020-10-29T1413+0100
-			 * Plugin version number is needed for busting browser caches after each plugin update.
+					 * Plugin version number is needed for busting browser caches after each plugin update.
 			 *
 			 * @since 2.1.4  automate passing version number for cache busting.
-			 * @date 2020-11-30T0646+0100
-			 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
+					 * The constant C_STR_PACKAGE_VERSION is defined at start of footnotes.php.
 			 *
 			 * The media scope argument 'all' is the default.
 			 * No need to use '-css' in the handle, as this is appended automatically.
@@ -426,8 +415,7 @@ class MCI_Footnotes {
 			 * Enqueues external stylesheets, ONLY in development now.
 			 *
 			 * @since 2.1.4  optionally enqueue an extra stylesheet.
-			 * @date 2020-12-04T2231+0100
-			 *
+					 *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
 			wp_enqueue_style(

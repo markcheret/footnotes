@@ -4,7 +4,6 @@
  *
  * @filesource
  * @since 1.5.0
- * @date 14.09.14 14:47
  *
  * @since 2.0.4  restore arrow settings  2020-11-01T0509+0100
  * @since 2.1.0  read-on button label  2020-11-08T2148+0100
@@ -1099,7 +1098,6 @@ class MCI_Footnotes_Layout_Settings extends MCI_Footnotes_Layout_Engine {
 	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
 	 *
 	 * @since 2.0.4
-	 * @date 2020-11-02T2115+0100
 	 *
 	 * @reporter @mmallett
 	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037

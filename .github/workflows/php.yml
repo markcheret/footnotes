@@ -27,10 +27,10 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --ignore-platform-reqs
+      run: composer install --prefer-dist --no-progress --ignore-platform-reqs && npm install
 
-    - name: Lint PHP code
-      run: composer run lint:php
+    - name: Lint full codebase (PHP, JS, CSS)
+      run: composer run lint
 
     # TODO: Add tests
     # - name: Run test suite

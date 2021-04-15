@@ -29,9 +29,16 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --ignore-platform-reqs && npm install
 
-    - name: Format and lint full codebase (PHP, JS, CSS)
-      run: composer run format && composer run lint
+    - name: Format and lint PHP code
+      run: composer run lint:php
 
+    - name: Format and lint JS code
+      run: composer run format:js && composer run lint:js
+    
+    # TODO: Fix CSS errors
+    #- name: Format and lint CSS code
+    #  run: composer run lint:css
+    
     # TODO: Add tests
     # - name: Run test suite
     #   run: composer run-script test

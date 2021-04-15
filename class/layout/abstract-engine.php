@@ -209,15 +209,16 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * automated update of version number for cache busting.
 		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
 		 */
-		if ( true === PRODUCTION_ENV ) {
-
-			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_PACKAGE_VERSION );
-
-		} else {
-
-			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.css' ), array(), C_STR_PACKAGE_VERSION );
-
-		}
+		wp_register_style(
+			'mci-footnotes-admin',
+			plugins_url( 'footnotes/css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css' ),
+			array(),
+			( PRODUCTION_ENV ) ? C_STR_PACKAGE_VERSION : filemtime(
+				plugin_dir_path(
+					dirname( __FILE__, 2 )
+				) . 'css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css'
+			)
+		);
 
 		wp_enqueue_style( 'mci-footnotes-admin' );
 	}
@@ -360,7 +361,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		$p_arr_return          = array();
 		$p_arr_return['id']    = sprintf( '%s', $p_str_setting_key_name );
 		$p_arr_return['name']  = sprintf( '%s', $p_str_setting_key_name );
-		$p_arr_return['value'] = esc_attr( MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name ) );
+		$p_arr_return['value'] = MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name );
 		return $p_arr_return;
 	}
 
@@ -553,7 +554,6 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @param bool   $p_bool_deci  true if 0.1 steps and floating to string, false if integer (default).
 	 * @return string
 	 *
-	 * Edited:
 	 * @since 2.1.4  step argument and number_format() to allow decimals.
 	 */
 	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {

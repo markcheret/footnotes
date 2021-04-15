@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: time to bring footnotes to your website! footnotes are known from offline publishing and everybody takes them for granted when reading a magazine.
  * Author: Mark Cheret
- * Version: 2.6.5
+ * Version: 2.7.0
  * Author URI: https://cheret.org/footnotes/
  * Text Domain: footnotes
  * Domain Path: /languages
@@ -12,6 +12,33 @@
  * @package footnotes
  * @copyright 2021 Mark Cheret (email: mark@cheret.de)
  */
+
+/**
+ * Package Version number for stylesheet cache busting.
+ *
+ * Please keep this string in sync with the 'Version' (not 'Package V.').
+ * Please mirror the 'Version' also in js/wysiwyg-editor.js.
+ *
+ * @since 2.1.4
+ * @since 2.5.3 (Hungarian)
+ * @var str
+ * @lastmodified 2021-04-14T2351+0200
+ */
+define( 'C_STR_FOOTNOTES_VERSION', '2.7.0' );
+
+/**
+ * Defines the current environment ('development' or 'production').
+ *
+ * @since 2.5.5
+ * @var bool
+ * @see Full docblock below next.
+ *
+ * In production, a minified CSS file tailored to the settings is enqueued.
+ *
+ * Developing stylesheets is meant to be easier when this is set to false.
+ * WARNING: This facility designed for development must NOT be used in production.
+ */
+define( 'PRODUCTION_ENV', false );
 
 /**
  * - Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
@@ -89,17 +116,3 @@ add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'MCI_Footnotes_Ho
 $g_obj_mci_footnotes = new MCI_Footnotes();
 // Run the Plugin.
 $g_obj_mci_footnotes->run();
-
-/**
- * Sets the stylesheet enqueuing mode for production.
- *
- * @since 2.5.5
- * @var bool
- * @see class/init.php
- *
- * In production, a minified CSS file tailored to the settings is enqueued.
- *
- * Developing stylesheets is meant to be easier when this is set to false.
- * WARNING: This facility designed for development must NOT be used in production.
- */
-define( 'PRODUCTION_ENV', false );

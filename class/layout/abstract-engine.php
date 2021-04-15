@@ -5,12 +5,11 @@
  * @filesource
  * @package footnotes
  * @since 1.5.0
- * @date 12.09.14 10:56
  *
- * @since 2.1.2  add versioning of settings.css for cache busting  2020-11-19T1456+0100
- * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0648+0100
- * @since 2.1.4  optional step argument and support for floating in numbox  2020-12-05T0540+0100
- * @since 2.1.6  fix punctuation-related localization issue in dashboard labels  2020-12-08T1547+0100
+ * @since 2.1.2  add versioning of settings.css for cache busting
+ * @since 2.1.4  automate passing version number for cache busting
+ * @since 2.1.4  optional step argument and support for floating in numbox
+ * @since 2.1.6  fix punctuation-related localization issue in dashboard labels
  *
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  */
@@ -199,7 +198,6 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
 		 *
 		 * @since 2.5.5
-		 * @date 2021-02-14T1928+0100
 		 *
 		 * @reporter @docteurfitness
 		 * @link https://wordpress.org/support/topic/simply-speed-optimisation/
@@ -211,15 +209,16 @@ abstract class MCI_Footnotes_Layout_Engine {
 		 * automated update of version number for cache busting.
 		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
 		 */
-		if ( true === C_BOOL_CSS_PRODUCTION_MODE ) {
-
-			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_FOOTNOTES_VERSION );
-
-		} else {
-
-			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.css' ), array(), C_STR_FOOTNOTES_VERSION );
-
-		}
+		wp_register_style(
+			'mci-footnotes-admin',
+			plugins_url( 'footnotes/css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css' ),
+			array(),
+			( PRODUCTION_ENV ) ? C_STR_PACKAGE_VERSION : filemtime(
+				plugin_dir_path(
+					dirname( __FILE__, 2 )
+				) . 'css/settings' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.css'
+			)
+		);
 
 		wp_enqueue_style( 'mci-footnotes-admin' );
 	}
@@ -340,7 +339,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @since 1.5.0
 	 * @param string $p_str_setting_key_name Settings Array key name.
 	 * @return array Contains Settings ID, Settings Name and Settings Value.
-	 * 
+	 *
 	 * @since 2.5.11 Remove escapement function.
 	 * When refactoring the codebase after 2.5.8, all and every output was escaped.
 	 * After noticing that the plugin was broken, all escapement functions were removed.
@@ -349,7 +348,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * In that process, this instance of esc_attr() was removed too, so the plugin was
 	 * broken again.
 	 * @link https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5#diff-a8ed6e859c32a18fc10bbbad3b4dd8ce7f43f2378d29471c7638e314ab30f1bdL349-L354
-	 * 
+	 *
 	 * @since 2.5.15 To fix it, the data was escaped in add_select_box() instead.
 	 * @since 2.6.1  Restore esc_attr() in load_setting().
 	 * @see add_select_box()
@@ -362,7 +361,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		$p_arr_return          = array();
 		$p_arr_return['id']    = sprintf( '%s', $p_str_setting_key_name );
 		$p_arr_return['name']  = sprintf( '%s', $p_str_setting_key_name );
-		$p_arr_return['value'] = esc_attr( MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name ) );
+		$p_arr_return['value'] = MCI_Footnotes_Settings::instance()->get( $p_str_setting_key_name );
 		return $p_arr_return;
 	}
 
@@ -482,7 +481,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @param string $p_str_setting_name  Name of the Settings key to pre select the current value.
 	 * @param array  $p_arr_options       Possible options to be selected.
 	 * @return string
-	 * 
+	 *
 	 * @since 2.5.15 Bugfix: Dashboard: General settings: Footnote start and end short codes: debug select box for shortcodes with pointy brackets.
 	 * @since 2.6.1  Restore esc_attr() in load_setting(), remove htmlspecialchars() here.
 	 */
@@ -497,7 +496,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 				'<option value="%s" %s>%s</option>',
 				$l_str_value,
 				// Only check for equality, not identity, WRT backlink symbol arrows.
-				$l_str_value == $l_arr_data['value'] ? 'selected' : '',
+				$l_str_value === $l_arr_data['value'] ? 'selected' : '',
 				$l_str_caption
 			);
 		}
@@ -555,8 +554,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 	 * @param bool   $p_bool_deci  true if 0.1 steps and floating to string, false if integer (default).
 	 * @return string
 	 *
-	 * Edited:
-	 * @since 2.1.4  step argument and number_format() to allow decimals  2020-12-03T0631+0100..2020-12-12T1110+0100
+	 * @since 2.1.4  step argument and number_format() to allow decimals.
 	 */
 	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {
 		// Collect data for given settings field.

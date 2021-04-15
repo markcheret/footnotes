@@ -21,7 +21,6 @@
  * @link https://wordpress.org/support/topic/simply-speed-optimisation/
  *
  * @since 2.5.5
- * @date 2021-02-14T1543+0100
  *
  * Six development stylesheets are concatenated to 12 unified stylesheets.
  * The unminified development stylesheets are distributed for reference.
@@ -129,10 +128,10 @@
  *
  * - Bugfix: Reference container, tooltips: URL wrap: enable the 'word-wrap: anywhere' rule, thanks to @rebelc0de bug report.
  *
+ * @since 2.5.4
+ *
  * @reporter @rebelc0de
  * @link https://wordpress.org/support/topic/footnotes-on-mobile-phones/#post-14037101
- *
- * @since 2.5.4
  *
  * These rules turn out useless for the purpose and are commented out:
  * word-wrap: break-word;

@@ -5,16 +5,15 @@
  * @filesource
  * @package footnotes
  * @since 1.5.0
- * @date 12.09.14 10:56
  *
  * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
  * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
  * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
  *
- * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
- * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
- * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
- * @since 2.1.4  optionally enqueue an extra stylesheet  2020-12-04T2231+0100
+ * @since 2.0.3  add versioning of public.css for cache busting
+ * @since 2.0.4  add jQuery UI from WordPress
+ * @since 2.1.4  automate passing version number for cache busting
+ * @since 2.1.4  optionally enqueue an extra stylesheet
  *
  * @since 2.5.5  Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
@@ -44,7 +43,6 @@ class MCI_Footnotes {
 	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
 	 *
 	 * @since 2.4.0
-	 * @date 2021-01-04T1355+0100
 	 *
 	 * @contributor Patrizia Lutz @misfist
 	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
@@ -72,7 +70,6 @@ class MCI_Footnotes {
 	 * @since 2.4.0
 	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
-	 *
 	 */
 	public static $a_bool_alternative_tooltips_enabled = false;
 
@@ -127,7 +124,6 @@ class MCI_Footnotes {
 	 *
 	 * @contributor @felipelavinz
 	 * @link https://github.com/benleyjyc/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
-	 * @date 2020-02-25
 	 * @link https://github.com/media-competence-institute/footnotes/commit/87173d2980c7ff90e12ffee94ca7153e11163793
 	 *
 	 * @see self::initialize_widgets()
@@ -210,10 +206,10 @@ class MCI_Footnotes {
 	 * @since 1.5.0
 	 *
 	 * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
-	 * @since 2.0.3  add versioning of public.css for cache busting   2020-10-29T1413+0100
-	 * @since 2.0.4  add jQuery UI from WordPress   2020-11-01T1902+0100
-	 * @since 2.1.4  automate passing version number for cache busting  2020-11-30T0646+0100
-	 * @since 2.1.4  optionally enqueue an extra stylesheet  2020-12-04T2231+0100
+	 * @since 2.0.3  add versioning of public.css for cache busting
+	 * @since 2.0.4  add jQuery UI from WordPress
+	 * @since 2.1.4  automate passing version number for cache busting
+	 * @since 2.1.4  optionally enqueue an extra stylesheet
 	 */
 	public function register_public() {
 
@@ -268,12 +264,10 @@ class MCI_Footnotes {
 				 * Add versioning.
 				 *
 				 * @since 2.1.2
-				 * @date 2020-11-18T2150+0100
 				 *
 				 * No '-js' in the handle, is appended automatically.
 				 *
 				 * Deferring to the footer breaks jQuery tooltip display.
-				 * @date 2021-02-23T1105+0100
 				 */
 				wp_enqueue_script(
 					'mci-footnotes-jquery-tools',
@@ -304,8 +298,7 @@ class MCI_Footnotes {
 				 *
 				 * Fetch jQuery UI from cdnjs.cloudflare.com.
 				 * @since 2.0.0
-				 * @date 2020-10-26T1907+0100
-				 * @contributor @vonpiernik
+							 * @contributor @vonpiernik
 				 * @link https://wordpress.org/support/topic/tooltip-hover-not-showing/#post-13456762
 				 *
 				 * jQueryUI re-enables the tooltip infobox disabled when WPv5.5 was released.                * @since 2.1.2
@@ -313,8 +306,7 @@ class MCI_Footnotes {
 				 * - Update: Libraries: Load jQuery UI from WordPress, thanks to @check2020de issue report.
 				 *
 				 * @since 2.0.4
-				 * @date 2020-11-01T1902+0100
-				 * @reporter @check2020de
+							 * @reporter @check2020de
 				 * @link https://wordpress.org/support/topic/gdpr-issue-with-jquery/
 				 * @link https://wordpress.stackexchange.com/questions/273986/correct-way-to-enqueue-jquery-ui
 				 *
@@ -326,14 +318,12 @@ class MCI_Footnotes {
 				wp_enqueue_script( 'jquery-ui-tooltip' );
 
 			}
-
 		}
 
 		/**
 		 * Enables enqueuing a new-scheme stylesheet.
 		 *
 		 * @since 2.5.5
-		 * @date 2021-02-14T1512+0100
 		 *
 		 * Enables enqueuing the formatted individual stylesheets if false.
 		 * WARNING: This facility is designed for development and must NOT be used in production.
@@ -341,7 +331,7 @@ class MCI_Footnotes {
 		 * The Boolean may be set at the bottom of the plugin’s main PHP file.
 		 * @see footnotes.php
 		 */
-		if ( true === C_BOOL_CSS_PRODUCTION_MODE ) {
+		if ( PRODUCTION_ENV ) {
 
 			/**
 			 * Enqueues a minified united external stylesheet in production.
@@ -350,7 +340,6 @@ class MCI_Footnotes {
 			 * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
 			 *
 			 * @since 2.5.5
-			 * @date 2021-02-14T1543+0100
 			 *
 			 * @contributor @docteurfitness
 			 * @link https://wordpress.org/support/topic/simply-speed-optimisation/
@@ -362,10 +351,9 @@ class MCI_Footnotes {
 			 * @see class/dashboard/layout.php
 			 *
 			 * @since 2.0.3  add versioning of public.css for cache busting.
-			 * @date 2020-10-29T1413+0100
 			 * Plugin version number is needed for busting browser caches after each plugin update.
+			 *
 			 * @since 2.1.4  automate passing version number for cache busting.
-			 * @date 2020-11-30T0646+0100
 			 * The constant C_STR_FOOTNOTES_VERSION is defined at start of footnotes.php.
 			 *
 			 * The media scope argument 'all' is the default.
@@ -387,11 +375,9 @@ class MCI_Footnotes {
 					$l_str_tooltip_mode_long  = 'jquery-tooltips';
 
 				}
-
 			} else {
 				$l_str_tooltip_mode_short = 'nott';
 				$l_str_tooltip_mode_long  = 'no-tooltips';
-
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
@@ -429,19 +415,54 @@ class MCI_Footnotes {
 			 * Enqueues external stylesheets, ONLY in development now.
 			 *
 			 * @since 2.1.4  optionally enqueue an extra stylesheet.
-			 * @date 2020-12-04T2231+0100
-			 *
+		   *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
-			wp_enqueue_style( 'mci-footnotes-common', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ), array(), C_STR_FOOTNOTES_VERSION );
-			wp_enqueue_style( 'mci-footnotes-tooltips', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ), array(), C_STR_FOOTNOTES_VERSION );
+			wp_enqueue_style(
+				'mci-footnotes-common',
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ),
+				array(),
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__, 1 )
+					) . 'css/dev-common.css'
+				)
+			);
+			wp_enqueue_style(
+				'mci-footnotes-tooltips',
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ),
+				array(),
+				filemtime(
+					plugin_dir_path(
+						dirname( __FILE__, 1 )
+					) . 'css/dev-tooltips.css'
+				)
+			);
 
 			if ( self::$a_bool_amp_enabled ) {
-				wp_enqueue_style( 'mci-footnotes-amp', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ), array(), C_STR_FOOTNOTES_VERSION );
+				wp_enqueue_style(
+					'mci-footnotes-amp',
+					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ),
+					array(),
+					filemtime(
+						plugin_dir_path(
+							dirname( __FILE__, 1 )
+						) . 'css/dev-amp-tooltips.css'
+					)
+				);
 			}
 
 			if ( self::$a_bool_alternative_tooltips_enabled ) {
-				wp_enqueue_style( 'mci-footnotes-alternative', plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ), array(), C_STR_FOOTNOTES_VERSION );
+				wp_enqueue_style(
+					'mci-footnotes-alternative',
+					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
+					array(),
+					filemtime(
+						plugin_dir_path(
+							dirname( __FILE__, 1 )
+						) . 'css/dev-tooltips-alternative.css'
+					)
+				);
 			}
 
 			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
@@ -452,7 +473,11 @@ class MCI_Footnotes {
 						MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					array(),
-					C_STR_FOOTNOTES_VERSION,
+					filemtime(
+						plugin_dir_path(
+							dirname( __FILE__, 1 )
+						) . 'css/dev-layout-' . $l_str_page_layout_option . '.css'
+					),
 					'all'
 				);
 			}

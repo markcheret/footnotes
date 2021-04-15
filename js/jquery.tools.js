@@ -25,7 +25,6 @@
  * Make sure to sync the version number in class/init.php:
  * @version 1.2.7.redacted.2
  *
- * @lastmodified 2021-02-18T2032+0100
  * @accountable @pewgeuges
  *
  * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett @twellve_million bug reports, thanks to @vonpiernik code contribution
@@ -43,7 +42,6 @@
  * - Update: Libraries: jQuery Tools: add condition whether deprecated function jQuery.browser() exists, thanks to @vonpiernik code contribution
  * 
  * @since 2.0.0
- * @date 2020-10-26T2005+0100
  * @accountable @pewgeuges
  *
  * @contributor @vonpiernik
@@ -73,7 +71,6 @@
  * - Update: Libraries: jQuery Tools: redact (comment out) all 6 instances of deprecated function jQuery.browser(), thanks to @bjrnet21 @cconser @vyassuresh @spaceling @widecast @olivlyon @maxident bug reports
  * 
  * @since 2.1.1
- * @date 2020-11-12T0127+0100
  * @accountable @pewgeuges
  *
  * @reporter @bjrnet21
@@ -157,7 +154,6 @@
 		 * - Bugfix: Libraries: jQuery Tools: replace discouraged double equals sign with recommended triple equals sign
 		 * 
 		 * @since 2.5.4
-		 * @date 2021-01-27T1955+0100
 		 * @accountable @pewgeuges
 		 * 
 		 * 23 instances (27 less 4 already triple), first below, next was already
@@ -498,7 +494,6 @@
 			 * - Update: Libraries: jQuery Tools: replace deprecated function jQuery.isFunction(), thanks to @a223123131 bug report
 			 * 
 			 * @since 2.5.4
-			 * @date 2021-01-27T1911+0100
 			 * @accountable @pewgeuges
 			 *
 			 * @reporter @a223123131

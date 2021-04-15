@@ -4,10 +4,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7
 Requires PHP: 7.0
-Package Version: 2.7.0
-Version: 2.7.0
 Stable Tag: 2.7.0
-CAUTION: THE S. T. FIELD IS PARSED FOR RELEASE CONFIGURATION.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -154,9 +151,6 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 - Update: Scroll delays: add a setting to configure also a scroll up delay for completeness.
 - Bugfix: Tooltips: Styling: protect padding against removal in surroundings with explicit zero padding.
 - Bugfix: Tooltips: Display: CSS transitions: fix syntax error.
-- Update: Documentation: help and support for contributors by the means of Contributing Guidelines in 'CONTRIBUTING.md', thanks to @rumperuu code contribution.
-- Update: Documentation: additional readme in markdown format 'README.md' for use with the code repository on GitHub, thanks to @rumperuu code contribution.
-- Update: Documentation: move 'customized-template-stack.txt' and 'customized-documentation-schema.txt' from the 'development/' folder to root.
 
 = 2.5.10 =
 - Bugfix: Codebase: revert to 2.5.8 with apologies (below), thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.

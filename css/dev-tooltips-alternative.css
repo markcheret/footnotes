@@ -3,17 +3,17 @@
  * Additional stylesheet for alternative tooltips.
  * 
  * @since 2.5.5
- *
+ 
  * System of unified minified style sheets tailored to the instance.
  * 
- * @see dev-common.css.
+ * @see full header in dev-common.css.
  */
 
+
 /**
- * Position.
+ * Alternative tooltips
  * 
- * Values are defined by internal CSS.
- * @see class/task.php
+ * These default position values may be overridden by internal CSS.
  */
 
 .footnote_referrer.relative {

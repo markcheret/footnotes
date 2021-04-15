@@ -1,7 +1,7 @@
 /**
  * Created by Stefan on 24.05.14.
  *
- * Edit: be careful to maintain version number near EOF   
+ * Edit: be careful to maintain version number near EOF
  */
 
 (function () {

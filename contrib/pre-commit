@@ -36,7 +36,7 @@ done
 #then
 #    RULESET="$PROJECT/phpcs.xml.dist"
 #else
-    RULESETS=["WordPress","PHPCompatibilityWP"]
+RULESETS=("WordPress" "PHPCompatibilityWP")
 #fi
 
 if [ "$FILES" != "" ]

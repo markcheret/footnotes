@@ -1,59 +1,34 @@
 <?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
- * Includes the main Class of the Plugin.
+ * Footnotes class
  *
- * @filesource
  * @package footnotes
  * @since 1.5.0
- *
- * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
- * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
- * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
- *
- * @since 2.0.3  add versioning of public.css for cache busting
- * @since 2.0.4  add jQuery UI from WordPress
- * @since 2.1.4  automate passing version number for cache busting
- * @since 2.1.4  optionally enqueue an extra stylesheet
- *
- * @since 2.5.5  Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
- * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
- * @since 2.5.5  Bugfix: Libraries: optimize processes by loading external and internal scripts only if needed, thanks to @docteurfitness issue report.
- * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  */
 
 /**
- * Entry point of the Plugin. Loads the Dashboard and executes the Task.
+ * Provides an entry point to the Plugin.
+ *
+ * Loads the dashboard and executes the task.
  *
  * @since 1.5.0
  */
 class MCI_Footnotes {
 
 	/**
-	 * Reference to the Plugin Task object.
+	 * The Plugin task.
 	 *
 	 * @since 1.5.0
-	 * @var null|MCI_Footnotes_Task
+	 * @var Task $task The Plugin task.
 	 */
 	public $a_obj_task = null;
 
 	/**
-	 * Allows to determine whether tooltips are enabled.
-	 * The actual value of these properties is configurable.
-	 *
-	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
+	 * Flag for using tooltips.
 	 *
 	 * @since 2.4.0
 	 *
-	 * @contributor Patrizia Lutz @misfist
-	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
-	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
-	 * @link https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3 diff
-	 *
-	 * @var bool
-	 *
-	 * Template process and script / stylesheet load optimization.
-	 * Streamline process depending on tooltip enabled status.
-	 * Load tooltip inline script only if jQuery tooltips are enabled.
+	 * @var bool $tooltips_enabled Whether tooltips are enabled or not.
 	 */
 	public static $a_bool_tooltips_enabled = false;
 
@@ -134,7 +109,7 @@ class MCI_Footnotes {
 		// Register Button hooks.
 		MCI_Footnotes_WYSIWYG::register_hooks();
 		// Register general hooks.
-		MCI_Footnotes_Hooks::register_hooks();
+		Hooks::register_hooks();
 
 		// Initialize the Plugin Dashboard.
 		$this->initialize_dashboard();

@@ -12,7 +12,7 @@
  *
  * @since  1.5.0
  */
-class MCI_Footnotes_Layout_Init {
+class Footnotes_Layout_Init {
 
 	/**
 	 * Slug for the Plugin main menu.
@@ -20,7 +20,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const C_STR_MAIN_MENU_SLUG = 'footnotes';
+	const MAIN_MENU_SLUG = 'footnotes';
 
 	/**
 	 * Plugin main menu name.
@@ -28,7 +28,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const C_STR_MAIN_MENU_TITLE = 'ManFisher';
+	const MAIN_MENU_TITLE = 'ManFisher';
 
 	/**
 	 * Contains the settings layoutEngine
@@ -44,7 +44,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since  1.5.0
 	 */
 	public function __construct() {
-		$this->settings_page = new MCI_Footnotes_Layout_Settings();
+		$this->settings_page = new Footnotes_Layout_Settings();
 
 		// Register hooks/actions.
 		add_action( 'admin_menu', array( $this, 'register_options_submenu' ) );
@@ -60,7 +60,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since  1.5.0
 	 */
 	public function initialize_settings() {
-		MCI_Footnotes_Settings::instance()->register_settings();
+		Footnotes_Settings::instance()->register_settings();
 		$this->settings_page->register_sections();
 	}
 
@@ -74,7 +74,7 @@ class MCI_Footnotes_Layout_Init {
 		add_submenu_page(
 			'options-general.php',
 			'footnotes Settings',
-			self::C_STR_MAIN_MENU_SLUG,
+			self::MAIN_MENU_SLUG,
 			'manage_options',
 			'footnotes',
 			array( $this->settings_page, 'display_content' )
@@ -93,53 +93,53 @@ class MCI_Footnotes_Layout_Init {
 
 		// Get plugin internal name from POST data.
 		if ( isset( $_POST['plugin'] ) ) {
-			$l_str_plugin_name = wp_unslash( $_POST['plugin'] );
+			$plugin_name = wp_unslash( $_POST['plugin'] );
 		}
 
-		if ( empty( $l_str_plugin_name ) ) {
+		if ( empty( $plugin_name ) ) {
 			echo wp_json_encode( array( 'error' => 'Plugin name invalid.' ) );
 			exit;
 		}
-		$l_str_url = 'https://api.wordpress.org/plugins/info/1.0/' . $l_str_plugin_name . '.json';
+		$url = 'https://api.wordpress.org/plugins/info/1.0/' . $plugin_name . '.json';
 		// Call URL and collect data.
-		$l_arr_response = wp_remote_get( $l_str_url );
+		$response = wp_remote_get( $url );
 		// Check if response is valid.
-		if ( is_wp_error( $l_arr_response ) ) {
+		if ( is_wp_error( $response ) ) {
 			echo wp_json_encode( array( 'error' => 'Error receiving Plugin Information from WordPress.' ) );
 			exit;
 		}
-		if ( ! array_key_exists( 'body', $l_arr_response ) ) {
+		if ( ! array_key_exists( 'body', $response ) ) {
 			echo wp_json_encode( array( 'error' => 'Error reading WordPress API response message.' ) );
 			exit;
 		}
 		// Get the body of the response.
-		$l_str_response = $l_arr_response['body'];
+		$response = $response['body'];
 		// Get plugin object.
-		$l_arr_plugin = json_decode( $l_str_response, true );
-		if ( empty( $l_arr_plugin ) ) {
-			echo wp_json_encode( array( 'error' => 'Error reading Plugin meta information.<br/>URL: ' . $l_str_url . '<br/>Response: ' . $l_str_response ) );
+		$plugin = json_decode( $response, true );
+		if ( empty( $plugin ) ) {
+			echo wp_json_encode( array( 'error' => 'Error reading Plugin meta information.<br/>URL: ' . $url . '<br/>Response: ' . $response ) );
 			exit;
 		}
 
-		$l_int_num_ratings = array_key_exists( 'num_ratings', $l_arr_plugin ) ? intval( $l_arr_plugin['num_ratings'] ) : 0;
-		$l_int_rating      = array_key_exists( 'rating', $l_arr_plugin ) ? floatval( $l_arr_plugin['rating'] ) : 0.0;
-		$l_int_stars       = round( 5 * $l_int_rating / 100.0, 1 );
+		$num_ratings = array_key_exists( 'num_ratings', $plugin ) ? intval( $plugin['num_ratings'] ) : 0;
+		$rating      = array_key_exists( 'rating', $plugin ) ? floatval( $plugin['rating'] ) : 0.0;
+		$stars       = round( 5 * $rating / 100.0, 1 );
 
 		// Return Plugin information as JSON encoded string.
 		echo wp_json_encode(
 			array(
 				'error'             => '',
-				'PluginDescription' => array_key_exists( 'short_description', $l_arr_plugin ) ? html_entity_decode( $l_arr_plugin['short_description'] ) : 'Error reading Plugin information',
-				'PluginAuthor'      => array_key_exists( 'author', $l_arr_plugin ) ? html_entity_decode( $l_arr_plugin['author'] ) : 'unknown',
-				'PluginRatingText'  => $l_int_stars . ' ' . __( 'rating based on', 'footnotes' ) . ' ' . $l_int_num_ratings . ' ' . __( 'ratings', 'footnotes' ),
-				'PluginRating1'     => $l_int_stars >= 0.5 ? 'star-full' : 'star-empty',
-				'PluginRating2'     => $l_int_stars >= 1.5 ? 'star-full' : 'star-empty',
-				'PluginRating3'     => $l_int_stars >= 2.5 ? 'star-full' : 'star-empty',
-				'PluginRating4'     => $l_int_stars >= 3.5 ? 'star-full' : 'star-empty',
-				'PluginRating5'     => $l_int_stars >= 4.5 ? 'star-full' : 'star-empty',
-				'PluginRating'      => $l_int_num_ratings,
-				'PluginLastUpdated' => array_key_exists( 'last_updated', $l_arr_plugin ) ? $l_arr_plugin['last_updated'] : 'unknown',
-				'PluginDownloads'   => array_key_exists( 'downloaded', $l_arr_plugin ) ? $l_arr_plugin['downloaded'] : '---',
+				'PluginDescription' => array_key_exists( 'short_description', $plugin ) ? html_entity_decode( $plugin['short_description'] ) : 'Error reading Plugin information',
+				'PluginAuthor'      => array_key_exists( 'author', $plugin ) ? html_entity_decode( $plugin['author'] ) : 'unknown',
+				'PluginRatingText'  => $stars . ' ' . __( 'rating based on', 'footnotes' ) . ' ' . $num_ratings . ' ' . __( 'ratings', 'footnotes' ),
+				'PluginRating1'     => $stars >= 0.5 ? 'star-full' : 'star-empty',
+				'PluginRating2'     => $stars >= 1.5 ? 'star-full' : 'star-empty',
+				'PluginRating3'     => $stars >= 2.5 ? 'star-full' : 'star-empty',
+				'PluginRating4'     => $stars >= 3.5 ? 'star-full' : 'star-empty',
+				'PluginRating5'     => $stars >= 4.5 ? 'star-full' : 'star-empty',
+				'PluginRating'      => $num_ratings,
+				'PluginLastUpdated' => array_key_exists( 'last_updated', $plugin ) ? $plugin['last_updated'] : 'unknown',
+				'PluginDownloads'   => array_key_exists( 'downloaded', $plugin ) ? $plugin['downloaded'] : '---',
 			)
 		);
 		exit;

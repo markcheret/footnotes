@@ -78,7 +78,7 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 == Changelog ==
 
 = 2.7.1 =
- - Bugfix: Stylesheets: higher specificity, thanks to @cybermrmotte bug report. Fixing Hueman Theme compatibility
+- Bugfix: Stylesheets: higher specificity, thanks to @cybermrmotte bug report.
  
 = 2.7.0 =
 - Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.

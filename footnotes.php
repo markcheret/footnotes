@@ -22,7 +22,6 @@
  * @since 2.1.4
  * @since 2.5.3 (Hungarian)
  * @var str
- * @lastmodified 2021-04-14T2351+0200
  */
 define( 'C_STR_FOOTNOTES_VERSION', '2.7.1' );
 

@@ -257,7 +257,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 			echo sprintf(
 				'<a class="nav-tab%s" href="?page=%s&t=%s">%s</a>',
 				( $l_str_id === $l_arr_active_section['id'] ) ? ' nav-tab-active' : '',
-				MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug(),
+				MCI_Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG,
 				$l_str_id,
 				$l_arr_description['title']
 			);

@@ -20,7 +20,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const C_STR_MAIN_MENU_SLUG = 'mfmmf';
+	const C_STR_MAIN_MENU_SLUG = 'footnotes';
 
 	/**
 	 * Plugin main menu name.
@@ -31,12 +31,12 @@ class MCI_Footnotes_Layout_Init {
 	const C_STR_MAIN_MENU_TITLE = 'ManFisher';
 
 	/**
-	 * Contains layout engine sub classes.
+	 * Contains the settings layoutEngine
 	 *
 	 * @since 1.5.0
 	 * @var array
 	 */
-	private $a_arr_sub_page_classes = array();
+	private $settings_page;
 
 	/**
 	 * Class Constructor. Initializes all WordPress hooks for the Plugin Settings.
@@ -44,100 +44,42 @@ class MCI_Footnotes_Layout_Init {
 	 * @since  1.5.0
 	 */
 	public function __construct() {
-		foreach ( get_declared_classes() as $l_str_class_name ) {
-			if ( is_subclass_of( $l_str_class_name, 'MCI_Footnotes_Layout_Engine' ) ) {
-				$l_obj_class = new $l_str_class_name();
-				// Append new instance of the layout engine sub class.
-				$this->a_arr_sub_page_classes[ $l_obj_class->get_priority() ] = $l_obj_class;
-			}
-		}
-		ksort( $this->a_arr_sub_page_classes );
+		$this->settings_page = new MCI_Footnotes_Layout_Settings();
 
 		// Register hooks/actions.
+		add_action( 'admin_menu', array( $this, 'register_options_submenu' ) );
 		add_action( 'admin_init', array( $this, 'initialize_settings' ) );
-		add_action( 'admin_menu', array( $this, 'register_main_menu' ) );
 		// Register AJAX callbacks for Plugin information.
 		add_action( 'wp_ajax_nopriv_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 		add_action( 'wp_ajax_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 	}
 
 	/**
-	 * Initializes all sub pages and registers the settings.
+	 * Registers the settings and initialises the settings page.
 	 *
 	 * @since  1.5.0
 	 */
 	public function initialize_settings() {
 		MCI_Footnotes_Settings::instance()->register_settings();
-		// Iterate though each sub class of the layout engine and register their sections.
-		foreach ( $this->a_arr_sub_page_classes as $l_obj_layout_engine_sub_class ) {
-			$l_obj_layout_engine_sub_class->register_sections();
-		}
+		$this->settings_page->register_sections();
 	}
 
 	/**
-	 * Registers the new main menu for the WordPress dashboard.
-	 * Registers all sub menu pages for the new main menu.
+	 * Registers the footnotes submenu page.
 	 *
 	 * @since  1.5.0
 	 * @see http://codex.wordpress.org/Function_Reference/add_menu_page
 	 */
-	public function register_main_menu() {
-		global $menu;
-		// Iterate through each main menu.
-		foreach ( $menu as $l_arr_main_menu ) {
-			// 3terate through each main menu attribute.
-			foreach ( $l_arr_main_menu as $l_str_attribute ) {
-				// Main menu already added, append sub pages and stop.
-				if ( self::C_STR_MAIN_MENU_SLUG === $l_str_attribute ) {
-					$this->register_sub_pages();
-					return;
-				}
-			}
-		}
-
-		// Add a new main menu page to the WordPress dashboard.
-		add_menu_page(
-			self::C_STR_MAIN_MENU_TITLE,                  // Page title.
-			self::C_STR_MAIN_MENU_TITLE,                  // Menu title.
-			'manage_options',                             // Capability.
-			self::C_STR_MAIN_MENU_SLUG,                   // Menu slug.
-			array( $this, 'display_other_plugins' ),      // Function.
-			plugins_url( 'footnotes/img/main-menu.png' ), // Icon URL.
-			null                                          // Position.
+	public function register_options_submenu() {
+		add_submenu_page(
+			'options-general.php',
+			'footnotes Settings',
+			self::C_STR_MAIN_MENU_SLUG,
+			'manage_options',
+			'footnotes',
+			array( $this->settings_page, 'display_content' )
 		);
-		$this->register_sub_pages();
-	}
-
-	/**
-	 * Registers all SubPages for this Plugin.
-	 *
-	 * @since 1.5.0
-	 */
-	private function register_sub_pages() {
-		// First registered sub menu page MUST NOT contain a unique slug suffix.
-		// Iterate though each sub class of the layout engine and register their sub page.
-		foreach ( $this->a_arr_sub_page_classes as $l_obj_layout_engine_sub_class ) {
-			$l_obj_layout_engine_sub_class->register_sub_page();
-		}
-	}
-
-	/**
-	 * Displays other Plugins from the developers.
-	 *
-	 * @since 1.5.0
-	 */
-	public function display_other_plugins() {
-		printf( '<br/><br/>' );
-		// Load template file.
-		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'manfisher' );
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $l_obj_template->get_content();
-		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
-
-		printf( '<em>visit <a href="https://cheret.org/footnotes/" target="_blank">Mark Cheret</a></em>' );
-		printf( '<br/><br/>' );
-
-		printf( '</div>' );
+		$this->settings_page->register_sub_page();
 	}
 
 	// phpcs:disable WordPress.Security.NonceVerification.Missing

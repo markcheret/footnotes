@@ -10,8 +10,8 @@
         "lint:fix": "composer run lint:php:fix && npm run lint:fix",
         "format": "npm run format",
         "format:fix": "npm run format:fix",
-        "lint:php": "./vendor/bin/phpcs --standard='WordPress' --colors --encoding=utf-8 -n -p --ignore=*/vendor/* ./*.php ./*/*.php ./*/*/*.php",
-        "lint:php:fix": "./vendor/bin/phpcbf --standard='WordPress' --encoding=utf-8 -p --ignore=*/vendor/* ./*.php ./*/*.php ./*/*/*.php", 
+        "lint:php": "./vendor/bin/phpcs --standard=WordPress --colors --encoding=utf-8 -n -p --ignore=./vendor,./node_modules ./**/*.php && ./vendor/bin/phpcs --standard=PHPCompatibilityWP --runtime-set testVersion 7.0- --colors --encoding=utf-8 -n -p --ignore=./vendor,./node_modules ./**/*.php",
+        "lint:php:fix": "./vendor/bin/phpcbf --standard=WordPress --encoding=utf-8 -p --ignore=./vendor,./node_modules ./**/*.php && ./vendor/bin/phpcbf --standard=PHPCompatibilityWP --runtime-set testVersion 7.0- --encoding=utf-8 -p --ignore=./vendor,./node_modules ./**/*.php", 
         "lint:css": "npm run lint:css",
         "lint:css:fix": "npm run lint:css:fix",
         "lint:js": "npm run lint:js",
@@ -24,9 +24,12 @@
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "phpcompatibility/php-compatibility": "*",
         "wp-coding-standards/wpcs": "^2.3",
         "phpdocumentor/phpdocumentor": "^3.0",
         "damianopetrungaro/php-commitizen": "^0.2.0",
-        "marcocesarato/php-conventional-changelog": "^1.9"
-    }
+        "marcocesarato/php-conventional-changelog": "^1.9",
+        "phpcompatibility/phpcompatibility-wp": "*"
+    },
+    "prefer-stable": true
 }

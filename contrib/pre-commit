@@ -36,12 +36,12 @@ done
 #then
 #    RULESET="$PROJECT/phpcs.xml.dist"
 #else
-RULESETS=("WordPress" "PHPCompatibilityWP")
+#
 #fi
 
 if [ "$FILES" != "" ]
 then
-    for RULESET in $RULESETS; do
+    for RULESET in WordPress PHPCompatibilityWP; do
 				echo "Checking Code Standard Compliance, using $RULESET as ruleset standard..."
 				./vendor/bin/phpcs --standard="$RULESET" --runtime-set testVersion 7.0- --colors --encoding=utf-8 -n -p $FILES
 				if [ $? != 0 ]

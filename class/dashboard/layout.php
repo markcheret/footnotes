@@ -285,7 +285,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		// Echo JavaScript for the expand/collapse function of the meta boxes.
 		echo '<script type="text/javascript">';
 		echo 'jQuery(document).ready(function ($) {';
-		echo 'jQuery(".mfmmf-color-picker").wpColorPicker();';
+		echo 'jQuery(".footnotes-color-picker").wpColorPicker();';
 		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
 		echo "postboxes.add_postbox_toggles('" . $this->a_str_sub_page_hook . "');";
 		echo '});';
@@ -536,7 +536,7 @@ abstract class MCI_Footnotes_Layout_Engine {
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(
-			'<input type="text" name="%s" id="%s" class="mfmmf-color-picker" value="%s"/>',
+			'<input type="text" name="%s" id="%s" class="footnotes-color-picker" value="%s"/>',
 			$l_arr_data['name'],
 			$l_arr_data['id'],
 			$l_arr_data['value']

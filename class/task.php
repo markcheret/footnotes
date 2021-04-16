@@ -1097,8 +1097,8 @@ class MCI_Footnotes_Task {
 	 */
 	public function footnotes_in_content( $p_str_content ) {
 
-		$l_str_ref_container_position = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION );
-		$l_str_footnote_section_shortcode = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE );
+		$l_str_ref_container_position            = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION );
+		$l_str_footnote_section_shortcode        = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE );
 		$l_int_footnote_section_shortcode_length = strlen( $l_str_footnote_section_shortcode );
 
 		if ( strpos( $p_str_content, $l_str_footnote_section_shortcode ) === false ) {
@@ -1110,14 +1110,14 @@ class MCI_Footnotes_Task {
 
 		} else {
 
-			$l_str_rest_content = $p_str_content;
-			$l_arr_sections_raw = array();
+			$l_str_rest_content       = $p_str_content;
+			$l_arr_sections_raw       = array();
 			$l_arr_sections_processed = array();
 
 			do {
-				$l_int_section_end = strpos( $l_str_rest_content, $l_str_footnote_section_shortcode );
+				$l_int_section_end    = strpos( $l_str_rest_content, $l_str_footnote_section_shortcode );
 				$l_arr_sections_raw[] = substr( $l_str_rest_content, 0, $l_int_section_end );
-				$l_str_rest_content = substr( $l_str_rest_content, $l_int_section_end + $l_int_footnote_section_shortcode_length );
+				$l_str_rest_content   = substr( $l_str_rest_content, $l_int_section_end + $l_int_footnote_section_shortcode_length );
 			} while ( strpos( $l_str_rest_content, $l_str_footnote_section_shortcode ) !== false );
 			$l_arr_sections_raw[] = $l_str_rest_content;
 

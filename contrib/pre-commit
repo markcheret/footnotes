@@ -29,33 +29,36 @@ do
     FILES="$FILES $PROJECT/$FILE"
 done
 
-if [ -f "$PROJECT/phpcs.ruleset.xml" ]
-then
-    RULESET="$PROJECT/phpcs.ruleset.xml"
-elif [ -f "$PROJECT/phpcs.xml.dist" ]
-then
-    RULESET="$PROJECT/phpcs.xml.dist"
-else
-    RULESET="WordPress"
-fi
+#if [ -f "$PROJECT/phpcs.ruleset.xml" ]
+#then
+#    RULESET="$PROJECT/phpcs.ruleset.xml"
+#elif [ -f "$PROJECT/phpcs.xml.dist" ]
+#then
+#    RULESET="$PROJECT/phpcs.xml.dist"
+#else
+    RULESETS=["WordPress","PHPCompatibilityWP"]
+#fi
 
 if [ "$FILES" != "" ]
 then
-    echo "Checking Code Standard Compliance, using $RULESET as ruleset standard..."
-		./vendor/bin/phpcs --standard="$RULESET" --colors --encoding=utf-8 -n -p $FILES
-		if [ $? != 0 ]
-		then
-				echo "Coding standards errors have been detected. Running phpcbf..."
-				./vendor/bin/phpcbf --standard="$RULESET" --encoding=utf-8 -n -p $FILES
-				git add $FILES
-				echo "Running Code Sniffer again..."
-				./vendor/bin/phpcs --standard="$RULESET" --colors --encoding=utf-8 -n -p $FILES
+    for RULESET in $RULESETS; do
+				echo "Checking Code Standard Compliance, using $RULESET as ruleset standard..."
+				./vendor/bin/phpcs --standard="$RULESET" --runtime-set testVersion 7.0- --colors --encoding=utf-8 -n -p $FILES
 				if [ $? != 0 ]
 				then
-						echo "Errors found not fixable automatically. You need to manually fix them."
-						exit 1
+						echo "Coding standards errors have been detected. Running phpcbf..."
+						./vendor/bin/phpcbf --standard="$RULESET" --runtime-set testVersion 7.0- --encoding=utf-8 -n -p $FILES
+						git add $FILES
+						echo "Running Code Sniffer again..."
+						./vendor/bin/phpcs --standard="$RULESET" --runtime-set testVersion 7.0- --colors --encoding=utf-8 -n -p $FILES
+						if [ $? != 0 ]
+						then
+								echo "Errors found not fixable automatically. You need to manually fix them."
+								exit 1
+						fi
 				fi
-		fi
+				echo "$RULESET passed."
+		done
 fi
 
 exit $?

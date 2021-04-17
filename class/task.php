@@ -2094,8 +2094,11 @@ class MCI_Footnotes_Task {
 				// Determine tooltip content.
 				if ( MCI_Footnotes::$a_bool_tooltips_enabled ) {
 					$l_str_tooltip_content = $l_bool_has_tooltip_text ? $l_str_tooltip_text : $l_str_excerpt_text;
-					// @reporter @pewgeuges
-					// @link https://github.com/markcheret/footnotes/issues/103
+					/**
+					 * @reporter @pewgeuges
+					 * @link https://github.com/markcheret/footnotes/issues/103
+					 * @since 2.7.1
+					 */
 					$l_arr_paragraph_splitters = array( '#(</p *>|<p[^>]*>)#', '#(</div *>|<div[^>]*>)#' );
 					$l_str_tooltip_content = preg_replace( $l_arr_paragraph_splitters, '<br />', $l_str_tooltip_content );
 				} else {

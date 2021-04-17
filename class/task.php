@@ -2095,9 +2095,11 @@ class MCI_Footnotes_Task {
 				if ( MCI_Footnotes::$a_bool_tooltips_enabled ) {
 					$l_str_tooltip_content = $l_bool_has_tooltip_text ? $l_str_tooltip_text : $l_str_excerpt_text;
 					/**
+					 * Ensures paragraph separation
 					 * @reporter @pewgeuges
 					 * @link https://github.com/markcheret/footnotes/issues/103
 					 * @since 2.7.1
+					 * Ensures that footnotes containing paragraph separators get displayed correctly.
 					 */
 					$l_arr_paragraph_splitters = array( '#(</p *>|<p[^>]*>)#', '#(</div *>|<div[^>]*>)#' );
 					$l_str_tooltip_content = preg_replace( $l_arr_paragraph_splitters, '<br />', $l_str_tooltip_content );

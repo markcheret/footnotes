@@ -2096,6 +2096,7 @@ class MCI_Footnotes_Task {
 					$l_str_tooltip_content = $l_bool_has_tooltip_text ? $l_str_tooltip_text : $l_str_excerpt_text;
 					/**
 					 * Ensures paragraph separation
+					 *
 					 * @reporter @pewgeuges
 					 * @link https://github.com/markcheret/footnotes/issues/103
 					 * @since 2.7.1

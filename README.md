@@ -1,8 +1,8 @@
+[![OSSAR](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml) [![PHP Composer](https://github.com/markcheret/footnotes/actions/workflows/php.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/php.yml)
+
 ![footnotes](https://raw.githubusercontent.com/markcheret/footnotes/main/img/footnotes.png)
 
 # footnotes
-
-Featured on [wpmudev][wpmudev] — cheers for the review, folks!
 
 **footnotes** aims to be the all-in-one solution for displaying an 
 automatically-generated list of references on your Page or Post. The Plugin 
@@ -11,6 +11,8 @@ footnotes will be displayed.
 
 **footnotes** gives you the ability to display well-formatted footnotes on your 
 WordPress Pages and Posts — those footnotes we know from offline publishing.
+
+Featured on [wpmudev][wpmudev] — cheers for the review, folks!
 
 ## Table of Contents
 

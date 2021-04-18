@@ -1,8 +1,9 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName.
+<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
  * Includes the Plugin Class to display all Settings.
  *
  * @filesource
+ * @package footnotes
  * @since 1.5.0
  *
  * @since 2.0.4  restore arrow settings

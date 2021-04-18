@@ -41,35 +41,35 @@ Search.appendIndex(
             "summary": "Converts\u0020data\u0020types\u0020and\u0020Footnotes\u0020specific\u0020values.",
             "url": "classes/MCI-Footnotes-Convert.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003AIndex\u0028\u0029",
-            "name": "Index",
+            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
             "summary": "Converts\u0020a\u0020integer\u0020into\u0020the\u0020user\u002Ddefined\u0020counter\u0020style\u0020for\u0020the\u0020footnotes.",
-            "url": "classes/MCI-Footnotes-Convert.html#method_Index"
+            "url": "classes/MCI-Footnotes-Convert.html#method_index"
         },                {
-            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003AtoLatin\u0028\u0029",
-            "name": "toLatin",
+            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003Ato_latin\u0028\u0029",
+            "name": "to_latin",
             "summary": "Converts\u0020an\u0020integer\u0020into\u0020latin\u0020ascii\u0020characters,\u0020either\u0020lower\u0020or\u0020upper\u002Dcase.",
-            "url": "classes/MCI-Footnotes-Convert.html#method_toLatin"
+            "url": "classes/MCI-Footnotes-Convert.html#method_to_latin"
         },                {
-            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003AtoArabicLeading\u0028\u0029",
-            "name": "toArabicLeading",
+            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003Ato_arabic_leading\u0028\u0029",
+            "name": "to_arabic_leading",
             "summary": "Converts\u0020an\u0020integer\u0020to\u0020a\u0020leading\u002D0\u0020integer.",
-            "url": "classes/MCI-Footnotes-Convert.html#method_toArabicLeading"
+            "url": "classes/MCI-Footnotes-Convert.html#method_to_arabic_leading"
         },                {
-            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003AtoRomanic\u0028\u0029",
-            "name": "toRomanic",
+            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003Ato_romanic\u0028\u0029",
+            "name": "to_romanic",
             "summary": "Converts\u0020an\u0020integer\u0020to\u0020a\u0020romanic\u0020letter.",
-            "url": "classes/MCI-Footnotes-Convert.html#method_toRomanic"
+            "url": "classes/MCI-Footnotes-Convert.html#method_to_romanic"
         },                {
-            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003AtoBool\u0028\u0029",
-            "name": "toBool",
+            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003Ato_bool\u0028\u0029",
+            "name": "to_bool",
             "summary": "Converts\u0020a\u0020string\u0020depending\u0020on\u0020its\u0020value\u0020to\u0020a\u0020boolean.",
-            "url": "classes/MCI-Footnotes-Convert.html#method_toBool"
+            "url": "classes/MCI-Footnotes-Convert.html#method_to_bool"
         },                {
-            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003AgetArrow\u0028\u0029",
-            "name": "getArrow",
+            "fqsen": "\\MCI_Footnotes_Convert\u003A\u003Aget_arrow\u0028\u0029",
+            "name": "get_arrow",
             "summary": "Get\u0020a\u0020html\u0020Array\u0020short\u0020code\u0020depending\u0020on\u0020Arrow\u002DArray\u0020key\u0020index.",
-            "url": "classes/MCI-Footnotes-Convert.html#method_getArrow"
+            "url": "classes/MCI-Footnotes-Convert.html#method_get_arrow"
         },                {
             "fqsen": "\\MCI_Footnotes_Convert\u003A\u003Adebug\u0028\u0029",
             "name": "debug",
@@ -86,30 +86,20 @@ Search.appendIndex(
             "summary": "Class\u0020Constructor.\u0020Initializes\u0020all\u0020WordPress\u0020hooks\u0020for\u0020the\u0020Plugin\u0020Settings.",
             "url": "classes/MCI-Footnotes-Layout-Init.html#method___construct"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003AinitializeSettings\u0028\u0029",
-            "name": "initializeSettings",
-            "summary": "Initializes\u0020all\u0020sub\u0020pages\u0020and\u0020registers\u0020the\u0020settings.",
-            "url": "classes/MCI-Footnotes-Layout-Init.html#method_initializeSettings"
+            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003Ainitialize_settings\u0028\u0029",
+            "name": "initialize_settings",
+            "summary": "Registers\u0020the\u0020settings\u0020and\u0020initialises\u0020the\u0020settings\u0020page.",
+            "url": "classes/MCI-Footnotes-Layout-Init.html#method_initialize_settings"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003AregisterMainMenu\u0028\u0029",
-            "name": "registerMainMenu",
-            "summary": "Registers\u0020the\u0020new\u0020main\u0020menu\u0020for\u0020the\u0020WordPress\u0020dashboard.",
-            "url": "classes/MCI-Footnotes-Layout-Init.html#method_registerMainMenu"
+            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003Aregister_options_submenu\u0028\u0029",
+            "name": "register_options_submenu",
+            "summary": "Registers\u0020the\u0020footnotes\u0020submenu\u0020page.",
+            "url": "classes/MCI-Footnotes-Layout-Init.html#method_register_options_submenu"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003AregisterSubPages\u0028\u0029",
-            "name": "registerSubPages",
-            "summary": "Registers\u0020all\u0020SubPages\u0020for\u0020this\u0020Plugin.",
-            "url": "classes/MCI-Footnotes-Layout-Init.html#method_registerSubPages"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003AdisplayOtherPlugins\u0028\u0029",
-            "name": "displayOtherPlugins",
-            "summary": "Displays\u0020other\u0020Plugins\u0020from\u0020the\u0020developers.",
-            "url": "classes/MCI-Footnotes-Layout-Init.html#method_displayOtherPlugins"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003AgetPluginMetaInformation\u0028\u0029",
-            "name": "getPluginMetaInformation",
+            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003Aget_plugin_meta_information\u0028\u0029",
+            "name": "get_plugin_meta_information",
             "summary": "AJAX\u0020call.\u0020returns\u0020a\u0020JSON\u0020string\u0020containing\u0020meta\u0020information\u0020about\u0020a\u0020specific\u0020WordPress\u0020Plugin.",
-            "url": "classes/MCI-Footnotes-Layout-Init.html#method_getPluginMetaInformation"
+            "url": "classes/MCI-Footnotes-Layout-Init.html#method_get_plugin_meta_information"
         },                {
             "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003AC_STR_MAIN_MENU_SLUG",
             "name": "C_STR_MAIN_MENU_SLUG",
@@ -121,350 +111,330 @@ Search.appendIndex(
             "summary": "Plugin\u0020main\u0020menu\u0020name.",
             "url": "classes/MCI-Footnotes-Layout-Init.html#constant_C_STR_MAIN_MENU_TITLE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003A\u0024a_arr_SubPageClasses",
-            "name": "a_arr_SubPageClasses",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Init.html#property_a_arr_SubPageClasses"
+            "fqsen": "\\MCI_Footnotes_Layout_Init\u003A\u003A\u0024settings_page",
+            "name": "settings_page",
+            "summary": "Contains\u0020the\u0020settings\u0020layoutEngine",
+            "url": "classes/MCI-Footnotes-Layout-Init.html#property_settings_page"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine",
-            "name": "MCI_Footnotes_LayoutEngine",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine",
+            "name": "MCI_Footnotes_Layout_Engine",
             "summary": "Layout\u0020Engine\u0020for\u0020the\u0020administration\u0020dashboard.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AgetPriority\u0028\u0029",
-            "name": "getPriority",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aget_priority\u0028\u0029",
+            "name": "get_priority",
             "summary": "Returns\u0020a\u0020Priority\u0020index.\u0020Lower\u0020numbers\u0020have\u0020a\u0020higher\u0020Priority.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_getPriority"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_get_priority"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AgetSubPageSlug\u0028\u0029",
-            "name": "getSubPageSlug",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aget_sub_page_slug\u0028\u0029",
+            "name": "get_sub_page_slug",
             "summary": "Returns\u0020the\u0020unique\u0020slug\u0020of\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_getSubPageSlug"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_get_sub_page_slug"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AgetSubPageTitle\u0028\u0029",
-            "name": "getSubPageTitle",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aget_sub_page_title\u0028\u0029",
+            "name": "get_sub_page_title",
             "summary": "Returns\u0020the\u0020title\u0020of\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_getSubPageTitle"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_get_sub_page_title"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AgetSections\u0028\u0029",
-            "name": "getSections",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aget_sections\u0028\u0029",
+            "name": "get_sections",
             "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020sections\u0020for\u0020a\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_getSections"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_get_sections"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AgetMetaBoxes\u0028\u0029",
-            "name": "getMetaBoxes",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aget_meta_boxes\u0028\u0029",
+            "name": "get_meta_boxes",
             "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020meta\u0020boxes.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_getMetaBoxes"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_get_meta_boxes"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddSection\u0028\u0029",
-            "name": "addSection",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_section\u0028\u0029",
+            "name": "add_section",
             "summary": "Returns\u0020an\u0020array\u0020describing\u0020a\u0020sub\u0020page\u0020section.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addSection"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_section"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddMetaBox\u0028\u0029",
-            "name": "addMetaBox",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_meta_box\u0028\u0029",
+            "name": "add_meta_box",
             "summary": "Returns\u0020an\u0020array\u0020describing\u0020a\u0020meta\u0020box.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addMetaBox"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_meta_box"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AregisterSubPage\u0028\u0029",
-            "name": "registerSubPage",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aregister_sub_page\u0028\u0029",
+            "name": "register_sub_page",
             "summary": "Registers\u0020a\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_registerSubPage"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_register_sub_page"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AregisterSections\u0028\u0029",
-            "name": "registerSections",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aregister_sections\u0028\u0029",
+            "name": "register_sections",
             "summary": "Registers\u0020all\u0020sections\u0020for\u0020a\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_registerSections"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_register_sections"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AregisterMetaBoxes\u0028\u0029",
-            "name": "registerMetaBoxes",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aregister_meta_boxes\u0028\u0029",
+            "name": "register_meta_boxes",
             "summary": "Registers\u0020all\u0020Meta\u0020boxes\u0020for\u0020a\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_registerMetaBoxes"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_register_meta_boxes"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AappendScripts\u0028\u0029",
-            "name": "appendScripts",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aappend_scripts\u0028\u0029",
+            "name": "append_scripts",
             "summary": "Append\u0020javascript\u0020and\u0020css\u0020files\u0020for\u0020specific\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_appendScripts"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_append_scripts"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AdisplayContent\u0028\u0029",
-            "name": "displayContent",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Adisplay_content\u0028\u0029",
+            "name": "display_content",
             "summary": "Displays\u0020the\u0020content\u0020of\u0020specific\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_displayContent"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_display_content"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AsaveSettings\u0028\u0029",
-            "name": "saveSettings",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Asave_settings\u0028\u0029",
+            "name": "save_settings",
             "summary": "Save\u0020all\u0020Plugin\u0020settings.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_saveSettings"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_save_settings"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003ADescription\u0028\u0029",
-            "name": "Description",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Adescription\u0028\u0029",
+            "name": "description",
             "summary": "Output\u0020the\u0020Description\u0020of\u0020a\u0020section.\u0020May\u0020be\u0020overwritten\u0020in\u0020any\u0020section.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_Description"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_description"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003ALoadSetting\u0028\u0029",
-            "name": "LoadSetting",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aload_setting\u0028\u0029",
+            "name": "load_setting",
             "summary": "Loads\u0020specific\u0020setting\u0020and\u0020returns\u0020an\u0020array\u0020with\u0020the\u0020keys\u0020\u005Bid,\u0020name,\u0020value\u005D.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_LoadSetting"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_load_setting"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddNewline\u0028\u0029",
-            "name": "addNewline",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_newline\u0028\u0029",
+            "name": "add_newline",
             "summary": "Returns\u0020a\u0020line\u0020break\u0020to\u0020start\u0020a\u0020new\u0020line.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addNewline"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_newline"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddLineSpace\u0028\u0029",
-            "name": "addLineSpace",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_line_space\u0028\u0029",
+            "name": "add_line_space",
             "summary": "Returns\u0020a\u0020line\u0020break\u0020to\u0020have\u0020a\u0020space\u0020between\u0020two\u0020lines.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addLineSpace"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_line_space"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddText\u0028\u0029",
-            "name": "addText",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_text\u0028\u0029",
+            "name": "add_text",
             "summary": "Returns\u0020a\u0020simple\u0020text\u0020inside\u0020html\u0020\u003Cspan\u003E\u0020text.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addText"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_text"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddLabel\u0028\u0029",
-            "name": "addLabel",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_label\u0028\u0029",
+            "name": "add_label",
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\/select\u0020label.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addLabel"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_label"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddTextBox\u0028\u0029",
-            "name": "addTextBox",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_text_box\u0028\u0029",
+            "name": "add_text_box",
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020text\u005D.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addTextBox"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_text_box"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddCheckbox\u0028\u0029",
-            "name": "addCheckbox",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_checkbox\u0028\u0029",
+            "name": "add_checkbox",
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020checkbox\u005D.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addCheckbox"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_checkbox"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddSelectBox\u0028\u0029",
-            "name": "addSelectBox",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_select_box\u0028\u0029",
+            "name": "add_select_box",
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020a\u0020select\u0020box.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addSelectBox"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_select_box"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddTextArea\u0028\u0029",
-            "name": "addTextArea",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_textarea\u0028\u0029",
+            "name": "add_textarea",
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020a\u0020text\u0020area.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addTextArea"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_textarea"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddColorSelection\u0028\u0029",
-            "name": "addColorSelection",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_color_selection\u0028\u0029",
+            "name": "add_color_selection",
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020text\u005D\u0020with\u0020color\u0020selection\u0020class.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addColorSelection"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_color_selection"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003AaddNumBox\u0028\u0029",
-            "name": "addNumBox",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003Aadd_num_box\u0028\u0029",
+            "name": "add_num_box",
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020num\u005D.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#method_addNumBox"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#method_add_num_box"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003A\u0024a_str_SubPageHook",
-            "name": "a_str_SubPageHook",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003A\u0024a_str_sub_page_hook",
+            "name": "a_str_sub_page_hook",
             "summary": "Stores\u0020the\u0020Hook\u0020connection\u0020string\u0020for\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#property_a_str_SubPageHook"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#property_a_str_sub_page_hook"
         },                {
-            "fqsen": "\\MCI_Footnotes_LayoutEngine\u003A\u003A\u0024a_arr_Sections",
-            "name": "a_arr_Sections",
+            "fqsen": "\\MCI_Footnotes_Layout_Engine\u003A\u003A\u0024a_arr_sections",
+            "name": "a_arr_sections",
             "summary": "Stores\u0020all\u0020Sections\u0020for\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-LayoutEngine.html#property_a_arr_Sections"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Diagnostics",
-            "name": "MCI_Footnotes_Layout_Diagnostics",
-            "summary": "Displays\u0020Diagnostics\u0020of\u0020the\u0020web\u0020server,\u0020PHP\u0020and\u0020WordPress.",
-            "url": "classes/MCI-Footnotes-Layout-Diagnostics.html"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Diagnostics\u003A\u003AgetPriority\u0028\u0029",
-            "name": "getPriority",
-            "summary": "Returns\u0020a\u0020Priority\u0020index.\u0020Lower\u0020numbers\u0020have\u0020a\u0020higher\u0020Priority.",
-            "url": "classes/MCI-Footnotes-Layout-Diagnostics.html#method_getPriority"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Diagnostics\u003A\u003AgetSubPageSlug\u0028\u0029",
-            "name": "getSubPageSlug",
-            "summary": "Returns\u0020the\u0020unique\u0020slug\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Diagnostics.html#method_getSubPageSlug"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Diagnostics\u003A\u003AgetSubPageTitle\u0028\u0029",
-            "name": "getSubPageTitle",
-            "summary": "Returns\u0020the\u0020title\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Diagnostics.html#method_getSubPageTitle"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Diagnostics\u003A\u003AgetSections\u0028\u0029",
-            "name": "getSections",
-            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020sections\u0020for\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Diagnostics.html#method_getSections"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Diagnostics\u003A\u003AgetMetaBoxes\u0028\u0029",
-            "name": "getMetaBoxes",
-            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020meta\u0020boxes\u0020for\u0020each\u0020section\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Diagnostics.html#method_getMetaBoxes"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Diagnostics\u003A\u003ADiagnostics\u0028\u0029",
-            "name": "Diagnostics",
-            "summary": "Displays\u0020a\u0020diagnostics\u0020about\u0020the\u0020web\u0020server,\u0020php\u0020and\u0020WordPress.",
-            "url": "classes/MCI-Footnotes-Layout-Diagnostics.html#method_Diagnostics"
+            "url": "classes/MCI-Footnotes-Layout-Engine.html#property_a_arr_sections"
         },                {
             "fqsen": "\\MCI_Footnotes_Layout_Settings",
             "name": "MCI_Footnotes_Layout_Settings",
             "summary": "Displays\u0020and\u0020handles\u0020all\u0020Settings\u0020of\u0020the\u0020Plugin.",
             "url": "classes/MCI-Footnotes-Layout-Settings.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AgetPriority\u0028\u0029",
-            "name": "getPriority",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Aget_priority\u0028\u0029",
+            "name": "get_priority",
             "summary": "Returns\u0020a\u0020Priority\u0020index.\u0020Lower\u0020numbers\u0020have\u0020a\u0020higher\u0020Priority.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_getPriority"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_get_priority"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AgetSubPageSlug\u0028\u0029",
-            "name": "getSubPageSlug",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Aget_sub_page_slug\u0028\u0029",
+            "name": "get_sub_page_slug",
             "summary": "Returns\u0020the\u0020unique\u0020slug\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_getSubPageSlug"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_get_sub_page_slug"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AgetSubPageTitle\u0028\u0029",
-            "name": "getSubPageTitle",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Aget_sub_page_title\u0028\u0029",
+            "name": "get_sub_page_title",
             "summary": "Returns\u0020the\u0020title\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_getSubPageTitle"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_get_sub_page_title"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AgetSections\u0028\u0029",
-            "name": "getSections",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Aget_sections\u0028\u0029",
+            "name": "get_sections",
             "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020sections\u0020for\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_getSections"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_get_sections"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AgetMetaBoxes\u0028\u0029",
-            "name": "getMetaBoxes",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Aget_meta_boxes\u0028\u0029",
+            "name": "get_meta_boxes",
             "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020meta\u0020boxes\u0020for\u0020each\u0020section\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_getMetaBoxes"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_get_meta_boxes"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AReferenceContainer\u0028\u0029",
-            "name": "ReferenceContainer",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Aamp_compat\u0028\u0029",
+            "name": "amp_compat",
+            "summary": "Displays\u0020the\u0020AMP\u0020compatibility\u0020mode\u0020option.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_amp_compat"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Areference_container\u0028\u0029",
+            "name": "reference_container",
             "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020reference\u0020container.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_ReferenceContainer"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_reference_container"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AStartEnd\u0028\u0029",
-            "name": "StartEnd",
-            "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020footnotes\u0020start\u0020and\u0020end\u0020tag\u0020short\u0020codes\nDisplays\u0020all\u0020options\u0020for\u0020the\u0020footnotes\u0020numbering\nDisplays\u0020all\u0020options\u0020for\u0020the\u0020scrolling\u0020behavior",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_StartEnd"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Astart_end\u0028\u0029",
+            "name": "start_end",
+            "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020footnotes\u0020start\u0020and\u0020end\u0020tag\u0020short\u0020codes.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_start_end"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ANumbering\u0028\u0029",
-            "name": "Numbering",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_Numbering"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Anumbering\u0028\u0029",
+            "name": "numbering",
+            "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020footnotes\u0020numbering.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_numbering"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AScrolling\u0028\u0029",
-            "name": "Scrolling",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_Scrolling"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Ascrolling\u0028\u0029",
+            "name": "scrolling",
+            "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020scrolling\u0020behavior.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_scrolling"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ALove\u0028\u0029",
-            "name": "Love",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Ahard_links\u0028\u0029",
+            "name": "hard_links",
+            "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020fragment\u0020identifier\u0020configuration.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_hard_links"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Alove\u0028\u0029",
+            "name": "love",
             "summary": "Displays\u0020all\u0020settings\u0020for\u0020\u0027I\u0020love\u0020Footnotes\u0027.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_Love"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_love"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AExcerpts\u0028\u0029",
-            "name": "Excerpts",
-            "summary": "Displays\u0020the\u0020excerpt\u0020setting",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_Excerpts"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Aexcerpts\u0028\u0029",
+            "name": "excerpts",
+            "summary": "Displays\u0020the\u0020footnotes\u0020in\u0020excerpt\u0020setting.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_excerpts"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ASuperscript\u0028\u0029",
-            "name": "Superscript",
-            "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020footnote\u0020referrers",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_Superscript"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Asuperscript\u0028\u0029",
+            "name": "superscript",
+            "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020footnote\u0020referrers.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_superscript"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AMouseOverBox\u0028\u0029",
-            "name": "MouseOverBox",
-            "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_MouseOverBox"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Alabel_solution\u0028\u0029",
+            "name": "label_solution",
+            "summary": "Displays\u0020the\u0020setting\u0020for\u0020the\u0020input\u0020label\u0020issue\u0020solution.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_label_solution"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AMouseOverBoxPosition\u0028\u0029",
-            "name": "MouseOverBoxPosition",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_MouseOverBoxPosition"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Amouseover_box\u0028\u0029",
+            "name": "mouseover_box",
+            "summary": "Displays\u0020enabled\u0020status\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_mouseover_box"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AMouseOverBoxDimensions\u0028\u0029",
-            "name": "MouseOverBoxDimensions",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_MouseOverBoxDimensions"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Amouseover_box_position\u0028\u0029",
+            "name": "mouseover_box_position",
+            "summary": "Displays\u0020position\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_mouseover_box_position"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AMouseOverBoxTiming\u0028\u0029",
-            "name": "MouseOverBoxTiming",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_MouseOverBoxTiming"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Amouseover_box_dimensions\u0028\u0029",
+            "name": "mouseover_box_dimensions",
+            "summary": "Displays\u0020dimensions\u0020setting\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_mouseover_box_dimensions"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AMouseOverBoxTruncation\u0028\u0029",
-            "name": "MouseOverBoxTruncation",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_MouseOverBoxTruncation"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Amouseover_box_timing\u0028\u0029",
+            "name": "mouseover_box_timing",
+            "summary": "Displays\u0020timing\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_mouseover_box_timing"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AMouseOverBoxText\u0028\u0029",
-            "name": "MouseOverBoxText",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_MouseOverBoxText"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Amouseover_box_truncation\u0028\u0029",
+            "name": "mouseover_box_truncation",
+            "summary": "Displays\u0020truncation\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_mouseover_box_truncation"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AMouseOverBoxAppearance\u0028\u0029",
-            "name": "MouseOverBoxAppearance",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_MouseOverBoxAppearance"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Amouseover_box_text\u0028\u0029",
+            "name": "mouseover_box_text",
+            "summary": "Displays\u0020dedicated\u0020tooltip\u0020text\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_mouseover_box_text"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AHyperlinkArrow\u0028\u0029",
-            "name": "HyperlinkArrow",
-            "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020prepended\u0020symbol",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_HyperlinkArrow"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Amouseover_box_appearance\u0028\u0029",
+            "name": "mouseover_box_appearance",
+            "summary": "Displays\u0020style\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_mouseover_box_appearance"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ACustomCSS\u0028\u0029",
-            "name": "CustomCSS",
-            "summary": "Displays\u0020the\u0020custom\u0020css\u0020box.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_CustomCSS"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Ahyperlink_arrow\u0028\u0029",
+            "name": "hyperlink_arrow",
+            "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020backlink\u0020symbol.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_hyperlink_arrow"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ACustomCSSMigration\u0028\u0029",
-            "name": "CustomCSSMigration",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_CustomCSSMigration"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Acustom_css\u0028\u0029",
+            "name": "custom_css",
+            "summary": "Displays\u0020the\u0020Custom\u0020CSS\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_custom_css"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ACustomCSSNew\u0028\u0029",
-            "name": "CustomCSSNew",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_CustomCSSNew"
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Acustom_css_migration\u0028\u0029",
+            "name": "custom_css_migration",
+            "summary": "Displays\u0020transitional\u0020legacy\u0020Custom\u0020CSS\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_custom_css_migration"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ALookupHooks\u0028\u0029",
-            "name": "LookupHooks",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Acustom_css_new\u0028\u0029",
+            "name": "custom_css_new",
+            "summary": "Displays\u0020the\u0020new\u0020Custom\u0020CSS\u0020box.",
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_custom_css_new"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Alookup_hooks\u0028\u0029",
+            "name": "lookup_hooks",
             "summary": "Displays\u0020available\u0020Hooks\u0020to\u0020look\u0020for\u0020Footnote\u0020short\u0020codes.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_LookupHooks"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_lookup_hooks"
         },                {
             "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003AHelp\u0028\u0029",
             "name": "Help",
-            "summary": "Displays\u0020a\u0020short\u0020introduction\u0020of\u0020the\u0020Plugin.",
+            "summary": "Displays\u0020a\u0020short\u0020introduction\u0020to\u0020the\u0020Plugin.",
             "url": "classes/MCI-Footnotes-Layout-Settings.html#method_Help"
         },                {
-            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003ADonate\u0028\u0029",
-            "name": "Donate",
+            "fqsen": "\\MCI_Footnotes_Layout_Settings\u003A\u003Adonate\u0028\u0029",
+            "name": "donate",
             "summary": "Displays\u0020all\u0020Donate\u0020button\u0020to\u0020support\u0020the\u0020developers.",
-            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_Donate"
+            "url": "classes/MCI-Footnotes-Layout-Settings.html#method_donate"
         },                {
             "fqsen": "\\MCI_Footnotes_Hooks",
             "name": "MCI_Footnotes_Hooks",
             "summary": "Registers\u0020all\u0020WordPress\u0020Hooks\u0020and\u0020executes\u0020them\u0020on\u0020demand.",
             "url": "classes/MCI-Footnotes-Hooks.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003AregisterHooks\u0028\u0029",
-            "name": "registerHooks",
+            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003Aregister_hooks\u0028\u0029",
+            "name": "register_hooks",
             "summary": "Registers\u0020all\u0020WordPress\u0020hooks.",
-            "url": "classes/MCI-Footnotes-Hooks.html#method_registerHooks"
+            "url": "classes/MCI-Footnotes-Hooks.html#method_register_hooks"
         },                {
-            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003AactivatePlugin\u0028\u0029",
-            "name": "activatePlugin",
+            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003Aactivate_plugin\u0028\u0029",
+            "name": "activate_plugin",
             "summary": "Executed\u0020when\u0020the\u0020Plugin\u0020gets\u0020activated.",
-            "url": "classes/MCI-Footnotes-Hooks.html#method_activatePlugin"
+            "url": "classes/MCI-Footnotes-Hooks.html#method_activate_plugin"
         },                {
-            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003AdeactivatePlugin\u0028\u0029",
-            "name": "deactivatePlugin",
+            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003Adeactivate_plugin\u0028\u0029",
+            "name": "deactivate_plugin",
             "summary": "Executed\u0020when\u0020the\u0020Plugin\u0020gets\u0020deactivated.",
-            "url": "classes/MCI-Footnotes-Hooks.html#method_deactivatePlugin"
+            "url": "classes/MCI-Footnotes-Hooks.html#method_deactivate_plugin"
         },                {
-            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003AuninstallPlugin\u0028\u0029",
-            "name": "uninstallPlugin",
+            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003Auninstall_plugin\u0028\u0029",
+            "name": "uninstall_plugin",
             "summary": "Executed\u0020when\u0020the\u0020Plugin\u0020gets\u0020uninstalled.",
-            "url": "classes/MCI-Footnotes-Hooks.html#method_uninstallPlugin"
+            "url": "classes/MCI-Footnotes-Hooks.html#method_uninstall_plugin"
         },                {
-            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003APluginLinks\u0028\u0029",
-            "name": "PluginLinks",
+            "fqsen": "\\MCI_Footnotes_Hooks\u003A\u003Aplugin_links\u0028\u0029",
+            "name": "plugin_links",
             "summary": "Add\u0020Links\u0020to\u0020the\u0020Plugin\u0020in\u0020the\u0020\u0022installed\u0020Plugins\u0022\u0020page.",
-            "url": "classes/MCI-Footnotes-Hooks.html#method_PluginLinks"
+            "url": "classes/MCI-Footnotes-Hooks.html#method_plugin_links"
         },                {
             "fqsen": "\\MCI_Footnotes",
             "name": "MCI_Footnotes",
@@ -476,55 +446,65 @@ Search.appendIndex(
             "summary": "Executes\u0020the\u0020Plugin.",
             "url": "classes/MCI-Footnotes.html#method_run"
         },                {
-            "fqsen": "\\MCI_Footnotes\u003A\u003AinitializeWidgets\u0028\u0029",
-            "name": "initializeWidgets",
+            "fqsen": "\\MCI_Footnotes\u003A\u003Ainitialize_widgets\u0028\u0029",
+            "name": "initialize_widgets",
             "summary": "Initializes\u0020all\u0020Widgets\u0020of\u0020the\u0020Plugin.",
-            "url": "classes/MCI-Footnotes.html#method_initializeWidgets"
+            "url": "classes/MCI-Footnotes.html#method_initialize_widgets"
         },                {
-            "fqsen": "\\MCI_Footnotes\u003A\u003AinitializeDashboard\u0028\u0029",
-            "name": "initializeDashboard",
+            "fqsen": "\\MCI_Footnotes\u003A\u003Ainitialize_dashboard\u0028\u0029",
+            "name": "initialize_dashboard",
             "summary": "Initializes\u0020the\u0020Dashboard\u0020of\u0020the\u0020Plugin\u0020and\u0020loads\u0020them.",
-            "url": "classes/MCI-Footnotes.html#method_initializeDashboard"
+            "url": "classes/MCI-Footnotes.html#method_initialize_dashboard"
         },                {
-            "fqsen": "\\MCI_Footnotes\u003A\u003AinitializeTask\u0028\u0029",
-            "name": "initializeTask",
+            "fqsen": "\\MCI_Footnotes\u003A\u003Ainitialize_task\u0028\u0029",
+            "name": "initialize_task",
             "summary": "Initializes\u0020the\u0020Plugin\u0020Task\u0020and\u0020registers\u0020the\u0020Task\u0020hooks.",
-            "url": "classes/MCI-Footnotes.html#method_initializeTask"
+            "url": "classes/MCI-Footnotes.html#method_initialize_task"
         },                {
-            "fqsen": "\\MCI_Footnotes\u003A\u003AregisterPublic\u0028\u0029",
-            "name": "registerPublic",
+            "fqsen": "\\MCI_Footnotes\u003A\u003Aregister_public\u0028\u0029",
+            "name": "register_public",
             "summary": "Registers\u0020and\u0020enqueues\u0020scripts\u0020and\u0020stylesheets\u0020to\u0020the\u0020public\u0020pages.",
-            "url": "classes/MCI-Footnotes.html#method_registerPublic"
+            "url": "classes/MCI-Footnotes.html#method_register_public"
         },                {
-            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_obj_Task",
-            "name": "a_obj_Task",
+            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_obj_task",
+            "name": "a_obj_task",
             "summary": "Reference\u0020to\u0020the\u0020Plugin\u0020Task\u0020object.",
-            "url": "classes/MCI-Footnotes.html#property_a_obj_Task"
+            "url": "classes/MCI-Footnotes.html#property_a_obj_task"
         },                {
-            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_bool_TooltipsEnabled",
-            "name": "a_bool_TooltipsEnabled",
-            "summary": "Template\u0020process\u0020and\u0020script\u0020\/\u0020stylesheet\u0020load\u0020optimization.",
-            "url": "classes/MCI-Footnotes.html#property_a_bool_TooltipsEnabled"
+            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_bool_tooltips_enabled",
+            "name": "a_bool_tooltips_enabled",
+            "summary": "Allows\u0020to\u0020determine\u0020whether\u0020tooltips\u0020are\u0020enabled.",
+            "url": "classes/MCI-Footnotes.html#property_a_bool_tooltips_enabled"
         },                {
-            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_bool_AlternativeTooltipsEnabled",
-            "name": "a_bool_AlternativeTooltipsEnabled",
-            "summary": "",
-            "url": "classes/MCI-Footnotes.html#property_a_bool_AlternativeTooltipsEnabled"
+            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_bool_alternative_tooltips_enabled",
+            "name": "a_bool_alternative_tooltips_enabled",
+            "summary": "Allows\u0020to\u0020determine\u0020whether\u0020alternative\u0020tooltips\u0020are\u0020enabled.",
+            "url": "classes/MCI-Footnotes.html#property_a_bool_alternative_tooltips_enabled"
+        },                {
+            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_bool_amp_enabled",
+            "name": "a_bool_amp_enabled",
+            "summary": "Allows\u0020to\u0020determine\u0020whether\u0020AMP\u0020compatibility\u0020mode\u0020is\u0020enabled.",
+            "url": "classes/MCI-Footnotes.html#property_a_bool_amp_enabled"
+        },                {
+            "fqsen": "\\MCI_Footnotes\u003A\u003A\u0024a_str_script_mode",
+            "name": "a_str_script_mode",
+            "summary": "Allows\u0020to\u0020determine\u0020the\u0020script\u0020mode\u0020among\u0020jQuery\u0020or\u0020plain\u0020JS.",
+            "url": "classes/MCI-Footnotes.html#property_a_str_script_mode"
         },                {
             "fqsen": "\\MCI_Footnotes_Language",
             "name": "MCI_Footnotes_Language",
             "summary": "Loads\u0020text\u0020domain\u0020of\u0020current\u0020or\u0020default\u0020language\u0020for\u0020localization.",
             "url": "classes/MCI-Footnotes-Language.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_Language\u003A\u003AregisterHooks\u0028\u0029",
-            "name": "registerHooks",
+            "fqsen": "\\MCI_Footnotes_Language\u003A\u003Aregister_hooks\u0028\u0029",
+            "name": "register_hooks",
             "summary": "Register\u0020WordPress\u0020Hook.",
-            "url": "classes/MCI-Footnotes-Language.html#method_registerHooks"
+            "url": "classes/MCI-Footnotes-Language.html#method_register_hooks"
         },                {
-            "fqsen": "\\MCI_Footnotes_Language\u003A\u003AloadTextDomain\u0028\u0029",
-            "name": "loadTextDomain",
+            "fqsen": "\\MCI_Footnotes_Language\u003A\u003Aload_text_domain\u0028\u0029",
+            "name": "load_text_domain",
             "summary": "Loads\u0020the\u0020text\u0020domain\u0020for\u0020current\u0020WordPress\u0020language\u0020if\u0020exists.",
-            "url": "classes/MCI-Footnotes-Language.html#method_loadTextDomain"
+            "url": "classes/MCI-Footnotes-Language.html#method_load_text_domain"
         },                {
             "fqsen": "\\MCI_Footnotes_Language\u003A\u003Aload\u0028\u0029",
             "name": "load",
@@ -546,495 +526,495 @@ Search.appendIndex(
             "summary": "Returns\u0020a\u0020singleton\u0020of\u0020this\u0020class.",
             "url": "classes/MCI-Footnotes-Settings.html#method_instance"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AgetContainer\u0028\u0029",
-            "name": "getContainer",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Aget_container\u0028\u0029",
+            "name": "get_container",
             "summary": "Returns\u0020the\u0020name\u0020of\u0020a\u0020specified\u0020Settings\u0020Container.",
-            "url": "classes/MCI-Footnotes-Settings.html#method_getContainer"
+            "url": "classes/MCI-Footnotes-Settings.html#method_get_container"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AgetDefaults\u0028\u0029",
-            "name": "getDefaults",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Aget_defaults\u0028\u0029",
+            "name": "get_defaults",
             "summary": "Returns\u0020the\u0020default\u0020values\u0020of\u0020a\u0020specific\u0020Settings\u0020Container.",
-            "url": "classes/MCI-Footnotes-Settings.html#method_getDefaults"
+            "url": "classes/MCI-Footnotes-Settings.html#method_get_defaults"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AloadAll\u0028\u0029",
-            "name": "loadAll",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Aload_all\u0028\u0029",
+            "name": "load_all",
             "summary": "Loads\u0020all\u0020Settings\u0020from\u0020each\u0020Settings\u0020container.",
-            "url": "classes/MCI-Footnotes-Settings.html#method_loadAll"
+            "url": "classes/MCI-Footnotes-Settings.html#method_load_all"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003ALoad\u0028\u0029",
-            "name": "Load",
-            "summary": "Loads\u0020all\u0020Settings\u0020from\u0020specified\u0020Settings\u0020Container.",
-            "url": "classes/MCI-Footnotes-Settings.html#method_Load"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Aload\u0028\u0029",
+            "name": "load",
+            "summary": "Loads\u0020all\u0020settings\u0020from\u0020specified\u0020settings\u0020container.",
+            "url": "classes/MCI-Footnotes-Settings.html#method_load"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AsaveOptions\u0028\u0029",
-            "name": "saveOptions",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Asave_options\u0028\u0029",
+            "name": "save_options",
             "summary": "Updates\u0020a\u0020whole\u0020Settings\u0020container.",
-            "url": "classes/MCI-Footnotes-Settings.html#method_saveOptions"
+            "url": "classes/MCI-Footnotes-Settings.html#method_save_options"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Aget\u0028\u0029",
             "name": "get",
             "summary": "Returns\u0020the\u0020value\u0020of\u0020specified\u0020Settings\u0020name.",
             "url": "classes/MCI-Footnotes-Settings.html#method_get"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AClearAll\u0028\u0029",
-            "name": "ClearAll",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Aclear_all\u0028\u0029",
+            "name": "clear_all",
             "summary": "Deletes\u0020each\u0020Settings\u0020Container\u0020and\u0020loads\u0020the\u0020default\u0020values\u0020for\u0020each\u0020Settings\u0020Container.",
-            "url": "classes/MCI-Footnotes-Settings.html#method_ClearAll"
+            "url": "classes/MCI-Footnotes-Settings.html#method_clear_all"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003ARegisterSettings\u0028\u0029",
-            "name": "RegisterSettings",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003Aregister_settings\u0028\u0029",
+            "name": "register_settings",
             "summary": "Register\u0020all\u0020Settings\u0020Container\u0020for\u0020the\u0020Plugin\u0020Settings\u0020Page\u0020in\u0020the\u0020Dashboard.",
-            "url": "classes/MCI-Footnotes-Settings.html#method_RegisterSettings"
+            "url": "classes/MCI-Footnotes-Settings.html#method_register_settings"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_NAME",
             "name": "C_STR_REFERENCE_CONTAINER_NAME",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020label\u0020of\u0020the\u0020reference\u0020container.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020label\u0020of\u0020the\u0020reference\u0020container.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_NAME"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_REFERENCE_CONTAINER_COLLAPSE",
-            "name": "C_BOOL_REFERENCE_CONTAINER_COLLAPSE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020collapse\u0020the\u0020reference\u0020container\u0020by\u0020default.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_REFERENCE_CONTAINER_COLLAPSE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_COLLAPSE",
+            "name": "C_STR_REFERENCE_CONTAINER_COLLAPSE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020collapse\u0020the\u0020reference\u0020container\u0020by\u0020default.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_COLLAPSE"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_POSITION",
             "name": "C_STR_REFERENCE_CONTAINER_POSITION",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020position\u0020of\u0020the\u0020reference\u0020container.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020position\u0020of\u0020the\u0020reference\u0020container.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_POSITION"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_COMBINE_IDENTICAL_FOOTNOTES",
-            "name": "C_BOOL_COMBINE_IDENTICAL_FOOTNOTES",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020combining\u0020identical\u0020footnotes.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_COMBINE_IDENTICAL_FOOTNOTES"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_COMBINE_IDENTICAL_FOOTNOTES",
+            "name": "C_STR_COMBINE_IDENTICAL_FOOTNOTES",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020combining\u0020identical\u0020footnotes.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_COMBINE_IDENTICAL_FOOTNOTES"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_START",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_START",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u2019s\u0020start.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u2019s\u0020start.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_START"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_END",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_END",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u2019s\u0020end.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u2019s\u0020end.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_END"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020user\u002Ddefined\u0020short\u0020code\u0020of\u0020the\u0020footnotes\u0020start.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020user\u002Ddefined\u0020short\u0020code\u0020of\u0020the\u0020footnotes\u0020start.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020user\u002Ddefined\u0020short\u0020code\u0020of\u0020the\u0020footnotes\u0020end.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020user\u002Ddefined\u0020short\u0020code\u0020of\u0020the\u0020footnotes\u0020end.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_COUNTER_STYLE",
             "name": "C_STR_FOOTNOTES_COUNTER_STYLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020counter\u0020style\u0020of\u0020the\u0020footnotes.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020counter\u0020style\u0020of\u0020the\u0020footnotes.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_COUNTER_STYLE"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_LOVE",
-            "name": "C_STR_FOOTNOTES_LOVE",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020\u0027I\u0020love\u0020footnotes\u0027\u0020text.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_LOVE"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_IN_EXCERPT",
-            "name": "C_BOOL_FOOTNOTES_IN_EXCERPT",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020look\u0020for\u0020footnotes\u0020in\u0020post\u0020excerpts.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_IN_EXCERPT"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_EXPERT_MODE",
-            "name": "C_BOOL_FOOTNOTES_EXPERT_MODE",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020Expert\u0020mode.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_EXPERT_MODE"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_BEFORE",
-            "name": "C_STR_FOOTNOTES_STYLING_BEFORE",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020string\u0020before\u0020the\u0020footnote\u0020referrer.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_BEFORE"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_AFTER",
-            "name": "C_STR_FOOTNOTES_STYLING_AFTER",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020string\u0020after\u0020the\u0020footnote\u0020referrer.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_AFTER"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED",
-            "name": "C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ENABLED"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE",
-            "name": "C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020alternative\u0020tooltips.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED",
-            "name": "C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020tooltip\u0020truncation.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH",
-            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020max.\u0020length\u0020of\u0020the\u0020enabled\u0020excerpt.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION",
-            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020position.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X",
-            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020offset\u0020\u0028x\u0029.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y",
-            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020offset\u0020\u0028y\u0029.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR",
-            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020color.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND",
-            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020background\u0020color.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH",
-            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020width.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR",
-            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020color.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS",
-            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020radius.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH",
-            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020max.\u0020width.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR",
-            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020box\u002Dshadow\u0020color.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_HYPERLINK_ARROW",
             "name": "C_STR_HYPERLINK_ARROW",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020backlink\u0020symbol\u0020selection.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlink\u0020symbol\u0020selection.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_HYPERLINK_ARROW"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_HYPERLINK_ARROW_USER_DEFINED",
             "name": "C_STR_HYPERLINK_ARROW_USER_DEFINED",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020user\u002Ddefined\u0020backlink\u0020symbol.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020user\u002Ddefined\u0020backlink\u0020symbol.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_HYPERLINK_ARROW_USER_DEFINED"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_IN_EXCERPT",
+            "name": "C_STR_FOOTNOTES_IN_EXCERPT",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020look\u0020for\u0020footnotes\u0020in\u0020post\u0020excerpts.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_IN_EXCERPT"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_BEFORE",
+            "name": "C_STR_FOOTNOTES_STYLING_BEFORE",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020string\u0020before\u0020the\u0020footnote\u0020referrer.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_BEFORE"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_AFTER",
+            "name": "C_STR_FOOTNOTES_STYLING_AFTER",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020string\u0020after\u0020the\u0020footnote\u0020referrer.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_AFTER"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_CUSTOM_CSS",
             "name": "C_STR_CUSTOM_CSS",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020Custom\u0020CSS.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020Custom\u0020CSS.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_CUSTOM_CSS"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_CUSTOM_CSS_NEW",
-            "name": "C_STR_CUSTOM_CSS_NEW",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020Custom\u0020CSS\u0020migrated\u0020to\u0020a\u0020dedicated\u0020tab.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_CUSTOM_CSS_NEW"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_LOVE",
+            "name": "C_STR_FOOTNOTES_LOVE",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020\u0027I\u0020love\u0020footnotes\u0027\u0020text.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_LOVE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_CUSTOM_CSS_LEGACY_ENABLE",
-            "name": "C_BOOL_CUSTOM_CSS_LEGACY_ENABLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020display\u0020of\u0020legacy\u0020Custom\u0020CSS\u0020metaboxes.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_CUSTOM_CSS_LEGACY_ENABLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020mouse\u002Dover\u0020box.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_EXPERT_LOOKUP_THE_TITLE",
-            "name": "C_BOOL_EXPERT_LOOKUP_THE_TITLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020\u0027the_title\u0027\u0020hook.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_EXPERT_LOOKUP_THE_TITLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020tooltip\u0020truncation.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_EXPERT_LOOKUP_THE_CONTENT",
-            "name": "C_BOOL_EXPERT_LOOKUP_THE_CONTENT",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020\u0027the_content\u0027\u0020hook.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_EXPERT_LOOKUP_THE_CONTENT"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH",
+            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020max.\u0020length\u0020of\u0020the\u0020enabled\u0020excerpt.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_EXPERT_LOOKUP_THE_EXCERPT",
-            "name": "C_BOOL_EXPERT_LOOKUP_THE_EXCERPT",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020\u0027the_excerpt\u0027\u0020hook.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_EXPERT_LOOKUP_THE_EXCERPT"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_TITLE",
+            "name": "C_STR_EXPERT_LOOKUP_THE_TITLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027the_title\u0027\u0020hook.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_TITLE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_EXPERT_LOOKUP_WIDGET_TITLE",
-            "name": "C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020\u0027widget_title\u0027\u0020hook.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_EXPERT_LOOKUP_WIDGET_TITLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_CONTENT",
+            "name": "C_STR_EXPERT_LOOKUP_THE_CONTENT",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027the_content\u0027\u0020hook.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_CONTENT"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_EXPERT_LOOKUP_WIDGET_TEXT",
-            "name": "C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020\u0027widget_text\u0027\u0020hook.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_EXPERT_LOOKUP_WIDGET_TEXT"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_EXCERPT",
+            "name": "C_STR_EXPERT_LOOKUP_THE_EXCERPT",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027the_excerpt\u0027\u0020hook.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_EXCERPT"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_WIDGET_TITLE",
+            "name": "C_STR_EXPERT_LOOKUP_WIDGET_TITLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027widget_title\u0027\u0020hook.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_WIDGET_TITLE"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_WIDGET_TEXT",
+            "name": "C_STR_EXPERT_LOOKUP_WIDGET_TEXT",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027widget_text\u0027\u0020hook.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_WIDGET_TEXT"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_EXPERT_MODE",
+            "name": "C_STR_FOOTNOTES_EXPERT_MODE",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020Expert\u0020mode.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_EXPERT_MODE"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020color.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020background\u0020color.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH",
+            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020width.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020color.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS",
+            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020radius.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH",
+            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020max.\u0020width.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020position.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X",
+            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020offset\u0020\u0028x\u0029.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y",
+            "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020offset\u0020\u0028y\u0029.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020box\u002Dshadow\u0020color.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_READON_LABEL",
             "name": "C_STR_FOOTNOTES_TOOLTIP_READON_LABEL",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020label\u0020of\u0020the\u0020Read\u002Don\u0020button\u0020in\u0020truncated\u0020tooltips.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020label\u0020of\u0020the\u0020Read\u002Don\u0020button\u0020in\u0020truncated\u0020tooltips.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_READON_LABEL"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS",
-            "name": "C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020the\u0020referrer\u0020element.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE",
+            "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020alternative\u0020tooltips.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE",
-            "name": "C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020display\u0020of\u0020a\u0020backlink\u0020symbol.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS",
+            "name": "C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020referrer\u0020element.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE",
-            "name": "C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020not\u0020display\u0020the\u0020reference\u0020container\u0020on\u0020the\u0020homepage.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_REFERENCE_CONTAINER_START_PAGE_ENABLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE",
+            "name": "C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020display\u0020of\u0020a\u0020backlink\u0020symbol.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE",
-            "name": "C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020enable\u0020the\u0020legacy\u0020layout\u0020of\u0020the\u0020reference\u0020container.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE",
+            "name": "C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020not\u0020display\u0020the\u0020reference\u0020container\u0020on\u0020the\u0020homepage.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH",
-            "name": "C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH",
-            "summary": "Settings\u0020Container\u0020Key\u0020to\u0020get\u0020the\u0020backlink\u0020symbol\u0020switch\u0020side.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE",
+            "name": "C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020legacy\u0020layout\u0020of\u0020the\u0020reference\u0020container.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH",
+            "name": "C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020get\u0020the\u0020backlink\u0020symbol\u0020switch\u0020side.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020\u0027the_content\u0027\u0020hook\u0020priority\u0020level.",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027the_content\u0027\u0020hook\u0020priority\u0020level.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020\u0027\u0027\u0020hook\u0020priority\u0020level",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027the_title\u0027\u0020hook\u0020priority\u0020level.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027widget_title\u0027\u0020hook\u0020priority\u0020level.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027widget_text\u0027\u0020hook\u0020priority\u0020level.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027the_excerpt\u0027\u0020hook\u0020priority\u0020level.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_LINK_ELEMENT_ENABLED",
-            "name": "C_BOOL_LINK_ELEMENT_ENABLED",
-            "summary": "Settings\u0020Container\u0020Keys\u0020for\u0020the\u0020link\u0020element\u0020option\nSettings\u0020Container\u0020Keys\u0020for\u0020backlink\u0020typography\u0020and\u0020layout\nSettings\u0020Container\u0020Keys\u0020for\u0020tooltip\u0020font\u0020size\nSettings\u0020Container\u0020Keys\u0020for\u0020page\u0020layout\u0020support\nSettings\u0020Container\u0020Keys\u0020for\u0020scroll\u0020offset\u0020and\u0020duration\nSettings\u0020Container\u0020Keys\u0020for\u0020tooltip\u0020display\u0020durations",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_LINK_ELEMENT_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_LINK_ELEMENT_ENABLED",
+            "name": "C_STR_LINK_ELEMENT_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020link\u0020element\u0020option.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_LINK_ELEMENT_ENABLED"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_BACKLINKS_SEPARATOR_ENABLED",
-            "name": "C_BOOL_BACKLINKS_SEPARATOR_ENABLED",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_BACKLINKS_SEPARATOR_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_ENABLED",
+            "name": "C_STR_BACKLINKS_SEPARATOR_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020presence\u0020of\u0020a\u0020backlink\u0020separator.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_ENABLED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_OPTION",
             "name": "C_STR_BACKLINKS_SEPARATOR_OPTION",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlink\u0020separator\u0020options.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_OPTION"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_CUSTOM",
             "name": "C_STR_BACKLINKS_SEPARATOR_CUSTOM",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020a\u0020custom\u0020backlink\u0020separator.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_CUSTOM"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_BACKLINKS_TERMINATOR_ENABLED",
-            "name": "C_BOOL_BACKLINKS_TERMINATOR_ENABLED",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_BACKLINKS_TERMINATOR_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_ENABLED",
+            "name": "C_STR_BACKLINKS_TERMINATOR_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020presence\u0020of\u0020a\u0020backlink\u0020terminator.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_ENABLED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_OPTION",
             "name": "C_STR_BACKLINKS_TERMINATOR_OPTION",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlink\u0020terminator\u0020options.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_OPTION"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_CUSTOM",
             "name": "C_STR_BACKLINKS_TERMINATOR_CUSTOM",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020a\u0020custom\u0020backlink\u0020terminator.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_CUSTOM"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED",
-            "name": "C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_BACKLINKS_COLUMN_WIDTH_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_WIDTH_ENABLED",
+            "name": "C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020backlinks\u0020column\u0020width.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_BACKLINKS_COLUMN_WIDTH_SCALAR",
             "name": "C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020width\u0020scalar.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_WIDTH_UNIT",
             "name": "C_STR_BACKLINKS_COLUMN_WIDTH_UNIT",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020width\u0020unit.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_WIDTH_UNIT"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED",
-            "name": "C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED",
+            "name": "C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020a\u0020max\u0020width\u0020for\u0020the\u0020backlinks\u0020column.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR",
             "name": "C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020max\u0020width\u0020scalar.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT",
             "name": "C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020max\u0020width\u0020unit.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_BACKLINKS_LINE_BREAKS_ENABLED",
-            "name": "C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_BACKLINKS_LINE_BREAKS_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_LINE_BREAKS_ENABLED",
+            "name": "C_STR_BACKLINKS_LINE_BREAKS_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020line\u0020breaks\u0020between\u0020backlinks.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_BACKLINKS_LINE_BREAKS_ENABLED"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED",
-            "name": "C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_MOUSE_OVER_BOX_FONT_SIZE_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED",
+            "name": "C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020setting\u0020the\u0020tooltip\u0020font\u0020size.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR",
             "name": "C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020scalar\u0020value\u0020of\u0020the\u0020tooltip\u0020font\u0020size.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT",
             "name": "C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020unit\u0020of\u0020the\u0020tooltip\u0020font\u0020size.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT",
             "name": "C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020basic\u0020responsive\u0020page\u0020layout\u0020support\u0020options.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_OFFSET",
             "name": "C_INT_FOOTNOTES_SCROLL_OFFSET",
-            "summary": "Scroll\u0020offset\u0020and\u0020duration",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020offset.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_OFFSET"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DURATION",
             "name": "C_INT_FOOTNOTES_SCROLL_DURATION",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020duration.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DURATION"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_IN_DELAY",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Din\u0020delay.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_IN_DURATION",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Din\u0020duration.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Dout\u0020delay.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Dout\u0020duration.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTE_URL_WRAP_ENABLED",
-            "name": "C_BOOL_FOOTNOTE_URL_WRAP_ENABLED",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020URL\u0020wrap\u0020option",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTE_URL_WRAP_ENABLED"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_URL_WRAP_ENABLED",
+            "name": "C_STR_FOOTNOTE_URL_WRAP_ENABLED",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020URL\u0020wrap\u0020option.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTE_URL_WRAP_ENABLED"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE",
             "name": "C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020reference\u0020container\u0020position\u0020shortcode",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020reference\u0020container\u0020position\u0020shortcode.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_CUSTOM_CSS_NEW",
+            "name": "C_STR_CUSTOM_CSS_NEW",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020Custom\u0020CSS\u0020migrated\u0020to\u0020a\u0020dedicated\u0020tab.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_CUSTOM_CSS_NEW"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_CUSTOM_CSS_LEGACY_ENABLE",
+            "name": "C_STR_CUSTOM_CSS_LEGACY_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020display\u0020of\u0020legacy\u0020Custom\u0020CSS\u0020metaboxes.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_CUSTOM_CSS_LEGACY_ENABLE"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION",
             "name": "C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION",
-            "summary": "Settings\u0020Container\u0020Keys\u0020for\u0020alternative\u0020tooltip\u0020position\nSettings\u0020Container\u0020Keys\u0020for\u0020reference\u0020container\u0020label\u0020element,\u0020thanks\u0020to\u0020\u0040markhillyer",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020position.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X",
             "name": "C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020x\u0020offset.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y",
             "name": "C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020y\u0020offset.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH",
             "name": "C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020width.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_LABEL_ELEMENT",
             "name": "C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020reference\u0020container\u0020label\u0020element.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER",
-            "name": "C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER",
+            "name": "C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020reference\u0020container\u0020label\u0020bottom\u0020border.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE",
-            "name": "C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE",
-            "summary": "Settings\u0020Container\u0020Key\u0020for\u0020table\u0020cell\u0020borders,\u0020thanks\u0020to\u0020\u0040noobishh",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE",
+            "name": "C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020reference\u0020container\u0020table\u0020row\u0020borders.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_REFERENCE_CONTAINER_TOP_MARGIN",
             "name": "C_INT_REFERENCE_CONTAINER_TOP_MARGIN",
-            "summary": "Settings\u0020container\u0020keys\u0020for\u0020reference\u0020container\u0020top\u0020and\u0020bottom\u0020margins\nSettings\u0020container\u0020keys\u0020for\u0020hard\u0020link\u0020enabling\nSettings\u0020container\u0020keys\u0020for\u0020hard\u0020link\u0020anchors\u0020in\u0020referrers\u0020and\u0020footnotes",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020reference\u0020container\u0020top\u0020margin.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_REFERENCE_CONTAINER_TOP_MARGIN"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN",
             "name": "C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020reference\u0020container\u0020bottom\u0020margin.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_HARD_LINKS_ENABLE",
-            "name": "C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_HARD_LINKS_ENABLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_HARD_LINKS_ENABLE",
+            "name": "C_STR_FOOTNOTES_HARD_LINKS_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020hard\u0020links.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_HARD_LINKS_ENABLE"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_REFERRER_FRAGMENT_ID_SLUG",
             "name": "C_STR_REFERRER_FRAGMENT_ID_SLUG",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020fragment\u0020ID\u0020slug\u0020in\u0020referrers.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_REFERRER_FRAGMENT_ID_SLUG"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_FRAGMENT_ID_SLUG",
             "name": "C_STR_FOOTNOTE_FRAGMENT_ID_SLUG",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020fragment\u0020ID\u0020slug\u0020in\u0020footnotes.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTE_FRAGMENT_ID_SLUG"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_HARD_LINK_IDS_SEPARATOR",
             "name": "C_STR_HARD_LINK_IDS_SEPARATOR",
-            "summary": "",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020ID\u0020separator\u0020in\u0020fragment\u0020IDs.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_HARD_LINK_IDS_SEPARATOR"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE",
-            "name": "C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020shortcode\u0020syntax\u0020validation.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE"
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE",
+            "name": "C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020shortcode\u0020syntax\u0020validation.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE",
-            "name": "C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE",
+            "name": "C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020backlink\u0020tooltips.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE"
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT",
             "name": "C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT",
@@ -1046,10 +1026,10 @@ Search.appendIndex(
             "summary": "Settings\u0020container\u0020key\u0020to\u0020configure\u0020the\u0020tooltip\u0020excerpt\u0020delimiter.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE",
-            "name": "C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE",
+            "name": "C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020mirroring\u0020the\u0020tooltip\u0020excerpt\u0020in\u0020the\u0020reference\u0020container.",
-            "url": "classes/MCI-Footnotes-Settings.html#constant_C_BOOL_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE"
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE"
         },                {
             "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR",
             "name": "C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR",
@@ -1066,195 +1046,250 @@ Search.appendIndex(
             "summary": "Settings\u0020container\u0020key\u0020to\u0020select\u0020the\u0020script\u0020mode\u0020for\u0020the\u0020reference\u0020container.",
             "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_obj_Instance",
-            "name": "a_obj_Instance",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE",
+            "name": "C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020AMP\u0020compatibility\u0020mode.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY",
+            "name": "C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020duration\u0020asymmetricity.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DOWN_DURATION",
+            "name": "C_INT_FOOTNOTES_SCROLL_DOWN_DURATION",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020down\u0020duration.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DOWN_DURATION"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DOWN_DELAY",
+            "name": "C_INT_FOOTNOTES_SCROLL_DOWN_DELAY",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020down\u0020delay.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DOWN_DELAY"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_UP_DELAY",
+            "name": "C_INT_FOOTNOTES_SCROLL_UP_DELAY",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020up\u0020delay.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_UP_DELAY"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION",
+            "name": "C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020set\u0020the\u0020solution\u0020of\u0020the\u0020input\u0020element\u0020label\u0020issue.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING",
+            "name": "C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING",
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020CSS\u0020smooth\u0020scrolling.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_SECTION_SHORTCODE",
+            "name": "C_STR_FOOTNOTE_SECTION_SHORTCODE",
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020footnote\u0020section\u0020shortcode.",
+            "url": "classes/MCI-Footnotes-Settings.html#constant_C_STR_FOOTNOTE_SECTION_SHORTCODE"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_obj_instance",
+            "name": "a_obj_instance",
             "summary": "Stores\u0020a\u0020singleton\u0020reference\u0020of\u0020this\u0020class.",
-            "url": "classes/MCI-Footnotes-Settings.html#property_a_obj_Instance"
+            "url": "classes/MCI-Footnotes-Settings.html#property_a_obj_instance"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_arr_Container",
-            "name": "a_arr_Container",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_arr_container",
+            "name": "a_arr_container",
             "summary": "Contains\u0020all\u0020Settings\u0020Container\u0020names.",
-            "url": "classes/MCI-Footnotes-Settings.html#property_a_arr_Container"
+            "url": "classes/MCI-Footnotes-Settings.html#property_a_arr_container"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_arr_Default",
-            "name": "a_arr_Default",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_arr_default",
+            "name": "a_arr_default",
             "summary": "Contains\u0020all\u0020Default\u0020Settings\u0020for\u0020each\u0020Settings\u0020Container.",
-            "url": "classes/MCI-Footnotes-Settings.html#property_a_arr_Default"
+            "url": "classes/MCI-Footnotes-Settings.html#property_a_arr_default"
         },                {
-            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_arr_Settings",
-            "name": "a_arr_Settings",
+            "fqsen": "\\MCI_Footnotes_Settings\u003A\u003A\u0024a_arr_settings",
+            "name": "a_arr_settings",
             "summary": "Contains\u0020all\u0020Settings\u0020from\u0020each\u0020Settings\u0020container\u0020as\u0020soon\u0020as\u0020this\u0020class\u0020is\u0020initialized.",
-            "url": "classes/MCI-Footnotes-Settings.html#property_a_arr_Settings"
+            "url": "classes/MCI-Footnotes-Settings.html#property_a_arr_settings"
         },                {
             "fqsen": "\\MCI_Footnotes_Task",
             "name": "MCI_Footnotes_Task",
-            "summary": "Searches\u0020and\u0020replaces\u0020the\u0020footnotes.",
+            "summary": "Searches\u0020and\u0020replaces\u0020the\u0020footnotes\u0020and\u0020generates\u0020the\u0020reference\u0020container.",
             "url": "classes/MCI-Footnotes-Task.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003AregisterHooks\u0028\u0029",
-            "name": "registerHooks",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Aregister_hooks\u0028\u0029",
+            "name": "register_hooks",
             "summary": "Register\u0020WordPress\u0020Hooks\u0020to\u0020replace\u0020Footnotes\u0020in\u0020the\u0020content\u0020of\u0020a\u0020public\u0020page.",
-            "url": "classes/MCI-Footnotes-Task.html#method_registerHooks"
+            "url": "classes/MCI-Footnotes-Task.html#method_register_hooks"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Awp_head\u0028\u0029",
-            "name": "wp_head",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Afootnotes_output_head\u0028\u0029",
+            "name": "footnotes_output_head",
             "summary": "Outputs\u0020the\u0020custom\u0020css\u0020to\u0020the\u0020header\u0020of\u0020the\u0020public\u0020page.",
-            "url": "classes/MCI-Footnotes-Task.html#method_wp_head"
+            "url": "classes/MCI-Footnotes-Task.html#method_footnotes_output_head"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Awp_footer\u0028\u0029",
-            "name": "wp_footer",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Afootnotes_output_footer\u0028\u0029",
+            "name": "footnotes_output_footer",
             "summary": "Displays\u0020the\u0020\u0027LOVE\u0020FOOTNOTES\u0027\u0020slug\u0020if\u0020enabled.",
-            "url": "classes/MCI-Footnotes-Task.html#method_wp_footer"
+            "url": "classes/MCI-Footnotes-Task.html#method_footnotes_output_footer"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Athe_title\u0028\u0029",
-            "name": "the_title",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Afootnotes_in_title\u0028\u0029",
+            "name": "footnotes_in_title",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020post\/page\u0020title.",
-            "url": "classes/MCI-Footnotes-Task.html#method_the_title"
+            "url": "classes/MCI-Footnotes-Task.html#method_footnotes_in_title"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Athe_content\u0028\u0029",
-            "name": "the_content",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Afootnotes_in_content\u0028\u0029",
+            "name": "footnotes_in_content",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020content\u0020of\u0020the\u0020current\u0020page\/post.",
-            "url": "classes/MCI-Footnotes-Task.html#method_the_content"
+            "url": "classes/MCI-Footnotes-Task.html#method_footnotes_in_content"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Athe_excerpt\u0028\u0029",
-            "name": "the_excerpt",
-            "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020excerpt\u0020of\u0020the\u0020current\u0020page\/post.",
-            "url": "classes/MCI-Footnotes-Task.html#method_the_excerpt"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Afootnotes_in_excerpt\u0028\u0029",
+            "name": "footnotes_in_excerpt",
+            "summary": "Processes\u0020existing\u0020excerpt\u0020or\u0020replaces\u0020it\u0020with\u0020a\u0020new\u0020one\u0020generated\u0020on\u0020the\u0020basis\u0020of\u0020the\u0020post.",
+            "url": "classes/MCI-Footnotes-Task.html#method_footnotes_in_excerpt"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Awidget_title\u0028\u0029",
-            "name": "widget_title",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Agenerate_excerpt\u0028\u0029",
+            "name": "generate_excerpt",
+            "summary": "Generates\u0020excerpt\u0020on\u0020the\u0020basis\u0020of\u0020the\u0020post.",
+            "url": "classes/MCI-Footnotes-Task.html#method_generate_excerpt"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Agenerate_excerpt_with_footnotes\u0028\u0029",
+            "name": "generate_excerpt_with_footnotes",
+            "summary": "Generates\u0020excerpt\u0020with\u0020footnotes\u0020on\u0020the\u0020basis\u0020of\u0020the\u0020post.",
+            "url": "classes/MCI-Footnotes-Task.html#method_generate_excerpt_with_footnotes"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Afootnotes_in_widget_title\u0028\u0029",
+            "name": "footnotes_in_widget_title",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020widget\u0020title.",
-            "url": "classes/MCI-Footnotes-Task.html#method_widget_title"
+            "url": "classes/MCI-Footnotes-Task.html#method_footnotes_in_widget_title"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Awidget_text\u0028\u0029",
-            "name": "widget_text",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Afootnotes_in_widget_text\u0028\u0029",
+            "name": "footnotes_in_widget_text",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020content\u0020of\u0020the\u0020current\u0020widget.",
-            "url": "classes/MCI-Footnotes-Task.html#method_widget_text"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Athe_post\u0028\u0029",
-            "name": "the_post",
-            "summary": "Replaces\u0020footnotes\u0020in\u0020each\u0020Content\u0020var\u0020of\u0020the\u0020current\u0020Post\u0020object.",
-            "url": "classes/MCI-Footnotes-Task.html#method_the_post"
-        },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003AreplacePostObject\u0028\u0029",
-            "name": "replacePostObject",
-            "summary": "Replace\u0020all\u0020Footnotes\u0020in\u0020a\u0020WP_Post\u0020object.",
-            "url": "classes/MCI-Footnotes-Task.html#method_replacePostObject"
+            "url": "classes/MCI-Footnotes-Task.html#method_footnotes_in_widget_text"
         },                {
             "fqsen": "\\MCI_Footnotes_Task\u003A\u003Aexec\u0028\u0029",
             "name": "exec",
             "summary": "Replaces\u0020all\u0020footnotes\u0020that\u0020occur\u0020in\u0020the\u0020given\u0020content.",
             "url": "classes/MCI-Footnotes-Task.html#method_exec"
         },                {
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Aunify_delimiters\u0028\u0029",
+            "name": "unify_delimiters",
+            "summary": "Brings\u0020the\u0020delimiters\u0020and\u0020unifies\u0020their\u0020various\u0020HTML\u0020escapement\u0020schemas.",
+            "url": "classes/MCI-Footnotes-Task.html#method_unify_delimiters"
+        },                {
             "fqsen": "\\MCI_Footnotes_Task\u003A\u003Asearch\u0028\u0029",
             "name": "search",
             "summary": "Replaces\u0020all\u0020footnotes\u0020in\u0020the\u0020given\u0020content\u0020and\u0020appends\u0020them\u0020to\u0020the\u0020static\u0020property.",
             "url": "classes/MCI-Footnotes-Task.html#method_search"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003AReferenceContainer\u0028\u0029",
-            "name": "ReferenceContainer",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003Areference_container\u0028\u0029",
+            "name": "reference_container",
             "summary": "Generates\u0020the\u0020reference\u0020container.",
-            "url": "classes/MCI-Footnotes-Task.html#method_ReferenceContainer"
+            "url": "classes/MCI-Footnotes-Task.html#method_reference_container"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_arr_Footnotes",
-            "name": "a_arr_Footnotes",
-            "summary": "Contains\u0020all\u0020footnotes\u0020found\u0020on\u0020current\u0020public\u0020page.",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_arr_Footnotes"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_arr_footnotes",
+            "name": "a_arr_footnotes",
+            "summary": "Contains\u0020all\u0020footnotes\u0020found\u0020in\u0020the\u0020searched\u0020content.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_arr_footnotes"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_AllowLoveMe",
-            "name": "a_bool_AllowLoveMe",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_allow_love_me",
+            "name": "a_bool_allow_love_me",
             "summary": "Flag\u0020if\u0020the\u0020display\u0020of\u0020\u0027LOVE\u0020FOOTNOTES\u0027\u0020is\u0020allowed\u0020on\u0020the\u0020current\u0020public\u0020page.",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_AllowLoveMe"
+            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_allow_love_me"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_Prefix",
-            "name": "a_str_Prefix",
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_prefix",
+            "name": "a_str_prefix",
             "summary": "Prefix\u0020for\u0020the\u0020Footnote\u0020html\u0020element\u0020ID.",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_Prefix"
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_prefix"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_PostId",
-            "name": "a_int_PostId",
-            "summary": "Infinite\u0020scroll\u0020\/\u0020autoload\u0020or\u0020archive\u0020view",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_int_PostId"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_post_id",
+            "name": "a_int_post_id",
+            "summary": "Autoload\u0020a.k.a.\u0020infinite\u0020scroll,\u0020or\u0020archive\u0020view.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_int_post_id"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_ReferenceContainerId",
-            "name": "a_int_ReferenceContainerId",
-            "summary": "Multiple\u0020reference\u0020containers\u0020in\u0020content\u0020and\u0020widgets",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_int_ReferenceContainerId"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_reference_container_id",
+            "name": "a_int_reference_container_id",
+            "summary": "Multiple\u0020reference\u0020containers\u0020in\u0020content\u0020and\u0020widgets.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_int_reference_container_id"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_TooltipsEnabled",
-            "name": "a_bool_TooltipsEnabled",
-            "summary": "Template\u0020process\u0020optimization",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_TooltipsEnabled"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_hard_links_enabled",
+            "name": "a_bool_hard_links_enabled",
+            "summary": "Hard\u0020links\u0020for\u0020AMP\u0020compatibility.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_hard_links_enabled"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_AlternativeTooltipsEnabled",
-            "name": "a_bool_AlternativeTooltipsEnabled",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_AlternativeTooltipsEnabled"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_referrer_link_slug",
+            "name": "a_str_referrer_link_slug",
+            "summary": "The\u0020referrer\u0020slug.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_referrer_link_slug"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_HardLinksEnable",
-            "name": "a_bool_HardLinksEnable",
-            "summary": "Hard\u0020links\u0020for\u0020AMP\u0020compatibility",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_HardLinksEnable"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_footnote_link_slug",
+            "name": "a_str_footnote_link_slug",
+            "summary": "The\u0020footnote\u0020slug.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_footnote_link_slug"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_ReferrerLinkSlug",
-            "name": "a_str_ReferrerLinkSlug",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_ReferrerLinkSlug"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_link_ids_separator",
+            "name": "a_str_link_ids_separator",
+            "summary": "The\u0020slug\u0020and\u0020identifier\u0020separator.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_link_ids_separator"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_FootnoteLinkSlug",
-            "name": "a_str_FootnoteLinkSlug",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_FootnoteLinkSlug"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_post_container_id_compound",
+            "name": "a_str_post_container_id_compound",
+            "summary": "Contains\u0020the\u0020concatenated\u0020fragment\u0020ID\u0020base.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_post_container_id_compound"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_LinkIdsSeparator",
-            "name": "a_str_LinkIdsSeparator",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_LinkIdsSeparator"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_scroll_offset",
+            "name": "a_int_scroll_offset",
+            "summary": "Scroll\u0020offset.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_int_scroll_offset"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_PostContainerIdCompound",
-            "name": "a_str_PostContainerIdCompound",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_PostContainerIdCompound"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_link_span",
+            "name": "a_str_link_span",
+            "summary": "The\u0020span\u0020element\u0020name.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_link_span"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_ScrollOffset",
-            "name": "a_int_ScrollOffset",
-            "summary": "Scroll\u0020offset",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_int_ScrollOffset"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_link_open_tag",
+            "name": "a_str_link_open_tag",
+            "summary": "The\u0020opening\u0020tag.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_link_open_tag"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_LinkSpan",
-            "name": "a_str_LinkSpan",
-            "summary": "Optional\u0020link\u0020element\u0020for\u0020footnote\u0020referrers\u0020and\u0020backlinks",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_LinkSpan"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_link_close_tag",
+            "name": "a_str_link_close_tag",
+            "summary": "The\u0020closing\u0020tag.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_link_close_tag"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_LinkOpenTag",
-            "name": "a_str_LinkOpenTag",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_LinkOpenTag"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_tooltip_shortcode",
+            "name": "a_str_tooltip_shortcode",
+            "summary": "The\u0020tooltip\u0020delimiter\u0020shortcode.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_tooltip_shortcode"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_LinkCloseTag",
-            "name": "a_str_LinkCloseTag",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_LinkCloseTag"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_tooltip_shortcode_length",
+            "name": "a_int_tooltip_shortcode_length",
+            "summary": "The\u0020tooltip\u0020delimiter\u0020shortcode\u0020length.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_int_tooltip_shortcode_length"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_MirrorTooltipText",
-            "name": "a_bool_MirrorTooltipText",
-            "summary": "Dedicated\u0020tooltip\u0020text",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_MirrorTooltipText"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_mirror_tooltip_text",
+            "name": "a_bool_mirror_tooltip_text",
+            "summary": "Whether\u0020to\u0020mirror\u0020the\u0020tooltip\u0020text\u0020in\u0020the\u0020reference\u0020container.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_mirror_tooltip_text"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_TooltipShortcode",
-            "name": "a_str_TooltipShortcode",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_str_TooltipShortcode"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_start_tag",
+            "name": "a_str_start_tag",
+            "summary": "Footnote\u0020delimiter\u0020start\u0020short\u0020code.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_start_tag"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_int_TooltipShortcodeLength",
-            "name": "a_int_TooltipShortcodeLength",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_int_TooltipShortcodeLength"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_end_tag",
+            "name": "a_str_end_tag",
+            "summary": "Footnote\u0020delimiter\u0020end\u0020short\u0020code.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_end_tag"
         },                {
-            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_SyntaxErrorFlag",
-            "name": "a_bool_SyntaxErrorFlag",
-            "summary": "Footnote\u0020delimiter\u0020syntax\u0020validation",
-            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_SyntaxErrorFlag"
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_start_tag_regex",
+            "name": "a_str_start_tag_regex",
+            "summary": "Footnote\u0020delimiter\u0020start\u0020short\u0020code\u0020in\u0020regex\u0020format.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_start_tag_regex"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_str_end_tag_regex",
+            "name": "a_str_end_tag_regex",
+            "summary": "Footnote\u0020delimiter\u0020end\u0020short\u0020code\u0020in\u0020regex\u0020format.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_str_end_tag_regex"
+        },                {
+            "fqsen": "\\MCI_Footnotes_Task\u003A\u003A\u0024a_bool_syntax_error_flag",
+            "name": "a_bool_syntax_error_flag",
+            "summary": "Footnote\u0020delimiter\u0020syntax\u0020validation\u0020enabled.",
+            "url": "classes/MCI-Footnotes-Task.html#property_a_bool_syntax_error_flag"
         },                {
             "fqsen": "\\MCI_Footnotes_Template",
             "name": "MCI_Footnotes_Template",
@@ -1276,19 +1311,19 @@ Search.appendIndex(
             "summary": "Reloads\u0020the\u0020original\u0020content\u0020of\u0020the\u0020template\u0020file.",
             "url": "classes/MCI-Footnotes-Template.html#method_reload"
         },                {
-            "fqsen": "\\MCI_Footnotes_Template\u003A\u003AgetContent\u0028\u0029",
-            "name": "getContent",
+            "fqsen": "\\MCI_Footnotes_Template\u003A\u003Aget_content\u0028\u0029",
+            "name": "get_content",
             "summary": "Returns\u0020the\u0020content\u0020of\u0020the\u0020template\u0020file\u0020with\u0020replaced\u0020placeholders.",
-            "url": "classes/MCI-Footnotes-Template.html#method_getContent"
+            "url": "classes/MCI-Footnotes-Template.html#method_get_content"
         },                {
             "fqsen": "\\MCI_Footnotes_Template\u003A\u003Aprocess_template\u0028\u0029",
             "name": "process_template",
-            "summary": "Process\u0020template\u0020file",
+            "summary": "Process\u0020template\u0020file.",
             "url": "classes/MCI-Footnotes-Template.html#method_process_template"
         },                {
             "fqsen": "\\MCI_Footnotes_Template\u003A\u003Aget_template\u0028\u0029",
             "name": "get_template",
-            "summary": "Get\u0020the\u0020template",
+            "summary": "Get\u0020the\u0020template.",
             "url": "classes/MCI-Footnotes-Template.html#method_get_template"
         },                {
             "fqsen": "\\MCI_Footnotes_Template\u003A\u003AC_STR_DASHBOARD",
@@ -1301,115 +1336,110 @@ Search.appendIndex(
             "summary": "Directory\u0020name\u0020for\u0020public\u0020templates.",
             "url": "classes/MCI-Footnotes-Template.html#constant_C_STR_PUBLIC"
         },                {
-            "fqsen": "\\MCI_Footnotes_Template\u003A\u003A\u0024a_str_OriginalContent",
-            "name": "a_str_OriginalContent",
+            "fqsen": "\\MCI_Footnotes_Template\u003A\u003A\u0024a_str_original_content",
+            "name": "a_str_original_content",
             "summary": "Contains\u0020the\u0020content\u0020of\u0020the\u0020template\u0020after\u0020initialize.",
-            "url": "classes/MCI-Footnotes-Template.html#property_a_str_OriginalContent"
+            "url": "classes/MCI-Footnotes-Template.html#property_a_str_original_content"
         },                {
-            "fqsen": "\\MCI_Footnotes_Template\u003A\u003A\u0024a_str_ReplacedContent",
-            "name": "a_str_ReplacedContent",
+            "fqsen": "\\MCI_Footnotes_Template\u003A\u003A\u0024a_str_replaced_content",
+            "name": "a_str_replaced_content",
             "summary": "Contains\u0020the\u0020content\u0020of\u0020the\u0020template\u0020after\u0020initialize\u0020with\u0020replaced\u0020place\u0020holders.",
-            "url": "classes/MCI-Footnotes-Template.html#property_a_str_ReplacedContent"
+            "url": "classes/MCI-Footnotes-Template.html#property_a_str_replaced_content"
         },                {
             "fqsen": "\\MCI_Footnotes_Template\u003A\u003A\u0024plugin_directory",
             "name": "plugin_directory",
             "summary": "Plugin\u0020Directory",
             "url": "classes/MCI-Footnotes-Template.html#property_plugin_directory"
         },                {
-            "fqsen": "\\MCI_Footnotes_WidgetBase",
-            "name": "MCI_Footnotes_WidgetBase",
+            "fqsen": "\\MCI_Footnotes_Widget_Base",
+            "name": "MCI_Footnotes_Widget_Base",
             "summary": "Base\u0020Class\u0020for\u0020all\u0020Plugin\u0020Widgets.\u0020Registers\u0020each\u0020Widget\u0020to\u0020WordPress.",
-            "url": "classes/MCI-Footnotes-WidgetBase.html"
+            "url": "classes/MCI-Footnotes-Widget-Base.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_WidgetBase\u003A\u003AgetID\u0028\u0029",
-            "name": "getID",
+            "fqsen": "\\MCI_Footnotes_Widget_Base\u003A\u003Aget_id\u0028\u0029",
+            "name": "get_id",
             "summary": "Returns\u0020an\u0020unique\u0020ID\u0020as\u0020string\u0020used\u0020for\u0020the\u0020Widget\u0020Base\u0020ID.",
-            "url": "classes/MCI-Footnotes-WidgetBase.html#method_getID"
+            "url": "classes/MCI-Footnotes-Widget-Base.html#method_get_id"
         },                {
-            "fqsen": "\\MCI_Footnotes_WidgetBase\u003A\u003AgetName\u0028\u0029",
-            "name": "getName",
+            "fqsen": "\\MCI_Footnotes_Widget_Base\u003A\u003Aget_name\u0028\u0029",
+            "name": "get_name",
             "summary": "Returns\u0020the\u0020Public\u0020name\u0020of\u0020child\u0020Widget\u0020to\u0020be\u0020displayed\u0020in\u0020the\u0020Configuration\u0020page.",
-            "url": "classes/MCI-Footnotes-WidgetBase.html#method_getName"
+            "url": "classes/MCI-Footnotes-Widget-Base.html#method_get_name"
         },                {
-            "fqsen": "\\MCI_Footnotes_WidgetBase\u003A\u003AgetDescription\u0028\u0029",
-            "name": "getDescription",
+            "fqsen": "\\MCI_Footnotes_Widget_Base\u003A\u003Aget_description\u0028\u0029",
+            "name": "get_description",
             "summary": "Returns\u0020the\u0020Description\u0020of\u0020the\u0020child\u0020widget.",
-            "url": "classes/MCI-Footnotes-WidgetBase.html#method_getDescription"
+            "url": "classes/MCI-Footnotes-Widget-Base.html#method_get_description"
         },                {
-            "fqsen": "\\MCI_Footnotes_WidgetBase\u003A\u003AgetWidgetWidth\u0028\u0029",
-            "name": "getWidgetWidth",
+            "fqsen": "\\MCI_Footnotes_Widget_Base\u003A\u003Aget_widget_width\u0028\u0029",
+            "name": "get_widget_width",
             "summary": "Returns\u0020the\u0020width\u0020of\u0020the\u0020Widget.\u0020Default\u0020width\u0020is\u0020250\u0020pixel.",
-            "url": "classes/MCI-Footnotes-WidgetBase.html#method_getWidgetWidth"
+            "url": "classes/MCI-Footnotes-Widget-Base.html#method_get_widget_width"
         },                {
-            "fqsen": "\\MCI_Footnotes_WidgetBase\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\MCI_Footnotes_Widget_Base\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Class\u0020Constructor.\u0020Registers\u0020the\u0020child\u0020Widget\u0020to\u0020WordPress.",
-            "url": "classes/MCI-Footnotes-WidgetBase.html#method___construct"
+            "url": "classes/MCI-Footnotes-Widget-Base.html#method___construct"
         },                {
-            "fqsen": "\\MCI_Footnotes_Widget_ReferenceContainer",
-            "name": "MCI_Footnotes_Widget_ReferenceContainer",
+            "fqsen": "\\MCI_Footnotes_Widget_Reference_Container",
+            "name": "MCI_Footnotes_Widget_Reference_Container",
             "summary": "Registers\u0020a\u0020Widget\u0020to\u0020put\u0020the\u0020Reference\u0020Container\u0020to\u0020the\u0020widget\u0020area.",
-            "url": "classes/MCI-Footnotes-Widget-ReferenceContainer.html"
+            "url": "classes/MCI-Footnotes-Widget-Reference-Container.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_Widget_ReferenceContainer\u003A\u003AgetID\u0028\u0029",
-            "name": "getID",
+            "fqsen": "\\MCI_Footnotes_Widget_Reference_Container\u003A\u003Aget_id\u0028\u0029",
+            "name": "get_id",
             "summary": "Returns\u0020an\u0020unique\u0020ID\u0020as\u0020string\u0020used\u0020for\u0020the\u0020Widget\u0020Base\u0020ID.",
-            "url": "classes/MCI-Footnotes-Widget-ReferenceContainer.html#method_getID"
+            "url": "classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_id"
         },                {
-            "fqsen": "\\MCI_Footnotes_Widget_ReferenceContainer\u003A\u003AgetName\u0028\u0029",
-            "name": "getName",
+            "fqsen": "\\MCI_Footnotes_Widget_Reference_Container\u003A\u003Aget_name\u0028\u0029",
+            "name": "get_name",
             "summary": "Returns\u0020the\u0020Public\u0020name\u0020of\u0020the\u0020Widget\u0020to\u0020be\u0020displayed\u0020in\u0020the\u0020Configuration\u0020page.",
-            "url": "classes/MCI-Footnotes-Widget-ReferenceContainer.html#method_getName"
+            "url": "classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_name"
         },                {
-            "fqsen": "\\MCI_Footnotes_Widget_ReferenceContainer\u003A\u003AgetDescription\u0028\u0029",
-            "name": "getDescription",
+            "fqsen": "\\MCI_Footnotes_Widget_Reference_Container\u003A\u003Aget_description\u0028\u0029",
+            "name": "get_description",
             "summary": "Returns\u0020the\u0020Description\u0020of\u0020the\u0020child\u0020widget.",
-            "url": "classes/MCI-Footnotes-Widget-ReferenceContainer.html#method_getDescription"
+            "url": "classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_description"
         },                {
-            "fqsen": "\\MCI_Footnotes_Widget_ReferenceContainer\u003A\u003Aform\u0028\u0029",
+            "fqsen": "\\MCI_Footnotes_Widget_Reference_Container\u003A\u003Aform\u0028\u0029",
             "name": "form",
             "summary": "Outputs\u0020the\u0020Settings\u0020of\u0020the\u0020Widget.",
-            "url": "classes/MCI-Footnotes-Widget-ReferenceContainer.html#method_form"
+            "url": "classes/MCI-Footnotes-Widget-Reference-Container.html#method_form"
         },                {
-            "fqsen": "\\MCI_Footnotes_Widget_ReferenceContainer\u003A\u003Awidget\u0028\u0029",
+            "fqsen": "\\MCI_Footnotes_Widget_Reference_Container\u003A\u003Awidget\u0028\u0029",
             "name": "widget",
             "summary": "Outputs\u0020the\u0020Content\u0020of\u0020the\u0020Widget.",
-            "url": "classes/MCI-Footnotes-Widget-ReferenceContainer.html#method_widget"
+            "url": "classes/MCI-Footnotes-Widget-Reference-Container.html#method_widget"
         },                {
             "fqsen": "\\MCI_Footnotes_WYSIWYG",
             "name": "MCI_Footnotes_WYSIWYG",
-            "summary": "",
+            "summary": "Handles\u0020the\u0020WSYIWYG\u002DButtons.",
             "url": "classes/MCI-Footnotes-WYSIWYG.html"
         },                {
-            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003AregisterHooks\u0028\u0029",
-            "name": "registerHooks",
-            "summary": "",
-            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_registerHooks"
+            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003Aregister_hooks\u0028\u0029",
+            "name": "register_hooks",
+            "summary": "Registers\u0020Button\u0020hooks.",
+            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_register_hooks"
         },                {
-            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003AnewVisualEditorButton\u0028\u0029",
-            "name": "newVisualEditorButton",
+            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003Anew_visual_editor_button\u0028\u0029",
+            "name": "new_visual_editor_button",
             "summary": "Append\u0020a\u0020new\u0020Button\u0020to\u0020the\u0020WYSIWYG\u0020editor\u0020of\u0020Posts\u0020and\u0020Pages.",
-            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_newVisualEditorButton"
+            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_new_visual_editor_button"
         },                {
-            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003AnewPlainTextEditorButton\u0028\u0029",
-            "name": "newPlainTextEditorButton",
+            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003Anew_plain_text_editor_button\u0028\u0029",
+            "name": "new_plain_text_editor_button",
             "summary": "Add\u0020a\u0020new\u0020button\u0020to\u0020the\u0020plain\u0020text\u0020editor.",
-            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_newPlainTextEditorButton"
+            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_new_plain_text_editor_button"
         },                {
-            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003AincludeScripts\u0028\u0029",
-            "name": "includeScripts",
+            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003Ainclude_scripts\u0028\u0029",
+            "name": "include_scripts",
             "summary": "Includes\u0020the\u0020Plugins\u0020WYSIWYG\u0020editor\u0020script.",
-            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_includeScripts"
+            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_include_scripts"
         },                {
-            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003AajaxCallback\u0028\u0029",
-            "name": "ajaxCallback",
+            "fqsen": "\\MCI_Footnotes_WYSIWYG\u003A\u003Aajax_callback\u0028\u0029",
+            "name": "ajax_callback",
             "summary": "AJAX\u0020Callback\u0020function\u0020when\u0020the\u0020Footnotes\u0020Button\u0020is\u0020clicked.\u0020Either\u0020in\u0020the\u0020Plain\u0020text\u0020or\u0020Visual\u0020editor.",
-            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_ajaxCallback"
-        },                {
-            "fqsen": "\\MCI_Footnotes_requirePhpFiles\u0028\u0029",
-            "name": "MCI_Footnotes_requirePhpFiles",
-            "summary": "Requires\u0020\u0028require_once\u0029\u0020all\u0020\u002A.php\u0020files\u0020inside\u0020a\u0020specific\u0020Directory.",
-            "url": "namespaces/default.html#function_MCI_Footnotes_requirePhpFiles"
+            "url": "classes/MCI-Footnotes-WYSIWYG.html#method_ajax_callback"
         },                {
             "fqsen": "\\",
             "name": "\\",

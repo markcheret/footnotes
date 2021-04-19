@@ -78,6 +78,9 @@ Visit this swift write-up from a **footnotes** user by the name of **Southwest**
 
 = 2.7.1 =
 - Bugfix: Stylesheets: higher specificity, thanks to @cybermrmotte bug report.
+- Dashboard: move Plugin settings under default WP Settings menu.
+- Bugfix: Footnotes: fix bug when using multiple paragraphs in footnotes.
+- Documentation: remove outdated MCI/ManFisher references
  
 = 2.7.0 =
 - Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.

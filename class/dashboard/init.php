@@ -12,7 +12,7 @@
  *
  * @since  1.5.0
  */
-class MCI_Footnotes_Layout_Init {
+class Footnotes_Layout_Init {
 
 	/**
 	 * Slug for the Plugin main menu.
@@ -44,7 +44,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since  1.5.0
 	 */
 	public function __construct() {
-		$this->settings_page = new MCI_Footnotes_Layout_Settings();
+		$this->settings_page = new Footnotes_Layout_Settings();
 
 		// Register hooks/actions.
 		add_action( 'admin_menu', array( $this, 'register_options_submenu' ) );
@@ -60,7 +60,7 @@ class MCI_Footnotes_Layout_Init {
 	 * @since  1.5.0
 	 */
 	public function initialize_settings() {
-		MCI_Footnotes_Settings::instance()->register_settings();
+		Footnotes_Settings::instance()->register_settings();
 		$this->settings_page->register_sections();
 	}
 

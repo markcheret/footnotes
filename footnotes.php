@@ -112,6 +112,6 @@ $l_str_plugin_file = 'footnotes/footnotes.php';
 add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'Hooks', 'get_plugin_links' ), 10, 2 );
 
 // Initialize the Plugin.
-$g_obj_mci_footnotes = new MCI_Footnotes();
+$g_obj_mci_footnotes = new Footnotes();
 // Run the Plugin.
 $g_obj_mci_footnotes->run();

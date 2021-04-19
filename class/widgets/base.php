@@ -18,7 +18,7 @@
  * @author Stefan Herndler
  * @since 1.5.0
  */
-abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
+abstract class Footnotes_Widget_Base extends WP_Widget {
 
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.
@@ -64,7 +64,7 @@ abstract class MCI_Footnotes_Widget_Base extends WP_Widget {
 	 * @since 1.6.4
 	 * @contributor @dartiss
 	 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/widgets/base.php?rev=1445720
-	 * “The called constructor method for WP_Widget in MCI_Footnotes_Widget_ReferenceContainer is deprecated since version 4.3.0! Use __construct() instead.”
+	 * “The called constructor method for WP_Widget in Footnotes_Widget_ReferenceContainer is deprecated since version 4.3.0! Use __construct() instead.”
 	 */
 	public function __construct() {
 		$l_arr_widget_options  = array(

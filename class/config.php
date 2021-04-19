@@ -14,7 +14,7 @@
  *
  * @since 1.5.0
  */
-class MCI_Footnotes_Config {
+class Footnotes_Config {
 	/**
 	 * Internal Plugin name.
 	 *

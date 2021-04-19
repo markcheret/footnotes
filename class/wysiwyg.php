@@ -12,7 +12,7 @@
  *
  * @since 1.5.0
  */
-class MCI_Footnotes_WYSIWYG {
+class Footnotes_WYSIWYG {
 
 	/**
 	 * Registers Button hooks.
@@ -28,16 +28,16 @@ class MCI_Footnotes_WYSIWYG {
 	 * @return void
 	 */
 	public static function register_hooks() {
-		add_filter( 'mce_buttons', array( 'MCI_Footnotes_WYSIWYG', 'new_visual_editor_button' ) );
-		add_action( 'admin_print_footer_scripts', array( 'MCI_Footnotes_WYSIWYG', 'new_plain_text_editor_button' ) );
+		add_filter( 'mce_buttons', array( 'Footnotes_WYSIWYG', 'new_visual_editor_button' ) );
+		add_action( 'admin_print_footer_scripts', array( 'Footnotes_WYSIWYG', 'new_plain_text_editor_button' ) );
 
-		add_filter( 'mce_external_plugins', array( 'MCI_Footnotes_WYSIWYG', 'include_scripts' ) );
+		add_filter( 'mce_external_plugins', array( 'Footnotes_WYSIWYG', 'include_scripts' ) );
 
 		// phpcs:disable
 		// 'footnotes_getTags' must match its instance in wysiwyg-editor.js.
 		// 'footnotes_getTags' must match its instance in editor-button.html.
-		add_action( 'wp_ajax_nopriv_footnotes_getTags', array( 'MCI_Footnotes_WYSIWYG', 'ajax_callback' ) );
-		add_action( 'wp_ajax_footnotes_getTags', array( 'MCI_Footnotes_WYSIWYG', 'ajax_callback' ) );
+		add_action( 'wp_ajax_nopriv_footnotes_getTags', array( 'Footnotes_WYSIWYG', 'ajax_callback' ) );
+		add_action( 'wp_ajax_footnotes_getTags', array( 'Footnotes_WYSIWYG', 'ajax_callback' ) );
 		// phpcs:enable
 	}
 
@@ -50,7 +50,7 @@ class MCI_Footnotes_WYSIWYG {
 	 * @return array
 	 */
 	public static function new_visual_editor_button( $p_arr_buttons ) {
-		array_push( $p_arr_buttons, MCI_Footnotes_Config::C_STR_PLUGIN_NAME );
+		array_push( $p_arr_buttons, Footnotes_Config::C_STR_PLUGIN_NAME );
 		return $p_arr_buttons;
 	}
 
@@ -60,7 +60,7 @@ class MCI_Footnotes_WYSIWYG {
 	 * @since 1.5.0
 	 */
 	public static function new_plain_text_editor_button() {
-		$l_obj_template = new MCI_Footnotes_Template( MCI_Footnotes_Template::C_STR_DASHBOARD, 'editor-button' );
+		$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_DASHBOARD, 'editor-button' );
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $l_obj_template->get_content();
 		// phpcs:enable
@@ -74,7 +74,7 @@ class MCI_Footnotes_WYSIWYG {
 	 * @return array
 	 */
 	public static function include_scripts( $p_arr_plugins ) {
-		$p_arr_plugins[ MCI_Footnotes_Config::C_STR_PLUGIN_NAME ] = plugins_url( '/../js/wysiwyg-editor.js', __FILE__ );
+		$p_arr_plugins[ Footnotes_Config::C_STR_PLUGIN_NAME ] = plugins_url( '/../js/wysiwyg-editor.js', __FILE__ );
 		return $p_arr_plugins;
 	}
 
@@ -86,11 +86,11 @@ class MCI_Footnotes_WYSIWYG {
 	 */
 	public static function ajax_callback() {
 		// Get start and end tag for the footnotes short code.
-		$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
-		$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
+		$l_str_starting_tag = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
+		$l_str_ending_tag   = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
 		if ( 'userdefined' === $l_str_starting_tag || 'userdefined' === $l_str_ending_tag ) {
-			$l_str_starting_tag = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
-			$l_str_ending_tag   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
+			$l_str_starting_tag = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
+			$l_str_ending_tag   = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 		echo json_encode(
 			array(

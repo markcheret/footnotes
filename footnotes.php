@@ -109,7 +109,7 @@ require_once dirname( __FILE__ ) . '/includes.php';
 
 // Add Plugin Links to the "installed plugins" page.
 $l_str_plugin_file = 'footnotes/footnotes.php';
-add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'Hooks', 'get_plugin_links' ), 10, 2 );
+add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
 
 // Initialize the Plugin.
 $g_obj_mci_footnotes = new Footnotes();

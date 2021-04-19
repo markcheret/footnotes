@@ -398,7 +398,7 @@ class Footnotes_Task {
 	public static $a_bool_syntax_error_flag = true;
 
 	/**
-	 * Register WordPress Hooks to replace Footnotes in the content of a public page.
+	 * Register WordPress hooks to replace Footnotes in the content of a public page.
 	 *
 	 * @since 1.5.0
 	 *

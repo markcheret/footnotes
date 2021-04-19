@@ -109,7 +109,7 @@ class Footnotes {
 		// Register Button hooks.
 		Footnotes_WYSIWYG::register_hooks();
 		// Register general hooks.
-		Hooks::register_hooks();
+		Footnotes_Hooks::register_hooks();
 
 		// Initialize the Plugin Dashboard.
 		$this->initialize_dashboard();

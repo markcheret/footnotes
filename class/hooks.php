@@ -1,6 +1,6 @@
 <?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
- * Hooks class
+ * Footnotes_Hooks class
  *
  * @package footnotes
  * @subpackage WPDashboard
@@ -8,11 +8,11 @@
  */
 
 /**
- * Registers all WordPress Hooks and executes them on demand.
+ * Registers all WordPress hooks and executes them on demand.
  *
  * @since 1.5.0
  */
-class Hooks {
+class Footnotes_Hooks {
 
 	/**
 	 * Registers all WordPress hooks.
@@ -20,9 +20,9 @@ class Hooks {
 	 * @since 1.5.0
 	 */
 	public static function register_hooks() {
-		register_activation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Hooks', 'activate_plugin' ) );
-		register_deactivation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Hooks', 'deactivate_plugin' ) );
-		register_uninstall_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Hooks', 'uninstall_plugin' ) );
+		register_activation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Footnotes_Hooks', 'activate_plugin' ) );
+		register_deactivation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Footnotes_Hooks', 'deactivate_plugin' ) );
+		register_uninstall_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Footnotes_Hooks', 'uninstall_plugin' ) );
 	}
 
 	/**

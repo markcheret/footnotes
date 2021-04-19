@@ -52,7 +52,6 @@ elif [[ $1 == "-d" ]]; then
 	# with `cp` and disabled the `rm` command, so the minified
 	# files won't be removed from the source directory.
 	echo "Deploying minified stylesheets to \`dist/css/\`..."
-	rm -r ./dist
 	mkdir -p ./dist/css
 	for f in ./css/tmp/*.min.css;	do
 		filename=$(basename $f .css)

@@ -14,10 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Plugin
+      - name: Install dependencies
         run: |
           composer install --no-dev --optimize-autoloader
-          composer run build
+          
+      - name: Build Plugin
+        run: |
+          composer run build -- -y
 
       - name: Create release archive
         uses: montudor/action-zip@v0.1.0

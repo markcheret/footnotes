@@ -224,8 +224,9 @@ echo "Current version:"
 echo -e '\t' $PRERELEASE_VERSION
 echo "Stable version:"
 echo -e '\t' $STABLE_VERSION '\n'
-echo "Commit message:\n"
+echo -e "Commit message:\n"
 echo -e "$CHANGELOG_MESSAGE" '\n'
+svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm %
 echo -e "Changes made to local \`trunk/\`:\n"
 svn stat tmp/trunk/
 echo ""
@@ -237,10 +238,11 @@ read -p "Is this all correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIR
 # Step 7(d): Push to remote `trunk/` (provided the flag is set)
 
 if [[ $1 == "-c" ]]; then
-	svn ci -m "$CHANGELOG_MESSAGE"
+	cd tmp && svn ci -m "$CHANGELOG_MESSAGE"
+	cd ..
 else echo "- Commit flag not set, skipping commit step."
 fi
 
 # Step 8: Cleanup
 
-rm -rf {dist/,tmp/}
+#rm -rf {dist/,tmp/}

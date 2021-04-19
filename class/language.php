@@ -15,7 +15,7 @@
  *
  * @since 1.5.0
  */
-class Footnotes_Language {
+class MCI_Footnotes_Language {
 
 	/**
 	 * Register WordPress Hook.
@@ -23,7 +23,7 @@ class Footnotes_Language {
 	 * @since 1.5.0
 	 */
 	public static function register_hooks() {
-		add_action( 'plugins_loaded', array( 'Footnotes_Language', 'load_text_domain' ) );
+		add_action( 'plugins_loaded', array( 'MCI_Footnotes_Language', 'load_text_domain' ) );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class Footnotes_Language {
 	 * Loads a specific text domain.
 	 *
 	 * @since 1.5.1
-	 * @param string $language_code Language Code to load a specific text domain.
+	 * @param string $p_str_language_code Language Code to load a specific text domain.
 	 * @return bool
 	 *
 	 *
@@ -87,11 +87,11 @@ class Footnotes_Language {
 	 * “The .mo file should be named based on the text domain with a dash, and then the locale exactly.”
 	 * @see wp-includes/l10n.php:857
 	 */
-	private static function load( $language_code ) {
+	private static function load( $p_str_language_code ) {
 		return load_plugin_textdomain(
-			Footnotes_Config::PLUGIN_NAME,
+			MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
 			false,
-			Footnotes_Config::PLUGIN_NAME . '/languages'
+			MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages'
 		);
 	}
 }

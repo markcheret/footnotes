@@ -16,7 +16,7 @@
  *
  * @since 1.5.0
  */
-class Footnotes_Template {
+class MCI_Footnotes_Template {
 
 	/**
 	 * Directory name for dashboard templates.
@@ -24,7 +24,7 @@ class Footnotes_Template {
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const DASHBOARD = 'dashboard';
+	const C_STR_DASHBOARD = 'dashboard';
 
 	/**
 	 * Directory name for public templates.
@@ -32,7 +32,7 @@ class Footnotes_Template {
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const PUBLIC = 'public';
+	const C_STR_PUBLIC = 'public';
 
 	/**
 	 * Contains the content of the template after initialize.
@@ -40,7 +40,7 @@ class Footnotes_Template {
 	 * @since  1.5.0
 	 * @var string
 	 */
-	private $original_content = '';
+	private $a_str_original_content = '';
 
 	/**
 	 * Contains the content of the template after initialize with replaced place holders.
@@ -48,7 +48,7 @@ class Footnotes_Template {
 	 * @since  1.5.0
 	 * @var string
 	 */
-	private $replaced_content = '';
+	private $a_str_replaced_content = '';
 
 	/**
 	 * Plugin Directory
@@ -63,9 +63,9 @@ class Footnotes_Template {
 	 * Class Constructor. Reads and loads the template file without replace any placeholder.
 	 *
 	 * @since 1.5.0
-	 * @param string $file_type Template file type (take a look on the Class constants).
-	 * @param string $file_name Template file name inside the Template directory without the file extension.
-	 * @param string $extension Optional Template file extension (default: html).
+	 * @param string $p_str_file_type Template file type (take a look on the Class constants).
+	 * @param string $p_str_file_name Template file name inside the Template directory without the file extension.
+	 * @param string $p_str_extension Optional Template file extension (default: html).
 	 *
 	 * - Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
 	 *
@@ -74,9 +74,9 @@ class Footnotes_Template {
 	 * @reporter @misfist
 	 * @link https://wordpress.org/support/topic/template-override-filter/
 	 */
-	public function __construct( $file_type, $file_name, $extension = 'html' ) {
+	public function __construct( $p_str_file_type, $p_str_file_name, $p_str_extension = 'html' ) {
 		// No template file type and/or file name set.
-		if ( empty( $file_type ) || empty( $file_name ) ) {
+		if ( empty( $p_str_file_type ) || empty( $p_str_file_name ) ) {
 			return;
 		}
 
@@ -92,7 +92,7 @@ class Footnotes_Template {
 		 *
 		 * @since 2.4.0d3
 		 */
-		$template = $this->get_template( $file_type, $file_name, $extension );
+		$template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension );
 		if ( $template ) {
 			$this->process_template( $template );
 		} else {
@@ -105,21 +105,21 @@ class Footnotes_Template {
 	 * Replace all placeholders specified in array.
 	 *
 	 * @since  1.5.0
-	 * @param array $placeholders Placeholders (key = placeholder, value = value).
+	 * @param array $p_arr_placeholders Placeholders (key = placeholder, value = value).
 	 * @return bool True on Success, False if Placeholders invalid.
 	 */
-	public function replace( $placeholders ) {
+	public function replace( $p_arr_placeholders ) {
 		// No placeholders set.
-		if ( empty( $placeholders ) ) {
+		if ( empty( $p_arr_placeholders ) ) {
 			return false;
 		}
 		// Template content is empty.
-		if ( empty( $this->replaced_content ) ) {
+		if ( empty( $this->a_str_replaced_content ) ) {
 			return false;
 		}
 		// Iterate through each placeholder and replace it with its value.
-		foreach ( $placeholders as $placeholder => $value ) {
-			$this->replaced_content = str_replace( '[[' . $placeholder . ']]', $value, $this->replaced_content );
+		foreach ( $p_arr_placeholders as $l_str_placeholder => $l_str_value ) {
+			$this->a_str_replaced_content = str_replace( '[[' . $l_str_placeholder . ']]', $l_str_value, $this->a_str_replaced_content );
 		}
 		// Success.
 		return true;
@@ -131,7 +131,7 @@ class Footnotes_Template {
 	 * @since  1.5.0
 	 */
 	public function reload() {
-		$this->replaced_content = $this->original_content;
+		$this->a_str_replaced_content = $this->a_str_original_content;
 	}
 
 	/**
@@ -141,7 +141,7 @@ class Footnotes_Template {
 	 * @return string Template content with replaced placeholders.
 	 */
 	public function get_content() {
-		return $this->replaced_content;
+		return $this->a_str_replaced_content;
 	}
 
 	/**
@@ -160,14 +160,14 @@ class Footnotes_Template {
 	 */
 	public function process_template( $template ) {
 		// phpcs:disable WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$this->original_content = preg_replace( '#<!--.+?-->#s', '', file_get_contents( $template ) );
+		$this->a_str_original_content = preg_replace( '#<!--.+?-->#s', '', file_get_contents( $template ) );
 		// phpcs:enable
-		$this->original_content = preg_replace( '#/\*\*.+?\*/#s', '', $this->original_content );
-		$this->original_content = str_replace( "\n", '', $this->original_content );
-		$this->original_content = str_replace( "\r", '', $this->original_content );
-		$this->original_content = str_replace( "\t", ' ', $this->original_content );
-		$this->original_content = preg_replace( '# +#', ' ', $this->original_content );
-		$this->original_content = str_replace( ' >', '>', $this->original_content );
+		$this->a_str_original_content = preg_replace( '#/\*\*.+?\*/#s', '', $this->a_str_original_content );
+		$this->a_str_original_content = str_replace( "\n", '', $this->a_str_original_content );
+		$this->a_str_original_content = str_replace( "\r", '', $this->a_str_original_content );
+		$this->a_str_original_content = str_replace( "\t", ' ', $this->a_str_original_content );
+		$this->a_str_original_content = preg_replace( '# +#', ' ', $this->a_str_original_content );
+		$this->a_str_original_content = str_replace( ' >', '>', $this->a_str_original_content );
 		$this->reload();
 	}
 
@@ -182,12 +182,12 @@ class Footnotes_Template {
 	 * @contributor @misfist
 	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
 	 *
-	 * @param string $file_type The file type of the template.
-	 * @param string $file_name The file name of the template.
-	 * @param string $extension The file extension of the template.
+	 * @param string $p_str_file_type The file type of the template.
+	 * @param string $p_str_file_name The file name of the template.
+	 * @param string $p_str_extension The file extension of the template.
 	 * @return mixed false | template path
 	 */
-	public function get_template( $file_type, $file_name, $extension = 'html' ) {
+	public function get_template( $p_str_file_type, $p_str_file_name, $p_str_extension = 'html' ) {
 		$located = false;
 
 		/**
@@ -200,7 +200,7 @@ class Footnotes_Template {
 		 */
 		$template_directory = apply_filters( 'mci_footnotes_template_directory', 'footnotes/templates/' );
 		$custom_directory   = apply_filters( 'mci_footnotes_custom_template_directory', 'footnotes-custom/' );
-		$template_name      = $file_type . '/' . $file_name . '.' . $extension;
+		$template_name      = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
 
 		/**
 		 * Look in active theme.

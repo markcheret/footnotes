@@ -23,7 +23,7 @@
  * @since 2.5.3 (Hungarian)
  * @var str
  */
-define( 'FOOTNOTES_VERSION', '2.7.1' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.7.1' );
 
 /**
  * Defines the current environment ('development' or 'production').
@@ -108,10 +108,10 @@ define( 'PRODUCTION_ENV', false );
 require_once dirname( __FILE__ ) . '/includes.php';
 
 // Add Plugin Links to the "installed plugins" page.
-$plugin_file = 'footnotes/footnotes.php';
-add_filter( "plugin_action_links_{$plugin_file}", array( 'Hooks', 'get_plugin_links' ), 10, 2 );
+$l_str_plugin_file = 'footnotes/footnotes.php';
+add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'Hooks', 'get_plugin_links' ), 10, 2 );
 
 // Initialize the Plugin.
-$g_obj_mci_footnotes = new Footnotes();
+$g_obj_mci_footnotes = new MCI_Footnotes();
 // Run the Plugin.
 $g_obj_mci_footnotes->run();

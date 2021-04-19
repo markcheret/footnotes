@@ -12,7 +12,7 @@
  *
  * @since 1.5.0
  */
-class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
+class MCI_Footnotes_Widget_Reference_Container extends MCI_Footnotes_Widget_Base {
 
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.
@@ -31,7 +31,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	 * @return string
 	 */
 	protected function get_name() {
-		return Footnotes_Config::PLUGIN_NAME;
+		return MCI_Footnotes_Config::C_STR_PLUGIN_NAME;
 	}
 
 	/**
@@ -69,9 +69,9 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	public function widget( $args, $instance ) {
 		global $g_obj_mci_footnotes;
 		// Reference container positioning is set to "widget area".
-		if ( 'widget' === Footnotes_Settings::instance()->get( Footnotes_Settings::REFERENCE_CONTAINER_POSITION ) ) {
+		if ( 'widget' === MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo $g_obj_mci_footnotes->task->reference_container();
+			echo $g_obj_mci_footnotes->a_obj_task->reference_container();
 			// phpcs:enable
 		}
 	}

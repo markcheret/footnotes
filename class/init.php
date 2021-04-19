@@ -13,7 +13,7 @@
  *
  * @since 1.5.0
  */
-class Footnotes {
+class MCI_Footnotes {
 
 	/**
 	 * The Plugin task.
@@ -21,7 +21,7 @@ class Footnotes {
 	 * @since 1.5.0
 	 * @var Task $task The Plugin task.
 	 */
-	public $task = null;
+	public $a_obj_task = null;
 
 	/**
 	 * Flag for using tooltips.
@@ -30,7 +30,7 @@ class Footnotes {
 	 *
 	 * @var bool $tooltips_enabled Whether tooltips are enabled or not.
 	 */
-	public static $tooltips_enabled = false;
+	public static $a_bool_tooltips_enabled = false;
 
 	/**
 	 * Allows to determine whether alternative tooltips are enabled.
@@ -46,7 +46,7 @@ class Footnotes {
 	 * @contributor Patrizia Lutz @misfist
 	 * @var bool
 	 */
-	public static $alternative_tooltips_enabled = false;
+	public static $a_bool_alternative_tooltips_enabled = false;
 
 	/**
 	 * Allows to determine whether AMP compatibility mode is enabled.
@@ -68,7 +68,7 @@ class Footnotes {
 	 *
 	 * @var bool
 	 */
-	public static $amp_enabled = false;
+	public static $a_bool_amp_enabled = false;
 
 	/**
 	 * Allows to determine the script mode among jQuery or plain JS.
@@ -86,7 +86,7 @@ class Footnotes {
 	 * @var str   'js'      Plain JavaScript.
 	 *            'jquery'  Use jQuery libraries.
 	 */
-	public static $script_mode = 'js';
+	public static $a_str_script_mode = 'js';
 
 	/**
 	 * Executes the Plugin.
@@ -105,9 +105,9 @@ class Footnotes {
 	 */
 	public function run() {
 		// Register language.
-		Footnotes_Language::register_hooks();
+		MCI_Footnotes_Language::register_hooks();
 		// Register Button hooks.
-		Footnotes_WYSIWYG::register_hooks();
+		MCI_Footnotes_WYSIWYG::register_hooks();
 		// Register general hooks.
 		Hooks::register_hooks();
 
@@ -153,7 +153,7 @@ class Footnotes {
 	 * Also, the visibility of initialize_widgets() is not private any longer.
 	 */
 	public function initialize_widgets() {
-		register_widget( 'Footnotes_Widget_Reference_container' );
+		register_widget( 'MCI_Footnotes_Widget_Reference_container' );
 	}
 
 	/**
@@ -162,7 +162,7 @@ class Footnotes {
 	 * @since 1.5.0
 	 */
 	private function initialize_dashboard() {
-		new Footnotes_Layout_Init();
+		new MCI_Footnotes_Layout_Init();
 	}
 
 	/**
@@ -171,8 +171,8 @@ class Footnotes {
 	 * @since 1.5.0
 	 */
 	private function initialize_task() {
-		$this->task = new Footnotes_Task();
-		$this->task->register_hooks();
+		$this->a_obj_task = new MCI_Footnotes_Task();
+		$this->a_obj_task->register_hooks();
 	}
 
 	/**
@@ -200,10 +200,10 @@ class Footnotes {
 		 * The condition about tooltips was missing, only the not-alternative-tooltips part was present.
 		 */
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
-		self::$amp_enabled                  = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
-		self::$tooltips_enabled             = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$alternative_tooltips_enabled = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		self::$script_mode                   = Footnotes_Settings::instance()->get( Footnotes_Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		self::$a_bool_amp_enabled                  = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
+		self::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+		self::$a_str_script_mode                   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 
 		/**
 		 * Enqueues the jQuery library registered by WordPress.
@@ -220,15 +220,15 @@ class Footnotes {
 		 * After adding the alternative reference container, jQuery has become optional,
 		 * but still enabled by default.
 		 */
-		if ( ! self::$amp_enabled ) {
+		if ( ! self::$a_bool_amp_enabled ) {
 
-			if ( 'jquery' === self::$script_mode || ( self::$tooltips_enabled && ! self::$alternative_tooltips_enabled ) ) {
+			if ( 'jquery' === self::$a_str_script_mode || ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) ) {
 
 				wp_enqueue_script( 'jquery' );
 
 			}
 
-			if ( self::$tooltips_enabled && ! self::$alternative_tooltips_enabled ) {
+			if ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) {
 
 				/**
 				 * Enqueues the jQuery Tools library shipped with the plugin.
@@ -329,58 +329,58 @@ class Footnotes {
 			 * Plugin version number is needed for busting browser caches after each plugin update.
 			 *
 			 * @since 2.1.4  automate passing version number for cache busting.
-			 * The constant FOOTNOTES_VERSION is defined at start of footnotes.php.
+			 * The constant C_STR_FOOTNOTES_VERSION is defined at start of footnotes.php.
 			 *
 			 * The media scope argument 'all' is the default.
 			 * No need to use '-css' in the handle, as this is appended automatically.
 			 */
 			// Set tooltip mode for use in stylesheet name.
-			if ( self::$tooltips_enabled ) {
+			if ( self::$a_bool_tooltips_enabled ) {
 
-				if ( self::$amp_enabled ) {
-					$tooltip_mode_short = 'ampt';
-					$tooltip_mode_long  = 'amp-tooltips';
+				if ( self::$a_bool_amp_enabled ) {
+					$l_str_tooltip_mode_short = 'ampt';
+					$l_str_tooltip_mode_long  = 'amp-tooltips';
 
-				} elseif ( self::$alternative_tooltips_enabled ) {
-					$tooltip_mode_short = 'altt';
-					$tooltip_mode_long  = 'alternative-tooltips';
+				} elseif ( self::$a_bool_alternative_tooltips_enabled ) {
+					$l_str_tooltip_mode_short = 'altt';
+					$l_str_tooltip_mode_long  = 'alternative-tooltips';
 
 				} else {
-					$tooltip_mode_short = 'jqtt';
-					$tooltip_mode_long  = 'jquery-tooltips';
+					$l_str_tooltip_mode_short = 'jqtt';
+					$l_str_tooltip_mode_long  = 'jquery-tooltips';
 
 				}
 			} else {
-				$tooltip_mode_short = 'nott';
-				$tooltip_mode_long  = 'no-tooltips';
+				$l_str_tooltip_mode_short = 'nott';
+				$l_str_tooltip_mode_long  = 'no-tooltips';
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
-			$page_layout_option = Footnotes_Settings::instance()->get( Footnotes_Settings::FOOTNOTES_PAGE_LAYOUT_SUPPORT );
-			switch ( $page_layout_option ) {
+			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			switch ( $l_str_page_layout_option ) {
 				case 'reference-container':
-					$layout_mode = '1';
+					$l_str_layout_mode = '1';
 					break;
 				case 'entry-content':
-					$layout_mode = '2';
+					$l_str_layout_mode = '2';
 					break;
 				case 'main-content':
-					$layout_mode = '3';
+					$l_str_layout_mode = '3';
 					break;
 				case 'none':
 				default:
-					$layout_mode = '0';
+					$l_str_layout_mode = '0';
 					break;
 			}
 
 			// Enqueue the tailored united minified stylesheet.
 			wp_enqueue_style(
-				'mci-footnotes-' . $tooltip_mode_long . '-pagelayout-' . $page_layout_option,
+				'mci-footnotes-' . $l_str_tooltip_mode_long . '-pagelayout-' . $l_str_page_layout_option,
 				plugins_url(
-					Footnotes_Config::PLUGIN_NAME . '/css/footnotes-' . $tooltip_mode_short . 'brpl' . $layout_mode . '.min.css'
+					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
-				FOOTNOTES_VERSION,
+				C_STR_FOOTNOTES_VERSION,
 				'all'
 			);
 
@@ -395,7 +395,7 @@ class Footnotes {
 			 */
 			wp_enqueue_style(
 				'mci-footnotes-common',
-				plugins_url( Footnotes_Config::PLUGIN_NAME . '/css/dev-common.css' ),
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ),
 				array(),
 				filemtime(
 					plugin_dir_path(
@@ -405,7 +405,7 @@ class Footnotes {
 			);
 			wp_enqueue_style(
 				'mci-footnotes-tooltips',
-				plugins_url( Footnotes_Config::PLUGIN_NAME . '/css/dev-tooltips.css' ),
+				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ),
 				array(),
 				filemtime(
 					plugin_dir_path(
@@ -414,10 +414,10 @@ class Footnotes {
 				)
 			);
 
-			if ( self::$amp_enabled ) {
+			if ( self::$a_bool_amp_enabled ) {
 				wp_enqueue_style(
 					'mci-footnotes-amp',
-					plugins_url( Footnotes_Config::PLUGIN_NAME . '/css/dev-amp-tooltips.css' ),
+					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ),
 					array(),
 					filemtime(
 						plugin_dir_path(
@@ -427,10 +427,10 @@ class Footnotes {
 				);
 			}
 
-			if ( self::$alternative_tooltips_enabled ) {
+			if ( self::$a_bool_alternative_tooltips_enabled ) {
 				wp_enqueue_style(
 					'mci-footnotes-alternative',
-					plugins_url( Footnotes_Config::PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
+					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
 					array(),
 					filemtime(
 						plugin_dir_path(
@@ -440,18 +440,18 @@ class Footnotes {
 				);
 			}
 
-			$page_layout_option = Footnotes_Settings::instance()->get( Footnotes_Settings::FOOTNOTES_PAGE_LAYOUT_SUPPORT );
-			if ( 'none' !== $page_layout_option ) {
+			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			if ( 'none' !== $l_str_page_layout_option ) {
 				wp_enqueue_style(
-					'mci-footnotes-layout-' . $page_layout_option,
+					'mci-footnotes-layout-' . $l_str_page_layout_option,
 					plugins_url(
-						Footnotes_Config::PLUGIN_NAME . '/css/dev-layout-' . $page_layout_option . '.css'
+						MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					array(),
 					filemtime(
 						plugin_dir_path(
 							dirname( __FILE__, 1 )
-						) . 'css/dev-layout-' . $page_layout_option . '.css'
+						) . 'css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					'all'
 				);

@@ -16,7 +16,7 @@
  *
  * @since 1.5.0
  */
-class MCI_Footnotes_Template {
+class Footnotes_Template {
 
 	/**
 	 * Directory name for dashboard templates.

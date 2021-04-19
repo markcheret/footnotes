@@ -18,7 +18,7 @@
  *
  * @since 1.5.0
  */
-class MCI_Footnotes_Settings {
+class Footnotes_Settings {
 
 	/**
 	 * Settings container key for the label of the reference container.
@@ -34,7 +34,7 @@ class MCI_Footnotes_Settings {
 	 * @since 1.5.0
 	 * @var str
 	 * The string is converted to Boolean false if 'no', true if 'yes'.
-	 * @see MCI_Footnotes_Convert::to_bool()
+	 * @see Footnotes_Convert::to_bool()
 	 */
 	const C_STR_REFERENCE_CONTAINER_COLLAPSE = 'footnote_inputfield_collapse_references';
 
@@ -1210,7 +1210,7 @@ class MCI_Footnotes_Settings {
 	 * Stores a singleton reference of this class.
 	 *
 	 * @since  1.5.0
-	 * @var MCI_Footnotes_Settings
+	 * @var Footnotes_Settings
 	 */
 	private static $a_obj_instance = null;
 
@@ -1443,7 +1443,7 @@ class MCI_Footnotes_Settings {
 	 * Returns a singleton of this class.
 	 *
 	 * @since 1.5.0
-	 * @return MCI_Footnotes_Settings
+	 * @return Footnotes_Settings
 	 */
 	public static function instance() {
 		// No instance defined yet, load it.

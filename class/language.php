@@ -15,7 +15,7 @@
  *
  * @since 1.5.0
  */
-class MCI_Footnotes_Language {
+class Footnotes_Language {
 
 	/**
 	 * Register WordPress Hook.
@@ -23,7 +23,7 @@ class MCI_Footnotes_Language {
 	 * @since 1.5.0
 	 */
 	public static function register_hooks() {
-		add_action( 'plugins_loaded', array( 'MCI_Footnotes_Language', 'load_text_domain' ) );
+		add_action( 'plugins_loaded', array( 'Footnotes_Language', 'load_text_domain' ) );
 	}
 
 	/**
@@ -89,9 +89,9 @@ class MCI_Footnotes_Language {
 	 */
 	private static function load( $p_str_language_code ) {
 		return load_plugin_textdomain(
-			MCI_Footnotes_Config::C_STR_PLUGIN_NAME,
+			Footnotes_Config::C_STR_PLUGIN_NAME,
 			false,
-			MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/languages'
+			Footnotes_Config::C_STR_PLUGIN_NAME . '/languages'
 		);
 	}
 }

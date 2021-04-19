@@ -14,7 +14,7 @@
  *
  * @since 1.5.0
  */
-class MCI_Footnotes_Convert {
+class Footnotes_Convert {
 
 	/**
 	 * Converts a integer into the user-defined counter style for the footnotes.

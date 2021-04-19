@@ -1,18 +1,18 @@
 <?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
- * Handles all WordPress hooks of this Plugin.
+ * Footnotes_Hooks class
  *
- * @filesource
  * @package footnotes
+ * @subpackage WPDashboard
  * @since 1.5.0
  */
 
 /**
- * Registers all WordPress Hooks and executes them on demand.
+ * Registers all WordPress hooks and executes them on demand.
  *
  * @since 1.5.0
  */
-class MCI_Footnotes_Hooks {
+class Footnotes_Hooks {
 
 	/**
 	 * Registers all WordPress hooks.
@@ -20,13 +20,15 @@ class MCI_Footnotes_Hooks {
 	 * @since 1.5.0
 	 */
 	public static function register_hooks() {
-		register_activation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'MCI_Footnotes_Hooks', 'activate_plugin' ) );
-		register_deactivation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'MCI_Footnotes_Hooks', 'deactivate_plugin' ) );
-		register_uninstall_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'MCI_Footnotes_Hooks', 'uninstall_plugin' ) );
+		register_activation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Footnotes_Hooks', 'activate_plugin' ) );
+		register_deactivation_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Footnotes_Hooks', 'deactivate_plugin' ) );
+		register_uninstall_hook( dirname( __FILE__ ) . '/../footnotes.php', array( 'Footnotes_Hooks', 'uninstall_plugin' ) );
 	}
 
 	/**
-	 * Executed when the Plugin gets activated.
+	 * Executes when the Plugin is activated.
+	 *
+	 * Currently a no-op placeholder.
 	 *
 	 * @since 1.5.0
 	 */
@@ -35,7 +37,9 @@ class MCI_Footnotes_Hooks {
 	}
 
 	/**
-	 * Executed when the Plugin gets deactivated.
+	 * Executes when the Plugin is deactivated.
+	 *
+	 * Currently a no-op placeholder.
 	 *
 	 * @since 1.5.0
 	 */
@@ -44,41 +48,20 @@ class MCI_Footnotes_Hooks {
 	}
 
 	/**
-	 * Executed when the Plugin gets uninstalled.
+	 * Appends the Plugin links for display in the dashboard “Plugins” page.
 	 *
 	 * @since 1.5.0
-	 *
-	 * @since 2.2.0 this function is not called any longer when deleting the plugin.
-	 * Note: clear_all() didn't actually work.
-	 * @see class/settings.php
+	 * @param array $plugin_links The WP-default set of links to display.
+	 * @return string[] The full set of links to display.
 	 */
-	public static function uninstall_plugin() {
-		// WordPress User has to be logged in.
-		if ( ! is_user_logged_in() ) {
-			wp_die( __( 'You must be logged in to run this script.', 'footnotes' ) );
-		}
-		// WordPress User needs the permission to (un)install plugins.
-		if ( ! current_user_can( 'install_plugins' ) ) {
-			wp_die( __( 'You do not have permission to run this script.', 'footnotes' ) );
-		}
-	}
-
-	/**
-	 * Add Links to the Plugin in the "installed Plugins" page.
-	 *
-	 * @since 1.5.0
-	 * @param array  $p_arr_links Current Links.
-	 * @param string $p_str_plugin_file_name Plugins init file name.
-	 * @return array
-	 */
-	public static function plugin_links( $p_arr_links, $p_str_plugin_file_name ) {
+	public static function get_plugin_links( array $plugin_links ): array {
 		// Append link to the WordPress Plugin page.
-		$p_arr_links[] = sprintf( '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
+		$plugin_links[] = sprintf( '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
 		// Append link to the settings page.
-		$p_arr_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=footnotes' ), __( 'Settings', 'footnotes' ) );
+		$plugin_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=footnotes' ), __( 'Settings', 'footnotes' ) );
 		// Append link to the PayPal donate function.
-		$p_arr_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
+		$plugin_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
 		// Return new links.
-		return $p_arr_links;
+		return $plugin_links;
 	}
 }

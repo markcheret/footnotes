@@ -15,11 +15,11 @@ return [
     ],
     'description' => [
         'lengthMin' => 1, // Min length of the description
-        'lengthMax' => 44, // Max length of the description
+        'lengthMax' => 65, // Max length of the description
     ],
     'subject' => [
         'lengthMin' => 1, // Min length of the subject
-        'lengthMax' => 50, // Max length of the subject
+        'lengthMax' => 80, // Max length of the subject
     ],
     'body' => [
         'wrap' => 72, // Wrap the body at 72 characters

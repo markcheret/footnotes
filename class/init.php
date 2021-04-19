@@ -1,59 +1,34 @@
 <?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
 /**
- * Includes the main Class of the Plugin.
+ * Footnotes class
  *
- * @filesource
  * @package footnotes
  * @since 1.5.0
- *
- * @since 1.6.5  Bugfix: Improve widgets registration, thanks to @felipelavinz code contribution.
- * @since 1.6.5  Update: Fix for deprecated PHP function create_function(), thanks to @psykonevro @daliasued bug reports, thanks to @felipelavinz code contribution.
- * @since 2.0.0  Update: Tooltips: fix disabling bug by loading jQuery UI library, thanks to @rajinderverma @ericcorbett2 @honlapdavid @mmallett bug reports, thanks to @vonpiernik code contribution.
- *
- * @since 2.0.3  add versioning of public.css for cache busting
- * @since 2.0.4  add jQuery UI from WordPress
- * @since 2.1.4  automate passing version number for cache busting
- * @since 2.1.4  optionally enqueue an extra stylesheet
- *
- * @since 2.5.5  Update: Stylesheets: increase speed and energy efficiency by tailoring stylesheets to the needs of the instance, thanks to @docteurfitness design contribution.
- * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
- * @since 2.5.5  Bugfix: Libraries: optimize processes by loading external and internal scripts only if needed, thanks to @docteurfitness issue report.
- * @since 2.5.6  Bugfix: Reference container: optional alternative expanding and collapsing without jQuery for use with hard links, thanks to @hopper87it @pkverma99 issue reports.
  */
 
 /**
- * Entry point of the Plugin. Loads the Dashboard and executes the Task.
+ * Provides an entry point to the Plugin.
+ *
+ * Loads the dashboard and executes the task.
  *
  * @since 1.5.0
  */
-class MCI_Footnotes {
+class Footnotes {
 
 	/**
-	 * Reference to the Plugin Task object.
+	 * The Plugin task.
 	 *
 	 * @since 1.5.0
-	 * @var null|MCI_Footnotes_Task
+	 * @var Task $task The Plugin task.
 	 */
 	public $a_obj_task = null;
 
 	/**
-	 * Allows to determine whether tooltips are enabled.
-	 * The actual value of these properties is configurable.
-	 *
-	 * - Bugfix: Templates: optimize template load and processing based on settings, thanks to @misfist code contribution.
+	 * Flag for using tooltips.
 	 *
 	 * @since 2.4.0
 	 *
-	 * @contributor Patrizia Lutz @misfist
-	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
-	 * @link https://github.com/misfist/footnotes/releases/tag/2.4.0d3 repository
-	 * @link https://github.com/misfist/footnotes/compare/2.4.0%E2%80%A62.4.0d3 diff
-	 *
-	 * @var bool
-	 *
-	 * Template process and script / stylesheet load optimization.
-	 * Streamline process depending on tooltip enabled status.
-	 * Load tooltip inline script only if jQuery tooltips are enabled.
+	 * @var bool $tooltips_enabled Whether tooltips are enabled or not.
 	 */
 	public static $a_bool_tooltips_enabled = false;
 
@@ -130,11 +105,11 @@ class MCI_Footnotes {
 	 */
 	public function run() {
 		// Register language.
-		MCI_Footnotes_Language::register_hooks();
+		Footnotes_Language::register_hooks();
 		// Register Button hooks.
-		MCI_Footnotes_WYSIWYG::register_hooks();
+		Footnotes_WYSIWYG::register_hooks();
 		// Register general hooks.
-		MCI_Footnotes_Hooks::register_hooks();
+		Footnotes_Hooks::register_hooks();
 
 		// Initialize the Plugin Dashboard.
 		$this->initialize_dashboard();
@@ -178,7 +153,7 @@ class MCI_Footnotes {
 	 * Also, the visibility of initialize_widgets() is not private any longer.
 	 */
 	public function initialize_widgets() {
-		register_widget( 'MCI_Footnotes_Widget_Reference_container' );
+		register_widget( 'Footnotes_Widget_Reference_Container' );
 	}
 
 	/**
@@ -187,7 +162,7 @@ class MCI_Footnotes {
 	 * @since 1.5.0
 	 */
 	private function initialize_dashboard() {
-		new MCI_Footnotes_Layout_Init();
+		new Footnotes_Layout_Init();
 	}
 
 	/**
@@ -196,7 +171,7 @@ class MCI_Footnotes {
 	 * @since 1.5.0
 	 */
 	private function initialize_task() {
-		$this->a_obj_task = new MCI_Footnotes_Task();
+		$this->a_obj_task = new Footnotes_Task();
 		$this->a_obj_task->register_hooks();
 	}
 
@@ -225,10 +200,10 @@ class MCI_Footnotes {
 		 * The condition about tooltips was missing, only the not-alternative-tooltips part was present.
 		 */
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
-		self::$a_bool_amp_enabled                  = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
-		self::$a_bool_tooltips_enabled             = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$a_bool_alternative_tooltips_enabled = MCI_Footnotes_Convert::to_bool( MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		self::$a_str_script_mode                   = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		self::$a_bool_amp_enabled                  = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
+		self::$a_bool_tooltips_enabled             = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		self::$a_bool_alternative_tooltips_enabled = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+		self::$a_str_script_mode                   = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 
 		/**
 		 * Enqueues the jQuery library registered by WordPress.
@@ -381,7 +356,7 @@ class MCI_Footnotes {
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
-			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			$l_str_page_layout_option = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			switch ( $l_str_page_layout_option ) {
 				case 'reference-container':
 					$l_str_layout_mode = '1';
@@ -402,7 +377,7 @@ class MCI_Footnotes {
 			wp_enqueue_style(
 				'mci-footnotes-' . $l_str_tooltip_mode_long . '-pagelayout-' . $l_str_page_layout_option,
 				plugins_url(
-					MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
+					Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
 				array(),
 				C_STR_FOOTNOTES_VERSION,
@@ -420,7 +395,7 @@ class MCI_Footnotes {
 			 */
 			wp_enqueue_style(
 				'mci-footnotes-common',
-				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ),
+				plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ),
 				array(),
 				filemtime(
 					plugin_dir_path(
@@ -430,7 +405,7 @@ class MCI_Footnotes {
 			);
 			wp_enqueue_style(
 				'mci-footnotes-tooltips',
-				plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ),
+				plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ),
 				array(),
 				filemtime(
 					plugin_dir_path(
@@ -442,7 +417,7 @@ class MCI_Footnotes {
 			if ( self::$a_bool_amp_enabled ) {
 				wp_enqueue_style(
 					'mci-footnotes-amp',
-					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ),
+					plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ),
 					array(),
 					filemtime(
 						plugin_dir_path(
@@ -455,7 +430,7 @@ class MCI_Footnotes {
 			if ( self::$a_bool_alternative_tooltips_enabled ) {
 				wp_enqueue_style(
 					'mci-footnotes-alternative',
-					plugins_url( MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
+					plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
 					array(),
 					filemtime(
 						plugin_dir_path(
@@ -465,12 +440,12 @@ class MCI_Footnotes {
 				);
 			}
 
-			$l_str_page_layout_option = MCI_Footnotes_Settings::instance()->get( MCI_Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			$l_str_page_layout_option = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			if ( 'none' !== $l_str_page_layout_option ) {
 				wp_enqueue_style(
 					'mci-footnotes-layout-' . $l_str_page_layout_option,
 					plugins_url(
-						MCI_Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
+						Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),
 					array(),
 					filemtime(

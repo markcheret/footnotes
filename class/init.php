@@ -153,7 +153,7 @@ class Footnotes {
 	 * Also, the visibility of initialize_widgets() is not private any longer.
 	 */
 	public function initialize_widgets() {
-		register_widget( 'Footnotes_Widget_Reference_container' );
+		register_widget( 'Footnotes_Widget_Reference_Container' );
 	}
 
 	/**

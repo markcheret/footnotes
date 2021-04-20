@@ -21,22 +21,26 @@ jobs:
       - name: Build Plugin
         run: |
           composer run build -- -y
+          
+      - name: Rename dist/ folder
+        run: |
+          mv dist/ footnotes/
 
       - name: Create release archive
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r dist/footnotes-${{ github.event.release.tag_name }}.zip dist
+          args: zip -X -r footnotes-${{ github.event.release.tag_name }}.zip footnotes
 
       - name: Upload archive as artifact
         uses: actions/upload-artifact@v2
         with:
             name: footnotes-${{ github.event.release.tag_name }}
-            path: dist/footnotes-${{ github.event.release.tag_name }}.zip
+            path: footnotes-${{ github.event.release.tag_name }}.zip
             
       - name: Upload archive to release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: dist/footnotes-${{ github.event.release.tag_name }}.zip application/zip
+          args: footnotes-${{ github.event.release.tag_name }}.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

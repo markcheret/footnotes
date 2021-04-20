@@ -1,12 +1,12 @@
+# footnotes
+
 ![stable tag](https://img.shields.io/wordpress/plugin/v/footnotes?style=flat-square) ![WP rating](https://img.shields.io/wordpress/plugin/stars/footnotes?style=flat-square) ![Reqd PHP](https://img.shields.io/wordpress/plugin/required-php/footnotes?style=flat-square) ![Reqd WP](https://img.shields.io/wordpress/plugin/wp-version/footnotes?style=flat-square) ![WordPress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/footnotes?style=flat-square)
 
 ![GitHub contributors](https://img.shields.io/github/contributors/markcheret/footnotes?style=flat-square) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/markcheret/footnotes/2.7.0?style=flat-square) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/markcheret/footnotes?style=flat-square) ![issues](https://img.shields.io/github/issues/markcheret/footnotes?style=flat-square) ![PRs](https://img.shields.io/github/issues-pr/markcheret/footnotes?style=flat-square)
 
-[![OSSAR](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml) [![PHP Composer](https://github.com/markcheret/footnotes/actions/workflows/php.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/php.yml) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/markcheret/footnotes?style=flat-square) [![OSSAR](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml) [![PHP Composer](https://github.com/markcheret/footnotes/actions/workflows/php.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/php.yml)
 
 ![footnotes](https://raw.githubusercontent.com/markcheret/footnotes/main/img/footnotes.png)
-
-# footnotes
 
 **footnotes** aims to be the all-in-one solution for displaying an 
 automatically-generated list of references on your Page or Post. The Plugin 

@@ -13,7 +13,8 @@ footnotes lets you easily add highly-customisable footnotes on your WordPress Pa
 
 == Description ==
 
-**footnotes** aims to be the all-in-one solution for displaying an automatically generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
+**footnotes** aims to be the all-in-one solution for displaying an automatically-generated list of references on your Page or Post. The Plugin ships with a set of defaults while also empowering you to control how your footnotes are being displayed.
+
 **footnotes** gives you the ability to display well-formatted footnotes on your WordPress Pages and Posts, as well as in post excerpts with fully functional tooltips if enabled.
 
 Featured on [wpmudev][wpmudev] - cheers for the review, folks!
@@ -33,27 +34,9 @@ https://www.youtube.com/watch?v=HzHaMAAJwbI
 - configurable footnote appearance; and
 - shortcodes button in Post editor.
 
-== Installation ==
-
-1. Go to the WordPress admin. dashboard;
-1. navigate to ‘Plugins’ > ‘Add’;
-1. search for **footnotes**;
-1. install the latest version of this Plugin from WordPress.org; and
-1. activate the Plugin.
- 
-Alternatively:
-
-1. Download an archive of the Plugin (`footnotes.zip`);
-1. extract the archive into the `wp-content/plugins/` directory; and
-1. activate the plugin through the 'Plugins' menu in WordPress.
- 
-This second method can be used to install previous versions of the Plugin, which can be downloaded from WordPress.org [here][previous-versions].
-
-[previous-versions]: https://wordpress.org/plugins/footnotes/advanced/#plugin-download-history-stats
-
 == Frequently Asked Questions ==
 
-= Is your Plugin a copy of footnotes *x*? =
+= Is your Plugin a fork of another Plugin? =
 
 No, this Plugin has been written from scratch. Of course some inspirations on how to do or how to not do things were taken from other plugins.
 

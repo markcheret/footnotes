@@ -36,7 +36,7 @@ https://www.youtube.com/watch?v=HzHaMAAJwbI
 
 == Frequently Asked Questions ==
 
-= Is your Plugin a copy of footnotes x? =
+= Is your Plugin a fork of another Plugin? =
 
 No, this Plugin has been written from scratch. Of course some inspirations on how to do or how to not do things were taken from other plugins.
 

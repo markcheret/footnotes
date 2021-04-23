@@ -202,8 +202,9 @@ echo -e "Local copy created.\n"
 
 # Step 7(b): Update `trunk/`
 echo -e "Copying files from \`dist/\` to SVN \`trunk/\`...\n"
-rsync -avhic dist/ tmp/trunk/ --delete | grep -v "^\."
-read -p "Does the above list of changes look correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
+rsync -avhic dist/ tmp/trunk/ | grep -v "^\."
+#rsync -avhic dist/ tmp/trunk/ --delete | grep -v "^\."
+read -p "Does the above list of changes (additions and deletions ONLY) look correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 echo -e "Copying complete.\n"
 
 # Step 7(c): Set a release message

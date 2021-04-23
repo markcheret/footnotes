@@ -1,9 +1,9 @@
 === footnotes ===
 Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, milindmore22, westonruter, dartiss, derivationfr, docteurfitness, felipelavinz, martinneumannat, matkus2, meglio, spaceling, vonpiernik, pewgeuges
-Donate link: https://cheret.org/footnotes/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.7
+Tested up to: 5.7.1
 Requires PHP: 7.0
 Stable Tag: 2.7.0
 License: GPLv3
@@ -65,7 +65,22 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 - Dashboard: move Plugin settings under default WP Settings menu.
 - Bugfix: Footnotes: fix bug when using multiple paragraphs in footnotes.
 - Documentation: remove outdated MCI/ManFisher references.
-- Documentation: split changelog into seperate file.
+- Documentation: split changelog into seperate file.  
+
+= 2.7.0 =
+- Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
+- Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
+- Bugfix: Dashboard: debug the 'Quick start guide' tab, thanks to @rumperuu bug report.
+
+= 2.6.6 =
+- Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness @rkupadhya @offpeakdesign bug reports.
+
+= 2.6.5 =
+- Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
+- Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.
+
+= 2.6.4 =
+- Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom @copylefter @lagoon24 bug reports.
 
 == Upgrade Notice ==
  

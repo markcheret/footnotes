@@ -25,7 +25,7 @@
  * @since 2.5.3 (Hungarian)
  * @var str
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.7.1' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.7.2' );
 
 /**
  * Defines the current environment ('development' or 'production').

@@ -22,7 +22,10 @@
         "lint:md": "npm run lint:md",
         "lint:md:fix": "npm run lint:md:fix",
         "docs": "./vendor/bin/phpdoc",
-        "post-install-cmd": "npm install"
+        "post-install-cmd": "npm install",
+        "minify": "npm run minify",
+        "minify:css": "npm run minify:css",
+        "minify:js": "npm run minify:js"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",

@@ -62,26 +62,26 @@ fi
 
 echo "- Checking versions..."
 
-STABLE_TAG="$(grep "Stable Tag:" readme.txt)"
-ROOT_HEADER_VERSION="$(grep " Version:" footnotes.php | grep -Po " Version: \d+\.\d+(\.\d+)?[a-z]?$")"
-JS_VERSION="$(grep "version :" js/wysiwyg-editor.js)"
+STABLE_TAG="$(grep "Stable Tag:" src/readme.txt)"
+ROOT_HEADER_VERSION="$(grep " Version:" src/footnotes.php | grep -Po " Version: \d+\.\d+(\.\d+)?[a-z]?$")"
+JS_VERSION="$(grep "version :" src/js/wysiwyg-editor.js)"
 
 # Step 3(b): Check that all version declarations exists
 
 if [[ -z $STABLE_TAG ]]; then
-	echo "ERR: No 'Stable Tag' field found in \`readme.txt\`!"
+	echo "ERR: No 'Stable Tag' field found in \`src/readme.txt\`!"
 	exit 1
-else echo "- 'Stable Tag' field set in \`readme.txt\`."
+else echo "- 'Stable Tag' field set in \`src/readme.txt\`."
 fi
 if [[ -z $ROOT_HEADER_VERSION ]]; then
-	echo "ERR: No 'Version' field found in \`footnotes.php\` file header!"
+	echo "ERR: No 'Version' field found in \`src/footnotes.php\` file header!"
 	exit 1
-else echo "- 'Version' field set in \`footnotes.php\` file header."
+else echo "- 'Version' field set in \`src/footnotes.php\` file header."
 fi
 if [[ -z $JS_VERSION ]]; then
-	echo "ERR: No \`version\` variable found in \`js/wysiwyg-editor.js\`!"
+	echo "ERR: No \`version\` variable found in \`src/js/wysiwyg-editor.js\`!"
 	exit 1
-else echo "- \`version\` variable set in \`js/wysiwyg-editor.js\`."
+else echo "- \`version\` variable set in \`src/js/wysiwyg-editor.js\`."
 fi
 
 # Step 3(c)(1): Check that all development versions match
@@ -195,22 +195,22 @@ echo "For the time being, this part of the process shall remain (mostly) manual.
 read -p "Are you ready to continue? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 
 echo "Creating local copy of SVN repo..."
-svn checkout https://plugins.svn.wordpress.org/footnotes tmp --depth immediates
-svn update --quiet tmp/trunk --set-depth infinity
-svn update --quiet tmp/tags/$PRERELEASE_VERSION --set-depth infinity
+svn checkout https://plugins.svn.wordpress.org/footnotes svn-tmp --depth immediates
+svn update --quiet svn-tmp/trunk --set-depth infinity
+svn update --quiet svn-tmp/tags/$PRERELEASE_VERSION --set-depth infinity
 echo -e "Local copy created.\n"
 
 # Step 7(b): Update `trunk/`
 echo -e "Copying files from \`dist/\` to SVN \`trunk/\`...\n"
-rsync -avhic dist/ tmp/trunk/ | grep -v "^\."
-#rsync -avhic dist/ tmp/trunk/ --delete | grep -v "^\."
+rsync -avhic dist/ svn-tmp/trunk/ --delete | grep -v "^\."
+rsync -avhic assets/ svn-tmp/assets/ --delete | grep -v "^\."
 read -p "Does the above list of changes (additions and deletions ONLY) look correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 echo -e "Copying complete.\n"
 
 # Step 7(c): Set a release message
 
 echo "Getting commit message from changelog..."
-CHANGELOG_MESSAGE="$(awk -e "/= $DEVELOPMENT_VERSION =/,/= $STABLE_VERSION =/" readme.txt | grep '^-')"
+CHANGELOG_MESSAGE="$(awk -e "/= $DEVELOPMENT_VERSION =/,/= $STABLE_VERSION =/" dist/readme.txt | grep '^-')"
 echo -e "The changelog message for this version is:\n"
 echo -e "$CHANGELOG_MESSAGE\n"
 read -p "Is this correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
@@ -229,21 +229,20 @@ echo -e "Commit message:\n"
 echo -e "$CHANGELOG_MESSAGE" '\n'
 svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm %
 echo -e "Changes made to local \`trunk/\`:\n"
-svn stat tmp/trunk/
+svn stat svn-tmp/trunk/
 echo ""
 echo -e "\`readme.txt\` header:\n"
-head tmp/trunk/readme.txt
+head svn-tmp/trunk/readme.txt
 echo ""
 read -p "Is this all correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 
 # Step 7(d): Push to remote `trunk/` (provided the flag is set)
 
 if [[ $1 == "-c" ]]; then
-	cd tmp && svn ci -m "$CHANGELOG_MESSAGE"
-	cd ..
+	cd svn-tmp && svn ci -m "$CHANGELOG_MESSAGE" && cd ..
 else echo "- Commit flag not set, skipping commit step."
 fi
 
 # Step 8: Cleanup
 
-#rm -rf {dist/,tmp/}
+#rm -rf {dist/,svn-tmp/}

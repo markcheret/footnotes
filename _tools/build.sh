@@ -6,15 +6,15 @@ echo "Building Plugin..."
 echo "Copying directories..."
 rm -r dist/
 mkdir dist
-cp -r -t dist class/ js/ languages/ templates/
+cp -r -t dist src/{class,js,languages,templates}/
 # Among the images, only 2 out of 3 are distributed.
 echo "Copying the needed images..."
 mkdir -p dist/img
-cp -t dist/img img/fn-wysiwyg.png
+cp -t dist/img src/img/fn-wysiwyg.png
 echo "Copying files..."
-cp -t dist license.txt readme.txt includes.php wpml-config.xml SECURITY.md CHANGELOG.md
+cp -t dist src/{license.txt,readme.txt,includes.php,wpml-config.xml,SECURITY.md,CHANGELOG.md}
 echo "Setting production flag..."
-sed "s/'PRODUCTION_ENV', false/'PRODUCTION_ENV', true/g" footnotes.php > dist/footnotes.php
+sed "s/'PRODUCTION_ENV', false/'PRODUCTION_ENV', true/g" src/footnotes.php > dist/footnotes.php
 echo "Production flag set." 
 
 # TODO: once automatic minification is implemented, this should handle that.

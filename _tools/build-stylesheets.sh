@@ -18,17 +18,26 @@ if [[ $1 == "-c" ]]; then
 	
 	mkdir -p ./tmp/css
 	cat ./src/css/dev-common.css > ./tmp/css/footnotes-nottbrpl0.css
+	
 	cat ./src/css/dev-{common,layout-reference-container}.css > ./tmp/css/footnotes-nottbrpl1.css
 	cat ./src/css/dev-{common,layout-entry-content}.css > ./tmp/css/footnotes-nottbrpl2.css
 	cat ./src/css/dev-{common,layout-main-content}.css > ./tmp/css/footnotes-nottbrpl3.css
+	
 	cat ./src/css/dev-{common,tooltips}.css > ./tmp/css/footnotes-jqttbrpl0.css
 	cat ./src/css/dev-{common,tooltips,layout-reference-container}.css > ./tmp/css/footnotes-jqttbrpl1.css
 	cat ./src/css/dev-{common,tooltips,layout-entry-content}.css > ./tmp/css/footnotes-jqttbrpl2.css
 	cat ./src/css/dev-{common,tooltips,layout-main-content}.css > ./tmp/css/footnotes-jqttbrpl3.css
+	
 	cat ./src/css/dev-{common,tooltips,tooltips-alternative}.css > ./tmp/css/footnotes-alttbrpl0.css
 	cat ./src/css/dev-{common,tooltips,tooltips-alternative,layout-reference-container}.css > ./tmp/css/footnotes-alttbrpl1.css
 	cat ./src/css/dev-{common,tooltips,tooltips-alternative,layout-entry-content}.css > ./tmp/css/footnotes-alttbrpl2.css
 	cat ./src/css/dev-{common,tooltips,tooltips-alternative,layout-main-content}.css > ./tmp/css/footnotes-alttbrpl3.css
+	
+	cat ./src/css/dev-{common,tooltips,amp-tooltips}.css > ./tmp/css/footnotes-amptbrpl0.css
+	cat ./src/css/dev-{common,tooltips,amp-tooltips,layout-reference-container}.css > ./tmp/css/footnotes-amptbrpl1.css
+	cat ./src/css/dev-{common,tooltips,amp-tooltips,layout-entry-content}.css > ./tmp/css/footnotes-amptbrpl2.css
+	cat ./src/css/dev-{common,tooltips,amp-tooltips,layout-main-content}.css > ./tmp/css/footnotes-amptbrpl3.css
+	
 	cat ./src/css/settings.css > ./tmp/css/settings.css
 	
 	echo "Stylesheet concatenation complete."

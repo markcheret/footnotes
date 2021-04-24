@@ -2103,7 +2103,7 @@ class Footnotes_Task {
 					 * Ensures that footnotes containing paragraph separators get displayed correctly.
 					 */
 					$l_arr_paragraph_splitters = array( '#(</p *>|<p[^>]*>)#', '#(</div *>|<div[^>]*>)#' );
-					$l_str_tooltip_content = preg_replace( $l_arr_paragraph_splitters, '<br />', $l_str_tooltip_content );
+					$l_str_tooltip_content     = preg_replace( $l_arr_paragraph_splitters, '<br />', $l_str_tooltip_content );
 				} else {
 					$l_str_tooltip_content = '';
 				}

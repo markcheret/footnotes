@@ -3,6 +3,7 @@
     "description": "footnotes lets you easily add highly-customisable footnotes on your WordPress Pages and Posts.",
     "license": "GPL-3.0-only",
     "scripts": {
+        "cm": "npm run cz",
         "release": "./_tools/release.sh",
         "release:commit": "composer run release -- -c",
         "build": "./_tools/build.sh",
@@ -18,16 +19,16 @@
         "lint:js:fix": "npm run lint:js:fix",
         "format:js": "npm run format:js",
         "format:js:fix": "npm run format:js:fix",
+        "lint:md": "npm run lint:md",
+        "lint:md:fix": "npm run lint:md:fix",
         "docs": "./vendor/bin/phpdoc",
-        "commit": "./vendor/bin/php-commitizen commit -- ./.php-commitizen.php",
-        "post-install-cmd": "npm install && ./_tools/setup.sh"
+        "post-install-cmd": "npm install"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "phpcompatibility/php-compatibility": "*",
         "wp-coding-standards/wpcs": "^2.3",
         "phpdocumentor/phpdocumentor": "^3.0",
-        "damianopetrungaro/php-commitizen": "^0.2.0",
         "marcocesarato/php-conventional-changelog": "^1.9",
         "phpcompatibility/phpcompatibility-wp": "*"
     },

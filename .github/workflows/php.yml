@@ -35,8 +35,8 @@ jobs:
     - name: Lint JS code
       run: composer run format:js:fix && composer run lint:js
 
-    - name: Lint stylesheets
-      run: composer run lint:css
+    #- name: Lint stylesheets
+    #  run: composer run lint:css
 
     - name: Lint Markdown files
       run: composer run lint:md

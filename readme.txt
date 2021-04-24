@@ -5,7 +5,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7.1
 Requires PHP: 7.0
-Stable Tag: 2.7.1
+Stable Tag: 2.7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -78,9 +78,6 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 = 2.6.5 =
 - Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
 - Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.
-
-= 2.6.4 =
-- Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom @copylefter @lagoon24 bug reports.
 
 == Upgrade Notice ==
  

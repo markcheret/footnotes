@@ -19,7 +19,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm run test:coverage && npm run docs && git add coverage public && git commit -m \"docs: update documentation and coverage output\" --no-verify"
+      "pre-push": "npm run docs && git add docs && git commit -m \"docs: update documentation\" --no-verify"
     }
   },
   "lint-staged": {

@@ -75,10 +75,10 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    MCI_Footnotes_Widget_Reference_Container
+    Footnotes_Widget_Base
 
         <span class="phpdocumentor-element__extends">
-        extends <a href="classes/MCI-Footnotes-Widget-Base.html"><abbr title="\MCI_Footnotes_Widget_Base">MCI_Footnotes_Widget_Base</abbr></a>
+        extends <abbr title="\WP_Widget">WP_Widget</abbr>
     </span>
     
     
@@ -86,14 +86,17 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/reference-container.php"><a href="files/class-widgets-reference-container.html"><abbr title="class/widgets/reference-container.php">reference-container.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/widgets/base.php"><a href="files/src-class-widgets-base.html"><abbr title="src/class/widgets/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 </aside>
 
-            <p class="phpdocumentor-summary">Registers a Widget to put the Reference Container to the widget area.</p>
+            <p class="phpdocumentor-summary">Base Class for all Plugin Widgets. Registers each Widget to WordPress.</p>
 
-    <section class="phpdocumentor-description"></section>
+    <section class="phpdocumentor-description"><p>The following Methods MUST be overwritten in each sub class:
+<strong>public function widget($args, $instance)</strong> -&gt; echo the Widget Content
+<strong>public function form($instance)</strong> -&gt; echo the Settings of the Widget</p>
+</section>
 
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -102,6 +105,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Stefan Herndler</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -124,49 +136,35 @@
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Widget-Base.html#method___construct">__construct()</a>
+    <a href="classes/Footnotes-Widget-Base.html#method___construct">__construct()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>Class Constructor. Registers the child Widget to WordPress.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_form">form()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>Outputs the Settings of the Widget.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_widget">widget()</a>
-    <span>
-                        &nbsp;: mixed    </span>
-</dt>
-<dd>Outputs the Content of the Widget.</dd>
-
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_description">get_description()</a>
+    <a href="classes/Footnotes-Widget-Base.html#method_get_description">get_description()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
 <dd>Returns the Description of the child widget.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_id">get_id()</a>
+    <a href="classes/Footnotes-Widget-Base.html#method_get_id">get_id()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
 <dd>Returns an unique ID as string used for the Widget Base ID.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_name">get_name()</a>
+    <a href="classes/Footnotes-Widget-Base.html#method_get_name">get_name()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the Public name of the Widget to be displayed in the Configuration page.</dd>
+<dd>Returns the Public name of child Widget to be displayed in the Configuration page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MCI-Footnotes-Widget-Base.html#method_get_widget_width">get_widget_width()</a>
+    <a href="classes/Footnotes-Widget-Base.html#method_get_widget_width">get_widget_width()</a>
     <span>
                         &nbsp;: int    </span>
 </dt>
@@ -183,7 +181,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Footnotes-Widget-Base.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -193,10 +191,10 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/MCI-Footnotes-Widget-Base.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Footnotes-Widget-Base.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/base.php"><a href="files/class-widgets-base.html"><abbr title="class/widgets/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/widgets/base.php"><a href="files/src-class-widgets-base.html"><abbr title="src/class/widgets/base.php">base.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">69</span>
 </aside>
@@ -250,7 +248,7 @@
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/widgets/base.php?rev=1445720"> <p>“The called constructor method for WP_Widget in MCI_Footnotes_Widget_ReferenceContainer is deprecated since version 4.3.0! Use __construct() instead.”</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/widgets/base.php?rev=1445720"> <p>“The called constructor method for WP_Widget in Footnotes_Widget_ReferenceContainer is deprecated since version 4.3.0! Use __construct() instead.”</p>
  </a>
                     
                                     </dd>
@@ -266,147 +264,15 @@
                     <article
         class="phpdocumentor-element
             -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_form">
-        form()
-        <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_form" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/reference-container.php"><a href="files/class-widgets-reference-container.html"><abbr title="class/widgets/reference-container.php">reference-container.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">58</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Outputs the Settings of the Widget.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">form</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$instance</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$instance</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The instance of the widget.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.5.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Edit: curly quotes 2.2.0</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_widget">
-        widget()
-        <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_widget" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/reference-container.php"><a href="files/class-widgets-reference-container.html"><abbr title="class/widgets/reference-container.php">reference-container.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">69</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Outputs the Content of the Widget.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">widget</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$args</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$instance</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$args</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The widget's arguments.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$instance</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The instance of the widget.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.5.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
             -protected
-                                                        "
+                        -abstract                                "
 >
     <h4 class="phpdocumentor-element__name" id="method_get_description">
         get_description()
-        <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_description" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Footnotes-Widget-Base.html#method_get_description" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/reference-container.php"><a href="files/class-widgets-reference-container.html"><abbr title="class/widgets/reference-container.php">reference-container.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/widgets/base.php"><a href="files/src-class-widgets-base.html"><abbr title="src/class/widgets/base.php">base.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">45</span>
 </aside>
@@ -415,57 +281,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">get_description</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.5.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Edit: curly quotes 2.2.0</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_id">
-        get_id()
-        <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_id" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/reference-container.php"><a href="files/class-widgets-reference-container.html"><abbr title="class/widgets/reference-container.php">reference-container.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">23</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Returns an unique ID as string used for the Widget Base ID.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">get_id</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+    <span class="phpdocumentor-signature__abstract">abstract</span>            <span class="phpdocumentor-signature__name">get_description</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -498,23 +314,72 @@
         class="phpdocumentor-element
             -method
             -protected
-                                                        "
+                        -abstract                                "
 >
-    <h4 class="phpdocumentor-element__name" id="method_get_name">
-        get_name()
-        <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#method_get_name" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_get_id">
+        get_id()
+        <a href="classes/Footnotes-Widget-Base.html#method_get_id" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/reference-container.php"><a href="files/class-widgets-reference-container.html"><abbr title="class/widgets/reference-container.php">reference-container.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/widgets/base.php"><a href="files/src-class-widgets-base.html"><abbr title="src/class/widgets/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the Public name of the Widget to be displayed in the Configuration page.</p>
+        <p class="phpdocumentor-summary">Returns an unique ID as string used for the Widget Base ID.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">get_name</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+    <span class="phpdocumentor-signature__abstract">abstract</span>            <span class="phpdocumentor-signature__name">get_id</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.5.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                        -abstract                                "
+>
+    <h4 class="phpdocumentor-element__name" id="method_get_name">
+        get_name()
+        <a href="classes/Footnotes-Widget-Base.html#method_get_name" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/widgets/base.php"><a href="files/src-class-widgets-base.html"><abbr title="src/class/widgets/base.php">base.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">37</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Returns the Public name of child Widget to be displayed in the Configuration page.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__abstract">abstract</span>            <span class="phpdocumentor-signature__name">get_name</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -551,10 +416,10 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_get_widget_width">
         get_widget_width()
-        <a href="classes/MCI-Footnotes-Widget-Base.html#method_get_widget_width" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Footnotes-Widget-Base.html#method_get_widget_width" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/widgets/base.php"><a href="files/class-widgets-base.html"><abbr title="class/widgets/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/widgets/base.php"><a href="files/src-class-widgets-base.html"><abbr title="src/class/widgets/base.php">base.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">53</span>
 </aside>
@@ -608,7 +473,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/MCI-Footnotes-Widget-Reference-Container.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Footnotes-Widget-Base.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

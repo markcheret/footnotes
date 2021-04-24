@@ -75,7 +75,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    MCI_Footnotes_WYSIWYG
+    Footnotes_Hooks
 
     
     
@@ -83,12 +83,12 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/wysiwyg.php"><a href="files/class-wysiwyg.html"><abbr title="class/wysiwyg.php">wysiwyg.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/hooks.php"><a href="files/src-class-hooks.html"><abbr title="src/class/hooks.php">hooks.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
-            <p class="phpdocumentor-summary">Handles the WSYIWYG-Buttons.</p>
+            <p class="phpdocumentor-summary">Registers all WordPress hooks and executes them on demand.</p>
 
     <section class="phpdocumentor-description"></section>
 
@@ -121,39 +121,32 @@
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-WYSIWYG.html#method_ajax_callback">ajax_callback()</a>
+    <a href="classes/Footnotes-Hooks.html#method_activate_plugin">activate_plugin()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>AJAX Callback function when the Footnotes Button is clicked. Either in the Plain text or Visual editor.</dd>
+<dd>Executes when the Plugin is activated.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-WYSIWYG.html#method_include_scripts">include_scripts()</a>
-    <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Includes the Plugins WYSIWYG editor script.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-WYSIWYG.html#method_new_plain_text_editor_button">new_plain_text_editor_button()</a>
+    <a href="classes/Footnotes-Hooks.html#method_deactivate_plugin">deactivate_plugin()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Add a new button to the plain text editor.</dd>
+<dd>Executes when the Plugin is deactivated.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-WYSIWYG.html#method_new_visual_editor_button">new_visual_editor_button()</a>
+    <a href="classes/Footnotes-Hooks.html#method_get_plugin_links">get_plugin_links()</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                        &nbsp;: array&lt;string|int, string&gt;    </span>
 </dt>
-<dd>Append a new Button to the WYSIWYG editor of Posts and Pages.</dd>
+<dd>Appends the Plugin links for display in the dashboard “Plugins” page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MCI-Footnotes-WYSIWYG.html#method_register_hooks">register_hooks()</a>
+    <a href="classes/Footnotes-Hooks.html#method_register_hooks">register_hooks()</a>
     <span>
-                        &nbsp;: void    </span>
+                        &nbsp;: mixed    </span>
 </dt>
-<dd>Registers Button hooks.</dd>
+<dd>Registers all WordPress hooks.</dd>
 
         </dl>
 
@@ -166,7 +159,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/MCI-Footnotes-WYSIWYG.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Footnotes-Hooks.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -174,23 +167,23 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_ajax_callback">
-        ajax_callback()
-        <a href="classes/MCI-Footnotes-WYSIWYG.html#method_ajax_callback" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_activate_plugin">
+        activate_plugin()
+        <a href="classes/Footnotes-Hooks.html#method_activate_plugin" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/wysiwyg.php"><a href="files/class-wysiwyg.html"><abbr title="class/wysiwyg.php">wysiwyg.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/hooks.php"><a href="files/src-class-hooks.html"><abbr title="src/class/hooks.php">hooks.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">87</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 </aside>
 
-        <p class="phpdocumentor-summary">AJAX Callback function when the Footnotes Button is clicked. Either in the Plain text or Visual editor.</p>
+        <p class="phpdocumentor-summary">Executes when the Plugin is activated.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">ajax_callback</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">activate_plugin</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><p>Returns an JSON encoded array with the Footnotes start and end short code.</p>
+        <section class="phpdocumentor-description"><p>Currently a no-op placeholder.</p>
 </section>
 
     
@@ -224,84 +217,24 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_include_scripts">
-        include_scripts()
-        <a href="classes/MCI-Footnotes-WYSIWYG.html#method_include_scripts" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_deactivate_plugin">
+        deactivate_plugin()
+        <a href="classes/Footnotes-Hooks.html#method_deactivate_plugin" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/wysiwyg.php"><a href="files/class-wysiwyg.html"><abbr title="class/wysiwyg.php">wysiwyg.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/hooks.php"><a href="files/src-class-hooks.html"><abbr title="src/class/hooks.php">hooks.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">76</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Includes the Plugins WYSIWYG editor script.</p>
+        <p class="phpdocumentor-summary">Executes when the Plugin is deactivated.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">include_scripts</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_arr_plugins</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">deactivate_plugin</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_arr_plugins</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Scripts to be included to the editor.</p>
+        <section class="phpdocumentor-description"><p>Currently a no-op placeholder.</p>
 </section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.5.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_new_plain_text_editor_button">
-        new_plain_text_editor_button()
-        <a href="classes/MCI-Footnotes-WYSIWYG.html#method_new_plain_text_editor_button" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/wysiwyg.php"><a href="files/class-wysiwyg.html"><abbr title="class/wysiwyg.php">wysiwyg.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">62</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Add a new button to the plain text editor.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">new_plain_text_editor_button</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"></section>
 
     
     
@@ -334,32 +267,32 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_new_visual_editor_button">
-        new_visual_editor_button()
-        <a href="classes/MCI-Footnotes-WYSIWYG.html#method_new_visual_editor_button" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_get_plugin_links">
+        get_plugin_links()
+        <a href="classes/Footnotes-Hooks.html#method_get_plugin_links" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/wysiwyg.php"><a href="files/class-wysiwyg.html"><abbr title="class/wysiwyg.php">wysiwyg.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/hooks.php"><a href="files/src-class-hooks.html"><abbr title="src/class/hooks.php">hooks.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">57</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Append a new Button to the WYSIWYG editor of Posts and Pages.</p>
+        <p class="phpdocumentor-summary">Appends the Plugin links for display in the dashboard “Plugins” page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">new_visual_editor_button</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_arr_buttons</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">get_plugin_links</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plugin_links</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_arr_buttons</span>
+                <span class="phpdocumentor-signature__argument__name">$plugin_links</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>pre defined Buttons from WordPress.</p>
+                    <section class="phpdocumentor-description"><p>The WP-default set of links to display.</p>
 </section>
 
             </dd>
@@ -383,9 +316,10 @@
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>The full set of links to display.</p>
+</section>
 
     
 </article>
@@ -397,19 +331,19 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_register_hooks">
         register_hooks()
-        <a href="classes/MCI-Footnotes-WYSIWYG.html#method_register_hooks" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Footnotes-Hooks.html#method_register_hooks" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="class/wysiwyg.php"><a href="files/class-wysiwyg.html"><abbr title="class/wysiwyg.php">wysiwyg.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/class/hooks.php"><a href="files/src-class-hooks.html"><abbr title="src/class/hooks.php">hooks.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Registers Button hooks.</p>
+        <p class="phpdocumentor-summary">Registers all WordPress hooks.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">register_hooks</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">register_hooks</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -426,41 +360,13 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><ul>
-<li>Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.</li>
-</ul>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.6.5</span>
-                                                                                
                                                  <section class="phpdocumentor-description"></section>
 
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">reporter</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>@gova</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://wordpress.org/support/topic/back-end-footnotes-not-working-400-bad-erro/"> https://wordpress.org/support/topic/back-end-footnotes-not-working-400-bad-erro/ </a>
-                    
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -482,7 +388,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/MCI-Footnotes-WYSIWYG.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Footnotes-Hooks.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

@@ -4,7 +4,7 @@ echo "Building Plugin..."
 
 # Moves everything including the style sheets over to `dist/`
 echo "Copying directories..."
-rm -r dist/
+rm -rf dist/
 mkdir dist
 cp -r -t dist src/{class,languages,templates}/
 # Among the images, only 2 out of 3 are distributed.

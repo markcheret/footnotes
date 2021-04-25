@@ -79,7 +79,7 @@ tmp/
 
 !.editorconfig
 !.phpcs.xml.dist
-!.eslintrc.js
+!.eslintrc.json
 !.eslintignore
 !.php-commitizen.php
 !.prettierignore

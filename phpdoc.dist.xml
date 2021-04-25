@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdocumentor
-        configVersion="3.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="https://www.phpdoc.org"
-        xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd"
+	configVersion="3.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://www.phpdoc.org"
+	xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd"
 >
-    <paths>
-        <output>docs</output>
-    </paths>
-    <version number="3.0">
-        <api format="php">
-            <source dsn=".">
-                <path>src</path>
-            </source>
-      			<output>docs</output>
-						<extensions>
-						  <extension>php</extension>
-						</extensions>
-      			<default-package-name>footnotes</default-package-name>
-     				<include-source>true</include-source>
-        </api>
-    </version>
+  <paths>
+    <output>docs</output>
+  </paths>
+  <version number="3.0">
+    <api format="php">
+      <source dsn=".">
+        <path>src</path>
+      </source>
+			<output>docs</output>
+			<extensions>
+		  	<extension>php</extension>
+			</extensions>
+			<default-package-name>footnotes</default-package-name>
+			<include-source>true</include-source>
+    </api>
+  </version>
 </phpdocumentor>
 

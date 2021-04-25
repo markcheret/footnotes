@@ -74,7 +74,7 @@ class Footnotes_WYSIWYG {
 	 * @return array
 	 */
 	public static function include_scripts( $p_arr_plugins ) {
-		$p_arr_plugins[ Footnotes_Config::C_STR_PLUGIN_NAME ] = plugins_url( 'js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', dirname(__FILE__) );
+		$p_arr_plugins[ Footnotes_Config::C_STR_PLUGIN_NAME ] = plugins_url( 'js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', dirname( __FILE__ ) );
 		return $p_arr_plugins;
 	}
 

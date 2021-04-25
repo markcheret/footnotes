@@ -6,11 +6,7 @@ echo "Building Plugin..."
 echo "Copying directories..."
 rm -rf dist/
 mkdir dist
-cp -r -t dist src/{class,languages,templates}/
-# Among the images, only 2 out of 3 are distributed.
-echo "Copying the needed images..."
-mkdir -p dist/img
-cp -t dist/img src/img/fn-wysiwyg.png
+cp -r -t dist src/{class,languages,templates,img}/
 echo "Copying files..."
 cp -t dist ./{SECURITY.md,CHANGELOG.md,wpml-config.xml} src/{license.txt,readme.txt,includes.php}
 echo "Setting production flag..."

@@ -10,7 +10,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 <!-- markdownlint-enable MD013 -->
 
-![footnotes](https://raw.githubusercontent.com/markcheret/footnotes/main/img/footnotes.png)
+![footnotes](https://raw.githubusercontent.com/markcheret/footnotes/main/.github/img/footnotes.png)
 
 **footnotes** aims to be the all-in-one solution for displaying an
 automatically-generated list of references on your Page or Post. The Plugin

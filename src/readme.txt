@@ -5,7 +5,7 @@ Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, referen
 Requires at least: 3.9
 Tested up to: 5.7.1
 Requires PHP: 7.0
-Stable Tag: 2.7.0
+Stable Tag: 2.7.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,7 +60,16 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 
 == Changelog ==
 
+= 2.7.3 =
+
+- Bugfix: fix WYSIWYG editor error message, thanks to @ogbcashdown bug report.
+
+= 2.7.2 =
+
+- Reissue of 2.7.1.
+
 = 2.7.1 =
+
 - Bugfix: Stylesheets: namespace collapsed CSS class, thanks to @cybermrmotte @markyz89 bug reports.
 - Dashboard: move Plugin settings under default WP Settings menu.
 - Bugfix: Footnotes: fix bug when using multiple paragraphs in footnotes.
@@ -68,20 +77,15 @@ No, this Plugin has been written from scratch. Of course some inspirations on ho
 - Documentation: split changelog into seperate file.  
 
 = 2.7.0 =
+
 - Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
 - Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
 - Bugfix: Dashboard: debug the 'Quick start guide' tab, thanks to @rumperuu bug report.
 
-= 2.6.6 =
-- Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness @rkupadhya @offpeakdesign bug reports.
-
-= 2.6.5 =
-- Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
-- Bugfix: Hooks: default-disable the_excerpt hook with respect to theme-specific excerpt handling, thanks to @mmallett bug reports.
-
 == Upgrade Notice ==
  
-= 2.7.1 =
+= 2.7.3 =
+
 This release resolves a CSS class conflict with the commonly-used `.collapsed` class.
 
 == Usage ==

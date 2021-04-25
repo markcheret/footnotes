@@ -22,7 +22,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "composer run docs && git add docs && git commit -m \"docs: update documentation\" --no-verify"
+      "pre-push": "composer run docs"
     }
   },
   "lint-staged": {

@@ -1,5 +1,13 @@
 # Changelog
 
+= 2.7.3 =
+
+- Bugfix: fix WYSIWYG editor error message, thanks to @ogbcashdown bug report.
+
+= 2.7.2 =
+
+- Reissue of 2.7.1.
+
 = 2.7.1 =
 
 - Bugfix: Stylesheets: namespace collapsed CSS class, thanks to @cybermrmotte

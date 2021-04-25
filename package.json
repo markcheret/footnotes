@@ -4,7 +4,7 @@
     "cm": "cz",
     "format": "npm run format:js",
     "format:fix": "npm run format:js:fix",
-    "format:js": "prettier --config .prettierrc './src/**/*.js'",
+    "format:js": "prettier './src/**/*.js'",
     "format:js:fix": "npm run format:js -- --write",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:md",
     "lint:fix": "npm run lint:js:fix && npm run lint:css:fix && npm run lint:md:fix",
@@ -87,5 +87,12 @@
     "tmp/",
     "*.min.js",
     "jquery.tools.js"
-  ]
+  ],
+  "prettier": {
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 2
+  }
 }

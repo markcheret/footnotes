@@ -28,7 +28,7 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
-        run: composer install --no-dev --optimize-autoloader --no-progress --ignore-platform-reqs
+        run: composer install --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Validate workflow files (YAML)
         run: npm run validate:yaml

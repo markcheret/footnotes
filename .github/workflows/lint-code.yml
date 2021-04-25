@@ -7,40 +7,40 @@ on:
     branches: [ main ]
 
 jobs:
- 	lint:
-		name: Lint all code
+   lint:
+    name: Lint all code
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-    	- name: Validate composer.json and composer.lock
-      	run: composer validate --strict
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
 
-			- name: Cache Composer packages
-			  id: composer-cache
-			  uses: actions/cache@v2
-			  with:
-			    path: vendor
-			    key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-			    restore-keys: |
-			      ${{ runner.os }}-php-
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
 
-			- name: Install dependencies
-			  run: composer install --no-dev --optimize-autoloader --no-progress --ignore-platform-reqs
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader --no-progress --ignore-platform-reqs
 
-			- name: Lint Plugin code (PHP)
-				run: composer run lint:php
+      - name: Lint Plugin code (PHP)
+        run: composer run lint:php
 
-			- name: Lint Plugin scripts (JS)
-				run: composer run format:js:fix && composer run lint:js
+      - name: Lint Plugin scripts (JS)
+        run: composer run format:js:fix && composer run lint:js
 
-			#- name: Lint stylesheets (CSS)
-			#  run: composer run lint:css
-				
-			#- name: Lint templates (HTML)
-			#  run: composer run lint:html
+      #- name: Lint stylesheets (CSS)
+      #  run: composer run lint:css
+        
+      #- name: Lint templates (HTML)
+      #  run: composer run lint:html
 
-			- name: Lint documentation (Markdown)
-				run: composer run lint:md
+      - name: Lint documentation (Markdown)
+        run: composer run lint:md

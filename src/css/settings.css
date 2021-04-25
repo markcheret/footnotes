@@ -22,11 +22,11 @@
  */
 
 .footnotes_logo_heading {
+	position: absolute;
 	display: inline-block;
 	float: left;
-	position: absolute;
-	text-decoration: none;
 	font-weight: normal;
+	text-decoration: none;
 }
 
 .footnotes_logo_part1_heading {
@@ -40,10 +40,10 @@
 }
 
 .footnotes_heart_heading {
-	color: #ff6d3b;
-	font-weight: bold;
 	position: absolute;
 	left: 96px;
+	color: #ff6d3b;
+	font-weight: bold;
 }
 
 /**
@@ -67,9 +67,9 @@ Limited to a number of IDs to not affect all dashboards
 #footnote_inputfield_readon_label,
 #footnote_inputfield_references_label,
 #footnote_inputfield_love {
-	padding-left: 8px !important;
-	padding-right: 8px !important;
 	width: 80% !important;
+	padding-right: 8px !important;
+	padding-left: 8px !important;
 }
 
 #footnote_inputfield_reference_container_place {
@@ -162,18 +162,18 @@ label {
 }
 
 span.footnote_highlight_placeholder {
-	font-weight: bold !important;
 	padding: 0 8px !important;
+	font-weight: bold !important;
 }
 
 .footnote_placeholder_box_example {
+	display: block !important;
+	width: 50% !important;
+	margin: 20px auto !important;
+	padding: 16px 0 !important;
+	text-align: center !important;
 	border: 2px solid #2bb975 !important;
 	border-radius: 4px !important;
-	padding: 16px 0 !important;
-	width: 50% !important;
-	display: block !important;
-	margin: 20px auto !important;
-	text-align: center !important;
 }
 
 /************************************************************
@@ -238,10 +238,10 @@ helping edit CSS, like tab support and syntactic colors.
 }
 
 .customize_css_new .list p {
-	font-family: monospace;
-	padding: 0 10px;
-	text-indent: -10px;
 	margin: 0.5em 0;
+	padding: 0 10px;
+	font-family: monospace;
+	text-indent: -10px;
 }
 
 #footnote_inputfield_custom_css_new {
@@ -251,9 +251,9 @@ helping edit CSS, like tab support and syntactic colors.
 #footnote_inputfield_custom_css,
 #footnote_inputfield_custom_css_new {
 	width: 96%;
-	resize: both;
 	overflow: scroll;
 	font-family: monospace;
+	resize: both;
 }
 
 /************************************************************
@@ -273,8 +273,8 @@ look weird.
 since 2.1.4
 */
 .footnotes_notice {
-	font-style: italic;
 	display: inline-block;
+	font-style: italic;
 	text-align: end;
 }
 

@@ -54,24 +54,24 @@
       return null;
     },
 
-		/**
-		 * Returns information about the plugin as a name/value array.
-		 * The current keys are longname, author, authorurl, infourl and version.
-		 *
-		 * @return {Object} Name/value array containing information about the plugin.
-		 *
-		 * Edit: needs updating the version number manually   
-		 */
-		getInfo : function() {
-			return {
-				longname : 'Inserts the Footnotes short code.',
-				author : 'Mark Cheret',
-				authorurl : 'https://cheret.org/footnotes/',
-				infourl : 'https://wordpress.org/plugins/footnotes/',
-				version : '2.7.2d'
-			};
-		}
-	});
+    /**
+     * Returns information about the plugin as a name/value array.
+     * The current keys are longname, author, authorurl, infourl and version.
+     *
+     * @return {Object} Name/value array containing information about the plugin.
+     *
+     * Edit: needs updating the version number manually
+     */
+    getInfo: function () {
+      return {
+        longname: 'Inserts the Footnotes short code.',
+        author: 'Mark Cheret',
+        authorurl: 'https://cheret.org/footnotes/',
+        infourl: 'https://wordpress.org/plugins/footnotes/',
+        version: '2.7.3d',
+      };
+    },
+  });
 
   // Register plugin
   tinymce.PluginManager.add('footnotes', tinymce.plugins.Footnotes);

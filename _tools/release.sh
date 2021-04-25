@@ -200,6 +200,7 @@ read -p "Are you ready to continue? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $
 echo "Creating local copy of SVN repo..."
 svn checkout https://plugins.svn.wordpress.org/footnotes svn-tmp --depth immediates
 svn update --quiet svn-tmp/trunk --set-depth infinity
+svn update --quiet svn-tmp/assets --set-depth infinity
 svn update --quiet svn-tmp/tags/$PRERELEASE_VERSION --set-depth infinity
 echo -e "Local copy created.\n"
 

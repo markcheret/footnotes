@@ -79,13 +79,8 @@ tmp/
 
 !.editorconfig
 !.phpcs.xml.dist
-!.eslintrc.json
-!.eslintignore
-!.php-commitizen.php
 !.prettierignore
-!.prettierrc
-!.stylelintignore
-!.stylelintrc.json
+!.htmlhintrc
 
 # Track favicon files, if they exist.
 !android-chrome-*.png

@@ -6,7 +6,7 @@
     "format:fix": "npm run format:js:fix",
     "format:js": "prettier './src/**/*.js'",
     "format:js:fix": "npm run format:js -- --write",
-    "lint": "npm run lint:js && npm run lint:css && npm run lint:md",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:md && npm run lint:html",
     "lint:fix": "npm run lint:js:fix && npm run lint:css:fix && npm run lint:md:fix",
     "lint:php": "composer run lint:php",
     "lint:php:fix": "composer run lint:php:fix",
@@ -16,6 +16,7 @@
     "lint:css:fix": "npm run lint:css -- --fix",
     "lint:md": "markdownlint '*.md'",
     "lint:md:fix": "npm run lint:md -- --fix",
+    "lint:html": "htmlhint ./src/**/*.html",
     "minify": "npm run minify:css && npm run minify:js",
     "minify:css": "for f in ./tmp/css/*.css; do npx minify $f > ./dist/css/$(basename $f .css).min.css; done",
     "minify:js": "for f in ./src/js/*.js; do npx minify $f > ./dist/js/$(basename $f .js).min.js; done"
@@ -39,6 +40,9 @@
     ],
     "*.md": [
       "npm run lint:md"
+    ],
+    "*.html": [
+      "npm run lint:html"
     ]
   },
   "devDependencies": {
@@ -47,6 +51,7 @@
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "htmlhint": "^0.14.2",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "markdownlint-cli": "^0.27.1",
@@ -75,13 +80,13 @@
       "jquery": true,
       "es6": true
     },
-    "extends":  [
+    "extends": [
       "plugin:@wordpress/eslint-plugin/esnext",
       "plugin:@wordpress/eslint-plugin/jsdoc",
       "plugin:@wordpress/eslint-plugin/i18n",
       "plugin:prettier/recommended"
     ],
-    "rules":  {}
+    "rules": {}
   },
   "eslintIgnore": [
     "tmp/",

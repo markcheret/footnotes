@@ -21,6 +21,7 @@
         "format:js:fix": "npm run format:js:fix",
         "lint:md": "npm run lint:md",
         "lint:md:fix": "npm run lint:md:fix",
+        "lint:html": "npm run lint:html",
         "docs": "./vendor/bin/phpdoc",
         "post-install-cmd": "npm install",
         "minify": "npm run minify",

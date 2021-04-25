@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: composer install --no-dev --optimize-autoloader --no-progress --ignore-platform-reqs
 
+      - name: Validate workflow files (YAML)
+        run: npm run validate:yaml
+
       - name: Lint Plugin code (PHP)
         run: composer run lint:php
 

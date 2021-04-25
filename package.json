@@ -17,6 +17,8 @@
     "lint:md": "markdownlint '*.md'",
     "lint:md:fix": "npm run lint:md -- --fix",
     "lint:html": "htmlhint ./src/**/*.html",
+    "validate": "npm run validate:json && npm run validate:yaml",
+    "validate:yaml": "yaml-validator ./.github/workflows/*.yml",
     "minify": "npm run minify:css && npm run minify:js",
     "minify:css": "for f in ./tmp/css/*.css; do npx minify $f > ./dist/css/$(basename $f .css).min.css; done",
     "minify:js": "for f in ./src/js/*.js; do npx minify $f > ./dist/js/$(basename $f .js).min.js; done"
@@ -41,8 +43,11 @@
     "*.md": [
       "npm run lint:md"
     ],
-    "*.html": [
+    "*.htm(l)?": [
       "npm run lint:html"
+    ],
+    "*.y(a)?ml": [
+      "npm run validate:yaml"
     ]
   },
   "devDependencies": {
@@ -63,7 +68,8 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-wordpress": "^17.0.0",
     "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.19.0"
+    "stylelint-scss": "^3.19.0",
+    "yaml-validator": "^3.0.1"
   },
   "license": "GPL-3.0",
   "config": {

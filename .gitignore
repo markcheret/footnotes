@@ -1,8 +1,99 @@
-.phpdoc/
-vendor/
-node_modules/
-dist/
-tmp/
+# -------------------------
+# BEGIN Default WordPress Project Ignores
+# Adapted from: https://salferrarello.com/wordpress-gitignore/
+# -------------------------
 
+# Ignore all files and directories starting with `.` or `~`.
+.*
+~*
+
+# Ignore Node and Composer dependency directories.
+node_modules/
+vendor/
+
+# Ignore OS-generated files.
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Ignore Editor files.
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# Ignore log files and databases.
+*.log
+*.sql
+*.sqlite
+
+# Ignore compiled files.
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Ignore packaged files.
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Ignore distribution process files, if they are ever leftover.
+
+dist/
+svn-tmp/
+*.min.*
+
+# Ignore temporary files.
+
+tmp/
+*.tmp
 *.bak
-authors.txt
+
+# -------------------------
+# BEGIN Whitelisted Files
+# -------------------------
+
+# Track these version control files, if they exist.
+!.gitignore
+!.github/
+
+# Track these dependency tracking files, if they exist
+
+!composer.json
+!composer-lock.json
+!package.json
+!package-lock.json
+
+# Track these distribution ignore files, if they exist.
+
+!.distignore
+
+# Track these linter/formatter configuration files, if they exist.
+
+!.editorconfig
+!.phpcs.xml.dist
+!.eslintrc.js
+!.eslintignore
+!.php-commitizen.php
+!.prettierignore
+!.prettierrc
+!.stylelintignore
+!.stylelintrc.json
+
+# Track favicon files, if they exist.
+!android-chrome-*.png
+!apple-touch-icon*.png
+!browserconfig.xml
+!favicon*.png
+!favicon*.ico
+!manifest.json
+!mstile-*.png
+!safari-pinned-tab.svg
+!site.webmanifest

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "635644be9174c16cb944ef5f2bf46e80",
+    "content-hash": "1b1e75ba247201e270b06cd85706a3bd",
     "packages": [],
     "packages-dev": [
         {
@@ -79,61 +79,6 @@
                 }
             ],
             "time": "2020-11-11T10:22:58+00:00"
-        },
-        {
-            "name": "damianopetrungaro/php-commitizen",
-            "version": "v0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/conventional-commits/php-commitizen.git",
-                "reference": "985283538f013c37146b2ec83812eeef2ff9d73c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/conventional-commits/php-commitizen/zipball/985283538f013c37146b2ec83812eeef2ff9d73c",
-                "reference": "985283538f013c37146b2ec83812eeef2ff9d73c",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/console": "^4 || ^5"
-            },
-            "require-dev": {
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9"
-            },
-            "bin": [
-                "php-commitizen"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Damianopetrungaro\\PHPCommitizen\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Damiano Petrungaro",
-                    "email": "damianopetrungaro@gmail.com"
-                }
-            ],
-            "description": "Help writing Git commit following conventional commit specs",
-            "keywords": [
-                "atomic",
-                "atomic commit",
-                "commit",
-                "conventional commit",
-                "conventionalcommit",
-                "git"
-            ],
-            "support": {
-                "issues": "https://github.com/conventional-commits/php-commitizen/issues",
-                "source": "https://github.com/conventional-commits/php-commitizen/tree/v0.2.0"
-            },
-            "time": "2020-07-15T23:51:42+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",

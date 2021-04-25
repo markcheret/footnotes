@@ -12,8 +12,8 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-To securely report a vulnerability, please DO NOT post on the WordPress 
+To securely report a vulnerability, please DO NOT post on the WordPress
 Support Forum or create an Issue on this repository.
 
-Please email [mark@cheret.de](mailto:mark@cheret.de) privately with the 
+Please email [mark@cheret.de](mailto:mark@cheret.de) privately with the
 full details of the vulnerability.

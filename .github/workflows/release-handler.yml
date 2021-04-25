@@ -20,7 +20,7 @@ jobs:
           
       - name: Build Plugin
         run: |
-          composer run build -- -y
+          composer run build
           
       - name: Rename dist/ folder
         run: |

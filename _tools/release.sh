@@ -27,29 +27,30 @@ if [[ $1 == "-c" ]]; then
 	read -p "You have passed the \`commit\` flag (\`-c\`). Did you mean to do this? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 fi
 
-# NB: To run on a branch other than `main`, uncomment this line:
-#if false; then
+# Unless forced to, the script will only run on the `main` branch.
+if [[ $1 != "-f" ]]; then
 
-# Step 1: Ensure the local copy has checked out the `main` branch
+	# Step 1: Ensure the local copy has checked out the `main` branch
 
-if [[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]]; then
-	echo "ERR: You are not on the \`main\` branch, please check it out and re-run this command."
-	exit 1
-else
-	echo "- \`main\` branch is checked out."
+	if [[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]]; then
+		echo "ERR: You are not on the \`main\` branch, please check it out and re-run this command."
+		exit 1
+	else
+		echo "- \`main\` branch is checked out."
+	fi
+
+	# Step 2: Ensure local copy of `main` is up-to-date with remote
+
+	if [[ "$(git status | grep -c 'Your branch is up to date')" != 1 ]]; then
+		echo "ERR: Your local copy is not up-to-date with the remote, please update it and re-run this command."
+		exit 1
+	else
+		echo "- Local copy of \`main\` is up-to-date with remote."
+	fi
+
 fi
 
-# Step 2: Ensure local copy of `main` is up-to-date with remote
-
-if [[ "$(git status | grep -c 'Your branch is up to date')" != 1 ]]; then
-	echo "ERR: Your local copy is not up-to-date with the remote, please update it and re-run this command."
-	exit 1
-else
-	echo "- Local copy of \`main\` is up-to-date with remote."
-fi
-
-# NB: To run on a branch other than `main`, uncomment this line:
-#fi
+rm -rf ./{dist,tmp,svn-tmp}
 
 # Step 3: Check versioning
 
@@ -62,26 +63,26 @@ fi
 
 echo "- Checking versions..."
 
-STABLE_TAG="$(grep "Stable Tag:" readme.txt)"
-ROOT_HEADER_VERSION="$(grep " Version:" footnotes.php | grep -Po " Version: \d+\.\d+(\.\d+)?[a-z]?$")"
-JS_VERSION="$(grep "version :" js/wysiwyg-editor.js)"
+STABLE_TAG="$(grep "Stable Tag:" src/readme.txt)"
+ROOT_HEADER_VERSION="$(grep " Version:" src/footnotes.php | grep -Po " Version: \d+\.\d+(\.\d+)?[a-z]?$")"
+JS_VERSION="$(grep "version :" src/js/wysiwyg-editor.js)"
 
 # Step 3(b): Check that all version declarations exists
 
 if [[ -z $STABLE_TAG ]]; then
-	echo "ERR: No 'Stable Tag' field found in \`readme.txt\`!"
+	echo "ERR: No 'Stable Tag' field found in \`src/readme.txt\`!"
 	exit 1
-else echo "- 'Stable Tag' field set in \`readme.txt\`."
+else echo "- 'Stable Tag' field set in \`src/readme.txt\`."
 fi
 if [[ -z $ROOT_HEADER_VERSION ]]; then
-	echo "ERR: No 'Version' field found in \`footnotes.php\` file header!"
+	echo "ERR: No 'Version' field found in \`src/footnotes.php\` file header!"
 	exit 1
-else echo "- 'Version' field set in \`footnotes.php\` file header."
+else echo "- 'Version' field set in \`src/footnotes.php\` file header."
 fi
 if [[ -z $JS_VERSION ]]; then
-	echo "ERR: No \`version\` variable found in \`js/wysiwyg-editor.js\`!"
+	echo "ERR: No \`version\` variable found in \`src/js/wysiwyg-editor.js\`!"
 	exit 1
-else echo "- \`version\` variable set in \`js/wysiwyg-editor.js\`."
+else echo "- \`version\` variable set in \`src/js/wysiwyg-editor.js\`."
 fi
 
 # Step 3(c)(1): Check that all development versions match
@@ -153,7 +154,7 @@ fi
 
 # Step 3(g): Check that the changelog is up-to-date
 
-CHANGELOG_LATEST="$(awk -e '/== Changelog ==/,/= [0-9]+\.[0-9]+(\.[0-9]+)? =/' readme.txt | grep -Po '\d+\.\d+(\.\d+)?')"
+CHANGELOG_LATEST="$(awk -e '/== Changelog ==/,/= [0-9]+\.[0-9]+(\.[0-9]+)? =/' src/readme.txt | grep -Po '\d+\.\d+(\.\d+)?')"
 if [[ $CHANGELOG_LATEST != $DEVELOPMENT_VERSION ]]; then
 	echo "ERR: Changelog is not up-to-date!"
 	echo "Current version is $DEVELOPMENT_VERSION"
@@ -176,14 +177,16 @@ echo -e "- Build complete.\n"
 
 echo "- Setting pre-release version flags..."
 PRERELEASE_VERSION=$DEVELOPMENT_VERSION'p'
-sed -i "s/$JS_VERSION/version : \"$PRERELEASE_VERSION\"/g" dist/js/wysiwyg-editor.js
+sed -i "s/$JS_VERSION/$PRERELEASE_VERSION/g" dist/js/wysiwyg-editor.min.js
 echo "- Pre-release flags set." 
 
 # Step 6: Tag the release
 
 echo "- Tagging release..."
 git tag -a $DEVELOPMENT_VERSION -m "Pre-release of version $DEVELOPMENT_VERSION"
-git push --tags
+if [ $? != 0 ]; then echo "Tag already exists!"; exit 1; fi
+git push --tags --no-verify
+if [ $? != 0 ]; then echo "Push failed (tag probably exists on remote)!"; exit 1; fi
 echo "- Release tagged."
 
 # Step 7: Push release to SVN repo.
@@ -195,21 +198,22 @@ echo "For the time being, this part of the process shall remain (mostly) manual.
 read -p "Are you ready to continue? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 
 echo "Creating local copy of SVN repo..."
-svn checkout https://plugins.svn.wordpress.org/footnotes tmp --depth immediates
-svn update --quiet tmp/trunk --set-depth infinity
-svn update --quiet tmp/tags/$PRERELEASE_VERSION --set-depth infinity
+svn checkout https://plugins.svn.wordpress.org/footnotes svn-tmp --depth immediates
+svn update --quiet svn-tmp/trunk --set-depth infinity
+svn update --quiet svn-tmp/tags/$PRERELEASE_VERSION --set-depth infinity
 echo -e "Local copy created.\n"
 
 # Step 7(b): Update `trunk/`
 echo -e "Copying files from \`dist/\` to SVN \`trunk/\`...\n"
-rsync -avhic dist/ tmp/trunk/ --delete | grep -v "^\."
-read -p "Does the above list of changes look correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
+rsync -avhic dist/ svn-tmp/trunk/ --delete | grep -v "^\."
+rsync -avhic assets/ svn-tmp/assets/ --delete | grep -v "^\."
+read -p "Does the above list of changes (additions and deletions ONLY) look correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 echo -e "Copying complete.\n"
 
 # Step 7(c): Set a release message
 
 echo "Getting commit message from changelog..."
-CHANGELOG_MESSAGE="$(awk -e "/= $DEVELOPMENT_VERSION =/,/= $STABLE_VERSION =/" readme.txt | grep '^-')"
+CHANGELOG_MESSAGE="$(awk -e "/= $DEVELOPMENT_VERSION =/,/= $STABLE_VERSION =/" dist/readme.txt | grep '^-')"
 echo -e "The changelog message for this version is:\n"
 echo -e "$CHANGELOG_MESSAGE\n"
 read -p "Is this correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
@@ -226,23 +230,22 @@ echo "Stable version:"
 echo -e '\t' $STABLE_VERSION '\n'
 echo -e "Commit message:\n"
 echo -e "$CHANGELOG_MESSAGE" '\n'
-svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm %
-echo -e "Changes made to local \`trunk/\`:\n"
-svn stat tmp/trunk/
+svn stat svn-tmp/trunk/ | grep '^\!' | sed 's/! *//' | xargs -I% svn rm % >/dev/null
+echo -e "Changes made to local \`trunk/\` (should only be 'M', 'D' and '?'):\n"
+svn stat svn-tmp/trunk/
 echo ""
 echo -e "\`readme.txt\` header:\n"
-head tmp/trunk/readme.txt
+head svn-tmp/trunk/readme.txt
 echo ""
 read -p "Is this all correct? (Y/N): " CONFIRM && [[ $CONFIRM == [yY] || $CONFIRM == [yY][eE][sS] ]] || exit 1
 
 # Step 7(d): Push to remote `trunk/` (provided the flag is set)
 
 if [[ $1 == "-c" ]]; then
-	cd tmp && svn ci -m "$CHANGELOG_MESSAGE"
-	cd ..
+	cd svn-tmp && svn ci -m "$CHANGELOG_MESSAGE" && cd ..
 else echo "- Commit flag not set, skipping commit step."
 fi
 
 # Step 8: Cleanup
 
-#rm -rf {dist/,tmp/}
+#rm -rf {dist/,svn-tmp/}

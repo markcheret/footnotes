@@ -1,5 +1,2 @@
-dist/
-docs/
-vendor/
-node_modules/
+tmp/
 *.min.css

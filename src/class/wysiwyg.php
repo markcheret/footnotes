@@ -92,7 +92,7 @@ class Footnotes_WYSIWYG {
 			$l_str_starting_tag = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
 			$l_str_ending_tag   = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
-		echo json_encode(
+		echo wp_json_encode(
 			array(
 				'start' => htmlspecialchars( $l_str_starting_tag ),
 				'end'   => htmlspecialchars( $l_str_ending_tag ),

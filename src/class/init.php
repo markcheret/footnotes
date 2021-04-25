@@ -390,7 +390,7 @@ class Footnotes {
 			 * Enqueues external stylesheets, ONLY in development now.
 			 *
 			 * @since 2.1.4  optionally enqueue an extra stylesheet.
-		   *
+			 *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
 			wp_enqueue_style(

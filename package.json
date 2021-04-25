@@ -94,5 +94,26 @@
     "singleQuote": true,
     "printWidth": 120,
     "tabWidth": 2
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-wordpress",
+      "stylelint-config-recommended",
+      "stylelint-a11y/recommended",
+      "stylelint-config-rational-order"
+    ],
+    "plugins": [
+      "stylelint-scss",
+      "stylelint-a11y",
+      "stylelint-order"
+    ],
+    "rules": {
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true
+    },
+    "ignoreFiles": [
+      "tmp/",
+      "*.min.css"
+    ]
   }
 }

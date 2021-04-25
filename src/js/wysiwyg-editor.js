@@ -31,7 +31,7 @@
           success: function (data, textStatus, XMLHttpRequest) {
             var tags = JSON.parse(data);
             var returnText = tags.start + ed.selection.getContent() + tags.end;
-            ed.execCommand('insertHTML', true, returnText);
+            ed.insertContent(returnText);
           },
           error: function (MLHttpRequest, textStatus, errorThrown) {
             console.log('Error: ' + errorThrown);

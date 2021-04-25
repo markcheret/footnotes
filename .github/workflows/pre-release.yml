@@ -1,13 +1,13 @@
-name: Release Handler
+name: Pre-release Handler
 
-# Action runs when a new release is published.
 on:
   release:
     types: [published]
 
 jobs:
-  release-new:
-    name: Issue new release
+  build:
+    name: Build the Plugin for pre-release
+    if: "github.event.release.prerelease"
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install --no-dev --optimize-autoloader
+          composer install --no-dev --optimize-autoloader --no-progress
           
       - name: Build Plugin
         run: |

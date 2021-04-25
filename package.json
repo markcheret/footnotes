@@ -1,4 +1,5 @@
 {
+  "name": "footnotes",
   "scripts": {
     "cm": "cz",
     "format": "npm run format:js",
@@ -67,5 +68,24 @@
   },
   "dependencies": {
     "stylelint-a11y": "^1.2.3"
-  }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "jquery": true,
+      "es6": true
+    },
+    "extends":  [
+      "plugin:@wordpress/eslint-plugin/esnext",
+      "plugin:@wordpress/eslint-plugin/jsdoc",
+      "plugin:@wordpress/eslint-plugin/i18n",
+      "plugin:prettier/recommended"
+    ],
+    "rules":  {}
+  },
+  "eslintIgnore": [
+    "tmp/",
+    "*.min.js",
+    "jquery.tools.js"
+  ]
 }

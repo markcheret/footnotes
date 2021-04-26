@@ -14,31 +14,32 @@ echo "Running $(dirname "$0")/build-stylesheets.sh"
 
 if [[ $1 == "-c" ]]; then
 
-	echo "Concatenating files and placing in \`dist/css/\`..."
+	echo "Concatenating files and placing in \`dist/{public,admin}/css/\`..."
 	
-	mkdir -p ./dist/css
-	cat ./src/css/dev-common.css > ./dist/css/footnotes-nottbrpl0.css
+	mkdir -p ./dist/{public,admin}/css
 	
-	cat ./src/css/dev-{common,layout-reference-container}.css > ./dist/css/footnotes-nottbrpl1.css
-	cat ./src/css/dev-{common,layout-entry-content}.css > ./dist/css/footnotes-nottbrpl2.css
-	cat ./src/css/dev-{common,layout-main-content}.css > ./dist/css/footnotes-nottbrpl3.css
+	cat ./src/public/css/dev-common.css > ./dist/public/css/footnotes-nottbrpl0.css
 	
-	cat ./src/css/dev-{common,tooltips}.css > ./dist/css/footnotes-jqttbrpl0.css
-	cat ./src/css/dev-{common,tooltips,layout-reference-container}.css > ./dist/css/footnotes-jqttbrpl1.css
-	cat ./src/css/dev-{common,tooltips,layout-entry-content}.css > ./dist/css/footnotes-jqttbrpl2.css
-	cat ./src/css/dev-{common,tooltips,layout-main-content}.css > ./dist/css/footnotes-jqttbrpl3.css
+	cat ./src/public/css/dev-{common,layout-reference-container}.css > ./dist/public/css/footnotes-nottbrpl1.css
+	cat ./src/public/css/dev-{common,layout-entry-content}.css > ./dist/public/css/footnotes-nottbrpl2.css
+	cat ./src/public/css/dev-{common,layout-main-content}.css > ./dist/public/css/footnotes-nottbrpl3.css
 	
-	cat ./src/css/dev-{common,tooltips,tooltips-alternative}.css > ./dist/css/footnotes-alttbrpl0.css
-	cat ./src/css/dev-{common,tooltips,tooltips-alternative,layout-reference-container}.css > ./dist/css/footnotes-alttbrpl1.css
-	cat ./src/css/dev-{common,tooltips,tooltips-alternative,layout-entry-content}.css > ./dist/css/footnotes-alttbrpl2.css
-	cat ./src/css/dev-{common,tooltips,tooltips-alternative,layout-main-content}.css > ./dist/css/footnotes-alttbrpl3.css
+	cat ./src/public/css/dev-{common,tooltips}.css > ./dist/public/css/footnotes-jqttbrpl0.css
+	cat ./src/public/css/dev-{common,tooltips,layout-reference-container}.css > ./dist/public/css/footnotes-jqttbrpl1.css
+	cat ./src/public/css/dev-{common,tooltips,layout-entry-content}.css > ./dist/public/css/footnotes-jqttbrpl2.css
+	cat ./src/public/css/dev-{common,tooltips,layout-main-content}.css > ./dist/public/css/footnotes-jqttbrpl3.css
 	
-	cat ./src/css/dev-{common,tooltips,amp-tooltips}.css > ./dist/css/footnotes-amptbrpl0.css
-	cat ./src/css/dev-{common,tooltips,amp-tooltips,layout-reference-container}.css > ./dist/css/footnotes-amptbrpl1.css
-	cat ./src/css/dev-{common,tooltips,amp-tooltips,layout-entry-content}.css > ./dist/css/footnotes-amptbrpl2.css
-	cat ./src/css/dev-{common,tooltips,amp-tooltips,layout-main-content}.css > ./dist/css/footnotes-amptbrpl3.css
+	cat ./src/public/css/dev-{common,tooltips,tooltips-alternative}.css > ./dist/public/css/footnotes-alttbrpl0.css
+	cat ./src/public/css/dev-{common,tooltips,tooltips-alternative,layout-reference-container}.css > ./dist/public/css/footnotes-alttbrpl1.css
+	cat ./src/public/css/dev-{common,tooltips,tooltips-alternative,layout-entry-content}.css > ./dist/public/css/footnotes-alttbrpl2.css
+	cat ./src/public/css/dev-{common,tooltips,tooltips-alternative,layout-main-content}.css > ./dist/public/css/footnotes-alttbrpl3.css
 	
-	cat ./src/css/settings.css > ./dist/css/settings.css
+	cat ./src/public/css/dev-{common,tooltips,amp-tooltips}.css > ./dist/public/css/footnotes-amptbrpl0.css
+	cat ./src/public/css/dev-{common,tooltips,amp-tooltips,layout-reference-container}.css > ./dist/public/css/footnotes-amptbrpl1.css
+	cat ./src/public/css/dev-{common,tooltips,amp-tooltips,layout-entry-content}.css > ./dist/public/css/footnotes-amptbrpl2.css
+	cat ./src/public/css/dev-{common,tooltips,amp-tooltips,layout-main-content}.css > ./dist/public/css/footnotes-amptbrpl3.css
+	
+	cat ./src/admin/css/settings.css > ./dist/admin/css/settings.css
 	
 	echo "Stylesheet concatenation complete."
 	exit 0

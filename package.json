@@ -20,7 +20,7 @@
     "validate": "npm run validate:json && npm run validate:yaml",
     "validate:yaml": "yaml-validator ./.github/workflows/*.yml",
     "minify": "npm run minify:css && npm run minify:js",
-    "minify:css": "for f in ./dist/css/*.css; do echo \"Minifying $f...\"; minify $f > $(dirname $f)/$(basename $f .css).min.css; done",
+    "minify:css": "for f in ./dist/*/css/*.css; do echo \"Minifying $f...\"; minify $f > $(dirname $f)/$(basename $f .css).min.css; done",
     "minify:js": "for f in ./dist/*/js/*.js; do echo \"Minifying $f...\"; minify $f > $(dirname $f)/$(basename $f .js).min.js; done"
   },
   "husky": {

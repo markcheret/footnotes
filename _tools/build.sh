@@ -8,7 +8,7 @@ rm -rf dist/
 mkdir dist
 rsync -av --progress --exclude css src/* dist
 echo "Setting production flag environment flag..."
-sed -i "s/'PRODUCTION_ENV' , false/'PRODUCTION_ENV' , true/g" ./dist/footnotes.php
+sed -i -E "s/('PRODUCTION_ENV'[ ]?,[ ]?)false/\1true/g" ./dist/footnotes.php
 echo "Production environment flag set."
 
 echo "Setting pre-release version tags..."
@@ -29,7 +29,7 @@ echo "Minifying CSS and JS..."
 npm run minify
 if [ $? != 0 ]; then echo "Minification failed!"; exit 1; fi
 echo "Deleting unminified files from `dist/`..."
-rm -r dist/**/*[^.min].{js,css}
+rm -r dist/*/{js,css}/*[^\.min].{js,css}
 echo "Minification complete."
 
 if [[ $1 == "-v" ]]; then

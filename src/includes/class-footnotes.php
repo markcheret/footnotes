@@ -258,11 +258,7 @@ class Footnotes {
 				 */
 				wp_enqueue_script(
 					'mci-footnotes-jquery-tools',
-<<<<<<< HEAD:src/includes/class-footnotes.php
-					plugins_url( 'footnotes/public/js/jquery.tools.min.js' ),
-=======
-					plugins_url( 'footnotes/js/jquery.tools' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js' ),
->>>>>>> linting:src/class/init.php
+					plugins_url( 'footnotes/public/js/jquery.tools' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js' ),
 					array(),
 					'1.2.7.redacted.2',
 					false

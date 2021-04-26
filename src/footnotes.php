@@ -38,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Current plugin version.
  */
-define('C_STR_FOOTNOTES_VERSION', '2.8.0d');
+define( 'C_STR_FOOTNOTES_VERSION', '2.8.0d' );
 
 /**
  * Defines the current environment ('development' or 'production').
@@ -47,7 +47,7 @@ define('C_STR_FOOTNOTES_VERSION', '2.8.0d');
  *
  * @since 2.5.5
  */
-define('PRODUCTION_ENV' , false);
+define( 'PRODUCTION_ENV', false );
 
 /**
  * The code that runs during plugin activation.
@@ -92,6 +92,6 @@ function run_footnotes() {
 
 	// Add the links to the dashboard plugins page.
 	// TODO: Move this somewhere more appropriate.
-	add_filter( "plugin_action_links_footnotes/footnotes.php", array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
+	add_filter( 'plugin_action_links_footnotes/footnotes.php', array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
 }
 run_footnotes();

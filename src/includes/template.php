@@ -226,7 +226,7 @@ class Footnotes_Template {
 		} elseif ( file_exists( $this->plugin_directory . $template_name ) ) {
 			$located = $this->plugin_directory . $template_name;
 		}
-		
+
 		return $located;
 	}
 

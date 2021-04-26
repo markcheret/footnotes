@@ -1,9 +1,11 @@
-<?php
+<?php // phpcs:disable PEAR.Commenting.FileComment.Missing
 /**
- * Footnotes class
+ * Plugin initialiser.
  *
- * @package footnotes
- * @since 1.5.0
+ * @since       1.5.0
+ *
+ * @package     footnotes
+ * @subpackage  footnotes/includes
  */
 
 require_once dirname( __FILE__ ) . '/config.php';

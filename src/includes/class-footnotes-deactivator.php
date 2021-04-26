@@ -1,11 +1,11 @@
 <?php
 /**
- * Fired during plugin deactivation
+ * Fired during plugin deactivation.
  *
- * @since      2.8.0
+ * @since       2.8.0
  *
- * @package    footnotes
- * @subpackage footnotes/includes
+ * @package     footnotes
+ * @subpackage  footnotes/includes
  */
 
 /**
@@ -17,7 +17,7 @@
  * @package    footnotes
  * @subpackage footnotes/includes
  */
-class Plugin_Name_Deactivator {
+class Footnotes_Deactivator {
 
 	/**
 	 * Runs when the Plugin is deactivated.

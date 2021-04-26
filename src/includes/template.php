@@ -194,7 +194,7 @@ class Footnotes_Template {
 		 * The directory can be changed.
 		 *
 		 * @usage to change location of templates to 'template_parts/footnotes/':
-		 * add_filter( 'mci_footnotes_template_directory', function( $directory ) {
+		 * add_filter( 'footnotes_template_directory', function( $directory ) {
 		 *  return 'template_parts/footnotes/';
 		 * } );
 		 */

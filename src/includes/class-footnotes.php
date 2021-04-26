@@ -257,7 +257,7 @@ class Footnotes {
 				 * Deferring to the footer breaks jQuery tooltip display.
 				 */
 				wp_enqueue_script(
-					'mci-footnotes-jquery-tools',
+					'footnotes-jquery-tools',
 					plugins_url( 'footnotes/public/js/jquery.tools' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js' ),
 					array(),
 					'1.2.7.redacted.2',
@@ -387,7 +387,7 @@ class Footnotes {
 
 			// Enqueue the tailored united minified stylesheet.
 			wp_enqueue_style(
-				'mci-footnotes-' . $l_str_tooltip_mode_long . '-pagelayout-' . $l_str_page_layout_option,
+				'footnotes-' . $l_str_tooltip_mode_long . '-pagelayout-' . $l_str_page_layout_option,
 				plugins_url(
 					Footnotes_Config::C_STR_PLUGIN_NAME . '/css/footnotes-' . $l_str_tooltip_mode_short . 'brpl' . $l_str_layout_mode . '.min.css'
 				),
@@ -406,7 +406,7 @@ class Footnotes {
 			 * This optional layout fix is useful by lack of layout support.
 			 */
 			wp_enqueue_style(
-				'mci-footnotes-common',
+				'footnotes-common',
 				plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-common.css' ),
 				array(),
 				filemtime(
@@ -416,7 +416,7 @@ class Footnotes {
 				)
 			);
 			wp_enqueue_style(
-				'mci-footnotes-tooltips',
+				'footnotes-tooltips',
 				plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips.css' ),
 				array(),
 				filemtime(
@@ -428,7 +428,7 @@ class Footnotes {
 
 			if ( self::$a_bool_amp_enabled ) {
 				wp_enqueue_style(
-					'mci-footnotes-amp',
+					'footnotes-amp',
 					plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-amp-tooltips.css' ),
 					array(),
 					filemtime(
@@ -441,7 +441,7 @@ class Footnotes {
 
 			if ( self::$a_bool_alternative_tooltips_enabled ) {
 				wp_enqueue_style(
-					'mci-footnotes-alternative',
+					'footnotes-alternative',
 					plugins_url( Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-tooltips-alternative.css' ),
 					array(),
 					filemtime(
@@ -455,7 +455,7 @@ class Footnotes {
 			$l_str_page_layout_option = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			if ( 'none' !== $l_str_page_layout_option ) {
 				wp_enqueue_style(
-					'mci-footnotes-layout-' . $l_str_page_layout_option,
+					'footnotes-layout-' . $l_str_page_layout_option,
 					plugins_url(
 						Footnotes_Config::C_STR_PLUGIN_NAME . '/css/dev-layout-' . $l_str_page_layout_option . '.css'
 					),

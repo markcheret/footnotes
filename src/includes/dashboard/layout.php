@@ -216,15 +216,15 @@ abstract class Footnotes_Layout_Engine {
 		 */
 		if ( true === PRODUCTION_ENV ) {
 
-			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_FOOTNOTES_VERSION );
+			wp_register_style( 'footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_FOOTNOTES_VERSION );
 
 		} else {
 
-			wp_register_style( 'mci-footnotes-admin', plugins_url( 'footnotes/css/settings.css' ), array(), C_STR_FOOTNOTES_VERSION );
+			wp_register_style( 'footnotes-admin', plugins_url( 'footnotes/css/settings.css' ), array(), C_STR_FOOTNOTES_VERSION );
 
 		}
 
-		wp_enqueue_style( 'mci-footnotes-admin' );
+		wp_enqueue_style( 'footnotes-admin' );
 	}
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing

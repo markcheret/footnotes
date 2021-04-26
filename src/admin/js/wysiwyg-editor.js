@@ -18,7 +18,7 @@
       ed.addButton('footnotes', {
         title: 'footnotes',
         cmd: 'footnotes',
-        image: url + '/../img/fn-wysiwyg.png',
+        image: url + '/../images/fn-wysiwyg.png',
       });
 
       ed.addCommand('footnotes', function () {

@@ -40,6 +40,12 @@
  * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
  * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
  */
+ 
+require_once dirname( __FILE__, 2) . '/config.php';
+require_once dirname( __FILE__, 2) . '/convert.php';
+require_once dirname( __FILE__, 2) . '/settings.php';
+require_once dirname( __FILE__, 2) . '/template.php';
+require_once dirname( __FILE__ ) . '/layout.php';
 
 /**
  * Displays and handles all Settings of the Plugin.

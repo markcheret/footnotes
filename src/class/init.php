@@ -6,6 +6,16 @@
  * @since 1.5.0
  */
 
+require_once dirname( __FILE__ ) . '/config.php';
+require_once dirname( __FILE__ ) . '/convert.php';
+require_once dirname( __FILE__ ) . '/hooks.php';
+require_once dirname( __FILE__ ) . '/language.php';
+require_once dirname( __FILE__ ) . '/settings.php';
+require_once dirname( __FILE__ ) . '/task.php';
+require_once dirname( __FILE__ ) . '/wysiwyg.php';
+require_once dirname( __FILE__ ) . '/dashboard/init.php';
+require_once dirname( __FILE__ ) . '/widgets/reference-container.php';
+
 /**
  * Provides an entry point to the Plugin.
  *

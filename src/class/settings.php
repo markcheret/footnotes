@@ -13,6 +13,8 @@
  * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
  */
 
+require_once dirname( __FILE__ ) . '/convert.php';
+
 /**
  * Loads the settings values, sets to default values if undefined.
  *

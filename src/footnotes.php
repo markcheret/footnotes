@@ -21,9 +21,9 @@
  * License: GPL v3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
- 
+
 declare(strict_types=1);
- 
+
 /**
  * Defines the current Plugin version.
  *
@@ -50,11 +50,11 @@ const PRODUCTION_ENV = false;
  */
 const PLUGIN_ENTRYPOINT = 'footnotes/footnotes.php';
 
-// Get all common classes and functions.
-require_once dirname( __FILE__ ) . '/includes.php';
+// Requires the core Plugin file.
+require_once dirname( __FILE__ ) . '/class/init.php';
 
 // Add links to the ‘Installed Plugins’ page on the WordPress dashboard.
-add_filter( "plugin_action_links_" . PLUGIN_ENTRYPOINT, array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
+add_filter( 'plugin_action_links_' . PLUGIN_ENTRYPOINT, array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
 
 // Initialize the Plugin.
 $g_obj_mci_footnotes = new Footnotes();

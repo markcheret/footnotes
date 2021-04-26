@@ -7,6 +7,9 @@
  * @since  1.5.0
  */
 
+require_once dirname( __FILE__, 2) . '/settings.php';
+require_once dirname( __FILE__ ) . '/subpage-main.php';
+
 /**
  * Handles the Settings interface of the Plugin.
  *

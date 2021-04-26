@@ -7,6 +7,10 @@
  * @since 1.5.0
  */
 
+require_once dirname( __FILE__, 2 ) . '/config.php';
+require_once dirname( __FILE__, 2 ) . '/settings.php';
+require_once dirname( __FILE__ ) . '/base.php';
+
 /**
  * Registers a Widget to put the Reference Container to the widget area.
  *

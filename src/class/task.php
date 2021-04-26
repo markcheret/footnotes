@@ -87,6 +87,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+require_once dirname( __FILE__ ) . '/config.php';
+require_once dirname( __FILE__ ) . '/convert.php';
+require_once dirname( __FILE__ ) . '/settings.php';
+require_once dirname( __FILE__ ) . '/template.php';
+
 /**
  * Searches and replaces the footnotes and generates the reference container.
  *

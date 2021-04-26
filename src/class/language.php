@@ -10,6 +10,8 @@
  * @since 2.1.6  Bugfix: Localization: conform to WordPress plugin language file name scheme, thanks to @nikelaos bug report.
  */
 
+require_once dirname( __FILE__ ) . '/config.php';
+
 /**
  * Loads text domain of current or default language for localization.
  *

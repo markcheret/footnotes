@@ -7,6 +7,10 @@
  * @since 1.5.0
  */
 
+require_once dirname( __FILE__ ) . '/config.php';
+require_once dirname( __FILE__ ) . '/settings.php';
+require_once dirname( __FILE__ ) . '/template.php';
+
 /**
  * Handles the WSYIWYG-Buttons.
  *

@@ -13,6 +13,11 @@
  *
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  */
+ 
+require_once dirname( __FILE__, 2) . '/config.php';
+require_once dirname( __FILE__, 2) . '/convert.php';
+require_once dirname( __FILE__, 2) . '/settings.php';
+require_once dirname( __FILE__ ) . '/init.php';
 
 /**
  * Layout Engine for the administration dashboard.

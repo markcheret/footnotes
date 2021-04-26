@@ -529,34 +529,34 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 		$l_obj_template->replace(
 			array(
 
-				'label-scroll-css'          => $this->add_label( Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, __( 'CSS-based smooth scrolling:', 'footnotes' ) ),
-				'scroll-css'                => $this->add_select_box( Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, $l_arr_enable ),
-				'notice-scroll-css'         => __( 'May slightly disturb jQuery scrolling and is therefore disabled by default. Works in recent browsers.', 'footnotes' ),
+				'label-scroll-css'            => $this->add_label( Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, __( 'CSS-based smooth scrolling:', 'footnotes' ) ),
+				'scroll-css'                  => $this->add_select_box( Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING, $l_arr_enable ),
+				'notice-scroll-css'           => __( 'May slightly disturb jQuery scrolling and is therefore disabled by default. Works in recent browsers.', 'footnotes' ),
 
-				'label-scroll-offset'          => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, __( 'Scroll offset:', 'footnotes' ) ),
-				'scroll-offset'                => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, 0, 100 ),
-				'notice-scroll-offset'         => __( 'per cent viewport height from the upper edge', 'footnotes' ),
+				'label-scroll-offset'         => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, __( 'Scroll offset:', 'footnotes' ) ),
+				'scroll-offset'               => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_OFFSET, 0, 100 ),
+				'notice-scroll-offset'        => __( 'per cent viewport height from the upper edge', 'footnotes' ),
 
-				'label-scroll-duration'        => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
-				'scroll-duration'              => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
-				'notice-scroll-duration'       => __( 'milliseconds. If asymmetric scroll durations are enabled, this is the scroll-up duration.', 'footnotes' ),
+				'label-scroll-duration'       => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, __( 'Scroll duration:', 'footnotes' ) ),
+				'scroll-duration'             => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION, 0, 20000 ),
+				'notice-scroll-duration'      => __( 'milliseconds. If asymmetric scroll durations are enabled, this is the scroll-up duration.', 'footnotes' ),
 
 				// Enable scroll duration asymmetricity.
-				'label-scroll-asymmetricity'   => $this->add_label( Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, __( 'Enable asymmetric scroll durations:', 'footnotes' ) ),
-				'scroll-asymmetricity'         => $this->add_select_box( Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, $l_arr_enable ),
-				'notice-scroll-asymmetricity'  => __( 'With this option enabled, scrolling up may take longer than down, or conversely.', 'footnotes' ),
+				'label-scroll-asymmetricity'  => $this->add_label( Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, __( 'Enable asymmetric scroll durations:', 'footnotes' ) ),
+				'scroll-asymmetricity'        => $this->add_select_box( Footnotes_Settings::C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY, $l_arr_enable ),
+				'notice-scroll-asymmetricity' => __( 'With this option enabled, scrolling up may take longer than down, or conversely.', 'footnotes' ),
 
-				'label-scroll-down-duration'   => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, __( 'Scroll-down duration:', 'footnotes' ) ),
-				'scroll-down-duration'         => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, 0, 20000 ),
-				'notice-scroll-down-duration'  => __( 'milliseconds', 'footnotes' ),
+				'label-scroll-down-duration'  => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, __( 'Scroll-down duration:', 'footnotes' ) ),
+				'scroll-down-duration'        => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DURATION, 0, 20000 ),
+				'notice-scroll-down-duration' => __( 'milliseconds', 'footnotes' ),
 
-				'label-scroll-down-delay'      => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, __( 'Scroll-down delay:', 'footnotes' ) ),
-				'scroll-down-delay'            => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, 0, 20000 ),
-				'notice-scroll-down-delay'     => __( 'milliseconds. Useful to see the effect on input elements when referrers without hard links are clicked in form labels.', 'footnotes' ),
+				'label-scroll-down-delay'     => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, __( 'Scroll-down delay:', 'footnotes' ) ),
+				'scroll-down-delay'           => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DOWN_DELAY, 0, 20000 ),
+				'notice-scroll-down-delay'    => __( 'milliseconds. Useful to see the effect on input elements when referrers without hard links are clicked in form labels.', 'footnotes' ),
 
-				'label-scroll-up-delay'        => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, __( 'Scroll-up delay:', 'footnotes' ) ),
-				'scroll-up-delay'              => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, 0, 20000 ),
-				'notice-scroll-up-delay'       => __( 'milliseconds. Less useful than the scroll-down delay.', 'footnotes' ),
+				'label-scroll-up-delay'       => $this->add_label( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, __( 'Scroll-up delay:', 'footnotes' ) ),
+				'scroll-up-delay'             => $this->add_num_box( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_UP_DELAY, 0, 20000 ),
+				'notice-scroll-up-delay'      => __( 'milliseconds. Less useful than the scroll-down delay.', 'footnotes' ),
 
 			)
 		);
@@ -683,9 +683,9 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	public function excerpts() {
 		// Options for options select box.
 		$l_arr_excerpt_mode = array(
-			'yes'     => __( 'Yes, generate excerpts from posts with effectively processed footnotes and other markup', 'footnotes' ),
-			'no'      => __( 'No, generate excerpts from posts but remove all footnotes and output plain text', 'footnotes' ),
-			'manual'  => __( 'Yes but run the process only to display tooltips in manual excerpts with footnote short codes', 'footnotes' ),
+			'yes'    => __( 'Yes, generate excerpts from posts with effectively processed footnotes and other markup', 'footnotes' ),
+			'no'     => __( 'No, generate excerpts from posts but remove all footnotes and output plain text', 'footnotes' ),
+			'manual' => __( 'Yes but run the process only to display tooltips in manual excerpts with footnote short codes', 'footnotes' ),
 		);
 
 		// Load template file.

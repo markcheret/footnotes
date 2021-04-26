@@ -258,7 +258,11 @@ class Footnotes {
 				 */
 				wp_enqueue_script(
 					'mci-footnotes-jquery-tools',
+<<<<<<< HEAD:src/includes/class-footnotes.php
 					plugins_url( 'footnotes/public/js/jquery.tools.min.js' ),
+=======
+					plugins_url( 'footnotes/js/jquery.tools' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js' ),
+>>>>>>> linting:src/class/init.php
 					array(),
 					'1.2.7.redacted.2',
 					false
@@ -402,7 +406,7 @@ class Footnotes {
 			 * Enqueues external stylesheets, ONLY in development now.
 			 *
 			 * @since 2.1.4  optionally enqueue an extra stylesheet.
-		   *
+			 *
 			 * This optional layout fix is useful by lack of layout support.
 			 */
 			wp_enqueue_style(

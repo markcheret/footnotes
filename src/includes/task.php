@@ -948,7 +948,7 @@ class Footnotes_Task {
 					 * Alternative tooltips.
 					 *
 					 * To streamline internal CSS, immutable rules are in external stylesheet.
-				   *
+					 *
 					 * @see dev-tooltips-alternative.css.
 					 */
 				} else {
@@ -1285,7 +1285,7 @@ class Footnotes_Task {
 		);
 
 		// Prevent the footnotes from altering the excerpt: previously hard-coded '5ED84D6'.
-		$l_int_placeholder = '@' . mt_rand( 100000000, 2147483647 ) . '@';
+		$l_int_placeholder = '@' . wp_rand( 100000000, 2147483647 ) . '@';
 		$p_str_content     = preg_replace(
 			'#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#',
 			$l_int_placeholder,
@@ -2414,7 +2414,7 @@ class Footnotes_Task {
 		 * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
 		 *
 		 * @since 2.1.1
-	   */
+		 */
 		$l_bool_combine_identical_footnotes = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) );
 
 		// AMP compatibility requires a full set of AMP compatible table row templates.

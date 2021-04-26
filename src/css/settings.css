@@ -215,7 +215,7 @@ significantly increased from 4 to 18 as of v2.4.0.
 
 Localized notices are dropped to ease translators’ task.
 CSS classes are listed directly in the template
-templates/dashboard/customize-css.html
+admin/partials/customize-css.html
 
 For better maintainability and readability of the source
 list, the </p> end tags are omitted per HTML5 standard:

@@ -7,7 +7,7 @@
  * Since: 1.0
  *
  *     Classes recommended for Custom CSS:
- *     @see templates/dashboard/customize-css-new.html
+ *     @see admin/partials/customize-css-new.html
  *
  * System of unified minified style sheets tailored to the needs of the instance.
  *
@@ -182,8 +182,8 @@
 /**
  * Footnote referrers and tooltips
  *
- * @see templates/public/footnote.html
- * @see templates/public/footnote-alternative.html
+ * @see public/partials/footnote.html
+ * @see public/partials/footnote-alternative.html
  *
  * .footnote_referrer            = enclosing <span>
  * .footnote_plugin_tooltip_text = inner <sup>
@@ -240,11 +240,11 @@
 Footnote reference container
 
 Templates:
-templates/public/reference-container.html
-templates/public/reference-container-body.html
-templates/public/reference-container-combi.html
-templates/public/reference-container-switch.html
-templates/public/reference-container-3column.html
+public/partials/reference-container.html
+public/partials/reference-container-body.html
+public/partials/reference-container-combi.html
+public/partials/reference-container-switch.html
+public/partials/reference-container-3column.html
 
 Optional responsive basic page layout support
 stylesheets:

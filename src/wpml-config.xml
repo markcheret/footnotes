@@ -1,7 +1,0 @@
-<wpml-config>
-	<admin-texts>
-		<key name="footnotes_storage">
-		    <key name="footnote_inputfield_references_label" />
-		</key>
-	</admin-texts>
-</wpml-config>

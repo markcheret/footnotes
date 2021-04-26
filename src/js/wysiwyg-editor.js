@@ -66,7 +66,7 @@
       return {
         longname: 'Inserts the Footnotes short code.',
         author: 'Mark Cheret',
-        authorurl: 'https://cheret.org/footnotes/',
+        authorurl: 'https://cheret.tech/footnotes/',
         infourl: 'https://wordpress.org/plugins/footnotes/',
         version: '2.7.4d',
       };

@@ -1,15 +1,16 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable Squiz.Commenting.FileComment.Missing
 /**
- * Includes the Class to handle the WYSIWYG-Buttons.
+ * File provides WYSIWYG editor integration.
  *
- * @filesource
- * @package footnotes
- * @since 1.5.0
+ * @since      1.5.0
+ *
+ * @package    footnotes
+ * @subpackage footnotes/admin
  */
 
-require_once dirname( __FILE__ ) . '/config.php';
-require_once dirname( __FILE__ ) . '/settings.php';
-require_once dirname( __FILE__ ) . '/template.php';
+require_once dirname( __FILE__, 2 ) . '/includes/class-footnotes-config.php';
+require_once dirname( __FILE__, 2 ) . '/includes/class-footnotes-settings.php';
+require_once dirname( __FILE__, 2 ) . '/includes/class-footnotes-template.php';
 
 /**
  * Handles the WSYIWYG-Buttons.

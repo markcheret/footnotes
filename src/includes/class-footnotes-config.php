@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php
 /**
  * Includes the Plugin Constants class to load all Plugin constant vars like Plugin name, etc.
  *

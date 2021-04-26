@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php
 /**
  * Includes the Template Engine to load and handle all Template files of the Plugin.
  *
@@ -198,7 +198,7 @@ class Footnotes_Template {
 		 *  return 'template_parts/footnotes/';
 		 * } );
 		 */
-		$template_directory = apply_filters( 'footnotes_template_directory', 'footnotes/' );
+		$template_directory = apply_filters( '', 'footnotes/' );
 		$custom_directory   = apply_filters( 'footnotes_custom_template_directory', 'footnotes-custom/' );
 		$template_name      = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
 

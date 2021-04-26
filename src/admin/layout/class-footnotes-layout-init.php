@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+<?php // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 /**
  * Includes the Plugin settings menu.
  *
@@ -7,8 +7,8 @@
  * @since  1.5.0
  */
 
-require_once dirname( __FILE__, 2) . '/settings.php';
-require_once dirname( __FILE__ ) . '/subpage-main.php';
+require_once dirname( __FILE__, 3 ) . '/includes/class-footnotes-settings.php';
+require_once dirname( __FILE__ ) . '/class-footnotes-layout-settings.php';
 
 /**
  * Handles the Settings interface of the Plugin.

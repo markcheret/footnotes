@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php // phpcs:disable Squiz.Commenting.FileComment.Missing
 /**
  * Includes the Settings class to handle all Plugin settings.
  *
@@ -13,7 +13,7 @@
  * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
  */
 
-require_once dirname( __FILE__ ) . '/convert.php';
+require_once dirname( __FILE__ ) . '/class-footnotes-convert.php';
 
 /**
  * Loads the settings values, sets to default values if undefined.

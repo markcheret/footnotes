@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.EscapeOutput.OutputNotEscaped
+<?php // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Includes the Plugin Widget to put the Reference Container to the Widget area.
  *
@@ -7,9 +7,7 @@
  * @since 1.5.0
  */
 
-require_once dirname( __FILE__, 2 ) . '/config.php';
-require_once dirname( __FILE__, 2 ) . '/settings.php';
-require_once dirname( __FILE__ ) . '/base.php';
+require_once dirname( __FILE__ ) . '/class-footnotes-widget-base.php';
 
 /**
  * Registers a Widget to put the Reference Container to the widget area.

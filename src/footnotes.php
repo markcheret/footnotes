@@ -28,8 +28,6 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
-declare(strict_types=1);
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -89,9 +87,5 @@ function run_footnotes() {
 	global $footnotes;
 	$footnotes = new Footnotes();
 	$footnotes->run();
-
-	// Add the links to the dashboard plugins page.
-	// TODO: Move this somewhere more appropriate.
-	add_filter( 'plugin_action_links_footnotes/footnotes.php', array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
 }
 run_footnotes();

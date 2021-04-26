@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName
+<?php
 /**
  * Includes the Convert Class.
  *

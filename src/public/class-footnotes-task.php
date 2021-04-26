@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.EscapeOutput.OutputNotEscaped
+<?php // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Includes the core function of the Plugin - Search and Replace the Footnotes.
  *
@@ -81,16 +81,6 @@
  * @since 2.5.11 Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
  * @since 2.5.14 Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema harmonization, thanks to @patrick_here @alifarahani8000 @gova bug reports.
  */
-
-// If called directly, abort.
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
-
-require_once dirname( __FILE__ ) . '/config.php';
-require_once dirname( __FILE__ ) . '/convert.php';
-require_once dirname( __FILE__ ) . '/settings.php';
-require_once dirname( __FILE__ ) . '/template.php';
 
 /**
  * Searches and replaces the footnotes and generates the reference container.
@@ -403,6 +393,22 @@ class Footnotes_Task {
 	public static $a_bool_syntax_error_flag = true;
 
 	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    2.8.0
+	 */
+	public function __construct() {
+		// TODO: Reorg dependencies.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-template.php';
+		
+		// TODO: Move to `Footnotes_Loader`.
+		$this->register_hooks();
+	}
+	
+	/**
 	 * Register WordPress hooks to replace Footnotes in the content of a public page.
 	 *
 	 * @since 1.5.0
@@ -421,7 +427,6 @@ class Footnotes_Task {
 	 * @since 2.5.1  Bugfix: Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report.
 	 */
 	public function register_hooks() {
-
 		// Get values from settings.
 		$l_int_the_title_priority    = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL ) );
 		$l_int_the_content_priority  = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL ) );
@@ -762,7 +767,7 @@ class Footnotes_Task {
 		self::$a_bool_hard_links_enabled = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE ) );
 
 		// Correct hard links enabled status depending on AMP compatible or alternative reference container enabled status.
-		if ( Footnotes::$a_bool_amp_enabled || 'jquery' !== Footnotes::$a_str_script_mode ) {
+		if ( Footnotes_Public::$a_bool_amp_enabled || 'jquery' !== Footnotes_Public::$a_str_script_mode ) {
 			self::$a_bool_hard_links_enabled = true;
 		}
 
@@ -776,7 +781,7 @@ class Footnotes_Task {
 		/*
 		 * Tooltips.
 		 */
-		if ( Footnotes::$a_bool_tooltips_enabled ) {
+		if ( Footnotes_Public::$a_bool_tooltips_enabled ) {
 			echo '.footnote_tooltip {';
 
 			/**
@@ -856,7 +861,7 @@ class Footnotes_Task {
 			 *
 			 * @since 2.2.5
 			 */
-			if ( ! Footnotes::$a_bool_alternative_tooltips_enabled && ! Footnotes::$a_bool_amp_enabled ) {
+			if ( ! Footnotes_Public::$a_bool_alternative_tooltips_enabled && ! Footnotes_Public::$a_bool_amp_enabled ) {
 
 				/**
 				 * Dimensions of jQuery tooltips.
@@ -932,7 +937,7 @@ class Footnotes_Task {
 				 *
 				 * @see dev-amp-tooltips.css.
 				 */
-				if ( Footnotes::$a_bool_amp_enabled ) {
+				if ( Footnotes_Public::$a_bool_amp_enabled ) {
 
 					echo 'span.footnote_referrer > span.footnote_tooltip {';
 					echo 'transition-delay: ' . $l_int_fade_out_delay . 'ms;';
@@ -997,7 +1002,7 @@ class Footnotes_Task {
 		 * The script for alternative tooltips is printed formatted, not minified,
 		 * for transparency. It isn’t indented though (the PHP open tag neither).
 		 */
-		if ( Footnotes::$a_bool_alternative_tooltips_enabled ) {
+		if ( Footnotes_Public::$a_bool_alternative_tooltips_enabled ) {
 
 			// Start internal script.
 			?>
@@ -1727,7 +1732,7 @@ class Footnotes_Task {
 		if ( ! $p_bool_hide_footnotes_text ) {
 
 			// Whether AMP compatibility mode is enabled.
-			if ( Footnotes::$a_bool_amp_enabled ) {
+			if ( Footnotes_Public::$a_bool_amp_enabled ) {
 
 				// Whether first clicking a referrer needs to expand the reference container.
 				if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
@@ -1740,7 +1745,7 @@ class Footnotes_Task {
 					// Load 'public/partials/amp-footnote.html'.
 					$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'amp-footnote' );
 				}
-			} elseif ( Footnotes::$a_bool_alternative_tooltips_enabled ) {
+			} elseif ( Footnotes_Public::$a_bool_alternative_tooltips_enabled ) {
 
 				// Load 'public/partials/footnote-alternative.html'.
 				$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'footnote-alternative' );
@@ -1964,7 +1969,7 @@ class Footnotes_Task {
 				 * This is equivalent to the WordPress default excerpt generation, i.e. without a
 				 * custom excerpt and without a delimiter. But WordPress does word count, usually 55.
 				 */
-				if ( Footnotes::$a_bool_tooltips_enabled && $l_bool_enable_excerpt ) {
+				if ( Footnotes_Public::$a_bool_tooltips_enabled && $l_bool_enable_excerpt ) {
 					$l_str_dummy_text = wp_strip_all_tags( $l_str_footnote_text );
 					if ( is_int( $l_int_max_length ) && strlen( $l_str_dummy_text ) > $l_int_max_length ) {
 						$l_str_excerpt_text  = substr( $l_str_dummy_text, 0, $l_int_max_length );
@@ -1974,7 +1979,7 @@ class Footnotes_Task {
 						$l_str_excerpt_text .= ' class="footnote_tooltip_continue" ';
 
 						// If AMP compatibility mode is enabled.
-						if ( Footnotes::$a_bool_amp_enabled ) {
+						if ( Footnotes_Public::$a_bool_amp_enabled ) {
 
 							// If the reference container is also collapsed by default.
 							if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
@@ -2097,7 +2102,7 @@ class Footnotes_Task {
 				}
 
 				// Determine tooltip content.
-				if ( Footnotes::$a_bool_tooltips_enabled ) {
+				if ( Footnotes_Public::$a_bool_tooltips_enabled ) {
 					$l_str_tooltip_content = $l_bool_has_tooltip_text ? $l_str_tooltip_text : $l_str_excerpt_text;
 					/**
 					 * Ensures paragraph separation
@@ -2119,7 +2124,7 @@ class Footnotes_Task {
 				 * @since 2.5.6
 				 */
 				$l_str_tooltip_style = '';
-				if ( Footnotes::$a_bool_alternative_tooltips_enabled && Footnotes::$a_bool_tooltips_enabled ) {
+				if ( Footnotes_Public::$a_bool_alternative_tooltips_enabled && Footnotes_Public::$a_bool_tooltips_enabled ) {
 					$l_int_tooltip_length = strlen( wp_strip_all_tags( $l_str_tooltip_content ) );
 					if ( $l_int_tooltip_length < 70 ) {
 						$l_str_tooltip_style  = ' style="width: ';
@@ -2151,7 +2156,7 @@ class Footnotes_Task {
 				$l_obj_template->reload();
 
 				// If tooltips are enabled but neither AMP nor alternative are.
-				if ( Footnotes::$a_bool_tooltips_enabled && ! Footnotes::$a_bool_amp_enabled && ! Footnotes::$a_bool_alternative_tooltips_enabled ) {
+				if ( Footnotes_Public::$a_bool_tooltips_enabled && ! Footnotes_Public::$a_bool_amp_enabled && ! Footnotes_Public::$a_bool_alternative_tooltips_enabled ) {
 
 					$l_int_offset_y          = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y ) );
 					$l_int_offset_x          = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X ) );
@@ -2418,7 +2423,7 @@ class Footnotes_Task {
 		$l_bool_combine_identical_footnotes = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) );
 
 		// AMP compatibility requires a full set of AMP compatible table row templates.
-		if ( Footnotes::$a_bool_amp_enabled ) {
+		if ( Footnotes_Public::$a_bool_amp_enabled ) {
 
 			// When combining identical footnotes is turned on, another template is needed.
 			if ( $l_bool_combine_identical_footnotes ) {
@@ -2802,7 +2807,7 @@ class Footnotes_Task {
 
 		// Select the reference container template.
 		// Whether AMP compatibility mode is enabled.
-		if ( Footnotes::$a_bool_amp_enabled ) {
+		if ( Footnotes_Public::$a_bool_amp_enabled ) {
 
 			// Whether the reference container is collapsed by default.
 			if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
@@ -2815,7 +2820,7 @@ class Footnotes_Task {
 				// Load 'public/partials/amp-reference-container.html'.
 				$l_obj_template_container = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container' );
 			}
-		} elseif ( 'js' === Footnotes::$a_str_script_mode ) {
+		} elseif ( 'js' === Footnotes_Public::$a_str_script_mode ) {
 
 			// Load 'public/partials/js-reference-container.html'.
 			$l_obj_template_container = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'js-reference-container' );
@@ -2832,7 +2837,7 @@ class Footnotes_Task {
 		$l_int_scroll_up_delay      = '';
 		$l_int_scroll_up_duration   = '';
 
-		if ( 'jquery' === Footnotes::$a_str_script_mode ) {
+		if ( 'jquery' === Footnotes_Public::$a_str_script_mode ) {
 
 			$l_int_scroll_offset      = ( self::$a_int_scroll_offset / 100 );
 			$l_int_scroll_up_duration = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_SCROLL_DURATION ) );

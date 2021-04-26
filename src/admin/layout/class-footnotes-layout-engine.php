@@ -1,4 +1,4 @@
-<?php // phpcs:disable WordPress.Files.FileName.InvalidClassFileName, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped
+<?php // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
  * Includes Layout Engine for the admin dashboard.
  *
@@ -13,11 +13,8 @@
  *
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
  */
- 
-require_once dirname( __FILE__, 2) . '/config.php';
-require_once dirname( __FILE__, 2) . '/convert.php';
-require_once dirname( __FILE__, 2) . '/settings.php';
-require_once dirname( __FILE__ ) . '/init.php';
+
+require_once dirname( __FILE__ ) . '/class-footnotes-layout-init.php';
 
 /**
  * Layout Engine for the administration dashboard.
@@ -214,7 +211,7 @@ abstract class Footnotes_Layout_Engine {
 		 * automated update of version number for cache busting.
 		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
 		 */
-		if ( true === PRODUCTION_ENV ) {
+		/*if ( true === PRODUCTION_ENV ) {
 
 			wp_register_style( 'footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_FOOTNOTES_VERSION );
 
@@ -224,7 +221,7 @@ abstract class Footnotes_Layout_Engine {
 
 		}
 
-		wp_enqueue_style( 'footnotes-admin' );
+		wp_enqueue_style( 'footnotes-admin' );*/
 	}
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing

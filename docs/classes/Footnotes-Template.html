@@ -51,9 +51,18 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
-                                    </section>
+            </section>
 
+        <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
+                        <ul class="phpdocumentor-list">
+                                    <li><a href="packages/footnotes-footnotesincludes.html"><abbr title="\footnotes\footnotesincludes">footnotesincludes</abbr></a></li>
+                                    <li><a href="packages/footnotes-footnotesadmin.html"><abbr title="\footnotes\footnotesadmin">footnotesadmin</abbr></a></li>
+                                    <li><a href="packages/footnotes-footnotespublic.html"><abbr title="\footnotes\footnotespublic">footnotespublic</abbr></a></li>
+                            </ul>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -78,12 +87,18 @@
     Footnotes_Template
 
     
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
+                            </ul>
+        </div>
     
     
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">19</span>
 </aside>
@@ -124,16 +139,16 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/Footnotes-Template.html#constant_C_STR_DASHBOARD">C_STR_DASHBOARD</a>
     <span>
-        &nbsp;= &#039;dashboard&#039;                    </span>
+        &nbsp;= &#039;admin/partials&#039;                    </span>
 </dt>
-<dd>Directory name for dashboard templates.</dd>
+<dd>Directory name for dashboard partials.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/Footnotes-Template.html#constant_C_STR_PUBLIC">C_STR_PUBLIC</a>
     <span>
-        &nbsp;= &#039;public&#039;                    </span>
+        &nbsp;= &#039;public/partials&#039;                    </span>
 </dt>
-<dd>Directory name for public templates.</dd>
+<dd>Directory name for public partials.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Footnotes-Template.html#property_plugin_directory">$plugin_directory</a>
@@ -215,18 +230,18 @@
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">27</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Directory name for dashboard templates.</p>
+        <p class="phpdocumentor-summary">Directory name for dashboard partials.</p>
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">C_STR_DASHBOARD</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;dashboard&#039;</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;admin/partials&#039;</span>
 </code>
 
 
@@ -257,18 +272,18 @@
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">35</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Directory name for public templates.</p>
+        <p class="phpdocumentor-summary">Directory name for public partials.</p>
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">C_STR_PUBLIC</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;public&#039;</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;public/partials&#039;</span>
 </code>
 
 
@@ -314,7 +329,7 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">60</span>
 </aside>
@@ -361,7 +376,7 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">43</span>
 </aside>
@@ -408,7 +423,7 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">51</span>
 </aside>
@@ -459,7 +474,7 @@
         <a href="classes/Footnotes-Template.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">77</span>
 </aside>
@@ -566,7 +581,7 @@
         <a href="classes/Footnotes-Template.html#method_get_content" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">143</span>
 </aside>
@@ -616,7 +631,7 @@
         <a href="classes/Footnotes-Template.html#method_get_template" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">190</span>
 </aside>
@@ -726,7 +741,7 @@
         <a href="classes/Footnotes-Template.html#method_process_template" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">161</span>
 </aside>
@@ -837,7 +852,7 @@
         <a href="classes/Footnotes-Template.html#method_reload" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">133</span>
 </aside>
@@ -886,7 +901,7 @@
         <a href="classes/Footnotes-Template.html#method_replace" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/template.php"><a href="files/src-class-template.html"><abbr title="src/class/template.php">template.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-template.php"><a href="files/src-includes-class-footnotes-template.html"><abbr title="src/includes/class-footnotes-template.php">class-footnotes-template.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">111</span>
 </aside>

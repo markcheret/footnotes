@@ -190,38 +190,10 @@ abstract class Footnotes_Layout_Engine {
 	 * @since  1.5.0
 	 */
 	private function append_scripts() {
+		// TODO: Move to `Footnotes_Admin`.
 		wp_enqueue_script( 'postbox' );
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-
-		/**
-		 * Registers and enqueues the dashboard stylesheet.
-		 *
-		 * - Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
-		 *
-		 * @since 2.5.5
-		 *
-		 * @reporter @docteurfitness
-		 * @link https://wordpress.org/support/topic/simply-speed-optimisation/
-		 *
-		 * See the public stylesheet enqueuing:
-		 * @see class/init.php
-		 *
-		 * added version # after changes started to settings.css from 2.1.2 on.
-		 * automated update of version number for cache busting.
-		 * No need to use '-styles' in the handle, as '-css' is appended automatically.
-		 */
-		/*if ( true === PRODUCTION_ENV ) {
-
-			wp_register_style( 'footnotes-admin', plugins_url( 'footnotes/css/settings.min.css' ), array(), C_STR_FOOTNOTES_VERSION );
-
-		} else {
-
-			wp_register_style( 'footnotes-admin', plugins_url( 'footnotes/css/settings.css' ), array(), C_STR_FOOTNOTES_VERSION );
-
-		}
-
-		wp_enqueue_style( 'footnotes-admin' );*/
 	}
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing

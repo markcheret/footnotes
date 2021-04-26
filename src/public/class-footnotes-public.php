@@ -96,7 +96,7 @@ class Footnotes_Public {
 		$this->version     = $version;
 
 		$this->load_dependencies();
-		
+
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
 		self::$a_bool_amp_enabled                  = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
 		self::$a_bool_tooltips_enabled             = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );

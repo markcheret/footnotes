@@ -403,11 +403,11 @@ class Footnotes_Task {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-template.php';
-		
+
 		// TODO: Move to `Footnotes_Loader`.
 		$this->register_hooks();
 	}
-	
+
 	/**
 	 * Register WordPress hooks to replace Footnotes in the content of a public page.
 	 *

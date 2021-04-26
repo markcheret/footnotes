@@ -21,14 +21,16 @@
  * License: GPL v3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
-
+ 
+declare(strict_types=1);
+ 
 /**
  * Defines the current Plugin version.
  *
  * @since 2.1.4
  * @var string
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.7.3' );
+const C_STR_FOOTNOTES_VERSION = '2.7.3';
 
 /**
  * Defines the current environment ('development' or 'production').
@@ -38,21 +40,21 @@ define( 'C_STR_FOOTNOTES_VERSION', '2.7.3' );
  * @since 2.5.5
  * @var bool
  */
-define( 'PRODUCTION_ENV', false );
+const PRODUCTION_ENV = false;
 
 /**
- * - Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
+ * Defines the Plugin entry point (relative to the `wp-content/` dir).
  *
  * @since 2.8.0
  * @var string
  */
+const PLUGIN_ENTRYPOINT = 'footnotes/footnotes.php';
 
 // Get all common classes and functions.
 require_once dirname( __FILE__ ) . '/includes.php';
 
-// Add Plugin Links to the "installed plugins" page.
-$l_str_plugin_file = 'footnotes/footnotes.php';
-add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
+// Add links to the ‘Installed Plugins’ page on the WordPress dashboard.
+add_filter( "plugin_action_links_" . PLUGIN_ENTRYPOINT, array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
 
 // Initialize the Plugin.
 $g_obj_mci_footnotes = new Footnotes();

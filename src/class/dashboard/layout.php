@@ -495,7 +495,9 @@ abstract class Footnotes_Layout_Engine {
 				'<option value="%s" %s>%s</option>',
 				$l_str_value,
 				// Only check for equality, not identity, WRT backlink symbol arrows.
+				// phpcs:disable WordPress.PHP.StrictComparisons.LooseComparison
 				$l_str_value == $l_arr_data['value'] ? 'selected' : '',
+				// phpcs:enable WordPress.PHP.StrictComparisons.LooseComparison
 				$l_str_caption
 			);
 		}

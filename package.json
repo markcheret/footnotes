@@ -1,11 +1,12 @@
 {
+  "name": "footnotes",
   "scripts": {
     "cm": "cz",
     "format": "npm run format:js",
     "format:fix": "npm run format:js:fix",
-    "format:js": "prettier --config .prettierrc './src/**/*.js'",
+    "format:js": "prettier './src/**/*.js'",
     "format:js:fix": "npm run format:js -- --write",
-    "lint": "npm run lint:js && npm run lint:css && npm run lint:md",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:md && npm run lint:html",
     "lint:fix": "npm run lint:js:fix && npm run lint:css:fix && npm run lint:md:fix",
     "lint:php": "composer run lint:php",
     "lint:php:fix": "composer run lint:php:fix",
@@ -15,6 +16,9 @@
     "lint:css:fix": "npm run lint:css -- --fix",
     "lint:md": "markdownlint '*.md'",
     "lint:md:fix": "npm run lint:md -- --fix",
+    "lint:html": "htmlhint ./src/**/*.html",
+    "validate": "npm run validate:json && npm run validate:yaml",
+    "validate:yaml": "yaml-validator ./.github/workflows/*.yml",
     "minify": "npm run minify:css && npm run minify:js",
     "minify:css": "for f in ./tmp/css/*.css; do npx minify $f > ./dist/css/$(basename $f .css).min.css; done",
     "minify:js": "for f in ./src/js/*.js; do npx minify $f > ./dist/js/$(basename $f .js).min.js; done"
@@ -38,26 +42,89 @@
     ],
     "*.md": [
       "npm run lint:md"
+    ],
+    "*.htm(l)?": [
+      "npm run lint:html"
+    ],
+    "*.y(a)?ml": [
+      "npm run validate:yaml"
     ]
   },
   "devDependencies": {
+    "@wordpress/eslint-plugin": "^9.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
-    "eslint-config-wordpress": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "htmlhint": "^0.14.2",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "markdownlint-cli": "^0.27.1",
     "minify": "^7.0.1",
+    "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
     "stylelint": "^13.12.0",
-    "stylelint-config-wordpress": "^17.0.0"
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-wordpress": "^17.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.19.0",
+    "yaml-validator": "^3.0.1"
   },
   "license": "GPL-3.0",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "stylelint-a11y": "^1.2.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "jquery": true,
+      "es6": true
+    },
+    "extends": [
+      "plugin:@wordpress/eslint-plugin/esnext",
+      "plugin:@wordpress/eslint-plugin/jsdoc",
+      "plugin:@wordpress/eslint-plugin/i18n",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {}
+  },
+  "eslintIgnore": [
+    "tmp/",
+    "*.min.js",
+    "jquery.tools.js"
+  ],
+  "prettier": {
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 2
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-wordpress",
+      "stylelint-config-recommended",
+      "stylelint-a11y/recommended",
+      "stylelint-config-rational-order"
+    ],
+    "plugins": [
+      "stylelint-scss",
+      "stylelint-a11y",
+      "stylelint-order"
+    ],
+    "rules": {
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true
+    },
+    "ignoreFiles": [
+      "tmp/",
+      "*.min.css"
+    ]
   }
 }

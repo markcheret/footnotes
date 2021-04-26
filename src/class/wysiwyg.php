@@ -74,7 +74,7 @@ class Footnotes_WYSIWYG {
 	 * @return array
 	 */
 	public static function include_scripts( $p_arr_plugins ) {
-		$p_arr_plugins[ Footnotes_Config::C_STR_PLUGIN_NAME ] = plugins_url( '/../js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
+		$p_arr_plugins[ Footnotes_Config::C_STR_PLUGIN_NAME ] = plugins_url( 'js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', dirname( __FILE__ ) );
 		return $p_arr_plugins;
 	}
 
@@ -92,7 +92,7 @@ class Footnotes_WYSIWYG {
 			$l_str_starting_tag = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
 			$l_str_ending_tag   = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
-		echo json_encode(
+		echo wp_json_encode(
 			array(
 				'start' => htmlspecialchars( $l_str_starting_tag ),
 				'end'   => htmlspecialchars( $l_str_ending_tag ),

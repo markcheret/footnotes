@@ -77,16 +77,16 @@
  */
 
 .footnotes_validation_error {
-	border: 4px solid red;
-	padding: 20px 40px;
 	margin: 20px 0;
-	background: #f005;
+	padding: 20px 40px;
 	text-align: start;
+	background: #f005;
+	border: 4px solid red;
 }
 
 .footnotes_validation_error p:first-child {
-	font-size: 20px;
 	font-weight: bold;
+	font-size: 20px;
 	text-align: center;
 }
 
@@ -96,8 +96,8 @@
 }
 
 .footnotes_validation_error p:nth-child(3) {
-	font-size: 14px;
 	font-weight: bold;
+	font-size: 14px;
 }
 
 .footnotes_validation_error p:last-child {
@@ -140,8 +140,8 @@
 
 .footnote_url_wrap {
 	word-wrap: anywhere;
-	overflow-wrap: anywhere;
 	word-break: break-all;
+	overflow-wrap: anywhere;
 }
 
 /**
@@ -205,7 +205,23 @@
 .main-content .footnote_referrer > a:link,
 .main-content .footnote_referrer > a:hover,
 .main-content .footnote_plugin_tooltip_text,
-.main-content .footnote_plugin_tooltip_text:hover {
+.main-content .footnote_plugin_tooltip_text:hover,
+.footnote_referrer,
+.footnote_referrer:link,
+.footnote_referrer:focus,
+.footnote_referrer > a,
+.footnote_referrer > a:link,
+.footnote_referrer > a:focus,
+.footnote_plugin_tooltip_text,
+.footnote_plugin_tooltip_text:focus,
+.main-content .footnote_referrer,
+.main-content .footnote_referrer:link,
+.main-content .footnote_referrer:focus,
+.main-content .footnote_referrer > a,
+.main-content .footnote_referrer > a:link,
+.main-content .footnote_referrer > a:focus,
+.main-content .footnote_plugin_tooltip_text,
+.main-content .footnote_plugin_tooltip_text:focus {
 	text-decoration: none !important;
 	border-bottom: none !important;
 	box-shadow: none !important;
@@ -230,8 +246,8 @@
  */
 
 .footnote_plugin_tooltip_text {
-	line-height: 0;
 	position: relative !important;
+	line-height: 0;
 	cursor: pointer;
 }
 
@@ -298,26 +314,26 @@ Classes:
 }
 
 .footnote_container_prepare > p {
-	line-height: 1.3 !important;
+
+	/* bottom border optional since 2.2.5 */
+	display: block !important;
 	margin-top: 1em !important;
 	margin-bottom: 0.25em !important;
 	padding: 0 !important;
 	font-weight: normal !important;
-
-	/* bottom border optional since 2.2.5 */
-	display: block !important;
+	line-height: 1.3 !important;
+	text-align: start !important;
+	vertical-align: middle;
 	-webkit-margin-before: 0.83em !important;
 	-webkit-margin-after: 0.83em !important;
 	-webkit-margin-start: 0 !important;
 	-webkit-margin-end: 0 !important;
-	text-align: start !important;
-	vertical-align: middle;
 }
 
 .footnote_container_prepare > p > span:first-child,
 .footnote_container_prepare > p > span:nth-child(3) {
-	text-align: start !important;
 	font-size: 1.5em !important;
+	text-align: start !important;
 }
 
 /*
@@ -326,11 +342,11 @@ fully clickable, not sign only
 */
 
 .footnote_reference_container_collapse_button {
-	cursor: pointer;
 	padding: 0 0.5em;
 	font-size: 1.3em !important;
-	vertical-align: 2px;
 	text-decoration: none !important;
+	vertical-align: 2px;
+	cursor: pointer;
 }
 
 h2 > .footnote_reference_container_collapse_button,
@@ -371,13 +387,13 @@ table
  */
 
 .footnotes_table caption.accessibility {
-	text-align: start;
-	margin-top: -2px !important;
-	height: 1px !important;
 	width: 1px !important;
-	white-space: nowrap !important;
+	height: 1px !important;
+	margin-top: -2px !important;
 	overflow: hidden !important;
 	color: #fff0 !important;
+	white-space: nowrap !important;
+	text-align: start;
 	background-color: #fff0 !important;
 }
 
@@ -429,10 +445,10 @@ table
 .footnote_plugin_index_combi,
 .footnote_plugin_symbol,
 .footnote_plugin_text {
-	border: none !important;
+	padding: 5px 6px 10px 0 !important;
 	text-align: start !important;
 	vertical-align: top !important;
-	padding: 5px 6px 10px 0 !important;
+	border: none !important;
 }
 
 html[dir="rtl"] .footnote_plugin_index,
@@ -476,7 +492,10 @@ when hovered in some themes, not in others:
 
 .footnote_backlink:hover,
 .footnote_plugin_link:hover,
-.footnote_plugin_text a:hover {
+.footnote_plugin_text a:hover,
+.footnote_backlink:focus,
+.footnote_plugin_link:focus,
+.footnote_plugin_text a:focus {
 	text-decoration: unset;
 	text-decoration: underline; /*deprioritized to ease customization*/
 }
@@ -497,8 +516,8 @@ These are overridden if settings are enabled.
 
 .footnote_plugin_index,
 .footnote_plugin_index_combi {
-	max-width: 100px;
 	width: 2.5em;
+	max-width: 100px;
 }
 
 /*
@@ -574,9 +593,11 @@ Link color set to inherit, so referrers/numbers are not grayed out.
  */
 
 .footnotes_logo,
-.footnotes_logo:hover {
-	text-decoration: none;
+.footnotes_logo:hover,
+.footnotes_logo,
+.footnotes_logo:focus {
 	font-weight: normal;
+	text-decoration: none;
 }
 
 .footnotes_logo_part1 {

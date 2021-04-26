@@ -1143,7 +1143,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	 * Edited:
 	 * @since 2.1.6  drop localized notices for CSS classes as the number increased to 16
 	 *        list directly in the template, as CSS is in English anyway
-	 * @see templates/dashboard/customize-css.html
+	 * @see admin/partials/customize-css.html
 	 *
 	 * @since 2.2.2  migrate Custom CSS to a dedicated tab
 	 * @since 2.3.0  say 'copy-paste' instead of 'cut and paste' since cutting is not needed
@@ -1320,7 +1320,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	 * @link https://blog.prototypr.io/why-testing-with-real-content-is-better-than-lorem-ipsum-c7c79586ee72
 	 */
 	public function Help() {
-		global $g_obj_mci_footnotes;
+		global $footnotes;
 		// Load footnotes starting and end tag.
 		$l_arr_footnote_starting_tag = $this->load_setting( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
 		$l_arr_footnote_ending_tag   = $this->load_setting( Footnotes_Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
@@ -1356,7 +1356,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 				'end'            => $l_arr_footnote_ending_tag['value'],
 				'example-code'   => $l_str_example,
 				'example-string' => '<br/>' . __( 'will be displayed as:', 'footnotes' ),
-				'example'        => $g_obj_mci_footnotes->a_obj_task->exec( $l_str_example, true ),
+				'example'        => $footnotes->a_obj_task->exec( $l_str_example, true ),
 				// Translators: %1$s, %2$s: anchor element with hyperlink to the Support Forum.
 				'information'    => sprintf( __( 'For further information please check out our %1$sSupport Forum%2$s on WordPress.org.', 'footnotes' ), '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
 			)
@@ -1376,7 +1376,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 		 * When this callback function was renamed, this call went unnoticed.
 		 * @see class/task.php
 		 */
-		$g_obj_mci_footnotes->a_obj_task->footnotes_output_head();
+		$footnotes->a_obj_task->footnotes_output_head();
 
 		// Display template with replaced placeholders.
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped

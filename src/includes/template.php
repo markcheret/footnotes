@@ -19,20 +19,20 @@
 class Footnotes_Template {
 
 	/**
-	 * Directory name for dashboard templates.
+	 * Directory name for dashboard partials.
 	 *
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const C_STR_DASHBOARD = 'dashboard';
+	const C_STR_DASHBOARD = 'admin/partials';
 
 	/**
-	 * Directory name for public templates.
+	 * Directory name for public partials.
 	 *
 	 * @since 1.5.0
 	 * @var string
 	 */
-	const C_STR_PUBLIC = 'public';
+	const C_STR_PUBLIC = 'public/partials';
 
 	/**
 	 * Contains the content of the template after initialize.
@@ -198,8 +198,8 @@ class Footnotes_Template {
 		 *  return 'template_parts/footnotes/';
 		 * } );
 		 */
-		$template_directory = apply_filters( 'mci_footnotes_template_directory', 'footnotes/templates/' );
-		$custom_directory   = apply_filters( 'mci_footnotes_custom_template_directory', 'footnotes-custom/' );
+		$template_directory = apply_filters( 'footnotes_template_directory', 'footnotes/' );
+		$custom_directory   = apply_filters( 'footnotes_custom_template_directory', 'footnotes-custom/' );
 		$template_name      = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
 
 		/**
@@ -223,10 +223,10 @@ class Footnotes_Template {
 			/**
 			 * Fall back to the templates shipped with the plugin.
 			 */
-		} elseif ( file_exists( $this->plugin_directory . 'templates/' . $template_name ) ) {
-			$located = $this->plugin_directory . 'templates/' . $template_name;
+		} elseif ( file_exists( $this->plugin_directory . $template_name ) ) {
+			$located = $this->plugin_directory . $template_name;
 		}
-
+		
 		return $located;
 	}
 

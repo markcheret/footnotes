@@ -863,7 +863,7 @@ class Footnotes_Task {
 				 *
 				 * Position and timing of jQuery tooltips are script defined.
 				 *
-				 * @see templates/public/tooltip.html.
+				 * @see public/partials/tooltip.html.
 				 */
 				$l_int_max_width = Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
 				if ( ! empty( $l_int_max_width ) && intval( $l_int_max_width ) > 0 ) {
@@ -1732,23 +1732,23 @@ class Footnotes_Task {
 				// Whether first clicking a referrer needs to expand the reference container.
 				if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
 
-					// Load 'templates/public/amp-footnote-expand.html'.
+					// Load 'public/partials/amp-footnote-expand.html'.
 					$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'amp-footnote-expand' );
 
 				} else {
 
-					// Load 'templates/public/amp-footnote.html'.
+					// Load 'public/partials/amp-footnote.html'.
 					$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'amp-footnote' );
 				}
 			} elseif ( Footnotes::$a_bool_alternative_tooltips_enabled ) {
 
-				// Load 'templates/public/footnote-alternative.html'.
+				// Load 'public/partials/footnote-alternative.html'.
 				$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'footnote-alternative' );
 
 				// Else jQuery tooltips are enabled.
 			} else {
 
-				// Load 'templates/public/footnote.html'.
+				// Load 'public/partials/footnote.html'.
 				$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'footnote' );
 
 				// Load tooltip inline script.
@@ -2128,7 +2128,7 @@ class Footnotes_Task {
 					}
 				}
 
-				// Fill in 'templates/public/footnote.html'.
+				// Fill in 'public/partials/footnote.html'.
 				$l_obj_template->replace(
 					array(
 						'link-span'      => self::$a_str_link_span,
@@ -2160,7 +2160,7 @@ class Footnotes_Task {
 					$l_int_fade_out_delay    = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY ) );
 					$l_int_fade_out_duration = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
 
-					// Fill in 'templates/public/tooltip.html'.
+					// Fill in 'public/partials/tooltip.html'.
 					$l_obj_template_tooltip->replace(
 						array(
 							'post_id'           => self::$a_int_post_id,
@@ -2807,22 +2807,22 @@ class Footnotes_Task {
 			// Whether the reference container is collapsed by default.
 			if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) ) ) {
 
-				// Load 'templates/public/amp-reference-container-collapsed.html'.
+				// Load 'public/partials/amp-reference-container-collapsed.html'.
 				$l_obj_template_container = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container-collapsed' );
 
 			} else {
 
-				// Load 'templates/public/amp-reference-container.html'.
+				// Load 'public/partials/amp-reference-container.html'.
 				$l_obj_template_container = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'amp-reference-container' );
 			}
 		} elseif ( 'js' === Footnotes::$a_str_script_mode ) {
 
-			// Load 'templates/public/js-reference-container.html'.
+			// Load 'public/partials/js-reference-container.html'.
 			$l_obj_template_container = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'js-reference-container' );
 
 		} else {
 
-			// Load 'templates/public/reference-container.html'.
+			// Load 'public/partials/reference-container.html'.
 			$l_obj_template_container = new Footnotes_Template( Footnotes_Template::C_STR_PUBLIC, 'reference-container' );
 		}
 

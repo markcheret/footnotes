@@ -71,11 +71,11 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	 * @param mixed $instance The instance of the widget.
 	 */
 	public function widget( $args, $instance ) {
-		global $g_obj_mci_footnotes;
+		global $footnotes;
 		// Reference container positioning is set to "widget area".
 		if ( 'widget' === Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo $g_obj_mci_footnotes->a_obj_task->reference_container();
+			echo $footnotes->a_obj_task->reference_container();
 			// phpcs:enable
 		}
 	}

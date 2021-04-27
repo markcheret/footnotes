@@ -14,6 +14,9 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-footnotes-wi
  * Registers a Widget to put the Reference Container to the widget area.
  *
  * @since 1.5.0
+ *
+ * @package    footnotes
+ * @subpackage public_widget
  */
 class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 

@@ -12,6 +12,9 @@
  * Handles the Settings interface of the Plugin.
  *
  * @since  1.5.0
+ *
+ * @package    footnotes
+ * @subpackage admin_layout
  */
 class Footnotes_Layout_Init {
 

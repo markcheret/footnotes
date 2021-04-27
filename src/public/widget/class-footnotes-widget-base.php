@@ -17,6 +17,9 @@
  *
  * @author Stefan Herndler
  * @since 1.5.0
+ *
+ * @package    footnotes
+ * @subpackage public_widget
  */
 abstract class Footnotes_Widget_Base extends WP_Widget {
 

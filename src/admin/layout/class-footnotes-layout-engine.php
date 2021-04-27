@@ -19,6 +19,9 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-la
  * Layout Engine for the administration dashboard.
  *
  * @since  1.5.0
+ *
+ * @package    footnotes
+ * @subpackage admin_layout
  */
 abstract class Footnotes_Layout_Engine {
 

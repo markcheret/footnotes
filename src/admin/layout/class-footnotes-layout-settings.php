@@ -47,6 +47,9 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-la
  * Displays and handles all Settings of the Plugin.
  *
  * @since 1.5.0
+ *
+ * @package    footnotes
+ * @subpackage admin_layout
  */
 class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 

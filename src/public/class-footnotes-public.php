@@ -110,8 +110,8 @@ class Footnotes_Public {
 	 * Include the following files that provide the public-facing functionality
 	 * of this plugin:
 	 *
-	 * - `Footnotes_Task`. TODO
-	 * - `Footnotes_Widget_Reference_Container`. TODO
+	 * - `Footnotes_Parser`. Parses Posts and Pages for footnote shortcodes.
+	 * - `Footnotes_Widget_Reference_Container`. Defines the Reference Container widget.
 	 *
 	 * @since    2.8.0
 	 * @access   private
@@ -122,10 +122,10 @@ class Footnotes_Public {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-footnotes-task.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-footnotes-parser.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/widget/class-footnotes-widget-base.php';
 
-		$this->a_obj_task = new Footnotes_Task();
+		$this->a_obj_task = new Footnotes_Parser();
 	}
 
 	/**

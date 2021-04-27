@@ -41,7 +41,7 @@
  * @subpackage footnotes/admin/layout
  */
 
-require_once dirname( __FILE__ ) . '/class-footnotes-layout-engine.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-engine.php';
 
 /**
  * Displays and handles all Settings of the Plugin.

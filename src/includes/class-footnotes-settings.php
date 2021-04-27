@@ -14,7 +14,7 @@
  * @subpackage footnotes/includes
  */
 
-require_once dirname( __FILE__ ) . '/class-footnotes-convert.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
 
 /**
  * Loads the settings values, sets to default values if undefined.

@@ -117,6 +117,7 @@ class Footnotes {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-template.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.

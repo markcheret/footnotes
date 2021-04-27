@@ -12,7 +12,7 @@
  * @subpackage footnotes/includes
  */
 
-require_once dirname( __FILE__ ) . '/class-footnotes-config.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
 
 /**
  * Define the internationalization functionality.

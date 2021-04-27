@@ -8,9 +8,6 @@
  * @subpackage footnotes/admin
  */
 
-require_once dirname( __FILE__, 3 ) . '/includes/class-footnotes-settings.php';
-require_once dirname( __FILE__ ) . '/class-footnotes-layout-settings.php';
-
 /**
  * Handles the Settings interface of the Plugin.
  *
@@ -40,6 +37,8 @@ class Footnotes_Layout_Init {
 	 * @since  1.5.0
 	 */
 	public function __construct() {
+		$this->load_dependencies();
+		
 		$this->settings_page = new Footnotes_Layout_Settings();
 
 		// Register hooks/actions.
@@ -48,6 +47,37 @@ class Footnotes_Layout_Init {
 		// Register AJAX callbacks for Plugin information.
 		add_action( 'wp_ajax_nopriv_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 		add_action( 'wp_ajax_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
+	}
+	/**
+	 * Load the required dependencies for this plugin.
+	 *
+	 * Include the following files that make up the plugin:
+	 *
+	 * - `Footnotes_Config`. Defines constant plugin values.
+	 * - `Footnotes_Settings`. Defines configurable plugin settings.
+	 * - `Footnotes_Layout_Settings`. Defines the plugin settings page.
+	 *
+	 * Create an instance of the loader which will be used to register the hooks
+	 * with WordPress.
+	 *
+	 * @since    2.8.0
+	 * @access   private
+	 */
+	private function load_dependencies() {
+		/**
+		 * The class responsible for defining plugin constants.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-config.php';
+		
+		/**
+		 * The class responsible for tracking configurable plugin settings.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-settings.php';
+		
+		/**
+		 * The class responsible for defining the plugin settings page.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-settings.php';
 	}
 
 	/**

@@ -8,10 +8,6 @@
  * @subpackage footnotes/admin
  */
 
-require_once dirname( __FILE__, 2 ) . '/includes/class-footnotes-config.php';
-require_once dirname( __FILE__, 2 ) . '/includes/class-footnotes-settings.php';
-require_once dirname( __FILE__, 2 ) . '/includes/class-footnotes-template.php';
-
 /**
  * Handles the WSYIWYG-Buttons.
  *

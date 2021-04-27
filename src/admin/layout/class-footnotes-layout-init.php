@@ -38,7 +38,7 @@ class Footnotes_Layout_Init {
 	 */
 	public function __construct() {
 		$this->load_dependencies();
-		
+
 		$this->settings_page = new Footnotes_Layout_Settings();
 
 		// Register hooks/actions.
@@ -68,12 +68,12 @@ class Footnotes_Layout_Init {
 		 * The class responsible for defining plugin constants.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-config.php';
-		
+
 		/**
 		 * The class responsible for tracking configurable plugin settings.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-settings.php';
-		
+
 		/**
 		 * The class responsible for defining the plugin settings page.
 		 */

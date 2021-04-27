@@ -131,7 +131,7 @@ class Footnotes_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * Enables enqueuing the formatted individual stylesheets if `PRODCUTION_ENV` 
+	 * Enables enqueuing the formatted individual stylesheets if `PRODCUTION_ENV`
 	 * is true (set in `footnotes.php`).
 	 *
 	 * @since 1.5.0

@@ -70,7 +70,7 @@ class Footnotes_Admin {
 		 * The class responsible for WYSIWYG editor integration.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-footnotes-wysiwyg.php';
-		
+
 		/**
 		 * The class responsible for constructing the plugin dashboard page(s).
 		 */

@@ -110,7 +110,7 @@ class Footnotes {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-i18n.php';
-		
+
 		/**
 		 * The various utility classes.
 		 */
@@ -165,7 +165,7 @@ class Footnotes {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_filter('plugin_action_links_footnotes/footnotes.php', $plugin_admin, 'footnotes_action_links');
+		$this->loader->add_filter( 'plugin_action_links_footnotes/footnotes.php', $plugin_admin, 'footnotes_action_links' );
 	}
 
 	/**

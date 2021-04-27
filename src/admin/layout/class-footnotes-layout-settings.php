@@ -2,10 +2,7 @@
 /**
  * Includes the Plugin Class to display all Settings.
  *
- * @filesource
- * @package footnotes
  * @since 1.5.0
- *
  * @since 2.0.4  restore arrow settings
  * @since 2.1.0  read-on button label
  * @since 2.1.1  options for ref container and alternative tooltips
@@ -39,6 +36,9 @@
  * @since 2.4.0  footnote shortcode syntax validation
  * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
  * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
+ *
+ * @package    footnotes
+ * @subpackage footnotes/admin/layout
  */
 
 require_once dirname( __FILE__ ) . '/class-footnotes-layout-engine.php';

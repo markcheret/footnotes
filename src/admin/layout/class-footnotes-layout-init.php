@@ -2,9 +2,10 @@
 /**
  * Includes the Plugin settings menu.
  *
- * @filesource
- * @package footnotes
  * @since  1.5.0
+ *
+ * @package    footnotes
+ * @subpackage footnotes/admin
  */
 
 require_once dirname( __FILE__, 3 ) . '/includes/class-footnotes-settings.php';

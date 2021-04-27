@@ -2,11 +2,11 @@
 /**
  * Includes the Convert Class.
  *
- * @filesource
- * @package footnotes
  * @since 1.5.0
- *
  * @since 2.2.0  add lowercase Roman
+ *
+ * @package footnotes
+ * @sunpackage footnotes/includes
  */
 
 /**

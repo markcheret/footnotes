@@ -41,7 +41,7 @@ class Footnotes_Public {
 	 * The Plugin task.
 	 *
 	 * @since 1.5.0
-	 * @since 2.8.0 Moved to `Footnotes_Public` class.
+	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
 	 * @var Task $task The Plugin task.
 	 */
 	public $a_obj_task = null;
@@ -50,7 +50,7 @@ class Footnotes_Public {
 	 * Flag for using tooltips.
 	 *
 	 * @since 2.4.0
-	 * @since 2.8.0 Moved to `Footnotes_Public` class.
+	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
 	 * @var bool $tooltips_enabled Whether tooltips are enabled or not.
 	 */
 	public static $a_bool_tooltips_enabled = false;
@@ -59,7 +59,7 @@ class Footnotes_Public {
 	 * Allows to determine whether alternative tooltips are enabled.
 	 *
 	 * @since 2.1.1
-	 * @since 2.8.0 Moved to `Footnotes_Public` class.
+	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
 	 * @var bool
 	 */
 	public static $a_bool_alternative_tooltips_enabled = false;
@@ -68,7 +68,7 @@ class Footnotes_Public {
 	 * Allows to determine whether AMP compatibility mode is enabled.
 	 *
 	 * @since 2.6.0  (release)
-	 * @since 2.8.0 Moved to `Footnotes_Public` class.
+	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
 	 * @var bool
 	 */
 	public static $a_bool_amp_enabled = false;
@@ -77,7 +77,7 @@ class Footnotes_Public {
 	 * Allows to determine the script mode among jQuery or plain JS.
 	 *
 	 * @since 2.5.6
-	 * @since 2.8.0 Moved to `Footnotes_Public` class.
+	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
 	 * @var str   'js'      Plain JavaScript.
 	 *            'jquery'  Use jQuery libraries.
 	 */
@@ -131,33 +131,15 @@ class Footnotes_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    2.8.0
+	 * Enables enqueuing the formatted individual stylesheets if `PRODCUTION_ENV` 
+	 * is true (set in `footnotes.php`).
+	 *
+	 * @since 1.5.0
+	 * @since 2.5.5 Change stylesheet scheme.
+	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
 	 */
 	public function enqueue_styles() {
-		/**
-		 * Enables enqueuing a new-scheme stylesheet.
-		 *
-		 * Enables enqueuing the formatted individual stylesheets if false.
-		 * WARNING: This facility is designed for development and must NOT be used in production.
-		 *
-		 * The Boolean may be set at the bottom of the plugin's main PHP file.
-		 *
-		 * @see footnotes.php
-		 *
-		 * @since 2.5.5
-		 * @since 2.8.0 Moved into `Footnotes_Public` class.
-		 */
 		if ( PRODUCTION_ENV ) {
-
-			/**
-			 * Enqueues a minified united external stylesheet in production.
-			 *
-			 * The media scope argument 'all' is the default.
-			 * No need to use '-css' in the handle, as this is appended automatically.
-			 *
-			 * @since 2.5.5
-			 * @since 2.8.0 Moved into `Footnotes_Public` class.
-			 */
 			// Set tooltip mode for use in stylesheet name.
 			if ( self::$a_bool_tooltips_enabled ) {
 
@@ -215,7 +197,11 @@ class Footnotes_Public {
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    2.8.0
+	 * @since 1.5.0
+	 * @since 2.0.0 Add jQueryUI dependency.
+	 * @since 2.1.2 Add jQuery Tools dependency.
+	 * @since 2.5.6 Add jQuery dependency.
+	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
 	 */
 	public function enqueue_scripts() {
 		/**
@@ -227,7 +213,6 @@ class Footnotes_Public {
 		 * but still enabled by default.
 		 *
 		 * @since 2.5.6
-		 * @since 2.8.0 Moved into `Footnotes_Public` class.
 		 */
 		if ( ! self::$a_bool_amp_enabled ) {
 
@@ -246,10 +231,7 @@ class Footnotes_Public {
 				 * No '-js' in the handle, is appended automatically.
 				 * Deferring to the footer breaks jQuery tooltip display.
 				 *
-				 * Add versioning.
-				 *
 				 * @since 2.1.2
-				 * @since 2.8.0 Moved into `Footnotes_Public` class.
 				 */
 				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/jquery.tools' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', array(), '1.2.7.redacted.2', false );
 
@@ -259,7 +241,6 @@ class Footnotes_Public {
 				 * If alternative tooltips are enabled, these libraries are not needed.
 				 *
 				 * @since 2.0.0
-				 * @since 2.8.0 Moved into `Footnotes_Public` class.
 				 */
 				wp_enqueue_script( 'jquery-ui-core' );
 				wp_enqueue_script( 'jquery-ui-widget' );

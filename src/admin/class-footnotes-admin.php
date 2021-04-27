@@ -59,15 +59,21 @@ class Footnotes_Admin {
 	 * Include the following files that provide the admin-specific functionality
 	 * of this plugin:
 	 *
-	 * - `Footnotes_WYSIWYG`. TODO
-	 * - `Footnotes_Layout_Settings`. TODO
+	 * - `Footnotes_WYSIWYG`. Provides plugin integration with the WYSIWYG editor.
+	 * - `Footnotes_Layout_Settings`. Defines the plugin dashboard page(s).
 	 *
 	 * @since    2.8.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
-		// TODO: neaten up and document once placements and names are settled.
+		/**
+		 * The class responsible for WYSIWYG editor integration.
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-footnotes-wysiwyg.php';
+		
+		/**
+		 * The class responsible for constructing the plugin dashboard page(s).
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/layout/class-footnotes-layout-init.php';
 
 		new Footnotes_Layout_Init();

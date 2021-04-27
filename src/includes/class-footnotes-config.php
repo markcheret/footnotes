@@ -2,11 +2,11 @@
 /**
  * Includes the Plugin Constants class to load all Plugin constant vars like Plugin name, etc.
  *
- * @filesource
- * @package footnotes
  * @since 1.5.0
- *
  * @since 2.0.4  add Public Plugin name for dashboard heading
+ *
+ * @package footnotes
+ * @sunpackage footnotes/includes
  */
 
 /**

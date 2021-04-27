@@ -2,12 +2,13 @@
 /**
  * Includes the Plugin Widget to put the Reference Container to the Widget area.
  *
- * @filesource
- * @package footnotes
  * @since 1.5.0
+ *
+ * @package footnotes
+ * @subpackage footnotes/public/widget
  */
 
-require_once dirname( __FILE__ ) . '/class-footnotes-widget-base.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-footnotes-widget-base.php';
 
 /**
  * Registers a Widget to put the Reference Container to the widget area.

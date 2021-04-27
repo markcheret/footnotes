@@ -82,10 +82,14 @@ class Footnotes {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Footnotes_Loader. Orchestrates the hooks of the plugin.
-	 * - Footnotes_i18n. Defines internationalization functionality.
-	 * - Footnotes_Admin. Defines all hooks for the admin area.
-	 * - Footnotes_Public. Defines all hooks for the public side of the site.
+	 * - `Footnotes_Loader`. Orchestrates the hooks of the plugin.
+	 * - `Footnotes_i18n`. Defines internationalization functionality.
+	 * - `Footnotes_Config`. Defines plugin details.
+	 * - `Footnotes_Convert`. Provides conversion methods.
+	 * - `Footnotes_Settings`. Defines customisable plugin settings.
+	 * - `Footnotes_Template`. Handles template rendering.
+	 * - `Footnotes_Admin`. Defines all hooks for the admin area.
+	 * - `Footnotes_Public`. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -106,7 +110,10 @@ class Footnotes {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-i18n.php';
-		// TODO: neaten up and document once placements and names are settled.
+		
+		/**
+		 * The various utility classes.
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';

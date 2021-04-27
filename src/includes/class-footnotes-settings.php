@@ -2,15 +2,16 @@
 /**
  * Includes the Settings class to handle all Plugin settings.
  *
- * @filesource
- * @package footnotes
- * @since 1.5.0
- *
  * The constants are ordered by ascending version so their docblocks can replace most of this list.
+ *
+ * @since 1.5.0
  * @since 2.0.0  Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
  * @since 2.0.4  Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
  * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
  * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+ *
+ * @package footnotes
+ * @subpackage footnotes/includes
  */
 
 require_once dirname( __FILE__ ) . '/class-footnotes-convert.php';

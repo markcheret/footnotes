@@ -164,8 +164,7 @@ class Footnotes {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_filter( 'admin_get_plugin_links', $plugin_admin, 'get_plugin_links', 10, 1 );
-
+		$this->loader->add_filter('plugin_action_links_footnotes/footnotes.php', $plugin_admin, 'footnotes_action_links');
 	}
 
 	/**

@@ -125,18 +125,18 @@ class Footnotes_Admin {
 	 *
 	 * @since 1.5.0
 	 * @since 2.8.0 Moved into `Footnote_Admin` class.
-	 * @param array $plugin_links The WP-default set of links to display.
+	 * @param string[] $links The default set of links to display.
 	 * @return string[] The full set of links to display.
 	 */
-	public static function get_plugin_links( array $plugin_links ): array {
+	public function footnotes_action_links( array $links ): array {
 		// Append link to the WordPress Plugin page.
-		$plugin_links[] = sprintf( '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
+		$links[] = sprintf( '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
 		// Append link to the settings page.
-		$plugin_links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=footnotes' ), __( 'Settings', 'footnotes' ) );
+		$links[] = sprintf( '<a href="%s">%s</a>', esc_url( admin_url( 'options-general.php?page=footnotes' ) ), __( 'Settings', 'footnotes' ) );
 		// Append link to the PayPal donate function.
-		$plugin_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
-		// Return new links.
-		return $plugin_links;
+		$links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
+
+		return $links;
 	}
 
 }

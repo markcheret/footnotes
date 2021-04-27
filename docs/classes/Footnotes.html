@@ -59,7 +59,9 @@
                         <ul class="phpdocumentor-list">
                                     <li><a href="packages/footnotes-footnotesincludes.html"><abbr title="\footnotes\footnotesincludes">footnotesincludes</abbr></a></li>
                                     <li><a href="packages/footnotes-footnotesadmin.html"><abbr title="\footnotes\footnotesadmin">footnotesadmin</abbr></a></li>
+                                    <li><a href="packages/footnotes-footnotesadminlayout.html"><abbr title="\footnotes\footnotesadminlayout">footnotesadminlayout</abbr></a></li>
                                     <li><a href="packages/footnotes-footnotespublic.html"><abbr title="\footnotes\footnotespublic">footnotespublic</abbr></a></li>
+                                    <li><a href="packages/footnotes-footnotespublicwidget.html"><abbr title="\footnotes\footnotespublicwidget">footnotespublicwidget</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
                         </section>
@@ -491,7 +493,7 @@ the public-facing side of the site.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">207</span>
+    <span class="phpdocumentor-element-found-in__line">214</span>
 </aside>
 
         <p class="phpdocumentor-summary">The reference to the class that orchestrates the hooks with the plugin.</p>
@@ -541,7 +543,7 @@ the public-facing side of the site.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">197</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 </aside>
 
         <p class="phpdocumentor-summary">The name of the plugin used to uniquely identify it within the context of
@@ -592,7 +594,7 @@ WordPress and to define internationalization functionality.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">217</span>
+    <span class="phpdocumentor-element-found-in__line">224</span>
 </aside>
 
         <p class="phpdocumentor-summary">Retrieve the version number of the plugin.</p>
@@ -642,7 +644,7 @@ WordPress and to define internationalization functionality.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">193</span>
 </aside>
 
         <p class="phpdocumentor-summary">Run the loader to execute all of the hooks with WordPress.</p>
@@ -700,7 +702,7 @@ WordPress and to define internationalization functionality.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">153</span>
+    <span class="phpdocumentor-element-found-in__line">161</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register all of the hooks related to the admin area functionality
@@ -759,7 +761,7 @@ of the plugin.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">178</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register all of the hooks related to the public-facing functionality
@@ -818,7 +820,7 @@ of the plugin.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">100</span>
 </aside>
 
         <p class="phpdocumentor-summary">Load the required dependencies for this plugin.</p>
@@ -829,10 +831,22 @@ of the plugin.</p>
 
         <section class="phpdocumentor-description"><p>Include the following files that make up the plugin:</p>
 <ul>
-<li>Footnotes_Loader. Orchestrates the hooks of the plugin.</li>
-<li>Footnotes_i18n. Defines internationalization functionality.</li>
-<li>Footnotes_Admin. Defines all hooks for the admin area.</li>
-<li>Footnotes_Public. Defines all hooks for the public side of the site.</li>
+<li>
+<code class="prettyprint">Footnotes_Loader</code>. Orchestrates the hooks of the plugin.</li>
+<li>
+<code class="prettyprint">Footnotes_i18n</code>. Defines internationalization functionality.</li>
+<li>
+<code class="prettyprint">Footnotes_Config</code>. Defines plugin details.</li>
+<li>
+<code class="prettyprint">Footnotes_Convert</code>. Provides conversion methods.</li>
+<li>
+<code class="prettyprint">Footnotes_Settings</code>. Defines customisable plugin settings.</li>
+<li>
+<code class="prettyprint">Footnotes_Template</code>. Handles template rendering.</li>
+<li>
+<code class="prettyprint">Footnotes_Admin</code>. Defines all hooks for the admin area.</li>
+<li>
+<code class="prettyprint">Footnotes_Public</code>. Defines all hooks for the public side of the site.</li>
 </ul>
 <p>Create an instance of the loader which will be used to register the hooks
 with WordPress.</p>
@@ -885,7 +899,7 @@ with WordPress.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes.php"><a href="files/src-includes-class-footnotes.html"><abbr title="src/includes/class-footnotes.php">class-footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">138</span>
+    <span class="phpdocumentor-element-found-in__line">146</span>
 </aside>
 
         <p class="phpdocumentor-summary">Define the locale for this plugin for internationalization.</p>

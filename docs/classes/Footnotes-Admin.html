@@ -59,7 +59,9 @@
                         <ul class="phpdocumentor-list">
                                     <li><a href="packages/footnotes-footnotesincludes.html"><abbr title="\footnotes\footnotesincludes">footnotesincludes</abbr></a></li>
                                     <li><a href="packages/footnotes-footnotesadmin.html"><abbr title="\footnotes\footnotesadmin">footnotesadmin</abbr></a></li>
+                                    <li><a href="packages/footnotes-footnotesadminlayout.html"><abbr title="\footnotes\footnotesadminlayout">footnotesadminlayout</abbr></a></li>
                                     <li><a href="packages/footnotes-footnotespublic.html"><abbr title="\footnotes\footnotespublic">footnotespublic</abbr></a></li>
+                                    <li><a href="packages/footnotes-footnotespublicwidget.html"><abbr title="\footnotes\footnotespublicwidget">footnotespublicwidget</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
                         </section>
@@ -175,7 +177,7 @@ and JavaScript.</p>
 <dd>Register the stylesheets for the admin area.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Footnotes-Admin.html#method_get_plugin_links">get_plugin_links()</a>
+    <a href="classes/Footnotes-Admin.html#method_footnotes_action_links">footnotes_action_links()</a>
     <span>
                         &nbsp;: array&lt;string|int, string&gt;    </span>
 </dt>
@@ -402,7 +404,7 @@ and JavaScript.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-admin.php"><a href="files/src-admin-class-footnotes-admin.html"><abbr title="src/admin/class-footnotes-admin.php">class-footnotes-admin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">101</span>
+    <span class="phpdocumentor-element-found-in__line">107</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register the JavaScript for the admin area.</p>
@@ -451,7 +453,7 @@ and JavaScript.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-admin.php"><a href="files/src-admin-class-footnotes-admin.html"><abbr title="src/admin/class-footnotes-admin.php">class-footnotes-admin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">81</span>
+    <span class="phpdocumentor-element-found-in__line">87</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register the stylesheets for the admin area.</p>
@@ -491,34 +493,34 @@ and JavaScript.</p>
         class="phpdocumentor-element
             -method
             -public
-                                    -static                    "
+                                                        "
 >
-    <h4 class="phpdocumentor-element__name" id="method_get_plugin_links">
-        get_plugin_links()
-        <a href="classes/Footnotes-Admin.html#method_get_plugin_links" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_footnotes_action_links">
+        footnotes_action_links()
+        <a href="classes/Footnotes-Admin.html#method_footnotes_action_links" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-admin.php"><a href="files/src-admin-class-footnotes-admin.html"><abbr title="src/admin/class-footnotes-admin.php">class-footnotes-admin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">125</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 </aside>
 
         <p class="phpdocumentor-summary">Appends the Plugin links for display in the dashboard Plugins page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">get_plugin_links</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$plugin_links</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_action_links</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$links</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$plugin_links</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                <span class="phpdocumentor-signature__argument__name">$links</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The WP-default set of links to display.</p>
+                    <section class="phpdocumentor-description"><p>The default set of links to display.</p>
 </section>
 
             </dd>
@@ -585,9 +587,9 @@ and JavaScript.</p>
 of this plugin:</p>
 <ul>
 <li>
-<code class="prettyprint">Footnotes_WYSIWYG</code>. TODO</li>
+<code class="prettyprint">Footnotes_WYSIWYG</code>. Provides plugin integration with the WYSIWYG editor.</li>
 <li>
-<code class="prettyprint">Footnotes_Layout_Settings</code>. TODO</li>
+<code class="prettyprint">Footnotes_Layout_Settings</code>. Defines the plugin dashboard page(s).</li>
 </ul>
 </section>
 

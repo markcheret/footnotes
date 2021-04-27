@@ -44,7 +44,7 @@ class Footnotes_WYSIWYG {
 	 * @return array
 	 */
 	public static function new_visual_editor_button( $p_arr_buttons ) {
-		array_push( $p_arr_buttons, Footnotes_Config::C_STR_PLUGIN_NAME );
+		array_push( $p_arr_buttons, $this->plugin_name );
 		return $p_arr_buttons;
 	}
 
@@ -68,7 +68,7 @@ class Footnotes_WYSIWYG {
 	 * @return array
 	 */
 	public static function include_scripts( $p_arr_plugins ) {
-		$p_arr_plugins[ Footnotes_Config::C_STR_PLUGIN_NAME ] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
+		$p_arr_plugins[ $this->plugin_name ] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
 		return $p_arr_plugins;
 	}
 

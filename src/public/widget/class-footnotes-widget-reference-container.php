@@ -18,6 +18,26 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-footnotes-wi
 class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 
 	/**
+	 * The ID of this plugin.
+	 *
+	 * @since    2.8.0
+	 * @access   private
+	 * @var      string    $plugin_name    The ID of this plugin.
+	 */
+	private $plugin_name;
+	
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    2.8.0
+	 * @param    string $plugin_name       The name of this plugin.
+	 */
+	public function __construct( $plugin_name ) {
+		parent::__construct();
+		$this->plugin_name = $plugin_name;
+	}
+
+	/**
 	 * Returns an unique ID as string used for the Widget Base ID.
 	 *
 	 * @since 1.5.0
@@ -34,7 +54,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	 * @return string
 	 */
 	protected function get_name() {
-		return Footnotes_Config::C_STR_PLUGIN_NAME;
+		return $this->plugin_name;
 	}
 
 	/**

@@ -86,7 +86,7 @@ class Footnotes_Admin {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/layout/class-footnotes-layout-init.php';
 
-		new Footnotes_Layout_Init();
+		new Footnotes_Layout_Init($this->plugin_name);
 	}
 
 	/**

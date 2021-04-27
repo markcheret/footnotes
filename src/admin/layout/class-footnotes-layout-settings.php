@@ -49,6 +49,16 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-la
  * @since 1.5.0
  */
 class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
+	
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    2.8.0
+	 * @param    string $plugin_name       The name of this plugin.
+	 */
+	public function __construct( $plugin_name ) {
+		$this->plugin_name = $plugin_name;
+	}
 
 	/**
 	 * Returns a Priority index. Lower numbers have a higher Priority.
@@ -67,7 +77,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	 * @return string
 	 */
 	protected function get_sub_page_slug() {
-		return '-' . Footnotes_Config::C_STR_PLUGIN_NAME;
+		return '-' . $this->plugin_name;
 	}
 
 	/**
@@ -1160,16 +1170,16 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 				// Localized notices are dropped to ease translators' task.
 
 				// "label-class-1" => ".footnote_plugin_tooltip_text",.
-				// "class-1" => $this->add_text(__("superscript, Footnotes index", Footnotes_Config::C_STR_PLUGIN_NAME)),.
+				// "class-1" => $this->add_text(__("superscript, Footnotes index", $this->plugin_name)),.
 
 				// "label-class-2" => ".footnote_tooltip",.
-				// "class-2" => $this->add_text(__("mouse-over box, tooltip for each superscript", Footnotes_Config::C_STR_PLUGIN_NAME)),.
+				// "class-2" => $this->add_text(__("mouse-over box, tooltip for each superscript", $this->plugin_name)),.
 
 				// "label-class-3" => ".footnote_plugin_index",.
-				// "class-3" => $this->add_text(__("1st column of the Reference Container, Footnotes index", Footnotes_Config::C_STR_PLUGIN_NAME)),.
+				// "class-3" => $this->add_text(__("1st column of the Reference Container, Footnotes index", $this->plugin_name)),.
 
 				// "label-class-4" => ".footnote_plugin_text",.
-				// "class-4" => $this->add_text(__("2nd column of the Reference Container, Footnote text", Footnotes_Config::C_STR_PLUGIN_NAME)).
+				// "class-4" => $this->add_text(__("2nd column of the Reference Container, Footnote text", $this->plugin_name)).
 				// phpcs:enable
 			)
 		);

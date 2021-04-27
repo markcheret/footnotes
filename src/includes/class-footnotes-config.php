@@ -16,14 +16,6 @@
  */
 class Footnotes_Config {
 	/**
-	 * Internal Plugin name.
-	 *
-	 * @since 1.5.0
-	 * @var string
-	 */
-	const C_STR_PLUGIN_NAME = 'footnotes';
-
-	/**
 	 * Public Plugin name.
 	 *
 	 * @since 1.5.0

@@ -24,6 +24,15 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-la
 abstract class Footnotes_Layout_Engine {
 
 	/**
+	 * The ID of this plugin.
+	 *
+	 * @since    2.8.0
+	 * @access   private
+	 * @var      string    $plugin_name    The ID of this plugin.
+	 */
+	protected $plugin_name;
+
+	/**
 	 * Stores the Hook connection string for the child sub page.
 	 *
 	 * @since  1.5.0
@@ -78,7 +87,7 @@ abstract class Footnotes_Layout_Engine {
 	 * @return array
 	 */
 	abstract protected function get_meta_boxes();
-
+	
 	/**
 	 * Returns an array describing a sub page section.
 	 *
@@ -91,7 +100,7 @@ abstract class Footnotes_Layout_Engine {
 	 */
 	protected function add_section( $p_str_id, $p_str_title, $p_int_settings_container_index, $p_bool_has_submit_button = true ) {
 		return array(
-			'id'        => Footnotes_Config::C_STR_PLUGIN_NAME . '-' . $p_str_id,
+			'id'        => $this->plugin_name . '-' . $p_str_id,
 			'title'     => $p_str_title,
 			'submit'    => $p_bool_has_submit_button,
 			'container' => $p_int_settings_container_index,
@@ -110,7 +119,7 @@ abstract class Footnotes_Layout_Engine {
 	 */
 	protected function add_meta_box( $p_str_section_id, $p_str_id, $p_str_title, $p_str_callback_function_name ) {
 		return array(
-			'parent'   => Footnotes_Config::C_STR_PLUGIN_NAME . '-' . $p_str_section_id,
+			'parent'   => $this->plugin_name . '-' . $p_str_section_id,
 			'id'       => $p_str_id,
 			'title'    => $p_str_title,
 			'callback' => $p_str_callback_function_name,

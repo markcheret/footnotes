@@ -78,19 +78,6 @@ class Footnotes_Loader {
 	}
 
 	/**
-	 * Initializes all Widgets of the Plugin.
-	 *
-	 * @since 1.5.0
-	 * @since 2.8.0 Moved to `Footnotes_Loader` class.
-	 */
-	public function initialize_widgets() {
-		// TODO: This probably shouldn't be necessary here.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/widget/class-footnotes-widget-reference-container.php';
-
-		register_widget( 'Footnotes_Widget_Reference_Container' );
-	}
-
-	/**
 	 * A utility function that is used to register the actions and hooks into a single
 	 * collection.
 	 *
@@ -132,8 +119,6 @@ class Footnotes_Loader {
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
-
-		add_action( 'widgets_init', array( $this, 'initialize_widgets' ) );
 
 	}
 

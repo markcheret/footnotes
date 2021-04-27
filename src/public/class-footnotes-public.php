@@ -36,13 +36,21 @@ class Footnotes_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+	
+	/**
+	 * The reference container widget.
+	 *
+	 * @since 2.8.0
+	 * @var Footnotes_Widget_Reference_Container $reference_container_widget The reference container widget
+	 */
+	private $reference_container_widget;
 
 	/**
-	 * The Plugin task.
+	 * The footnote parser.
 	 *
 	 * @since 1.5.0
 	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
-	 * @var Task $task The Plugin task.
+	 * @var Footnote_Parser $task The Plugin task.
 	 */
 	public $a_obj_task = null;
 
@@ -123,8 +131,10 @@ class Footnotes_Public {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-footnotes-parser.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/widget/class-footnotes-widget-base.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/widget/class-footnotes-widget-reference-container.php';
 
+		$this->reference_container_widget = new Footnotes_Widget_Reference_Container($this->plugin_name);
+		
 		$this->a_obj_task = new Footnotes_Parser();
 	}
 
@@ -251,6 +261,15 @@ class Footnotes_Public {
 		}
 
 	}
-
+	
+	/**
+	 * Register the widget(s) for the public-facing side of the site.
+	 *
+	 * @since 1.5.0
+	 * @since 2.8.0 Moved to `Footnotes_Public` class.
+	 */
+	public function register_widgets() {
+		register_widget( $this->reference_container_widget );
+	}
 }
 

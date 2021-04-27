@@ -16,32 +16,25 @@
 class Footnotes_WYSIWYG {
 
 	/**
-	 * Registers Button hooks.
+	 * The ID of this plugin.
 	 *
-	 * @since 1.5.0
-	 *
-	 * - Bugfix: Editor buttons: debug button by reverting name change in PHP file while JS file and HTML template remained unsynced, thanks to @gova bug report.
-	 *
-	 * @reporter @gova
-	 * @link https://wordpress.org/support/topic/back-end-footnotes-not-working-400-bad-erro/
-	 *
-	 * @since 2.6.5
-	 * @return void
+	 * @since    2.8.0
+	 * @access   private
+	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
-	public static function register_hooks() {
-		add_filter( 'mce_buttons', array( 'Footnotes_WYSIWYG', 'new_visual_editor_button' ) );
-		add_action( 'admin_print_footer_scripts', array( 'Footnotes_WYSIWYG', 'new_plain_text_editor_button' ) );
+	private $plugin_name;
+	
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    2.8.0
+	 * @param    string $plugin_name       The name of this plugin.
+	 */
+	public function __construct( $plugin_name ) {
 
-		add_filter( 'mce_external_plugins', array( 'Footnotes_WYSIWYG', 'include_scripts' ) );
+		$this->plugin_name = $plugin_name;
 
-		// phpcs:disable
-		// 'footnotes_getTags' must match its instance in wysiwyg-editor.js.
-		// 'footnotes_getTags' must match its instance in editor-button.html.
-		add_action( 'wp_ajax_nopriv_footnotes_getTags', array( 'Footnotes_WYSIWYG', 'ajax_callback' ) );
-		add_action( 'wp_ajax_footnotes_getTags', array( 'Footnotes_WYSIWYG', 'ajax_callback' ) );
-		// phpcs:enable
 	}
-
 
 	/**
 	 * Append a new Button to the WYSIWYG editor of Posts and Pages.

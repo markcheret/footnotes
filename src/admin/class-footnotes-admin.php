@@ -36,6 +36,14 @@ class Footnotes_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+	
+	/**
+	 * The WYSIWYG editor integration object.
+	 *
+	 * @since    2.8.0
+	 * @var      Footnotes_WYSIWYG    $wysiwyg    The WYSIWYG editor integration object.
+	 */
+	public $wysiwyg;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -71,6 +79,8 @@ class Footnotes_Admin {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-footnotes-wysiwyg.php';
 
+		$this->wysiwyg = new Footnotes_WYSIWYG($this->plugin_name);
+		
 		/**
 		 * The class responsible for constructing the plugin dashboard page(s).
 		 */

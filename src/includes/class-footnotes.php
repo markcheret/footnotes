@@ -155,8 +155,9 @@ class Footnotes {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
+	 * @since 1.5.0
+	 * @since 2.8.0 Moved registrating from various classes into `Footnotes_Admin`.
+	 * @access private
 	 */
 	private function define_admin_hooks() {
 
@@ -166,6 +167,18 @@ class Footnotes {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		$this->loader->add_filter( 'plugin_action_links_footnotes/footnotes.php', $plugin_admin, 'footnotes_action_links' );
+		
+		$this->loader->add_filter( 'mce_buttons', $plugin_admin->wysiwyg, 'new_visual_editor_button' );
+		$this->loader->add_action( 'admin_print_footer_scripts', $plugin_admin->wysiwyg,  'new_plain_text_editor_button' );
+
+		$this->loader->add_filter( 'mce_external_plugins', $plugin_admin->wysiwyg, 'include_scripts' );
+
+		// phpcs:disable
+		// 'footnotes_getTags' must match its instance in wysiwyg-editor.js.
+		// 'footnotes_getTags' must match its instance in editor-button.html.
+		$this->loader->add_action( 'wp_ajax_nopriv_footnotes_getTags', $plugin_admin->wysiwyg, 'ajax_callback' );
+		$this->loader->add_action( 'wp_ajax_footnotes_getTags', $plugin_admin->wysiwyg, 'ajax_callback' );
+		// phpcs:enable
 	}
 
 	/**

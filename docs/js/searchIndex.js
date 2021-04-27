@@ -93,7 +93,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Footnotes\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
-            "summary": "The\u0020unique\u0020identifier\u0020of\u0020this\u0020plugin.",
+            "summary": "The\u0020unique\u0020identifier\u0020of\u0020this\u0020plugin",
             "url": "classes/Footnotes.html#property_plugin_name"
         },                {
             "fqsen": "\\Footnotes\u003A\u003A\u0024version",
@@ -141,15 +141,20 @@ Search.appendIndex(
             "summary": "The\u0020version\u0020of\u0020this\u0020plugin.",
             "url": "classes/Footnotes-Admin.html#property_version"
         },                {
+            "fqsen": "\\Footnotes_Admin\u003A\u003A\u0024wysiwyg",
+            "name": "wysiwyg",
+            "summary": "The\u0020WYSIWYG\u0020editor\u0020integration\u0020object.",
+            "url": "classes/Footnotes-Admin.html#property_wysiwyg"
+        },                {
             "fqsen": "\\Footnotes_WYSIWYG",
             "name": "Footnotes_WYSIWYG",
             "summary": "Handles\u0020the\u0020WSYIWYG\u002DButtons.",
             "url": "classes/Footnotes-WYSIWYG.html"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003Aregister_hooks\u0028\u0029",
-            "name": "register_hooks",
-            "summary": "Registers\u0020Button\u0020hooks.",
-            "url": "classes/Footnotes-WYSIWYG.html#method_register_hooks"
+            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
+            "url": "classes/Footnotes-WYSIWYG.html#method___construct"
         },                {
             "fqsen": "\\Footnotes_WYSIWYG\u003A\u003Anew_visual_editor_button\u0028\u0029",
             "name": "new_visual_editor_button",
@@ -170,6 +175,11 @@ Search.appendIndex(
             "name": "ajax_callback",
             "summary": "AJAX\u0020Callback\u0020function\u0020when\u0020the\u0020Footnotes\u0020Button\u0020is\u0020clicked.\u0020Either\u0020in\u0020the\u0020Plain\u0020text\u0020or\u0020Visual\u0020editor.",
             "url": "classes/Footnotes-WYSIWYG.html#method_ajax_callback"
+        },                {
+            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
+            "url": "classes/Footnotes-WYSIWYG.html#property_plugin_name"
         },                {
             "fqsen": "\\Footnotes_Layout_Engine",
             "name": "Footnotes_Layout_Engine",
@@ -301,6 +311,11 @@ Search.appendIndex(
             "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020num\u005D.",
             "url": "classes/Footnotes-Layout-Engine.html#method_add_num_box"
         },                {
+            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
+            "url": "classes/Footnotes-Layout-Engine.html#property_plugin_name"
+        },                {
             "fqsen": "\\Footnotes_Layout_Engine\u003A\u003A\u0024a_str_sub_page_hook",
             "name": "a_str_sub_page_hook",
             "summary": "Stores\u0020the\u0020Hook\u0020connection\u0020string\u0020for\u0020the\u0020child\u0020sub\u0020page.",
@@ -346,6 +361,11 @@ Search.appendIndex(
             "summary": "Slug\u0020for\u0020the\u0020Plugin\u0020main\u0020menu.",
             "url": "classes/Footnotes-Layout-Init.html#constant_C_STR_MAIN_MENU_SLUG"
         },                {
+            "fqsen": "\\Footnotes_Layout_Init\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
+            "url": "classes/Footnotes-Layout-Init.html#property_plugin_name"
+        },                {
             "fqsen": "\\Footnotes_Layout_Init\u003A\u003A\u0024settings_page",
             "name": "settings_page",
             "summary": "Contains\u0020the\u0020settings\u0020layoutEngine",
@@ -355,6 +375,11 @@ Search.appendIndex(
             "name": "Footnotes_Layout_Settings",
             "summary": "Displays\u0020and\u0020handles\u0020all\u0020Settings\u0020of\u0020the\u0020Plugin.",
             "url": "classes/Footnotes-Layout-Settings.html"
+        },                {
+            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
+            "url": "classes/Footnotes-Layout-Settings.html#method___construct"
         },                {
             "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aget_priority\u0028\u0029",
             "name": "get_priority",
@@ -506,11 +531,6 @@ Search.appendIndex(
             "summary": "Contains\u0020all\u0020Plugin\u0020Constants.\u0020Contains\u0020no\u0020Method\u0020or\u0020Property.",
             "url": "classes/Footnotes-Config.html"
         },                {
-            "fqsen": "\\Footnotes_Config\u003A\u003AC_STR_PLUGIN_NAME",
-            "name": "C_STR_PLUGIN_NAME",
-            "summary": "Internal\u0020Plugin\u0020name.",
-            "url": "classes/Footnotes-Config.html#constant_C_STR_PLUGIN_NAME"
-        },                {
             "fqsen": "\\Footnotes_Config\u003A\u003AC_STR_PLUGIN_PUBLIC_NAME",
             "name": "C_STR_PLUGIN_PUBLIC_NAME",
             "summary": "Public\u0020Plugin\u0020name.",
@@ -605,11 +625,6 @@ Search.appendIndex(
             "name": "add_filter",
             "summary": "Add\u0020a\u0020new\u0020filter\u0020to\u0020the\u0020collection\u0020to\u0020be\u0020registered\u0020with\u0020WordPress.",
             "url": "classes/Footnotes-Loader.html#method_add_filter"
-        },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003Ainitialize_widgets\u0028\u0029",
-            "name": "initialize_widgets",
-            "summary": "Initializes\u0020all\u0020Widgets\u0020of\u0020the\u0020Plugin.",
-            "url": "classes/Footnotes-Loader.html#method_initialize_widgets"
         },                {
             "fqsen": "\\Footnotes_Loader\u003A\u003Aadd\u0028\u0029",
             "name": "add",
@@ -1311,6 +1326,11 @@ Search.appendIndex(
             "summary": "Register\u0020the\u0020JavaScript\u0020for\u0020the\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
             "url": "classes/Footnotes-Public.html#method_enqueue_scripts"
         },                {
+            "fqsen": "\\Footnotes_Public\u003A\u003Aregister_widgets\u0028\u0029",
+            "name": "register_widgets",
+            "summary": "Register\u0020the\u0020widget\u0028s\u0029\u0020for\u0020the\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
+            "url": "classes/Footnotes-Public.html#method_register_widgets"
+        },                {
             "fqsen": "\\Footnotes_Public\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
@@ -1321,9 +1341,14 @@ Search.appendIndex(
             "summary": "The\u0020version\u0020of\u0020this\u0020plugin.",
             "url": "classes/Footnotes-Public.html#property_version"
         },                {
+            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024reference_container_widget",
+            "name": "reference_container_widget",
+            "summary": "The\u0020reference\u0020container\u0020widget.",
+            "url": "classes/Footnotes-Public.html#property_reference_container_widget"
+        },                {
             "fqsen": "\\Footnotes_Public\u003A\u003A\u0024a_obj_task",
             "name": "a_obj_task",
-            "summary": "The\u0020Plugin\u0020task.",
+            "summary": "The\u0020footnote\u0020parser.",
             "url": "classes/Footnotes-Public.html#property_a_obj_task"
         },                {
             "fqsen": "\\Footnotes_Public\u003A\u003A\u0024a_bool_tooltips_enabled",
@@ -1381,6 +1406,11 @@ Search.appendIndex(
             "summary": "Registers\u0020a\u0020Widget\u0020to\u0020put\u0020the\u0020Reference\u0020Container\u0020to\u0020the\u0020widget\u0020area.",
             "url": "classes/Footnotes-Widget-Reference-Container.html"
         },                {
+            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
+            "url": "classes/Footnotes-Widget-Reference-Container.html#method___construct"
+        },                {
             "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003Aget_id\u0028\u0029",
             "name": "get_id",
             "summary": "Returns\u0020an\u0020unique\u0020ID\u0020as\u0020string\u0020used\u0020for\u0020the\u0020Widget\u0020Base\u0020ID.",
@@ -1405,6 +1435,11 @@ Search.appendIndex(
             "name": "widget",
             "summary": "Outputs\u0020the\u0020Content\u0020of\u0020the\u0020Widget.",
             "url": "classes/Footnotes-Widget-Reference-Container.html#method_widget"
+        },                {
+            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
+            "url": "classes/Footnotes-Widget-Reference-Container.html#property_plugin_name"
         },                {
             "fqsen": "\\Footnotes_Parser",
             "name": "Footnotes_Parser",

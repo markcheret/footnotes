@@ -2,16 +2,15 @@
 /**
  * Includes Layout Engine for the admin dashboard.
  *
- * @filesource
- * @package footnotes
  * @since 1.5.0
- *
  * @since 2.1.2  add versioning of settings.css for cache busting
  * @since 2.1.4  automate passing version number for cache busting
  * @since 2.1.4  optional step argument and support for floating in numbox
  * @since 2.1.6  fix punctuation-related localization issue in dashboard labels
- *
  * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
+ *
+ * @package footnotes
+ * @subpackage admin_layout
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-init.php';

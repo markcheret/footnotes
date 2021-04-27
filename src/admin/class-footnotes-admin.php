@@ -5,7 +5,7 @@
  * @since      2.8.0
  *
  * @package    footnotes
- * @subpackage footnotes/admin
+ * @subpackage admin
  */
 
 /**
@@ -15,7 +15,7 @@
  * and JavaScript.
  *
  * @package    footnotes
- * @subpackage footnotes/admin
+ * @subpackage admin
  */
 class Footnotes_Admin {
 

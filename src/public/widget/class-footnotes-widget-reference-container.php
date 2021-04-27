@@ -5,7 +5,7 @@
  * @since 1.5.0
  *
  * @package footnotes
- * @subpackage footnotes/public/widget
+ * @subpackage public_widget
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-footnotes-widget-base.php';

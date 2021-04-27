@@ -7,7 +7,7 @@
  * @since 2.5.0  Adding: Templates: Enable template location stack, thanks to @misfist issue report and code contribution.
  *
  * @package footnotes
- * @subpackage footnotes/includes
+ * @subpackage includes
  */
 
 /**

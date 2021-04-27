@@ -6,7 +6,7 @@
  * @since 1.6.4  Update: replace deprecated function WP_Widget() with recommended __construct(), thanks to @dartiss code contribution.
  *
  * @package footnotes
- * @subpackage footnotes/public/widget
+ * @subpackage public_widget
  */
 
 /**

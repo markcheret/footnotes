@@ -5,7 +5,7 @@
  * @since       2.8.0
  *
  * @package     footnotes
- * @subpackage  footnotes/includes
+ * @subpackage  includes
  */
 
 /**
@@ -15,7 +15,7 @@
  *
  * @since      2.8.0
  * @package    footnotes
- * @subpackage footnotes/includes
+ * @subpackage includes
  */
 class Footnotes_Deactivator {
 

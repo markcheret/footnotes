@@ -9,7 +9,7 @@
  * @since      2.8.0 Renamed class to `Footnotes_i18n`.
  *
  * @package    footnotes
- * @subpackage footnotes/includes
+ * @subpackage includes
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
@@ -23,7 +23,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-
  * @since      1.5.0
  * @since      2.8.0 Renamed class to `Footnotes_i18n`.
  * @package    footnotes
- * @subpackage footnotes/includes
+ * @subpackage includes
  */
 class Footnotes_i18n {
 

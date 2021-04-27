@@ -8,7 +8,7 @@
  * @since 2.8.0 Rename class from `Footnotes_Task` to `Footnotes_Parser`.
  *
  * @package footnotes
- * @subpackage footnotes/public
+ * @subpackage public
  */
 
 /**

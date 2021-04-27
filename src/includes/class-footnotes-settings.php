@@ -11,7 +11,7 @@
  * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
  *
  * @package footnotes
- * @subpackage footnotes/includes
+ * @subpackage includes
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';

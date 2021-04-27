@@ -5,7 +5,7 @@
  * @since      2.8.0
  *
  * @package    footnotes
- * @subpackage footnotes/includes
+ * @subpackage includes
  */
 
 /**
@@ -16,7 +16,7 @@
  * run function to execute the list of actions and filters.
  *
  * @package    footnotes
- * @subpackage footnotes/includes
+ * @subpackage includes
  */
 class Footnotes_Loader {
 	/**

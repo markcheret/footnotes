@@ -5,7 +5,7 @@
  * @since      1.5.0
  *
  * @package    footnotes
- * @subpackage footnotes/admin
+ * @subpackage admin
  */
 
 /**

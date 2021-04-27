@@ -6,7 +6,7 @@
  * @since 2.2.0  add lowercase Roman
  *
  * @package footnotes
- * @sunpackage footnotes/includes
+ * @subpackage includes
  */
 
 /**

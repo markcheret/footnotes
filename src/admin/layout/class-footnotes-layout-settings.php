@@ -38,7 +38,7 @@
  * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
  *
  * @package    footnotes
- * @subpackage footnotes/admin/layout
+ * @subpackage admin_layout
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-engine.php';

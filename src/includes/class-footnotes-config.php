@@ -6,7 +6,7 @@
  * @since 2.0.4  add Public Plugin name for dashboard heading
  *
  * @package footnotes
- * @sunpackage footnotes/includes
+ * @subpackage includes
  */
 
 /**

@@ -5,7 +5,7 @@
  * @since      2.8.0
  *
  * @package    footnotes
- * @subpackage footnotes/public
+ * @subpackage public
  */
 
 /**
@@ -15,7 +15,7 @@
  * and JavaScript.
  *
  * @package    footnotes
- * @subpackage footnotes/public
+ * @subpackage public
  */
 class Footnotes_Public {
 

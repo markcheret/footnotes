@@ -8,7 +8,7 @@
  * @since       1.5.0
  *
  * @package     footnotes
- * @subpackage  footnotes/includes
+ * @subpackage  includes
  */
 
 /**
@@ -22,7 +22,7 @@
  *
  * @since 1.5.0
  * @package     footnotes
- * @subpackage  footnotes/includes
+ * @subpackage  includes
  */
 class Footnotes {
 	/**

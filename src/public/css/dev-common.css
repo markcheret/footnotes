@@ -575,35 +575,3 @@ Link color set to inherit, so referrers/numbers are not grayed out.
 		display: none;
 	}
 }
-
-/**
- * MCI Footnotes logo
- *
- * The classes with 'heading' fixing display in dashboard
- * have all their rules moved to settings.css so as to alleviate
- * the common stylesheet. Still these rules are only used if the
- * Footnotes ad link logo is present in the page footer per user
- * dashboard setting. Making these rules conditional like those
- * pertaining to tooltips, either jQuery or alternative, would
- * double the number of united minified stylesheets shipped with
- * the plugin. Hence these are present by default at the bottom.
- *
- * @see class/config.php
- * @see css/settings.css
- */
-
-.footnotes_logo,
-.footnotes_logo:hover,
-.footnotes_logo,
-.footnotes_logo:focus {
-	font-weight: normal;
-	text-decoration: none;
-}
-
-.footnotes_logo_part1 {
-	color: #2bb975;
-}
-
-.footnotes_logo_part2 {
-	color: #545f5a;
-}

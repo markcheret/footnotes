@@ -39,7 +39,7 @@ if [[ $1 == "-c" ]]; then
 	cat ./src/public/css/dev-{common,tooltips,amp-tooltips,layout-entry-content}.css > ./dist/public/css/footnotes-amptbrpl2.css
 	cat ./src/public/css/dev-{common,tooltips,amp-tooltips,layout-main-content}.css > ./dist/public/css/footnotes-amptbrpl3.css
 	
-	cat ./src/admin/css/settings.css > ./dist/admin/css/settings.css
+	cat ./src/{admin/css/settings,includes/css/logo}.css > ./dist/admin/css/settings.css
 	
 	echo "Stylesheet concatenation complete."
 	exit 0

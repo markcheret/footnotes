@@ -87,7 +87,7 @@ abstract class Footnotes_Layout_Engine {
 	 * @return array
 	 */
 	abstract protected function get_meta_boxes();
-	
+
 	/**
 	 * Returns an array describing a sub page section.
 	 *

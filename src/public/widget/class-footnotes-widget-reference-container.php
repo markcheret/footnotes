@@ -25,7 +25,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
 	private $plugin_name;
-	
+
 	/**
 	 * Initialize the class and set its properties.
 	 *

@@ -36,7 +36,7 @@ class Footnotes_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-	
+
 	/**
 	 * The WYSIWYG editor integration object.
 	 *
@@ -79,14 +79,14 @@ class Footnotes_Admin {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-footnotes-wysiwyg.php';
 
-		$this->wysiwyg = new Footnotes_WYSIWYG($this->plugin_name);
-		
+		$this->wysiwyg = new Footnotes_WYSIWYG( $this->plugin_name );
+
 		/**
 		 * The class responsible for constructing the plugin dashboard page(s).
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/layout/class-footnotes-layout-init.php';
 
-		new Footnotes_Layout_Init($this->plugin_name);
+		new Footnotes_Layout_Init( $this->plugin_name );
 	}
 
 	/**

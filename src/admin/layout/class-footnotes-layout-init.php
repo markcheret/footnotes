@@ -43,15 +43,17 @@ class Footnotes_Layout_Init {
 	/**
 	 * Class Constructor. Initializes all WordPress hooks for the Plugin Settings.
 	 *
+	 * @param string $plugin_name The name of the plugin.
+	 *
 	 * @since  1.5.0
 	 * @since 2.8.0 Added `$plugin_name` parameter.
 	 */
 	public function __construct( $plugin_name ) {
 		$this->plugin_name = $plugin_name;
-		
+
 		$this->load_dependencies();
 
-		$this->settings_page = new Footnotes_Layout_Settings($this->plugin_name);
+		$this->settings_page = new Footnotes_Layout_Settings( $this->plugin_name );
 
 		// Register hooks/actions.
 		add_action( 'admin_menu', array( $this, 'register_options_submenu' ) );

@@ -23,7 +23,7 @@ class Footnotes_WYSIWYG {
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
 	private $plugin_name;
-	
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -42,9 +42,11 @@ class Footnotes_WYSIWYG {
 	 * @since 1.5.0
 	 * @param array $p_arr_buttons pre defined Buttons from WordPress.
 	 * @return array
+	 *
+	 * @todo Does this need to be `static`?
 	 */
 	public static function new_visual_editor_button( $p_arr_buttons ) {
-		array_push( $p_arr_buttons, $this->plugin_name );
+		array_push( $p_arr_buttons, 'footnotes' );
 		return $p_arr_buttons;
 	}
 
@@ -66,9 +68,11 @@ class Footnotes_WYSIWYG {
 	 * @since 1.5.0
 	 * @param array $p_arr_plugins Scripts to be included to the editor.
 	 * @return array
+	 *
+	 * @todo Does this need to be `static`?
 	 */
 	public static function include_scripts( $p_arr_plugins ) {
-		$p_arr_plugins[ $this->plugin_name ] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
+		$p_arr_plugins['footnotes'] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
 		return $p_arr_plugins;
 	}
 

@@ -49,7 +49,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-la
  * @since 1.5.0
  */
 class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
-	
+
 	/**
 	 * Initialize the class and set its properties.
 	 *

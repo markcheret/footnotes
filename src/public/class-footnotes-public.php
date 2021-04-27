@@ -36,7 +36,7 @@ class Footnotes_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-	
+
 	/**
 	 * The reference container widget.
 	 *
@@ -133,8 +133,8 @@ class Footnotes_Public {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-footnotes-parser.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/widget/class-footnotes-widget-reference-container.php';
 
-		$this->reference_container_widget = new Footnotes_Widget_Reference_Container($this->plugin_name);
-		
+		$this->reference_container_widget = new Footnotes_Widget_Reference_Container( $this->plugin_name );
+
 		$this->a_obj_task = new Footnotes_Parser();
 	}
 
@@ -261,7 +261,7 @@ class Footnotes_Public {
 		}
 
 	}
-	
+
 	/**
 	 * Register the widget(s) for the public-facing side of the site.
 	 *

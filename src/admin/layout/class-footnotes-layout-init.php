@@ -26,14 +26,6 @@ class Footnotes_Layout_Init {
 	const C_STR_MAIN_MENU_SLUG = 'footnotes';
 
 	/**
-	 * Plugin main menu name.
-	 *
-	 * @since 1.5.0
-	 * @var string
-	 */
-	const C_STR_MAIN_MENU_TITLE = 'ManFisher';
-
-	/**
 	 * Contains the settings layoutEngine
 	 *
 	 * @since 1.5.0
@@ -77,9 +69,9 @@ class Footnotes_Layout_Init {
 		add_submenu_page(
 			'options-general.php',
 			'footnotes Settings',
-			self::C_STR_MAIN_MENU_SLUG,
+			Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME,
 			'manage_options',
-			'footnotes',
+			self::C_STR_MAIN_MENU_SLUG,
 			array( $this->settings_page, 'display_content' )
 		);
 		$this->settings_page->register_sub_page();

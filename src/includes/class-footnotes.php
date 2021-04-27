@@ -36,7 +36,7 @@ class Footnotes {
 	protected $loader;
 
 	/**
-	 * The unique identifier of this plugin.
+	 * The unique identifier of this plugin
 	 *
 	 * @since    2.8.0
 	 * @access   protected
@@ -63,8 +63,8 @@ class Footnotes {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'C_STR_FOOTNOTES_VERSION' ) ) {
-			$this->version = C_STR_FOOTNOTES_VERSION;
+		if ( defined( 'PLUGIN_VERSION' ) ) {
+			$this->version = PLUGIN_VERSION;
 		} else {
 			$this->version = '0.0.0';
 		}

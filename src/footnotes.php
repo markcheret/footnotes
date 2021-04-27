@@ -35,8 +35,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Current plugin version.
+ *
+ * @since 2.1.4
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.8.0d' );
+define( 'PLUGIN_VERSION', '2.8.0d' );
 
 /**
  * Defines the current environment ('development' or 'production').

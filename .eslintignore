@@ -1,6 +1,0 @@
-dist/
-docs/
-vendor/
-node_modules/
-*.min.js
-jquery.tools.js

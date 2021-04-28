@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "635644be9174c16cb944ef5f2bf46e80",
+    "content-hash": "1b1e75ba247201e270b06cd85706a3bd",
     "packages": [],
     "packages-dev": [
         {
@@ -79,61 +79,6 @@
                 }
             ],
             "time": "2020-11-11T10:22:58+00:00"
-        },
-        {
-            "name": "damianopetrungaro/php-commitizen",
-            "version": "v0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/conventional-commits/php-commitizen.git",
-                "reference": "985283538f013c37146b2ec83812eeef2ff9d73c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/conventional-commits/php-commitizen/zipball/985283538f013c37146b2ec83812eeef2ff9d73c",
-                "reference": "985283538f013c37146b2ec83812eeef2ff9d73c",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/console": "^4 || ^5"
-            },
-            "require-dev": {
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9"
-            },
-            "bin": [
-                "php-commitizen"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Damianopetrungaro\\PHPCommitizen\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Damiano Petrungaro",
-                    "email": "damianopetrungaro@gmail.com"
-                }
-            ],
-            "description": "Help writing Git commit following conventional commit specs",
-            "keywords": [
-                "atomic",
-                "atomic commit",
-                "commit",
-                "conventional commit",
-                "conventionalcommit",
-                "git"
-            ],
-            "support": {
-                "issues": "https://github.com/conventional-commits/php-commitizen/issues",
-                "source": "https://github.com/conventional-commits/php-commitizen/tree/v0.2.0"
-            },
-            "time": "2020-07-15T23:51:42+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -1400,16 +1345,16 @@
         },
         {
             "name": "marcocesarato/php-conventional-changelog",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcocesarato/php-conventional-changelog.git",
-                "reference": "c84d617e0081db7d390cab585facb703f0ea9536"
+                "reference": "1ae4b4207cb3ef133336beb80c9129f513814ae2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcocesarato/php-conventional-changelog/zipball/c84d617e0081db7d390cab585facb703f0ea9536",
-                "reference": "c84d617e0081db7d390cab585facb703f0ea9536",
+                "url": "https://api.github.com/repos/marcocesarato/php-conventional-changelog/zipball/1ae4b4207cb3ef133336beb80c9129f513814ae2",
+                "reference": "1ae4b4207cb3ef133336beb80c9129f513814ae2",
                 "shasum": ""
             },
             "require": {
@@ -1468,9 +1413,9 @@
             ],
             "support": {
                 "issues": "https://github.com/marcocesarato/php-conventional-changelog/issues",
-                "source": "https://github.com/marcocesarato/php-conventional-changelog/tree/v1.10.1"
+                "source": "https://github.com/marcocesarato/php-conventional-changelog/tree/v1.10.2"
             },
-            "time": "2021-04-15T12:15:06+00:00"
+            "time": "2021-04-16T09:03:46+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2892,22 +2837,22 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v2.3.1",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "f7783bdec14b06c323d30a5f74ba70a17ec0ce81"
+                "reference": "8434102b404d119dcaf98c8fe19a2655573ac17a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/f7783bdec14b06c323d30a5f74ba70a17ec0ce81",
-                "reference": "f7783bdec14b06c323d30a5f74ba70a17ec0ce81",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/8434102b404d119dcaf98c8fe19a2655573ac17a",
+                "reference": "8434102b404d119dcaf98c8fe19a2655573ac17a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "psr/cache": "^1.0",
-                "psr/container": "^1.0",
+                "psr/cache": "^1.0|^2.0|^3.0",
+                "psr/container": "^1.1",
                 "psr/event-dispatcher": "^1.0"
             },
             "replace": {
@@ -2930,9 +2875,8 @@
             },
             "type": "library",
             "extra": {
-                "branch-version": "2.3",
                 "branch-alias": {
-                    "dev-main": "2.3-dev"
+                    "dev-main": "2.4-dev"
                 }
             },
             "autoload": {
@@ -2971,7 +2915,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/contracts/tree/v2.3.1"
+                "source": "https://github.com/symfony/contracts/tree/v2.4.0"
             },
             "funding": [
                 {
@@ -2987,7 +2931,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-14T17:08:19+00:00"
+            "time": "2021-04-11T23:07:08+00:00"
         },
         {
             "name": "symfony/dependency-injection",

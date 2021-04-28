@@ -51,9 +51,18 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
-                                    </section>
+            </section>
 
+        <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
+                        <ul class="phpdocumentor-list">
+                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
+                                    <li><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
+                                    <li><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></li>
+                            </ul>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -71,6 +80,8 @@
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin.html">admin</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin-layout.html">layout</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -78,14 +89,22 @@
     Footnotes_Layout_Engine
 
     
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin.html">admin</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin-layout.html">layout</a></li>
+                            </ul>
+        </div>
     
     
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 </aside>
 
             <p class="phpdocumentor-summary">Layout Engine for the administration dashboard.</p>
@@ -105,6 +124,15 @@
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">subpackage</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>admin_layout</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -133,6 +161,13 @@
                 &nbsp;: null|string            </span>
 </dt>
 <dd>Stores the Hook connection string for the child sub page.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Footnotes-Layout-Engine.html#property_plugin_name">$plugin_name</a>
+    <span>
+                &nbsp;: string            </span>
+</dt>
+<dd>The ID of this plugin.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Layout-Engine.html#method_description">description()</a>
@@ -335,9 +370,9 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 </aside>
 
         <p class="phpdocumentor-summary">Stores all Sections for the child sub page.</p>
@@ -382,9 +417,9 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 </aside>
 
         <p class="phpdocumentor-summary">Stores the Hook connection string for the child sub page.</p>
@@ -416,6 +451,62 @@ ull</span></code>
                         </dl>
 
 </article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_plugin_name">
+        $plugin_name
+        <a href="classes/Footnotes-Layout-Engine.html#property_plugin_name" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">35</span>
+</aside>
+
+        <p class="phpdocumentor-summary">The ID of this plugin.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$plugin_name</span>
+    </code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>private</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+</article>
             </section>
 
             <section class="phpdocumentor-methods">
@@ -434,9 +525,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_description" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">331</span>
+    <span class="phpdocumentor-element-found-in__line">316</span>
 </aside>
 
         <p class="phpdocumentor-summary">Output the Description of a section. May be overwritten in any section.</p>
@@ -483,9 +574,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_display_content" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">231</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 </aside>
 
         <p class="phpdocumentor-summary">Displays the content of specific sub page.</p>
@@ -532,9 +623,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_get_priority" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns a Priority index. Lower numbers have a higher Priority.</p>
@@ -581,9 +672,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_register_sections" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">162</span>
 </aside>
 
         <p class="phpdocumentor-summary">Registers all sections for a sub page.</p>
@@ -630,9 +721,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_register_sub_page" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">123</span>
+    <span class="phpdocumentor-element-found-in__line">136</span>
 </aside>
 
         <p class="phpdocumentor-summary">Registers a sub page.</p>
@@ -679,9 +770,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_checkbox" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">459</span>
+    <span class="phpdocumentor-element-found-in__line">444</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the html tag for an input [type = checkbox].</p>
@@ -740,9 +831,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_color_selection" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">535</span>
+    <span class="phpdocumentor-element-found-in__line">522</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the html tag for an input [type = text] with color selection class.</p>
@@ -801,9 +892,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_label" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">406</span>
+    <span class="phpdocumentor-element-found-in__line">391</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the html tag for an input/select label.</p>
@@ -871,9 +962,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_line_space" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">383</span>
+    <span class="phpdocumentor-element-found-in__line">368</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns a line break to have a space between two lines.</p>
@@ -920,9 +1011,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_meta_box" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">109</span>
+    <span class="phpdocumentor-element-found-in__line">122</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns an array describing a meta box.</p>
@@ -1009,9 +1100,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_newline" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">373</span>
+    <span class="phpdocumentor-element-found-in__line">358</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns a line break to start a new line.</p>
@@ -1058,9 +1149,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_num_box" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">559</span>
+    <span class="phpdocumentor-element-found-in__line">546</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the html tag for an input [type = num].</p>
@@ -1157,9 +1248,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_section" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">103</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns an array describing a sub page section.</p>
@@ -1246,9 +1337,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_select_box" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">487</span>
+    <span class="phpdocumentor-element-found-in__line">472</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the html tag for a select box.</p>
@@ -1357,9 +1448,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_text" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">394</span>
+    <span class="phpdocumentor-element-found-in__line">379</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns a simple text inside html &lt;span&gt; text.</p>
@@ -1418,9 +1509,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_text_box" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">434</span>
+    <span class="phpdocumentor-element-found-in__line">419</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the html tag for an input [type = text].</p>
@@ -1506,9 +1597,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_add_textarea" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">517</span>
+    <span class="phpdocumentor-element-found-in__line">504</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the html tag for a text area.</p>
@@ -1567,9 +1658,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_get_meta_boxes" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">91</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns an array of all registered meta boxes.</p>
@@ -1616,9 +1707,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_get_sections" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">83</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns an array of all registered sections for a sub page.</p>
@@ -1665,9 +1756,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_get_sub_page_slug" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">54</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the unique slug of the child sub page.</p>
@@ -1714,9 +1805,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_get_sub_page_title" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the title of the child sub page.</p>
@@ -1763,9 +1854,9 @@ ull</span></code>
         <a href="classes/Footnotes-Layout-Engine.html#method_load_setting" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">357</span>
+    <span class="phpdocumentor-element-found-in__line">342</span>
 </aside>
 
         <p class="phpdocumentor-summary">Loads specific setting and returns an array with the keys [id, name, value].</p>
@@ -1891,9 +1982,9 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
         <a href="classes/Footnotes-Layout-Engine.html#method_append_scripts" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">190</span>
+    <span class="phpdocumentor-element-found-in__line">203</span>
 </aside>
 
         <p class="phpdocumentor-summary">Append javascript and css files for specific sub page.</p>
@@ -1940,9 +2031,9 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
         <a href="classes/Footnotes-Layout-Engine.html#method_register_meta_boxes" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">169</span>
+    <span class="phpdocumentor-element-found-in__line">182</span>
 </aside>
 
         <p class="phpdocumentor-summary">Registers all Meta boxes for a sub page.</p>
@@ -2001,9 +2092,9 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
         <a href="classes/Footnotes-Layout-Engine.html#method_save_settings" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/class/dashboard/layout.php"><a href="files/src-class-dashboard-layout.html"><abbr title="src/class/dashboard/layout.php">layout.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">303</span>
+    <span class="phpdocumentor-element-found-in__line">288</span>
 </aside>
 
         <p class="phpdocumentor-summary">Save all Plugin settings.</p>

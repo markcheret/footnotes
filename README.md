@@ -26,9 +26,6 @@ Featured on [wpmudev][wpmudev] — cheers for the review, folks!
 
 * [Features](#features)
 * [Getting Started](#getting-started)
-* [Deploying](#deploying)
-* [Testing](#testing)
-* [Code Formatting](#code-formatting)
 * [Documentation](#documentation)
 * [Acknowledgments](#acknowledgements)
 * [License](#license)
@@ -38,9 +35,9 @@ Featured on [wpmudev][wpmudev] — cheers for the review, folks!
 
 This Plugin provides:
 
-* fully customizable footnote start and end shortcodes;
+* fully-customizable footnote start and end shortcodes;
 * stylable tooltips supporting hyperlinks and dedicated text;
-* a responsive 'reference container', with customisable positioning;
+* a responsive reference container, with customisable positioning;
 * a wide choice of different numbering styles;
 * a freely-configurable and optional backlink symbol;
 * footnote appearance customisation via dashboard settings and custom CSS style
@@ -57,92 +54,13 @@ This Plugin provides:
     * you will have to install `php-mbstring` manually if you do not already
       have it.
 
-## Deploying
-
-Automated release deployments will be introduced soon.
-
-### Building
-
-1. Run `_tools/build-stylesheets.sh -c` to concatenate stylesheets;
-1. manually minify the output files in `css/tmp/`, saving them as `.min.css` files:
-    * the intention is to replace this with automated minification, meaning that
-    all of these steps can be rolled into a single `build` command.
-1. run `_tools/build-stylesheets.sh -d` to deploy the minified files to `dist/`:
-    * **this will delete any existing `dist/` folder!**
-1. run `composer run build` to move over the remaining files to `dist/`:
-    * currently, the files to include in a distribution are hard-coded in
-      `_tools/build.sh`; but
-    * the intention is to replace this with a proper parsing of the `.distignore`
-      file
-  
-### Releasing
-
-1. Ensure that you have configured your Git config. with SVN credentials;
-1. run the above [build](#building) commands; and
-1. run `composer run release` and follow the prompts.
-
-## Testing
-
-Automated testing will be introduced soon.
-
-## Code Formatting
-
-This repo. uses pre-commit code formatting and linting on all staged files.
-This ensures that only style-conformant code can be committed.
-
-The individual commands can also be called manually:
-
-* Run `composer run format` to run all format commands.
-* Run `composer run format:fix` to attempt to automatically fix all formatter warnings
-  and errors.
-
-* Run `composer run lint` to run all linting commands.
-* Run `composer run lint:fix` to attempt to automatically fix all linter warnings
-  and errors.
-
-### PHP Code
-
-PHP code must follow the [WordPress PHP Coding Standards][wpcs-php].
-
-1. Run `composer run lint:php` to lint all JS/TS files with [PHP CodeSniffer][phpcs]
-1. Run `composer run lint:php:fix` to attempt to automatically fix warnings and
-  errors with the PHP Code Beautifier and Formatter.
-  
-### JavaScript Code
-
-JavaScript code must follow the [WordPress JavaScript Coding Standards][wpcs-js].
-
-* Run `composer run format:js` to format all JS files with [Prettier][prettier].
-* Run `composer run format:js:fix` to attempt to automatically fix warnings and errors.
-
-* Run `composer run lint:js` to lint all JS files with [ESLint][eslint].
-* Run `composer run lint:js:fix` to attempt to automatically fix warnings and errors.
-
-Prettier configuration settings are found in `.prettierrc`.
-
-ESLint configuration settings are found in `.eslintrc.js`. File ignore rules are
-found in `.eslintignore`.
-  
-### CSS Stylesheets
-
-JavaScript code must follow the [WordPress CSS Coding Standards][wpcs-css].
-
-* Run `composer run lint:css` to format all CSS files with [stylelint][stylelint].
-* Run `npcomposerm run lint:css:fix` to attempt to automatically fix warnings and
-  errors.
-
-stylelint configuration settings are found in `.stylelint.json`.
-
 ## Documentation
-
-Run `composer run docs` to automatically generate HTML documentation with
-[phpDocumentor][phpdocumentor].
 
 View the current docs [here][footnotes-docs].
 
 ## Acknowledgements
 
-Huge thanks to every **footnotes user**, contributor, bug reporter, feature
+Huge thanks to every **footnotes** user, contributor, bug reporter, feature
 requester and fan!
 
 ## License

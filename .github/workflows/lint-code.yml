@@ -37,7 +37,7 @@ jobs:
         run: composer run lint:php
 
       - name: Lint Plugin scripts (JS)
-        run: composer run format:js:fix && composer run lint:js
+        run: composer run lint:js
 
       #- name: Lint stylesheets (CSS)
       #  run: composer run lint:css

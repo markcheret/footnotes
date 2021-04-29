@@ -7,11 +7,11 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @author Mark Cheret
- * @since 1.0.0
- * @package footnotes
- * @copyright 2021 Mark Cheret (email: mark@cheret.de)
- * @license GPL-3.0-only
+ * @package  footnotes
+ * @license  GPL-3.0-only
+ * @copyright  2021 Mark Cheret (email: mark@cheret.de)
+ *
+ * @since  1.0.0
  *
  * @wordpress-plugin
  * Plugin Name: footnotes
@@ -34,24 +34,33 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Current plugin version.
+ * The current plugin version.
+ *
+ * @link https://github.com/markcheret/footnotes/wiki/Versioning Versioning Guide
+ *
+ * @global string PLUGIN_VERSION
  *
  * @since 2.1.4
  */
 define( 'PLUGIN_VERSION', '2.8.0d' );
 
 /**
- * Defines the current environment ('development' or 'production').
+ * The current environment ('development' or 'production').
  *
  * This primarily affects whether minified or unminified files are requested.
+ *
+ * @global bool PRODUCTION_ENV
  *
  * @since 2.5.5
  */
 define( 'PRODUCTION_ENV', false );
 
 /**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-name-activator.php
+ * Triggers during plugin activation.
+ *
+ * @uses Footnotes_Activator::activate() Method called on plugin activation.
+ *
+ * @since 2.8.0
  */
 function activate_footnotes() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-footnotes-activator.php';
@@ -59,8 +68,11 @@ function activate_footnotes() {
 }
 
 /**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
+ * Triggers during plugin deactivation.
+ *
+ * @uses Footnotes_Deactivator::deactivate() Method called on plugin deactivation.
+ *
+ * @since 2.8.0
  */
 function deactivate_plugin_name() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-footnotes-deactivator.php';
@@ -79,9 +91,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-footnotes.php';
 /**
  * Begins execution of the plugin.
  *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
+ * Since everything within the plugin is registered via hooks, then kicking off 
+ * the plugin from this point in the file does not affect the page life cycle.
  *
  * @since 2.8.0
  */

@@ -1,97 +1,93 @@
 <?php
 /**
- * Includes the Template Engine to load and handle all Template files of the Plugin.
+ * File providing the `Footnotes_Template` class.
  *
- * @since 1.5.0
- * @since 2.2.6  Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
- * @since 2.5.0  Adding: Templates: Enable template location stack, thanks to @misfist issue report and code contribution.
  *
- * @package footnotes
- * @subpackage includes
+ * @package  footnotes
+ * @subpackage  includes
+ *
+ * @since  1.5.0
+ * @since  2.2.6  Add support for custom templates in sibling folder.
+ * @since  2.8.0  Rename file from `templates.php` to `class-footnotes-templates.php`.
  */
 
 /**
- * Handles each Template file for the Plugin Frontend (e.g. Settings Dashboard, Public pages, ...).
- * Loads a template file, replaces all Placeholders and returns the replaced file content.
+ * Class defining template rendering.
  *
- * @since 1.5.0
+ * Loads a template file, replaces all Placeholders and returns the replaced 
+ * file content.
+ 
+ * @package  footnotes
+ * @subpackage  includes
+ *
+ * @since  1.5.0
+ * @todo  Refactor templating.
  */
 class Footnotes_Template {
 
 	/**
 	 * Directory name for dashboard partials.
 	 *
-	 * @since 1.5.0
 	 * @var string
+	 *
+	 * @since 1.5.0
 	 */
 	const C_STR_DASHBOARD = 'admin/partials';
 
 	/**
 	 * Directory name for public partials.
 	 *
-	 * @since 1.5.0
 	 * @var string
+	 *
+	 * @since 1.5.0
 	 */
 	const C_STR_PUBLIC = 'public/partials';
 
 	/**
 	 * Contains the content of the template after initialize.
 	 *
-	 * @since  1.5.0
 	 * @var string
+	 *
+	 * @since  1.5.0
 	 */
 	private $a_str_original_content = '';
 
 	/**
 	 * Contains the content of the template after initialize with replaced place holders.
 	 *
-	 * @since  1.5.0
 	 * @var string
+	 *
+	 * @since  1.5.0
 	 */
 	private $a_str_replaced_content = '';
 
 	/**
 	 * Plugin Directory
 	 *
-	 * @since 2.4.0d3
+	 * @var  string
 	 *
-	 * @var string
+	 * @since  2.4.0d3
 	 */
 	public $plugin_directory;
 
 	/**
 	 * Class Constructor. Reads and loads the template file without replace any placeholder.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_file_type Template file type (take a look on the Class constants).
-	 * @param string $p_str_file_name Template file name inside the Template directory without the file extension.
-	 * @param string $p_str_extension Optional Template file extension (default: html).
+	 * @param  string  $p_str_file_type  Template file type.
+	 * @param  string  $p_str_file_name  Template file name inside the `partials/` directory, without the file extension.
+	 * @param  string  $p_str_extension  (optional) Template file extension (default: 'html').
 	 *
-	 * - Adding: Templates: support for custom templates in sibling folder, thanks to @misfist issue report.
-	 *
-	 * @since 2.2.6
-	 *
-	 * @reporter @misfist
-	 * @link https://wordpress.org/support/topic/template-override-filter/
+	 * @since  1.5.0
+	 * @todo  Refactor templating.
 	 */
 	public function __construct( $p_str_file_type, $p_str_file_name, $p_str_extension = 'html' ) {
 		// No template file type and/or file name set.
 		if ( empty( $p_str_file_type ) || empty( $p_str_file_name ) ) {
 			return;
 		}
-
-		/**
-		 * Define plugin root path.
-		 *
-		 * @since 2.4.0d3
-		 */
+		
 		$this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
-
-		/**
-		 * Modularize functions.
-		 *
-		 * @since 2.4.0d3
-		 */
+		
 		$template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension );
 		if ( $template ) {
 			$this->process_template( $template );
@@ -104,9 +100,11 @@ class Footnotes_Template {
 	/**
 	 * Replace all placeholders specified in array.
 	 *
+	 * @param  array  $p_arr_placeholders  Placeholders (key = placeholder, value = value).
+	 * @return  bool  `true` on Success, `false` if placeholders invalid.
+	 *
 	 * @since  1.5.0
-	 * @param array $p_arr_placeholders Placeholders (key = placeholder, value = value).
-	 * @return bool True on Success, False if Placeholders invalid.
+	 * @todo  Refactor templating.
 	 */
 	public function replace( $p_arr_placeholders ) {
 		// No placeholders set.
@@ -129,6 +127,7 @@ class Footnotes_Template {
 	 * Reloads the original content of the template file.
 	 *
 	 * @since  1.5.0
+	 * @todo  Refactor templating.
 	 */
 	public function reload() {
 		$this->a_str_replaced_content = $this->a_str_original_content;
@@ -137,8 +136,10 @@ class Footnotes_Template {
 	/**
 	 * Returns the content of the template file with replaced placeholders.
 	 *
+	 * @return  string  Template content with replaced placeholders.
+	 *
 	 * @since  1.5.0
-	 * @return string Template content with replaced placeholders.
+	 * @todo  Refactor templating.
 	 */
 	public function get_content() {
 		return $this->a_str_replaced_content;
@@ -147,16 +148,11 @@ class Footnotes_Template {
 	/**
 	 * Process template file.
 	 *
-	 * @since 2.4.0d3
+	 * @param  string  $template  The template to be processed.
+	 * @return  void
 	 *
-	 * @param string $template The template to be processed.
-	 * @return void
-	 *
-	 * @since 2.0.3  Replace tab with a space.
-	 * @since 2.0.3  Replace 2 spaces with 1.
-	 * @since 2.0.4  Collapse multiple spaces.
-	 * @since 2.2.6  Delete a space before a closing pointy bracket.
-	 * @since 2.5.4  Collapse HTML comments and PHP/JS docblocks (only).
+	 * @since  2.4.0d3
+	 * @todo  Refactor templating.
 	 */
 	public function process_template( $template ) {
 		// phpcs:disable WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
@@ -174,18 +170,13 @@ class Footnotes_Template {
 	/**
 	 * Get the template.
 	 *
-	 * - Adding: Templates: Enable template location stack, thanks to @misfist issue report and code contribution.
+	 * @param  string  $p_str_file_type  The file type of the template.
+	 * @param  string  $p_str_file_name  The file name of the template.
+	 * @param  string  $p_str_extension  The file extension of the template.
+	 * @return  mixed  `false` or the template path
 	 *
-	 * @since 2.4.0d3 Contribution.
-	 * @since 2.5.0   Release.
-	 *
-	 * @contributor @misfist
-	 * @link https://wordpress.org/support/topic/template-override-filter/#post-13864301
-	 *
-	 * @param string $p_str_file_type The file type of the template.
-	 * @param string $p_str_file_name The file name of the template.
-	 * @param string $p_str_extension The file extension of the template.
-	 * @return mixed false | template path
+	 * @since 2.5.0
+	 * @todo  Refactor templating.
 	 */
 	public function get_template( $p_str_file_type, $p_str_file_name, $p_str_extension = 'html' ) {
 		$located = false;
@@ -197,6 +188,8 @@ class Footnotes_Template {
 		 * add_filter( 'footnotes_template_directory', function( $directory ) {
 		 *  return 'template_parts/footnotes/';
 		 * } );
+		 *
+		 * @todo  Review.
 		 */
 		$template_directory = apply_filters( '', 'footnotes/' );
 		$custom_directory   = apply_filters( 'footnotes_custom_template_directory', 'footnotes-custom/' );

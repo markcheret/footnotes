@@ -1,31 +1,29 @@
 <?php
 /**
- * Includes the Convert Class.
+ * File providing core `Footnotes_Convert` class.
  *
- * @since 1.5.0
- * @since 2.2.0  add lowercase Roman
+ * @package  footnotes
+ * @subpackage  includes
  *
- * @package footnotes
- * @subpackage includes
+ * @since  1.5.0
+ * @since  2.8.0  Rename file from `convert.php` to `class-footnotes-convert.php`.
  */
 
 /**
- * Converts data types and Footnotes specific values.
+ * Class providing variable type and value conversion functions.
  *
  * @since 1.5.0
  */
 class Footnotes_Convert {
 
 	/**
-	 * Converts a integer into the user-defined counter style for the footnotes.
+	 * Converts an integer into the user-defined counter style for the footnotes.
 	 *
-	 * @since 1.5.0
-	 * @param int    $p_int_index Index to be converted.
-	 * @param string $p_str_convert_style Style of the new/converted Index.
-	 * @return string Converted Index as string in the defined counter style.
+	 * @param  int  $p_int_index  Index to be converted.
+	 * @param  string  $p_str_convert_style  Counter style to use.
+	 * @return  string  Converted  Index converted to the defined counter style.
 	 *
-	 * Edited:
-	 * @since 2.2.0  lowercase Roman numerals supported
+	 * @since  1.5.0
 	 */
 	public static function index( $p_int_index, $p_str_convert_style = 'arabic_plain' ) {
 		switch ( $p_str_convert_style ) {
@@ -46,13 +44,17 @@ class Footnotes_Convert {
 	}
 
 	/**
-	 * Converts an integer into latin ascii characters, either lower or upper-case.
-	 * Function available from A to ZZ ( means 676 footnotes at 1 page possible).
+	 * Converts an integer into Latin ASCII characters, either lower or upper-case.
 	 *
-	 * @since 1.0-gamma
-	 * @param int  $p_int_value Value/Index to be converted.
-	 * @param bool $p_bool_upper_case True to convert the value to upper case letter, otherwise to lower case.
-	 * @return string
+	 * This function works from values A–ZZ (meaning there is a limit of 676
+	 * gootnotes per Page).
+	 *
+	 * @param  int  $p_int_value  Value to be converted.
+	 * @param  bool  $p_bool_upper_case  Whether to convert the value to upper-case.
+	 * @return  string
+	 *
+	 * @since  1.0-gamma
+	 * @todo  Replace with built-in char casting.
 	 */
 	private static function to_latin( $p_int_value, $p_bool_upper_case ) {
 		// Output string.
@@ -80,9 +82,11 @@ class Footnotes_Convert {
 	/**
 	 * Converts an integer to a leading-0 integer.
 	 *
-	 * @since 1.0-gamma
-	 * @param int $p_int_value Value/Index to be converted.
-	 * @return string Value with a leading zero.
+	 * @param  int  $p_int_value  Value to be converted.
+	 * @return  string  Value with a leading zero.
+	 *
+	 * @since  1.0-gamma
+	 * @todo  Replace with built-in string formatting.
 	 */
 	private static function to_arabic_leading( $p_int_value ) {
 		// Add a leading 0 if number lower then 10.
@@ -93,15 +97,13 @@ class Footnotes_Convert {
 	}
 
 	/**
-	 * Converts an integer to a romanic letter.
+	 * Converts an integer to a Roman numeral.
 	 *
-	 * @since 1.0-gamma
-	 * @param int  $p_int_value Value/Index to be converted.
-	 * @param bool $p_bool_upper_case Whether to uppercase.
-	 * @return string
+	 * @param  int  $p_int_value  Value to be converted.
+	 * @param  bool  $p_bool_upper_case  Whether to convert the value to upper-case.
+	 * @return  string
 	 *
-	 * Edited:
-	 * @since 2.2.0   optionally lowercase (code from Latin)
+	 * @since  1.0-gamma
 	 */
 	private static function to_romanic( $p_int_value, $p_bool_upper_case ) {
 		// Table containing all necessary romanic letters.
@@ -142,9 +144,11 @@ class Footnotes_Convert {
 	/**
 	 * Converts a string depending on its value to a boolean.
 	 *
-	 * @since 1.0-beta
-	 * @param string $p_str_value String to be converted to boolean.
-	 * @return bool Boolean representing the string.
+	 * @param  string  $p_str_value  String to be converted to boolean.
+	 * @return  bool  Boolean value represented by the string.
+	 *
+	 * @since  1.0-beta
+	 * @todo  Replace with built-in type casting.
 	 */
 	public static function to_bool( $p_str_value ) {
 		// Convert string to lower-case to make it easier.
@@ -163,11 +167,13 @@ class Footnotes_Convert {
 	}
 
 	/**
-	 * Get a html Array short code depending on Arrow-Array key index.
+	 * Get an HTML array short code depending on Arrow-Array key index.
 	 *
-	 * @since 1.3.2
-	 * @param int $p_int_index Index representing the Arrow. If empty all Arrows are specified.
-	 * @return array|string Array of all Arrows if Index is empty otherwise html tag of a specific arrow.
+	 * @param  int  $p_int_index Index representing the arrow. If empty, all arrows are specified.
+	 * @return  array|string  Array of all arrows if index is empty, otherwise HTML tag of a specific arrow.
+	 *
+	 * @since  1.3.2
+	 * @todo  Review.
 	 */
 	public static function get_arrow( $p_int_index = -1 ) {
 		// Define all possible arrows.
@@ -184,14 +190,14 @@ class Footnotes_Convert {
 		return $l_arr_arrows[ $p_int_index ];
 	}
 
-	// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_var_dump
-	// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_print_r
+	// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_var_dump, WordPress.PHP.DevelopmentFunctions.error_log_print_r
 	/**
-	 * Displays a Variable.
+	 * Displays a variable.
 	 *
-	 * @since 1.5.0
-	 * @param mixed $p_mixed_value The variable to display.
-	 * @return void
+	 * @param  mixed  $p_mixed_value  The variable to display.
+	 *
+	 * @since  1.5.0
+	 * @todo  Replace with proper logging/debug functions.
 	 */
 	public static function debug( $p_mixed_value ) {
 		if ( empty( $p_mixed_value ) ) {
@@ -218,5 +224,5 @@ class Footnotes_Convert {
 		}
 		echo '<br/>';
 	}
-	// phpcs:disable
+	// phpcs:enable WordPress.PHP.DevelopmentFunctions.error_log_var_dump, WordPress.PHP.DevelopmentFunctions.error_log_print_r
 }

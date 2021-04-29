@@ -4,96 +4,103 @@
  *
  * The constants are ordered by ascending version so their docblocks can replace most of this list.
  *
- * @since 1.5.0
- * @since 2.0.0  Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
- * @since 2.0.4  Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
- * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
- * @since 2.1.3  Bugfix: Hooks: disable the_excerpt hook by default to fix issues, thanks to @nikelaos bug report.
+ * @package  footnotes
+ * @subpackage  includes
  *
- * @package footnotes
- * @subpackage includes
+ * @since  1.5.0
+ * @since  2.8.0  Rename file from `settings.php` to `class-footnotes-settings.php`.
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
 
 /**
- * Loads the settings values, sets to default values if undefined.
+ * Class defining configurable plugin settings.
  *
- * @since 1.5.0
+ * @since  1.5.0
  */
 class Footnotes_Settings {
 
 	/**
 	 * Settings container key for the label of the reference container.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_REFERENCE_CONTAINER_NAME = 'footnote_inputfield_references_label';
 
 	/**
 	 * Settings container key to collapse the reference container by default.
 	 *
-	 * @since 1.5.0
-	 * @var str
 	 * The string is converted to Boolean false if 'no', true if 'yes'.
-	 * @see Footnotes_Convert::to_bool()
+	 *
+	 * @var  str
+	 *
+	 * @since  1.5.0
+	 * @todo  Refactor to use sane typing.
 	 */
 	const C_STR_REFERENCE_CONTAINER_COLLAPSE = 'footnote_inputfield_collapse_references';
 
 	/**
 	 * Settings container key for the position of the reference container.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_REFERENCE_CONTAINER_POSITION = 'footnote_inputfield_reference_container_place';
 
 	/**
 	 * Settings container key for combining identical footnotes.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_COMBINE_IDENTICAL_FOOTNOTES = 'footnote_inputfield_combine_identical';
 
 	/**
-	 * Settings container key for the short code of the footnote’s start.
+	 * Settings container key for the short code of the footnote's start.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_FOOTNOTES_SHORT_CODE_START = 'footnote_inputfield_placeholder_start';
 
 	/**
-	 * Settings container key for the short code of the footnote’s end.
+	 * Settings container key for the short code of the footnote's end.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_FOOTNOTES_SHORT_CODE_END = 'footnote_inputfield_placeholder_end';
 
 	/**
 	 * Settings container key for the user-defined short code of the footnotes start.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED = 'footnote_inputfield_placeholder_start_user_defined';
 
 	/**
 	 * Settings container key for the user-defined short code of the footnotes end.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED = 'footnote_inputfield_placeholder_end_user_defined';
 
 	/**
 	 * Settings container key for the counter style of the footnotes.
 	 *
-	 * @since 1.5.0
-	 * @var str
+	 * @var  str
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_FOOTNOTES_COUNTER_STYLE = 'footnote_inputfield_counter_style';
 

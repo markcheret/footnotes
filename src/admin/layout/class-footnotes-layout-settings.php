@@ -1152,7 +1152,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	 * Edited:
 	 * @since 2.1.6  drop localized notices for CSS classes as the number increased to 16
 	 *        list directly in the template, as CSS is in English anyway
-	 * @see admin/partials/customize-css.html
+	 * @link ../partials/customize-css.html
 	 *
 	 * @since 2.2.2  migrate Custom CSS to a dedicated tab
 	 * @since 2.3.0  say 'copy-paste' instead of 'cut and paste' since cutting is not needed

@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/footnotes/
  * Description: footnotes lets you easily add highly-customisable footnotes on your WordPress Pages and Posts.
  * Author: Mark Cheret
- * Author URI: https://cheret.org/footnotes
+ * Author URI: https://cheret.tech/footnotes
  * Version: 2.7.3
  * Text Domain: footnotes
  * Domain Path: /languages

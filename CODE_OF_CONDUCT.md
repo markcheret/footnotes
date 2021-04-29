@@ -14,10 +14,10 @@ All participants in this community must abide by the following policy:
 
 > Be excellent to each other
 
-Treat everyone with respect. Participate while acknowledging that everyone 
-deserves to be here — and each of us has the right to enjoy our experience 
-without fear. Consider what you are saying and how it would feel if it were 
-said to or about you. 
+Treat everyone with respect. Participate while acknowledging that everyone
+deserves to be here — and each of us has the right to enjoy our experience
+without fear. Consider what you are saying and how it would feel if it were
+said to or about you.
 
 ## Enforcement Responsibilities
 

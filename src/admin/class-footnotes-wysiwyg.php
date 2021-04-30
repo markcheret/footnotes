@@ -1,34 +1,42 @@
-<?php // phpcs:disable Squiz.Commenting.FileComment.Missing
+<?php
 /**
- * File provides WYSIWYG editor integration.
+ * Admin: Footnotes_WYSIWYG class
  *
- * @since      1.5.0
+ * The Admin. subpackage is initialised at runtime by the {@see Footnotes_Admin}
+ * class, which draws in the {@see Footnotes_WYSIWYG} class for WYSIWYG editor
+ * integration and the {@see footnotes\admin_layout} subpackage for rendering
+ * dashboard pages.
  *
- * @package    footnotes
- * @subpackage admin
+ * @package  footnotes\admin
+ * @since  1.5.0
+ * @since  2.8.0  Rename file from `wysiwyg.php` to `class-footnotes-wysiwyg.php`,
+ *								move from `class/` sub-directory to `admin/`.
  */
 
 /**
- * Handles the WSYIWYG-Buttons.
+ * Class providing WYSIWYG editor intergration for the plugin.
  *
- * @since 1.5.0
+ * @package  footnotes\admin
+ * @since  1.5.0
  */
 class Footnotes_WYSIWYG {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @access  private
+	 * @var  string  $plugin_name  The ID of this plugin.
+	 *
+	 * @since  2.8.0
 	 */
 	private $plugin_name;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    2.8.0
-	 * @param    string $plugin_name       The name of this plugin.
+	 * @param  string $plugin_name  The name of this plugin.
+	 *
+	 * @since  2.8.0
 	 */
 	public function __construct( $plugin_name ) {
 
@@ -39,11 +47,11 @@ class Footnotes_WYSIWYG {
 	/**
 	 * Append a new Button to the WYSIWYG editor of Posts and Pages.
 	 *
-	 * @since 1.5.0
-	 * @param array $p_arr_buttons pre defined Buttons from WordPress.
-	 * @return array
+	 * @param  string[]  $p_arr_buttons  Already-defined editor buttons.
+	 * @return  string[]
 	 *
-	 * @todo Does this need to be `static`?
+	 * @since  1.5.0
+	 * @todo  Should this be `static`?
 	 */
 	public static function new_visual_editor_button( $p_arr_buttons ) {
 		array_push( $p_arr_buttons, 'footnotes' );
@@ -53,7 +61,7 @@ class Footnotes_WYSIWYG {
 	/**
 	 * Add a new button to the plain text editor.
 	 *
-	 * @since 1.5.0
+	 * @since  1.5.0
 	 */
 	public static function new_plain_text_editor_button() {
 		$l_obj_template = new Footnotes_Template( Footnotes_Template::C_STR_DASHBOARD, 'editor-button' );
@@ -65,11 +73,11 @@ class Footnotes_WYSIWYG {
 	/**
 	 * Includes the Plugins WYSIWYG editor script.
 	 *
-	 * @since 1.5.0
-	 * @param array $p_arr_plugins Scripts to be included to the editor.
-	 * @return array
+	 * @param  string[]  $p_arr_plugins  Scripts to be included by the editor.
+	 * @return  string[]
 	 *
-	 * @todo Does this need to be `static`?
+	 * @since  1.5.0
+	 * @todo  Should this be `static`?
 	 */
 	public static function include_scripts( $p_arr_plugins ) {
 		$p_arr_plugins['footnotes'] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
@@ -80,7 +88,7 @@ class Footnotes_WYSIWYG {
 	 * AJAX Callback function when the Footnotes Button is clicked. Either in the Plain text or Visual editor.
 	 * Returns an JSON encoded array with the Footnotes start and end short code.
 	 *
-	 * @since 1.5.0
+	 * @since  1.5.0
 	 */
 	public static function ajax_callback() {
 		// Get start and end tag for the footnotes short code.

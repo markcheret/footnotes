@@ -2,101 +2,106 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @since      2.8.0
- *
- * @package    footnotes
- * @subpackage public
+ * @package  footnotes\public
+ * @since  2.8.0
  */
 
 /**
- * The public-facing functionality of the plugin.
+ * Class provide all admin-specific functionality of the plugin.
  *
  * Defines the plugin name, version, and enqueues all public-facing stylesheets
  * and JavaScript.
  *
- * @package    footnotes
- * @subpackage public
+ * @package  footnotes\public
+ * @since  2.8.0
  */
 class Footnotes_Public {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @since  2.8.0
+	 
+	 * @access  private
+	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
 	private $plugin_name;
 
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @since  2.8.0
+	
+	 * @access  private
+	 * @var  string  $version  The current version of this plugin.
 	 */
 	private $version;
 
 	/**
 	 * The reference container widget.
 	 *
-	 * @since 2.8.0
-	 * @var Footnotes_Widget_Reference_Container $reference_container_widget The reference container widget
+	 * @since  2.8.0
+	 *
+	 * @var  Footnotes_Widget_Reference_Container  $reference_container_widget  The reference container widget
 	 */
 	private $reference_container_widget;
 
 	/**
 	 * The footnote parser.
 	 *
-	 * @since 1.5.0
-	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
-	 * @var Footnote_Parser $task The Plugin task.
+	 * @since  1.5.0
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 *
+	 * @var  Footnotes_Parser  $task  The Plugin task.
 	 */
 	public $a_obj_task = null;
 
 	/**
 	 * Flag for using tooltips.
 	 *
-	 * @since 2.4.0
-	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
-	 * @var bool $tooltips_enabled Whether tooltips are enabled or not.
+	 * @since  2.4.0
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 *
+	 * @var  bool  $tooltips_enabled  Whether tooltips are enabled or not.
 	 */
 	public static $a_bool_tooltips_enabled = false;
 
 	/**
 	 * Allows to determine whether alternative tooltips are enabled.
 	 *
-	 * @since 2.1.1
-	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
-	 * @var bool
+	 * @since  2.1.1
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 *
+	 * @var  bool
 	 */
 	public static $a_bool_alternative_tooltips_enabled = false;
 
 	/**
 	 * Allows to determine whether AMP compatibility mode is enabled.
 	 *
-	 * @since 2.6.0  (release)
-	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
-	 * @var bool
+	 * @since  2.6.0
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 *
+	 * @var  bool
 	 */
 	public static $a_bool_amp_enabled = false;
 
 	/**
 	 * Allows to determine the script mode among jQuery or plain JS.
 	 *
-	 * @since 2.5.6
-	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
-	 * @var str   'js'      Plain JavaScript.
-	 *            'jquery'  Use jQuery libraries.
+	 * @since  2.5.6
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 *
+	 * @var  string  ‘js’ to use plain JavaScript, ‘jquery’ to use jQuery.
 	 */
 	public static $a_str_script_mode = 'js';
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    2.8.0
-	 * @param    string $plugin_name       The name of this plugin.
-	 * @param    string $version    The version of this plugin.
+	 * @since  2.8.0
+	 * @param  string  $plugin_name  The name of this plugin.
+	 * @param  string  $version  The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -118,11 +123,10 @@ class Footnotes_Public {
 	 * Include the following files that provide the public-facing functionality
 	 * of this plugin:
 	 *
-	 * - `Footnotes_Parser`. Parses Posts and Pages for footnote shortcodes.
-	 * - `Footnotes_Widget_Reference_Container`. Defines the Reference Container widget.
+	 * - {@see Footnotes_Parser}: parses Posts and Pages for footnote shortcodes; and
+	 * - {@see Footnotes_Widget_Reference_Container}: defines the Reference Container widget.
 	 *
-	 * @since    2.8.0
-	 * @access   private
+	 * @since  2.8.0
 	 */
 	private function load_dependencies() {
 		// TODO: neaten up and document once placements and names are settled.
@@ -141,12 +145,12 @@ class Footnotes_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * Enables enqueuing the formatted individual stylesheets if `PRODCUTION_ENV`
-	 * is true (set in `footnotes.php`).
+	 * Enables enqueuing the formatted individual stylesheets if {@see PRODUCTION_ENV}
+	 * is `true`.
 	 *
-	 * @since 1.5.0
-	 * @since 2.5.5 Change stylesheet scheme.
-	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
+	 * @since  1.5.0
+	 * @since  2.5.5  Change stylesheet schema.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
 	 */
 	public function enqueue_styles() {
 		if ( PRODUCTION_ENV ) {
@@ -207,22 +211,20 @@ class Footnotes_Public {
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since 1.5.0
-	 * @since 2.0.0 Add jQueryUI dependency.
-	 * @since 2.1.2 Add jQuery Tools dependency.
-	 * @since 2.5.6 Add jQuery dependency.
-	 * @since 2.8.0 Moved from `Footnotes` to `Footnotes_Public` class.
+	 * @since  1.5.0
+	 * @since  2.0.0  Add jQueryUI dependency.
+	 * @since  2.1.2  Add jQuery Tools dependency.
+	 * @since  2.5.6  Add jQuery dependency.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
 	 */
 	public function enqueue_scripts() {
-		/**
+		/*
 		 * Enqueues the jQuery library registered by WordPress.
 		 *
 		 * As jQuery is also used for animated scrolling, it was loaded by default.
 		 * The function `wp_enqueue_script()` avoids loading the same library multiple times.
 		 * After adding the alternative reference container, jQuery has become optional,
 		 * but still enabled by default.
-		 *
-		 * @since 2.5.6
 		 */
 		if ( ! self::$a_bool_amp_enabled ) {
 
@@ -233,24 +235,20 @@ class Footnotes_Public {
 			}
 
 			if ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) {
-				/**
+				/*
 				 * Enqueues the jQuery Tools library shipped with the plugin.
 				 *
-				 * Redacted jQuery.browser, completed minification;
+				 * Redacted `jQuery.browser`, completed minification;
 				 * see full header in `public/js/jquery.tools.js`.
-				 * No '-js' in the handle, is appended automatically.
+				 * No ‘-js’ in the handle, is appended automatically.
 				 * Deferring to the footer breaks jQuery tooltip display.
-				 *
-				 * @since 2.1.2
 				 */
 				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/jquery.tools' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', array(), '1.2.7.redacted.2', false );
 
-				/**
+				/*
 				 * Enqueues some jQuery UI libraries registered by WordPress.
 				 *
 				 * If alternative tooltips are enabled, these libraries are not needed.
-				 *
-				 * @since 2.0.0
 				 */
 				wp_enqueue_script( 'jquery-ui-core' );
 				wp_enqueue_script( 'jquery-ui-widget' );
@@ -265,8 +263,8 @@ class Footnotes_Public {
 	/**
 	 * Register the widget(s) for the public-facing side of the site.
 	 *
-	 * @since 1.5.0
-	 * @since 2.8.0 Moved to `Footnotes_Public` class.
+	 * @since  1.5.0
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
 	 */
 	public function register_widgets() {
 		register_widget( $this->reference_container_widget );

@@ -1,104 +1,134 @@
 <?php // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
- * Includes Layout Engine for the admin dashboard.
+ * Admin. Layouts: Footnotes_Layout_Engine class
  *
- * @since 1.5.0
- * @since 2.1.2  add versioning of settings.css for cache busting
- * @since 2.1.4  automate passing version number for cache busting
- * @since 2.1.4  optional step argument and support for floating in numbox
- * @since 2.1.6  fix punctuation-related localization issue in dashboard labels
- * @since 2.5.5  Bugfix: Stylesheets: minify to shrink the carbon footprint, increase speed and implement best practice, thanks to @docteurfitness issue report.
+ * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
+ * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
+ * sub-class. The subpackage is initialised at runtime by the {@see 
+ * Footnotes_Layout_Init} class.
  *
- * @package footnotes
- * @subpackage admin_layout
+ * @package  footnotes\admin_layout
+ * @since  1.5.0
+ * @since  2.8.0  Rename file from `layout.php` to `class-footnotes-layout-engine.php`,
+ *								rename `dashboard/` sub-directory to `layout/`.
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-init.php';
 
 /**
- * Layout Engine for the administration dashboard.
+ * Class to be extended by page layout sub-classes.
  *
+ * @abstract
+ 
+ * @package  footnotes\admin_layout
  * @since  1.5.0
- *
- * @package    footnotes
- * @subpackage admin_layout
  */
 abstract class Footnotes_Layout_Engine {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @access  protected
+	 * @var  string  $plugin_name  The ID of this plugin.
+	 *
+	 * @since  2.8.0
 	 */
 	protected $plugin_name;
 
 	/**
-	 * Stores the Hook connection string for the child sub page.
+	 * Stores the Hook connection string for the child sub-page.
+	 *
+	 * @access  protected
+	 * @var  null|string
 	 *
 	 * @since  1.5.0
-	 * @var null|string
 	 */
 	protected $a_str_sub_page_hook = null;
 
 	/**
-	 * Stores all Sections for the child sub page.
+	 * Stores all Sections for the child sub-page.
 	 *
-	 * @since 1.5.0
-	 * @var array
+	 * @access  protected
+	 * @var  array
+	 *
+	 * @since  1.5.0
 	 */
 	protected $a_arr_sections = array();
 
 	/**
-	 * Returns a Priority index. Lower numbers have a higher Priority.
+	 * Returns a Priority index. Lower numbers have a higher priority.
 	 *
-	 * @since 1.5.0
-	 * @return int
+	 * @abstract
+	 * @return  int
+	 *
+	 * @since  1.5.0
 	 */
 	abstract public function get_priority();
 
 	/**
-	 * Returns the unique slug of the child sub page.
+	 * Returns the unique slug of the child sub-page.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @abstract
+	 * @access  protected
+	 * @return  string
+	 *
+	 * @since  1.5.0
 	 */
 	abstract protected function get_sub_page_slug();
 
 	/**
-	 * Returns the title of the child sub page.
+	 * Returns the title of the child sub-page.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @abstract
+	 * @access  protected
+	 * @return  string
+	 *
+	 * @since  1.5.0
 	 */
 	abstract protected function get_sub_page_title();
 
 	/**
-	 * Returns an array of all registered sections for a sub page.
+	 * Returns an array of all registered sections for a sub-page.
+	 *
+	 * @abstract
+	 * @access  protected
+	 * @return  array
 	 *
 	 * @since  1.5.0
-	 * @return array
 	 */
 	abstract protected function get_sections();
 
 	/**
 	 * Returns an array of all registered meta boxes.
 	 *
+	 * @abstract
+	 * @access  protected
+	 * @return  array
+	 *
 	 * @since  1.5.0
-	 * @return array
 	 */
 	abstract protected function get_meta_boxes();
 
 	/**
-	 * Returns an array describing a sub page section.
+	 * Returns an array describing a sub-page section.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_id Unique ID suffix.
-	 * @param string $p_str_title Title of the section.
-	 * @param int    $p_int_settings_container_index Settings Container Index.
-	 * @param bool   $p_bool_has_submit_button Should a Submit Button be displayed for this section, default: true.
-	 * @return array Array describing the section.
+	 * @access  protected
+	 * @param  string  $p_str_id  Unique ID suffix.
+	 * @param  string  $p_str_title  Title of the section.
+	 * @param  int  $p_int_settings_container_index  Settings Container index.
+	 * @param  bool  $p_bool_has_submit_button  Whether a ‘Submit’ button should 
+	 *																					be displayed for this section. Default `true`.
+	 * @return  array  {
+	 *     A dashboard section.
+	 *
+	 *     @type  string  $id  Section ID.
+	 *     @type  string  $title  Section title.
+	 *     @type  bool  $submit  Whether the section has a submit button or not.
+	 *     @type  int  $container  Settings Container index.
+	 * }
+	 *
+	 * @since  1.5.0
+	 * @todo  Refactor sections into their own class?
 	 */
 	protected function add_section( $p_str_id, $p_str_title, $p_int_settings_container_index, $p_bool_has_submit_button = true ) {
 		return array(
@@ -112,12 +142,23 @@ abstract class Footnotes_Layout_Engine {
 	/**
 	 * Returns an array describing a meta box.
 	 *
+	 * @access  protected
+	 * @param  string  $p_str_section_id  Parent section ID.
+	 * @param  string  $p_str_id  Unique ID suffix.
+	 * @param  string  $p_str_title  Title for the meta box.
+	 * @param  string  $p_str_callback_function_name  Class method name for callback.
+	 * @return  array  {
+	 *     A dashboard meta box.
+	 *
+	 *     @type  string  $parent  Parent section ID.
+	 *     @type  string  $id  Meta box ID.
+	 *     @type  string  $title  Meta box title.
+	 *     @type  string  $callback  Meta box callback function.
+	 * }
+	 *
 	 * @since  1.5.0
-	 * @param string $p_str_section_id Parent Section ID.
-	 * @param string $p_str_id Unique ID suffix.
-	 * @param string $p_str_title Title for the meta box.
-	 * @param string $p_str_callback_function_name Class method name for callback.
-	 * @return array meta box description to be able to append a meta box to the output.
+	 * @todo  Refactor meta boxes into their own class?
+	 * @todo  Pass actual functions rather than strings?
 	 */
 	protected function add_meta_box( $p_str_section_id, $p_str_id, $p_str_title, $p_str_callback_function_name ) {
 		return array(
@@ -129,7 +170,7 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Registers a sub page.
+	 * Registers a sub-page.
 	 *
 	 * @since  1.5.0
 	 */
@@ -155,9 +196,9 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Registers all sections for a sub page.
+	 * Registers all sections for a sub-page.
 	 *
-	 * @since 1.5.0
+	 * @since  1.5.0
 	 */
 	public function register_sections() {
 		foreach ( $this->get_sections() as $l_arr_section ) {
@@ -174,10 +215,12 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Registers all Meta boxes for a sub page.
+	 * Registers all Meta boxes for a sub-page.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_parent_id Parent section unique id.
+	 * @access  private
+	 * @param  string  $p_str_parent_id  Parent section unique ID.
+	 *
+	 * @since  1.5.0
 	 */
 	private function register_meta_boxes( $p_str_parent_id ) {
 		// Iterate through each meta box.
@@ -196,12 +239,14 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Append javascript and css files for specific sub page.
+	 * Append JavaScript and CSS files for specific sub-page.
+	 *
+	 * @access  private
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to {@see Footnotes_Admin}.
 	 */
 	private function append_scripts() {
-		// TODO: Move to `Footnotes_Admin`.
 		wp_enqueue_script( 'postbox' );
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
@@ -209,14 +254,13 @@ abstract class Footnotes_Layout_Engine {
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
-	 * Displays the content of specific sub page.
+	 * Displays the content of specific sub-page.
 	 *
 	 * @since  1.5.0
+	 * @todo  Review nonce verification.
 	 */
 	public function display_content() {
 		$this->append_scripts();
-
-		// TODO: add nonce verification.
 
 		// Get the current section.
 		reset( $this->a_arr_sections );
@@ -276,14 +320,17 @@ abstract class Footnotes_Layout_Engine {
 		echo '});';
 		echo '</script>';
 	}
-	// phpcs:enable  WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
-	 * Save all Plugin settings.
+	 * Save all plugin settings.
 	 *
-	 * @since 1.5.0
-	 * @return bool
+	 * @access  private
+	 * @return  bool  `true` on save success, else `false`.
+	 *
+	 * @since  1.5.0
+	 * @todo  Review nonce verification.
 	 */
 	private function save_settings() {
 		$l_arr_new_settings = array();
@@ -309,35 +356,31 @@ abstract class Footnotes_Layout_Engine {
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 
 	/**
-	 * Output the Description of a section. May be overwritten in any section.
+	 * Output the description of a section. May be overwritten in any section.
 	 *
-	 * @since 1.5.0
+	 * @since  1.5.0
+	 * @todo  Required? Should be `abstract`?
 	 */
 	public function description() {
 		// Default no description will be displayed.
 	}
 
 	/**
-	 * Loads specific setting and returns an array with the keys [id, name, value].
+	 * Loads a specified setting.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_setting_key_name Settings Array key name.
-	 * @return array Contains Settings ID, Settings Name and Settings Value.
+	 * @access  protected
+	 * @param  string  $p_str_setting_key_name  Setting key.	
+	 * @return  array  {
+	 *     A configurable setting.
 	 *
-	 * @since 2.5.11 Remove escapement function.
-	 * When refactoring the codebase after 2.5.8, all and every output was escaped.
-	 * After noticing that the plugin was broken, all escapement functions were removed.
-	 * @link https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5
-	 * @link https://github.com/markcheret/footnotes/pull/50#issuecomment-787624123
-	 * In that process, this instance of esc_attr() was removed too, so the plugin was
-	 * broken again.
-	 * @link https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5#diff-a8ed6e859c32a18fc10bbbad3b4dd8ce7f43f2378d29471c7638e314ab30f1bdL349-L354
+	 *     @type  string  $id  Setting key.
+	 *     @type  string  $name  Setting name.
+	 *     @type  string  $value  Setting value.
+	 * }
 	 *
-	 * @since 2.5.15 To fix it, the data was escaped in add_select_box() instead.
-	 * @since 2.6.1  Restore esc_attr() in load_setting().
-	 * @see add_select_box()
-	 * This is the only instance of esc_|kses|sanitize in the pre-2.5.11 codebase.
-	 * Removing this did not fix the quotation mark backslash escapement bug.
+	 * @since  1.5.0
+	 * @since  2.5.11  Broken due to accidental removal of `esc_attr()` call.
+	 * @since  2.6.1  Restore `esc_attr()` call.
 	 */
 	protected function load_setting( $p_str_setting_key_name ) {
 		// Get current section.
@@ -348,45 +391,31 @@ abstract class Footnotes_Layout_Engine {
 		$p_arr_return['value'] = esc_attr( Footnotes_Settings::instance()->get( $p_str_setting_key_name ) );
 		return $p_arr_return;
 	}
-
+	
 	/**
-	 * Returns a line break to start a new line.
+	 * Returns a simple text inside HTML `<span>` element.
+	 *
+	 * @access  protected
+	 * @param  string  $p_str_text  Message to be surrounded with `<span>` tags.
+	 * @return  string
 	 *
 	 * @since  1.5.0
-	 * @return string
-	 */
-	protected function add_newline() {
-		return '<br/>';
-	}
-
-	/**
-	 * Returns a line break to have a space between two lines.
-	 *
-	 * @since  1.5.0
-	 * @return string
-	 */
-	protected function add_line_space() {
-		return '<br/><br/>';
-	}
-
-	/**
-	 * Returns a simple text inside html <span> text.
-	 *
-	 * @since  1.5.0
-	 * @param string $p_str_text Message to be surrounded with simple html tag (span).
-	 * @return string
+	 * @todo  Refactor HTML generation.
 	 */
 	protected function add_text( $p_str_text ) {
 		return sprintf( '<span>%s</span>', $p_str_text );
 	}
 
 	/**
-	 * Returns the html tag for an input/select label.
+	 * Returns the HTML tag for an `<input>`/`<select>` label.
+	 *
+	 * @access  protected
+	 * @param  string  $p_str_setting_name  Settings key.
+	 * @param  string  $p_str_caption  Label caption.
+	 * @return  string
 	 *
 	 * @since  1.5.0
-	 * @param string $p_str_setting_name Name of the Settings key to connect the Label with the input/select field.
-	 * @param string $p_str_caption Label caption.
-	 * @return string
+	 * @todo  Refactor HTML generation.
 	 */
 	protected function add_label( $p_str_setting_name, $p_str_caption ) {
 		if ( empty( $p_str_caption ) ) {
@@ -401,20 +430,24 @@ abstract class Footnotes_Layout_Engine {
 		 * narrow per new school.
 		 * Add colon to label strings for inclusion in localization. Colon after
 		 * label is widely preferred best practice, mandatory per
-		 * [style guides](https://softwareengineering.stackexchange.com/questions/234546/colons-in-internationalized-ui).
+		 * {@link https://softwareengineering.stackexchange.com/questions/234546/colons-in-internationalized-ui
+		 * style guides}.
 		 */
 		return sprintf( '<label for="%s">%s</label>', $p_str_setting_name, $p_str_caption );
 	}
 
 	/**
-	 * Returns the html tag for an input [type = text].
+	 * Constructs the HTML for a text `<input>` element.
+	 *
+	 * @access  protected
+	 * @param  string  $p_str_setting_name  Setting key.
+	 * @param  int  $p_str_max_length  Maximum length of the input. Default length 999 chars.
+	 * @param  bool  $p_bool_readonly  Set the input to be read only. Default `false`.
+	 * @param  bool  $p_bool_hidden  Set the input to be hidden. Default `false`.
+	 * @return  string
 	 *
 	 * @since  1.5.0
-	 * @param string $p_str_setting_name Name of the Settings key to pre load the input field.
-	 * @param int    $p_str_max_length Maximum length of the input, default 999 characters.
-	 * @param bool   $p_bool_readonly Set the input to be read only, default false.
-	 * @param bool   $p_bool_hidden Set the input to be hidden, default false.
-	 * @return string
+	 * @todo  Refactor HTML generation.
 	 */
 	protected function add_text_box( $p_str_setting_name, $p_str_max_length = 999, $p_bool_readonly = false, $p_bool_hidden = false ) {
 		$l_str_style = '';
@@ -435,11 +468,14 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Returns the html tag for an input [type = checkbox].
+	 * Constructs the HTML for a checkbox `<input>` element.
+	 *
+	 * @access  protected
+	 * @param  string  $p_str_setting_name  Setting key.
+	 * @return  string
 	 *
 	 * @since  1.5.0
-	 * @param string $p_str_setting_name Name of the Settings key to pre load the input field.
-	 * @return string
+	 * @todo  Refactor HTML generation.
 	 */
 	protected function add_checkbox( $p_str_setting_name ) {
 		// Collect data for given settings field.
@@ -453,21 +489,15 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Returns the html tag for a select box.
+	 * Constructs the HTML for a `<select>` element.
+	 *
+	 * @access  protected
+	 * @param  string  $p_str_setting_name  Setting key.
+	 * @param  array  $p_arr_options  Possible options.
+	 * @return  string
 	 *
 	 * @since  1.5.0
-	 *
-	 * - Bugfix: Dashboard: Referrers and tooltips: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.
-	 *
-	 * @reporter @lolzim
-	 *
-	 * @since 2.5.13
-	 * @param string $p_str_setting_name  Name of the Settings key to pre select the current value.
-	 * @param array  $p_arr_options       Possible options to be selected.
-	 * @return string
-	 *
-	 * @since 2.5.15 Bugfix: Dashboard: General settings: Footnote start and end short codes: debug select box for shortcodes with pointy brackets.
-	 * @since 2.6.1  Restore esc_attr() in load_setting(), remove htmlspecialchars() here.
+	 * @todo  Refactor HTML generation.
 	 */
 	protected function add_select_box( $p_str_setting_name, $p_arr_options ) {
 		// Collect data for given settings field.
@@ -495,11 +525,14 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Returns the html tag for a text area.
+	 * Constructs the HTML for a `<textarea>` element.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_setting_name Name of the Settings key to pre fill the text area.
-	 * @return string
+	 * @access  protected
+	 * @param  string  $p_str_setting_name  Setting key.
+	 * @return  string
+	 *
+	 * @since  1.5.0
+	 * @todo  Refactor HTML generation.
 	 */
 	protected function add_textarea( $p_str_setting_name ) {
 		// Collect data for given settings field.
@@ -513,11 +546,16 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Returns the html tag for an input [type = text] with color selection class.
+	 * Constructs the HTML for a text `<input>` element with the colour selection
+	 * class.
+	 *
+	 * @access  protected
+	 * @param  string  $p_str_setting_name Setting key.
+	 * @return  string
 	 *
 	 * @since  1.5.6
-	 * @param string $p_str_setting_name Name of the Settings key to pre load the input field.
-	 * @return string
+	 * @todo  Refactor HTML generation.
+	 * @todo  Use proper colorpicker element.
 	 */
 	protected function add_color_selection( $p_str_setting_name ) {
 		// Collect data for given settings field.
@@ -531,17 +569,17 @@ abstract class Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Returns the html tag for an input [type = num].
+	 * Constructs the HTML for numeric `<input>` element.
+	 *
+	 * @access  protected
+	 * @param  string  $p_str_setting_name Setting key.
+	 * @param  int  $p_in_min  Minimum value.
+	 * @param  int  $p_int_max  Maximum value.
+	 * @param  bool  $p_bool_deci  `true` if float, `false` if integer. Default `false`.
+	 * @return  string
 	 *
 	 * @since  1.5.0
-	 * @param string $p_str_setting_name Name of the Settings key to pre load the input field.
-	 * @param int    $p_in_min Minimum value.
-	 * @param int    $p_int_max Maximum value.
-	 * @param bool   $p_bool_deci  true if 0.1 steps and floating to string, false if integer (default).
-	 * @return string
-	 *
-	 * Edited:
-	 * @since 2.1.4  step argument and number_format() to allow decimals  ..
+	 * @todo  Refactor HTML generation.
 	 */
 	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {
 		// Collect data for given settings field.

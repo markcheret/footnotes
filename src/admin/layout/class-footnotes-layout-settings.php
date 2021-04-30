@@ -1,109 +1,84 @@
 <?php // phpcs:disable Squiz.Commenting.FileComment.Missing
 /**
- * Includes the Plugin Class to display all Settings.
+ * Admin. Layouts: Footnotes_Layout_Settings class
  *
- * @since 1.5.0
- * @since 2.0.4  restore arrow settings
- * @since 2.1.0  read-on button label
- * @since 2.1.1  options for ref container and alternative tooltips
- * @since 2.1.1  Referrers: superscript becomes optional, thanks to @cwbayer bug report
- * @since 2.1.2  priority level settings for all other hooks, thanks to @nikelaos
- * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13676705
- * @since 2.1.4  settings for ref container, tooltips and scrolling
- * @since 2.1.6  slight UI reordering
- * @since 2.1.6  option to disable URL line wrapping
- * @since 2.1.6  remove expert mode setting as outdated
- * @since 2.2.0  start/end short codes: more predefined options, thanks to @nikelaos
- * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
- * @since 2.2.0  add options, redistribute, update strings
- * @since 2.2.0  shortcode for reference container custom position
- * @since 2.2.2  Custom CSS settings container migration
- * @since 2.2.4  move backlink symbol selection under previous tab
- * @since 2.2.5  support for Ibid. notation thanks to @meglio
- * @link https://wordpress.org/support/topic/add-support-for-ibid-notation/
- * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer
- * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
- * @since 2.2.10 reference container row border option, thanks to @noobishh
- * @link https://wordpress.org/support/topic/borders-25/
- * @since 2.3.0  Reference container: convert top padding to margin and make it a setting, thanks to @hamshe
- * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
- * @since 2.3.0  rename Priority level tab as Scope and priority
- * @since 2.3.0  swap Custom CSS migration Boolean from 'migration complete' to 'show legacy'
- * @since 2.3.0  mention op. cit. abbreviation
- * @since 2.3.0  add settings for hard links, thanks to @psykonevro and @martinneumannat
- * @link https://wordpress.org/support/topic/making-it-amp-compatible/
- * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
- * @since 2.4.0  footnote shortcode syntax validation
- * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
- * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
+ * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
+ * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
+ * sub-class. The subpackage is initialised at runtime by the {@see 
+ * Footnotes_Layout_Init} class.
  *
- * @package    footnotes
- * @subpackage admin_layout
+ * @package  footnotes\admin_layout
+ * @since  1.5.0
+ * @since  2.8.0  Rename file from `subpage-main.php` to `class-footnotes-layout-settings.php`,
+ *								rename `dashboard/` sub-directory to `layout/`.
  */
 
+/**
+ * Provides the abstract class to be extended for page layouts.
+ */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-engine.php';
 
 /**
- * Displays and handles all Settings of the Plugin.
+ * Class to initialise all defined page layouts.
  *
- * @since 1.5.0
+ * @since  1.5.0
+ * @package  footnotes\admin_layout
  *
- * @package    footnotes
- * @subpackage admin_layout
+ * @see  Footnotes_Layout_Engine
  */
 class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    2.8.0
-	 * @param    string $plugin_name       The name of this plugin.
+	 * @since  2.8.0
+	 * @param  string  $plugin_name  The name of this plugin.
 	 */
 	public function __construct( $plugin_name ) {
 		$this->plugin_name = $plugin_name;
 	}
 
 	/**
-	 * Returns a Priority index. Lower numbers have a higher Priority.
+	 * Returns a priority index.
 	 *
-	 * @since 1.5.0
-	 * @return int
+	 * Lower numbers have a higher priority.
+	 *
+	 * @since  1.5.0
+	 * @return  int
 	 */
 	public function get_priority() {
 		return 10;
 	}
 
 	/**
-	 * Returns the unique slug of the sub page.
+	 * Returns the unique slug of the sub-page.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @since  1.5.0
+	 * @return  string
 	 */
 	protected function get_sub_page_slug() {
 		return '-' . $this->plugin_name;
 	}
 
 	/**
-	 * Returns the title of the sub page.
+	 * Returns the title of the sub-page.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @since  1.5.0
+	 * @return  string
 	 */
 	protected function get_sub_page_title() {
 		return Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME;
 	}
 
 	/**
-	 * Returns an array of all registered sections for the sub page.
+	 * Returns an array of all registered sections for the sub-page.
+	 *
+	 * @see  Footnotes_Layout_Engine::add_section()  For more information on the
+	 *       																			   section array format.
+	 * @return  array[]  All of the registered sections.
 	 *
 	 * @since  1.5.0
-	 * @return array
-	 *
-	 * Edited:
-	 * @since 2.1.6  tabs reordered and renamed
-	 * @link https://www.linkedin.com/pulse/20140610191154-4746170-configuration-vs-customization-when-and-why-would-i-implement-each
-	 *
-	 * @since 2.1.6  removed if statement around expert tab
+	 * @since  2.1.6  Remove conditional rendering of ‘Expert’ tab.
 	 */
 	protected function get_sections() {
 		$l_arr_tabs = array();
@@ -122,25 +97,14 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Returns an array of all registered meta boxes for each section of the sub page.
+	 * Returns an array of all registered meta boxes for each section of the sub-page.
+	 *
+	 * @see  Footnotes_Layout_Engine::add_meta_box()  For more information on the
+	 *       																			    meta box array format.
+	 * @return  array[]  All of the registered meta boxes.
 	 *
 	 * @since  1.5.0
-	 * @return array
-	 *
-	 * Edited for 2.0.0 and later.
-	 *
-	 * hyperlink_arrow meta box:
-	 * @since 2.0.0 discontinued
-	 * @since 2.0.4 restored to meet user demand for arrow symbol semantics
-	 * @since 2.1.4 discontinued, content moved to Settings > Reference container > Display a backlink symbol
-	 *
-	 * @since 2.0.4 to reflect changes in meta box label display since WPv5.5
-	 * spans need position:fixed and become unlocalizable
-	 * fix: logo is kept only in the label that doesn't need to be translated:
-	 * Change string "%s styling" to "Footnotes styling" to fix layout in WPv5.5
-	 * @see details in class/config.php
-	 *
-	 * @since 2.1.6 / 2.2.0 tabs reordered and renamed
+	 * @since  2.2.0  Re-order and rename tabs.
 	 */
 	protected function get_meta_boxes() {
 		$l_arr_meta_boxes = array();
@@ -184,8 +148,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays the AMP compatibility mode option.
 	 *
-	 * @since 2.5.11 (draft)
-	 * @since 2.6.0  (release)
+	 * @since  2.6.0  (release)
 	 */
 	public function amp_compat() {
 
@@ -212,12 +175,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all settings for the reference container.
 	 *
-	 * @since 1.5.0
-	 *
-	 * Completed:
-	 * @since 2.1.4: layout and typography options
-	 * @since 2.2.5  options for label element and label bottom border, thanks to @markhillyer
-	 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
+	 * @since  1.5.0
 	 */
 	public function reference_container() {
 
@@ -250,10 +208,12 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 				'semicolon' => __( 'SEMICOLON', 'footnotes' ),
 				'en_dash'   => __( 'EN DASH', 'footnotes' ),
 			);
-			// Options for the terminating punctuation after backlinks.
-			// The Unicode name of RIGHT PARENTHESIS was originally more accurate because.
-			// This character is bidi-mirrored. Let's use the Unicode 1.0 name.
-			// The wrong names were enforced in spite of Unicode, that subsequently scrambled to correct.
+			/*
+			 * Options for the terminating punctuation after backlinks.
+			 * The Unicode name of RIGHT PARENTHESIS was originally more accurate because.
+			 * This character is bidi-mirrored. Let's use the Unicode 1.0 name.
+			 * The wrong names were enforced in spite of Unicode, that subsequently scrambled to correct.
+			 */
 			$l_arr_terminators = array(
 				'period'      => __( 'FULL STOP', 'footnotes' ),
 				// Unicode 1.0 name of RIGHT PARENTHESIS (represented as a left parenthesis in right-to-left scripts).
@@ -389,18 +349,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all options for the footnotes start and end tag short codes.
 	 *
-	 * @since 1.5.0
-	 *
-	 * Edited heading
-	 * @since 2.2.0  start/end short codes: more predefined options
-	 * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
-	 * @since 2.2.0  3 boxes for clarity
-	 * @since 2.2.5  support for Ibid. notation thanks to @meglio
-	 * @link https://wordpress.org/support/topic/add-support-for-ibid-notation/
-	 * @since 2.4.0  added warning about Block Editor escapement disruption
-	 * @since 2.4.0  removed the HTML comment tag option
-	 * @since 2.5.0  Shortcode syntax validation: add more information around the setting, thanks to @andreasra
-	 * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
+	 * @since  1.5.0
 	 */
 	public function start_end() {
 		// Footnotes start tag short code options.
@@ -477,7 +426,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all options for the footnotes numbering.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function numbering() {
 		// Define some space for the output.
@@ -522,7 +471,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all options for the scrolling behavior.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function scrolling() {
 
@@ -578,8 +527,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all options for the fragment identifier configuration.
 	 *
-	 * @since 2.2.0  in scrolling().
-	 * @since 2.5.12 separate metabox.
+	 * @since  2.2.0
 	 */
 	public function hard_links() {
 
@@ -629,13 +577,9 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays all settings for 'I love Footnotes'.
+	 * Displays all settings for ‘I love Footnotes’ note.
 	 *
-	 * @since 1.5.0
-	 *
-	 * Edited:
-	 * @since 2.2.0  position-sensitive placeholders to support more locales
-	 * @since 2.2.0  more options
+	 * @since  1.5.0
 	 */
 	public function love() {
 		// Options for the acknowledgment display in the footer.
@@ -681,13 +625,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays the footnotes in excerpt setting.
 	 *
-	 * @since 1.5.0
-	 *
-	 * Edited heading
-	 * @since 2.1.1   more settings and notices, thanks to @nikelaos
-	 * @link https://wordpress.org/support/topic/doesnt-work-any-more-11/#post-13687068
-	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/#post-13110879
-	 * @since 2.2.0   dedicated to the excerpt setting and its notices
+	 * @since  1.5.0
 	 */
 	public function excerpts() {
 		// Options for options select box.
@@ -719,11 +657,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all settings for the footnote referrers.
 	 *
-	 * @since 1.5.0
-	 *
-	 * Edited heading
-	 * @since 2.1.1  option for superscript (optionally baseline referrers)
-	 * @since 2.2.0  option for link element moved here
+	 * @since  1.5.0
 	 */
 	public function superscript() {
 		// Options for Yes/No select box.
@@ -768,7 +702,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays the setting for the input label issue solution.
 	 *
-	 * @since 2.5.12
+	 * @since  2.5.12
 	 */
 	public function label_solution() {
 		// Options for the input label issue solution.
@@ -797,11 +731,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays enabled status for the footnotes mouse-over box.
 	 *
-	 * @since 1.5.2
-	 *
-	 * Edited:
-	 * @since 2.2.0   5 parts to address increased settings number
-	 * @since 2.2.5   position settings for alternative tooltips
+	 * @since  1.5.2
 	 */
 	public function mouseover_box() {
 		// Options for Yes/No select box.
@@ -837,7 +767,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays position settings for the footnotes mouse-over box.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function mouseover_box_position() {
 
@@ -892,7 +822,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays dimensions setting for the footnotes mouse-over box.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function mouseover_box_dimensions() {
 
@@ -918,7 +848,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays timing settings for the footnotes mouse-over box.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function mouseover_box_timing() {
 
@@ -955,7 +885,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays truncation settings for the footnotes mouse-over box.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function mouseover_box_truncation() {
 		// Options for Yes/No select box.
@@ -992,7 +922,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays dedicated tooltip text settings for the footnotes mouse-over box.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function mouseover_box_text() {
 		// Options for Yes/No select box.
@@ -1034,7 +964,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays style settings for the footnotes mouse-over box.
 	 *
-	 * @since 2.2.0
+	 * @since  2.2.0
 	 */
 	public function mouseover_box_appearance() {
 		// Options for Yes/No select box.
@@ -1104,26 +1034,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all settings for the backlink symbol.
 	 *
-	 * @since 1.5.0
-	 *
-	 * - Update: **symbol for backlinks** removed; hyperlink moved to the reference number.
-	 *
-	 * @since 2.0.0
-	 * The former 'hyperlink arrow' is incompatible with combined identical footnotes.
-	 *
-	 * - Update: Reference container: clarify backlink semantics by prepended transitional up arrow, thanks to @mmallett issue report.
-	 *
-	 * @since 2.0.3
-	 *
-	 * - Update: Restore arrow settings to customize or disable the now prepended arrow symbol, thanks to @mmallett issue report.
-	 *
-	 * @since 2.0.4
-	 *
-	 * @reporter @mmallett
-	 * @link https://wordpress.org/support/topic/mouse-over-broken/#post-13593037
-	 *
-	 * @since 2.1.4  moved to Settings > Reference container > Display a backlink symbol
-	 * @since 2.2.1 and 2.2.4  back here
+	 * @since  1.5.0
 	 */
 	public function hyperlink_arrow() {
 		// Load template file.
@@ -1147,16 +1058,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays the Custom CSS box.
 	 *
-	 * @since 1.5.0
-	 *
-	 * Edited:
-	 * @since 2.1.6  drop localized notices for CSS classes as the number increased to 16
-	 *        list directly in the template, as CSS is in English anyway
-	 * @link ../partials/customize-css.html
-	 *
-	 * @since 2.2.2  migrate Custom CSS to a dedicated tab
-	 * @since 2.3.0  say 'copy-paste' instead of 'cut and paste' since cutting is not needed
-	 * @since 2.5.1  mention validity while visible, thanks to @rkupadhya bug report
+	 * @since  1.5.0
 	 */
 	public function custom_css() {
 		// Load template file.
@@ -1195,7 +1097,8 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays transitional legacy Custom CSS box.
 	 *
-	 * @since 2.2.2
+	 * @since  2.2.2
+	 * @deprecated
 	 */
 	public function custom_css_migration() {
 
@@ -1231,7 +1134,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays the new Custom CSS box.
 	 *
-	 * @since 2.2.2
+	 * @since  2.2.2
 	 */
 	public function custom_css_new() {
 		// Load template file.
@@ -1254,20 +1157,14 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays available Hooks to look for Footnote short codes.
 	 *
-	 * @since 1.5.5
+	 * Priority level was initially a hard-coded default
+	 * shows ‘9223372036854775807’ in the numbox
+	 * empty should be interpreted as `PHP_INT_MAX`,
+	 * but a numbox cannot be set to empty, see {@link https://github.com/Modernizr/Modernizr/issues/171
+	 * here}
+	 * define -1 as `PHP_INT_MAX` instead
 	 *
-	 * Edited:
-	 * @since 2.1.1  priority level setting for the_content
-	 * @since 2.1.4  priority level settings for the other hooks
-	 *
-	 * priority level was initially hard-coded default
-	 * shows "9223372036854775807" in the numbox
-	 * empty should be interpreted as PHP_INT_MAX,
-	 * but a numbox cannot be set to empty: <https://github.com/Modernizr/Modernizr/issues/171>
-	 * define -1 as PHP_INT_MAX instead
-	 *
-	 * @since 2.2.9  removed the warning about the widget text hook
-	 * @since 2.2.9  added guidance for the widget text hook
+	 * @since  1.5.5
 	 */
 	public function lookup_hooks() {
 		// Load template file.
@@ -1321,12 +1218,9 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	}
 
 	/**
-	 * Displays a short introduction to the Plugin.
+	 * Displays a short introduction to the plugin.
 	 *
-	 * @since 1.5.0
-	 *
-	 * @since 2.7.0  Sanitize Lorem Ipsum filler text.
-	 * @link https://blog.prototypr.io/why-testing-with-real-content-is-better-than-lorem-ipsum-c7c79586ee72
+	 * @since  1.5.0
 	 */
 	public function Help() {
 		global $footnotes;
@@ -1371,19 +1265,13 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 			)
 		);
 
-		/**
-		 * Call footnotes_output_head function to get the Styling of the mouse-over box.
+		/*
+		 * Call {@see Footnotes_Parser::footnotes_output_head()} function to get 
+		 * the styling of the mouse-over box.
 		 *
-		 * - Bugfix: Dashboard: debug the 'Quick start guide' tab, thanks to @rumperuu bug report.
-		 *
-		 * @reporter @rumperuu
-		 * @link https://github.com/markcheret/footnotes/issues/71
-		 *
-		 * @since 2.7.0
 		 * The name of the callback function ought to be distinct from
 		 * the name of the filtered function.
 		 * When this callback function was renamed, this call went unnoticed.
-		 * @see class/task.php
 		 */
 		$footnotes->a_obj_task->footnotes_output_head();
 
@@ -1396,7 +1284,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	/**
 	 * Displays all Donate button to support the developers.
 	 *
-	 * @since 1.5.0
+	 * @since  1.5.0
 	 */
 	public function donate() {
 		// Load template file.

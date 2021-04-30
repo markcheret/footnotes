@@ -2,7 +2,7 @@
 /**
  * File providing the `Footnotes_Loader` class.
  *
- * @package footnotes
+ * @package  footnotes
  * @subpackage  includes
  *
  * @since 2.8.0

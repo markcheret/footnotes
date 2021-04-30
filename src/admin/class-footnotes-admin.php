@@ -1,56 +1,62 @@
 <?php
 /**
- * The admin-specific functionality of the plugin.
+ * Admin: Footnotes_Admin class
  *
- * @since      2.8.0
+ * The Admin. subpackage is initialised at runtime by the {@see Footnotes_Admin}
+ * class, which draws in the {@see Footnotes_WYSIWYG} class for WYSIWYG editor
+ * integration and the {@see footnotes\admin_layout} subpackage for rendering
+ * dashboard pages.
  *
- * @package    footnotes
- * @subpackage admin
+ * @package  footnotes\admin
+ * @since  2.8.0
  */
 
 /**
- * The admin-specific functionality of the plugin.
+ * Class provide all admin-specific functionality of the plugin.
  *
  * Defines the plugin name, version, and enqueues all admin-specific stylesheets
  * and JavaScript.
  *
- * @package    footnotes
- * @subpackage admin
+ * @package  footnotes\admin
+ * @since  2.8.0
  */
 class Footnotes_Admin {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @access  private
+	 * @since  2.8.0
+	 * @see  Footnotes::$plugin_name
+	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
 	private $plugin_name;
 
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @access  private
+	 * @since  2.8.0
+	 * @see  Footnotes::$version
+	 * @var  string  $version  The current version of this plugin.
 	 */
 	private $version;
 
 	/**
 	 * The WYSIWYG editor integration object.
 	 *
-	 * @since    2.8.0
-	 * @var      Footnotes_WYSIWYG    $wysiwyg    The WYSIWYG editor integration object.
+	 * @since  2.8.0
+	 * @var  Footnotes_WYSIWYG  $wysiwyg  The WYSIWYG editor integration object.
 	 */
 	public $wysiwyg;
 
 	/**
 	 * Initialize the class and set its properties.
+	 
+	 * @param  string  $plugin_name  The name of this plugin.
+	 * @param  string  $version  The version of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @param    string $plugin_name       The name of this plugin.
-	 * @param    string $version    The version of this plugin.
+	 * @since  2.8.0
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -64,14 +70,15 @@ class Footnotes_Admin {
 	/**
 	 * Load the required admin-specific dependencies.
 	 *
-	 * Include the following files that provide the admin-specific functionality
+	 * Includes the following files that provide the admin-specific functionality
 	 * of this plugin:
 	 *
-	 * - `Footnotes_WYSIWYG`. Provides plugin integration with the WYSIWYG editor.
-	 * - `Footnotes_Layout_Settings`. Defines the plugin dashboard page(s).
+	 * - {@see Footnotes_WYSIWYG}: Provides plugin integration with the WYSIWYG editor.
+	 * - {@see Footnotes_Layout_Settings}: Defines the plugin dashboard page(s).
 	 *
-	 * @since    2.8.0
-	 * @access   private
+	 * @access  private
+	 *
+	 * @since  2.8.0
 	 */
 	private function load_dependencies() {
 		/**
@@ -92,7 +99,7 @@ class Footnotes_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    2.8.0
+	 * @since  2.8.0
 	 */
 	public function enqueue_styles() {
 
@@ -112,7 +119,7 @@ class Footnotes_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    2.8.0
+	 * @since  2.8.0
 	 */
 	public function enqueue_scripts() {
 
@@ -133,10 +140,11 @@ class Footnotes_Admin {
 	/**
 	 * Appends the Plugin links for display in the dashboard Plugins page.
 	 *
-	 * @since 1.5.0
-	 * @since 2.8.0 Moved into `Footnote_Admin` class.
-	 * @param string[] $links The default set of links to display.
-	 * @return string[] The full set of links to display.
+	 * @param  string[]  $links  The default set of links to display.
+	 * @return  string[]  The full set of links to display.
+	 *
+	 * @since  1.5.0
+	 * @since  2.8.0  Moved from `Footnotes_Hooks` class to `Footnotes_Admin`.
 	 */
 	public function footnotes_action_links( array $links ): array {
 		// Append link to the WordPress Plugin page.

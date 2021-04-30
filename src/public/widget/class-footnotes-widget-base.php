@@ -1,73 +1,74 @@
 <?php
 /**
- * Widget base.
+ * Widgets: Footnotes_Widget_Base class
  *
+ * The Widget subpackage is composed of the {@see Footnotes_Widget_Base}
+ * abstract class, which is extended by the {@see Footnotes_Widget_Reference_Container}
+ * sub-class.
+ *
+ * @package  footnotes\public\widget
  * @since 1.5.0
- * @since 1.6.4  Update: replace deprecated function WP_Widget() with recommended __construct(), thanks to @dartiss code contribution.
- *
- * @package footnotes
- * @subpackage public_widget
  */
 
 /**
- * Base Class for all Plugin Widgets. Registers each Widget to WordPress.
- * The following Methods MUST be overwritten in each sub class:
- * **public function widget($args, $instance)** -> echo the Widget Content
- * **public function form($instance)** -> echo the Settings of the Widget
+ * Base class to be extended by all widget sub-classes.
  *
- * @author Stefan Herndler
- * @since 1.5.0
+ * Any sub-class must override the appropriate method(s) provided by
+ * {@link https://developer.wordpress.org/reference/classes/wp_widget/#description `WP_Widget`}.
  *
- * @package    footnotes
- * @subpackage public_widget
+ * @abstract
+ *
+ * @package  footnotes\public\widget
+ * @since  1.5.0
+ * @todo  Review implemenation of Widgets API.
  */
 abstract class Footnotes_Widget_Base extends WP_Widget {
 
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @abstract
+	 * @since  1.5.0
+	 *
+	 * @return  string
 	 */
 	abstract protected function get_id();
 
 	/**
 	 * Returns the Public name of child Widget to be displayed in the Configuration page.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @abstract
+	 * @since  1.5.0
+	 *
+	 * @return  string
 	 */
 	abstract protected function get_name();
 
 	/**
 	 * Returns the Description of the child widget.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @abstract
+	 * @since  1.5.0
+	 *
+	 * @return  string
 	 */
 	abstract protected function get_description();
 
 	/**
 	 * Returns the width of the Widget. Default width is 250 pixel.
 	 *
-	 * @since 1.5.0
-	 * @return int
+	 * @since  1.5.0
+	 *
+	 * @return  int
 	 */
 	protected function get_widget_width() {
 		return 250;
 	}
-
+	
 	/**
-	 * Class Constructor. Registers the child Widget to WordPress.
+	 * Registers the child Widget to WordPress.
 	 *
-	 * @since 1.5.0
-	 *
-	 * - Update: replace deprecated function WP_Widget() with recommended __construct(), thanks to @dartiss code contribution.
-	 *
-	 * @since 1.6.4
-	 * @contributor @dartiss
-	 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/widgets/base.php?rev=1445720
-	 * “The called constructor method for WP_Widget in Footnotes_Widget_ReferenceContainer is deprecated since version 4.3.0! Use __construct() instead.”
+	 * @since  1.5.0
 	 */
 	public function __construct() {
 		$l_arr_widget_options  = array(
@@ -86,4 +87,5 @@ abstract class Footnotes_Widget_Base extends WP_Widget {
 			$l_arr_control_options // Optional Widget Control Options.
 		);
 	}
+	
 }

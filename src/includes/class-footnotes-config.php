@@ -6,7 +6,8 @@
  * @subpackage  includes
  *
  * @since  1.5.0
- * @since  2.8.0  Rename file from `config.php` to `class-footnotes-config.php`.
+ * @since  2.8.0  Rename file from `config.php` to `class-footnotes-config.php`,
+ *								rename `class/` sub-directory to `includes/`.
  * @todo  Remove.
  * @deprecated
  */
@@ -15,6 +16,9 @@
  * Class defining plugin constants.
  *
  * This class contains no methods of properties.
+ *
+ * @package  footnotes
+ * @subpackage  includes
  *
  * @since  1.5.0
  * @todo  Remove.

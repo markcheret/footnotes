@@ -6,7 +6,8 @@
  * @subpackage  includes
  *
  * @since  1.5.0
- * @since  2.8.0  Rename file from `language.php` to `class-footnotes-i18n.php`.
+ * @since  2.8.0  Rename file from `language.php` to `class-footnotes-i18n.php`,
+ *								rename `class/` sub-directory to `includes/`.
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';

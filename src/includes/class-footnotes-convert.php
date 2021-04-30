@@ -6,11 +6,15 @@
  * @subpackage  includes
  *
  * @since  1.5.0
- * @since  2.8.0  Rename file from `convert.php` to `class-footnotes-convert.php`.
+ * @since  2.8.0  Rename file from `convert.php` to `class-footnotes-convert.php`,
+ *								rename `class/` sub-directory to `includes/`.
  */
 
 /**
  * Class providing variable type and value conversion functions.
+ *
+ * @package  footnotes
+ * @subpackage  includes
  *
  * @since 1.5.0
  */

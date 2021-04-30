@@ -8,7 +8,8 @@
  *
  * @since  1.5.0
  * @since  2.2.6  Add support for custom templates in sibling folder.
- * @since  2.8.0  Rename file from `templates.php` to `class-footnotes-templates.php`.
+ * @since  2.8.0  Rename file from `templates.php` to `class-footnotes-templates.php`,
+ *								rename `class/` sub-directory to `includes/`.
  */
 
 /**

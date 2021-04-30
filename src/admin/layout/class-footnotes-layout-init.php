@@ -1,55 +1,61 @@
 <?php // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 /**
- * Includes the Plugin settings menu.
+ * Admin. Layouts: Footnotes_Layout_Init class
  *
+ * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
+ * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
+ * sub-class. The subpackage is initialised at runtime by the {@see 
+ * Footnotes_Layout_Init} class.
+ *
+ * @package  footnotes\admin_layout
  * @since  1.5.0
- *
- * @package    footnotes
- * @subpackage admin_layout
+ * @since  2.8.0  Rename file from `init.php` to `class-footnotes-layout-init.php`,
+ *								rename `dashboard/` sub-directory to `layout/`.
  */
 
 /**
- * Handles the Settings interface of the Plugin.
+ * Class to initialise all defined page layouts.
  *
+ * @package  footnotes\admin_layout
  * @since  1.5.0
- *
- * @package    footnotes
- * @subpackage admin_layout
  */
 class Footnotes_Layout_Init {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    2.8.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @access  private
+	 * @var  string  $plugin_name  The ID of this plugin.
+	 *
+	 * @since  2.8.0
 	 */
 	private $plugin_name;
 
 	/**
 	 * Slug for the Plugin main menu.
 	 *
-	 * @since 1.5.0
-	 * @var string
+	 * @var  string
+	 *
+	 * @since  1.5.0
 	 */
 	const C_STR_MAIN_MENU_SLUG = 'footnotes';
 
 	/**
-	 * Contains the settings layoutEngine
+	 * Contains the settings page.
 	 *
-	 * @since 1.5.0
-	 * @var array
+	 * @var  Footnotes_Layout_Settings
+	 *
+	 * @since  1.5.0
 	 */
 	private $settings_page;
 
 	/**
-	 * Class Constructor. Initializes all WordPress hooks for the Plugin Settings.
+	 * Initializes all WordPress hooks for the Plugin Settings.
 	 *
-	 * @param string $plugin_name The name of the plugin.
+	 * @param  string  $plugin_name  The name of the plugin.
 	 *
 	 * @since  1.5.0
-	 * @since 2.8.0 Added `$plugin_name` parameter.
+	 * @since  2.8.0  Added `$plugin_name` parameter.
 	 */
 	public function __construct( $plugin_name ) {
 		$this->plugin_name = $plugin_name;
@@ -65,34 +71,33 @@ class Footnotes_Layout_Init {
 		add_action( 'wp_ajax_nopriv_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 		add_action( 'wp_ajax_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 	}
+	
 	/**
-	 * Load the required dependencies for this plugin.
+	 * Load the required dependencies for the layouts pages.
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - `Footnotes_Config`. Defines constant plugin values.
-	 * - `Footnotes_Settings`. Defines configurable plugin settings.
-	 * - `Footnotes_Layout_Settings`. Defines the plugin settings page.
+	 * - {@see Footnotes_Config}: defines plugin constants;
+	 * - {@see Footnotes_Settings}: defines configurable plugin settings; and
+	 * - {@see Footnotes_Layout_Settings}: defines the plugin settings page.
 	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
+	 * @access  private
 	 *
-	 * @since    2.8.0
-	 * @access   private
+	 * @since  2.8.0
 	 */
 	private function load_dependencies() {
 		/**
-		 * The class responsible for defining plugin constants.
+		 * Defines plugin constants.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-config.php';
 
 		/**
-		 * The class responsible for tracking configurable plugin settings.
+		 * Defines configurable plugin settings.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-settings.php';
 
 		/**
-		 * The class responsible for defining the plugin settings page.
+		 * Represents the plugin settings dashboard page.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-settings.php';
 	}

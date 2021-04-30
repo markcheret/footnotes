@@ -9,7 +9,8 @@
  * @subpackage  includes
  *
  * @since  1.5.0
- * @since  2.8.0  Rename file from `init.php` to `class-footnotes.php`.
+ * @since  2.8.0  Rename file from `wysiwyg.php` to `class-footnotes-wysiwyg.php`,
+ *								rename `class/` sub-directory to `includes/`.
  */
 
 /**

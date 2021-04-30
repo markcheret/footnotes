@@ -2,187 +2,128 @@
 /**
  * Includes the core function of the Plugin - Search and Replace the Footnotes.
  *
- * @since 1.5.0
- * @since 2.0.5 Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
- * @since 2.2.0 Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
- * @since 2.8.0 Rename class from `Footnotes_Task` to `Footnotes_Parser`.
- *
- * @package footnotes
- * @subpackage public
+ * @package  footnotes\public
+ * @since  1.5.0
+ * @since  2.0.5  Enable all hoooks by default.
+ * @since  2.8.0  Rename file from `task.php` to `class-footnotes-parser.php`,
+ *								move from `class/` sub-directory to `public/`.
  */
 
 /**
  * Searches and replaces the footnotes and generates the reference container.
  *
- * @since 1.5.0
- * @since 2.8.0 Rename class from `Footnotes_Task` to `Footnotes_Parser`.
+ * @package  footnotes\public
+ * @since  1.5.0
+ * @since  2.8.0  Rename class from `Footnotes_Task` to `Footnotes_Parser`.
  */
 class Footnotes_Parser {
 
 	/**
 	 * Contains all footnotes found in the searched content.
 	 *
-	 * @since 1.5.0
-	 * @var array
+	 * @since  1.5.0
+	 * @var  string[]
 	 */
 	public static $a_arr_footnotes = array();
 
 	/**
 	 * Flag if the display of 'LOVE FOOTNOTES' is allowed on the current public page.
 	 *
-	 * @since 1.5.0
-	 * @var bool
+	 * @since  1.5.0
+	 * @var  bool
 	 */
 	public static $a_bool_allow_love_me = true;
 
 	/**
 	 * Prefix for the Footnote html element ID.
 	 *
-	 * @since 1.5.8
-	 * @var string
+	 * @since  1.5.8
+	 * @var  string
 	 */
 	public static $a_str_prefix = '';
 
 	/**
 	 * Autoload a.k.a. infinite scroll, or archive view.
 	 *
-	 * - Bugfix: Infinite scroll: debug autoload by adding post ID, thanks to @docteurfitness issue report and code contribution
-	 *
-	 * @reporter @docteurfitness
-	 * @link https://wordpress.org/support/topic/auto-load-post-compatibility-update/
-	 *
-	 * @contributor @docteurfitness
-	 * @link https://wordpress.org/support/topic/auto-load-post-compatibility-update/#post-13618833
-	 *
-	 * @since 2.0.6
-	 * @var int
-	 *
 	 * As multiple posts are appended to each other, functions and fragment IDs must be disambiguated.
 	 * post ID to make everything unique wrt infinite scroll and archive view.
+	 *
+	 * @since  2.0.6
+	 * @var  int
 	 */
 	public static $a_int_post_id = 0;
 
 	/**
 	 * Multiple reference containers in content and widgets.
 	 *
-	 * - Bugfix: Reference container, widget_text hook: support for multiple containers in a page, thanks to @justbecuz bug report.
-	 *
-	 * @reporter @justbecuz
-	 * @link https://wordpress.org/support/topic/reset-footnotes-to-1/
-	 * @link https://wordpress.org/support/topic/reset-footnotes-to-1/#post-13662830
-	 *
-	 * @since 2.2.9
-	 * @var int   Incremented every time after a reference container is inserted.
-	 *
 	 * This ID disambiguates multiple reference containers in a page
 	 * as they may occur when the widget_text hook is active and the page
 	 * is built with Elementor and has an accordion or similar toggle sections.
+	 *
+	 * @since  2.2.9
+	 * @var  int   Incremented every time after a reference container is inserted.
 	 */
 	public static $a_int_reference_container_id = 1;
 
 	/**
 	 * Hard links for AMP compatibility.
 	 *
-	 * @since 2.0.0  Bugfix: footnote links script independent.
+	 * A property because used both in {@see search()} and {@see reference_container()}.
 	 *
-	 * - Bugfix: Referrers and backlinks: remove hard links to streamline browsing history, thanks to @theroninjedi47 bug report.
-	 *
-	 * @reporter @theroninjedi47
-	 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
-	 *
-	 * @since 2.0.4
-	 *
-	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
-	 *
-	 * @contributor @martinneumannat
-	 * @link https://wordpress.org/support/topic/making-it-amp-compatible/
-	 *
-	 * @reporter @psykonevro
-	 * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
-	 *
-	 * @since 2.3.0
-	 * @var bool
-	 * A property because used both in search() and reference_container().
+	 * @since  2.0.0
+	 * @var  bool
 	 */
 	public static $a_bool_hard_links_enabled = false;
 
 	/**
 	 * The referrer slug.
 	 *
-	 * @since 2.3.0
-	 * @var str
+	 * @since  2.3.0
+	 * @var  string
 	 */
 	public static $a_str_referrer_link_slug = 'r';
 
 	/**
 	 * The footnote slug.
 	 *
-	 * @since 2.3.0
-	 * @var str
+	 * @since  2.3.0
+	 *
+	 * @var  string
 	 */
 	public static $a_str_footnote_link_slug = 'f';
 
 	/**
 	 * The slug and identifier separator.
 	 *
-	 * @since 2.3.0
-	 * @var str
+	 * @since  2.3.0
+	 *
+	 * @var  string
 	 */
 	private static $a_str_link_ids_separator = '+';
 
 	/**
 	 * Contains the concatenated fragment ID base.
 	 *
-	 * @since 2.3.0
-	 * @var str
+	 * @since  2.3.0
+	 *
+	 * @var  string
 	 */
 	public static $a_str_post_container_id_compound = '';
 
 	/**
 	 * Scroll offset.
 	 *
-	 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
-	 *
-	 * @since 2.1.4
-	 *
-	 * - Bugfix: Scroll offset: initialize to safer one third window height for more robustness, thanks to @lukashuggenberg bug report.
-	 *
-	 * @reporter @lukashuggenberg
-	 * @link https://wordpress.org/support/topic/2-2-6-breaks-all-footnotes/#post-13857922
-	 *
-	 * @since 2.4.0
-	 * @var int
-	 *
 	 * Websites may use high fixed headers not contracting at scroll.
 	 * Scroll offset may now need to get into inline CSS.
 	 * Hence it needs to be loaded twice, because priority levels may not match.
+	 *
+	 * @since  2.1.4
+	 * @var  int
 	 */
 	public static $a_int_scroll_offset = 34;
 
-	/**
+	/*
 	 * Optional link element for footnote referrers and backlinks
-	 *
-	 * @since 2.0.0  add link elements along with hard links.
-	 *
-	 * - Bugfix: Referrers and backlinks: Styling: make link elements optional to fix issues, thanks to @docteurfitness issue report and code contribution.
-	 *
-	 * @reporter @docteurfitness
-	 * @link https://wordpress.org/support/topic/update-2-1-3/
-	 *
-	 * @contributor @docteurfitness
-	 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
-	 *
-	 * @since 2.1.4
-	 *
-	 * - Adding: Referrers and backlinks: optional hard links for AMP compatibility, thanks to @psykonevro issue report, thanks to @martinneumannat issue report and code contribution.
-	 *
-	 * @contributor @martinneumannat
-	 * @link https://wordpress.org/support/topic/making-it-amp-compatible/
-	 *
-	 * @reporter @psykonevro
-	 * @link https://wordpress.org/support/topic/footnotes-is-not-amp-compatible/
-	 *
-	 * @since 2.3.0
 	 *
 	 * Although widely used for that purpose, hyperlinks are disliked for footnote linking.
 	 * Browsers may need to be prevented from logging these clicks in the browsing history,
@@ -198,44 +139,37 @@ class Footnotes_Parser {
 	 *
 	 * Yet styling these elements with the link color is not universally preferred, so that
 	 * the very presence of these link elements may need to be avoided.
-	 *
-	 * @see self::$a_bool_hard_links_enabled
-	 * A property because used both in search() and reference_container().
 	 */
 
 	/**
 	 * The span element name.
 	 *
-	 * @since 2.3.0
-	 * @var str
+	 * @since  2.3.0
+	 * @todo  Remove.
+	 * @var  string
 	 */
 	public static $a_str_link_span = 'span';
 
 	/**
 	 * The opening tag.
 	 *
-	 * @since 2.3.0
-	 * @var str
+	 * @since  2.3.0
+	 * @todo  Remove.
+	 * @var  string
 	 */
 	public static $a_str_link_open_tag = '';
 
 	/**
 	 * The closing tag.
 	 *
-	 * @since 2.3.0
-	 * @var str
+	 * @since  2.3.0
+	 * @todo  Remove.
+	 * @var  string
 	 */
 	public static $a_str_link_close_tag = '';
-
-	/**
+	
+	/*
 	 * Dedicated tooltip text.
-	 *
-	 * - Update: Tooltips: ability to display dedicated content before `[[/tooltip]]`, thanks to @jbj2199 issue report.
-	 *
-	 * @reporter @jbj2199
-	 * @link https://wordpress.org/support/topic/change-tooltip-text/
-	 *
-	 * @since 2.5.2
 	 *
 	 * Tooltips can display another content than the footnote entry
 	 * in the reference container. The trigger is a shortcode in
@@ -246,86 +180,85 @@ class Footnotes_Parser {
 	/**
 	 * The tooltip delimiter shortcode.
 	 *
-	 * @since 2.5.2
-	 * @var str
+	 * @since  2.5.2
+	 * @var  string
 	 */
 	public static $a_str_tooltip_shortcode = '[[/tooltip]]';
 
 	/**
 	 * The tooltip delimiter shortcode length.
 	 *
-	 * @since 2.5.2
-	 * @var int
+	 * @since  2.5.2
+	 * @var  int
 	 */
 	public static $a_int_tooltip_shortcode_length = 12;
 
 	/**
 	 * Whether to mirror the tooltip text in the reference container.
 	 *
-	 * @since 2.5.2
-	 * @var bool
+	 * @since  2.5.2
+	 * @var  bool
 	 */
 	public static $a_bool_mirror_tooltip_text = false;
 
 	/**
 	 * Footnote delimiter start short code.
 	 *
-	 * @since 1.5.0 (constant, variable)
-	 * @since 2.6.2 (property)
-	 * @var str
+	 * @since  1.5.0
+	 * @since  2.6.2  Move from constant to class property.
+	 * @var  string
 	 */
 	public static $a_str_start_tag = '';
 
 	/**
 	 * Footnote delimiter end short code.
 	 *
-	 * @since 1.5.0 (constant, variable)
-	 * @since 2.6.2 (property)
-	 * @var str
+	 * @since  1.5.0
+	 * @since  2.6.2  Move from constant to class property.
+	 * @var  string
 	 */
 	public static $a_str_end_tag = '';
 
 	/**
-	 * Footnote delimiter start short code in regex format.
+	 * Footnote delimiter start short code in RegEx format.
 	 *
-	 * @since 2.4.0 (variable)
-	 * @since 2.6.2 (property)
-	 * @var str
+	 * @since  2.4.0 
+	 * @since  2.6.2  Move from global constant to class property.
+	 * @var  string
 	 */
 	public static $a_str_start_tag_regex = '';
 
 	/**
-	 * Footnote delimiter end short code in regex format.
+	 * Footnote delimiter end short code in RegEx format.
 	 *
-	 * @since 2.4.0 (variable)
-	 * @since 2.6.2 (property)
-	 * @var str
+	 * @since  2.4.0
+	 * @since  2.6.2  Move from global constant to class property.
+	 * @var  string
 	 */
 	public static $a_str_end_tag_regex = '';
 
 	/**
 	 * Footnote delimiter syntax validation enabled.
 	 *
-	 * - Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
-	 *
-	 * @since 2.4.0
-	 *
-	 * @var bool
-	 *
 	 * The algorithm first checks for balanced footnote opening and closing tag short codes.
 	 * The first encountered error triggers the display of a warning below the post title.
 	 *
 	 * Unbalanced short codes have caused significant trouble because they are hard to detect.
-	 * Any compiler or other tool reports syntax errors in the first place. Footnotes’ exception
+	 * Any compiler or other tool reports syntax errors in the first place. Footnotes' exception
 	 * is considered a design flaw, and the feature is released as a bug fix after overdue 2.3.0
 	 * released in urgency to provide AMP compat before 2021.
+	 *
+	 * @since  2.4.0
+	 * @var  bool
 	 */
 	public static $a_bool_syntax_error_flag = true;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    2.8.0
+	 * @since  2.8.0
+	 * @todo  Reorganise dependencies.
+	 * @todo  Move call to `register_hooks()` to {@see Footnotes_Public}.
 	 */
 	public function __construct() {
 		// TODO: Reorg dependencies.
@@ -334,27 +267,18 @@ class Footnotes_Parser {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-template.php';
 
-		// TODO: Move to `Footnotes_Loader`.
+		// TODO: Move to `Footnotes_Public`.
 		$this->register_hooks();
 	}
 
 	/**
 	 * Register WordPress hooks to replace Footnotes in the content of a public page.
 	 *
-	 * @since 1.5.0
-	 *
-	 * @since 1.5.4  Adding: Hooks: support 'the_post' in response to user request for custom post types.
-	 * @since 2.0.5  Bugfix: Reference container: fix relative position through priority level, thanks to @june01 @imeson @spaceling bug reports, thanks to @spaceling code contribution.
-	 * @since 2.0.5  Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
-	 * @since 2.0.6  Bugfix: Priority level back to PHP_INT_MAX (ref container positioning not this plugin’s responsibility).
-	 * @since 2.0.7  BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
-	 * @since 2.0.7  Bugfix: Set priority level back to 10 assuming it is unproblematic.
-	 * @since 2.0.8  Bugfix: Priority level back to PHP_INT_MAX (need to get in touch with other plugins).
-	 * @since 2.1.0  UPDATE: Hooks: remove 'the_post', the plugin stops supporting this hook.
-	 * @since 2.1.1  Bugfix: Dashboard: priority level setting for the_content hook, thanks to @imeson bug report.
-	 * @since 2.1.2  Bugfix: Dashboard: priority level settings for all other hooks, thanks to @nikelaos bug report.
-	 * @since 2.5.0  Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
-	 * @since 2.5.1  Bugfix: Hooks: support footnotes in Popup Maker popups, thanks to @squatcher bug report.
+	 * @since  1.5.0
+	 * @since  1.5.4  Add support for @see 'the_post' hook.
+	 * @since  2.0.5  Enable all hooks by default.
+	 * @since  2.1.0  Remove @see 'the_post' support.
+	 * @todo  Move to {@see Footnotes_Public}.
 	 */
 	public function register_hooks() {
 		// Get values from settings.
@@ -388,19 +312,13 @@ class Footnotes_Parser {
 			/**
 			 * Hook for category pages.
 			 *
-			 * - Bugfix: Hooks: support footnotes on category pages, thanks to @vitaefit bug report, thanks to @misfist code contribution.
-			 *
-			 * @reporter @vitaefit
-			 * @link https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/
-			 *
-			 * @contributor @misfist
-			 * @link https://wordpress.org/support/topic/footnote-doesntwork-on-category-page/#post-13864859
-			 *
-			 * @since 2.5.0
-			 *
-			 * Category pages can have rich HTML content in a term description with article status.
-			 * For this to happen, WordPress’ built-in partial HTML blocker needs to be disabled.
+			 * Category pages can have rich HTML content in a term description with 
+			 * article status.
+			 * For this to happen, WordPress' built-in partial HTML blocker needs to 
+			 * be disabled.
 			 * @link https://docs.woocommerce.com/document/allow-html-in-term-category-tag-descriptions/
+			 *
+			 * @since  2.5.0
 			 */
 			add_filter( 'term_description', array( $this, 'footnotes_in_content' ), $l_int_the_content_priority );
 
@@ -412,93 +330,36 @@ class Footnotes_Parser {
 			 * @reporter @squatcher
 			 * @link https://wordpress.org/support/topic/footnotes-use-in-popup-maker/
 			 *
-			 * @since 2.5.1
+			 * @since  2.5.1
 			 */
 			add_filter( 'pum_popup_content', array( $this, 'footnotes_in_content' ), $l_int_the_content_priority );
 		}
 
-		/**
-		 * Adds a filter to the excerpt hook.
-		 *
-		 * @since 1.5.0  The hook 'get_the_excerpt' is filtered too.
-		 * @since 1.5.5  The hook 'get_the_excerpt' is removed but not documented in changelog or docblock.
-		 * @since 2.6.2  The hook 'get_the_excerpt' is readded when attempting to debug excerpt handling.
-		 * @since 2.6.6  The hook 'get_the_excerpt' is removed again because it seems to cause issues in some themes.
-		 */
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_EXPERT_LOOKUP_THE_EXCERPT ) ) ) {
+			/**
+			 * Adds a filter to the excerpt hook.
+			 *
+			 * @since  1.5.0  The hook @see 'get_the_excerpt' is filtered too.
+			 * @since  1.5.5  The hook @see 'get_the_excerpt' is removed but not documented in changelog or docblock.
+			 * @since  2.6.2  The hook @see 'get_the_excerpt' is readded when attempting to debug excerpt handling.
+			 * @since  2.6.6  The hook @see 'get_the_excerpt' is removed again because it seems to cause issues in some themes.
+			 */
 			add_filter( 'the_excerpt', array( $this, 'footnotes_in_excerpt' ), $l_int_the_excerpt_priority );
 		}
 
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TITLE ) ) ) {
+			/**
+			 * TODO
+			 */
 			add_filter( 'widget_title', array( $this, 'footnotes_in_widget_title' ), $l_int_widget_title_priority );
 		}
 
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_EXPERT_LOOKUP_WIDGET_TEXT ) ) ) {
+			/**
+			 * TODO
+			 */
 			add_filter( 'widget_text', array( $this, 'footnotes_in_widget_text' ), $l_int_widget_text_priority );
 		}
-
-		/**
-		 * The the_post hook.
-		 *
-		 * - Adding: Hooks: support 'the_post' in response to user request for custom post types.
-		 *
-		 * @since 1.5.4
-		 * @accountable @aricura
-		 * @link https://wordpress.org/support/topic/doesnt-work-in-custon-post-types/#post-5339110
-		 *
-		 *
-		 * - Update: Hooks: Default-enable all hooks to prevent footnotes from seeming broken in some parts.
-		 *
-		 * @since 2.0.5
-		 * @accountable @pewgeuges
-		 *
-		 *
-		 * - BUGFIX: Hooks: Default-disable 'the_post', thanks to @spaceling @markcheret @nyamachi @whichgodsaves @spiralofhope2 @mmallett @andreasra @widecast @ymorin007 @tashi1es bug reports.
-		 *
-		 * @reporter @spaceling
-		 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13612697
-		 *
-		 * @reporter @markcheret on behalf of W. Beinert
-		 * @link https://wordpress.org/support/topic/footnotes-now-appear-in-summaries-even-though-this-is-marked-no/
-		 *
-		 * @reporter @nyamachi
-		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/
-		 *
-		 * @reporter @whichgodsaves
-		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/#post-13622694
-		 *
-		 * @reporter @spiralofhope2
-		 * @link https://wordpress.org/support/topic/2-0-5-broken/
-		 *
-		 * @reporter @mmallett
-		 * @link https://wordpress.org/support/topic/2-0-5-broken/#post-13623208
-		 *
-		 * @reporter @andreasra
-		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/#post-13624091
-		 *
-		 * @reporter @widecast
-		 * @link https://wordpress.org/support/topic/2-0-5-broken/#post-13626222
-		 *
-		 * @reporter @ymorin007
-		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/#post-13627050
-		 *
-		 * @reporter @markcheret on behalf of L. Smith
-		 * @link https://wordpress.org/support/topic/footnotes-appear-in-random-places-on-academic-website/
-		 *
-		 * @reporter @tashi1es
-		 * @link https://wordpress.org/support/topic/footnotes-appear-in-random-places-on-academic-website/#post-13630495
-		 *
-		 * @since 2.0.7
-		 * @link https://wordpress.org/support/topic/change-the-position-5/page/2/#post-13630114
-		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/#post-13630303
-		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13630799
-		 * @link https://wordpress.org/support/topic/no-footnotes-anymore/#post-13813233
-		 *
-		 * - UPDATE: Hooks: remove 'the_post', the plugin stops supporting this hook.
-		 *
-		 * @since 2.1.0
-		 * @accountable @pewgeuges
-		 */
 
 		// Reset stored footnotes when displaying the header.
 		self::$a_arr_footnotes      = array();
@@ -508,50 +369,25 @@ class Footnotes_Parser {
 	/**
 	 * Outputs the custom css to the header of the public page.
 	 *
-	 * @since 1.5.0
-	 *
-	 * @since 2.1.1  Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
-	 * @since 2.1.1  Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
-	 * @since 2.1.3  raise settings priority to override theme stylesheets
-	 * @since 2.1.4  Bugfix: Tooltips: Styling: fix font size issue by adding font size to settings with legacy as default.
-	 * @since 2.1.4  Bugfix: Reference container: fix layout issues by moving backlink column width to settings.
-	 * @since 2.2.5  Bugfix: Reference container: Label: make bottom border an option, thanks to @markhillyer issue report.
-	 * @since 2.2.5  Bugfix: Reference container: Label: option to select paragraph or heading element, thanks to @markhillyer issue report.
-	 * @since 2.3.0  Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
-	 * @since 2.5.4  Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
+	 * @since  1.5.0
+	 * @todo  Refactor to enqueue stylesheets properly in {@see Footnotes_Public}.
 	 */
 	public function footnotes_output_head() {
 
 		// Insert start tag without switching out of PHP.
 		echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
 
-		/**
+		/*
 		 * Enables CSS smooth scrolling.
 		 *
-		 * - Update: Scrolling: CSS-based smooth scroll behavior (optional), thanks to @paulgpetty and @bogosavljev issue reports.
-		 *
-		 * @reporter @paulgpetty
-		 * @link https://wordpress.org/support/topic/functionally-great/#post-13607795
-		 *
-		 * @reporter @bogosavljev
-		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14214720
-		 *
-		 * @since 2.5.12
 		 * Native smooth scrolling only works in recent browsers.
 		 */
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING ) ) ) {
 			echo "html {scroll-behavior: smooth;}\r\n";
 		}
 
-		/**
-		 * Normalizes the referrers’ vertical alignment and font size.
-		 *
-		 * - Bugfix: Referrers: optional fixes to vertical alignment, font size and position (static) for in-theme consistency and cross-theme stability, thanks to @tomturowski bug report.
-		 *
-		 * @reporter @tomturowski
-		 * @link https://wordpress.org/support/topic/in-line-superscript-ref-rides-to-high/
-		 *
-		 * @since 2.5.4
+		/*
+		 * Normalizes the referrers' vertical alignment and font size.
 		 *
 		 * Cannot be included in external stylesheet, as it is only optional.
 		 * The scope is variable too: referrers only, or all superscript elements.
@@ -566,31 +402,13 @@ class Footnotes_Parser {
 			echo "vertical-align: super; font-size: smaller; position: static;}\r\n";
 		}
 
-		/**
-		 * Reference container display on home page.
-		 *
-		 * - Bugfix: Reference container: fix start pages by making its display optional, thanks to @dragon013 bug report.
-		 *
-		 * @reporter @dragon013
-		 * @link https://wordpress.org/support/topic/possible-to-hide-it-from-start-page/
-		 *
-		 * @since 2.1.1
-		 */
+		// Reference container display on home page.
 		if ( ! Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE ) ) ) {
 
 			echo ".home .footnotes_reference_container { display: none; }\r\n";
 		}
 
-		/**
-		 * Reference container top and bottom margins.
-		 *
-		 * - Bugfix: Reference container: convert top padding to margin and make it a setting, thanks to @hamshe bug report.
-		 *
-		 * @reporter @hamshe
-		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13786635
-		 *
-		 * @since 2.3.0
-		 */
+		// Reference container top and bottom margins.
 		$l_int_reference_container_top_margin    = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_REFERENCE_CONTAINER_TOP_MARGIN ) );
 		$l_int_reference_container_bottom_margin = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN ) );
 		echo '.footnotes_reference_container {margin-top: ';
@@ -599,32 +417,16 @@ class Footnotes_Parser {
 		echo empty( $l_int_reference_container_bottom_margin ) ? '0' : $l_int_reference_container_bottom_margin;
 		echo "px !important;}\r\n";
 
-		/**
-		 * Reference container label bottom border.
-		 *
-		 * - Bugfix: Reference container: Label: make bottom border an option, thanks to @markhillyer issue report.
-		 * - Bugfix: Reference container: Label: option to select paragraph or heading element, thanks to @markhillyer issue report.
-		 *
-		 * @reporter @markhillyer
-		 * @link https://wordpress.org/support/topic/how-do-i-eliminate-the-horizontal-line-beneath-the-reference-container-heading/
-		 *
-		 * @since 2.2.5
-			 */
+		// Reference container label bottom border.
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER ) ) ) {
 			echo '.footnote_container_prepare > ';
 			echo Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT );
 			echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
 		}
 
-		/**
+		/*
 		 * Reference container table row borders.
 		 *
-		 * - Bugfix: Reference container: add option for table borders to restore pre-2.0.0 design, thanks to @noobishh issue report.
-		 *
-		 * @reporter @noobishh
-		 * @link https://wordpress.org/support/topic/borders-25/
-		 *
-		 * @since 2.2.10
 		 * Moving this internal CSS to external using `wp_add_inline_style()` is
 		 * discouraged, because that screws up support, and it is pointless from
 		 * a performance point of view. Moreover, that would cause cache busting
@@ -685,18 +487,10 @@ class Footnotes_Parser {
 			echo "}\r\n";
 		}
 
-		/**
-		 * Hard links scroll offset.
-		 *
-		 * - Bugfix: Scroll offset: make configurable to fix site-dependent issues related to fixed headers.
-		 *
-		 * @since 2.1.4
-		 *
-		 * @since 2.5.6 hard links are always enabled when the alternative reference container is.
-		 */
+		// Hard links scroll offset.
 		self::$a_bool_hard_links_enabled = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_HARD_LINKS_ENABLE ) );
 
-		// Correct hard links enabled status depending on AMP compatible or alternative reference container enabled status.
+		// Correct hard links enabled status depending on AMP-compatible or alternative reference container enabled status.
 		if ( Footnotes_Public::$a_bool_amp_enabled || 'jquery' !== Footnotes_Public::$a_str_script_mode ) {
 			self::$a_bool_hard_links_enabled = true;
 		}
@@ -708,19 +502,11 @@ class Footnotes_Parser {
 			echo "vh;}\r\n";
 		}
 
-		/*
-		 * Tooltips.
-		 */
+		// Tooltips.
 		if ( Footnotes_Public::$a_bool_tooltips_enabled ) {
 			echo '.footnote_tooltip {';
 
-			/**
-			 * Tooltip appearance: Tooltip font size.
-			 *
-			 * - Bugfix: Styling: Tooltips: fix font size issue by adding font size to settings with legacy as default.
-			 *
-			 * @since 2.1.4
-			 */
+			// Tooltip appearance: Tooltip font size.
 			echo ' font-size: ';
 			if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED ) ) ) {
 				echo Footnotes_Settings::instance()->get( Footnotes_Settings::C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR );
@@ -730,49 +516,37 @@ class Footnotes_Parser {
 			}
 			echo ' !important;';
 
-			/*
-			 * Tooltip Text color.
-			 */
+			// Tooltip Text color.
 			$l_str_color = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR );
 			if ( ! empty( $l_str_color ) ) {
 				printf( ' color: %s !important;', $l_str_color );
 			}
 
-			/*
-			 * Tooltip Background color.
-			 */
+			// Tooltip Background color.
 			$l_str_background = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND );
 			if ( ! empty( $l_str_background ) ) {
 				printf( ' background-color: %s !important;', $l_str_background );
 			}
 
-			/*
-			 * Tooltip Border width.
-			 */
+			// Tooltip Border width.
 			$l_int_border_width = Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH );
 			if ( ! empty( $l_int_border_width ) && intval( $l_int_border_width ) > 0 ) {
 				printf( ' border-width: %dpx !important; border-style: solid !important;', $l_int_border_width );
 			}
 
-			/*
-			 * Tooltip Border color.
-			 */
+			// Tooltip Border color.
 			$l_str_border_color = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR );
 			if ( ! empty( $l_str_border_color ) ) {
 				printf( ' border-color: %s !important;', $l_str_border_color );
 			}
 
-			/*
-			 * Tooltip Corner radius.
-			 */
+			// Tooltip Corner radius.
 			$l_int_border_radius = Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS );
 			if ( ! empty( $l_int_border_radius ) && intval( $l_int_border_radius ) > 0 ) {
 				printf( ' border-radius: %dpx !important;', $l_int_border_radius );
 			}
 
-			/*
-			 * Tooltip Shadow color.
-			 */
+			// Tooltip Shadow color.
 			$l_str_box_shadow_color = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR );
 			if ( ! empty( $l_str_box_shadow_color ) ) {
 				printf( ' -webkit-box-shadow: 2px 2px 11px %s;', $l_str_box_shadow_color );
@@ -780,25 +554,13 @@ class Footnotes_Parser {
 				printf( ' box-shadow: 2px 2px 11px %s;', $l_str_box_shadow_color );
 			}
 
-			/**
-			 * Tooltip position, dimensions and timing.
-			 *
-			 * - Bugfix: Tooltips: make display delays and fade durations configurable to conform to website style.
-			 *
-			 * @since 2.1.4
-			 *
-			 * - Update: Tooltips: Alternative tooltips: connect to position/timing settings (for themes not supporting jQuery tooltips).
-			 *
-			 * @since 2.2.5
-			 */
+			// Tooltip position, dimensions and timing.
 			if ( ! Footnotes_Public::$a_bool_alternative_tooltips_enabled && ! Footnotes_Public::$a_bool_amp_enabled ) {
 
-				/**
+				/*
 				 * Dimensions of jQuery tooltips.
 				 *
-				 * Position and timing of jQuery tooltips are script defined.
-				 *
-				 * @see public/partials/tooltip.html.
+				 * Position and timing of jQuery tooltips are script-defined.
 				 */
 				$l_int_max_width = Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
 				if ( ! empty( $l_int_max_width ) && intval( $l_int_max_width ) > 0 ) {
@@ -807,16 +569,10 @@ class Footnotes_Parser {
 				echo "}\r\n";
 
 			} else {
-				/*
-				 * AMP compatible and alternative tooltips.
-				 */
+				// AMP-compatible and alternative tooltips.
 				echo "}\r\n";
 
-				/**
-				 * Dimensions.
-				 *
-				 * @see 'Determine shrink width if alternative tooltips are enabled'.
-				 */
+				// Dimensions.
 				$l_int_alternative_tooltip_width = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH ) );
 				echo '.footnote_tooltip.position {';
 				echo ' width: max-content; ';
@@ -824,12 +580,7 @@ class Footnotes_Parser {
 				// Set also as max-width wrt short tooltip shrinking.
 				echo ' max-width: ' . $l_int_alternative_tooltip_width . 'px;';
 
-				/**
-				 * Position.
-				 *
-				 * @see dev-amp-tooltips.css.
-				 * @see dev-tooltips-alternative.css.
-				 */
+				// Position.
 				$l_str_alternative_position = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION );
 				$l_int_offset_x             = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X ) );
 
@@ -848,9 +599,7 @@ class Footnotes_Parser {
 				}
 				echo "}\r\n";
 
-				/*
-				 * Timing.
-				 */
+				// Timing.
 				$l_int_fade_in_delay     = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY ) );
 				$l_int_fade_in_delay     = ! empty( $l_int_fade_in_delay ) ? $l_int_fade_in_delay : '0';
 				$l_int_fade_in_duration  = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION ) );
@@ -860,12 +609,10 @@ class Footnotes_Parser {
 				$l_int_fade_out_duration = intval( Footnotes_Settings::instance()->get( Footnotes_Settings::C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION ) );
 				$l_int_fade_out_duration = ! empty( $l_int_fade_out_duration ) ? $l_int_fade_out_duration : '0';
 
-				/**
-				 * AMP compatible tooltips.
+				/*
+				 * AMP-compatible tooltips.
 				 *
 				 * To streamline internal CSS, immutable rules are in external stylesheet.
-				 *
-				 * @see dev-amp-tooltips.css.
 				 */
 				if ( Footnotes_Public::$a_bool_amp_enabled ) {
 
@@ -879,12 +626,10 @@ class Footnotes_Parser {
 					echo 'transition-duration: ' . $l_int_fade_in_duration . 'ms;';
 					echo "}\r\n";
 
-					/**
+					/*
 					 * Alternative tooltips.
 					 *
 					 * To streamline internal CSS, immutable rules are in external stylesheet.
-					 *
-					 * @see dev-tooltips-alternative.css.
 					 */
 				} else {
 
@@ -901,12 +646,8 @@ class Footnotes_Parser {
 			}
 		}
 
-		/**
+		/*
 		 * Custom CSS.
-		 *
-		 * - Bugfix: Custom CSS: insert new CSS in the public page header element after existing CSS.
-		 *
-		 * @since 2.2.3
 		 *
 		 * Set custom CSS to override settings, not conversely.
 		 * Legacy Custom CSS is used until it’s set to disappear after dashboard tab migration.
@@ -920,15 +661,9 @@ class Footnotes_Parser {
 		// Insert end tag without switching out of PHP.
 		echo "\r\n</style>\r\n";
 
-		/**
+		/*
 		 * Alternative tooltip implementation relying on plain JS and CSS transitions.
 		 *
-		 * - Bugfix: Tooltips: optional alternative JS implementation with CSS transitions to fix configuration-related outage, thanks to @andreasra feedback.
-		 *
-		 * @reporter @andreasra
-		 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/2/#post-13632566
-		 *
-		 * @since 2.1.1
 		 * The script for alternative tooltips is printed formatted, not minified,
 		 * for transparency. It isn’t indented though (the PHP open tag neither).
 		 */
@@ -955,8 +690,7 @@ class Footnotes_Parser {
 	/**
 	 * Displays the 'LOVE FOOTNOTES' slug if enabled.
 	 *
-	 * @since 1.5.0
-	 * @since 2.2.0  More options.
+	 * @since  1.5.0
 	 */
 	public function footnotes_output_footer() {
 		if ( 'footer' === Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
@@ -1012,9 +746,10 @@ class Footnotes_Parser {
 	/**
 	 * Replaces footnotes in the post/page title.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_content  Title.
-	 * @return string $p_str_content  Title with replaced footnotes.
+	 * @since  1.5.0
+	 *
+	 * @param  string  $p_str_content  Title.
+	 * @return  string  $p_str_content  Title with replaced footnotes.
 	 */
 	public function footnotes_in_title( $p_str_content ) {
 		// Appends the reference container if set to "post_end".
@@ -1024,16 +759,10 @@ class Footnotes_Parser {
 	/**
 	 * Replaces footnotes in the content of the current page/post.
 	 *
-	 * @since 1.5.0
+	 * @since  1.5.0
 	 *
-	 * - Adding: Reference container: optionally per section by shortcode, thanks to @grflukas issue report.
-	 *
-	 * @reporter @grflukas
-	 * @link https://wordpress.org/support/topic/multiple-reference-containers-in-single-post/
-	 *
-	 * @since 2.7.0
-	 * @param string $p_str_content  Page/Post content.
-	 * @return string $p_str_content  Content with replaced footnotes.
+	 * @param  string  $p_str_content  Page/Post content.
+	 * @return  string  $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_content( $p_str_content ) {
 
@@ -1074,21 +803,14 @@ class Footnotes_Parser {
 	/**
 	 * Processes existing excerpt or replaces it with a new one generated on the basis of the post.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_excerpt  Excerpt content.
-	 * @return string $p_str_excerpt  Processed or new excerpt.
-	 * @since 2.6.2  Debug No option.
-	 * @since 2.6.3  Debug Yes option, the setting becomes fully effective.
-	 *
-	 * - Bugfix: Excerpts: make excerpt handling backward compatible, thanks to @mfessler bug report.
-	 *
-	 * @reporter @mfessler
-	 * @link https://github.com/markcheret/footnotes/issues/65
-	 *
-	 * @since 2.7.0
 	 * The input was already the processed excerpt, no more footnotes to search.
 	 * But issue #65 brought up that manual excerpts can include processable footnotes.
-	 * Default 'manual' is fallback and is backward compatible with the initial setup.
+	 * Default 'manual' is fallback and is backwards-compatible with the initial setup.
+	 *
+	 * @since  1.5.0
+	 *
+	 * @param  string  $p_str_excerpt  Excerpt content.
+	 * @return  string  $p_str_excerpt  Processed or new excerpt.
 	 */
 	public function footnotes_in_excerpt( $p_str_excerpt ) {
 		$l_str_excerpt_mode = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_IN_EXCERPT );
@@ -1107,24 +829,14 @@ class Footnotes_Parser {
 	/**
 	 * Generates excerpt on the basis of the post.
 	 *
-	 * - Bugfix: Excerpts: debug the 'No' option by generating excerpts on the basis of the post without footnotes, thanks to @nikelaos @markcheret @martinneumannat bug reports.
-	 *
-	 * @reporter @nikelaos
-	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/
-	 * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
-	 *
-	 * @reporter @markcheret
-	 * @link https://wordpress.org/support/topic/footnotes-now-appear-in-summaries-even-though-this-is-marked-no/
-	 *
-	 * @reporter @martinneumannat
-	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
-	 *
-	 * @since 2.6.2
-	 * @param string $p_str_content  The post.
-	 * @return string $p_str_content  An excerpt of the post.
 	 * Applies full WordPress excerpt processing.
 	 * @link https://developer.wordpress.org/reference/functions/wp_trim_excerpt/
 	 * @link https://developer.wordpress.org/reference/functions/wp_trim_words/
+	 *
+	 * @since  2.6.2
+	 *
+	 * @param  string  $p_str_content  The post.
+	 * @return  string  $p_str_content  An excerpt of the post.
 	 */
 	public function generate_excerpt( $p_str_content ) {
 
@@ -1160,35 +872,15 @@ class Footnotes_Parser {
 	/**
 	 * Generates excerpt with footnotes on the basis of the post.
 	 *
-	 * - Bugfix: Excerpts: debug the 'Yes' option by generating excerpts with footnotes on the basis of the posts, thanks to @nikelaos @martinneumannat bug reports.
-	 *
-	 * @reporter @nikelaos
-	 * @link https://wordpress.org/support/topic/jquery-comes-up-in-feed-content/
-	 * @link https://wordpress.org/support/topic/doesnt-work-with-mailpoet/
-	 *
-	 * @reporter @martinneumannat
-	 * @link https://wordpress.org/support/topic/problem-with-footnotes-in-excerpts-of-the-blog-page/
-	 *
-	 * @since 2.6.3
-	 *
-	 * - Bugfix: Process: remove trailing comma after last argument in multiline function calls for PHP < 7.3, thanks to @scroom @copylefter @lagoon24 bug reports.
-	 *
-	 * @reporter @scroom
-	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/
-	 *
-	 * @reporter @copylefter
-	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259151
-	 *
-	 * @reporter @lagoon24
-	 * @link https://wordpress.org/support/topic/update-crashed-my-website-3/#post-14259396
-	 *
-	 * @since 2.6.4
-	 * @param string $p_str_content  The post.
-	 * @return string $p_str_content  An excerpt of the post.
 	 * Does not apply full WordPress excerpt processing.
 	 * @see self::generate_excerpt()
 	 * Uses information and some code from Advanced Excerpt.
 	 * @link https://wordpress.org/plugins/advanced-excerpt/
+	 *
+	 * @since  2.6.3
+	 *
+	 * @param  string  $p_str_content  The post.
+	 * @return  string  $p_str_content  An excerpt of the post.
 	 */
 	public function generate_excerpt_with_footnotes( $p_str_content ) {
 
@@ -1286,9 +978,10 @@ class Footnotes_Parser {
 	/**
 	 * Replaces footnotes in the widget title.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_content  Widget content.
-	 * @return string $p_str_content  Content with replaced footnotes.
+	 * @since  1.5.0
+	 *
+	 * @param  string  $p_str_content  Widget content.
+	 * @return  string  $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_widget_title( $p_str_content ) {
 		// Appends the reference container if set to "post_end".
@@ -1298,9 +991,10 @@ class Footnotes_Parser {
 	/**
 	 * Replaces footnotes in the content of the current widget.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_content  Widget content.
-	 * @return string $p_str_content  Content with replaced footnotes.
+	 * @since  1.5.0
+	 *
+	 * @param  string  $p_str_content  Widget content.
+	 * @return  string  $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_widget_text( $p_str_content ) {
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
@@ -1312,34 +1006,22 @@ class Footnotes_Parser {
 	/**
 	 * Replaces all footnotes that occur in the given content.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_content              Any string that may contain footnotes to be replaced.
-	 * @param bool   $p_bool_output_references   Appends the Reference Container to the output if set to true, default true.
-	 * @param bool   $p_bool_hide_footnotes_text Hide footnotes found in the string.
-	 * @return string
+	 * @since  1.5.0
+	 *
+	 * @param  string  $p_str_content  Any string that may contain footnotes to be replaced.
+	 * @param  bool  $p_bool_output_references  Appends the Reference Container to the output if set to true, default true.
+	 * @param  bool  $p_bool_hide_footnotes_text  Hide footnotes found in the string.
+	 * @return  string
 	 */
 	public function exec( $p_str_content, $p_bool_output_references = false, $p_bool_hide_footnotes_text = false ) {
 
 		// Process content.
 		$p_str_content = $this->search( $p_str_content, $p_bool_hide_footnotes_text );
 
-		/**
+		/*
 		 * Reference container customized positioning through shortcode.
-		 *
-		 * - Adding: Reference container: support for custom position shortcode, thanks to @hamshe issue report.
-		 *
-		 * @reporter @hamshe
-		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/
-		 *
-		 * @since 2.2.0
-		 *
-		 * - Bugfix: Reference container: delete position shortcode if unused because position may be widget or footer, thanks to @hamshe bug report.
-		 *
-		 * @reporter @hamshe
-		 * @link https://wordpress.org/support/topic/reference-container-in-elementor/#post-13784126
-		 *
-		 * @since 2.2.5
 		 */
+		 
 		// Append the reference container or insert at shortcode.
 		$l_str_reference_container_position_shortcode = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE );
 		if ( empty( $l_str_reference_container_position_shortcode ) ) {
@@ -1377,24 +1059,14 @@ class Footnotes_Parser {
 	/**
 	 * Brings the delimiters and unifies their various HTML escapement schemas.
 	 *
-	 * @param string $p_str_content TODO.
-	 *
-	 * - Bugfix: Footnote delimiter short codes: fix numbering bug by cross-editor HTML escapement schema unification, thanks to @patrick_here @alifarahani8000 @gova bug reports.
-	 *
-	 * @reporter @patrick_here
-	 * @link https://wordpress.org/support/topic/how-to-add-footnotes-shortcode-in-elementor/
-	 *
-	 * @reporter @alifarahani8000
-	 * @link https://wordpress.org/support/topic/after-version-2-5-10-the-ref-or-tags-are-not-longer-working/
-	 *
-	 * @reporter @gova
-	 * @link https://wordpress.org/support/topic/footnotes-content-number-not-sequential/
-	 *
-	 * @since 2.1.14
 	 * While the Classic Editor (visual mode) escapes both pointy brackets,
 	 * the Block Editor enforces balanced escapement only in code editor mode
 	 * when the opening tag is already escaped. In visual mode, the Block Editor
 	 * does not escape the greater-than sign.
+	 *
+	 * @since  2.1.14
+	 *
+	 * @param  string  $p_str_content  The footnote, including delimiters.
 	 */
 	public function unify_delimiters( $p_str_content ) {
 
@@ -1456,50 +1128,25 @@ class Footnotes_Parser {
 	/**
 	 * Replaces all footnotes in the given content and appends them to the static property.
 	 *
-	 * @since 1.5.0
-	 * @param string $p_str_content              Any content to be searched for footnotes.
-	 * @param bool   $p_bool_hide_footnotes_text Hide footnotes found in the string.
-	 * @return string
+	 * @since  1.5.0
+	 * @todo  Refactor to parse DOM rather than using RegEx.
 	 *
-	 * @since 2.0.0  various.
-	 * @since 2.4.0  Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
-	 * @since 2.5.0  Bugfix: Footnote delimiters: Syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
-	 * @since 2.5.0  Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
-	 * @since 2.5.0  Bugfix: Footnote delimiters: Syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
-	 *
-	 * - Bugfix: Footnote delimiter short codes: debug closing pointy brackets in the Block Editor by accounting for unbalanced HTML escapement, thanks to @patrick_here @alifarahani8000 bug reports.
-	 *
-	 * @reporter @patrick_here
-	 * @link https://wordpress.org/support/topic/how-to-add-footnotes-shortcode-in-elementor/
-	 *
-	 * @reporter @alifarahani8000
-	 * @link https://wordpress.org/support/topic/after-version-2-5-10-the-ref-or-tags-are-not-longer-working/
-	 *
-	 * @since 2.5.13
+	 * @param  string $p_str_content  Any content to be parsed for footnotes.
+	 * @param  bool  $p_bool_hide_footnotes_text  Hide footnotes found in the string.
+	 * @return  string
 	 */
 	public function search( $p_str_content, $p_bool_hide_footnotes_text ) {
 
 		// Get footnote delimiter shortcodes and unify them.
 		$p_str_content = self::unify_delimiters( $p_str_content );
 
-		/**
+		/*
 		 * Checks for balanced footnote delimiters; delimiter syntax validation.
 		 *
-		 * - Adding: Footnote delimiters: syntax validation for balanced footnote start and end tag short codes.
-		 *
-		 * @since 2.4.0
-		 *
-		 * - Bugfix: Footnote delimiters: Syntax validation: exclude certain cases involving scripts, thanks to @andreasra bug report.
-		 * - Bugfix: Footnote delimiters: Syntax validation: complete message with hint about setting, thanks to @andreasra bug report.
-		 * - Bugfix: Footnote delimiters: Syntax validation: limit length of quoted string to 300 characters, thanks to @andreasra bug report.
-		 *
-		 * @reporter @andreasra
-		 * @link https://wordpress.org/support/topic/warning-unbalanced-footnote-start-tag-short-code-before/
-		 *
-		 * @since 2.5.0
 		 * If footnotes short codes are unbalanced, and syntax validation is not disabled,
 		 * prepend a warning to the content; displays de facto beneath the post title.
 		 */
+		 
 		// If enabled.
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
 
@@ -1557,18 +1204,11 @@ class Footnotes_Parser {
 			}
 		}
 
-		/**
+		/*
 		 * Patch to allow footnotes in input field labels.
 		 *
-		 * - Bugfix: Forms: remove footnotes from input field values, thanks to @bogosavljev bug report.
-		 *
-		 * @reporter @bogosavljev
-		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/
-		 *
-		 * @since 2.5.11
-		 * When the HTML 'input' element 'value' attribute value
-		 * is derived from 'label', footnotes need to be removed
-		 * in the value of 'value'.
+		 * When the HTML 'input' element 'value' attribute value is derived from 
+		 * 'label', footnotes need to be removed in the value of 'value'.
 		 */
 		$l_str_value_regex = '#(<input [^>]+?value=["\'][^>]+?)' . self::$a_str_start_tag_regex . '[^>]+?' . self::$a_str_end_tag_regex . '#';
 
@@ -1576,14 +1216,7 @@ class Footnotes_Parser {
 			$p_str_content = preg_replace( $l_str_value_regex, '$1', $p_str_content );
 		} while ( preg_match( $l_str_value_regex, $p_str_content ) );
 
-		/**
-		 * Optionally moves footnotes outside at the end of the label element.
-		 *
-		 * - Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally moving footnotes after the end of the label.
-		 *
-		 * @since 2.5.12
-		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14212318
-		 */
+		// Optionally moves footnotes outside at the end of the label element.
 		$l_str_label_issue_solution = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION );
 
 		if ( 'move' === $l_str_label_issue_solution ) {
@@ -1595,14 +1228,11 @@ class Footnotes_Parser {
 			} while ( preg_match( $l_str_move_regex, $p_str_content ) );
 		}
 
-		/**
+		/*
 		 * Optionally disconnects labels with footnotes from their input element.
 		 *
-		 * - Bugfix: Forms: prevent inadvertently toggling input elements with footnotes in their label, by optionally disconnecting those labels.
-		 *
-		 * @since 2.5.12
 		 * This option is discouraged because of accessibility issues.
-		 * This only edits those labels’ 'for' value that have footnotes,
+		 * This only edits those labels' 'for' value that have footnotes,
 		 * but leaves all other labels (those without footnotes) alone.
 		 * @link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14212318
 		 */
@@ -1620,26 +1250,19 @@ class Footnotes_Parser {
 		// Post ID to make everything unique wrt infinite scroll and archive view.
 		self::$a_int_post_id = get_the_id();
 
-		/**
+		/*
 		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.
 		 *
-		 * - Bugfix: Process: fix footnote duplication by emptying the footnotes list every time the search algorithm is run on the content, thanks to @inoruhana bug report.
-		 *
-		 * @reporter @inoruhana
-		 * @link https://wordpress.org/support/topic/footnote-duplicated-in-the-widget/
-		 *
-		 * @since 2.5.7
 		 * Under certain circumstances, footnotes were duplicated, because the footnotes list was
 		 * not emptied every time before the search algorithm was run. That happened eg when both
 		 * the reference container resides in the widget area, and the YOAST SEO plugin is active
 		 * and calls the hook the_content to generate the Open Graph description, while Footnotes
 		 * is set to avoid missing out on the footnotes (in the content) by hooking in as soon as
 		 * the_content is called, whereas at post end Footnotes seems to hook in the_content only
-		 * the time it’s the blog engine processing the post for display and appending the refs.
+		 * the time it's the blog engine processing the post for display and appending the refs.
 		 *
-		 * @since 2.6.3  Move footnotes list reset from footnotes_in_content() to search().
 		 * Emptying the footnotes list only when the_content hook is called is ineffective
-		 * when footnotes are processed in generate_excerpt_with_footnotes().
+		 * when footnotes are processed in `generate_excerpt_with_footnotes()`.
 		 * Footnotes duplication is prevented also when resetting the list here.
 		 */
 		self::$a_arr_footnotes = array();
@@ -1726,11 +1349,8 @@ class Footnotes_Parser {
 				$l_str_tooltip_text = '';
 			}
 
-			/**
+			/*
 			 * URL line wrapping for Unicode non conformant browsers.
-			 *
-			 * @since 2.1.1 (CSS)
-			 * @since 2.1.4 (PHP)
 			 *
 			 * Despite Unicode recommends to line-wrap URLs at slashes, and Firefox follows
 			 * the Unicode standard, Chrome does not, making long URLs hang out of tooltips
@@ -1740,110 +1360,12 @@ class Footnotes_Parser {
 			 * that is assigned appropriate CSS properties and values.
 			 * @see css/public.css
 			 *
-			 * - Bugfix: Tooltips: fix line breaking for hyperlinked URLs in Unicode-non-compliant user agents, thanks to @andreasra bug report.
-			 *
-			 * @reporter @andreasra
-			 * @link https://wordpress.org/support/topic/footnotes-appearing-in-header/page/3/#post-13657398
-			 *
-			 * @since 2.1.1
-			 *
-			 * - Bugfix: Reference container: fix width in mobile view by URL wrapping for Unicode-non-conformant browsers, thanks to @karolszakiel bug report.
-			 *
-			 * @reporter @karolszakiel
-			 * @link https://wordpress.org/support/topic/footnotes-on-mobile-phones/
-			 *
-			 * @since 2.1.3
-					 *
-			 * - Bugfix: Reference container, tooltips: fix line wrapping of URLs (hyperlinked or not) based on pattern, not link element.
-			 *
-			 * @since 2.1.4
-					 * @link https://wordpress.org/support/topic/footnotes-on-mobile-phones/#post-13710682
-			 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: exclude image source too, thanks to @bjrnet21 bug report.
-			 *
-			 * @reporter @bjrnet21
-			 * @link https://wordpress.org/support/topic/2-1-4-breaks-on-my-site-images-dont-show/
-			 *
-			 * @since 2.1.5
-			 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: fix regex, thanks to @a223123131 bug report.
-			 *
-			 * @reporter @a223123131
-			 * @link https://wordpress.org/support/topic/broken-layout-starting-version-2-1-4/
-			 *
-			 * @since 2.1.6
-					 *
-			 * Even ARIA labels may take a URL as value, so use \w=[\'"] as a catch-all
-			 *
-			 * - Bugfix: Dashboard: URL wrap: add option to properly enable/disable URL wrap.
-			 *
-			 * @since 2.1.6
-					 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
-			 *
-			 * @reporter @spiralofhope2
-			 * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/
-			 *
-			 * @since 2.2.6
-					 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: remove a bug introduced in the regex, thanks to @rjl20 @spaceling @lukashuggenberg @klusik @friedrichnorth @bernardzit bug reports.
-			 *
-			 * @reporter @rjl20
-			 * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/#post-13825479
-			 *
-			 * @reporter @spaceling
-			 * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/#post-13825532
-			 *
-			 * @reporter @lukashuggenberg
-			 * @link https://wordpress.org/support/topic/2-2-6-breaks-all-footnotes/
-			 *
-			 * @reporter @klusik
-			 * @link https://wordpress.org/support/topic/2-2-6-breaks-all-footnotes/#post-13825885
-			 *
-			 * @reporter @friedrichnorth
-			 * @link https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/
-			 *
-			 * @reporter @bernardzit
-			 * @link https://wordpress.org/support/topic/footnotes-dont-show-after-update-to-2-2-6/#post-13826029
-			 *
-			 * @since 2.2.7
-					 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: correctly make the quotation mark optional wrt query parameters, thanks to @spiralofhope2 bug report.
-			 *
-			 * @reporter @spiralofhope2
-			 * @link https://wordpress.org/support/topic/two-links-now-breaks-footnotes-with-blogtext/
-			 *
-			 * @since 2.2.8
-					 * Correct is duplicating the negative lookbehind w/o quotes: '(?<!\w=)'
-			 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: account for RFC 2396 allowed characters in parameter names.
-			 * - Bugfix: Reference container, tooltips: URL wrap: exclude URLs also where the equals sign is preceded by an entity or character reference.
-			 *
-			 * @since 2.2.9
-					 * @link https://stackoverflow.com/questions/814700/http-url-allowed-characters-in-parameter-names
-					 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: support also file transfer protocol URLs.
-			 *
-			 * @since 2.2.10
-					 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: exclude URL pattern as folder name in Wayback Machine URL, thanks to @rumperuu bug report.
-			 *
-			 * @reporter @rumperuu
-			 * @link https://wordpress.org/support/topic/line-wrap-href-regex-bug/
-			 *
-			 * @since 2.5.3
-					 * By adding a 3rd negative lookbehind: '(?<!/)'.
-			 *
-			 * - Bugfix: Reference container, tooltips: URL wrap: account for leading space in value, thanks to @karolszakiel example provision.
-			 *
-			 * @reporter @karolszakiel
-			 * @link https://wordpress.org/support/topic/footnotes-on-mobile-phones/
-			 *
-			 * @since 2.5.4
 			 * The value of an href argument may have leading (and trailing) space.
 			 * @link https://webmasters.stackexchange.com/questions/93540/are-spaces-in-href-valid
 			 * Needs to replicate the relevant negative lookbehind at least with one and with two spaces.
 			 * Note: The WordPress blog engine edits these values, cropping these leading/trailing spaces.
+			 *
+			 * TODO: Split into own method.
 			 */
 			if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTE_URL_WRAP_ENABLED ) ) ) {
 
@@ -1885,15 +1407,9 @@ class Footnotes_Parser {
 				// Define excerpt text as footnote text by default.
 				$l_str_excerpt_text = $l_str_footnote_text;
 
-				/**
+				/*
 				 * Tooltip truncation.
 				 *
-				 * - Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
-				 *
-				 * @reporter @rovanov
-				 * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
-				 *
-				 * @since 2.1.0
 				 * If the tooltip truncation option is enabled, it’s done based on character count,
 				 * and a trailing incomplete word is cropped.
 				 * This is equivalent to the WordPress default excerpt generation, i.e. without a
@@ -1953,7 +1469,7 @@ class Footnotes_Parser {
 						 * @reporter @rovanov
 						 * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
 						 *
-						 * @since 2.1.0
+						 * @since  2.1.0
 						 */
 						$l_str_excerpt_text .= Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL );
 
@@ -1961,15 +1477,9 @@ class Footnotes_Parser {
 					}
 				}
 
-				/**
+				/*
 				 * Referrers element superscript or baseline.
 				 *
-				 * - Bugfix: Referrers: new setting for vertical align: superscript (default) or baseline (optional), thanks to @cwbayer bug report.
-				 *
-				 * @reporter @cwbayer
-				 * @link https://wordpress.org/support/topic/footnote-number-in-text-superscript-disrupts-leading/
-				 *
-				 * @since 2.1.1
 				 * Define the HTML element to use for the referrers.
 				 */
 				if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS ) ) ) {
@@ -2007,15 +1517,9 @@ class Footnotes_Parser {
 
 				} else {
 
-					/**
+					/*
 					 * Initialize hard link variables when hard links are disabled.
 					 *
-					 * - Bugfix: Process: initialize hard link address variables to empty string to fix 'undefined variable' bug, thanks to @a223123131 bug report.
-					 *
-					 * @reporter @a223123131
-					 * @link https://wordpress.org/support/topic/wp_debug-php-notice/
-					 *
-					 * @since 2.4.0
 					 * If no hyperlink nor offset anchor is needed, initialize as empty.
 					 */
 					$l_str_footnote_link_argument  = '';
@@ -2034,12 +1538,9 @@ class Footnotes_Parser {
 				// Determine tooltip content.
 				if ( Footnotes_Public::$a_bool_tooltips_enabled ) {
 					$l_str_tooltip_content = $l_bool_has_tooltip_text ? $l_str_tooltip_text : $l_str_excerpt_text;
-					/**
+					/*
 					 * Ensures paragraph separation
 					 *
-					 * @reporter @pewgeuges
-					 * @link https://github.com/markcheret/footnotes/issues/103
-					 * @since 2.7.1
 					 * Ensures that footnotes containing paragraph separators get displayed correctly.
 					 */
 					$l_arr_paragraph_splitters = array( '#(</p *>|<p[^>]*>)#', '#(</div *>|<div[^>]*>)#' );
@@ -2048,11 +1549,7 @@ class Footnotes_Parser {
 					$l_str_tooltip_content = '';
 				}
 
-				/**
-				 * Determine shrink width if alternative tooltips are enabled.
-				 *
-				 * @since 2.5.6
-				 */
+				// Determine shrink width if alternative tooltips are enabled.
 				$l_str_tooltip_style = '';
 				if ( Footnotes_Public::$a_bool_alternative_tooltips_enabled && Footnotes_Public::$a_bool_tooltips_enabled ) {
 					$l_int_tooltip_length = strlen( wp_strip_all_tags( $l_str_tooltip_content ) );
@@ -2125,29 +1622,10 @@ class Footnotes_Parser {
 				$l_int_footnote_index++;
 			}
 
-			/**
+			/*
 			 * Fixes a partial footnotes process outage happening when tooltips are truncated or disabled.
 			 * Fixed a footnotes numbering bug happening under de facto rare circumstances.
 			 *
-			 * - Bugfix: Fixed occasional bug where footnote ordering could be out of sequence
-			 *
-			 * @since 1.6.4
-			 * @committer @dartiss
-			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/task.php?rev=1445718 @dartiss’ class/task.php
-			 * @link https://plugins.trac.wordpress.org/log/footnotes/trunk/class/task.php?rev=1445718 @dartiss re-added class/task.php
-			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class?rev=1445711 class/ w/o task.php
-			 * @link https://plugins.trac.wordpress.org/changeset/1445711/footnotes/trunk/class @dartiss deleted class/task.php
-			 * @link https://plugins.trac.wordpress.org/browser/footnotes/trunk/class/task.php?rev=1026210 @aricura’s latest class/task.php
-			 *
-			 * - Bugfix: Process: fix numbering bug impacting footnote #2 with footnote #1 close to start, thanks to @rumperuu bug report, thanks to @lolzim code contribution.
-			 *
-			 * @reporter @rumperuu
-			 * @link https://wordpress.org/support/topic/footnotes-numbered-incorrectly/
-			 *
-			 * @contributor @lolzim
-			 * @link https://wordpress.org/support/topic/footnotes-numbered-incorrectly/#post-14062032
-			 *
-			 * @since 2.5.5
 			 * This assignment was overridden by another one, causing the algorithm to jump back
 			 * near the post start to a position calculated as the sum of the length of the last
 			 * footnote and the length of the last footnote replace text.
@@ -2157,18 +1635,6 @@ class Footnotes_Parser {
 			 * Deleting both lines instead, to resume the search at the position where it left off,
 			 * would have prevented also the following bug.
 			 *
-			 * - Bugfix: Process: fix issue that caused some footnotes to not be processed, thanks to @docteurfitness @rkupadhya @offpeakdesign bug reports.
-			 *
-			 * @reporter @docteurfitness
-			 * @link https://wordpress.org/support/topic/problem-since-footnotes-2-5-14/
-			 *
-			 * @reporter @rkupadhya
-			 * @link https://wordpress.org/support/topic/adjacent-footnotes-not-working-sometimes/
-			 *
-			 * @reporter @offpeakdesign
-			 * @link https://wordpress.org/support/topic/character-limit-bug/
-			 *
-			 * @since 2.6.6
 			 * The origin of the bug was present since the beginning (v1.0.0).
 			 * For v1.3.2 the wrong code was refactored but remained wrong,
 			 * and was unaffected by the v1.5.0 refactoring.
@@ -2190,15 +1656,9 @@ class Footnotes_Parser {
 	/**
 	 * Generates the reference container.
 	 *
-	 * @since 1.5.0
-	 * @return string
+	 * @since  1.5.0
 	 *
-	 * @since 2.0.0  Update: remove backlink symbol along with column 2 of the reference container
-	 * @since 2.0.3  Bugfix: prepend an arrow on user request
-	 * @since 2.0.6  Bugfix: Reference container: fix line breaking behavior in footnote number clusters.
-	 * @since 2.0.4  Bugfix: restore the arrow select and backlink symbol input settings
-	 * @since 2.1.1  Bugfix: Referrers, reference container: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
-	 * @since 2.1.1  Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
+	 * @return  string
 	 */
 	public function reference_container() {
 
@@ -2207,16 +1667,10 @@ class Footnotes_Parser {
 			return '';
 		}
 
-		/**
+		/*
 		 * Footnote index backlink symbol.
-		 *
-		 * - Bugfix: Reference container: Backlink symbol: make optional, not suggest configuring it to invisible, thanks to @spaceling feedback.
-		 *
-		 * @reporter @spaceling
-		 * @link https://wordpress.org/support/topic/change-the-position-5/page/2/#post-13671138
-		 *
-		 * @since 2.1.1
 		 */
+		 
 		// If the backlink symbol is enabled.
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE ) ) ) {
 
@@ -2244,18 +1698,9 @@ class Footnotes_Parser {
 
 		}
 
-		/**
+		/*
 		 * Backlink separator.
 		 *
-		 * - Bugfix: Reference container: make separating and terminating punctuation optional and configurable, thanks to @docteurfitness issue report and code contribution.
-		 *
-		 * @reporter @docteurfitness
-		 * @link https://wordpress.org/support/topic/update-2-1-3/
-		 *
-		 * @contributor @docteurfitness
-		 * @link https://wordpress.org/support/topic/update-2-1-3/#post-13704194
-		 *
-		 * @since 2.1.4
 		 * Initially an appended comma was hard-coded in this algorithm for enumerations.
 		 * The comma in enumerations is not universally preferred.
 		 */
@@ -2285,14 +1730,10 @@ class Footnotes_Parser {
 			$l_str_separator = '';
 		}
 
-		/**
+		/*
 		 * Backlink terminator.
 		 *
 		 * Initially a dot was appended in the table row template.
-		 *
-		 * @since 2.0.6 a dot after footnote numbers is discarded as not localizable;
-		 * making it optional was envisaged.
-		 * @since 2.1.4 the terminator is optional, has options, and is configurable.
 		 */
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_BACKLINKS_TERMINATOR_ENABLED ) ) ) {
 
@@ -2320,12 +1761,8 @@ class Footnotes_Parser {
 			$l_str_terminator = '';
 		}
 
-		/**
+		/*
 		 * Line breaks.
-		 *
-		 * - Bugfix: Reference container: Backlinks: fix stacked enumerations by adding optional line breaks.
-		 *
-		 * @since 2.1.4
 		 *
 		 * The backlinks of combined footnotes are generally preferred in an enumeration.
 		 * But when few footnotes are identical, stacking the items in list form is better.
@@ -2334,7 +1771,7 @@ class Footnotes_Parser {
 		 */
 		$l_str_line_break = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_BACKLINKS_LINE_BREAKS_ENABLED ) ) ? '<br />' : ' ';
 
-		/**
+		/*
 		 * Line breaks for source readability.
 		 *
 		 * For maintenance and support, table rows in the reference container should be
@@ -2343,12 +1780,8 @@ class Footnotes_Parser {
 		 */
 		$l_str_body = "\r\n\r\n";
 
-		/**
+		/*
 		 * Reference container table row template load.
-		 *
-		 * - Bugfix: Reference container: option to restore pre-2.0.0 layout with the backlink symbol in an extra column.
-		 *
-		 * @since 2.1.1
 		 */
 		$l_bool_combine_identical_footnotes = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_COMBINE_IDENTICAL_FOOTNOTES ) );
 
@@ -2411,20 +1844,8 @@ class Footnotes_Parser {
 			}
 		}
 
-		/**
+		/*
 		 * Switch backlink symbol and footnote number.
-		 *
-		 * - Bugfix: Reference container: option to append symbol (prepended by default), thanks to @spaceling code contribution.
-		 *
-		 * @since 2.1.1
-		 *
-		 * @contributor @spaceling
-		 * @link https://wordpress.org/support/topic/change-the-position-5/#post-13615994
-		 *
-		 *
-		 * - Bugfix: Reference container: Backlink symbol: support for appending when combining identicals is on.
-		 *
-		 * @since 2.1.4
 		 */
 		$l_bool_symbol_switch = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH ) );
 
@@ -2458,18 +1879,14 @@ class Footnotes_Parser {
 
 			if ( self::$a_bool_hard_links_enabled ) {
 
-				/**
+				/*
 				 * Use-Backbutton-Hint tooltip, optional and configurable.
 				 *
-				 * - Update: Reference container: Hard backlinks (optional): optional configurable tooltip hinting to use the backbutton instead, thanks to @theroninjedi47 bug report.
-				 *
-				 * @reporter @theroninjedi47
-				 * @link https://wordpress.org/support/topic/hyperlinked-footnotes-creating-excessive-back-history/
-				 *
-				 * @since 2.5.4
 				 * When hard links are enabled, clicks on the backlinks are logged in the browsing history.
 				 * This tooltip hints to use the backbutton instead, so the history gets streamlined again.
 				 * @link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
+				 *
+				 * @since  2.5.4
 				 */
 				if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE ) ) ) {
 					$l_str_use_backbutton_hint  = ' title="';
@@ -2505,19 +1922,16 @@ class Footnotes_Parser {
 				$l_str_footnote_anchor_element = '';
 			}
 
-			/**
+			/*
 			 * Support for combining identicals: compose enumerated backlinks.
 			 *
-			 * - Bugfix: Referrers, reference container: Combining identical footnotes: fix dead links and ensure referrer-backlink bijectivity, thanks to @happyches bug report.
-			 *
-			 * @reporter @happyches
-			 * @link https://wordpress.org/support/topic/custom-css-for-jumbled-references/
-			 *
-			 * @since 2.1.1
 			 * Prepare to have single footnotes, where the click event and
 			 * optional hard link need to be set to cover the table cell,
 			 * for better usability and UX.
+			 *
+			 * @since  2.1.1
 			 */
+			 
 			// Set a flag to check for the combined status of a footnote item.
 			$l_bool_flag_combined = false;
 
@@ -2546,7 +1960,7 @@ class Footnotes_Parser {
 				/*
 				 * The click event goes in the table cell if footnote remains single.
 				 */
-				// Reverted wrong linting.
+				 
 				$l_str_backlink_event = ' onclick="footnote_moveToAnchor_';
 
 				$l_str_backlink_event .= self::$a_int_post_id;
@@ -2721,14 +2135,9 @@ class Footnotes_Parser {
 		// Streamline.
 		$l_bool_collapse_default = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_COLLAPSE ) );
 
-		/**
+		/*
 		 * Reference container label.
 		 *
-		 * - Bugfix: Reference container: Label: set empty label to U+202F NNBSP for more robustness, thanks to @lukashuggenberg feedback.
-		 *
-		 * @reporter @lukashuggenberg
-		 *
-		 * @since 2.4.0
 		 * Themes may drop-cap a first letter of initial paragraphs, like this label.
 		 * In case of empty label that would apply to the left half button character.
 		 * Hence the point in setting an empty label to U+202F NARROW NO-BREAK SPACE.

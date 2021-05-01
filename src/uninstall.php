@@ -12,9 +12,8 @@
  * - Repeat with other user roles. Best directly by using the links/query string parameters.
  * - Repeat things for multisite. Once for a single site in the network, once sitewide.
  *
- * @since      2.8.0
- *
- * @package    footnotes
+ * @package  footnotes
+ * @since  2.8.0
  */
 
 // If uninstall not called from WordPress, then exit.

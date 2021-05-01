@@ -1,27 +1,31 @@
 <?php // phpcs:disable Squiz.Commenting.FileComment.Missing
 /**
- * File providing the `Footnotes_Setting` class.
+ * File providing the `Setting` class.
  *
- * @package  footnotes
- * @subpackage  includes
- *
- * @since  1.5.0
- * @since  2.8.0  Rename file from `settings.php` to `class-footnotes-settings.php`,
- *                              rename `class/` sub-directory to `includes/`.
+ * @package footnotes
+ * @since 1.5.0
+ * @since 2.8.0 Renamed file from `settings.php` to `class-settings.php`.
+ *              Renamed parent `class/` directory to `includes/`.
  */
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
+namespace footnotes\includes;
+
+/**
+ * Provides data conversion methods.
+ *
+ * @todo Move to {@see Loader}.
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-convert.php';
 
 /**
  * Class defining configurable plugin settings.
  *
- * @package  footnotes
- * @subpackage  includes
- *
- * @since  1.5.0
+ * @package footnotes
+ * @since 1.5.0
+ * @since 2.8.0 Renamed class from `Footnotes_Settings` to `Settings`.
+ * 							Moved under `footnotes\includes` namespace.
  */
-class Footnotes_Settings {
-
+class Settings {
 	/**
 	 * Settings container key for the label of the reference container.
 	 *
@@ -1104,7 +1108,7 @@ class Footnotes_Settings {
 	/**
 	 * Stores a singleton reference of this class.
 	 *
-	 * @var  Footnotes_Settings
+	 * @var  Settings
 	 *
 	 * @since  1.5.0
 	 */
@@ -1129,12 +1133,11 @@ class Footnotes_Settings {
 	/**
 	 * Contains all default values for each Settings Container.
 	 *
-	 * @var  (string|int)[]
-	 * @see  C_STR_*
-	 *
 	 * @since  1.5.0
 	 * @todo  Review. Why are the constants just initialised with these values?
 	 *              At the very least, we should stop using ‘yes’ to mean `true` etc.
+	 *
+	 * @var  (string|int)[]
 	 */
 	private $a_arr_default = array(
 
@@ -1339,7 +1342,7 @@ class Footnotes_Settings {
 	/**
 	 * Returns a singleton of this class.
 	 *
-	 * @return  Footnotes_Settings
+	 * @return  Settings
 	 *
 	 * @since  1.5.0
 	 * @todo  Remove?

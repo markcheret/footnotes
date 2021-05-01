@@ -1,12 +1,13 @@
 <?php
 /**
- * File providing the `Footnotes_Loader` class.
+ * File providing the `Loader` class.
  *
  * @package  footnotes
- * @subpackage  includes
  *
  * @since 2.8.0
  */
+
+namespace footnotes\includes;
 
 /**
  * Class defining action/filter registration for the plugin.
@@ -16,11 +17,10 @@
  * list of actions and filters.
  *
  * @package  footnotes
- * @subpackage  includes
  *
  * @since  2.8.0
  */
-class Footnotes_Loader {
+class Loader {
 	/**
 	 * The array of actions registered with WordPress.
 	 *

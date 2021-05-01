@@ -1,6 +1,6 @@
 <?php
 /**
- * File providing the `Footnotes_Template` class.
+ * File providing the `Template` class.
  *
  * @package  footnotes
  * @subpackage  includes
@@ -10,6 +10,8 @@
  * @since  2.8.0  Rename file from `templates.php` to `class-footnotes-templates.php`,
  *                              rename `class/` sub-directory to `includes/`.
  */
+
+namespace footnotes\includes;
 
 /**
  * Class defining template rendering.
@@ -23,7 +25,7 @@
  * @since  1.5.0
  * @todo  Refactor templating.
  */
-class Footnotes_Template {
+class Template {
 
 	/**
 	 * Directory name for dashboard partials.
@@ -185,14 +187,14 @@ class Footnotes_Template {
 		 * The directory can be changed.
 		 *
 		 * @usage to change location of templates to 'template_parts/footnotes/':
-		 * add_filter( 'footnotes_template_directory', function( $directory ) {
+		 * add_filter( 'template_directory', function( $directory ) {
 		 *  return 'template_parts/footnotes/';
 		 * } );
 		 *
 		 * @todo  Review.
 		 */
 		$template_directory = apply_filters( '', 'footnotes/' );
-		$custom_directory   = apply_filters( 'footnotes_custom_template_directory', 'footnotes-custom/' );
+		$custom_directory   = apply_filters( 'custom_template_directory', 'footnotes-custom/' );
 		$template_name      = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
 
 		/**

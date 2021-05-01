@@ -1,15 +1,36 @@
 <?php // phpcs:disable PEAR.Commenting.FileComment.Missing
 /**
- * File providing core `Footnotes` class.
+ * footnotes\includes: Core class
  *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
+ * `footnotes\includes` consists of functionality that is shared across both
+ * the admin- and the public-facing sides of the plugin.
  *
- * @package footnotes\includes
+ * The primary entry point is {@see Footnotes}, which uses {@see Loader}
+ * to initialise {@see i18n} for internationalization, {@see Admin\Admin} for 
+ * admin-specific functionality and {@see General\General} for public-facing 
+ * functionality.
+ *
+ * It also includes various utility classes:
+ *
+ * - {@see Activator}: defines plugin activation behaviour, called in
+ *   {@see activate_footnotes()};
+ * - {@see Deactivator}: defines plugin deactivation behaviour, called in
+ *   {@see deactivate_footnotes()};
+ * - {@see Config}: defines plugin constants;
+ * - {@see Convert}: provides data conversion methods;
+ * - {@see Settings}: defines configurable plugin settings; and
+ * - {@see Template}: handles template rendering.
+ *
+ * @package footnotes
  * @since 1.5.0
- * @since 2.8.0 Rename file from `init.php` to `class-footnotes.php`, rename
- *                          `class/` sub-directory to `includes/`.
+ * @since 2.8.0 Renamed file from `init.php` to `class-core.php`.
+ *              Renamed parent `class/` directory to `includes/`.
  */
+
+namespace footnotes\includes;
+
+use footnotes\general as General;
+use footnotes\admin as Admin;
 
 /**
  * Class providing core plugin functionality.
@@ -17,17 +38,19 @@
  * This is used to define internationalization, admin-specific hooks, and
  * public-facing site hooks.
 
- * @package footnotes\includes
+ * @package footnotes
  * @since 1.5.0
+ * @since 2.8.0 Renamed class from `Footnotes` to `Core`.
+ * 							Moved under `footnotes\includes` namespace.
  */
-class Footnotes {
+class Core {
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * The loader that's responsible for maintaining and registering all hooks
+	 * that power the plugin.
 	 *
 	 * @since 2.8.0
 	 *
-	 * @var Footnotes_Loader $loader Maintains and registers all hooks for the plugin.
+	 * @var Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -51,14 +74,14 @@ class Footnotes {
 	protected $version;
 
 	/**
-	 * Build the core of the plugin.
+	 * Builds the core of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the
 	 * plugin. Load the dependencies, define the locale, and set the hooks for
 	 * the admin area and the public-facing side of the site.
 	 *
 	 * @since 1.0.0
-	 * @see PLUGIN_VERSION The plugin version constant.
+	 * @global string PLUGIN_VERSION
 	 *
 	 * @return void
 	 */
@@ -81,14 +104,14 @@ class Footnotes {
 	 *
 	 * Includes the following files that make up the plugin:
 	 *
-	 * - {@see Footnotes_Loader}: orchestrates the hooks of the plugin;
-	 * - {@see Footnotes_i18n}: defines internationalization functionality;
-	 * - {@see Footnotes_Config}: defines plugin details;
-	 * - {@see Footnotes_Convert}: provides conversion methods;
-	 * - {@see Footnotes_Settings}: defines customisable plugin settings;
-	 * - {@see Footnotes_Template}: handles template rendering;
-	 * - {@see Footnotes_Admin}: defines all hooks for the admin area; and
-	 * - {@see Footnotes_Public}: defines all hooks for the public side of the site.
+	 * - {@see Loader}: orchestrates the hooks of the plugin;
+	 * - {@see i18n}: defines internationalization functionality;
+	 * - {@see Config}: defines plugin details;
+	 * - {@see Convert}: provides conversion methods;
+	 * - {@see Settings}: defines customisable plugin settings;
+	 * - {@see Template}: handles template rendering;
+	 * - {@see Admin\Admin}: defines all hooks for the admin area; and
+	 * - {@see General\Public}: defines all hooks for the public side of the site.
 	 *
 	 * Creates an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -103,51 +126,51 @@ class Footnotes {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-i18n.php';
 
 		/**
 		 * The various utility classes.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-template.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-convert.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-template.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-footnotes-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-footnotes-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-general.php';
 
-		$this->loader = new Footnotes_Loader();
+		$this->loader = new Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses {@see Footnotes_i18n} in order to set the domain and to
+	 * Uses {@see i18n} in order to set the domain and to
 	 * register the hook with WordPress.
 	 *
 	 * @since 2.8.0
-	 * @uses Footnotes_i18n Handles initialization functions.
+	 * @uses i18n Handles initialization functions.
 	 *
 	 * @return void
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Footnotes_i18n();
+		$plugin_i18n = new i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -158,19 +181,19 @@ class Footnotes {
 	 * plugin.
 	 *
 	 * @since 1.5.0
-	 * @since 2.8.0 Moved hook registrations from various classes into `Footnotes_Admin`.
-	 * @uses Footnotes_Admin Defines admin functionality.
+	 * @since 2.8.0 Moved hook registrations from various classes into `Admin\Admin`.
+	 * @see Admin\Admin Defines admin functionality.
 	 *
 	 * @return void
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Footnotes_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Admin\Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_filter( 'plugin_action_links_footnotes/footnotes.php', $plugin_admin, 'footnotes_action_links' );
+		$this->loader->add_filter( 'plugin_action_links_footnotes/footnotes.php', $plugin_admin, 'action_links' );
 
 		$this->loader->add_filter( 'mce_buttons', $plugin_admin->wysiwyg, 'new_visual_editor_button' );
 		$this->loader->add_action( 'admin_print_footer_scripts', $plugin_admin->wysiwyg, 'new_plain_text_editor_button' );
@@ -190,13 +213,13 @@ class Footnotes {
 	 * the plugin.
 	 *
 	 * @since 2.8.0
-	 * @uses Footnotes_Admin Defines public-facing functionality.
+	 * @see General\General Defines public-facing functionality.
 	 *
 	 * @return void
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Footnotes_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new General\General( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -230,7 +253,7 @@ class Footnotes {
 	 *
 	 * @since 2.8.0
 	 */
-	public function get_loader(): Footnotes_Loader {
+	public function get_loader(): Loader {
 		return $this->loader;
 	}
 

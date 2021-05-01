@@ -1,25 +1,28 @@
 <?php // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 /**
- * Admin. Layouts: Footnotes_Layout_Init class
+ * Admin. Layouts: Init class
  *
- * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
- * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
+ * The Admin. Layouts subpackage is composed of the {@see Engine}
+ * abstract class, which is extended by the {@see Settings}
  * sub-class. The subpackage is initialised at runtime by the {@see
- * Footnotes_Layout_Init} class.
+ * Init} class.
  *
- * @package  footnotes\admin_layout
+ * @package  footnotes
  * @since  1.5.0
  * @since  2.8.0  Rename file from `init.php` to `class-footnotes-layout-init.php`,
  *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
+namespace footnotes\admin\layout;
+use footnotes\includes as Includes;
+
 /**
  * Class to initialise all defined page layouts.
  *
- * @package  footnotes\admin_layout
+ * @package  footnotes
  * @since  1.5.0
  */
-class Footnotes_Layout_Init {
+class Init {
 
 	/**
 	 * The ID of this plugin.
@@ -43,7 +46,7 @@ class Footnotes_Layout_Init {
 	/**
 	 * Contains the settings page.
 	 *
-	 * @var  Footnotes_Layout_Settings
+	 * @var  Settings
 	 *
 	 * @since  1.5.0
 	 */
@@ -62,7 +65,7 @@ class Footnotes_Layout_Init {
 
 		$this->load_dependencies();
 
-		$this->settings_page = new Footnotes_Layout_Settings( $this->plugin_name );
+		$this->settings_page = new Settings( $this->plugin_name );
 
 		// Register hooks/actions.
 		add_action( 'admin_menu', array( $this, 'register_options_submenu' ) );
@@ -77,9 +80,9 @@ class Footnotes_Layout_Init {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - {@see Footnotes_Config}: defines plugin constants;
-	 * - {@see Footnotes_Settings}: defines configurable plugin settings; and
-	 * - {@see Footnotes_Layout_Settings}: defines the plugin settings page.
+	 * - {@see Includes\Config}: defines plugin constants;
+	 * - {@see Includes\Settings}: defines configurable plugin settings; and
+	 * - {@see Settings}: defines the plugin settings page.
 	 *
 	 * @access  private
 	 *
@@ -89,17 +92,17 @@ class Footnotes_Layout_Init {
 		/**
 		 * Defines plugin constants.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-config.php';
+		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-config.php';
 
 		/**
 		 * Defines configurable plugin settings.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-footnotes-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-settings.php';
 
 		/**
 		 * Represents the plugin settings dashboard page.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-settings.php';
 	}
 
 	/**
@@ -108,7 +111,7 @@ class Footnotes_Layout_Init {
 	 * @since  1.5.0
 	 */
 	public function initialize_settings() {
-		Footnotes_Settings::instance()->register_settings();
+		Includes\Settings::instance()->register_settings();
 		$this->settings_page->register_sections();
 	}
 
@@ -122,7 +125,7 @@ class Footnotes_Layout_Init {
 		add_submenu_page(
 			'options-general.php',
 			'footnotes Settings',
-			Footnotes_Config::C_STR_PLUGIN_PUBLIC_NAME,
+			Includes\Config::C_STR_PLUGIN_PUBLIC_NAME,
 			'manage_options',
 			self::C_STR_MAIN_MENU_SLUG,
 			array( $this->settings_page, 'display_content' )

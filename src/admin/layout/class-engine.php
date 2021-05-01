@@ -1,29 +1,32 @@
 <?php // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
- * Admin. Layouts: Footnotes_Layout_Engine class
+ * Admin. Layouts: Engine class
  *
- * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
- * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
+ * The Admin. Layouts subpackage is composed of the {@see Engine}
+ * abstract class, which is extended by the {@see Settings}
  * sub-class. The subpackage is initialised at runtime by the {@see
- * Footnotes_Layout_Init} class.
+ * Init} class.
  *
- * @package  footnotes\admin_layout
+ * @package  footnotes
  * @since  1.5.0
  * @since  2.8.0  Rename file from `layout.php` to `class-footnotes-layout-engine.php`,
  *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-init.php';
+namespace footnotes\admin\layout;
+use footnotes\includes as Includes;
+
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-init.php';
 
 /**
  * Class to be extended by page layout sub-classes.
  *
  * @abstract
-
- * @package  footnotes\admin_layout
+ *
+ * @package  footnotes
  * @since  1.5.0
  */
-abstract class Footnotes_Layout_Engine {
+abstract class Engine {
 
 	/**
 	 * The ID of this plugin.
@@ -177,20 +180,20 @@ abstract class Footnotes_Layout_Engine {
 	public function register_sub_page() {
 		global $submenu;
 
-		if ( array_key_exists( plugin_basename( Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG ), $submenu ) ) {
-			foreach ( $submenu[ plugin_basename( Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG ) ] as $l_arr_sub_menu ) {
-				if ( plugin_basename( Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug() ) === $l_arr_sub_menu[2] ) {
-					remove_submenu_page( Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG, Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug() );
+		if ( array_key_exists( plugin_basename( Init::C_STR_MAIN_MENU_SLUG ), $submenu ) ) {
+			foreach ( $submenu[ plugin_basename( Init::C_STR_MAIN_MENU_SLUG ) ] as $l_arr_sub_menu ) {
+				if ( plugin_basename( Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug() ) === $l_arr_sub_menu[2] ) {
+					remove_submenu_page( Init::C_STR_MAIN_MENU_SLUG, Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug() );
 				}
 			}
 		}
 
 		$this->a_str_sub_page_hook = add_submenu_page(
-			Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG,
+			Init::C_STR_MAIN_MENU_SLUG,
 			$this->get_sub_page_title(),
 			$this->get_sub_page_title(),
 			'manage_options',
-			Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug(),
+			Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug(),
 			array( $this, 'display_content' )
 		);
 	}
@@ -244,7 +247,7 @@ abstract class Footnotes_Layout_Engine {
 	 * @access  private
 	 *
 	 * @since  1.5.0
-	 * @todo  Move to {@see Footnotes_Admin}.
+	 * @todo  Move to {@see Includes\Admin}.
 	 */
 	private function append_scripts() {
 		wp_enqueue_script( 'postbox' );
@@ -286,7 +289,7 @@ abstract class Footnotes_Layout_Engine {
 			echo sprintf(
 				'<a class="nav-tab%s" href="?page=%s&t=%s">%s</a>',
 				( $l_str_id === $l_arr_active_section['id'] ) ? ' nav-tab-active' : '',
-				Footnotes_Layout_Init::C_STR_MAIN_MENU_SLUG,
+				Init::C_STR_MAIN_MENU_SLUG,
 				$l_str_id,
 				$l_arr_description['title']
 			);
@@ -342,7 +345,7 @@ abstract class Footnotes_Layout_Engine {
 		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : key( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
-		foreach ( Footnotes_Settings::instance()->get_defaults( $l_arr_active_section['container'] ) as $l_str_key => $l_mixed_value ) {
+		foreach ( Includes\Settings::instance()->get_defaults( $l_arr_active_section['container'] ) as $l_str_key => $l_mixed_value ) {
 			if ( array_key_exists( $l_str_key, $_POST ) ) {
 				$l_arr_new_settings[ $l_str_key ] = wp_unslash( $_POST[ $l_str_key ] );
 			} else {
@@ -351,7 +354,7 @@ abstract class Footnotes_Layout_Engine {
 			}
 		}
 		// Update settings.
-		return Footnotes_Settings::instance()->save_options( $l_arr_active_section['container'], $l_arr_new_settings );
+		return Includes\Settings::instance()->save_options( $l_arr_active_section['container'], $l_arr_new_settings );
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 
@@ -388,7 +391,7 @@ abstract class Footnotes_Layout_Engine {
 		$p_arr_return          = array();
 		$p_arr_return['id']    = sprintf( '%s', $p_str_setting_key_name );
 		$p_arr_return['name']  = sprintf( '%s', $p_str_setting_key_name );
-		$p_arr_return['value'] = esc_attr( Footnotes_Settings::instance()->get( $p_str_setting_key_name ) );
+		$p_arr_return['value'] = esc_attr( Includes\Settings::instance()->get( $p_str_setting_key_name ) );
 		return $p_arr_return;
 	}
 
@@ -484,7 +487,7 @@ abstract class Footnotes_Layout_Engine {
 			'<input type="checkbox" name="%s" id="%s" %s/>',
 			$l_arr_data['name'],
 			$l_arr_data['id'],
-			Footnotes_Convert::to_bool( $l_arr_data['value'] ) ? 'checked="checked"' : ''
+			Includes\Convert::to_bool( $l_arr_data['value'] ) ? 'checked="checked"' : ''
 		);
 	}
 

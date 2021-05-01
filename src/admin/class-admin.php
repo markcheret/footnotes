@@ -1,15 +1,19 @@
 <?php
 /**
- * Admin: Footnotes_Admin class
+ * Admin: Admin class
  *
- * The Admin. subpackage is initialised at runtime by the {@see Footnotes_Admin}
- * class, which draws in the {@see Footnotes_WYSIWYG} class for WYSIWYG editor
- * integration and the {@see footnotes\admin_layout} subpackage for rendering
+ * The Admin. subpackage is initialised at runtime by the {@see Admin}
+ * class, which draws in the {@see WYSIWYG} class for WYSIWYG editor
+ * integration and the {@see footnotes\admin\layout} subpackage for rendering
  * dashboard pages.
  *
- * @package  footnotes\admin
+ * @package  footnotes
  * @since  2.8.0
  */
+
+namespace footnotes\admin;
+
+use footnotes\includes as Includes;
 
 /**
  * Class provide all admin-specific functionality of the plugin.
@@ -17,17 +21,17 @@
  * Defines the plugin name, version, and enqueues all admin-specific stylesheets
  * and JavaScript.
  *
- * @package  footnotes\admin
+ * @package  footnotes
  * @since  2.8.0
  */
-class Footnotes_Admin {
+class Admin {
 
 	/**
 	 * The ID of this plugin.
 	 *
 	 * @access  private
 	 * @since  2.8.0
-	 * @see  Footnotes::$plugin_name
+	 * @see  Includes\Footnotes::$plugin_name
 	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
 	private $plugin_name;
@@ -37,7 +41,7 @@ class Footnotes_Admin {
 	 *
 	 * @access  private
 	 * @since  2.8.0
-	 * @see  Footnotes::$version
+	 * @see  Includes\Footnotes::$version
 	 * @var  string  $version  The current version of this plugin.
 	 */
 	private $version;
@@ -46,7 +50,7 @@ class Footnotes_Admin {
 	 * The WYSIWYG editor integration object.
 	 *
 	 * @since  2.8.0
-	 * @var  Footnotes_WYSIWYG  $wysiwyg  The WYSIWYG editor integration object.
+	 * @var  WYSIWYG  $wysiwyg  The WYSIWYG editor integration object.
 	 */
 	public $wysiwyg;
 
@@ -73,8 +77,8 @@ class Footnotes_Admin {
 	 * Includes the following files that provide the admin-specific functionality
 	 * of this plugin:
 	 *
-	 * - {@see Footnotes_WYSIWYG}: Provides plugin integration with the WYSIWYG editor.
-	 * - {@see Footnotes_Layout_Settings}: Defines the plugin dashboard page(s).
+	 * - {@see WYSIWYG}: Provides plugin integration with the WYSIWYG editor.
+	 * - {@see layout\Settings}: Defines the plugin dashboard page(s).
 	 *
 	 * @access  private
 	 *
@@ -84,16 +88,16 @@ class Footnotes_Admin {
 		/**
 		 * The class responsible for WYSIWYG editor integration.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-footnotes-wysiwyg.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wysiwyg.php';
 
-		$this->wysiwyg = new Footnotes_WYSIWYG( $this->plugin_name );
+		$this->wysiwyg = new WYSIWYG( $this->plugin_name );
 
 		/**
 		 * The class responsible for constructing the plugin dashboard page(s).
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/layout/class-footnotes-layout-init.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/layout/class-init.php';
 
-		new Footnotes_Layout_Init( $this->plugin_name );
+		new layout\Init( $this->plugin_name );
 	}
 
 	/**
@@ -140,21 +144,20 @@ class Footnotes_Admin {
 	/**
 	 * Appends the Plugin links for display in the dashboard Plugins page.
 	 *
-	 * @param  string[] $links  The default set of links to display.
+	 * @param  string[] $plugin_links  The default set of links to display.
 	 * @return  string[]  The full set of links to display.
 	 *
 	 * @since  1.5.0
-	 * @since  2.8.0  Moved from `Footnotes_Hooks` class to `Footnotes_Admin`.
+	 * @since  2.8.0  Moved from `Hooks` class to `Admin`.
 	 */
-	public function footnotes_action_links( array $links ): array {
+	public function action_links( array $plugin_links ): array {
 		// Append link to the WordPress Plugin page.
-		$links[] = sprintf( '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
+		$plugin_links[] = sprintf( '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank">%s</a>', __( 'Support', 'footnotes' ) );
 		// Append link to the settings page.
-		$links[] = sprintf( '<a href="%s">%s</a>', esc_url( admin_url( 'options-general.php?page=footnotes' ) ), __( 'Settings', 'footnotes' ) );
+		$plugin_links[] = sprintf( '<a href="%s">%s</a>', esc_url( admin_url( 'options-general.php?page=footnotes' ) ), __( 'Settings', 'footnotes' ) );
 		// Append link to the PayPal donate function.
-		$links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
-
-		return $links;
+		$plugin_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
+		return $plugin_links;
 	}
 
 }

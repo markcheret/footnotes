@@ -1,14 +1,17 @@
 <?php
 /**
- * Widgets: Footnotes_Widget_Base class
+ * Widgets: Base class
  *
- * The Widget subpackage is composed of the {@see Footnotes_Widget_Base}
- * abstract class, which is extended by the {@see Footnotes_Widget_Reference_Container}
+ * The Widget subpackage is composed of the {@see Base}
+ * abstract class, which is extended by the {@see Reference_Container}
  * sub-class.
  *
- * @package  footnotes\public\widget
+ * @package footnotes
  * @since 1.5.0
  */
+
+namespace footnotes\general\Widget;
+use footnotes\includes as Includes;
 
 /**
  * Base class to be extended by all widget sub-classes.
@@ -18,11 +21,11 @@
  *
  * @abstract
  *
- * @package  footnotes\public\widget
- * @since  1.5.0
- * @todo  Review implemenation of Widgets API.
+ * @package footnotes
+ * @since 1.5.0
+ * @todo Review implemenation of Widgets API.
  */
-abstract class Footnotes_Widget_Base extends WP_Widget {
+abstract class Base extends \WP_Widget {
 
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.

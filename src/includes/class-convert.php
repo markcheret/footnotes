@@ -1,24 +1,21 @@
 <?php
 /**
- * File providing core `Footnotes_Convert` class.
+ * File providing core `Convert` class.
  *
- * @package  footnotes
- * @subpackage  includes
- *
- * @since  1.5.0
- * @since  2.8.0  Rename file from `convert.php` to `class-footnotes-convert.php`,
+ * @package footnotes
+ * @since 1.5.0
+ * @since 2.8.0 Rename file from `convert.php` to `class-footnotes-convert.php`,
  *                              rename `class/` sub-directory to `includes/`.
  */
+
+namespace footnotes\includes;
 
 /**
  * Class providing variable type and value conversion functions.
  *
- * @package  footnotes
- * @subpackage  includes
- *
  * @since 1.5.0
  */
-class Footnotes_Convert {
+class Convert {
 
 	/**
 	 * Converts an integer into the user-defined counter style for the footnotes.

@@ -2,20 +2,23 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @package  footnotes\public
- * @since  2.8.0
+ * @package footnotes
+ * @since 2.8.0
  */
 
+namespace footnotes\general;
+use footnotes\includes as Includes;
+
 /**
- * Class provide all admin-specific functionality of the plugin.
+ * Class provide all public-facing functionality of the plugin.
  *
  * Defines the plugin name, version, and enqueues all public-facing stylesheets
  * and JavaScript.
  *
- * @package  footnotes\public
- * @since  2.8.0
+ * @package footnotes
+ * @since 2.8.0
  */
-class Footnotes_Public {
+class General {
 
 	/**
 	 * The ID of this plugin.
@@ -42,7 +45,7 @@ class Footnotes_Public {
 	 *
 	 * @since  2.8.0
 	 *
-	 * @var  Footnotes_Widget_Reference_Container  $reference_container_widget  The reference container widget
+	 * @var  Widget\Reference_Container  $reference_container_widget  The reference container widget
 	 */
 	private $reference_container_widget;
 
@@ -50,9 +53,9 @@ class Footnotes_Public {
 	 * The footnote parser.
 	 *
 	 * @since  1.5.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 *
-	 * @var  Footnotes_Parser  $task  The Plugin task.
+	 * @var  Parser  $task  The Plugin task.
 	 */
 	public $a_obj_task = null;
 
@@ -60,7 +63,7 @@ class Footnotes_Public {
 	 * Flag for using tooltips.
 	 *
 	 * @since  2.4.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 *
 	 * @var  bool  $tooltips_enabled  Whether tooltips are enabled or not.
 	 */
@@ -70,7 +73,7 @@ class Footnotes_Public {
 	 * Allows to determine whether alternative tooltips are enabled.
 	 *
 	 * @since  2.1.1
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 *
 	 * @var  bool
 	 */
@@ -80,7 +83,7 @@ class Footnotes_Public {
 	 * Allows to determine whether AMP compatibility mode is enabled.
 	 *
 	 * @since  2.6.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 *
 	 * @var  bool
 	 */
@@ -90,7 +93,7 @@ class Footnotes_Public {
 	 * Allows to determine the script mode among jQuery or plain JS.
 	 *
 	 * @since  2.5.6
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 *
 	 * @var  string  ‘js’ to use plain JavaScript, ‘jquery’ to use jQuery.
 	 */
@@ -111,10 +114,10 @@ class Footnotes_Public {
 		$this->load_dependencies();
 
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
-		self::$a_bool_amp_enabled                  = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
-		self::$a_bool_tooltips_enabled             = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$a_bool_alternative_tooltips_enabled = Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		self::$a_str_script_mode                   = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		self::$a_bool_amp_enabled                  = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
+		self::$a_bool_tooltips_enabled             = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		self::$a_bool_alternative_tooltips_enabled = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+		self::$a_str_script_mode                   = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 	}
 
 	/**
@@ -123,23 +126,23 @@ class Footnotes_Public {
 	 * Include the following files that provide the public-facing functionality
 	 * of this plugin:
 	 *
-	 * - {@see Footnotes_Parser}: parses Posts and Pages for footnote shortcodes; and
-	 * - {@see Footnotes_Widget_Reference_Container}: defines the Reference Container widget.
+	 * - {@see Parser}: parses Posts and Pages for footnote shortcodes; and
+	 * - {@see Widget\Reference_Container}: defines the Reference Container widget.
 	 *
 	 * @since  2.8.0
 	 */
 	private function load_dependencies() {
 		// TODO: neaten up and document once placements and names are settled.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-settings.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-convert.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-footnotes-parser.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/widget/class-footnotes-widget-reference-container.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-parser.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/widget/class-reference-container.php';
 
-		$this->reference_container_widget = new Footnotes_Widget_Reference_Container( $this->plugin_name );
+		$this->reference_container_widget = new Widget\Reference_Container( $this->plugin_name );
 
-		$this->a_obj_task = new Footnotes_Parser();
+		$this->a_obj_task = new Parser();
 	}
 
 	/**
@@ -150,7 +153,7 @@ class Footnotes_Public {
 	 *
 	 * @since  1.5.0
 	 * @since  2.5.5  Change stylesheet schema.
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 */
 	public function enqueue_styles() {
 		if ( PRODUCTION_ENV ) {
@@ -176,7 +179,7 @@ class Footnotes_Public {
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
-			$l_str_page_layout_option = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			$l_str_page_layout_option = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			switch ( $l_str_page_layout_option ) {
 				case 'reference-container':
 					$l_str_layout_mode = '1';
@@ -215,7 +218,7 @@ class Footnotes_Public {
 	 * @since  2.0.0  Add jQueryUI dependency.
 	 * @since  2.1.2  Add jQuery Tools dependency.
 	 * @since  2.5.6  Add jQuery dependency.
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 */
 	public function enqueue_scripts() {
 		/*
@@ -264,7 +267,7 @@ class Footnotes_Public {
 	 * Register the widget(s) for the public-facing side of the site.
 	 *
 	 * @since  1.5.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Footnotes_Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 */
 	public function register_widgets() {
 		register_widget( $this->reference_container_widget );

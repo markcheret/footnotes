@@ -1,16 +1,16 @@
 <?php // phpcs:disable PEAR.NamingConventions.ValidClassName.Invalid
 /**
- * File providing core `Footnotes_i18n` class.
+ * File providing core `i18n` class.
  *
- * @package  footnotes
- * @subpackage  includes
- *
- * @since  1.5.0
- * @since  2.8.0  Rename file from `language.php` to `class-footnotes-i18n.php`,
+ * @package footnotes
+ * @since 1.5.0
+ * @since 2.8.0 Rename file from `language.php` to `class-footnotes-i18n.php`,
  *                              rename `class/` sub-directory to `includes/`.
  */
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
+namespace footnotes\includes;
+
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
 
 /**
  * Class providing internationalization functionality.
@@ -18,15 +18,13 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-
  * Loads and defines the internationalization files for this plugin so that it
  * is ready for translation.
  *
- * @link  https://translate.wordpress.org/projects/wp-plugins/footnotes/  GlotPress listing
+ * @link https://translate.wordpress.org/projects/wp-plugins/footnotes/ GlotPress listing
  *
- * @package  footnotes
- * @subpackage  includes
- *
- * @since  1.5.0
- * @since  2.8.0 Rename class from `Footnotes_Language` to `Footnotes_i18n`.
+ * @package footnotes
+ * @since 1.5.0
+ * @since 2.8.0 Rename class from `Language` to `i18n`.
  */
-class Footnotes_i18n {
+class i18n {
 
 	/**
 	 * Load the plugin text domain for translation.

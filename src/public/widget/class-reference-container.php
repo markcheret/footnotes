@@ -1,33 +1,36 @@
 <?php // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 /**
- * Widgets: Footnotes_Widget_Reference_Container class
+ * Widgets: Reference_Container class
  *
- * The Widget subpackage is composed of the {@see Footnotes_Widget_Base}
- * abstract class, which is extended by the {@see Footnotes_Widget_Reference_Container}
+ * The Widget subpackage is composed of the {@see Base}
+ * abstract class, which is extended by the {@see Reference_Container}
  * sub-class.
  *
- * @package  footnotes\public\widget
+ * @package  footnotes
  * @since  1.5.0
  */
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-footnotes-widget-base.php';
+namespace footnotes\general\Widget;
+use footnotes\includes as Includes;
+
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-base.php';
 
 /**
  * Registers a Widget to put the Reference Container to the widget area.
  *
- * @package  footnotes\public\widget
- * @since  1.5.0
- * @see  Footnotes_Widget_Base
- * @todo  Review implemenation of Widgets API.
+ * @package footnotes
+ * @since 1.5.0
+ * @todo Review implemenation of Widgets API.
+ * @see Base
  */
-class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
+class Reference_Container extends Base {
 
 	/**
 	 * The ID of this plugin.
 	 *
 	 * @access  private
 	 * @since  2.8.0
-	 * @see  Footnotes::$plugin_name
+	 * @see  Includes\Footnotes::$plugin_name
 	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
 	private $plugin_name;
@@ -47,7 +50,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	/**
 	 * Returns an unique ID as string used for the Widget Base ID.
 	 *
-	 * @see  Footnotes_Widget_Base::get_id()
+	 * @see  Base::get_id()
 	 * @since  1.5.0
 	 *
 	 * @return  string
@@ -59,7 +62,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	/**
 	 * Returns the Public name of the Widget to be displayed in the Configuration page.
 	 *
-	 * @see  Footnotes_Widget_Base::get_name()
+	 * @see  Base::get_name()
 	 * @since  1.5.0
 	 *
 	 * @return  string
@@ -71,7 +74,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	/**
 	 * Returns the Description of the child widget.
 	 *
-	 * @see  Footnotes_Widget_Base::get_description()
+	 * @see  Base::get_description()
 	 * @since  1.5.0
 	 *
 	 * @return  string
@@ -104,7 +107,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	public function widget( $args, $instance ) {
 		global $footnotes;
 		// Reference container positioning is set to "widget area".
-		if ( 'widget' === Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
+		if ( 'widget' === Includes\Settings::instance()->get( Includes\Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $footnotes->a_obj_task->reference_container();
 			// phpcs:enable

@@ -7,7 +7,7 @@
 >
   <paths>
     <output>docs</output>
-   	<cache>docs-cache</cache>
+    <cache>docs/.cache</cache>
   </paths>
   <version number="latest">
     <api format="php">

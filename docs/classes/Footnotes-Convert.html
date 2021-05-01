@@ -51,18 +51,12 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
-
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
-                                    <li><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
-                                    <li><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></li>
-                            </ul>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                    </ul>
                         </section>
+
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -79,7 +73,6 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -87,12 +80,6 @@
     Footnotes_Convert
 
     
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-                            </ul>
-        </div>
     
     
     </h2>
@@ -100,10 +87,10 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 </aside>
 
-            <p class="phpdocumentor-summary">Converts data types and Footnotes specific values.</p>
+            <p class="phpdocumentor-summary">Class providing variable type and value conversion functions.</p>
 
     <section class="phpdocumentor-description"></section>
 
@@ -114,6 +101,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">subpackage</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>includes</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -138,23 +134,23 @@
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Convert.html#method_debug">debug()</a>
     <span>
-                        &nbsp;: void    </span>
+                        &nbsp;: mixed    </span>
 </dt>
-<dd>Displays a Variable.</dd>
+<dd>Displays a variable.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Convert.html#method_get_arrow">get_arrow()</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;|string    </span>
 </dt>
-<dd>Get a html Array short code depending on Arrow-Array key index.</dd>
+<dd>Get an HTML array short code depending on Arrow-Array key index.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Convert.html#method_index">index()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Converts a integer into the user-defined counter style for the footnotes.</dd>
+<dd>Converts an integer into the user-defined counter style for the footnotes.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Convert.html#method_to_bool">to_bool()</a>
@@ -175,14 +171,14 @@
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Converts an integer into latin ascii characters, either lower or upper-case.</dd>
+<dd>Converts an integer into Latin ASCII characters, either lower or upper-case.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Footnotes-Convert.html#method_to_romanic">to_romanic()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Converts an integer to a romanic letter.</dd>
+<dd>Converts an integer to a Roman numeral.</dd>
 
         </dl>
 
@@ -210,14 +206,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">196</span>
+    <span class="phpdocumentor-element-found-in__line">206</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Displays a Variable.</p>
+        <p class="phpdocumentor-summary">Displays a variable.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">debug</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_mixed_value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">debug</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_mixed_value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -249,10 +245,19 @@
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Replace with proper logging/debug functions.</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -271,10 +276,10 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">172</span>
+    <span class="phpdocumentor-element-found-in__line">182</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Get a html Array short code depending on Arrow-Array key index.</p>
+        <p class="phpdocumentor-summary">Get an HTML array short code depending on Arrow-Array key index.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -289,7 +294,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">-1</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Index representing the Arrow. If empty all Arrows are specified.</p>
+                    <section class="phpdocumentor-description"><p>Index representing the arrow. If empty, all arrows are specified.</p>
 </section>
 
             </dd>
@@ -310,12 +315,21 @@
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Review.</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Array of all Arrows if Index is empty otherwise html tag of a specific arrow.</p>
+            <section class="phpdocumentor-description"><p>Array of all arrows if index is empty, otherwise HTML tag of a specific arrow.</p>
 </section>
 
     
@@ -333,10 +347,10 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Converts a integer into the user-defined counter style for the footnotes.</p>
+        <p class="phpdocumentor-summary">Converts an integer into the user-defined counter style for the footnotes.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -360,7 +374,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;arabic_plain&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Style of the new/converted Index.</p>
+                    <section class="phpdocumentor-description"><p>Counter style to use.</p>
 </section>
 
             </dd>
@@ -381,23 +395,12 @@
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.2.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>lowercase Roman numerals supported</p>
-</section>
-
-                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Converted Index as string in the defined counter style.</p>
-<p>Edited:</p>
+            <section class="phpdocumentor-description"><p>Converted  Index converted to the defined counter style.</p>
 </section>
 
     
@@ -415,7 +418,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">157</span>
 </aside>
 
         <p class="phpdocumentor-summary">Converts a string depending on its value to a boolean.</p>
@@ -454,12 +457,21 @@
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Replace with built-in type casting.</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Boolean representing the string.</p>
+            <section class="phpdocumentor-description"><p>Boolean value represented by the string.</p>
 </section>
 
     
@@ -477,7 +489,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">87</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 </aside>
 
         <p class="phpdocumentor-summary">Converts an integer to a leading-0 integer.</p>
@@ -495,7 +507,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Value/Index to be converted.</p>
+                    <section class="phpdocumentor-description"><p>Value to be converted.</p>
 </section>
 
             </dd>
@@ -514,6 +526,15 @@
                                             <span class="phpdocumentor-tag-link">1.0-gamma</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Replace with built-in string formatting.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -539,16 +560,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">63</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Converts an integer into latin ascii characters, either lower or upper-case.</p>
+        <p class="phpdocumentor-summary">Converts an integer into Latin ASCII characters, either lower or upper-case.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
             <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">to_latin</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_int_value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_upper_case</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"><p>Function available from A to ZZ ( means 676 footnotes at 1 page possible).</p>
+        <section class="phpdocumentor-description"><p>This function works from values A–ZZ (meaning there is a limit of 676
+gootnotes per Page).</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -558,7 +580,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Value/Index to be converted.</p>
+                    <section class="phpdocumentor-description"><p>Value to be converted.</p>
 </section>
 
             </dd>
@@ -567,7 +589,86 @@
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>True to convert the value to upper case letter, otherwise to lower case.</p>
+                    <section class="phpdocumentor-description"><p>Whether to convert the value to upper-case.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.0-gamma</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Replace with built-in char casting.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_to_romanic">
+        to_romanic()
+        <a href="classes/Footnotes-Convert.html#method_to_romanic" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">112</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Converts an integer to a Roman numeral.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">to_romanic</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_int_value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_upper_case</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$p_int_value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Value to be converted.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$p_bool_upper_case</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to convert the value to upper-case.</p>
 </section>
 
             </dd>
@@ -594,87 +695,6 @@
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_to_romanic">
-        to_romanic()
-        <a href="classes/Footnotes-Convert.html#method_to_romanic" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-convert.php"><a href="files/src-includes-class-footnotes-convert.html"><abbr title="src/includes/class-footnotes-convert.php">class-footnotes-convert.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">106</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Converts an integer to a romanic letter.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">to_romanic</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_int_value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_upper_case</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_int_value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Value/Index to be converted.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_upper_case</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Whether to uppercase.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.0-gamma</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.2.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>optionally lowercase (code from Latin)</p>
-</section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Edited:</p>
-</section>
 
     
 </article>

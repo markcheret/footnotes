@@ -51,18 +51,13 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
-
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
-                                    <li><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
-                                    <li><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></li>
-                            </ul>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
+                                    </ul>
                         </section>
+
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -79,9 +74,6 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin.html">admin</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin-layout.html">layout</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -89,14 +81,6 @@
     Footnotes_Layout_Engine
 
     
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin.html">admin</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-admin-layout.html">layout</a></li>
-                            </ul>
-        </div>
     
     
     </h2>
@@ -107,7 +91,7 @@
     <span class="phpdocumentor-element-found-in__line">26</span>
 </aside>
 
-            <p class="phpdocumentor-summary">Layout Engine for the administration dashboard.</p>
+            <p class="phpdocumentor-summary">Class to be extended by page layout sub-classes.</p>
 
     <section class="phpdocumentor-description"></section>
 
@@ -118,21 +102,20 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">abstract</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">subpackage</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>admin_layout</p>
-</section>
 
                                     </dd>
                         </dl>
@@ -153,14 +136,14 @@
     <span>
                 &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd>Stores all Sections for the child sub page.</dd>
+<dd>Stores all Sections for the child sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Footnotes-Layout-Engine.html#property_a_str_sub_page_hook">$a_str_sub_page_hook</a>
     <span>
                 &nbsp;: null|string            </span>
 </dt>
-<dd>Stores the Hook connection string for the child sub page.</dd>
+<dd>Stores the Hook connection string for the child sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Footnotes-Layout-Engine.html#property_plugin_name">$plugin_name</a>
@@ -174,63 +157,57 @@
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Output the Description of a section. May be overwritten in any section.</dd>
+<dd>Output the description of a section. May be overwritten in any section.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Layout-Engine.html#method_display_content">display_content()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Displays the content of specific sub page.</dd>
+<dd>Displays the content of specific sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Layout-Engine.html#method_get_priority">get_priority()</a>
     <span>
                         &nbsp;: int    </span>
 </dt>
-<dd>Returns a Priority index. Lower numbers have a higher Priority.</dd>
+<dd>Returns a Priority index. Lower numbers have a higher priority.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Layout-Engine.html#method_register_sections">register_sections()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Registers all sections for a sub page.</dd>
+<dd>Registers all sections for a sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-Layout-Engine.html#method_register_sub_page">register_sub_page()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Registers a sub page.</dd>
+<dd>Registers a sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_checkbox">add_checkbox()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the html tag for an input [type = checkbox].</dd>
+<dd>Constructs the HTML for a checkbox `&lt;input&gt;` element.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_color_selection">add_color_selection()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the html tag for an input [type = text] with color selection class.</dd>
+<dd>Constructs the HTML for a text `&lt;input&gt;` element with the colour selection
+class.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_label">add_label()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the html tag for an input/select label.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Footnotes-Layout-Engine.html#method_add_line_space">add_line_space()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>Returns a line break to have a space between two lines.</dd>
+<dd>Returns the HTML tag for an `&lt;input&gt;`/`&lt;select&gt;` label.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_meta_box">add_meta_box()</a>
@@ -240,53 +217,46 @@
 <dd>Returns an array describing a meta box.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Footnotes-Layout-Engine.html#method_add_newline">add_newline()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>Returns a line break to start a new line.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_num_box">add_num_box()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the html tag for an input [type = num].</dd>
+<dd>Constructs the HTML for numeric `&lt;input&gt;` element.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_section">add_section()</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Returns an array describing a sub page section.</dd>
+<dd>Returns an array describing a sub-page section.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_select_box">add_select_box()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the html tag for a select box.</dd>
+<dd>Constructs the HTML for a `&lt;select&gt;` element.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_text">add_text()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns a simple text inside html &lt;span&gt; text.</dd>
+<dd>Returns a simple text inside HTML `&lt;span&gt;` element.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_text_box">add_text_box()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the html tag for an input [type = text].</dd>
+<dd>Constructs the HTML for a text `&lt;input&gt;` element.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_add_textarea">add_textarea()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the html tag for a text area.</dd>
+<dd>Constructs the HTML for a `&lt;textarea&gt;` element.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_get_meta_boxes">get_meta_boxes()</a>
@@ -300,49 +270,49 @@
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Returns an array of all registered sections for a sub page.</dd>
+<dd>Returns an array of all registered sections for a sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_get_sub_page_slug">get_sub_page_slug()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the unique slug of the child sub page.</dd>
+<dd>Returns the unique slug of the child sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_get_sub_page_title">get_sub_page_title()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>Returns the title of the child sub page.</dd>
+<dd>Returns the title of the child sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Footnotes-Layout-Engine.html#method_load_setting">load_setting()</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Loads specific setting and returns an array with the keys [id, name, value].</dd>
+<dd>Loads a specified setting.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Footnotes-Layout-Engine.html#method_append_scripts">append_scripts()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Append javascript and css files for specific sub page.</dd>
+<dd>Append JavaScript and CSS files for specific sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Footnotes-Layout-Engine.html#method_register_meta_boxes">register_meta_boxes()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Registers all Meta boxes for a sub page.</dd>
+<dd>Registers all Meta boxes for a sub-page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Footnotes-Layout-Engine.html#method_save_settings">save_settings()</a>
     <span>
                         &nbsp;: bool    </span>
 </dt>
-<dd>Save all Plugin settings.</dd>
+<dd>Save all plugin settings.</dd>
 
         </dl>
 
@@ -372,10 +342,10 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Stores all Sections for the child sub page.</p>
+        <p class="phpdocumentor-summary">Stores all Sections for the child sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -392,6 +362,15 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -419,10 +398,10 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Stores the Hook connection string for the child sub page.</p>
+        <p class="phpdocumentor-summary">Stores the Hook connection string for the child sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -440,6 +419,15 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -467,7 +455,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 </aside>
 
         <p class="phpdocumentor-summary">The ID of this plugin.</p>
@@ -487,21 +475,21 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">access</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>private</p>
-</section>
 
                                     </dd>
                         </dl>
@@ -527,10 +515,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">316</span>
+    <span class="phpdocumentor-element-found-in__line">364</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Output the Description of a section. May be overwritten in any section.</p>
+        <p class="phpdocumentor-summary">Output the description of a section. May be overwritten in any section.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -552,6 +540,15 @@ ull</span></code>
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Required? Should be <code class="prettyprint">abstract</code>?</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -576,10 +573,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">216</span>
+    <span class="phpdocumentor-element-found-in__line">262</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Displays the content of specific sub page.</p>
+        <p class="phpdocumentor-summary">Displays the content of specific sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -601,6 +598,15 @@ ull</span></code>
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Review nonce verification.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -625,10 +631,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns a Priority index. Lower numbers have a higher Priority.</p>
+        <p class="phpdocumentor-summary">Returns a Priority index. Lower numbers have a higher priority.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -644,6 +650,14 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">abstract</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -674,10 +688,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">162</span>
+    <span class="phpdocumentor-element-found-in__line">203</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Registers all sections for a sub page.</p>
+        <p class="phpdocumentor-summary">Registers all sections for a sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -723,10 +737,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">136</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Registers a sub page.</p>
+        <p class="phpdocumentor-summary">Registers a sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -772,10 +786,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">444</span>
+    <span class="phpdocumentor-element-found-in__line">480</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the html tag for an input [type = checkbox].</p>
+        <p class="phpdocumentor-summary">Constructs the HTML for a checkbox `&lt;input&gt;` element.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -790,7 +804,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Name of the Settings key to pre load the input field.</p>
+                    <section class="phpdocumentor-description"><p>Setting key.</p>
 </section>
 
             </dd>
@@ -803,12 +817,30 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -833,10 +865,11 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">522</span>
+    <span class="phpdocumentor-element-found-in__line">560</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the html tag for an input [type = text] with color selection class.</p>
+        <p class="phpdocumentor-summary">Constructs the HTML for a text `&lt;input&gt;` element with the colour selection
+class.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -851,7 +884,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Name of the Settings key to pre load the input field.</p>
+                    <section class="phpdocumentor-description"><p>Setting key.</p>
 </section>
 
             </dd>
@@ -864,12 +897,39 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Use proper colorpicker element.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -894,10 +954,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">391</span>
+    <span class="phpdocumentor-element-found-in__line">420</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the html tag for an input/select label.</p>
+        <p class="phpdocumentor-summary">Returns the HTML tag for an `&lt;input&gt;`/`&lt;select&gt;` label.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -912,7 +972,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Name of the Settings key to connect the Label with the input/select field.</p>
+                    <section class="phpdocumentor-description"><p>Settings key.</p>
 </section>
 
             </dd>
@@ -934,6 +994,15 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -942,53 +1011,13 @@ ull</span></code>
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_add_line_space">
-        add_line_space()
-        <a href="classes/Footnotes-Layout-Engine.html#method_add_line_space" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">368</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Returns a line break to have a space between two lines.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">add_line_space</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -1013,7 +1042,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">122</span>
+    <span class="phpdocumentor-element-found-in__line">163</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns an array describing a meta box.</p>
@@ -1031,7 +1060,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Parent Section ID.</p>
+                    <section class="phpdocumentor-description"><p>Parent section ID.</p>
 </section>
 
             </dd>
@@ -1071,12 +1100,39 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Refactor meta boxes into their own class?</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Pass actual functions rather than strings?</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -1084,57 +1140,15 @@ ull</span></code>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>meta box description to be able to append a meta box to the output.</p>
+            <section class="phpdocumentor-description"><p>{
+A dashboard meta box.</p>
+<pre class="prettyprint"><code class="prettyprint">@type  string  $parent  Parent section ID.
+@type  string  $id  Meta box ID.
+@type  string  $title  Meta box title.
+@type  string  $callback  Meta box callback function.
+</code></pre>
+<p>}</p>
 </section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_add_newline">
-        add_newline()
-        <a href="classes/Footnotes-Layout-Engine.html#method_add_newline" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">358</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Returns a line break to start a new line.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">add_newline</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.5.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
 
     
 </article>
@@ -1151,10 +1165,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">546</span>
+    <span class="phpdocumentor-element-found-in__line">584</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the html tag for an input [type = num].</p>
+        <p class="phpdocumentor-summary">Constructs the HTML for numeric `&lt;input&gt;` element.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1169,7 +1183,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Name of the Settings key to pre load the input field.</p>
+                    <section class="phpdocumentor-description"><p>Setting key.</p>
 </section>
 
             </dd>
@@ -1196,7 +1210,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>true if 0.1 steps and floating to string, false if integer (default).</p>
+                    <section class="phpdocumentor-description"><p><code class="prettyprint">true</code> if float, <code class="prettyprint">false</code> if integer. Default <code class="prettyprint">false</code>.</p>
 </section>
 
             </dd>
@@ -1209,6 +1223,15 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1217,13 +1240,12 @@ ull</span></code>
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>step argument and number_format() to allow decimals  ..</p>
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
 </section>
 
                                     </dd>
@@ -1232,8 +1254,7 @@ ull</span></code>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Edited:</p>
-</section>
+            <section class="phpdocumentor-description"></section>
 
     
 </article>
@@ -1250,10 +1271,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">133</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns an array describing a sub page section.</p>
+        <p class="phpdocumentor-summary">Returns an array describing a sub-page section.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1286,7 +1307,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Settings Container Index.</p>
+                    <section class="phpdocumentor-description"><p>Settings Container index.</p>
 </section>
 
             </dd>
@@ -1295,7 +1316,8 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Should a Submit Button be displayed for this section, default: true.</p>
+                    <section class="phpdocumentor-description"><p>Whether a ‘Submit’ button should
+be displayed for this section. Default <code class="prettyprint">true</code>.</p>
 </section>
 
             </dd>
@@ -1308,6 +1330,15 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1316,12 +1347,28 @@ ull</span></code>
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Refactor sections into their own class?</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Array describing the section.</p>
+            <section class="phpdocumentor-description"><p>{
+A dashboard section.</p>
+<pre class="prettyprint"><code class="prettyprint">@type  string  $id  Section ID.
+@type  string  $title  Section title.
+@type  bool  $submit  Whether the section has a submit button or not.
+@type  int  $container  Settings Container index.
+</code></pre>
+<p>}</p>
 </section>
 
     
@@ -1339,10 +1386,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">472</span>
+    <span class="phpdocumentor-element-found-in__line">502</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the html tag for a select box.</p>
+        <p class="phpdocumentor-summary">Constructs the HTML for a `&lt;select&gt;` element.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1357,7 +1404,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Name of the Settings key to pre select the current value.</p>
+                    <section class="phpdocumentor-description"><p>Setting key.</p>
 </section>
 
             </dd>
@@ -1366,7 +1413,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Possible options to be selected.</p>
+                    <section class="phpdocumentor-description"><p>Possible options.</p>
 </section>
 
             </dd>
@@ -1379,52 +1426,29 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><ul>
-<li>Bugfix: Dashboard: Referrers and tooltips: Backlink symbol: debug select box by reverting identity check to equality check, thanks to @lolzim bug report.</li>
-</ul>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.5.13</span>
-                                                                                
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.5.15</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Bugfix: Dashboard: General settings: Footnote start and end short codes: debug select box for shortcodes with pointy brackets.</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.6.1</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Restore esc_attr() in load_setting(), remove htmlspecialchars() here.</p>
-</section>
-
-                                    </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">reporter</span>
+                    <span class="phpdocumentor-tag__name">todo</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>@lolzim</p>
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
 </section>
 
                                     </dd>
@@ -1450,10 +1474,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">379</span>
+    <span class="phpdocumentor-element-found-in__line">405</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns a simple text inside html &lt;span&gt; text.</p>
+        <p class="phpdocumentor-summary">Returns a simple text inside HTML `&lt;span&gt;` element.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1468,7 +1492,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Message to be surrounded with simple html tag (span).</p>
+                    <section class="phpdocumentor-description"><p>Message to be surrounded with <code class="prettyprint">&lt;span&gt;</code> tags.</p>
 </section>
 
             </dd>
@@ -1481,12 +1505,30 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -1511,10 +1553,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">419</span>
+    <span class="phpdocumentor-element-found-in__line">452</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the html tag for an input [type = text].</p>
+        <p class="phpdocumentor-summary">Constructs the HTML for a text `&lt;input&gt;` element.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1529,7 +1571,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Name of the Settings key to pre load the input field.</p>
+                    <section class="phpdocumentor-description"><p>Setting key.</p>
 </section>
 
             </dd>
@@ -1538,7 +1580,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">999</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Maximum length of the input, default 999 characters.</p>
+                    <section class="phpdocumentor-description"><p>Maximum length of the input. Default length 999 chars.</p>
 </section>
 
             </dd>
@@ -1547,7 +1589,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Set the input to be read only, default false.</p>
+                    <section class="phpdocumentor-description"><p>Set the input to be read only. Default <code class="prettyprint">false</code>.</p>
 </section>
 
             </dd>
@@ -1556,7 +1598,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Set the input to be hidden, default false.</p>
+                    <section class="phpdocumentor-description"><p>Set the input to be hidden. Default <code class="prettyprint">false</code>.</p>
 </section>
 
             </dd>
@@ -1569,12 +1611,30 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -1599,10 +1659,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">504</span>
+    <span class="phpdocumentor-element-found-in__line">537</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the html tag for a text area.</p>
+        <p class="phpdocumentor-summary">Constructs the HTML for a `&lt;textarea&gt;` element.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1617,7 +1677,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Name of the Settings key to pre fill the text area.</p>
+                    <section class="phpdocumentor-description"><p>Setting key.</p>
 </section>
 
             </dd>
@@ -1630,12 +1690,30 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Refactor HTML generation.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -1660,7 +1738,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">91</span>
+    <span class="phpdocumentor-element-found-in__line">110</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns an array of all registered meta boxes.</p>
@@ -1679,6 +1757,23 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">abstract</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1709,10 +1804,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">99</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns an array of all registered sections for a sub page.</p>
+        <p class="phpdocumentor-summary">Returns an array of all registered sections for a sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1728,6 +1823,23 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">abstract</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1758,10 +1870,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the unique slug of the child sub page.</p>
+        <p class="phpdocumentor-summary">Returns the unique slug of the child sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1777,6 +1889,23 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">abstract</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1807,10 +1936,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the title of the child sub page.</p>
+        <p class="phpdocumentor-summary">Returns the title of the child sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1826,6 +1955,23 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">abstract</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1856,10 +2002,10 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">342</span>
+    <span class="phpdocumentor-element-found-in__line">385</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Loads specific setting and returns an array with the keys [id, name, value].</p>
+        <p class="phpdocumentor-summary">Loads a specified setting.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1874,7 +2020,7 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Settings Array key name.</p>
+                    <section class="phpdocumentor-description"><p>Setting key.</p>
 </section>
 
             </dd>
@@ -1887,6 +2033,15 @@ ull</span></code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>protected</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1901,19 +2056,7 @@ ull</span></code>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.11</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Remove escapement function.
-When refactoring the codebase after 2.5.8, all and every output was escaped.
-After noticing that the plugin was broken, all escapement functions were removed.</p>
-</section>
-
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.5.15</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>To fix it, the data was escaped in add_select_box() instead.</p>
+                                                 <section class="phpdocumentor-description"><p>Broken due to accidental removal of <code class="prettyprint">esc_attr()</code> call.</p>
 </section>
 
                                     </dd>
@@ -1923,41 +2066,7 @@ After noticing that the plugin was broken, all escapement functions were removed
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.6.1</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Restore esc_attr() in load_setting().</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5"> https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5 </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/markcheret/footnotes/pull/50#issuecomment-787624123"> <p>In that process, this instance of esc_attr() was removed too, so the plugin was
-broken again.</p>
- </a>
-                    
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">link</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5#diff-a8ed6e859c32a18fc10bbbad3b4dd8ce7f43f2378d29471c7638e314ab30f1bdL349-L354"> https://github.com/markcheret/footnotes/pull/50/commits/25c3f2f12eb5de1079e9215bf624ec4289b095a5#diff-a8ed6e859c32a18fc10bbbad3b4dd8ce7f43f2378d29471c7638e314ab30f1bdL349-L354 </a>
-                    
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\add_select_box()">add_select_box()</abbr></span>
-                                        
-                                                 <section class="phpdocumentor-description"><p>This is the only instance of esc_|kses|sanitize in the pre-2.5.11 codebase.
-Removing this did not fix the quotation mark backslash escapement bug.</p>
+                                                 <section class="phpdocumentor-description"><p>Restore <code class="prettyprint">esc_attr()</code> call.</p>
 </section>
 
                                     </dd>
@@ -1966,7 +2075,13 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Contains Settings ID, Settings Name and Settings Value.</p>
+            <section class="phpdocumentor-description"><p>{
+A configurable setting.</p>
+<pre class="prettyprint"><code class="prettyprint">@type  string  $id  Setting key.
+@type  string  $name  Setting name.
+@type  string  $value  Setting value.
+</code></pre>
+<p>}</p>
 </section>
 
     
@@ -1984,10 +2099,10 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">203</span>
+    <span class="phpdocumentor-element-found-in__line">249</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Append javascript and css files for specific sub page.</p>
+        <p class="phpdocumentor-summary">Append JavaScript and CSS files for specific sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -2003,12 +2118,30 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>private</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Move to <a href="classes/Footnotes-Admin.html"><abbr title="\Footnotes_Admin">Footnotes_Admin</abbr></a>.</p>
+</section>
 
                                     </dd>
                         </dl>
@@ -2033,10 +2166,10 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">182</span>
+    <span class="phpdocumentor-element-found-in__line">225</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Registers all Meta boxes for a sub page.</p>
+        <p class="phpdocumentor-summary">Registers all Meta boxes for a sub-page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -2051,7 +2184,7 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Parent section unique id.</p>
+                    <section class="phpdocumentor-description"><p>Parent section unique ID.</p>
 </section>
 
             </dd>
@@ -2064,6 +2197,15 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>private</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2094,10 +2236,10 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/layout/class-footnotes-layout-engine.php"><a href="files/src-admin-layout-class-footnotes-layout-engine.html"><abbr title="src/admin/layout/class-footnotes-layout-engine.php">class-footnotes-layout-engine.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">288</span>
+    <span class="phpdocumentor-element-found-in__line">335</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Save all Plugin settings.</p>
+        <p class="phpdocumentor-summary">Save all plugin settings.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -2113,6 +2255,15 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>private</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -2121,12 +2272,22 @@ Removing this did not fix the quotation mark backslash escapement bug.</p>
                                                  <section class="phpdocumentor-description"></section>
 
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Review nonce verification.</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p><code class="prettyprint">true</code> on save success, else <code class="prettyprint">false</code>.</p>
+</section>
 
     
 </article>

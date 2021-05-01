@@ -51,18 +51,13 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
-
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
-                                    <li><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
-                                    <li><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></li>
-                            </ul>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
+                                    </ul>
                         </section>
+
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -79,8 +74,6 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-includes.html">includes</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -88,13 +81,6 @@
     Footnotes_Loader
 
     
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-includes.html">includes</a></li>
-                            </ul>
-        </div>
     
     
     </h2>
@@ -102,14 +88,14 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">21</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 </aside>
 
-            <p class="phpdocumentor-summary">Register all actions and filters for the plugin.</p>
+            <p class="phpdocumentor-summary">Class defining action/filter registration for the plugin.</p>
 
-    <section class="phpdocumentor-description"><p>Maintain a list of all hooks that are registered throughout
-the plugin, and register them with the WordPress API. Call the
-run function to execute the list of actions and filters.</p>
+    <section class="phpdocumentor-description"><p>Maintain a list of all hooks that are registered throughout the plugin, and
+register them with the WordPress API. Call the run function to execute the
+list of actions and filters.</p>
 </section>
 
 
@@ -125,6 +111,15 @@ run function to execute the list of actions and filters.</p>
                                                                                 
                                                  <section class="phpdocumentor-description"><p>includes</p>
 </section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
                         </dl>
@@ -180,7 +175,7 @@ run function to execute the list of actions and filters.</p>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Register the filters and actions with WordPress.</dd>
+<dd>Registers the filters and actions with WordPress.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Footnotes-Loader.html#method_add">add()</a>
@@ -218,7 +213,7 @@ collection.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 </aside>
 
         <p class="phpdocumentor-summary">The array of actions registered with WordPress.</p>
@@ -238,21 +233,21 @@ collection.</dd>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.8.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">access</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><p>protected</p>
 </section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
                         </dl>
@@ -274,7 +269,7 @@ collection.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 </aside>
 
         <p class="phpdocumentor-summary">The array of filters registered with WordPress.</p>
@@ -294,21 +289,21 @@ collection.</dd>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.8.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">access</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><p>protected</p>
 </section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
                         </dl>
@@ -334,7 +329,7 @@ collection.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initialize the collections used to maintain the actions and filters.</p>
@@ -383,7 +378,7 @@ collection.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 </aside>
 
         <p class="phpdocumentor-summary">Add a new action to the collection to be registered with WordPress.</p>
@@ -419,7 +414,7 @@ collection.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The name of the function definition on the $component.</p>
+                    <section class="phpdocumentor-description"><p>The name of the function definition on the <code class="prettyprint">$component</code>.</p>
 </section>
 
             </dd>
@@ -428,7 +423,7 @@ collection.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">10</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional. The priority at which the function should be fired. Default is 10.</p>
+                    <section class="phpdocumentor-description"><p>(optional) The priority at which the function should be fired. Default is 10.</p>
 </section>
 
             </dd>
@@ -437,7 +432,7 @@ collection.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">1</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional. The number of arguments that should be passed to the $callback. Default is 1.</p>
+                    <section class="phpdocumentor-description"><p>(optional) The number of arguments that should be passed to the $callback. Default is 1.</p>
 </section>
 
             </dd>
@@ -480,7 +475,7 @@ collection.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">76</span>
+    <span class="phpdocumentor-element-found-in__line">82</span>
 </aside>
 
         <p class="phpdocumentor-summary">Add a new filter to the collection to be registered with WordPress.</p>
@@ -516,7 +511,7 @@ collection.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The name of the function definition on the $component.</p>
+                    <section class="phpdocumentor-description"><p>The name of the function definition on the <code class="prettyprint">$component</code>.</p>
 </section>
 
             </dd>
@@ -525,7 +520,7 @@ collection.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">10</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional. The priority at which the function should be fired. Default is 10.</p>
+                    <section class="phpdocumentor-description"><p>(optional) The priority at which the function should be fired. Default is 10.</p>
 </section>
 
             </dd>
@@ -534,7 +529,7 @@ collection.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">1</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional. The number of arguments that should be passed to the $callback. Default is 1.</p>
+                    <section class="phpdocumentor-description"><p>(optional) The number of arguments that should be passed to the $callback. Default is 1.</p>
 </section>
 
             </dd>
@@ -577,10 +572,10 @@ collection.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">113</span>
+    <span class="phpdocumentor-element-found-in__line">120</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Register the filters and actions with WordPress.</p>
+        <p class="phpdocumentor-summary">Registers the filters and actions with WordPress.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -626,7 +621,7 @@ collection.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-footnotes-loader.php"><a href="files/src-includes-class-footnotes-loader.html"><abbr title="src/includes/class-footnotes-loader.php">class-footnotes-loader.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">101</span>
 </aside>
 
         <p class="phpdocumentor-summary">A utility function that is used to register the actions and hooks into a single
@@ -672,7 +667,7 @@ collection.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The name of the function definition on the $component.</p>
+                    <section class="phpdocumentor-description"><p>The name of the function definition on the <code class="prettyprint">$component</code>.</p>
 </section>
 
             </dd>
@@ -690,7 +685,7 @@ collection.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The number of arguments that should be passed to the $callback.</p>
+                    <section class="phpdocumentor-description"><p>The number of arguments that should be passed to the <code class="prettyprint">$callback</code>.</p>
 </section>
 
             </dd>
@@ -703,21 +698,21 @@ collection.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.8.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">access</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><p>private</p>
 </section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
                         </dl>

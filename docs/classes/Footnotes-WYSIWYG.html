@@ -51,18 +51,13 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
-
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
-                                    <li><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
-                                    <li><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></li>
-                            </ul>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
+                                    </ul>
                         </section>
+
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -79,7 +74,6 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -87,12 +81,6 @@
     Footnotes_WYSIWYG
 
     
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-                            </ul>
-        </div>
     
     
     </h2>
@@ -100,10 +88,10 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-wysiwyg.php"><a href="files/src-admin-class-footnotes-wysiwyg.html"><abbr title="src/admin/class-footnotes-wysiwyg.php">class-footnotes-wysiwyg.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 </aside>
 
-            <p class="phpdocumentor-summary">Handles the WSYIWYG-Buttons.</p>
+            <p class="phpdocumentor-summary">Class providing WYSIWYG editor intergration for the plugin.</p>
 
     <section class="phpdocumentor-description"></section>
 
@@ -159,7 +147,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-WYSIWYG.html#method_include_scripts">include_scripts()</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                        &nbsp;: array&lt;string|int, string&gt;    </span>
 </dt>
 <dd>Includes the Plugins WYSIWYG editor script.</dd>
 
@@ -173,7 +161,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Footnotes-WYSIWYG.html#method_new_visual_editor_button">new_visual_editor_button()</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                        &nbsp;: array&lt;string|int, string&gt;    </span>
 </dt>
 <dd>Append a new Button to the WYSIWYG editor of Posts and Pages.</dd>
 
@@ -205,7 +193,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-wysiwyg.php"><a href="files/src-admin-class-footnotes-wysiwyg.html"><abbr title="src/admin/class-footnotes-wysiwyg.php">class-footnotes-wysiwyg.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 </aside>
 
         <p class="phpdocumentor-summary">The ID of this plugin.</p>
@@ -225,21 +213,21 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.8.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">access</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
                                                  <section class="phpdocumentor-description"><p>private</p>
 </section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
                         </dl>
@@ -265,7 +253,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-wysiwyg.php"><a href="files/src-admin-class-footnotes-wysiwyg.html"><abbr title="src/admin/class-footnotes-wysiwyg.php">class-footnotes-wysiwyg.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initialize the class and set its properties.</p>
@@ -326,7 +314,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-wysiwyg.php"><a href="files/src-admin-class-footnotes-wysiwyg.html"><abbr title="src/admin/class-footnotes-wysiwyg.php">class-footnotes-wysiwyg.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">93</span>
 </aside>
 
         <p class="phpdocumentor-summary">AJAX Callback function when the Footnotes Button is clicked. Either in the Plain text or Visual editor.</p>
@@ -376,14 +364,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-wysiwyg.php"><a href="files/src-admin-class-footnotes-wysiwyg.html"><abbr title="src/admin/class-footnotes-wysiwyg.php">class-footnotes-wysiwyg.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">82</span>
 </aside>
 
         <p class="phpdocumentor-summary">Includes the Plugins WYSIWYG editor script.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">include_scripts</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_arr_plugins</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">include_scripts</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_arr_plugins</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -391,10 +379,10 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$p_arr_plugins</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Scripts to be included to the editor.</p>
+                    <section class="phpdocumentor-description"><p>Scripts to be included by the editor.</p>
 </section>
 
             </dd>
@@ -420,14 +408,14 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Does this need to be <code class="prettyprint">static</code>?</p>
+                                                 <section class="phpdocumentor-description"><p>Should this be <code class="prettyprint">static</code>?</p>
 </section>
 
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -446,7 +434,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-wysiwyg.php"><a href="files/src-admin-class-footnotes-wysiwyg.html"><abbr title="src/admin/class-footnotes-wysiwyg.php">class-footnotes-wysiwyg.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 </aside>
 
         <p class="phpdocumentor-summary">Add a new button to the plain text editor.</p>
@@ -495,14 +483,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/admin/class-footnotes-wysiwyg.php"><a href="files/src-admin-class-footnotes-wysiwyg.html"><abbr title="src/admin/class-footnotes-wysiwyg.php">class-footnotes-wysiwyg.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">48</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 </aside>
 
         <p class="phpdocumentor-summary">Append a new Button to the WYSIWYG editor of Posts and Pages.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">new_visual_editor_button</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_arr_buttons</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">new_visual_editor_button</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_arr_buttons</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -510,10 +498,10 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$p_arr_buttons</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>pre defined Buttons from WordPress.</p>
+                    <section class="phpdocumentor-description"><p>Already-defined editor buttons.</p>
 </section>
 
             </dd>
@@ -539,14 +527,14 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Does this need to be <code class="prettyprint">static</code>?</p>
+                                                 <section class="phpdocumentor-description"><p>Should this be <code class="prettyprint">static</code>?</p>
 </section>
 
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 

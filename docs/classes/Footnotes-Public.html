@@ -51,18 +51,14 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
-
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
-                                    <li><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
-                                    <li><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></li>
-                            </ul>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
+                                            <li><a href="namespaces/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
+                                    </ul>
                         </section>
+
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -79,8 +75,6 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-public.html">public</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
@@ -88,13 +82,6 @@
     Footnotes_Public
 
     
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes-public.html">public</a></li>
-                            </ul>
-        </div>
     
     
     </h2>
@@ -102,10 +89,10 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 </aside>
 
-            <p class="phpdocumentor-summary">The public-facing functionality of the plugin.</p>
+            <p class="phpdocumentor-summary">Class provide all admin-specific functionality of the plugin.</p>
 
     <section class="phpdocumentor-description"><p>Defines the plugin name, version, and enqueues all public-facing stylesheets
 and JavaScript.</p>
@@ -118,12 +105,12 @@ and JavaScript.</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">subpackage</span>
+                    <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>public</p>
-</section>
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
                         </dl>
@@ -163,14 +150,14 @@ and JavaScript.</p>
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Footnotes-Public.html#property_a_obj_task">$a_obj_task</a>
     <span>
-                &nbsp;: <abbr title="\Footnote_Parser">Footnote_Parser</abbr>            </span>
+                &nbsp;: <a href="classes/Footnotes-Parser.html"><abbr title="\Footnotes_Parser">Footnotes_Parser</abbr></a>            </span>
 </dt>
 <dd>The footnote parser.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Footnotes-Public.html#property_a_str_script_mode">$a_str_script_mode</a>
     <span>
-                &nbsp;: <abbr title="\str">str</abbr>            </span>
+                &nbsp;: string            </span>
 </dt>
 <dd>Allows to determine the script mode among jQuery or plain JS.</dd>
 
@@ -258,7 +245,7 @@ and JavaScript.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">73</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 </aside>
 
         <p class="phpdocumentor-summary">Allows to determine whether alternative tooltips are enabled.</p>
@@ -292,7 +279,7 @@ and JavaScript.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved from <code class="prettyprint">Footnotes</code> to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -315,7 +302,7 @@ and JavaScript.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">87</span>
 </aside>
 
         <p class="phpdocumentor-summary">Allows to determine whether AMP compatibility mode is enabled.</p>
@@ -340,8 +327,7 @@ and JavaScript.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.6.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>(release)</p>
-</section>
+                                                 <section class="phpdocumentor-description"></section>
 
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
@@ -350,7 +336,7 @@ and JavaScript.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved from <code class="prettyprint">Footnotes</code> to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -373,7 +359,7 @@ and JavaScript.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">64</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 </aside>
 
         <p class="phpdocumentor-summary">Flag for using tooltips.</p>
@@ -407,7 +393,7 @@ and JavaScript.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved from <code class="prettyprint">Footnotes</code> to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -430,14 +416,14 @@ and JavaScript.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">57</span>
 </aside>
 
         <p class="phpdocumentor-summary">The footnote parser.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type"><abbr title="\Footnote_Parser">Footnote_Parser</abbr></span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Footnotes-Parser.html"><abbr title="\Footnotes_Parser">Footnotes_Parser</abbr></a></span>
     <span class="phpdocumentor-signature__name">$a_obj_task</span>
      = <span class="phpdocumentor-signature__default-value">
 ull</span></code>
@@ -465,7 +451,7 @@ ull</span></code>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved from <code class="prettyprint">Footnotes</code> to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -488,14 +474,14 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">92</span>
+    <span class="phpdocumentor-element-found-in__line">97</span>
 </aside>
 
         <p class="phpdocumentor-summary">Allows to determine the script mode among jQuery or plain JS.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><abbr title="\str">str</abbr></span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$a_str_script_mode</span>
      = <span class="phpdocumentor-signature__default-value">&#039;js&#039;</span></code>
 
@@ -522,7 +508,7 @@ ull</span></code>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved from <code class="prettyprint">Footnotes</code> to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -545,7 +531,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 </aside>
 
         <p class="phpdocumentor-summary">The ID of this plugin.</p>
@@ -601,7 +587,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 </aside>
 
         <p class="phpdocumentor-summary">The reference container widget.</p>
@@ -708,7 +694,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">101</span>
+    <span class="phpdocumentor-element-found-in__line">106</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initialize the class and set its properties.</p>
@@ -778,7 +764,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">216</span>
+    <span class="phpdocumentor-element-found-in__line">220</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register the JavaScript for the public-facing side of the site.</p>
@@ -841,7 +827,7 @@ ull</span></code>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved from <code class="prettyprint">Footnotes</code> to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -867,7 +853,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">151</span>
+    <span class="phpdocumentor-element-found-in__line">155</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register the stylesheets for the public-facing side of the site.</p>
@@ -876,8 +862,8 @@ ull</span></code>
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">enqueue_styles</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"><p>Enables enqueuing the formatted individual stylesheets if <code class="prettyprint">PRODCUTION_ENV</code>
-is true (set in <code class="prettyprint">footnotes.php</code>).</p>
+        <section class="phpdocumentor-description"><p>Enables enqueuing the formatted individual stylesheets if <abbr title="\PRODUCTION_ENV">PRODUCTION_ENV</abbr>
+is <code class="prettyprint">true</code>.</p>
 </section>
 
     
@@ -902,7 +888,7 @@ is true (set in <code class="prettyprint">footnotes.php</code>).</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Change stylesheet scheme.</p>
+                                                 <section class="phpdocumentor-description"><p>Change stylesheet schema.</p>
 </section>
 
                                     </dd>
@@ -912,7 +898,7 @@ is true (set in <code class="prettyprint">footnotes.php</code>).</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved from <code class="prettyprint">Footnotes</code> to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -938,7 +924,7 @@ is true (set in <code class="prettyprint">footnotes.php</code>).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">271</span>
+    <span class="phpdocumentor-element-found-in__line">269</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register the widget(s) for the public-facing side of the site.</p>
@@ -971,7 +957,7 @@ is true (set in <code class="prettyprint">footnotes.php</code>).</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved to <code class="prettyprint">Footnotes_Public</code> class.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved from <abbr title="\Footnotes">Footnotes</abbr> to <a href="classes/Footnotes-Public.html"><abbr title="\Footnotes_Public">Footnotes_Public</abbr></a>.</p>
 </section>
 
                                     </dd>
@@ -997,7 +983,7 @@ is true (set in <code class="prettyprint">footnotes.php</code>).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-footnotes-public.php"><a href="files/src-public-class-footnotes-public.html"><abbr title="src/public/class-footnotes-public.php">class-footnotes-public.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 </aside>
 
         <p class="phpdocumentor-summary">Load the required public-facing dependencies.</p>
@@ -1010,9 +996,9 @@ is true (set in <code class="prettyprint">footnotes.php</code>).</p>
 of this plugin:</p>
 <ul>
 <li>
-<code class="prettyprint">Footnotes_Parser</code>. Parses Posts and Pages for footnote shortcodes.</li>
+<a href="classes/Footnotes-Parser.html"><abbr title="\Footnotes_Parser">Footnotes_Parser</abbr></a>: parses Posts and Pages for footnote shortcodes; and</li>
 <li>
-<code class="prettyprint">Footnotes_Widget_Reference_Container</code>. Defines the Reference Container widget.</li>
+<a href="classes/Footnotes-Widget-Reference-Container.html"><abbr title="\Footnotes_Widget_Reference_Container">Footnotes_Widget_Reference_Container</abbr></a>: defines the Reference Container widget.</li>
 </ul>
 </section>
 
@@ -1030,15 +1016,6 @@ of this plugin:</p>
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
                                                  <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">access</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>private</p>
-</section>
 
                                     </dd>
                         </dl>

@@ -4,13 +4,13 @@
  *
  * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
  * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
- * sub-class. The subpackage is initialised at runtime by the {@see 
+ * sub-class. The subpackage is initialised at runtime by the {@see
  * Footnotes_Layout_Init} class.
  *
  * @package  footnotes\admin_layout
  * @since  1.5.0
  * @since  2.8.0  Rename file from `subpage-main.php` to `class-footnotes-layout-settings.php`,
- *								rename `dashboard/` sub-directory to `layout/`.
+ *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
 /**
@@ -32,7 +32,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since  2.8.0
-	 * @param  string  $plugin_name  The name of this plugin.
+	 * @param  string $plugin_name  The name of this plugin.
 	 */
 	public function __construct( $plugin_name ) {
 		$this->plugin_name = $plugin_name;
@@ -74,7 +74,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	 * Returns an array of all registered sections for the sub-page.
 	 *
 	 * @see  Footnotes_Layout_Engine::add_section()  For more information on the
-	 *       																			   section array format.
+	 *                                                                                     section array format.
 	 * @return  array[]  All of the registered sections.
 	 *
 	 * @since  1.5.0
@@ -100,7 +100,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 	 * Returns an array of all registered meta boxes for each section of the sub-page.
 	 *
 	 * @see  Footnotes_Layout_Engine::add_meta_box()  For more information on the
-	 *       																			    meta box array format.
+	 *                                                                                      meta box array format.
 	 * @return  array[]  All of the registered meta boxes.
 	 *
 	 * @since  1.5.0
@@ -208,6 +208,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 				'semicolon' => __( 'SEMICOLON', 'footnotes' ),
 				'en_dash'   => __( 'EN DASH', 'footnotes' ),
 			);
+
 			/*
 			 * Options for the terminating punctuation after backlinks.
 			 * The Unicode name of RIGHT PARENTHESIS was originally more accurate because.
@@ -1266,7 +1267,7 @@ class Footnotes_Layout_Settings extends Footnotes_Layout_Engine {
 		);
 
 		/*
-		 * Call {@see Footnotes_Parser::footnotes_output_head()} function to get 
+		 * Call {@see Footnotes_Parser::footnotes_output_head()} function to get
 		 * the styling of the mouse-over box.
 		 *
 		 * The name of the callback function ought to be distinct from

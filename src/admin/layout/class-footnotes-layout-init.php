@@ -4,13 +4,13 @@
  *
  * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
  * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
- * sub-class. The subpackage is initialised at runtime by the {@see 
+ * sub-class. The subpackage is initialised at runtime by the {@see
  * Footnotes_Layout_Init} class.
  *
  * @package  footnotes\admin_layout
  * @since  1.5.0
  * @since  2.8.0  Rename file from `init.php` to `class-footnotes-layout-init.php`,
- *								rename `dashboard/` sub-directory to `layout/`.
+ *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
 /**
@@ -52,7 +52,7 @@ class Footnotes_Layout_Init {
 	/**
 	 * Initializes all WordPress hooks for the Plugin Settings.
 	 *
-	 * @param  string  $plugin_name  The name of the plugin.
+	 * @param  string $plugin_name  The name of the plugin.
 	 *
 	 * @since  1.5.0
 	 * @since  2.8.0  Added `$plugin_name` parameter.
@@ -71,7 +71,7 @@ class Footnotes_Layout_Init {
 		add_action( 'wp_ajax_nopriv_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 		add_action( 'wp_ajax_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
 	}
-	
+
 	/**
 	 * Load the required dependencies for the layouts pages.
 	 *

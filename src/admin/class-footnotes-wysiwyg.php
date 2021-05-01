@@ -10,7 +10,7 @@
  * @package  footnotes\admin
  * @since  1.5.0
  * @since  2.8.0  Rename file from `wysiwyg.php` to `class-footnotes-wysiwyg.php`,
- *								move from `class/` sub-directory to `admin/`.
+ *                              move from `class/` sub-directory to `admin/`.
  */
 
 /**
@@ -47,7 +47,7 @@ class Footnotes_WYSIWYG {
 	/**
 	 * Append a new Button to the WYSIWYG editor of Posts and Pages.
 	 *
-	 * @param  string[]  $p_arr_buttons  Already-defined editor buttons.
+	 * @param  string[] $p_arr_buttons  Already-defined editor buttons.
 	 * @return  string[]
 	 *
 	 * @since  1.5.0
@@ -73,7 +73,7 @@ class Footnotes_WYSIWYG {
 	/**
 	 * Includes the Plugins WYSIWYG editor script.
 	 *
-	 * @param  string[]  $p_arr_plugins  Scripts to be included by the editor.
+	 * @param  string[] $p_arr_plugins  Scripts to be included by the editor.
 	 * @return  string[]
 	 *
 	 * @since  1.5.0

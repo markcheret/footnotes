@@ -4,13 +4,13 @@
  *
  * The Admin. Layouts subpackage is composed of the {@see Footnotes_Layout_Engine}
  * abstract class, which is extended by the {@see Footnotes_Layout_Settings}
- * sub-class. The subpackage is initialised at runtime by the {@see 
+ * sub-class. The subpackage is initialised at runtime by the {@see
  * Footnotes_Layout_Init} class.
  *
  * @package  footnotes\admin_layout
  * @since  1.5.0
  * @since  2.8.0  Rename file from `layout.php` to `class-footnotes-layout-engine.php`,
- *								rename `dashboard/` sub-directory to `layout/`.
+ *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-layout-init.php';
@@ -19,7 +19,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-footnotes-la
  * Class to be extended by page layout sub-classes.
  *
  * @abstract
- 
+
  * @package  footnotes\admin_layout
  * @since  1.5.0
  */
@@ -113,11 +113,11 @@ abstract class Footnotes_Layout_Engine {
 	 * Returns an array describing a sub-page section.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_id  Unique ID suffix.
-	 * @param  string  $p_str_title  Title of the section.
-	 * @param  int  $p_int_settings_container_index  Settings Container index.
-	 * @param  bool  $p_bool_has_submit_button  Whether a ‘Submit’ button should 
-	 *																					be displayed for this section. Default `true`.
+	 * @param  string $p_str_id  Unique ID suffix.
+	 * @param  string $p_str_title  Title of the section.
+	 * @param  int    $p_int_settings_container_index  Settings Container index.
+	 * @param  bool   $p_bool_has_submit_button  Whether a ‘Submit’ button should
+	 *                                                                                   be displayed for this section. Default `true`.
 	 * @return  array  {
 	 *     A dashboard section.
 	 *
@@ -143,10 +143,10 @@ abstract class Footnotes_Layout_Engine {
 	 * Returns an array describing a meta box.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_section_id  Parent section ID.
-	 * @param  string  $p_str_id  Unique ID suffix.
-	 * @param  string  $p_str_title  Title for the meta box.
-	 * @param  string  $p_str_callback_function_name  Class method name for callback.
+	 * @param  string $p_str_section_id  Parent section ID.
+	 * @param  string $p_str_id  Unique ID suffix.
+	 * @param  string $p_str_title  Title for the meta box.
+	 * @param  string $p_str_callback_function_name  Class method name for callback.
 	 * @return  array  {
 	 *     A dashboard meta box.
 	 *
@@ -218,7 +218,7 @@ abstract class Footnotes_Layout_Engine {
 	 * Registers all Meta boxes for a sub-page.
 	 *
 	 * @access  private
-	 * @param  string  $p_str_parent_id  Parent section unique ID.
+	 * @param  string $p_str_parent_id  Parent section unique ID.
 	 *
 	 * @since  1.5.0
 	 */
@@ -369,7 +369,7 @@ abstract class Footnotes_Layout_Engine {
 	 * Loads a specified setting.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_key_name  Setting key.	
+	 * @param  string $p_str_setting_key_name  Setting key.
 	 * @return  array  {
 	 *     A configurable setting.
 	 *
@@ -391,12 +391,12 @@ abstract class Footnotes_Layout_Engine {
 		$p_arr_return['value'] = esc_attr( Footnotes_Settings::instance()->get( $p_str_setting_key_name ) );
 		return $p_arr_return;
 	}
-	
+
 	/**
 	 * Returns a simple text inside HTML `<span>` element.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_text  Message to be surrounded with `<span>` tags.
+	 * @param  string $p_str_text  Message to be surrounded with `<span>` tags.
 	 * @return  string
 	 *
 	 * @since  1.5.0
@@ -410,8 +410,8 @@ abstract class Footnotes_Layout_Engine {
 	 * Returns the HTML tag for an `<input>`/`<select>` label.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_name  Settings key.
-	 * @param  string  $p_str_caption  Label caption.
+	 * @param  string $p_str_setting_name  Settings key.
+	 * @param  string $p_str_caption  Label caption.
 	 * @return  string
 	 *
 	 * @since  1.5.0
@@ -440,10 +440,10 @@ abstract class Footnotes_Layout_Engine {
 	 * Constructs the HTML for a text `<input>` element.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_name  Setting key.
-	 * @param  int  $p_str_max_length  Maximum length of the input. Default length 999 chars.
-	 * @param  bool  $p_bool_readonly  Set the input to be read only. Default `false`.
-	 * @param  bool  $p_bool_hidden  Set the input to be hidden. Default `false`.
+	 * @param  string $p_str_setting_name  Setting key.
+	 * @param  int    $p_str_max_length  Maximum length of the input. Default length 999 chars.
+	 * @param  bool   $p_bool_readonly  Set the input to be read only. Default `false`.
+	 * @param  bool   $p_bool_hidden  Set the input to be hidden. Default `false`.
 	 * @return  string
 	 *
 	 * @since  1.5.0
@@ -471,7 +471,7 @@ abstract class Footnotes_Layout_Engine {
 	 * Constructs the HTML for a checkbox `<input>` element.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_name  Setting key.
+	 * @param  string $p_str_setting_name  Setting key.
 	 * @return  string
 	 *
 	 * @since  1.5.0
@@ -492,7 +492,7 @@ abstract class Footnotes_Layout_Engine {
 	 * Constructs the HTML for a `<select>` element.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_name  Setting key.
+	 * @param  string $p_str_setting_name  Setting key.
 	 * @param  array  $p_arr_options  Possible options.
 	 * @return  string
 	 *
@@ -528,7 +528,7 @@ abstract class Footnotes_Layout_Engine {
 	 * Constructs the HTML for a `<textarea>` element.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_name  Setting key.
+	 * @param  string $p_str_setting_name  Setting key.
 	 * @return  string
 	 *
 	 * @since  1.5.0
@@ -550,7 +550,7 @@ abstract class Footnotes_Layout_Engine {
 	 * class.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_name Setting key.
+	 * @param  string $p_str_setting_name Setting key.
 	 * @return  string
 	 *
 	 * @since  1.5.6
@@ -572,10 +572,10 @@ abstract class Footnotes_Layout_Engine {
 	 * Constructs the HTML for numeric `<input>` element.
 	 *
 	 * @access  protected
-	 * @param  string  $p_str_setting_name Setting key.
-	 * @param  int  $p_in_min  Minimum value.
-	 * @param  int  $p_int_max  Maximum value.
-	 * @param  bool  $p_bool_deci  `true` if float, `false` if integer. Default `false`.
+	 * @param  string $p_str_setting_name Setting key.
+	 * @param  int    $p_in_min  Minimum value.
+	 * @param  int    $p_int_max  Maximum value.
+	 * @param  bool   $p_bool_deci  `true` if float, `false` if integer. Default `false`.
 	 * @return  string
 	 *
 	 * @since  1.5.0

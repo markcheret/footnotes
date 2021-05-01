@@ -5,12 +5,10 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @package  footnotes
- * @subpackage  includes
- *
- * @since  1.5.0
- * @since  2.8.0  Rename file from `wysiwyg.php` to `class-footnotes-wysiwyg.php`,
- *								rename `class/` sub-directory to `includes/`.
+ * @package footnotes\includes
+ * @since 1.5.0
+ * @since 2.8.0 Rename file from `init.php` to `class-footnotes.php`, rename
+ *                          `class/` sub-directory to `includes/`.
  */
 
 /**
@@ -18,40 +16,37 @@
  *
  * This is used to define internationalization, admin-specific hooks, and
  * public-facing site hooks.
- 
- * @package  footnotes
- * @subpackage  includes
- *
- * @since  1.5.0
- * @since  2.8.0
+
+ * @package footnotes\includes
+ * @since 1.5.0
  */
 class Footnotes {
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @access  protected
-	 * @var  Footnotes_Loader  $loader  Maintains and registers all hooks for the plugin.
+	 * @since 2.8.0
 	 *
-	 * @since  2.8.0
+	 * @var Footnotes_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
 	/**
 	 * The unique identifier of this plugin
 	 *
-	 * @since  2.8.0
-	 * @access  protected
-	 * @var  string  $plugin_name  The string used to uniquely identify this plugin.
+	 * @since 2.8.0
+	 *
+	 * @var string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since  2.8.0
-	 * @access  protected
-	 * @var  string  $version  The current version of the plugin.
+	 * @since 2.8.0
+	 * @see PLUGIN_VERSION
+	 *
+	 * @var string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -59,12 +54,13 @@ class Footnotes {
 	 * Build the core of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the
-	 * plugin. Load the dependencies, define the locale, and set the hooks for 
+	 * plugin. Load the dependencies, define the locale, and set the hooks for
 	 * the admin area and the public-facing side of the site.
 	 *
-	 * @uses  PLUGIN_VERSION  The plugin version constant.
+	 * @since 1.0.0
+	 * @see PLUGIN_VERSION The plugin version constant.
 	 *
-	 * @since  1.0.0
+	 * @return void
 	 */
 	public function __construct() {
 		if ( defined( 'PLUGIN_VERSION' ) ) {
@@ -78,7 +74,6 @@ class Footnotes {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -86,22 +81,21 @@ class Footnotes {
 	 *
 	 * Includes the following files that make up the plugin:
 	 *
-	 * - `Footnotes_Loader`. Orchestrates the hooks of the plugin.
-	 * - `Footnotes_i18n`. Defines internationalization functionality.
-	 * - `Footnotes_Config`. Defines plugin details.
-	 * - `Footnotes_Convert`. Provides conversion methods.
-	 * - `Footnotes_Settings`. Defines customisable plugin settings.
-	 * - `Footnotes_Template`. Handles template rendering.
-	 * - `Footnotes_Admin`. Defines all hooks for the admin area.
-	 * - `Footnotes_Public`. Defines all hooks for the public side of the site.
+	 * - {@see Footnotes_Loader}: orchestrates the hooks of the plugin;
+	 * - {@see Footnotes_i18n}: defines internationalization functionality;
+	 * - {@see Footnotes_Config}: defines plugin details;
+	 * - {@see Footnotes_Convert}: provides conversion methods;
+	 * - {@see Footnotes_Settings}: defines customisable plugin settings;
+	 * - {@see Footnotes_Template}: handles template rendering;
+	 * - {@see Footnotes_Admin}: defines all hooks for the admin area; and
+	 * - {@see Footnotes_Public}: defines all hooks for the public side of the site.
 	 *
 	 * Creates an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @access  private
-	 * @uses  Footnotes_Loader  Loads plugin dependencies.
+	 * @since 2.8.0
 	 *
-	 * @since  2.8.0
+	 * @return void
 	 */
 	private function load_dependencies() {
 
@@ -143,13 +137,13 @@ class Footnotes {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the {@see Footnotes_i18n} class in order to set the domain and to 
+	 * Uses {@see Footnotes_i18n} in order to set the domain and to
 	 * register the hook with WordPress.
 	 *
-	 * @access  private
-	 * @uses  Footnotes_i18n  Handles initialization functions.
+	 * @since 2.8.0
+	 * @uses Footnotes_i18n Handles initialization functions.
 	 *
-	 * @since  2.8.0
+	 * @return void
 	 */
 	private function set_locale() {
 
@@ -160,14 +154,14 @@ class Footnotes {
 	}
 
 	/**
-	 * Register all of the hooks related to the admin area functionality of the 
+	 * Register all of the hooks related to the admin area functionality of the
 	 * plugin.
 	 *
-	 * @access  private
-	 * @uses  Footnotes_Admin  Defines admin functionality.
+	 * @since 1.5.0
+	 * @since 2.8.0 Moved hook registrations from various classes into `Footnotes_Admin`.
+	 * @uses Footnotes_Admin Defines admin functionality.
 	 *
-	 * @since  1.5.0
-	 * @since  2.8.0 Moved hook registrations from various classes into `Footnotes_Admin`.
+	 * @return void
 	 */
 	private function define_admin_hooks() {
 
@@ -192,13 +186,13 @@ class Footnotes {
 	}
 
 	/**
-	 * Register all of the hooks related to the public-facing functionality of 
+	 * Register all of the hooks related to the public-facing functionality of
 	 * the plugin.
 	 *
-	 * @access   private
-	 * @uses  Footnotes_Admin  Defines public-facing functionality.
+	 * @since 2.8.0
+	 * @uses Footnotes_Admin Defines public-facing functionality.
 	 *
-	 * @since  2.8.0
+	 * @return void
 	 */
 	private function define_public_hooks() {
 
@@ -213,43 +207,39 @@ class Footnotes {
 	/**
 	 * Runs the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since  1.5.0
+	 * @since 1.5.0
+	 *
+	 * @return void
 	 */
 	public function run() {
 		$this->loader->run();
 	}
 
 	/**
-	 * Gets the name of the plugin used to uniquely identify it within the 
+	 * Gets the name of the plugin used to uniquely identify it within the
 	 * context of WordPress and to define internationalization functionality.
 	 *
-	 * @return  string  The name of the plugin.
-	 *
-	 * @since  2.8.0
+	 * @since 2.8.0
 	 */
-	public function get_plugin_name() {
+	public function get_plugin_name(): string {
 		return $this->plugin_name;
 	}
 
 	/**
 	 * Returns a reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @return  Footnotes_Loader  Orchestrates the hooks of the plugin.
-	 *
-	 * @since  2.8.0
+	 * @since 2.8.0
 	 */
-	public function get_loader() {
+	public function get_loader(): Footnotes_Loader {
 		return $this->loader;
 	}
 
 	/**
 	 * Gets the version number of the plugin.
 	 *
-	 * @return  string  The version number of the plugin.
-	 *
-	 * @since  2.8.0
+	 * @since 2.8.0
 	 */
-	public function get_version() {
+	public function get_version(): string {
 		return $this->version;
 	}
 }

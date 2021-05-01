@@ -52,9 +52,9 @@ class Footnotes_Admin {
 
 	/**
 	 * Initialize the class and set its properties.
-	 
-	 * @param  string  $plugin_name  The name of this plugin.
-	 * @param  string  $version  The version of this plugin.
+
+	 * @param  string $plugin_name  The name of this plugin.
+	 * @param  string $version  The version of this plugin.
 	 *
 	 * @since  2.8.0
 	 */
@@ -140,7 +140,7 @@ class Footnotes_Admin {
 	/**
 	 * Appends the Plugin links for display in the dashboard Plugins page.
 	 *
-	 * @param  string[]  $links  The default set of links to display.
+	 * @param  string[] $links  The default set of links to display.
 	 * @return  string[]  The full set of links to display.
 	 *
 	 * @since  1.5.0

@@ -10,7 +10,6 @@
  * @package  footnotes
  * @license  GPL-3.0-only
  * @copyright  2021 Mark Cheret (email: mark@cheret.de)
- *
  * @since  1.0.0
  *
  * @wordpress-plugin
@@ -34,48 +33,56 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * The current plugin version.
+ * The plugin version.
  *
  * @link https://github.com/markcheret/footnotes/wiki/Versioning Versioning Guide
  *
- * @global string PLUGIN_VERSION
- *
- * @since 2.1.4
+ * @since  2.1.4
+ * @todo  Draw from envfile rather than hard-coding.
+ * @var  string  PLUGIN_VERSION  The version of this instance of the plugin.
  */
 define( 'PLUGIN_VERSION', '2.8.0d' );
 
 /**
- * The current environment ('development' or 'production').
+ * The environment that the plugin is configured for.
  *
- * This primarily affects whether minified or unminified files are requested.
+ * This primarily affects whether minified or unminified CSS/JS files are
+ * requested.
  *
- * @global bool PRODUCTION_ENV
- *
- * @since 2.5.5
+ * @since  2.5.5
+ * @todo  Draw from envfile rather than hard-coding.
+ * @todo  Replace with string for >2 environment options.
+ * @var  bool  PRODUCTION_ENV  Whether the plugin is running in production mode or not. Default `false`.
  */
 define( 'PRODUCTION_ENV', false );
 
 /**
- * Triggers during plugin activation.
+ * Handles the activation of the plugin.
  *
- * @uses Footnotes_Activator::activate() Method called on plugin activation.
- *
- * @since 2.8.0
+ * @since  2.8.0
+ * @see  Footnotes_Activator::activate()
  */
 function activate_footnotes() {
+	/**
+	 * Provides plugin activation functionality.
+	 */
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-footnotes-activator.php';
+
 	Footnotes_Activator::activate();
 }
 
 /**
- * Triggers during plugin deactivation.
+ * Handles the deactivation of the plugin.
  *
- * @uses Footnotes_Deactivator::deactivate() Method called on plugin deactivation.
- *
- * @since 2.8.0
+ * @since  2.8.0
+ * @see  Footnotes_Deactivator::deactivate()
  */
-function deactivate_plugin_name() {
+function deactivate_footnotes() {
+	/**
+	 * Provides plugin deactivation functionality.
+	 */
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-footnotes-deactivator.php';
+
 	Footnotes_Deactivator::deactivate();
 }
 
@@ -83,18 +90,18 @@ register_activation_hook( __FILE__, 'activate_footnotes' );
 register_deactivation_hook( __FILE__, 'deactivate_footnotes' );
 
 /**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
+ * The core plugin class that defines internationalization, admin-specific and
+ * public-facing site hooks and functionality.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-footnotes.php';
 
 /**
  * Begins execution of the plugin.
  *
- * Since everything within the plugin is registered via hooks, then kicking off 
+ * Since everything within the plugin is registered via hooks, then kicking off
  * the plugin from this point in the file does not affect the page life cycle.
  *
- * @since 2.8.0
+ * @since  2.8.0
  */
 function run_footnotes() {
 	global $footnotes;

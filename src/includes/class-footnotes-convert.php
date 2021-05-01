@@ -7,7 +7,7 @@
  *
  * @since  1.5.0
  * @since  2.8.0  Rename file from `convert.php` to `class-footnotes-convert.php`,
- *								rename `class/` sub-directory to `includes/`.
+ *                              rename `class/` sub-directory to `includes/`.
  */
 
 /**
@@ -23,8 +23,8 @@ class Footnotes_Convert {
 	/**
 	 * Converts an integer into the user-defined counter style for the footnotes.
 	 *
-	 * @param  int  $p_int_index  Index to be converted.
-	 * @param  string  $p_str_convert_style  Counter style to use.
+	 * @param  int    $p_int_index  Index to be converted.
+	 * @param  string $p_str_convert_style  Counter style to use.
 	 * @return  string  Converted  Index converted to the defined counter style.
 	 *
 	 * @since  1.5.0
@@ -54,7 +54,7 @@ class Footnotes_Convert {
 	 * gootnotes per Page).
 	 *
 	 * @param  int  $p_int_value  Value to be converted.
-	 * @param  bool  $p_bool_upper_case  Whether to convert the value to upper-case.
+	 * @param  bool $p_bool_upper_case  Whether to convert the value to upper-case.
 	 * @return  string
 	 *
 	 * @since  1.0-gamma
@@ -86,7 +86,7 @@ class Footnotes_Convert {
 	/**
 	 * Converts an integer to a leading-0 integer.
 	 *
-	 * @param  int  $p_int_value  Value to be converted.
+	 * @param  int $p_int_value  Value to be converted.
 	 * @return  string  Value with a leading zero.
 	 *
 	 * @since  1.0-gamma
@@ -104,7 +104,7 @@ class Footnotes_Convert {
 	 * Converts an integer to a Roman numeral.
 	 *
 	 * @param  int  $p_int_value  Value to be converted.
-	 * @param  bool  $p_bool_upper_case  Whether to convert the value to upper-case.
+	 * @param  bool $p_bool_upper_case  Whether to convert the value to upper-case.
 	 * @return  string
 	 *
 	 * @since  1.0-gamma
@@ -148,7 +148,7 @@ class Footnotes_Convert {
 	/**
 	 * Converts a string depending on its value to a boolean.
 	 *
-	 * @param  string  $p_str_value  String to be converted to boolean.
+	 * @param  string $p_str_value  String to be converted to boolean.
 	 * @return  bool  Boolean value represented by the string.
 	 *
 	 * @since  1.0-beta
@@ -173,7 +173,7 @@ class Footnotes_Convert {
 	/**
 	 * Get an HTML array short code depending on Arrow-Array key index.
 	 *
-	 * @param  int  $p_int_index Index representing the arrow. If empty, all arrows are specified.
+	 * @param  int $p_int_index Index representing the arrow. If empty, all arrows are specified.
 	 * @return  array|string  Array of all arrows if index is empty, otherwise HTML tag of a specific arrow.
 	 *
 	 * @since  1.3.2
@@ -198,7 +198,7 @@ class Footnotes_Convert {
 	/**
 	 * Displays a variable.
 	 *
-	 * @param  mixed  $p_mixed_value  The variable to display.
+	 * @param  mixed $p_mixed_value  The variable to display.
 	 *
 	 * @since  1.5.0
 	 * @todo  Replace with proper logging/debug functions.

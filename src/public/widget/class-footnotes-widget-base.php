@@ -64,7 +64,7 @@ abstract class Footnotes_Widget_Base extends WP_Widget {
 	protected function get_widget_width() {
 		return 250;
 	}
-	
+
 	/**
 	 * Registers the child Widget to WordPress.
 	 *
@@ -87,5 +87,5 @@ abstract class Footnotes_Widget_Base extends WP_Widget {
 			$l_arr_control_options // Optional Widget Control Options.
 		);
 	}
-	
+
 }

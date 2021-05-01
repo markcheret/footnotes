@@ -7,7 +7,7 @@
  *
  * @since  1.5.0
  * @since  2.8.0  Rename file from `language.php` to `class-footnotes-i18n.php`,
- *								rename `class/` sub-directory to `includes/`.
+ *                              rename `class/` sub-directory to `includes/`.
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-config.php';
@@ -15,7 +15,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-
 /**
  * Class providing internationalization functionality.
  *
- * Loads and defines the internationalization files for this plugin so that it 
+ * Loads and defines the internationalization files for this plugin so that it
  * is ready for translation.
  *
  * @link  https://translate.wordpress.org/projects/wp-plugins/footnotes/  GlotPress listing

@@ -21,7 +21,7 @@ class Footnotes_Public {
 	 * The ID of this plugin.
 	 *
 	 * @since  2.8.0
-	 
+
 	 * @access  private
 	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
@@ -31,7 +31,7 @@ class Footnotes_Public {
 	 * The version of this plugin.
 	 *
 	 * @since  2.8.0
-	
+
 	 * @access  private
 	 * @var  string  $version  The current version of this plugin.
 	 */
@@ -100,8 +100,8 @@ class Footnotes_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since  2.8.0
-	 * @param  string  $plugin_name  The name of this plugin.
-	 * @param  string  $version  The version of this plugin.
+	 * @param  string $plugin_name  The name of this plugin.
+	 * @param  string $version  The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 

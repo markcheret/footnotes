@@ -6,7 +6,7 @@
  * @since  1.5.0
  * @since  2.0.5  Enable all hoooks by default.
  * @since  2.8.0  Rename file from `task.php` to `class-footnotes-parser.php`,
- *								move from `class/` sub-directory to `public/`.
+ *                              move from `class/` sub-directory to `public/`.
  */
 
 /**
@@ -167,7 +167,7 @@ class Footnotes_Parser {
 	 * @var  string
 	 */
 	public static $a_str_link_close_tag = '';
-	
+
 	/*
 	 * Dedicated tooltip text.
 	 *
@@ -222,7 +222,7 @@ class Footnotes_Parser {
 	/**
 	 * Footnote delimiter start short code in RegEx format.
 	 *
-	 * @since  2.4.0 
+	 * @since  2.4.0
 	 * @since  2.6.2  Move from global constant to class property.
 	 * @var  string
 	 */
@@ -312,10 +312,11 @@ class Footnotes_Parser {
 			/**
 			 * Hook for category pages.
 			 *
-			 * Category pages can have rich HTML content in a term description with 
+			 * Category pages can have rich HTML content in a term description with
 			 * article status.
-			 * For this to happen, WordPress' built-in partial HTML blocker needs to 
+			 * For this to happen, WordPress' built-in partial HTML blocker needs to
 			 * be disabled.
+			 *
 			 * @link https://docs.woocommerce.com/document/allow-html-in-term-category-tag-descriptions/
 			 *
 			 * @since  2.5.0
@@ -556,7 +557,6 @@ class Footnotes_Parser {
 
 			// Tooltip position, dimensions and timing.
 			if ( ! Footnotes_Public::$a_bool_alternative_tooltips_enabled && ! Footnotes_Public::$a_bool_amp_enabled ) {
-
 				/*
 				 * Dimensions of jQuery tooltips.
 				 *
@@ -748,7 +748,7 @@ class Footnotes_Parser {
 	 *
 	 * @since  1.5.0
 	 *
-	 * @param  string  $p_str_content  Title.
+	 * @param  string $p_str_content  Title.
 	 * @return  string  $p_str_content  Title with replaced footnotes.
 	 */
 	public function footnotes_in_title( $p_str_content ) {
@@ -761,7 +761,7 @@ class Footnotes_Parser {
 	 *
 	 * @since  1.5.0
 	 *
-	 * @param  string  $p_str_content  Page/Post content.
+	 * @param  string $p_str_content  Page/Post content.
 	 * @return  string  $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_content( $p_str_content ) {
@@ -809,7 +809,7 @@ class Footnotes_Parser {
 	 *
 	 * @since  1.5.0
 	 *
-	 * @param  string  $p_str_excerpt  Excerpt content.
+	 * @param  string $p_str_excerpt  Excerpt content.
 	 * @return  string  $p_str_excerpt  Processed or new excerpt.
 	 */
 	public function footnotes_in_excerpt( $p_str_excerpt ) {
@@ -830,12 +830,13 @@ class Footnotes_Parser {
 	 * Generates excerpt on the basis of the post.
 	 *
 	 * Applies full WordPress excerpt processing.
+	 *
 	 * @link https://developer.wordpress.org/reference/functions/wp_trim_excerpt/
 	 * @link https://developer.wordpress.org/reference/functions/wp_trim_words/
 	 *
 	 * @since  2.6.2
 	 *
-	 * @param  string  $p_str_content  The post.
+	 * @param  string $p_str_content  The post.
 	 * @return  string  $p_str_content  An excerpt of the post.
 	 */
 	public function generate_excerpt( $p_str_content ) {
@@ -873,13 +874,14 @@ class Footnotes_Parser {
 	 * Generates excerpt with footnotes on the basis of the post.
 	 *
 	 * Does not apply full WordPress excerpt processing.
+	 *
 	 * @see self::generate_excerpt()
 	 * Uses information and some code from Advanced Excerpt.
 	 * @link https://wordpress.org/plugins/advanced-excerpt/
 	 *
 	 * @since  2.6.3
 	 *
-	 * @param  string  $p_str_content  The post.
+	 * @param  string $p_str_content  The post.
 	 * @return  string  $p_str_content  An excerpt of the post.
 	 */
 	public function generate_excerpt_with_footnotes( $p_str_content ) {
@@ -980,7 +982,7 @@ class Footnotes_Parser {
 	 *
 	 * @since  1.5.0
 	 *
-	 * @param  string  $p_str_content  Widget content.
+	 * @param  string $p_str_content  Widget content.
 	 * @return  string  $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_widget_title( $p_str_content ) {
@@ -993,7 +995,7 @@ class Footnotes_Parser {
 	 *
 	 * @since  1.5.0
 	 *
-	 * @param  string  $p_str_content  Widget content.
+	 * @param  string $p_str_content  Widget content.
 	 * @return  string  $p_str_content  Content with replaced footnotes.
 	 */
 	public function footnotes_in_widget_text( $p_str_content ) {
@@ -1008,9 +1010,9 @@ class Footnotes_Parser {
 	 *
 	 * @since  1.5.0
 	 *
-	 * @param  string  $p_str_content  Any string that may contain footnotes to be replaced.
-	 * @param  bool  $p_bool_output_references  Appends the Reference Container to the output if set to true, default true.
-	 * @param  bool  $p_bool_hide_footnotes_text  Hide footnotes found in the string.
+	 * @param  string $p_str_content  Any string that may contain footnotes to be replaced.
+	 * @param  bool   $p_bool_output_references  Appends the Reference Container to the output if set to true, default true.
+	 * @param  bool   $p_bool_hide_footnotes_text  Hide footnotes found in the string.
 	 * @return  string
 	 */
 	public function exec( $p_str_content, $p_bool_output_references = false, $p_bool_hide_footnotes_text = false ) {
@@ -1021,7 +1023,7 @@ class Footnotes_Parser {
 		/*
 		 * Reference container customized positioning through shortcode.
 		 */
-		 
+
 		// Append the reference container or insert at shortcode.
 		$l_str_reference_container_position_shortcode = Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE );
 		if ( empty( $l_str_reference_container_position_shortcode ) ) {
@@ -1066,7 +1068,7 @@ class Footnotes_Parser {
 	 *
 	 * @since  2.1.14
 	 *
-	 * @param  string  $p_str_content  The footnote, including delimiters.
+	 * @param  string $p_str_content  The footnote, including delimiters.
 	 */
 	public function unify_delimiters( $p_str_content ) {
 
@@ -1132,7 +1134,7 @@ class Footnotes_Parser {
 	 * @todo  Refactor to parse DOM rather than using RegEx.
 	 *
 	 * @param  string $p_str_content  Any content to be parsed for footnotes.
-	 * @param  bool  $p_bool_hide_footnotes_text  Hide footnotes found in the string.
+	 * @param  bool   $p_bool_hide_footnotes_text  Hide footnotes found in the string.
 	 * @return  string
 	 */
 	public function search( $p_str_content, $p_bool_hide_footnotes_text ) {
@@ -1146,7 +1148,7 @@ class Footnotes_Parser {
 		 * If footnotes short codes are unbalanced, and syntax validation is not disabled,
 		 * prepend a warning to the content; displays de facto beneath the post title.
 		 */
-		 
+
 		// If enabled.
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
 
@@ -1207,7 +1209,7 @@ class Footnotes_Parser {
 		/*
 		 * Patch to allow footnotes in input field labels.
 		 *
-		 * When the HTML 'input' element 'value' attribute value is derived from 
+		 * When the HTML 'input' element 'value' attribute value is derived from
 		 * 'label', footnotes need to be removed in the value of 'value'.
 		 */
 		$l_str_value_regex = '#(<input [^>]+?value=["\'][^>]+?)' . self::$a_str_start_tag_regex . '[^>]+?' . self::$a_str_end_tag_regex . '#';
@@ -1461,16 +1463,7 @@ class Footnotes_Parser {
 
 						$l_str_excerpt_text .= '>';
 
-						/**
-						 * Configurable read-on button label.
-						 *
-						 * - Adding: Tooltips: Read-on button: Label: configurable instead of localizable, thanks to @rovanov example provision.
-						 *
-						 * @reporter @rovanov
-						 * @link https://wordpress.org/support/topic/offset-x-axis-and-offset-y-axis-does-not-working/
-						 *
-						 * @since  2.1.0
-						 */
+						// Configurable read-on button label.
 						$l_str_excerpt_text .= Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_FOOTNOTES_TOOLTIP_READON_LABEL );
 
 						$l_str_excerpt_text .= self::$a_bool_hard_links_enabled ? '</a>' : '</span>';
@@ -1505,7 +1498,7 @@ class Footnotes_Parser {
 					$l_str_footnote_link_argument .= $l_int_index;
 					$l_str_footnote_link_argument .= '" class="footnote_hard_link"';
 
-					/**
+					/*
 					 * Compose fragment ID anchor with offset, for use in reference container.
 					 * Empty span, child of empty span, to avoid tall dotted rectangles in browser.
 					 */
@@ -1516,7 +1509,6 @@ class Footnotes_Parser {
 					$l_str_referrer_anchor_element .= '" class="footnote_referrer_anchor"></span></span>';
 
 				} else {
-
 					/*
 					 * Initialize hard link variables when hard links are disabled.
 					 *
@@ -1538,6 +1530,7 @@ class Footnotes_Parser {
 				// Determine tooltip content.
 				if ( Footnotes_Public::$a_bool_tooltips_enabled ) {
 					$l_str_tooltip_content = $l_bool_has_tooltip_text ? $l_str_tooltip_text : $l_str_excerpt_text;
+
 					/*
 					 * Ensures paragraph separation
 					 *
@@ -1670,7 +1663,7 @@ class Footnotes_Parser {
 		/*
 		 * Footnote index backlink symbol.
 		 */
-		 
+
 		// If the backlink symbol is enabled.
 		if ( Footnotes_Convert::to_bool( Footnotes_Settings::instance()->get( Footnotes_Settings::C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE ) ) ) {
 
@@ -1878,7 +1871,6 @@ class Footnotes_Parser {
 			$l_str_hard_link_address = '';
 
 			if ( self::$a_bool_hard_links_enabled ) {
-
 				/*
 				 * Use-Backbutton-Hint tooltip, optional and configurable.
 				 *
@@ -1931,7 +1923,7 @@ class Footnotes_Parser {
 			 *
 			 * @since  2.1.1
 			 */
-			 
+
 			// Set a flag to check for the combined status of a footnote item.
 			$l_bool_flag_combined = false;
 
@@ -1960,7 +1952,7 @@ class Footnotes_Parser {
 				/*
 				 * The click event goes in the table cell if footnote remains single.
 				 */
-				 
+
 				$l_str_backlink_event = ' onclick="footnote_moveToAnchor_';
 
 				$l_str_backlink_event .= self::$a_int_post_id;

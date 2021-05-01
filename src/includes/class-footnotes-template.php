@@ -2,22 +2,21 @@
 /**
  * File providing the `Footnotes_Template` class.
  *
- *
  * @package  footnotes
  * @subpackage  includes
  *
  * @since  1.5.0
  * @since  2.2.6  Add support for custom templates in sibling folder.
  * @since  2.8.0  Rename file from `templates.php` to `class-footnotes-templates.php`,
- *								rename `class/` sub-directory to `includes/`.
+ *                              rename `class/` sub-directory to `includes/`.
  */
 
 /**
  * Class defining template rendering.
  *
- * Loads a template file, replaces all Placeholders and returns the replaced 
+ * Loads a template file, replaces all Placeholders and returns the replaced
  * file content.
- 
+
  * @package  footnotes
  * @subpackage  includes
  *
@@ -74,9 +73,9 @@ class Footnotes_Template {
 	/**
 	 * Class Constructor. Reads and loads the template file without replace any placeholder.
 	 *
-	 * @param  string  $p_str_file_type  Template file type.
-	 * @param  string  $p_str_file_name  Template file name inside the `partials/` directory, without the file extension.
-	 * @param  string  $p_str_extension  (optional) Template file extension (default: 'html').
+	 * @param  string $p_str_file_type  Template file type.
+	 * @param  string $p_str_file_name  Template file name inside the `partials/` directory, without the file extension.
+	 * @param  string $p_str_extension  (optional) Template file extension (default: 'html').
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor templating.
@@ -86,9 +85,9 @@ class Footnotes_Template {
 		if ( empty( $p_str_file_type ) || empty( $p_str_file_name ) ) {
 			return;
 		}
-		
+
 		$this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
-		
+
 		$template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension );
 		if ( $template ) {
 			$this->process_template( $template );
@@ -101,7 +100,7 @@ class Footnotes_Template {
 	/**
 	 * Replace all placeholders specified in array.
 	 *
-	 * @param  array  $p_arr_placeholders  Placeholders (key = placeholder, value = value).
+	 * @param  array $p_arr_placeholders  Placeholders (key = placeholder, value = value).
 	 * @return  bool  `true` on Success, `false` if placeholders invalid.
 	 *
 	 * @since  1.5.0
@@ -149,7 +148,7 @@ class Footnotes_Template {
 	/**
 	 * Process template file.
 	 *
-	 * @param  string  $template  The template to be processed.
+	 * @param  string $template  The template to be processed.
 	 * @return  void
 	 *
 	 * @since  2.4.0d3
@@ -171,9 +170,9 @@ class Footnotes_Template {
 	/**
 	 * Get the template.
 	 *
-	 * @param  string  $p_str_file_type  The file type of the template.
-	 * @param  string  $p_str_file_name  The file name of the template.
-	 * @param  string  $p_str_extension  The file extension of the template.
+	 * @param  string $p_str_file_type  The file type of the template.
+	 * @param  string $p_str_file_name  The file name of the template.
+	 * @param  string $p_str_extension  The file extension of the template.
 	 * @return  mixed  `false` or the template path
 	 *
 	 * @since 2.5.0

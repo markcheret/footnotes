@@ -7,7 +7,7 @@
  *
  * @since  1.5.0
  * @since  2.8.0  Rename file from `config.php` to `class-footnotes-config.php`,
- *								rename `class/` sub-directory to `includes/`.
+ *                              rename `class/` sub-directory to `includes/`.
  * @todo  Remove.
  * @deprecated
  */
@@ -32,7 +32,7 @@ class Footnotes_Config {
 	 *
 	 * @since  1.5.0
 	 * @todo  Remove.
- 	 * @deprecated
+	 * @deprecated
 	 */
 	const C_STR_PLUGIN_PUBLIC_NAME = '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
 
@@ -49,7 +49,7 @@ class Footnotes_Config {
 	 *
 	 * @since  2.0.4
 	 * @todo  Remove.
- 	 * @deprecated
+	 * @deprecated
 	 */
 	const C_STR_PLUGIN_HEADING_NAME = '<span class="footnotes_logo_heading footnotes_logo_part1_heading">foot</span><span class="footnotes_logo_heading footnotes_logo_part2_heading">notes</span>';
 
@@ -60,7 +60,7 @@ class Footnotes_Config {
 	 *
 	 * @since  1.5.0
 	 * @todo  Remove.
- 	 * @deprecated
+	 * @deprecated
 	 */
 	const C_STR_LOVE_SYMBOL = '<span style="color:#ff6d3b; font-weight:bold;">&hearts;</span>';
 
@@ -71,7 +71,7 @@ class Footnotes_Config {
 	 *
 	 * @since  2.0.4
 	 * @todo  Remove.
- 	 * @deprecated
+	 * @deprecated
 	 */
 	const C_STR_LOVE_SYMBOL_HEADING = '<span class="footnotes_heart_heading">&hearts;</span>';
 
@@ -82,7 +82,7 @@ class Footnotes_Config {
 	 *
 	 * @since  1.5.0
 	 * @todo  Remove.
- 	 * @deprecated
+	 * @deprecated
 	 */
 	const C_STR_NO_LOVE_SLUG = '[[no footnotes: love]]';
 }

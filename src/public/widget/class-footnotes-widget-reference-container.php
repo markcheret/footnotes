@@ -37,7 +37,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	 *
 	 * @since  2.8.0
 	 *
-	 * @param  string  $plugin_name  The name of this plugin.
+	 * @param  string $plugin_name  The name of this plugin.
 	 */
 	public function __construct( $plugin_name ) {
 		parent::__construct();
@@ -86,7 +86,7 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	 * @link  https://developer.wordpress.org/reference/classes/wp_widget/form/ `WP_Widget::form()`
 	 * @since  1.5.0
 	 *
-	 * @param  mixed  $instance  The instance of the widget.
+	 * @param  mixed $instance  The instance of the widget.
 	 */
 	public function form( $instance ) {
 		echo __( 'The widget defines the position of the reference container if set to &ldquo;widget area&rdquo;.', 'footnotes' );
@@ -98,8 +98,8 @@ class Footnotes_Widget_Reference_Container extends Footnotes_Widget_Base {
 	 * @link  https://developer.wordpress.org/reference/classes/wp_widget/widget/ `WP_Widget::widget()`
 	 * @since  1.5.0
 	 *
-	 * @param  mixed  $args  The widget's arguments.
-	 * @param  mixed  $instance  The instance of the widget.
+	 * @param  mixed $args  The widget's arguments.
+	 * @param  mixed $instance  The instance of the widget.
 	 */
 	public function widget( $args, $instance ) {
 		global $footnotes;

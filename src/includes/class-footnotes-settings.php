@@ -7,7 +7,7 @@
  *
  * @since  1.5.0
  * @since  2.8.0  Rename file from `settings.php` to `class-footnotes-settings.php`,
- *								rename `class/` sub-directory to `includes/`.
+ *                              rename `class/` sub-directory to `includes/`.
  */
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-footnotes-convert.php';
@@ -138,8 +138,8 @@ class Footnotes_Settings {
 	/**
 	 * Settings container key for the string before the footnote referrer.
 	 *
-	 * The default footnote referrer surroundings should be square brackets, as 
-	 * in English or US American typesetting, for better UX thanks to a more 
+	 * The default footnote referrer surroundings should be square brackets, as
+	 * in English or US American typesetting, for better UX thanks to a more
 	 * button-like appearance, as well as for stylistic consistency with the
 	 * expand-collapse button.
 	 *
@@ -191,14 +191,14 @@ class Footnotes_Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.4
-	 * @todo  The mouse-over content truncation should be enabled by default to raise 
-	 * 				awareness of the functionality, prevent the screen from being filled on
-	 * 				mouse-over, and allow the use of ‘Continue Reading’ functionality.
+	 * @todo  The mouse-over content truncation should be enabled by default to raise
+	 *              awareness of the functionality, prevent the screen from being filled on
+	 *              mouse-over, and allow the use of ‘Continue Reading’ functionality.
 	 */
 	const C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = 'footnote_inputfield_custom_mouse_over_box_excerpt_enabled';
 
 	/**
-	 * Settings container key for the mouse-over box to define the max. length of 
+	 * Settings container key for the mouse-over box to define the max. length of
 	 * the enabled excerpt.
 	 *
 	 * The default truncation length is 200 chars.
@@ -215,17 +215,17 @@ class Footnotes_Settings {
 	 * These are checkboxes; the keyword `checked` is converted to `true`, whilst
 	 * an empty string (the default) is converted to `false`.
 	 *
-	 * Hooks should all be enabled by default to prevent users from thinking at 
-	 * first that the feature is broken in post titles (see {@link 
+	 * Hooks should all be enabled by default to prevent users from thinking at
+	 * first that the feature is broken in post titles (see {@link
 	 * https://wordpress.org/support/topic/more-feature-ideas/ here} for more
 	 * information).
 	 *
 	 * @var  string
 	 *
 	 * @since  1.5.5
-	 * @todo  In titles, footnotes are still buggy, because WordPress uses the 
-	 * 				title string in menus and in the title element, but Footnotes doesn't 
-	 * 				delete footnotes in them.
+	 * @todo  In titles, footnotes are still buggy, because WordPress uses the
+	 *              title string in menus and in the title element, but Footnotes doesn't
+	 *              delete footnotes in them.
 	 */
 	const C_STR_EXPERT_LOOKUP_THE_TITLE = 'footnote_inputfield_expert_lookup_the_title';
 
@@ -302,7 +302,7 @@ class Footnotes_Settings {
 	/**
 	 * Settings container key for the mouse-over box to define the background color.
 	 *
-	 * Theme default background color is best, but theme default background color 
+	 * Theme default background color is best, but theme default background color
 	 * doesn't seem to exist.
 	 *
 	 * The default is currently `#ffffff` with `#000000` as the text color.
@@ -380,7 +380,7 @@ class Footnotes_Settings {
 	/**
 	 * Settings container key for the mouse-over box to define the _y_-offset.
 	 *
-	 * The vertical offset must be negative for the box not to cover the current 
+	 * The vertical offset must be negative for the box not to cover the current
 	 * line of text.
 	 *
 	 * @var  int
@@ -474,7 +474,7 @@ class Footnotes_Settings {
 	 * that contain the strings ‘((’ and ‘))’ (i.e., the default footnote
 	 * start and end shortcodes), which causes issues with fake footnotes.
 	 *
-	 * Setting `the_content` priority to 10 instead of `PHP_INT_MAX` makes the 
+	 * Setting `the_content` priority to 10 instead of `PHP_INT_MAX` makes the
 	 * footnotes reference container display beneath the post and above other
 	 * features added by other plugins, e.g. related post lists and social buttons.
 	 *
@@ -482,9 +482,9 @@ class Footnotes_Settings {
 	 * YARPP} plugin to display related posts below the Footnotes reference container,
 	 * priority needs to be at least 1,200.
 	 *
-	 * `PHP_INT_MAX` cannot be reset by leaving the number box empty, because 
+	 * `PHP_INT_MAX` cannot be reset by leaving the number box empty, because
 	 * WebKit browsers don't allow it, so we must resort to -1.
-	 * 
+	 *
 	 * @var  int
 	 *
 	 * @since  2.0.5
@@ -539,7 +539,7 @@ class Footnotes_Settings {
 	/**
 	 * Settings container key to enable the presence of a backlink separator.
 	 *
-	 * Backlink separators and terminators are often not preferred, but a choice 
+	 * Backlink separators and terminators are often not preferred, but a choice
 	 * should be provided along with the ability to customize.
 	 *
 	 * @var  string
@@ -690,7 +690,7 @@ class Footnotes_Settings {
 
 	/**
 	 * Settings container key for basic responsive page layout support options.
-	 * 
+	 *
 	 * Whether to concatenate an additional stylesheet.
 	 *
 	 * @var  string
@@ -756,7 +756,7 @@ class Footnotes_Settings {
 	/**
 	 * Settings container key for URL wrap option.
 	 *
-	 * This is made optional because it causes weird line breaks. Unicode-compliant 
+	 * This is made optional because it causes weird line breaks. Unicode-compliant
 	 * browsers break URLs at slashes.
 	 *
 	 * @var  string
@@ -787,14 +787,14 @@ class Footnotes_Settings {
 	 * Settings container key to enable display of legacy Custom CSS metaboxes.
 	 *
 	 * This must be `false` if its setting is contained in the container to be hidden
-	 * because when saving, all missing constants are emptied, and {@see 
-	   Footnotes_Convert::to_bool()} converts empty to `false`.
+	 * because when saving, all missing constants are emptied, and {@see
+	 * Footnotes_Convert::to_bool()} converts empty to `false`.
 	 *
 	 * @var  string
 	 *
 	 * @since  2.2.2
-	 * @since  2.3.0  Swap migration Boolean, meaning ‘show legacy’ instead of 
-	 *								‘migration complete’, due to storage data structure constraints.
+	 * @since  2.3.0  Swap migration Boolean, meaning ‘show legacy’ instead of
+	 *                              ‘migration complete’, due to storage data structure constraints.
 	 */
 	const C_STR_CUSTOM_CSS_LEGACY_ENABLE = 'footnote_inputfield_custom_css_legacy_enable';
 
@@ -806,7 +806,6 @@ class Footnotes_Settings {
 	 * @var  string
 	 *
 	 * @since  2.2.5
-	 *
 	 */
 	const C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION = 'footnotes_inputfield_alternative_mouse_over_box_position';
 
@@ -905,7 +904,7 @@ class Footnotes_Settings {
 
 	/**
 	 * Settings container key for the fragment ID slug in footnotes.
-	 
+
 	 * @var  string
 	 *
 	 * @since  2.3.0
@@ -933,9 +932,9 @@ class Footnotes_Settings {
 	/**
 	 * Settings container key to enable backlink tooltips.
 	 *
-	 * When hard links are enabled, clicks on the backlinks are logged in the 
+	 * When hard links are enabled, clicks on the backlinks are logged in the
 	 * browsing history, along with clicks on the referrers.
-	 * This tooltip hints to use the backbutton instead, so the history gets 
+	 * This tooltip hints to use the backbutton instead, so the history gets
 	 * streamlined again.
 	 * See {@link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
 	 * here} for more information.
@@ -961,9 +960,9 @@ class Footnotes_Settings {
 	 * The first implementation used a fixed shortcode provided in the changelog,
 	 * but footnotes should have freely-configurable shortcodes.
 	 *
-	 * Tooltips can display another content than the footnote entry in the 
-	 * reference container. The trigger is a shortcode in the footnote text 
-	 * separating the tooltip text from the note. That is consistent with what 
+	 * Tooltips can display another content than the footnote entry in the
+	 * reference container. The trigger is a shortcode in the footnote text
+	 * separating the tooltip text from the note. That is consistent with what
 	 * WordPress does for excerpts.
 	 *
 	 * @var  string
@@ -973,11 +972,11 @@ class Footnotes_Settings {
 	const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER = 'footnotes_inputfield_tooltip_excerpt_delimiter';
 
 	/**
-	 * Settings container key to enable mirroring the tooltip excerpt in the 
+	 * Settings container key to enable mirroring the tooltip excerpt in the
 	 * reference container.
 	 *
 	 * Tooltips, even jQuery-driven, may be hard to consult on mobiles.
-	 * This option allows users to read the tooltip content in the reference 
+	 * This option allows users to read the tooltip content in the reference
 	 * container too. See {@link https://wordpress.org/support/topic/change-tooltip-text/#post-13935050
 	 * here} for more information, and {@link https://wordpress.org/support/topic/change-tooltip-text/#post-13935488
 	 * here} for why this must not be the default behavior.
@@ -989,7 +988,7 @@ class Footnotes_Settings {
 	const C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE = 'footnotes_inputfield_tooltip_excerpt_mirror_enable';
 
 	/**
-	 * Settings container key to configure the tooltip excerpt separator in the 
+	 * Settings container key to configure the tooltip excerpt separator in the
 	 * reference container.
 	 *
 	 * @var  string
@@ -1135,7 +1134,7 @@ class Footnotes_Settings {
 	 *
 	 * @since  1.5.0
 	 * @todo  Review. Why are the constants just initialised with these values?
-	 *				At the very least, we should stop using ‘yes’ to mean `true` etc.
+	 *              At the very least, we should stop using ‘yes’ to mean `true` etc.
 	 */
 	private $a_arr_default = array(
 
@@ -1357,7 +1356,7 @@ class Footnotes_Settings {
 	/**
 	 * Returns the name of a specified Settings Container.
 	 *
-	 * @param  int  $p_int_index  Settings Container index.
+	 * @param  int $p_int_index  Settings Container index.
 	 * @return  str  Settings Container name.
 	 *
 	 * @since  1.5.0
@@ -1369,7 +1368,7 @@ class Footnotes_Settings {
 	/**
 	 * Returns the default value(s) of a specific Settings Container.
 	 *
-	 * @param  int  $p_int_index  Settings Container index.
+	 * @param  int $p_int_index  Settings Container index.
 	 * @return  (string|int)[]  Settings Container default value(s).
 	 *
 	 * @since  1.5.6
@@ -1396,7 +1395,7 @@ class Footnotes_Settings {
 	/**
 	 * Loads all settings from specified Settings Containers.
 	 *
-	 * @param  int  $p_int_index  Settings container index.
+	 * @param  int $p_int_index  Settings container index.
 	 * @return  (string|int)[]  Loaded settings (or defaults if specified container is empty).
 	 *
 	 * @since  1.5.0
@@ -1426,8 +1425,8 @@ class Footnotes_Settings {
 	/**
 	 * Updates a whole Setting Container on save.
 	 *
-	 * @param  int    $p_int_index  Index of the Setting Container.
-	 * @param  array  $p_arr_new_values  The new Settings value(s).
+	 * @param  int   $p_int_index  Index of the Setting Container.
+	 * @param  array $p_arr_new_values  The new Settings value(s).
 	 * @return  bool
 	 *
 	 * @since  1.5.0
@@ -1443,7 +1442,7 @@ class Footnotes_Settings {
 	/**
 	 * Returns the value of specified Setting.
 	 *
-	 * @param  string  $p_str_key  Setting key.
+	 * @param  string $p_str_key  Setting key.
 	 * @return  string|int|null  Setting value, or `null` if setting key is invalid.
 	 *
 	 * @since  1.5.0

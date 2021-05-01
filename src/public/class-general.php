@@ -7,6 +7,7 @@
  */
 
 namespace footnotes\general;
+
 use footnotes\includes as Includes;
 
 /**

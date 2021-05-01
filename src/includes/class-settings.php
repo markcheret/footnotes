@@ -23,7 +23,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-convert.ph
  * @package footnotes
  * @since 1.5.0
  * @since 2.8.0 Renamed class from `Footnotes_Settings` to `Settings`.
- * 							Moved under `footnotes\includes` namespace.
+ *                          Moved under `footnotes\includes` namespace.
  */
 class Settings {
 	/**

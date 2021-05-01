@@ -14,6 +14,7 @@
  */
 
 namespace footnotes\admin\layout;
+
 use footnotes\includes as Includes;
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-init.php';

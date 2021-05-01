@@ -11,6 +11,7 @@
  */
 
 namespace footnotes\general\Widget;
+
 use footnotes\includes as Includes;
 
 /**

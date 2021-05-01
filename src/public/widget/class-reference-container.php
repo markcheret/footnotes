@@ -11,6 +11,7 @@
  */
 
 namespace footnotes\general\Widget;
+
 use footnotes\includes as Includes;
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-base.php';

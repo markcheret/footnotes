@@ -8,8 +8,9 @@
  * @since 2.8.0 Rename file from `task.php` to `class-footnotes-parser.php`,
  *                              move from `class/` sub-directory to `public/`.
  */
- 
+
 namespace footnotes\general;
+
 use footnotes\includes as Includes;
 
 /**

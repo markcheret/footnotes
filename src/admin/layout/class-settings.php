@@ -14,6 +14,7 @@
  */
 
 namespace footnotes\admin\layout;
+
 use footnotes\includes as Includes;
 
 /**

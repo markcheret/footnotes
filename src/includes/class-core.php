@@ -1,13 +1,13 @@
-<?php // phpcs:disable PEAR.Commenting.FileComment.Missing
+<?php
 /**
- * footnotes\includes: Core class
+ * Includes: Core class
  *
  * `footnotes\includes` consists of functionality that is shared across both
  * the admin- and the public-facing sides of the plugin.
  *
  * The primary entry point is {@see Footnotes}, which uses {@see Loader}
- * to initialise {@see i18n} for internationalization, {@see Admin\Admin} for 
- * admin-specific functionality and {@see General\General} for public-facing 
+ * to initialise {@see i18n} for internationalization, {@see Admin\Admin} for
+ * admin-specific functionality and {@see General\General} for public-facing
  * functionality.
  *
  * It also includes various utility classes:
@@ -41,7 +41,7 @@ use footnotes\admin as Admin;
  * @package footnotes
  * @since 1.5.0
  * @since 2.8.0 Renamed class from `Footnotes` to `Core`.
- * 							Moved under `footnotes\includes` namespace.
+ *                          Moved under `footnotes\includes` namespace.
  */
 class Core {
 	/**

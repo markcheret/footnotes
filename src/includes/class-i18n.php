@@ -1,4 +1,4 @@
-<?php // phpcs:disable PEAR.NamingConventions.ValidClassName.Invalid
+<?php // phpcs:disable PEAR.NamingConventions.ValidClassName.StartWithCapital
 /**
  * File providing core `i18n` class.
  *

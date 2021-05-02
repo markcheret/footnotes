@@ -1,1639 +1,1654 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\activate_footnotes\u0028\u0029",
-            "name": "activate_footnotes",
-            "summary": "The\u0020code\u0020that\u0020runs\u0020during\u0020plugin\u0020activation.",
-            "url": "namespaces/default.html#function_activate_footnotes"
+            "fqsen": "\\footnotes\\admin\\Admin",
+            "name": "Admin",
+            "summary": "Class\u0020provide\u0020all\u0020admin\u002Dspecific\u0020functionality\u0020of\u0020the\u0020plugin.",
+            "url": "classes/footnotes-admin-Admin.html"
         },                {
-            "fqsen": "\\deactivate_plugin_name\u0028\u0029",
-            "name": "deactivate_plugin_name",
-            "summary": "The\u0020code\u0020that\u0020runs\u0020during\u0020plugin\u0020deactivation.",
-            "url": "namespaces/default.html#function_deactivate_plugin_name"
-        },                {
-            "fqsen": "\\run_footnotes\u0028\u0029",
-            "name": "run_footnotes",
-            "summary": "Begins\u0020execution\u0020of\u0020the\u0020plugin.",
-            "url": "namespaces/default.html#function_run_footnotes"
-        },                {
-            "fqsen": "\\Footnotes_Activator",
-            "name": "Footnotes_Activator",
-            "summary": "Fired\u0020during\u0020plugin\u0020activation.",
-            "url": "classes/Footnotes-Activator.html"
-        },                {
-            "fqsen": "\\Footnotes_Activator\u003A\u003Aactivate\u0028\u0029",
-            "name": "activate",
-            "summary": "Runs\u0020when\u0020the\u0020Plugin\u0020is\u0020deactivated.",
-            "url": "classes/Footnotes-Activator.html#method_activate"
-        },                {
-            "fqsen": "\\Footnotes_Deactivator",
-            "name": "Footnotes_Deactivator",
-            "summary": "Fired\u0020during\u0020plugin\u0020deactivation.",
-            "url": "classes/Footnotes-Deactivator.html"
-        },                {
-            "fqsen": "\\Footnotes_Deactivator\u003A\u003Adeactivate\u0028\u0029",
-            "name": "deactivate",
-            "summary": "Runs\u0020when\u0020the\u0020Plugin\u0020is\u0020deactivated.",
-            "url": "classes/Footnotes-Deactivator.html#method_deactivate"
-        },                {
-            "fqsen": "\\Footnotes",
-            "name": "Footnotes",
-            "summary": "The\u0020core\u0020plugin\u0020class.",
-            "url": "classes/Footnotes.html"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Define\u0020the\u0020core\u0020functionality\u0020of\u0020the\u0020plugin.",
-            "url": "classes/Footnotes.html#method___construct"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Aload_dependencies\u0028\u0029",
-            "name": "load_dependencies",
-            "summary": "Load\u0020the\u0020required\u0020dependencies\u0020for\u0020this\u0020plugin.",
-            "url": "classes/Footnotes.html#method_load_dependencies"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Aset_locale\u0028\u0029",
-            "name": "set_locale",
-            "summary": "Define\u0020the\u0020locale\u0020for\u0020this\u0020plugin\u0020for\u0020internationalization.",
-            "url": "classes/Footnotes.html#method_set_locale"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Adefine_admin_hooks\u0028\u0029",
-            "name": "define_admin_hooks",
-            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020admin\u0020area\u0020functionality\nof\u0020the\u0020plugin.",
-            "url": "classes/Footnotes.html#method_define_admin_hooks"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Adefine_public_hooks\u0028\u0029",
-            "name": "define_public_hooks",
-            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020public\u002Dfacing\u0020functionality\nof\u0020the\u0020plugin.",
-            "url": "classes/Footnotes.html#method_define_public_hooks"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Arun\u0028\u0029",
-            "name": "run",
-            "summary": "Run\u0020the\u0020loader\u0020to\u0020execute\u0020all\u0020of\u0020the\u0020hooks\u0020with\u0020WordPress.",
-            "url": "classes/Footnotes.html#method_run"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Aget_plugin_name\u0028\u0029",
-            "name": "get_plugin_name",
-            "summary": "The\u0020name\u0020of\u0020the\u0020plugin\u0020used\u0020to\u0020uniquely\u0020identify\u0020it\u0020within\u0020the\u0020context\u0020of\nWordPress\u0020and\u0020to\u0020define\u0020internationalization\u0020functionality.",
-            "url": "classes/Footnotes.html#method_get_plugin_name"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Aget_loader\u0028\u0029",
-            "name": "get_loader",
-            "summary": "The\u0020reference\u0020to\u0020the\u0020class\u0020that\u0020orchestrates\u0020the\u0020hooks\u0020with\u0020the\u0020plugin.",
-            "url": "classes/Footnotes.html#method_get_loader"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003Aget_version\u0028\u0029",
-            "name": "get_version",
-            "summary": "Retrieve\u0020the\u0020version\u0020number\u0020of\u0020the\u0020plugin.",
-            "url": "classes/Footnotes.html#method_get_version"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003A\u0024loader",
-            "name": "loader",
-            "summary": "The\u0020loader\u0020that\u0027s\u0020responsible\u0020for\u0020maintaining\u0020and\u0020registering\u0020all\u0020hooks\u0020that\u0020power\nthe\u0020plugin.",
-            "url": "classes/Footnotes.html#property_loader"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003A\u0024plugin_name",
-            "name": "plugin_name",
-            "summary": "The\u0020unique\u0020identifier\u0020of\u0020this\u0020plugin",
-            "url": "classes/Footnotes.html#property_plugin_name"
-        },                {
-            "fqsen": "\\Footnotes\u003A\u003A\u0024version",
-            "name": "version",
-            "summary": "The\u0020current\u0020version\u0020of\u0020the\u0020plugin.",
-            "url": "classes/Footnotes.html#property_version"
-        },                {
-            "fqsen": "\\Footnotes_Admin",
-            "name": "Footnotes_Admin",
-            "summary": "The\u0020admin\u002Dspecific\u0020functionality\u0020of\u0020the\u0020plugin.",
-            "url": "classes/Footnotes-Admin.html"
-        },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
-            "url": "classes/Footnotes-Admin.html#method___construct"
+            "url": "classes/footnotes-admin-Admin.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003Aload_dependencies\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003Aload_dependencies\u0028\u0029",
             "name": "load_dependencies",
             "summary": "Load\u0020the\u0020required\u0020admin\u002Dspecific\u0020dependencies.",
-            "url": "classes/Footnotes-Admin.html#method_load_dependencies"
+            "url": "classes/footnotes-admin-Admin.html#method_load_dependencies"
         },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003Aenqueue_styles\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003Aenqueue_styles\u0028\u0029",
             "name": "enqueue_styles",
             "summary": "Register\u0020the\u0020stylesheets\u0020for\u0020the\u0020admin\u0020area.",
-            "url": "classes/Footnotes-Admin.html#method_enqueue_styles"
+            "url": "classes/footnotes-admin-Admin.html#method_enqueue_styles"
         },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003Aenqueue_scripts\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003Aenqueue_scripts\u0028\u0029",
             "name": "enqueue_scripts",
             "summary": "Register\u0020the\u0020JavaScript\u0020for\u0020the\u0020admin\u0020area.",
-            "url": "classes/Footnotes-Admin.html#method_enqueue_scripts"
+            "url": "classes/footnotes-admin-Admin.html#method_enqueue_scripts"
         },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003Afootnotes_action_links\u0028\u0029",
-            "name": "footnotes_action_links",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003Aaction_links\u0028\u0029",
+            "name": "action_links",
             "summary": "Appends\u0020the\u0020Plugin\u0020links\u0020for\u0020display\u0020in\u0020the\u0020dashboard\u0020Plugins\u0020page.",
-            "url": "classes/Footnotes-Admin.html#method_footnotes_action_links"
+            "url": "classes/footnotes-admin-Admin.html#method_action_links"
         },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003A\u0024plugin_name",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Admin.html#property_plugin_name"
+            "url": "classes/footnotes-admin-Admin.html#property_plugin_name"
         },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003A\u0024version",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003A\u0024version",
             "name": "version",
             "summary": "The\u0020version\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Admin.html#property_version"
+            "url": "classes/footnotes-admin-Admin.html#property_version"
         },                {
-            "fqsen": "\\Footnotes_Admin\u003A\u003A\u0024wysiwyg",
+            "fqsen": "\\footnotes\\admin\\Admin\u003A\u003A\u0024wysiwyg",
             "name": "wysiwyg",
             "summary": "The\u0020WYSIWYG\u0020editor\u0020integration\u0020object.",
-            "url": "classes/Footnotes-Admin.html#property_wysiwyg"
+            "url": "classes/footnotes-admin-Admin.html#property_wysiwyg"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG",
-            "name": "Footnotes_WYSIWYG",
-            "summary": "Handles\u0020the\u0020WSYIWYG\u002DButtons.",
-            "url": "classes/Footnotes-WYSIWYG.html"
+            "fqsen": "\\footnotes\\admin\\WYSIWYG",
+            "name": "WYSIWYG",
+            "summary": "Class\u0020providing\u0020WYSIWYG\u0020editor\u0020intergration\u0020for\u0020the\u0020plugin.",
+            "url": "classes/footnotes-admin-WYSIWYG.html"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\WYSIWYG\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
-            "url": "classes/Footnotes-WYSIWYG.html#method___construct"
+            "url": "classes/footnotes-admin-WYSIWYG.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003Anew_visual_editor_button\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\WYSIWYG\u003A\u003Anew_visual_editor_button\u0028\u0029",
             "name": "new_visual_editor_button",
             "summary": "Append\u0020a\u0020new\u0020Button\u0020to\u0020the\u0020WYSIWYG\u0020editor\u0020of\u0020Posts\u0020and\u0020Pages.",
-            "url": "classes/Footnotes-WYSIWYG.html#method_new_visual_editor_button"
+            "url": "classes/footnotes-admin-WYSIWYG.html#method_new_visual_editor_button"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003Anew_plain_text_editor_button\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\WYSIWYG\u003A\u003Anew_plain_text_editor_button\u0028\u0029",
             "name": "new_plain_text_editor_button",
             "summary": "Add\u0020a\u0020new\u0020button\u0020to\u0020the\u0020plain\u0020text\u0020editor.",
-            "url": "classes/Footnotes-WYSIWYG.html#method_new_plain_text_editor_button"
+            "url": "classes/footnotes-admin-WYSIWYG.html#method_new_plain_text_editor_button"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003Ainclude_scripts\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\WYSIWYG\u003A\u003Ainclude_scripts\u0028\u0029",
             "name": "include_scripts",
             "summary": "Includes\u0020the\u0020Plugins\u0020WYSIWYG\u0020editor\u0020script.",
-            "url": "classes/Footnotes-WYSIWYG.html#method_include_scripts"
+            "url": "classes/footnotes-admin-WYSIWYG.html#method_include_scripts"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003Aajax_callback\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\WYSIWYG\u003A\u003Aajax_callback\u0028\u0029",
             "name": "ajax_callback",
             "summary": "AJAX\u0020Callback\u0020function\u0020when\u0020the\u0020Footnotes\u0020Button\u0020is\u0020clicked.\u0020Either\u0020in\u0020the\u0020Plain\u0020text\u0020or\u0020Visual\u0020editor.",
-            "url": "classes/Footnotes-WYSIWYG.html#method_ajax_callback"
+            "url": "classes/footnotes-admin-WYSIWYG.html#method_ajax_callback"
         },                {
-            "fqsen": "\\Footnotes_WYSIWYG\u003A\u003A\u0024plugin_name",
+            "fqsen": "\\footnotes\\admin\\WYSIWYG\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-WYSIWYG.html#property_plugin_name"
+            "url": "classes/footnotes-admin-WYSIWYG.html#property_plugin_name"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine",
-            "name": "Footnotes_Layout_Engine",
-            "summary": "Layout\u0020Engine\u0020for\u0020the\u0020administration\u0020dashboard.",
-            "url": "classes/Footnotes-Layout-Engine.html"
+            "fqsen": "\\footnotes\\admin\\layout\\Engine",
+            "name": "Engine",
+            "summary": "Class\u0020to\u0020be\u0020extended\u0020by\u0020page\u0020layout\u0020sub\u002Dclasses.",
+            "url": "classes/footnotes-admin-layout-Engine.html"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aget_priority\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aget_priority\u0028\u0029",
             "name": "get_priority",
-            "summary": "Returns\u0020a\u0020Priority\u0020index.\u0020Lower\u0020numbers\u0020have\u0020a\u0020higher\u0020Priority.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_get_priority"
+            "summary": "Returns\u0020a\u0020Priority\u0020index.\u0020Lower\u0020numbers\u0020have\u0020a\u0020higher\u0020priority.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_get_priority"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aget_sub_page_slug\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aget_sub_page_slug\u0028\u0029",
             "name": "get_sub_page_slug",
-            "summary": "Returns\u0020the\u0020unique\u0020slug\u0020of\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_get_sub_page_slug"
+            "summary": "Returns\u0020the\u0020unique\u0020slug\u0020of\u0020the\u0020child\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_get_sub_page_slug"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aget_sub_page_title\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aget_sub_page_title\u0028\u0029",
             "name": "get_sub_page_title",
-            "summary": "Returns\u0020the\u0020title\u0020of\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_get_sub_page_title"
+            "summary": "Returns\u0020the\u0020title\u0020of\u0020the\u0020child\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_get_sub_page_title"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aget_sections\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aget_sections\u0028\u0029",
             "name": "get_sections",
-            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020sections\u0020for\u0020a\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_get_sections"
+            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020sections\u0020for\u0020a\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_get_sections"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aget_meta_boxes\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aget_meta_boxes\u0028\u0029",
             "name": "get_meta_boxes",
             "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020meta\u0020boxes.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_get_meta_boxes"
+            "url": "classes/footnotes-admin-layout-Engine.html#method_get_meta_boxes"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_section\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_section\u0028\u0029",
             "name": "add_section",
-            "summary": "Returns\u0020an\u0020array\u0020describing\u0020a\u0020sub\u0020page\u0020section.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_section"
+            "summary": "Returns\u0020an\u0020array\u0020describing\u0020a\u0020sub\u002Dpage\u0020section.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_section"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_meta_box\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_meta_box\u0028\u0029",
             "name": "add_meta_box",
             "summary": "Returns\u0020an\u0020array\u0020describing\u0020a\u0020meta\u0020box.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_meta_box"
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_meta_box"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aregister_sub_page\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aregister_sub_page\u0028\u0029",
             "name": "register_sub_page",
-            "summary": "Registers\u0020a\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_register_sub_page"
+            "summary": "Registers\u0020a\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_register_sub_page"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aregister_sections\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aregister_sections\u0028\u0029",
             "name": "register_sections",
-            "summary": "Registers\u0020all\u0020sections\u0020for\u0020a\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_register_sections"
+            "summary": "Registers\u0020all\u0020sections\u0020for\u0020a\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_register_sections"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aregister_meta_boxes\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aregister_meta_boxes\u0028\u0029",
             "name": "register_meta_boxes",
-            "summary": "Registers\u0020all\u0020Meta\u0020boxes\u0020for\u0020a\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_register_meta_boxes"
+            "summary": "Registers\u0020all\u0020Meta\u0020boxes\u0020for\u0020a\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_register_meta_boxes"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aappend_scripts\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aappend_scripts\u0028\u0029",
             "name": "append_scripts",
-            "summary": "Append\u0020javascript\u0020and\u0020css\u0020files\u0020for\u0020specific\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_append_scripts"
+            "summary": "Append\u0020JavaScript\u0020and\u0020CSS\u0020files\u0020for\u0020specific\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_append_scripts"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Adisplay_content\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Adisplay_content\u0028\u0029",
             "name": "display_content",
-            "summary": "Displays\u0020the\u0020content\u0020of\u0020specific\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_display_content"
+            "summary": "Displays\u0020the\u0020content\u0020of\u0020specific\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_display_content"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Asave_settings\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Asave_settings\u0028\u0029",
             "name": "save_settings",
-            "summary": "Save\u0020all\u0020Plugin\u0020settings.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_save_settings"
+            "summary": "Save\u0020all\u0020plugin\u0020settings.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_save_settings"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Adescription\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Adescription\u0028\u0029",
             "name": "description",
-            "summary": "Output\u0020the\u0020Description\u0020of\u0020a\u0020section.\u0020May\u0020be\u0020overwritten\u0020in\u0020any\u0020section.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_description"
+            "summary": "Output\u0020the\u0020description\u0020of\u0020a\u0020section.\u0020May\u0020be\u0020overwritten\u0020in\u0020any\u0020section.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_description"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aload_setting\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aload_setting\u0028\u0029",
             "name": "load_setting",
-            "summary": "Loads\u0020specific\u0020setting\u0020and\u0020returns\u0020an\u0020array\u0020with\u0020the\u0020keys\u0020\u005Bid,\u0020name,\u0020value\u005D.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_load_setting"
+            "summary": "Loads\u0020a\u0020specified\u0020setting.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_load_setting"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_newline\u0028\u0029",
-            "name": "add_newline",
-            "summary": "Returns\u0020a\u0020line\u0020break\u0020to\u0020start\u0020a\u0020new\u0020line.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_newline"
-        },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_line_space\u0028\u0029",
-            "name": "add_line_space",
-            "summary": "Returns\u0020a\u0020line\u0020break\u0020to\u0020have\u0020a\u0020space\u0020between\u0020two\u0020lines.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_line_space"
-        },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_text\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_text\u0028\u0029",
             "name": "add_text",
-            "summary": "Returns\u0020a\u0020simple\u0020text\u0020inside\u0020html\u0020\u003Cspan\u003E\u0020text.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_text"
+            "summary": "Returns\u0020a\u0020simple\u0020text\u0020inside\u0020HTML\u0020\u0060\u003Cspan\u003E\u0060\u0020element.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_text"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_label\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_label\u0028\u0029",
             "name": "add_label",
-            "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\/select\u0020label.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_label"
+            "summary": "Returns\u0020the\u0020HTML\u0020tag\u0020for\u0020an\u0020\u0060\u003Cinput\u003E\u0060\/\u0060\u003Cselect\u003E\u0060\u0020label.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_label"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_text_box\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_text_box\u0028\u0029",
             "name": "add_text_box",
-            "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020text\u005D.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_text_box"
+            "summary": "Constructs\u0020the\u0020HTML\u0020for\u0020a\u0020text\u0020\u0060\u003Cinput\u003E\u0060\u0020element.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_text_box"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_checkbox\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_checkbox\u0028\u0029",
             "name": "add_checkbox",
-            "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020checkbox\u005D.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_checkbox"
+            "summary": "Constructs\u0020the\u0020HTML\u0020for\u0020a\u0020checkbox\u0020\u0060\u003Cinput\u003E\u0060\u0020element.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_checkbox"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_select_box\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_select_box\u0028\u0029",
             "name": "add_select_box",
-            "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020a\u0020select\u0020box.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_select_box"
+            "summary": "Constructs\u0020the\u0020HTML\u0020for\u0020a\u0020\u0060\u003Cselect\u003E\u0060\u0020element.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_select_box"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_textarea\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_textarea\u0028\u0029",
             "name": "add_textarea",
-            "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020a\u0020text\u0020area.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_textarea"
+            "summary": "Constructs\u0020the\u0020HTML\u0020for\u0020a\u0020\u0060\u003Ctextarea\u003E\u0060\u0020element.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_textarea"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_color_selection\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_color_selection\u0028\u0029",
             "name": "add_color_selection",
-            "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020text\u005D\u0020with\u0020color\u0020selection\u0020class.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_color_selection"
+            "summary": "Constructs\u0020the\u0020HTML\u0020for\u0020a\u0020text\u0020\u0060\u003Cinput\u003E\u0060\u0020element\u0020with\u0020the\u0020colour\u0020selection\nclass.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_color_selection"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003Aadd_num_box\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003Aadd_num_box\u0028\u0029",
             "name": "add_num_box",
-            "summary": "Returns\u0020the\u0020html\u0020tag\u0020for\u0020an\u0020input\u0020\u005Btype\u0020\u003D\u0020num\u005D.",
-            "url": "classes/Footnotes-Layout-Engine.html#method_add_num_box"
+            "summary": "Constructs\u0020the\u0020HTML\u0020for\u0020numeric\u0020\u0060\u003Cinput\u003E\u0060\u0020element.",
+            "url": "classes/footnotes-admin-layout-Engine.html#method_add_num_box"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003A\u0024plugin_name",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Layout-Engine.html#property_plugin_name"
+            "url": "classes/footnotes-admin-layout-Engine.html#property_plugin_name"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003A\u0024a_str_sub_page_hook",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003A\u0024a_str_sub_page_hook",
             "name": "a_str_sub_page_hook",
-            "summary": "Stores\u0020the\u0020Hook\u0020connection\u0020string\u0020for\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#property_a_str_sub_page_hook"
+            "summary": "Stores\u0020the\u0020Hook\u0020connection\u0020string\u0020for\u0020the\u0020child\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#property_a_str_sub_page_hook"
         },                {
-            "fqsen": "\\Footnotes_Layout_Engine\u003A\u003A\u0024a_arr_sections",
+            "fqsen": "\\footnotes\\admin\\layout\\Engine\u003A\u003A\u0024a_arr_sections",
             "name": "a_arr_sections",
-            "summary": "Stores\u0020all\u0020Sections\u0020for\u0020the\u0020child\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Engine.html#property_a_arr_sections"
+            "summary": "Stores\u0020all\u0020Sections\u0020for\u0020the\u0020child\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Engine.html#property_a_arr_sections"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init",
-            "name": "Footnotes_Layout_Init",
-            "summary": "Handles\u0020the\u0020Settings\u0020interface\u0020of\u0020the\u0020Plugin.",
-            "url": "classes/Footnotes-Layout-Init.html"
+            "fqsen": "\\footnotes\\admin\\layout\\Init",
+            "name": "Init",
+            "summary": "Class\u0020to\u0020initialise\u0020all\u0020defined\u0020page\u0020layouts.",
+            "url": "classes/footnotes-admin-layout-Init.html"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Class\u0020Constructor.\u0020Initializes\u0020all\u0020WordPress\u0020hooks\u0020for\u0020the\u0020Plugin\u0020Settings.",
-            "url": "classes/Footnotes-Layout-Init.html#method___construct"
+            "summary": "Initializes\u0020all\u0020WordPress\u0020hooks\u0020for\u0020the\u0020Plugin\u0020Settings.",
+            "url": "classes/footnotes-admin-layout-Init.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003Aload_dependencies\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003Aload_dependencies\u0028\u0029",
             "name": "load_dependencies",
-            "summary": "Load\u0020the\u0020required\u0020dependencies\u0020for\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Layout-Init.html#method_load_dependencies"
+            "summary": "Load\u0020the\u0020required\u0020dependencies\u0020for\u0020the\u0020layouts\u0020pages.",
+            "url": "classes/footnotes-admin-layout-Init.html#method_load_dependencies"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003Ainitialize_settings\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003Ainitialize_settings\u0028\u0029",
             "name": "initialize_settings",
             "summary": "Registers\u0020the\u0020settings\u0020and\u0020initialises\u0020the\u0020settings\u0020page.",
-            "url": "classes/Footnotes-Layout-Init.html#method_initialize_settings"
+            "url": "classes/footnotes-admin-layout-Init.html#method_initialize_settings"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003Aregister_options_submenu\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003Aregister_options_submenu\u0028\u0029",
             "name": "register_options_submenu",
             "summary": "Registers\u0020the\u0020footnotes\u0020submenu\u0020page.",
-            "url": "classes/Footnotes-Layout-Init.html#method_register_options_submenu"
+            "url": "classes/footnotes-admin-layout-Init.html#method_register_options_submenu"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003Aget_plugin_meta_information\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003Aget_plugin_meta_information\u0028\u0029",
             "name": "get_plugin_meta_information",
             "summary": "AJAX\u0020call.\u0020returns\u0020a\u0020JSON\u0020string\u0020containing\u0020meta\u0020information\u0020about\u0020a\u0020specific\u0020WordPress\u0020Plugin.",
-            "url": "classes/Footnotes-Layout-Init.html#method_get_plugin_meta_information"
+            "url": "classes/footnotes-admin-layout-Init.html#method_get_plugin_meta_information"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003AC_STR_MAIN_MENU_SLUG",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003AC_STR_MAIN_MENU_SLUG",
             "name": "C_STR_MAIN_MENU_SLUG",
             "summary": "Slug\u0020for\u0020the\u0020Plugin\u0020main\u0020menu.",
-            "url": "classes/Footnotes-Layout-Init.html#constant_C_STR_MAIN_MENU_SLUG"
+            "url": "classes/footnotes-admin-layout-Init.html#constant_C_STR_MAIN_MENU_SLUG"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003A\u0024plugin_name",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Layout-Init.html#property_plugin_name"
+            "url": "classes/footnotes-admin-layout-Init.html#property_plugin_name"
         },                {
-            "fqsen": "\\Footnotes_Layout_Init\u003A\u003A\u0024settings_page",
+            "fqsen": "\\footnotes\\admin\\layout\\Init\u003A\u003A\u0024settings_page",
             "name": "settings_page",
-            "summary": "Contains\u0020the\u0020settings\u0020layoutEngine",
-            "url": "classes/Footnotes-Layout-Init.html#property_settings_page"
+            "summary": "Contains\u0020the\u0020settings\u0020page.",
+            "url": "classes/footnotes-admin-layout-Init.html#property_settings_page"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings",
-            "name": "Footnotes_Layout_Settings",
-            "summary": "Displays\u0020and\u0020handles\u0020all\u0020Settings\u0020of\u0020the\u0020Plugin.",
-            "url": "classes/Footnotes-Layout-Settings.html"
+            "fqsen": "\\footnotes\\admin\\layout\\Settings",
+            "name": "Settings",
+            "summary": "Class\u0020to\u0020initialise\u0020all\u0020defined\u0020page\u0020layouts.",
+            "url": "classes/footnotes-admin-layout-Settings.html"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
-            "url": "classes/Footnotes-Layout-Settings.html#method___construct"
+            "url": "classes/footnotes-admin-layout-Settings.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aget_priority\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Aget_priority\u0028\u0029",
             "name": "get_priority",
-            "summary": "Returns\u0020a\u0020Priority\u0020index.\u0020Lower\u0020numbers\u0020have\u0020a\u0020higher\u0020Priority.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_get_priority"
+            "summary": "Returns\u0020a\u0020priority\u0020index.",
+            "url": "classes/footnotes-admin-layout-Settings.html#method_get_priority"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aget_sub_page_slug\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Aget_sub_page_slug\u0028\u0029",
             "name": "get_sub_page_slug",
-            "summary": "Returns\u0020the\u0020unique\u0020slug\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_get_sub_page_slug"
+            "summary": "Returns\u0020the\u0020unique\u0020slug\u0020of\u0020the\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Settings.html#method_get_sub_page_slug"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aget_sub_page_title\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Aget_sub_page_title\u0028\u0029",
             "name": "get_sub_page_title",
-            "summary": "Returns\u0020the\u0020title\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_get_sub_page_title"
+            "summary": "Returns\u0020the\u0020title\u0020of\u0020the\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Settings.html#method_get_sub_page_title"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aget_sections\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Aget_sections\u0028\u0029",
             "name": "get_sections",
-            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020sections\u0020for\u0020the\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_get_sections"
+            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020sections\u0020for\u0020the\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Settings.html#method_get_sections"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aget_meta_boxes\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Aget_meta_boxes\u0028\u0029",
             "name": "get_meta_boxes",
-            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020meta\u0020boxes\u0020for\u0020each\u0020section\u0020of\u0020the\u0020sub\u0020page.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_get_meta_boxes"
+            "summary": "Returns\u0020an\u0020array\u0020of\u0020all\u0020registered\u0020meta\u0020boxes\u0020for\u0020each\u0020section\u0020of\u0020the\u0020sub\u002Dpage.",
+            "url": "classes/footnotes-admin-layout-Settings.html#method_get_meta_boxes"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aamp_compat\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Aamp_compat\u0028\u0029",
             "name": "amp_compat",
             "summary": "Displays\u0020the\u0020AMP\u0020compatibility\u0020mode\u0020option.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_amp_compat"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_amp_compat"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Areference_container\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Areference_container\u0028\u0029",
             "name": "reference_container",
             "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_reference_container"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_reference_container"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Astart_end\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Astart_end\u0028\u0029",
             "name": "start_end",
             "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020footnotes\u0020start\u0020and\u0020end\u0020tag\u0020short\u0020codes.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_start_end"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_start_end"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Anumbering\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Anumbering\u0028\u0029",
             "name": "numbering",
             "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020footnotes\u0020numbering.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_numbering"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_numbering"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Ascrolling\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Ascrolling\u0028\u0029",
             "name": "scrolling",
             "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020scrolling\u0020behavior.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_scrolling"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_scrolling"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Ahard_links\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Ahard_links\u0028\u0029",
             "name": "hard_links",
             "summary": "Displays\u0020all\u0020options\u0020for\u0020the\u0020fragment\u0020identifier\u0020configuration.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_hard_links"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_hard_links"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Alove\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Alove\u0028\u0029",
             "name": "love",
-            "summary": "Displays\u0020all\u0020settings\u0020for\u0020\u0027I\u0020love\u0020Footnotes\u0027.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_love"
+            "summary": "Displays\u0020all\u0020settings\u0020for\u0020\u2018I\u0020love\u0020Footnotes\u2019\u0020note.",
+            "url": "classes/footnotes-admin-layout-Settings.html#method_love"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Aexcerpts\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Aexcerpts\u0028\u0029",
             "name": "excerpts",
             "summary": "Displays\u0020the\u0020footnotes\u0020in\u0020excerpt\u0020setting.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_excerpts"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_excerpts"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Asuperscript\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Asuperscript\u0028\u0029",
             "name": "superscript",
             "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020footnote\u0020referrers.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_superscript"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_superscript"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Alabel_solution\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Alabel_solution\u0028\u0029",
             "name": "label_solution",
             "summary": "Displays\u0020the\u0020setting\u0020for\u0020the\u0020input\u0020label\u0020issue\u0020solution.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_label_solution"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_label_solution"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Amouseover_box\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Amouseover_box\u0028\u0029",
             "name": "mouseover_box",
             "summary": "Displays\u0020enabled\u0020status\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_mouseover_box"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_mouseover_box"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Amouseover_box_position\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Amouseover_box_position\u0028\u0029",
             "name": "mouseover_box_position",
             "summary": "Displays\u0020position\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_mouseover_box_position"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_mouseover_box_position"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Amouseover_box_dimensions\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Amouseover_box_dimensions\u0028\u0029",
             "name": "mouseover_box_dimensions",
             "summary": "Displays\u0020dimensions\u0020setting\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_mouseover_box_dimensions"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_mouseover_box_dimensions"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Amouseover_box_timing\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Amouseover_box_timing\u0028\u0029",
             "name": "mouseover_box_timing",
             "summary": "Displays\u0020timing\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_mouseover_box_timing"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_mouseover_box_timing"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Amouseover_box_truncation\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Amouseover_box_truncation\u0028\u0029",
             "name": "mouseover_box_truncation",
             "summary": "Displays\u0020truncation\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_mouseover_box_truncation"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_mouseover_box_truncation"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Amouseover_box_text\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Amouseover_box_text\u0028\u0029",
             "name": "mouseover_box_text",
             "summary": "Displays\u0020dedicated\u0020tooltip\u0020text\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_mouseover_box_text"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_mouseover_box_text"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Amouseover_box_appearance\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Amouseover_box_appearance\u0028\u0029",
             "name": "mouseover_box_appearance",
             "summary": "Displays\u0020style\u0020settings\u0020for\u0020the\u0020footnotes\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_mouseover_box_appearance"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_mouseover_box_appearance"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Ahyperlink_arrow\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Ahyperlink_arrow\u0028\u0029",
             "name": "hyperlink_arrow",
             "summary": "Displays\u0020all\u0020settings\u0020for\u0020the\u0020backlink\u0020symbol.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_hyperlink_arrow"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_hyperlink_arrow"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Acustom_css\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Acustom_css\u0028\u0029",
             "name": "custom_css",
             "summary": "Displays\u0020the\u0020Custom\u0020CSS\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_custom_css"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_custom_css"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Acustom_css_migration\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Acustom_css_migration\u0028\u0029",
             "name": "custom_css_migration",
             "summary": "Displays\u0020transitional\u0020legacy\u0020Custom\u0020CSS\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_custom_css_migration"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_custom_css_migration"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Acustom_css_new\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Acustom_css_new\u0028\u0029",
             "name": "custom_css_new",
             "summary": "Displays\u0020the\u0020new\u0020Custom\u0020CSS\u0020box.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_custom_css_new"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_custom_css_new"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Alookup_hooks\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Alookup_hooks\u0028\u0029",
             "name": "lookup_hooks",
             "summary": "Displays\u0020available\u0020Hooks\u0020to\u0020look\u0020for\u0020Footnote\u0020short\u0020codes.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_lookup_hooks"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_lookup_hooks"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003AHelp\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003AHelp\u0028\u0029",
             "name": "Help",
-            "summary": "Displays\u0020a\u0020short\u0020introduction\u0020to\u0020the\u0020Plugin.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_Help"
+            "summary": "Displays\u0020a\u0020short\u0020introduction\u0020to\u0020the\u0020plugin.",
+            "url": "classes/footnotes-admin-layout-Settings.html#method_Help"
         },                {
-            "fqsen": "\\Footnotes_Layout_Settings\u003A\u003Adonate\u0028\u0029",
+            "fqsen": "\\footnotes\\admin\\layout\\Settings\u003A\u003Adonate\u0028\u0029",
             "name": "donate",
             "summary": "Displays\u0020all\u0020Donate\u0020button\u0020to\u0020support\u0020the\u0020developers.",
-            "url": "classes/Footnotes-Layout-Settings.html#method_donate"
+            "url": "classes/footnotes-admin-layout-Settings.html#method_donate"
         },                {
-            "fqsen": "\\Footnotes_Config",
-            "name": "Footnotes_Config",
-            "summary": "Contains\u0020all\u0020Plugin\u0020Constants.\u0020Contains\u0020no\u0020Method\u0020or\u0020Property.",
-            "url": "classes/Footnotes-Config.html"
+            "fqsen": "\\footnotes\\activate_footnotes\u0028\u0029",
+            "name": "activate_footnotes",
+            "summary": "Handles\u0020the\u0020activation\u0020of\u0020the\u0020plugin.",
+            "url": "namespaces/footnotes.html#function_activate_footnotes"
         },                {
-            "fqsen": "\\Footnotes_Config\u003A\u003AC_STR_PLUGIN_PUBLIC_NAME",
+            "fqsen": "\\footnotes\\deactivate_footnotes\u0028\u0029",
+            "name": "deactivate_footnotes",
+            "summary": "Handles\u0020the\u0020deactivation\u0020of\u0020the\u0020plugin.",
+            "url": "namespaces/footnotes.html#function_deactivate_footnotes"
+        },                {
+            "fqsen": "\\footnotes\\run_footnotes\u0028\u0029",
+            "name": "run_footnotes",
+            "summary": "Begins\u0020execution\u0020of\u0020the\u0020plugin.",
+            "url": "namespaces/footnotes.html#function_run_footnotes"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Activator",
+            "name": "Activator",
+            "summary": "Class\u0020providing\u0020action\u0028s\u0029\u0020on\u0020plugin\u0020activation.",
+            "url": "classes/footnotes-includes-Activator.html"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Activator\u003A\u003Aactivate\u0028\u0029",
+            "name": "activate",
+            "summary": "Runs\u0020when\u0020the\u0020plugin\u0020is\u0020deactivated.",
+            "url": "classes/footnotes-includes-Activator.html#method_activate"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Config",
+            "name": "Config",
+            "summary": "Class\u0020defining\u0020plugin\u0020constants.",
+            "url": "classes/footnotes-includes-Config.html"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Config\u003A\u003AC_STR_PLUGIN_PUBLIC_NAME",
             "name": "C_STR_PLUGIN_PUBLIC_NAME",
-            "summary": "Public\u0020Plugin\u0020name.",
-            "url": "classes/Footnotes-Config.html#constant_C_STR_PLUGIN_PUBLIC_NAME"
+            "summary": "Public\u0020plugin\u0020name.",
+            "url": "classes/footnotes-includes-Config.html#constant_C_STR_PLUGIN_PUBLIC_NAME"
         },                {
-            "fqsen": "\\Footnotes_Config\u003A\u003AC_STR_PLUGIN_HEADING_NAME",
+            "fqsen": "\\footnotes\\includes\\Config\u003A\u003AC_STR_PLUGIN_HEADING_NAME",
             "name": "C_STR_PLUGIN_HEADING_NAME",
-            "summary": "Public\u0020Plugin\u0020name\u0020for\u0020dashboard\u0020heading",
-            "url": "classes/Footnotes-Config.html#constant_C_STR_PLUGIN_HEADING_NAME"
+            "summary": "Public\u0020plugin\u0020name\u0020for\u0020use\u0020as\u0020a\u0020dashboard\u0020heading.",
+            "url": "classes/footnotes-includes-Config.html#constant_C_STR_PLUGIN_HEADING_NAME"
         },                {
-            "fqsen": "\\Footnotes_Config\u003A\u003AC_STR_LOVE_SYMBOL",
+            "fqsen": "\\footnotes\\includes\\Config\u003A\u003AC_STR_LOVE_SYMBOL",
             "name": "C_STR_LOVE_SYMBOL",
-            "summary": "Html\u0020tag\u0020for\u0020the\u0020LOVE\u0020symbol.",
-            "url": "classes/Footnotes-Config.html#constant_C_STR_LOVE_SYMBOL"
+            "summary": "HTML\u0020element\u0020for\u0020the\u0020\u2018love\u2019\u0020symbol.",
+            "url": "classes/footnotes-includes-Config.html#constant_C_STR_LOVE_SYMBOL"
         },                {
-            "fqsen": "\\Footnotes_Config\u003A\u003AC_STR_LOVE_SYMBOL_HEADING",
+            "fqsen": "\\footnotes\\includes\\Config\u003A\u003AC_STR_LOVE_SYMBOL_HEADING",
             "name": "C_STR_LOVE_SYMBOL_HEADING",
-            "summary": "HTML\u0020code\u0020for\u0020the\u0020\u0027love\u0027\u0020symbol\u0020used\u0020in\u0020dashboard\u0020heading",
-            "url": "classes/Footnotes-Config.html#constant_C_STR_LOVE_SYMBOL_HEADING"
+            "summary": "HTML\u0020element\u0020for\u0020the\u0020\u2018love\u2019\u0020symbol\u0020used\u0020in\u0020dashboard\u0020heading",
+            "url": "classes/footnotes-includes-Config.html#constant_C_STR_LOVE_SYMBOL_HEADING"
         },                {
-            "fqsen": "\\Footnotes_Config\u003A\u003AC_STR_NO_LOVE_SLUG",
+            "fqsen": "\\footnotes\\includes\\Config\u003A\u003AC_STR_NO_LOVE_SLUG",
             "name": "C_STR_NO_LOVE_SLUG",
-            "summary": "Short\u0020code\u0020to\u0020DON\u0027T\u0020display\u0020the\u0020\u0027LOVE\u0020ME\u0027\u0020slug\u0020on\u0020certain\u0020pages.",
-            "url": "classes/Footnotes-Config.html#constant_C_STR_NO_LOVE_SLUG"
+            "summary": "Shortcode\u0020to\u0020NOT\u0020display\u0020the\u0020\u2018LOVE\u0020ME\u2019\u0020slug\u0020on\u0020certain\u0020pages.",
+            "url": "classes/footnotes-includes-Config.html#constant_C_STR_NO_LOVE_SLUG"
         },                {
-            "fqsen": "\\Footnotes_Convert",
-            "name": "Footnotes_Convert",
-            "summary": "Converts\u0020data\u0020types\u0020and\u0020Footnotes\u0020specific\u0020values.",
-            "url": "classes/Footnotes-Convert.html"
+            "fqsen": "\\footnotes\\includes\\Convert",
+            "name": "Convert",
+            "summary": "Class\u0020providing\u0020variable\u0020type\u0020and\u0020value\u0020conversion\u0020functions.",
+            "url": "classes/footnotes-includes-Convert.html"
         },                {
-            "fqsen": "\\Footnotes_Convert\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Convert\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "Converts\u0020a\u0020integer\u0020into\u0020the\u0020user\u002Ddefined\u0020counter\u0020style\u0020for\u0020the\u0020footnotes.",
-            "url": "classes/Footnotes-Convert.html#method_index"
+            "summary": "Converts\u0020an\u0020integer\u0020into\u0020the\u0020user\u002Ddefined\u0020counter\u0020style\u0020for\u0020the\u0020footnotes.",
+            "url": "classes/footnotes-includes-Convert.html#method_index"
         },                {
-            "fqsen": "\\Footnotes_Convert\u003A\u003Ato_latin\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Convert\u003A\u003Ato_latin\u0028\u0029",
             "name": "to_latin",
-            "summary": "Converts\u0020an\u0020integer\u0020into\u0020latin\u0020ascii\u0020characters,\u0020either\u0020lower\u0020or\u0020upper\u002Dcase.",
-            "url": "classes/Footnotes-Convert.html#method_to_latin"
+            "summary": "Converts\u0020an\u0020integer\u0020into\u0020Latin\u0020ASCII\u0020characters,\u0020either\u0020lower\u0020or\u0020upper\u002Dcase.",
+            "url": "classes/footnotes-includes-Convert.html#method_to_latin"
         },                {
-            "fqsen": "\\Footnotes_Convert\u003A\u003Ato_arabic_leading\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Convert\u003A\u003Ato_arabic_leading\u0028\u0029",
             "name": "to_arabic_leading",
             "summary": "Converts\u0020an\u0020integer\u0020to\u0020a\u0020leading\u002D0\u0020integer.",
-            "url": "classes/Footnotes-Convert.html#method_to_arabic_leading"
+            "url": "classes/footnotes-includes-Convert.html#method_to_arabic_leading"
         },                {
-            "fqsen": "\\Footnotes_Convert\u003A\u003Ato_romanic\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Convert\u003A\u003Ato_romanic\u0028\u0029",
             "name": "to_romanic",
-            "summary": "Converts\u0020an\u0020integer\u0020to\u0020a\u0020romanic\u0020letter.",
-            "url": "classes/Footnotes-Convert.html#method_to_romanic"
+            "summary": "Converts\u0020an\u0020integer\u0020to\u0020a\u0020Roman\u0020numeral.",
+            "url": "classes/footnotes-includes-Convert.html#method_to_romanic"
         },                {
-            "fqsen": "\\Footnotes_Convert\u003A\u003Ato_bool\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Convert\u003A\u003Ato_bool\u0028\u0029",
             "name": "to_bool",
             "summary": "Converts\u0020a\u0020string\u0020depending\u0020on\u0020its\u0020value\u0020to\u0020a\u0020boolean.",
-            "url": "classes/Footnotes-Convert.html#method_to_bool"
+            "url": "classes/footnotes-includes-Convert.html#method_to_bool"
         },                {
-            "fqsen": "\\Footnotes_Convert\u003A\u003Aget_arrow\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Convert\u003A\u003Aget_arrow\u0028\u0029",
             "name": "get_arrow",
-            "summary": "Get\u0020a\u0020html\u0020Array\u0020short\u0020code\u0020depending\u0020on\u0020Arrow\u002DArray\u0020key\u0020index.",
-            "url": "classes/Footnotes-Convert.html#method_get_arrow"
+            "summary": "Get\u0020an\u0020HTML\u0020array\u0020short\u0020code\u0020depending\u0020on\u0020Arrow\u002DArray\u0020key\u0020index.",
+            "url": "classes/footnotes-includes-Convert.html#method_get_arrow"
         },                {
-            "fqsen": "\\Footnotes_Convert\u003A\u003Adebug\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Convert\u003A\u003Adebug\u0028\u0029",
             "name": "debug",
-            "summary": "Displays\u0020a\u0020Variable.",
-            "url": "classes/Footnotes-Convert.html#method_debug"
+            "summary": "Displays\u0020a\u0020variable.",
+            "url": "classes/footnotes-includes-Convert.html#method_debug"
         },                {
-            "fqsen": "\\Footnotes_i18n",
-            "name": "Footnotes_i18n",
-            "summary": "Define\u0020the\u0020internationalization\u0020functionality.",
-            "url": "classes/Footnotes-i18n.html"
+            "fqsen": "\\footnotes\\includes\\Core",
+            "name": "Core",
+            "summary": "Class\u0020providing\u0020core\u0020plugin\u0020functionality.",
+            "url": "classes/footnotes-includes-Core.html"
         },                {
-            "fqsen": "\\Footnotes_i18n\u003A\u003Aload_plugin_textdomain\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Builds\u0020the\u0020core\u0020of\u0020the\u0020plugin.",
+            "url": "classes/footnotes-includes-Core.html#method___construct"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Aload_dependencies\u0028\u0029",
+            "name": "load_dependencies",
+            "summary": "Load\u0020the\u0020required\u0020dependencies\u0020for\u0020this\u0020plugin.",
+            "url": "classes/footnotes-includes-Core.html#method_load_dependencies"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Aset_locale\u0028\u0029",
+            "name": "set_locale",
+            "summary": "Define\u0020the\u0020locale\u0020for\u0020this\u0020plugin\u0020for\u0020internationalization.",
+            "url": "classes/footnotes-includes-Core.html#method_set_locale"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Adefine_admin_hooks\u0028\u0029",
+            "name": "define_admin_hooks",
+            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020admin\u0020area\u0020functionality\u0020of\u0020the\nplugin.",
+            "url": "classes/footnotes-includes-Core.html#method_define_admin_hooks"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Adefine_public_hooks\u0028\u0029",
+            "name": "define_public_hooks",
+            "summary": "Register\u0020all\u0020of\u0020the\u0020hooks\u0020related\u0020to\u0020the\u0020public\u002Dfacing\u0020functionality\u0020of\nthe\u0020plugin.",
+            "url": "classes/footnotes-includes-Core.html#method_define_public_hooks"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Arun\u0028\u0029",
+            "name": "run",
+            "summary": "Runs\u0020the\u0020loader\u0020to\u0020execute\u0020all\u0020of\u0020the\u0020hooks\u0020with\u0020WordPress.",
+            "url": "classes/footnotes-includes-Core.html#method_run"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Aget_plugin_name\u0028\u0029",
+            "name": "get_plugin_name",
+            "summary": "Gets\u0020the\u0020name\u0020of\u0020the\u0020plugin\u0020used\u0020to\u0020uniquely\u0020identify\u0020it\u0020within\u0020the\ncontext\u0020of\u0020WordPress\u0020and\u0020to\u0020define\u0020internationalization\u0020functionality.",
+            "url": "classes/footnotes-includes-Core.html#method_get_plugin_name"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Aget_loader\u0028\u0029",
+            "name": "get_loader",
+            "summary": "Returns\u0020a\u0020reference\u0020to\u0020the\u0020class\u0020that\u0020orchestrates\u0020the\u0020hooks\u0020with\u0020the\u0020plugin.",
+            "url": "classes/footnotes-includes-Core.html#method_get_loader"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003Aget_version\u0028\u0029",
+            "name": "get_version",
+            "summary": "Gets\u0020the\u0020version\u0020number\u0020of\u0020the\u0020plugin.",
+            "url": "classes/footnotes-includes-Core.html#method_get_version"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003A\u0024loader",
+            "name": "loader",
+            "summary": "The\u0020loader\u0020that\u0027s\u0020responsible\u0020for\u0020maintaining\u0020and\u0020registering\u0020all\u0020hooks\nthat\u0020power\u0020the\u0020plugin.",
+            "url": "classes/footnotes-includes-Core.html#property_loader"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "The\u0020unique\u0020identifier\u0020of\u0020this\u0020plugin",
+            "url": "classes/footnotes-includes-Core.html#property_plugin_name"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Core\u003A\u003A\u0024version",
+            "name": "version",
+            "summary": "The\u0020current\u0020version\u0020of\u0020the\u0020plugin.",
+            "url": "classes/footnotes-includes-Core.html#property_version"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Deactivator",
+            "name": "Deactivator",
+            "summary": "Class\u0020providing\u0020action\u0028s\u0029\u0020on\u0020plugin\u0020deactivation.",
+            "url": "classes/footnotes-includes-Deactivator.html"
+        },                {
+            "fqsen": "\\footnotes\\includes\\Deactivator\u003A\u003Adeactivate\u0028\u0029",
+            "name": "deactivate",
+            "summary": "Runs\u0020when\u0020the\u0020plugin\u0020is\u0020deactivated.",
+            "url": "classes/footnotes-includes-Deactivator.html#method_deactivate"
+        },                {
+            "fqsen": "\\footnotes\\includes\\i18n",
+            "name": "i18n",
+            "summary": "Class\u0020providing\u0020internationalization\u0020functionality.",
+            "url": "classes/footnotes-includes-i18n.html"
+        },                {
+            "fqsen": "\\footnotes\\includes\\i18n\u003A\u003Aload_plugin_textdomain\u0028\u0029",
             "name": "load_plugin_textdomain",
             "summary": "Load\u0020the\u0020plugin\u0020text\u0020domain\u0020for\u0020translation.",
-            "url": "classes/Footnotes-i18n.html#method_load_plugin_textdomain"
+            "url": "classes/footnotes-includes-i18n.html#method_load_plugin_textdomain"
         },                {
-            "fqsen": "\\Footnotes_Loader",
-            "name": "Footnotes_Loader",
-            "summary": "Register\u0020all\u0020actions\u0020and\u0020filters\u0020for\u0020the\u0020plugin.",
-            "url": "classes/Footnotes-Loader.html"
+            "fqsen": "\\footnotes\\includes\\Loader",
+            "name": "Loader",
+            "summary": "Class\u0020defining\u0020action\/filter\u0020registration\u0020for\u0020the\u0020plugin.",
+            "url": "classes/footnotes-includes-Loader.html"
         },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Loader\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialize\u0020the\u0020collections\u0020used\u0020to\u0020maintain\u0020the\u0020actions\u0020and\u0020filters.",
-            "url": "classes/Footnotes-Loader.html#method___construct"
+            "url": "classes/footnotes-includes-Loader.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003Aadd_action\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Loader\u003A\u003Aadd_action\u0028\u0029",
             "name": "add_action",
             "summary": "Add\u0020a\u0020new\u0020action\u0020to\u0020the\u0020collection\u0020to\u0020be\u0020registered\u0020with\u0020WordPress.",
-            "url": "classes/Footnotes-Loader.html#method_add_action"
+            "url": "classes/footnotes-includes-Loader.html#method_add_action"
         },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003Aadd_filter\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Loader\u003A\u003Aadd_filter\u0028\u0029",
             "name": "add_filter",
             "summary": "Add\u0020a\u0020new\u0020filter\u0020to\u0020the\u0020collection\u0020to\u0020be\u0020registered\u0020with\u0020WordPress.",
-            "url": "classes/Footnotes-Loader.html#method_add_filter"
+            "url": "classes/footnotes-includes-Loader.html#method_add_filter"
         },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003Aadd\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Loader\u003A\u003Aadd\u0028\u0029",
             "name": "add",
             "summary": "A\u0020utility\u0020function\u0020that\u0020is\u0020used\u0020to\u0020register\u0020the\u0020actions\u0020and\u0020hooks\u0020into\u0020a\u0020single\ncollection.",
-            "url": "classes/Footnotes-Loader.html#method_add"
+            "url": "classes/footnotes-includes-Loader.html#method_add"
         },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003Arun\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Loader\u003A\u003Arun\u0028\u0029",
             "name": "run",
-            "summary": "Register\u0020the\u0020filters\u0020and\u0020actions\u0020with\u0020WordPress.",
-            "url": "classes/Footnotes-Loader.html#method_run"
+            "summary": "Registers\u0020the\u0020filters\u0020and\u0020actions\u0020with\u0020WordPress.",
+            "url": "classes/footnotes-includes-Loader.html#method_run"
         },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003A\u0024actions",
+            "fqsen": "\\footnotes\\includes\\Loader\u003A\u003A\u0024actions",
             "name": "actions",
             "summary": "The\u0020array\u0020of\u0020actions\u0020registered\u0020with\u0020WordPress.",
-            "url": "classes/Footnotes-Loader.html#property_actions"
+            "url": "classes/footnotes-includes-Loader.html#property_actions"
         },                {
-            "fqsen": "\\Footnotes_Loader\u003A\u003A\u0024filters",
+            "fqsen": "\\footnotes\\includes\\Loader\u003A\u003A\u0024filters",
             "name": "filters",
             "summary": "The\u0020array\u0020of\u0020filters\u0020registered\u0020with\u0020WordPress.",
-            "url": "classes/Footnotes-Loader.html#property_filters"
+            "url": "classes/footnotes-includes-Loader.html#property_filters"
         },                {
-            "fqsen": "\\Footnotes_Settings",
-            "name": "Footnotes_Settings",
-            "summary": "Loads\u0020the\u0020settings\u0020values,\u0020sets\u0020to\u0020default\u0020values\u0020if\u0020undefined.",
-            "url": "classes/Footnotes-Settings.html"
+            "fqsen": "\\footnotes\\includes\\Settings",
+            "name": "Settings",
+            "summary": "Class\u0020defining\u0020configurable\u0020plugin\u0020settings.",
+            "url": "classes/footnotes-includes-Settings.html"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Class\u0020Constructor.\u0020Loads\u0020all\u0020Settings\u0020from\u0020each\u0020WordPress\u0020Settings\u0020container.",
-            "url": "classes/Footnotes-Settings.html#method___construct"
+            "summary": "Loads\u0020all\u0020Settings\u0020from\u0020each\u0020WordPress\u0020Settings\u0020Container.",
+            "url": "classes/footnotes-includes-Settings.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Ainstance\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Ainstance\u0028\u0029",
             "name": "instance",
             "summary": "Returns\u0020a\u0020singleton\u0020of\u0020this\u0020class.",
-            "url": "classes/Footnotes-Settings.html#method_instance"
+            "url": "classes/footnotes-includes-Settings.html#method_instance"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Aget_container\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Aget_container\u0028\u0029",
             "name": "get_container",
             "summary": "Returns\u0020the\u0020name\u0020of\u0020a\u0020specified\u0020Settings\u0020Container.",
-            "url": "classes/Footnotes-Settings.html#method_get_container"
+            "url": "classes/footnotes-includes-Settings.html#method_get_container"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Aget_defaults\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Aget_defaults\u0028\u0029",
             "name": "get_defaults",
-            "summary": "Returns\u0020the\u0020default\u0020values\u0020of\u0020a\u0020specific\u0020Settings\u0020Container.",
-            "url": "classes/Footnotes-Settings.html#method_get_defaults"
+            "summary": "Returns\u0020the\u0020default\u0020value\u0028s\u0029\u0020of\u0020a\u0020specific\u0020Settings\u0020Container.",
+            "url": "classes/footnotes-includes-Settings.html#method_get_defaults"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Aload_all\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Aload_all\u0028\u0029",
             "name": "load_all",
             "summary": "Loads\u0020all\u0020Settings\u0020from\u0020each\u0020Settings\u0020container.",
-            "url": "classes/Footnotes-Settings.html#method_load_all"
+            "url": "classes/footnotes-includes-Settings.html#method_load_all"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Aload\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Aload\u0028\u0029",
             "name": "load",
-            "summary": "Loads\u0020all\u0020settings\u0020from\u0020specified\u0020settings\u0020container.",
-            "url": "classes/Footnotes-Settings.html#method_load"
+            "summary": "Loads\u0020all\u0020settings\u0020from\u0020specified\u0020Settings\u0020Containers.",
+            "url": "classes/footnotes-includes-Settings.html#method_load"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Asave_options\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Asave_options\u0028\u0029",
             "name": "save_options",
-            "summary": "Updates\u0020a\u0020whole\u0020Settings\u0020container.",
-            "url": "classes/Footnotes-Settings.html#method_save_options"
+            "summary": "Updates\u0020a\u0020whole\u0020Setting\u0020Container\u0020on\u0020save.",
+            "url": "classes/footnotes-includes-Settings.html#method_save_options"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Aget\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Returns\u0020the\u0020value\u0020of\u0020specified\u0020Settings\u0020name.",
-            "url": "classes/Footnotes-Settings.html#method_get"
+            "summary": "Returns\u0020the\u0020value\u0020of\u0020specified\u0020Setting.",
+            "url": "classes/footnotes-includes-Settings.html#method_get"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Aclear_all\u0028\u0029",
-            "name": "clear_all",
-            "summary": "Deletes\u0020each\u0020Settings\u0020Container\u0020and\u0020loads\u0020the\u0020default\u0020values\u0020for\u0020each\u0020Settings\u0020Container.",
-            "url": "classes/Footnotes-Settings.html#method_clear_all"
-        },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003Aregister_settings\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003Aregister_settings\u0028\u0029",
             "name": "register_settings",
-            "summary": "Register\u0020all\u0020Settings\u0020Container\u0020for\u0020the\u0020Plugin\u0020Settings\u0020Page\u0020in\u0020the\u0020Dashboard.",
-            "url": "classes/Footnotes-Settings.html#method_register_settings"
+            "summary": "Register\u0020all\u0020Settings\u0020Containers\u0020for\u0020the\u0020plugin\u0020Settings\u0020Page\u0020in\u0020the\u0020Dashboard.",
+            "url": "classes/footnotes-includes-Settings.html#method_register_settings"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_NAME",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_NAME",
             "name": "C_STR_REFERENCE_CONTAINER_NAME",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020label\u0020of\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_NAME"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_NAME"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_COLLAPSE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_COLLAPSE",
             "name": "C_STR_REFERENCE_CONTAINER_COLLAPSE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020collapse\u0020the\u0020reference\u0020container\u0020by\u0020default.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_COLLAPSE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_COLLAPSE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_POSITION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_POSITION",
             "name": "C_STR_REFERENCE_CONTAINER_POSITION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020position\u0020of\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_POSITION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_POSITION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_COMBINE_IDENTICAL_FOOTNOTES",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_COMBINE_IDENTICAL_FOOTNOTES",
             "name": "C_STR_COMBINE_IDENTICAL_FOOTNOTES",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020combining\u0020identical\u0020footnotes.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_COMBINE_IDENTICAL_FOOTNOTES"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_COMBINE_IDENTICAL_FOOTNOTES"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_START",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_START",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_START",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u2019s\u0020start.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_START"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u0027s\u0020start.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_START"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_END",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_END",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_END",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u2019s\u0020end.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_END"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020short\u0020code\u0020of\u0020the\u0020footnote\u0027s\u0020end.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_END"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020user\u002Ddefined\u0020short\u0020code\u0020of\u0020the\u0020footnotes\u0020start.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED",
             "name": "C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020user\u002Ddefined\u0020short\u0020code\u0020of\u0020the\u0020footnotes\u0020end.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_COUNTER_STYLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_COUNTER_STYLE",
             "name": "C_STR_FOOTNOTES_COUNTER_STYLE",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020counter\u0020style\u0020of\u0020the\u0020footnotes.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_COUNTER_STYLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_COUNTER_STYLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_HYPERLINK_ARROW",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_HYPERLINK_ARROW",
             "name": "C_STR_HYPERLINK_ARROW",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlink\u0020symbol\u0020selection.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_HYPERLINK_ARROW"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_HYPERLINK_ARROW"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_HYPERLINK_ARROW_USER_DEFINED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_HYPERLINK_ARROW_USER_DEFINED",
             "name": "C_STR_HYPERLINK_ARROW_USER_DEFINED",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020user\u002Ddefined\u0020backlink\u0020symbol.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_HYPERLINK_ARROW_USER_DEFINED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_HYPERLINK_ARROW_USER_DEFINED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_IN_EXCERPT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_IN_EXCERPT",
             "name": "C_STR_FOOTNOTES_IN_EXCERPT",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020look\u0020for\u0020footnotes\u0020in\u0020post\u0020excerpts.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_IN_EXCERPT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_IN_EXCERPT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_BEFORE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_BEFORE",
             "name": "C_STR_FOOTNOTES_STYLING_BEFORE",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020string\u0020before\u0020the\u0020footnote\u0020referrer.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_BEFORE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_BEFORE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_AFTER",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_STYLING_AFTER",
             "name": "C_STR_FOOTNOTES_STYLING_AFTER",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020string\u0020after\u0020the\u0020footnote\u0020referrer.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_AFTER"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_STYLING_AFTER"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_CUSTOM_CSS",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_CUSTOM_CSS",
             "name": "C_STR_CUSTOM_CSS",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020Custom\u0020CSS.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_CUSTOM_CSS"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_CUSTOM_CSS"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_LOVE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_LOVE",
             "name": "C_STR_FOOTNOTES_LOVE",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020\u0027I\u0020love\u0020footnotes\u0027\u0020text.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_LOVE"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020\u2018I\u0020love\u0020footnotes\u2019\u0020text.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_LOVE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020mouse\u002Dover\u0020box.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020tooltip\u0020truncation.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH",
             "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020max.\u0020length\u0020of\u0020the\u0020enabled\u0020excerpt.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020max.\u0020length\u0020of\nthe\u0020enabled\u0020excerpt.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_TITLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_TITLE",
             "name": "C_STR_EXPERT_LOOKUP_THE_TITLE",
-            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027the_title\u0027\u0020hook.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_TITLE"
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0060the_title\u0060\u0020hook.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_TITLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_CONTENT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_CONTENT",
             "name": "C_STR_EXPERT_LOOKUP_THE_CONTENT",
-            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027the_content\u0027\u0020hook.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_CONTENT"
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0060the_content\u0060\u0020hook.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_CONTENT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_EXCERPT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_EXPERT_LOOKUP_THE_EXCERPT",
             "name": "C_STR_EXPERT_LOOKUP_THE_EXCERPT",
-            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027the_excerpt\u0027\u0020hook.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_EXCERPT"
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0060the_excerpt\u0060\u0020hook.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_EXPERT_LOOKUP_THE_EXCERPT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_WIDGET_TITLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_EXPERT_LOOKUP_WIDGET_TITLE",
             "name": "C_STR_EXPERT_LOOKUP_WIDGET_TITLE",
-            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027widget_title\u0027\u0020hook.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_WIDGET_TITLE"
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0060widget_title\u0060\u0020hook.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_EXPERT_LOOKUP_WIDGET_TITLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_EXPERT_LOOKUP_WIDGET_TEXT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_EXPERT_LOOKUP_WIDGET_TEXT",
             "name": "C_STR_EXPERT_LOOKUP_WIDGET_TEXT",
-            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0027widget_text\u0027\u0020hook.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_EXPERT_LOOKUP_WIDGET_TEXT"
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020\u0060widget_text\u0060\u0020hook.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_EXPERT_LOOKUP_WIDGET_TEXT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_EXPERT_MODE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_EXPERT_MODE",
             "name": "C_STR_FOOTNOTES_EXPERT_MODE",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020Expert\u0020mode.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_EXPERT_MODE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_EXPERT_MODE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020color.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_COLOR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020background\u0020color.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH",
             "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020width.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020color.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS",
             "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020border\u0020radius.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH",
             "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020max.\u0020width.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020position.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_POSITION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X",
             "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020offset\u0020\u0028x\u0029.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020_x_\u002Doffset.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y",
             "name": "C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020offset\u0020\u0028y\u0029.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020_y_\u002Doffset.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020mouse\u002Dover\u0020box\u0020to\u0020define\u0020the\u0020box\u002Dshadow\u0020color.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_READON_LABEL",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_READON_LABEL",
             "name": "C_STR_FOOTNOTES_TOOLTIP_READON_LABEL",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020label\u0020of\u0020the\u0020Read\u002Don\u0020button\u0020in\u0020truncated\u0020tooltips.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_READON_LABEL"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_READON_LABEL"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE",
             "name": "C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020alternative\u0020tooltips.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS",
             "name": "C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020referrer\u0020element.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE",
             "name": "C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020display\u0020of\u0020a\u0020backlink\u0020symbol.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE",
             "name": "C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020not\u0020display\u0020the\u0020reference\u0020container\u0020on\u0020the\u0020homepage.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_START_PAGE_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE",
             "name": "C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020legacy\u0020layout\u0020of\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH",
             "name": "C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020get\u0020the\u0020backlink\u0020symbol\u0020switch\u0020side.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027the_content\u0027\u0020hook\u0020priority\u0020level.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0060the_content\u0060\u0020hook\u0020priority\u0020level.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027the_title\u0027\u0020hook\u0020priority\u0020level.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0060the_title\u0060\u0020hook\u0020priority\u0020level.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027widget_title\u0027\u0020hook\u0020priority\u0020level.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0060widget_title\u0060\u0020hook\u0020priority\u0020level.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027widget_text\u0027\u0020hook\u0020priority\u0020level.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0060widget_text\u0060\u0020hook\u0020priority\u0020level.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL",
             "name": "C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0027the_excerpt\u0027\u0020hook\u0020priority\u0020level.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020\u0060the_excerpt\u0060\u0020hook\u0020priority\u0020level.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_LINK_ELEMENT_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_LINK_ELEMENT_ENABLED",
             "name": "C_STR_LINK_ELEMENT_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020link\u0020element\u0020option.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_LINK_ELEMENT_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_LINK_ELEMENT_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_ENABLED",
             "name": "C_STR_BACKLINKS_SEPARATOR_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020presence\u0020of\u0020a\u0020backlink\u0020separator.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_OPTION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_OPTION",
             "name": "C_STR_BACKLINKS_SEPARATOR_OPTION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlink\u0020separator\u0020options.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_OPTION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_OPTION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_CUSTOM",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_SEPARATOR_CUSTOM",
             "name": "C_STR_BACKLINKS_SEPARATOR_CUSTOM",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020a\u0020custom\u0020backlink\u0020separator.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_CUSTOM"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_SEPARATOR_CUSTOM"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_ENABLED",
             "name": "C_STR_BACKLINKS_TERMINATOR_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020presence\u0020of\u0020a\u0020backlink\u0020terminator.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_OPTION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_OPTION",
             "name": "C_STR_BACKLINKS_TERMINATOR_OPTION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlink\u0020terminator\u0020options.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_OPTION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_OPTION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_CUSTOM",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_TERMINATOR_CUSTOM",
             "name": "C_STR_BACKLINKS_TERMINATOR_CUSTOM",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020a\u0020custom\u0020backlink\u0020terminator.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_CUSTOM"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_TERMINATOR_CUSTOM"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_WIDTH_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_WIDTH_ENABLED",
             "name": "C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020backlinks\u0020column\u0020width.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_WIDTH_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_BACKLINKS_COLUMN_WIDTH_SCALAR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_BACKLINKS_COLUMN_WIDTH_SCALAR",
             "name": "C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020width\u0020scalar.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_BACKLINKS_COLUMN_WIDTH_SCALAR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_WIDTH_UNIT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_WIDTH_UNIT",
             "name": "C_STR_BACKLINKS_COLUMN_WIDTH_UNIT",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020width\u0020unit.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_WIDTH_UNIT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_WIDTH_UNIT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED",
             "name": "C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020a\u0020max\u0020width\u0020for\u0020the\u0020backlinks\u0020column.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_MAX_WIDTH_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR",
             "name": "C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020max\u0020width\u0020scalar.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_BACKLINKS_COLUMN_MAX_WIDTH_SCALAR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT",
             "name": "C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020backlinks\u0020column\u0020max\u0020width\u0020unit.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_COLUMN_MAX_WIDTH_UNIT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_BACKLINKS_LINE_BREAKS_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_BACKLINKS_LINE_BREAKS_ENABLED",
             "name": "C_STR_BACKLINKS_LINE_BREAKS_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020line\u0020breaks\u0020between\u0020backlinks.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_BACKLINKS_LINE_BREAKS_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_BACKLINKS_LINE_BREAKS_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED",
             "name": "C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020setting\u0020the\u0020tooltip\u0020font\u0020size.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_MOUSE_OVER_BOX_FONT_SIZE_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR",
             "name": "C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020scalar\u0020value\u0020of\u0020the\u0020tooltip\u0020font\u0020size.",
-            "url": "classes/Footnotes-Settings.html#constant_C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_FLO_MOUSE_OVER_BOX_FONT_SIZE_SCALAR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT",
             "name": "C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020unit\u0020of\u0020the\u0020tooltip\u0020font\u0020size.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_MOUSE_OVER_BOX_FONT_SIZE_UNIT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT",
             "name": "C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020basic\u0020responsive\u0020page\u0020layout\u0020support\u0020options.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_OFFSET",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_OFFSET",
             "name": "C_INT_FOOTNOTES_SCROLL_OFFSET",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020offset.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_OFFSET"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_OFFSET"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DURATION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DURATION",
             "name": "C_INT_FOOTNOTES_SCROLL_DURATION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020duration.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DURATION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DURATION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_IN_DELAY",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_IN_DELAY",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Din\u0020delay.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_IN_DELAY"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_IN_DURATION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_IN_DURATION",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Din\u0020duration.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_IN_DURATION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Dout\u0020delay.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_OUT_DELAY"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION",
             "name": "C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020tooltip\u0020display\u0020fade\u002Dout\u0020duration.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_MOUSE_OVER_BOX_FADE_OUT_DURATION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_URL_WRAP_ENABLED",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTE_URL_WRAP_ENABLED",
             "name": "C_STR_FOOTNOTE_URL_WRAP_ENABLED",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020URL\u0020wrap\u0020option.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTE_URL_WRAP_ENABLED"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTE_URL_WRAP_ENABLED"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE",
             "name": "C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020reference\u0020container\u0020position\u0020shortcode.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_POSITION_SHORTCODE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_CUSTOM_CSS_NEW",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_CUSTOM_CSS_NEW",
             "name": "C_STR_CUSTOM_CSS_NEW",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020Custom\u0020CSS\u0020migrated\u0020to\u0020a\u0020dedicated\u0020tab.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_CUSTOM_CSS_NEW"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_CUSTOM_CSS_NEW"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_CUSTOM_CSS_LEGACY_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_CUSTOM_CSS_LEGACY_ENABLE",
             "name": "C_STR_CUSTOM_CSS_LEGACY_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020display\u0020of\u0020legacy\u0020Custom\u0020CSS\u0020metaboxes.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_CUSTOM_CSS_LEGACY_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_CUSTOM_CSS_LEGACY_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION",
             "name": "C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020position.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X",
             "name": "C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020x\u0020offset.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020_x_\u002Doffset.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y",
             "name": "C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020y\u0020offset.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020_y_\u002Doffset.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH",
             "name": "C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020alternative\u0020tooltip\u0020width.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_LABEL_ELEMENT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_LABEL_ELEMENT",
             "name": "C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020reference\u0020container\u0020label\u0020element.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_LABEL_ELEMENT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER",
             "name": "C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020the\u0020reference\u0020container\u0020label\u0020bottom\u0020border.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE",
             "name": "C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020reference\u0020container\u0020table\u0020row\u0020borders.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERENCE_CONTAINER_ROW_BORDERS_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_REFERENCE_CONTAINER_TOP_MARGIN",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_REFERENCE_CONTAINER_TOP_MARGIN",
             "name": "C_INT_REFERENCE_CONTAINER_TOP_MARGIN",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020reference\u0020container\u0020top\u0020margin.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_REFERENCE_CONTAINER_TOP_MARGIN"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_REFERENCE_CONTAINER_TOP_MARGIN"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN",
             "name": "C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020reference\u0020container\u0020bottom\u0020margin.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_REFERENCE_CONTAINER_BOTTOM_MARGIN"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_HARD_LINKS_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_HARD_LINKS_ENABLE",
             "name": "C_STR_FOOTNOTES_HARD_LINKS_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020hard\u0020links.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_HARD_LINKS_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_HARD_LINKS_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_REFERRER_FRAGMENT_ID_SLUG",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_REFERRER_FRAGMENT_ID_SLUG",
             "name": "C_STR_REFERRER_FRAGMENT_ID_SLUG",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020fragment\u0020ID\u0020slug\u0020in\u0020referrers.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_REFERRER_FRAGMENT_ID_SLUG"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_REFERRER_FRAGMENT_ID_SLUG"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_FRAGMENT_ID_SLUG",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTE_FRAGMENT_ID_SLUG",
             "name": "C_STR_FOOTNOTE_FRAGMENT_ID_SLUG",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020fragment\u0020ID\u0020slug\u0020in\u0020footnotes.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTE_FRAGMENT_ID_SLUG"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTE_FRAGMENT_ID_SLUG"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_HARD_LINK_IDS_SEPARATOR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_HARD_LINK_IDS_SEPARATOR",
             "name": "C_STR_HARD_LINK_IDS_SEPARATOR",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020ID\u0020separator\u0020in\u0020fragment\u0020IDs.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_HARD_LINK_IDS_SEPARATOR"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_HARD_LINK_IDS_SEPARATOR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE",
             "name": "C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020shortcode\u0020syntax\u0020validation.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE",
             "name": "C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020backlink\u0020tooltips.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_BACKLINK_TOOLTIP_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT",
             "name": "C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020configure\u0020the\u0020backlink\u0020tooltip.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_BACKLINK_TOOLTIP_TEXT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER",
             "name": "C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020configure\u0020the\u0020tooltip\u0020excerpt\u0020delimiter.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE",
             "name": "C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE",
-            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020mirroring\u0020the\u0020tooltip\u0020excerpt\u0020in\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE"
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020mirroring\u0020the\u0020tooltip\u0020excerpt\u0020in\u0020the\nreference\u0020container.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR",
             "name": "C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR",
-            "summary": "Settings\u0020container\u0020key\u0020to\u0020configure\u0020the\u0020tooltip\u0020excerpt\u0020separator\u0020in\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR"
+            "summary": "Settings\u0020container\u0020key\u0020to\u0020configure\u0020the\u0020tooltip\u0020excerpt\u0020separator\u0020in\u0020the\nreference\u0020container.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT",
             "name": "C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020superscript\u0020style\u0020normalization.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE",
             "name": "C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020select\u0020the\u0020script\u0020mode\u0020for\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE",
             "name": "C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020AMP\u0020compatibility\u0020mode.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY",
             "name": "C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020duration\u0020asymmetricity.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DOWN_DURATION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DOWN_DURATION",
             "name": "C_INT_FOOTNOTES_SCROLL_DOWN_DURATION",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020down\u0020duration.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DOWN_DURATION"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u002Ddown\u0020duration.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DOWN_DURATION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DOWN_DELAY",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_DOWN_DELAY",
             "name": "C_INT_FOOTNOTES_SCROLL_DOWN_DELAY",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020down\u0020delay.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DOWN_DELAY"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u002Ddown\u0020delay.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_DOWN_DELAY"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_UP_DELAY",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_INT_FOOTNOTES_SCROLL_UP_DELAY",
             "name": "C_INT_FOOTNOTES_SCROLL_UP_DELAY",
-            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u0020up\u0020delay.",
-            "url": "classes/Footnotes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_UP_DELAY"
+            "summary": "Settings\u0020container\u0020key\u0020for\u0020scroll\u002Dup\u0020delay.",
+            "url": "classes/footnotes-includes-Settings.html#constant_C_INT_FOOTNOTES_SCROLL_UP_DELAY"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION",
             "name": "C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020set\u0020the\u0020solution\u0020of\u0020the\u0020input\u0020element\u0020label\u0020issue.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_LABEL_ISSUE_SOLUTION"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING",
             "name": "C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING",
             "summary": "Settings\u0020container\u0020key\u0020to\u0020enable\u0020CSS\u0020smooth\u0020scrolling.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTES_CSS_SMOOTH_SCROLLING"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003AC_STR_FOOTNOTE_SECTION_SHORTCODE",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003AC_STR_FOOTNOTE_SECTION_SHORTCODE",
             "name": "C_STR_FOOTNOTE_SECTION_SHORTCODE",
             "summary": "Settings\u0020container\u0020key\u0020for\u0020the\u0020footnote\u0020section\u0020shortcode.",
-            "url": "classes/Footnotes-Settings.html#constant_C_STR_FOOTNOTE_SECTION_SHORTCODE"
+            "url": "classes/footnotes-includes-Settings.html#constant_C_STR_FOOTNOTE_SECTION_SHORTCODE"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003A\u0024a_obj_instance",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003A\u0024a_obj_instance",
             "name": "a_obj_instance",
             "summary": "Stores\u0020a\u0020singleton\u0020reference\u0020of\u0020this\u0020class.",
-            "url": "classes/Footnotes-Settings.html#property_a_obj_instance"
+            "url": "classes/footnotes-includes-Settings.html#property_a_obj_instance"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003A\u0024a_arr_container",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003A\u0024a_arr_container",
             "name": "a_arr_container",
             "summary": "Contains\u0020all\u0020Settings\u0020Container\u0020names.",
-            "url": "classes/Footnotes-Settings.html#property_a_arr_container"
+            "url": "classes/footnotes-includes-Settings.html#property_a_arr_container"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003A\u0024a_arr_default",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003A\u0024a_arr_default",
             "name": "a_arr_default",
-            "summary": "Contains\u0020all\u0020Default\u0020Settings\u0020for\u0020each\u0020Settings\u0020Container.",
-            "url": "classes/Footnotes-Settings.html#property_a_arr_default"
+            "summary": "Contains\u0020all\u0020default\u0020values\u0020for\u0020each\u0020Settings\u0020Container.",
+            "url": "classes/footnotes-includes-Settings.html#property_a_arr_default"
         },                {
-            "fqsen": "\\Footnotes_Settings\u003A\u003A\u0024a_arr_settings",
+            "fqsen": "\\footnotes\\includes\\Settings\u003A\u003A\u0024a_arr_settings",
             "name": "a_arr_settings",
-            "summary": "Contains\u0020all\u0020Settings\u0020from\u0020each\u0020Settings\u0020container\u0020as\u0020soon\u0020as\u0020this\u0020class\u0020is\u0020initialized.",
-            "url": "classes/Footnotes-Settings.html#property_a_arr_settings"
+            "summary": "Contains\u0020all\u0020Settings\u0020from\u0020each\u0020Settings\u0020Container.",
+            "url": "classes/footnotes-includes-Settings.html#property_a_arr_settings"
         },                {
-            "fqsen": "\\Footnotes_Template",
-            "name": "Footnotes_Template",
-            "summary": "Handles\u0020each\u0020Template\u0020file\u0020for\u0020the\u0020Plugin\u0020Frontend\u0020\u0028e.g.\u0020Settings\u0020Dashboard,\u0020Public\u0020pages,\u0020...\u0029.",
-            "url": "classes/Footnotes-Template.html"
+            "fqsen": "\\footnotes\\includes\\Template",
+            "name": "Template",
+            "summary": "Class\u0020defining\u0020template\u0020rendering.",
+            "url": "classes/footnotes-includes-Template.html"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Class\u0020Constructor.\u0020Reads\u0020and\u0020loads\u0020the\u0020template\u0020file\u0020without\u0020replace\u0020any\u0020placeholder.",
-            "url": "classes/Footnotes-Template.html#method___construct"
+            "url": "classes/footnotes-includes-Template.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003Areplace\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003Areplace\u0028\u0029",
             "name": "replace",
             "summary": "Replace\u0020all\u0020placeholders\u0020specified\u0020in\u0020array.",
-            "url": "classes/Footnotes-Template.html#method_replace"
+            "url": "classes/footnotes-includes-Template.html#method_replace"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003Areload\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003Areload\u0028\u0029",
             "name": "reload",
             "summary": "Reloads\u0020the\u0020original\u0020content\u0020of\u0020the\u0020template\u0020file.",
-            "url": "classes/Footnotes-Template.html#method_reload"
+            "url": "classes/footnotes-includes-Template.html#method_reload"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003Aget_content\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003Aget_content\u0028\u0029",
             "name": "get_content",
             "summary": "Returns\u0020the\u0020content\u0020of\u0020the\u0020template\u0020file\u0020with\u0020replaced\u0020placeholders.",
-            "url": "classes/Footnotes-Template.html#method_get_content"
+            "url": "classes/footnotes-includes-Template.html#method_get_content"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003Aprocess_template\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003Aprocess_template\u0028\u0029",
             "name": "process_template",
             "summary": "Process\u0020template\u0020file.",
-            "url": "classes/Footnotes-Template.html#method_process_template"
+            "url": "classes/footnotes-includes-Template.html#method_process_template"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003Aget_template\u0028\u0029",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003Aget_template\u0028\u0029",
             "name": "get_template",
             "summary": "Get\u0020the\u0020template.",
-            "url": "classes/Footnotes-Template.html#method_get_template"
+            "url": "classes/footnotes-includes-Template.html#method_get_template"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003AC_STR_DASHBOARD",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003AC_STR_DASHBOARD",
             "name": "C_STR_DASHBOARD",
             "summary": "Directory\u0020name\u0020for\u0020dashboard\u0020partials.",
-            "url": "classes/Footnotes-Template.html#constant_C_STR_DASHBOARD"
+            "url": "classes/footnotes-includes-Template.html#constant_C_STR_DASHBOARD"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003AC_STR_PUBLIC",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003AC_STR_PUBLIC",
             "name": "C_STR_PUBLIC",
             "summary": "Directory\u0020name\u0020for\u0020public\u0020partials.",
-            "url": "classes/Footnotes-Template.html#constant_C_STR_PUBLIC"
+            "url": "classes/footnotes-includes-Template.html#constant_C_STR_PUBLIC"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003A\u0024a_str_original_content",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003A\u0024a_str_original_content",
             "name": "a_str_original_content",
             "summary": "Contains\u0020the\u0020content\u0020of\u0020the\u0020template\u0020after\u0020initialize.",
-            "url": "classes/Footnotes-Template.html#property_a_str_original_content"
+            "url": "classes/footnotes-includes-Template.html#property_a_str_original_content"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003A\u0024a_str_replaced_content",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003A\u0024a_str_replaced_content",
             "name": "a_str_replaced_content",
             "summary": "Contains\u0020the\u0020content\u0020of\u0020the\u0020template\u0020after\u0020initialize\u0020with\u0020replaced\u0020place\u0020holders.",
-            "url": "classes/Footnotes-Template.html#property_a_str_replaced_content"
+            "url": "classes/footnotes-includes-Template.html#property_a_str_replaced_content"
         },                {
-            "fqsen": "\\Footnotes_Template\u003A\u003A\u0024plugin_directory",
+            "fqsen": "\\footnotes\\includes\\Template\u003A\u003A\u0024plugin_directory",
             "name": "plugin_directory",
             "summary": "Plugin\u0020Directory",
-            "url": "classes/Footnotes-Template.html#property_plugin_directory"
+            "url": "classes/footnotes-includes-Template.html#property_plugin_directory"
         },                {
-            "fqsen": "\\Footnotes_Public",
-            "name": "Footnotes_Public",
-            "summary": "The\u0020public\u002Dfacing\u0020functionality\u0020of\u0020the\u0020plugin.",
-            "url": "classes/Footnotes-Public.html"
+            "fqsen": "\\footnotes\\general\\General",
+            "name": "General",
+            "summary": "Class\u0020provide\u0020all\u0020public\u002Dfacing\u0020functionality\u0020of\u0020the\u0020plugin.",
+            "url": "classes/footnotes-general-General.html"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
-            "url": "classes/Footnotes-Public.html#method___construct"
+            "url": "classes/footnotes-general-General.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003Aload_dependencies\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003Aload_dependencies\u0028\u0029",
             "name": "load_dependencies",
             "summary": "Load\u0020the\u0020required\u0020public\u002Dfacing\u0020dependencies.",
-            "url": "classes/Footnotes-Public.html#method_load_dependencies"
+            "url": "classes/footnotes-general-General.html#method_load_dependencies"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003Aenqueue_styles\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003Aenqueue_styles\u0028\u0029",
             "name": "enqueue_styles",
             "summary": "Register\u0020the\u0020stylesheets\u0020for\u0020the\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
-            "url": "classes/Footnotes-Public.html#method_enqueue_styles"
+            "url": "classes/footnotes-general-General.html#method_enqueue_styles"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003Aenqueue_scripts\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003Aenqueue_scripts\u0028\u0029",
             "name": "enqueue_scripts",
             "summary": "Register\u0020the\u0020JavaScript\u0020for\u0020the\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
-            "url": "classes/Footnotes-Public.html#method_enqueue_scripts"
+            "url": "classes/footnotes-general-General.html#method_enqueue_scripts"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003Aregister_widgets\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003Aregister_widgets\u0028\u0029",
             "name": "register_widgets",
             "summary": "Register\u0020the\u0020widget\u0028s\u0029\u0020for\u0020the\u0020public\u002Dfacing\u0020side\u0020of\u0020the\u0020site.",
-            "url": "classes/Footnotes-Public.html#method_register_widgets"
+            "url": "classes/footnotes-general-General.html#method_register_widgets"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024plugin_name",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024plugin_name",
             "name": "plugin_name",
             "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Public.html#property_plugin_name"
+            "url": "classes/footnotes-general-General.html#property_plugin_name"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024version",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024version",
             "name": "version",
             "summary": "The\u0020version\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Public.html#property_version"
+            "url": "classes/footnotes-general-General.html#property_version"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024reference_container_widget",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024reference_container_widget",
             "name": "reference_container_widget",
             "summary": "The\u0020reference\u0020container\u0020widget.",
-            "url": "classes/Footnotes-Public.html#property_reference_container_widget"
+            "url": "classes/footnotes-general-General.html#property_reference_container_widget"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024a_obj_task",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024a_obj_task",
             "name": "a_obj_task",
             "summary": "The\u0020footnote\u0020parser.",
-            "url": "classes/Footnotes-Public.html#property_a_obj_task"
+            "url": "classes/footnotes-general-General.html#property_a_obj_task"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024a_bool_tooltips_enabled",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024a_bool_tooltips_enabled",
             "name": "a_bool_tooltips_enabled",
             "summary": "Flag\u0020for\u0020using\u0020tooltips.",
-            "url": "classes/Footnotes-Public.html#property_a_bool_tooltips_enabled"
+            "url": "classes/footnotes-general-General.html#property_a_bool_tooltips_enabled"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024a_bool_alternative_tooltips_enabled",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024a_bool_alternative_tooltips_enabled",
             "name": "a_bool_alternative_tooltips_enabled",
             "summary": "Allows\u0020to\u0020determine\u0020whether\u0020alternative\u0020tooltips\u0020are\u0020enabled.",
-            "url": "classes/Footnotes-Public.html#property_a_bool_alternative_tooltips_enabled"
+            "url": "classes/footnotes-general-General.html#property_a_bool_alternative_tooltips_enabled"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024a_bool_amp_enabled",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024a_bool_amp_enabled",
             "name": "a_bool_amp_enabled",
             "summary": "Allows\u0020to\u0020determine\u0020whether\u0020AMP\u0020compatibility\u0020mode\u0020is\u0020enabled.",
-            "url": "classes/Footnotes-Public.html#property_a_bool_amp_enabled"
+            "url": "classes/footnotes-general-General.html#property_a_bool_amp_enabled"
         },                {
-            "fqsen": "\\Footnotes_Public\u003A\u003A\u0024a_str_script_mode",
+            "fqsen": "\\footnotes\\general\\General\u003A\u003A\u0024a_str_script_mode",
             "name": "a_str_script_mode",
             "summary": "Allows\u0020to\u0020determine\u0020the\u0020script\u0020mode\u0020among\u0020jQuery\u0020or\u0020plain\u0020JS.",
-            "url": "classes/Footnotes-Public.html#property_a_str_script_mode"
+            "url": "classes/footnotes-general-General.html#property_a_str_script_mode"
         },                {
-            "fqsen": "\\Footnotes_Widget_Base",
-            "name": "Footnotes_Widget_Base",
-            "summary": "Base\u0020Class\u0020for\u0020all\u0020Plugin\u0020Widgets.\u0020Registers\u0020each\u0020Widget\u0020to\u0020WordPress.",
-            "url": "classes/Footnotes-Widget-Base.html"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Base\u003A\u003Aget_id\u0028\u0029",
-            "name": "get_id",
-            "summary": "Returns\u0020an\u0020unique\u0020ID\u0020as\u0020string\u0020used\u0020for\u0020the\u0020Widget\u0020Base\u0020ID.",
-            "url": "classes/Footnotes-Widget-Base.html#method_get_id"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Base\u003A\u003Aget_name\u0028\u0029",
-            "name": "get_name",
-            "summary": "Returns\u0020the\u0020Public\u0020name\u0020of\u0020child\u0020Widget\u0020to\u0020be\u0020displayed\u0020in\u0020the\u0020Configuration\u0020page.",
-            "url": "classes/Footnotes-Widget-Base.html#method_get_name"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Base\u003A\u003Aget_description\u0028\u0029",
-            "name": "get_description",
-            "summary": "Returns\u0020the\u0020Description\u0020of\u0020the\u0020child\u0020widget.",
-            "url": "classes/Footnotes-Widget-Base.html#method_get_description"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Base\u003A\u003Aget_widget_width\u0028\u0029",
-            "name": "get_widget_width",
-            "summary": "Returns\u0020the\u0020width\u0020of\u0020the\u0020Widget.\u0020Default\u0020width\u0020is\u0020250\u0020pixel.",
-            "url": "classes/Footnotes-Widget-Base.html#method_get_widget_width"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Base\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Class\u0020Constructor.\u0020Registers\u0020the\u0020child\u0020Widget\u0020to\u0020WordPress.",
-            "url": "classes/Footnotes-Widget-Base.html#method___construct"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container",
-            "name": "Footnotes_Widget_Reference_Container",
-            "summary": "Registers\u0020a\u0020Widget\u0020to\u0020put\u0020the\u0020Reference\u0020Container\u0020to\u0020the\u0020widget\u0020area.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html#method___construct"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003Aget_id\u0028\u0029",
-            "name": "get_id",
-            "summary": "Returns\u0020an\u0020unique\u0020ID\u0020as\u0020string\u0020used\u0020for\u0020the\u0020Widget\u0020Base\u0020ID.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html#method_get_id"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003Aget_name\u0028\u0029",
-            "name": "get_name",
-            "summary": "Returns\u0020the\u0020Public\u0020name\u0020of\u0020the\u0020Widget\u0020to\u0020be\u0020displayed\u0020in\u0020the\u0020Configuration\u0020page.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html#method_get_name"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003Aget_description\u0028\u0029",
-            "name": "get_description",
-            "summary": "Returns\u0020the\u0020Description\u0020of\u0020the\u0020child\u0020widget.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html#method_get_description"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003Aform\u0028\u0029",
-            "name": "form",
-            "summary": "Outputs\u0020the\u0020Settings\u0020of\u0020the\u0020Widget.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html#method_form"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003Awidget\u0028\u0029",
-            "name": "widget",
-            "summary": "Outputs\u0020the\u0020Content\u0020of\u0020the\u0020Widget.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html#method_widget"
-        },                {
-            "fqsen": "\\Footnotes_Widget_Reference_Container\u003A\u003A\u0024plugin_name",
-            "name": "plugin_name",
-            "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
-            "url": "classes/Footnotes-Widget-Reference-Container.html#property_plugin_name"
-        },                {
-            "fqsen": "\\Footnotes_Parser",
-            "name": "Footnotes_Parser",
+            "fqsen": "\\footnotes\\general\\Parser",
+            "name": "Parser",
             "summary": "Searches\u0020and\u0020replaces\u0020the\u0020footnotes\u0020and\u0020generates\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Parser.html"
+            "url": "classes/footnotes-general-Parser.html"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
-            "url": "classes/Footnotes-Parser.html#method___construct"
+            "url": "classes/footnotes-general-Parser.html#method___construct"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Aregister_hooks\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Aregister_hooks\u0028\u0029",
             "name": "register_hooks",
             "summary": "Register\u0020WordPress\u0020hooks\u0020to\u0020replace\u0020Footnotes\u0020in\u0020the\u0020content\u0020of\u0020a\u0020public\u0020page.",
-            "url": "classes/Footnotes-Parser.html#method_register_hooks"
+            "url": "classes/footnotes-general-Parser.html#method_register_hooks"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Afootnotes_output_head\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Afootnotes_output_head\u0028\u0029",
             "name": "footnotes_output_head",
             "summary": "Outputs\u0020the\u0020custom\u0020css\u0020to\u0020the\u0020header\u0020of\u0020the\u0020public\u0020page.",
-            "url": "classes/Footnotes-Parser.html#method_footnotes_output_head"
+            "url": "classes/footnotes-general-Parser.html#method_footnotes_output_head"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Afootnotes_output_footer\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Afootnotes_output_footer\u0028\u0029",
             "name": "footnotes_output_footer",
             "summary": "Displays\u0020the\u0020\u0027LOVE\u0020FOOTNOTES\u0027\u0020slug\u0020if\u0020enabled.",
-            "url": "classes/Footnotes-Parser.html#method_footnotes_output_footer"
+            "url": "classes/footnotes-general-Parser.html#method_footnotes_output_footer"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Afootnotes_in_title\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Afootnotes_in_title\u0028\u0029",
             "name": "footnotes_in_title",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020post\/page\u0020title.",
-            "url": "classes/Footnotes-Parser.html#method_footnotes_in_title"
+            "url": "classes/footnotes-general-Parser.html#method_footnotes_in_title"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Afootnotes_in_content\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Afootnotes_in_content\u0028\u0029",
             "name": "footnotes_in_content",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020content\u0020of\u0020the\u0020current\u0020page\/post.",
-            "url": "classes/Footnotes-Parser.html#method_footnotes_in_content"
+            "url": "classes/footnotes-general-Parser.html#method_footnotes_in_content"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Afootnotes_in_excerpt\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Afootnotes_in_excerpt\u0028\u0029",
             "name": "footnotes_in_excerpt",
             "summary": "Processes\u0020existing\u0020excerpt\u0020or\u0020replaces\u0020it\u0020with\u0020a\u0020new\u0020one\u0020generated\u0020on\u0020the\u0020basis\u0020of\u0020the\u0020post.",
-            "url": "classes/Footnotes-Parser.html#method_footnotes_in_excerpt"
+            "url": "classes/footnotes-general-Parser.html#method_footnotes_in_excerpt"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Agenerate_excerpt\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Agenerate_excerpt\u0028\u0029",
             "name": "generate_excerpt",
             "summary": "Generates\u0020excerpt\u0020on\u0020the\u0020basis\u0020of\u0020the\u0020post.",
-            "url": "classes/Footnotes-Parser.html#method_generate_excerpt"
+            "url": "classes/footnotes-general-Parser.html#method_generate_excerpt"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Agenerate_excerpt_with_footnotes\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Agenerate_excerpt_with_footnotes\u0028\u0029",
             "name": "generate_excerpt_with_footnotes",
             "summary": "Generates\u0020excerpt\u0020with\u0020footnotes\u0020on\u0020the\u0020basis\u0020of\u0020the\u0020post.",
-            "url": "classes/Footnotes-Parser.html#method_generate_excerpt_with_footnotes"
+            "url": "classes/footnotes-general-Parser.html#method_generate_excerpt_with_footnotes"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Afootnotes_in_widget_title\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Afootnotes_in_widget_title\u0028\u0029",
             "name": "footnotes_in_widget_title",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020widget\u0020title.",
-            "url": "classes/Footnotes-Parser.html#method_footnotes_in_widget_title"
+            "url": "classes/footnotes-general-Parser.html#method_footnotes_in_widget_title"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Afootnotes_in_widget_text\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Afootnotes_in_widget_text\u0028\u0029",
             "name": "footnotes_in_widget_text",
             "summary": "Replaces\u0020footnotes\u0020in\u0020the\u0020content\u0020of\u0020the\u0020current\u0020widget.",
-            "url": "classes/Footnotes-Parser.html#method_footnotes_in_widget_text"
+            "url": "classes/footnotes-general-Parser.html#method_footnotes_in_widget_text"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Aexec\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Aexec\u0028\u0029",
             "name": "exec",
             "summary": "Replaces\u0020all\u0020footnotes\u0020that\u0020occur\u0020in\u0020the\u0020given\u0020content.",
-            "url": "classes/Footnotes-Parser.html#method_exec"
+            "url": "classes/footnotes-general-Parser.html#method_exec"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Aunify_delimiters\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Aunify_delimiters\u0028\u0029",
             "name": "unify_delimiters",
             "summary": "Brings\u0020the\u0020delimiters\u0020and\u0020unifies\u0020their\u0020various\u0020HTML\u0020escapement\u0020schemas.",
-            "url": "classes/Footnotes-Parser.html#method_unify_delimiters"
+            "url": "classes/footnotes-general-Parser.html#method_unify_delimiters"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Asearch\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Asearch\u0028\u0029",
             "name": "search",
             "summary": "Replaces\u0020all\u0020footnotes\u0020in\u0020the\u0020given\u0020content\u0020and\u0020appends\u0020them\u0020to\u0020the\u0020static\u0020property.",
-            "url": "classes/Footnotes-Parser.html#method_search"
+            "url": "classes/footnotes-general-Parser.html#method_search"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003Areference_container\u0028\u0029",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003Areference_container\u0028\u0029",
             "name": "reference_container",
             "summary": "Generates\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Parser.html#method_reference_container"
+            "url": "classes/footnotes-general-Parser.html#method_reference_container"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_arr_footnotes",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_arr_footnotes",
             "name": "a_arr_footnotes",
             "summary": "Contains\u0020all\u0020footnotes\u0020found\u0020in\u0020the\u0020searched\u0020content.",
-            "url": "classes/Footnotes-Parser.html#property_a_arr_footnotes"
+            "url": "classes/footnotes-general-Parser.html#property_a_arr_footnotes"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_bool_allow_love_me",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_bool_allow_love_me",
             "name": "a_bool_allow_love_me",
             "summary": "Flag\u0020if\u0020the\u0020display\u0020of\u0020\u0027LOVE\u0020FOOTNOTES\u0027\u0020is\u0020allowed\u0020on\u0020the\u0020current\u0020public\u0020page.",
-            "url": "classes/Footnotes-Parser.html#property_a_bool_allow_love_me"
+            "url": "classes/footnotes-general-Parser.html#property_a_bool_allow_love_me"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_prefix",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_prefix",
             "name": "a_str_prefix",
             "summary": "Prefix\u0020for\u0020the\u0020Footnote\u0020html\u0020element\u0020ID.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_prefix"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_prefix"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_int_post_id",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_int_post_id",
             "name": "a_int_post_id",
             "summary": "Autoload\u0020a.k.a.\u0020infinite\u0020scroll,\u0020or\u0020archive\u0020view.",
-            "url": "classes/Footnotes-Parser.html#property_a_int_post_id"
+            "url": "classes/footnotes-general-Parser.html#property_a_int_post_id"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_int_reference_container_id",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_int_reference_container_id",
             "name": "a_int_reference_container_id",
             "summary": "Multiple\u0020reference\u0020containers\u0020in\u0020content\u0020and\u0020widgets.",
-            "url": "classes/Footnotes-Parser.html#property_a_int_reference_container_id"
+            "url": "classes/footnotes-general-Parser.html#property_a_int_reference_container_id"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_bool_hard_links_enabled",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_bool_hard_links_enabled",
             "name": "a_bool_hard_links_enabled",
             "summary": "Hard\u0020links\u0020for\u0020AMP\u0020compatibility.",
-            "url": "classes/Footnotes-Parser.html#property_a_bool_hard_links_enabled"
+            "url": "classes/footnotes-general-Parser.html#property_a_bool_hard_links_enabled"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_referrer_link_slug",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_referrer_link_slug",
             "name": "a_str_referrer_link_slug",
             "summary": "The\u0020referrer\u0020slug.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_referrer_link_slug"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_referrer_link_slug"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_footnote_link_slug",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_footnote_link_slug",
             "name": "a_str_footnote_link_slug",
             "summary": "The\u0020footnote\u0020slug.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_footnote_link_slug"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_footnote_link_slug"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_link_ids_separator",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_link_ids_separator",
             "name": "a_str_link_ids_separator",
             "summary": "The\u0020slug\u0020and\u0020identifier\u0020separator.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_link_ids_separator"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_link_ids_separator"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_post_container_id_compound",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_post_container_id_compound",
             "name": "a_str_post_container_id_compound",
             "summary": "Contains\u0020the\u0020concatenated\u0020fragment\u0020ID\u0020base.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_post_container_id_compound"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_post_container_id_compound"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_int_scroll_offset",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_int_scroll_offset",
             "name": "a_int_scroll_offset",
             "summary": "Scroll\u0020offset.",
-            "url": "classes/Footnotes-Parser.html#property_a_int_scroll_offset"
+            "url": "classes/footnotes-general-Parser.html#property_a_int_scroll_offset"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_link_span",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_link_span",
             "name": "a_str_link_span",
             "summary": "The\u0020span\u0020element\u0020name.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_link_span"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_link_span"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_link_open_tag",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_link_open_tag",
             "name": "a_str_link_open_tag",
             "summary": "The\u0020opening\u0020tag.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_link_open_tag"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_link_open_tag"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_link_close_tag",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_link_close_tag",
             "name": "a_str_link_close_tag",
             "summary": "The\u0020closing\u0020tag.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_link_close_tag"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_link_close_tag"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_tooltip_shortcode",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_tooltip_shortcode",
             "name": "a_str_tooltip_shortcode",
             "summary": "The\u0020tooltip\u0020delimiter\u0020shortcode.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_tooltip_shortcode"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_tooltip_shortcode"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_int_tooltip_shortcode_length",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_int_tooltip_shortcode_length",
             "name": "a_int_tooltip_shortcode_length",
             "summary": "The\u0020tooltip\u0020delimiter\u0020shortcode\u0020length.",
-            "url": "classes/Footnotes-Parser.html#property_a_int_tooltip_shortcode_length"
+            "url": "classes/footnotes-general-Parser.html#property_a_int_tooltip_shortcode_length"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_bool_mirror_tooltip_text",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_bool_mirror_tooltip_text",
             "name": "a_bool_mirror_tooltip_text",
             "summary": "Whether\u0020to\u0020mirror\u0020the\u0020tooltip\u0020text\u0020in\u0020the\u0020reference\u0020container.",
-            "url": "classes/Footnotes-Parser.html#property_a_bool_mirror_tooltip_text"
+            "url": "classes/footnotes-general-Parser.html#property_a_bool_mirror_tooltip_text"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_start_tag",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_start_tag",
             "name": "a_str_start_tag",
             "summary": "Footnote\u0020delimiter\u0020start\u0020short\u0020code.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_start_tag"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_start_tag"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_end_tag",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_end_tag",
             "name": "a_str_end_tag",
             "summary": "Footnote\u0020delimiter\u0020end\u0020short\u0020code.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_end_tag"
+            "url": "classes/footnotes-general-Parser.html#property_a_str_end_tag"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_start_tag_regex",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_start_tag_regex",
             "name": "a_str_start_tag_regex",
-            "summary": "Footnote\u0020delimiter\u0020start\u0020short\u0020code\u0020in\u0020regex\u0020format.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_start_tag_regex"
+            "summary": "Footnote\u0020delimiter\u0020start\u0020short\u0020code\u0020in\u0020RegEx\u0020format.",
+            "url": "classes/footnotes-general-Parser.html#property_a_str_start_tag_regex"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_str_end_tag_regex",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_str_end_tag_regex",
             "name": "a_str_end_tag_regex",
-            "summary": "Footnote\u0020delimiter\u0020end\u0020short\u0020code\u0020in\u0020regex\u0020format.",
-            "url": "classes/Footnotes-Parser.html#property_a_str_end_tag_regex"
+            "summary": "Footnote\u0020delimiter\u0020end\u0020short\u0020code\u0020in\u0020RegEx\u0020format.",
+            "url": "classes/footnotes-general-Parser.html#property_a_str_end_tag_regex"
         },                {
-            "fqsen": "\\Footnotes_Parser\u003A\u003A\u0024a_bool_syntax_error_flag",
+            "fqsen": "\\footnotes\\general\\Parser\u003A\u003A\u0024a_bool_syntax_error_flag",
             "name": "a_bool_syntax_error_flag",
             "summary": "Footnote\u0020delimiter\u0020syntax\u0020validation\u0020enabled.",
-            "url": "classes/Footnotes-Parser.html#property_a_bool_syntax_error_flag"
+            "url": "classes/footnotes-general-Parser.html#property_a_bool_syntax_error_flag"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Base",
+            "name": "Base",
+            "summary": "Base\u0020class\u0020to\u0020be\u0020extended\u0020by\u0020all\u0020widget\u0020sub\u002Dclasses.",
+            "url": "classes/footnotes-general-Widget-Base.html"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Base\u003A\u003Aget_id\u0028\u0029",
+            "name": "get_id",
+            "summary": "Returns\u0020an\u0020unique\u0020ID\u0020as\u0020string\u0020used\u0020for\u0020the\u0020Widget\u0020Base\u0020ID.",
+            "url": "classes/footnotes-general-Widget-Base.html#method_get_id"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Base\u003A\u003Aget_name\u0028\u0029",
+            "name": "get_name",
+            "summary": "Returns\u0020the\u0020Public\u0020name\u0020of\u0020child\u0020Widget\u0020to\u0020be\u0020displayed\u0020in\u0020the\u0020Configuration\u0020page.",
+            "url": "classes/footnotes-general-Widget-Base.html#method_get_name"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Base\u003A\u003Aget_description\u0028\u0029",
+            "name": "get_description",
+            "summary": "Returns\u0020the\u0020Description\u0020of\u0020the\u0020child\u0020widget.",
+            "url": "classes/footnotes-general-Widget-Base.html#method_get_description"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Base\u003A\u003Aget_widget_width\u0028\u0029",
+            "name": "get_widget_width",
+            "summary": "Returns\u0020the\u0020width\u0020of\u0020the\u0020Widget.\u0020Default\u0020width\u0020is\u0020250\u0020pixel.",
+            "url": "classes/footnotes-general-Widget-Base.html#method_get_widget_width"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Base\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Registers\u0020the\u0020child\u0020Widget\u0020to\u0020WordPress.",
+            "url": "classes/footnotes-general-Widget-Base.html#method___construct"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container",
+            "name": "Reference_Container",
+            "summary": "Registers\u0020a\u0020Widget\u0020to\u0020put\u0020the\u0020Reference\u0020Container\u0020to\u0020the\u0020widget\u0020area.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Initialize\u0020the\u0020class\u0020and\u0020set\u0020its\u0020properties.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html#method___construct"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container\u003A\u003Aget_id\u0028\u0029",
+            "name": "get_id",
+            "summary": "Returns\u0020an\u0020unique\u0020ID\u0020as\u0020string\u0020used\u0020for\u0020the\u0020Widget\u0020Base\u0020ID.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html#method_get_id"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container\u003A\u003Aget_name\u0028\u0029",
+            "name": "get_name",
+            "summary": "Returns\u0020the\u0020Public\u0020name\u0020of\u0020the\u0020Widget\u0020to\u0020be\u0020displayed\u0020in\u0020the\u0020Configuration\u0020page.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html#method_get_name"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container\u003A\u003Aget_description\u0028\u0029",
+            "name": "get_description",
+            "summary": "Returns\u0020the\u0020Description\u0020of\u0020the\u0020child\u0020widget.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html#method_get_description"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container\u003A\u003Aform\u0028\u0029",
+            "name": "form",
+            "summary": "Outputs\u0020the\u0020Settings\u0020of\u0020the\u0020Widget.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html#method_form"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container\u003A\u003Awidget\u0028\u0029",
+            "name": "widget",
+            "summary": "Outputs\u0020the\u0020Content\u0020of\u0020the\u0020Widget.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html#method_widget"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget\\Reference_Container\u003A\u003A\u0024plugin_name",
+            "name": "plugin_name",
+            "summary": "The\u0020ID\u0020of\u0020this\u0020plugin.",
+            "url": "classes/footnotes-general-Widget-Reference-Container.html#property_plugin_name"
         },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
+        },                {
+            "fqsen": "\\footnotes\\admin",
+            "name": "admin",
+            "summary": "",
+            "url": "namespaces/footnotes-admin.html"
+        },                {
+            "fqsen": "\\footnotes\\admin\\layout",
+            "name": "layout",
+            "summary": "",
+            "url": "namespaces/footnotes-admin-layout.html"
+        },                {
+            "fqsen": "\\footnotes",
+            "name": "footnotes",
+            "summary": "",
+            "url": "namespaces/footnotes.html"
+        },                {
+            "fqsen": "\\footnotes\\includes",
+            "name": "includes",
+            "summary": "",
+            "url": "namespaces/footnotes-includes.html"
+        },                {
+            "fqsen": "\\footnotes\\general",
+            "name": "general",
+            "summary": "",
+            "url": "namespaces/footnotes-general.html"
+        },                {
+            "fqsen": "\\footnotes\\general\\Widget",
+            "name": "Widget",
+            "summary": "",
+            "url": "namespaces/footnotes-general-widget.html"
         }            ]
 );

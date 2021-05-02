@@ -51,18 +51,14 @@
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-            </section>
-
-        <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
-                        <ul class="phpdocumentor-list">
-                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
-                                    <li><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
-                                    <li><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></li>
-                            </ul>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
+                                            <li><a href="namespaces/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
+                                            <li><a href="namespaces/footnotes-general.html"><abbr title="\footnotes\general">general</abbr></a></li>
+                                    </ul>
                         </section>
+
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -90,9 +86,8 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -package"><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></dt>
             <dt class="phpdocumentor-table-of-contents__entry -package"><a href="packages/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -package"><a href="packages/footnotes-public.html"><abbr title="\footnotes\public">public</abbr></a></dt>
+            <dt class="phpdocumentor-table-of-contents__entry -package"><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></dt>
     </dl>
 
 
@@ -103,18 +98,40 @@
 
 <dl class="phpdocumentor-table-of-contents">
     
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Footnotes-WYSIWYG.html"><abbr title="\Footnotes_WYSIWYG">Footnotes_WYSIWYG</abbr></a></dt>
-        <dd>Handles the WSYIWYG-Buttons.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Footnotes-Config.html"><abbr title="\Footnotes_Config">Footnotes_Config</abbr></a></dt>
-        <dd>Contains all Plugin Constants. Contains no Method or Property.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Footnotes-Convert.html"><abbr title="\Footnotes_Convert">Footnotes_Convert</abbr></a></dt>
-        <dd>Converts data types and Footnotes specific values.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Footnotes-Settings.html"><abbr title="\Footnotes_Settings">Footnotes_Settings</abbr></a></dt>
-        <dd>Loads the settings values, sets to default values if undefined.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Footnotes-Template.html"><abbr title="\Footnotes_Template">Footnotes_Template</abbr></a></dt>
-        <dd>Handles each Template file for the Plugin Frontend (e.g. Settings Dashboard, Public pages, ...).</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Footnotes-Parser.html"><abbr title="\Footnotes_Parser">Footnotes_Parser</abbr></a></dt>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-admin-Admin.html"><abbr title="\footnotes\admin\Admin">Admin</abbr></a></dt>
+        <dd>Class provide all admin-specific functionality of the plugin.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-admin-WYSIWYG.html"><abbr title="\footnotes\admin\WYSIWYG">WYSIWYG</abbr></a></dt>
+        <dd>Class providing WYSIWYG editor intergration for the plugin.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-admin-layout-Engine.html"><abbr title="\footnotes\admin\layout\Engine">Engine</abbr></a></dt>
+        <dd>Class to be extended by page layout sub-classes.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-admin-layout-Init.html"><abbr title="\footnotes\admin\layout\Init">Init</abbr></a></dt>
+        <dd>Class to initialise all defined page layouts.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-admin-layout-Settings.html"><abbr title="\footnotes\admin\layout\Settings">Settings</abbr></a></dt>
+        <dd>Class to initialise all defined page layouts.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-Activator.html"><abbr title="\footnotes\includes\Activator">Activator</abbr></a></dt>
+        <dd>Class providing action(s) on plugin activation.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-Config.html"><abbr title="\footnotes\includes\Config">Config</abbr></a></dt>
+        <dd>Class defining plugin constants.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-Convert.html"><abbr title="\footnotes\includes\Convert">Convert</abbr></a></dt>
+        <dd>Class providing variable type and value conversion functions.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-Core.html"><abbr title="\footnotes\includes\Core">Core</abbr></a></dt>
+        <dd>Class providing core plugin functionality.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-Deactivator.html"><abbr title="\footnotes\includes\Deactivator">Deactivator</abbr></a></dt>
+        <dd>Class providing action(s) on plugin deactivation.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-i18n.html"><abbr title="\footnotes\includes\i18n">i18n</abbr></a></dt>
+        <dd>Class providing internationalization functionality.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-Loader.html"><abbr title="\footnotes\includes\Loader">Loader</abbr></a></dt>
+        <dd>Class defining action/filter registration for the plugin.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-includes-Settings.html"><abbr title="\footnotes\includes\Settings">Settings</abbr></a></dt>
+        <dd>Class defining configurable plugin settings.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-general-General.html"><abbr title="\footnotes\general\General">General</abbr></a></dt>
+        <dd>Class provide all public-facing functionality of the plugin.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-general-Parser.html"><abbr title="\footnotes\general\Parser">Parser</abbr></a></dt>
         <dd>Searches and replaces the footnotes and generates the reference container.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-general-Widget-Base.html"><abbr title="\footnotes\general\Widget\Base">Base</abbr></a></dt>
+        <dd>Base class to be extended by all widget sub-classes.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/footnotes-general-Widget-Reference-Container.html"><abbr title="\footnotes\general\Widget\Reference_Container">Reference_Container</abbr></a></dt>
+        <dd>Registers a Widget to put the Reference Container to the widget area.</dd>
     
     </dl>
 
@@ -126,23 +143,23 @@
 
 <dl class="phpdocumentor-table-of-contents">
                         <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a href="namespaces/default.html#function_activate_footnotes">activate_footnotes()</a>
+    <a href="namespaces/footnotes.html#function_activate_footnotes">activate_footnotes()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: void    </span>
 </dt>
-<dd>The code that runs during plugin activation.</dd>
+<dd>Handles the activation of the plugin.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a href="namespaces/default.html#function_deactivate_plugin_name">deactivate_plugin_name()</a>
+    <a href="namespaces/footnotes.html#function_deactivate_footnotes">deactivate_footnotes()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: void    </span>
 </dt>
-<dd>The code that runs during plugin deactivation.</dd>
+<dd>Handles the deactivation of the plugin.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a href="namespaces/default.html#function_run_footnotes">run_footnotes()</a>
+    <a href="namespaces/footnotes.html#function_run_footnotes">run_footnotes()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: void    </span>
 </dt>
 <dd>Begins execution of the plugin.</dd>
 
@@ -158,73 +175,118 @@
                     <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_activate_footnotes">
         activate_footnotes()
-        <a href="namespaces/default.html#function_activate_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/footnotes.html#function_activate_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/footnotes.php"><a href="files/src-footnotes.html"><abbr title="src/footnotes.php">footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">56</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 </aside>
 
-        <p class="phpdocumentor-summary">The code that runs during plugin activation.</p>
+        <p class="phpdocumentor-summary">Handles the activation of the plugin.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                <span class="phpdocumentor-signature__name">activate_footnotes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">activate_footnotes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"><p>This action is documented in includes/class-plugin-name-activator.php</p>
-</section>
+        <section class="phpdocumentor-description"></section>
 
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/footnotes-includes-Activator.html#method_activate"><abbr title="\footnotes\includes\Activator::activate()">Activator::activate()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
     
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function_deactivate_plugin_name">
-        deactivate_plugin_name()
-        <a href="namespaces/default.html#function_deactivate_plugin_name" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="function_deactivate_footnotes">
+        deactivate_footnotes()
+        <a href="namespaces/footnotes.html#function_deactivate_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/footnotes.php"><a href="files/src-footnotes.html"><abbr title="src/footnotes.php">footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">65</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 </aside>
 
-        <p class="phpdocumentor-summary">The code that runs during plugin deactivation.</p>
+        <p class="phpdocumentor-summary">Handles the deactivation of the plugin.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                <span class="phpdocumentor-signature__name">deactivate_plugin_name</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">deactivate_footnotes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"><p>This action is documented in includes/class-plugin-name-deactivator.php</p>
-</section>
+        <section class="phpdocumentor-description"></section>
 
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/footnotes-includes-Deactivator.html#method_deactivate"><abbr title="\footnotes\includes\Deactivator::deactivate()">Deactivator::deactivate()</abbr></a></span>
+                                        
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
 
     
 </article>
                     <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_run_footnotes">
         run_footnotes()
-        <a href="namespaces/default.html#function_run_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="namespaces/footnotes.html#function_run_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/footnotes.php"><a href="files/src-footnotes.html"><abbr title="src/footnotes.php">footnotes.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">88</span>
+    <span class="phpdocumentor-element-found-in__line">114</span>
 </aside>
 
         <p class="phpdocumentor-summary">Begins execution of the plugin.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                <span class="phpdocumentor-signature__name">run_footnotes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">run_footnotes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"><p>Since everything within the plugin is registered via hooks,
-then kicking off the plugin from this point in the file does
-not affect the page life cycle.</p>
+        <section class="phpdocumentor-description"><p>Since everything within the plugin is registered via hooks, then kicking off
+the plugin from this point in the file does not affect the page life cycle.</p>
 </section>
 
     

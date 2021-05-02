@@ -7,11 +7,8 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @author Mark Cheret
- * @since 1.0.0
  * @package footnotes
- * @copyright 2021 Mark Cheret (email: mark@cheret.de)
- * @license GPL-3.0-only
+ * @since 1.0.0
  *
  * @wordpress-plugin
  * Plugin Name: footnotes
@@ -28,66 +25,103 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
+declare(strict_types=1);
+
+namespace footnotes;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 /**
- * Current plugin version.
+ * The plugin version.
+ *
+ * @link https://github.com/markcheret/footnotes/wiki/Versioning Versioning Guide
  *
  * @since 2.1.4
+ * @todo Draw from envfile rather than hard-coding.
+ *
+ * @global string PLUGIN_VERSION The version of this instance of the plugin.
  */
 define( 'PLUGIN_VERSION', '2.8.0d' );
 
 /**
- * Defines the current environment ('development' or 'production').
+ * The environment that the plugin is configured for.
  *
- * This primarily affects whether minified or unminified files are requested.
+ * This primarily affects whether minified or unminified CSS/JS files are
+ * requested.
  *
  * @since 2.5.5
+ * @todo Draw from envfile rather than hard-coding.
+ * @todo Replace with string for >2 environment options.
+ *
+ * @global bool PRODUCTION_ENV Whether the plugin is running in production mode or not.
  */
 define( 'PRODUCTION_ENV', false );
 
 /**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-name-activator.php
+ * Handles the activation of the plugin.
+ *
+ * @since 2.8.0
+ * @see includes\Activator::activate()
  */
-function activate_footnotes() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-footnotes-activator.php';
-	Footnotes_Activator::activate();
+function activate_footnotes(): void {
+	/**
+	 * Provides plugin activation functionality.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-activator.php';
+
+	includes\Activator::activate();
 }
 
 /**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
+ * Handles the deactivation of the plugin.
+ *
+ * @since 2.8.0
+ * @see includes\Deactivator::deactivate()
  */
-function deactivate_plugin_name() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-footnotes-deactivator.php';
-	Footnotes_Deactivator::deactivate();
+function deactivate_footnotes(): void {
+	/**
+	 * Provides plugin deactivation functionality.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-deactivator.php';
+
+	includes\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_footnotes' );
-register_deactivation_hook( __FILE__, 'deactivate_footnotes' );
+/*
+ * TODO: currently these throw an error:
+ * Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be
+ * a valid callback, function "deactivate_footnotes" not found or invalid
+ * function name in /srv/www/wordpress-one/public_html/wp-includes/class-wp-hook.php:292
+ *
+ * register_activation_hook( __FILE__, 'activate_footnotes' );
+ * register_deactivation_hook( __FILE__, 'deactivate_footnotes' );
+ */
 
 /**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
+ * The core plugin class that defines internationalization, admin-specific and
+ * public-facing site hooks and functionality.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-footnotes.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-core.php';
 
 /**
  * Begins execution of the plugin.
  *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
+ * Since everything within the plugin is registered via hooks, then kicking off
+ * the plugin from this point in the file does not affect the page life cycle.
  *
  * @since 2.8.0
  */
-function run_footnotes() {
+function run_footnotes(): void {
+	/**
+	 * The plugin core.
+	 *
+	 * @global includes\Core $footnotes
+	 */
 	global $footnotes;
-	$footnotes = new Footnotes();
+	$footnotes = new includes\Core();
 	$footnotes->run();
 }
 run_footnotes();

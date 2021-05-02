@@ -36,7 +36,7 @@
     "*.(sa|sc|c)ss": [
       "npm run lint:css"
     ],
-    "*.md": [
+    "*.(md|markdown|wiki)": [
       "npm run lint:md"
     ],
     "*.htm(l)?": [

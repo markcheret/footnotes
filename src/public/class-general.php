@@ -121,7 +121,7 @@ class General {
 		self::$amp_enabled                  = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
 		self::$tooltips_enabled             = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
 		self::$alternative_tooltips_enabled = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		self::$script_mode                   = Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		self::$script_mode                  = Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 	}
 
 	/**

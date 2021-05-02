@@ -1145,80 +1145,80 @@ class Settings {
 		'footnotes_storage'            => array(
 
 			// AMP compatibility.
-			self::FOOTNOTES_AMP_COMPATIBILITY_ENABLE => '',
+			self::FOOTNOTES_AMP_COMPATIBILITY_ENABLE      => '',
 
 			// Footnote start and end short codes.
-			self::FOOTNOTES_SHORT_CODE_START         => '((',
-			self::FOOTNOTES_SHORT_CODE_END           => '))',
+			self::FOOTNOTES_SHORT_CODE_START              => '((',
+			self::FOOTNOTES_SHORT_CODE_END                => '))',
 			self::FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
-			self::FOOTNOTES_SHORT_CODE_END_USER_DEFINED => '',
+			self::FOOTNOTES_SHORT_CODE_END_USER_DEFINED   => '',
 			self::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE => 'yes',
 
 			// Footnotes numbering.
-			self::FOOTNOTES_COUNTER_STYLE            => 'arabic_plain',
-			self::COMBINE_IDENTICAL_FOOTNOTES        => 'yes',
+			self::FOOTNOTES_COUNTER_STYLE                 => 'arabic_plain',
+			self::COMBINE_IDENTICAL_FOOTNOTES             => 'yes',
 
 			// Scrolling behavior.
-			self::FOOTNOTES_CSS_SMOOTH_SCROLLING     => 'no',
-			self::FOOTNOTES_SCROLL_OFFSET            => 20,
-			self::FOOTNOTES_SCROLL_DURATION          => 380,
+			self::FOOTNOTES_CSS_SMOOTH_SCROLLING          => 'no',
+			self::FOOTNOTES_SCROLL_OFFSET                 => 20,
+			self::FOOTNOTES_SCROLL_DURATION               => 380,
 			self::FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY => 'no',
-			self::FOOTNOTES_SCROLL_DOWN_DURATION     => 150,
-			self::FOOTNOTES_SCROLL_DOWN_DELAY        => 0,
-			self::FOOTNOTES_SCROLL_UP_DELAY          => 0,
-			self::FOOTNOTES_HARD_LINKS_ENABLE        => 'no',
-			self::REFERRER_FRAGMENT_ID_SLUG          => 'r',
-			self::FOOTNOTE_FRAGMENT_ID_SLUG          => 'f',
-			self::HARD_LINK_IDS_SEPARATOR            => '+',
-			self::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE  => 'yes',
-			self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT    => 'Alt+ ←',
+			self::FOOTNOTES_SCROLL_DOWN_DURATION          => 150,
+			self::FOOTNOTES_SCROLL_DOWN_DELAY             => 0,
+			self::FOOTNOTES_SCROLL_UP_DELAY               => 0,
+			self::FOOTNOTES_HARD_LINKS_ENABLE             => 'no',
+			self::REFERRER_FRAGMENT_ID_SLUG               => 'r',
+			self::FOOTNOTE_FRAGMENT_ID_SLUG               => 'f',
+			self::HARD_LINK_IDS_SEPARATOR                 => '+',
+			self::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE       => 'yes',
+			self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT         => 'Alt+ ←',
 
 			// Reference container.
-			self::REFERENCE_CONTAINER_NAME           => 'References',
-			self::REFERENCE_CONTAINER_LABEL_ELEMENT  => 'p',
+			self::REFERENCE_CONTAINER_NAME                => 'References',
+			self::REFERENCE_CONTAINER_LABEL_ELEMENT       => 'p',
 			self::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER => 'yes',
-			self::REFERENCE_CONTAINER_COLLAPSE       => 'no',
+			self::REFERENCE_CONTAINER_COLLAPSE            => 'no',
 			self::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE => 'jquery',
-			self::REFERENCE_CONTAINER_POSITION       => 'post_end',
-			self::REFERENCE_CONTAINER_POSITION_SHORTCODE => '[[references]]',
-			self::FOOTNOTE_SECTION_SHORTCODE         => '[[/footnotesection]]',
-			self::REFERENCE_CONTAINER_START_PAGE_ENABLE => 'yes',
-			self::REFERENCE_CONTAINER_TOP_MARGIN     => 24,
-			self::REFERENCE_CONTAINER_BOTTOM_MARGIN  => 0,
-			self::FOOTNOTES_PAGE_LAYOUT_SUPPORT      => 'none',
-			self::FOOTNOTE_URL_WRAP_ENABLED          => 'yes',
+			self::REFERENCE_CONTAINER_POSITION            => 'post_end',
+			self::REFERENCE_CONTAINER_POSITION_SHORTCODE  => '[[references]]',
+			self::FOOTNOTE_SECTION_SHORTCODE              => '[[/footnotesection]]',
+			self::REFERENCE_CONTAINER_START_PAGE_ENABLE   => 'yes',
+			self::REFERENCE_CONTAINER_TOP_MARGIN          => 24,
+			self::REFERENCE_CONTAINER_BOTTOM_MARGIN       => 0,
+			self::FOOTNOTES_PAGE_LAYOUT_SUPPORT           => 'none',
+			self::FOOTNOTE_URL_WRAP_ENABLED               => 'yes',
 			self::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
 			self::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
 			self::REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE => 'no',
-			self::REFERENCE_CONTAINER_ROW_BORDERS_ENABLE => 'no',
+			self::REFERENCE_CONTAINER_ROW_BORDERS_ENABLE  => 'no',
 
-			self::BACKLINKS_SEPARATOR_ENABLED        => 'yes',
-			self::BACKLINKS_SEPARATOR_OPTION         => 'comma',
-			self::BACKLINKS_SEPARATOR_CUSTOM         => '',
+			self::BACKLINKS_SEPARATOR_ENABLED             => 'yes',
+			self::BACKLINKS_SEPARATOR_OPTION              => 'comma',
+			self::BACKLINKS_SEPARATOR_CUSTOM              => '',
 
-			self::BACKLINKS_TERMINATOR_ENABLED       => 'no',
-			self::BACKLINKS_TERMINATOR_OPTION        => 'full_stop',
-			self::BACKLINKS_TERMINATOR_CUSTOM        => '',
+			self::BACKLINKS_TERMINATOR_ENABLED            => 'no',
+			self::BACKLINKS_TERMINATOR_OPTION             => 'full_stop',
+			self::BACKLINKS_TERMINATOR_CUSTOM             => '',
 
-			self::BACKLINKS_COLUMN_WIDTH_ENABLED     => 'no',
-			self::BACKLINKS_COLUMN_WIDTH_SCALAR      => '50',
-			self::BACKLINKS_COLUMN_WIDTH_UNIT        => 'px',
+			self::BACKLINKS_COLUMN_WIDTH_ENABLED          => 'no',
+			self::BACKLINKS_COLUMN_WIDTH_SCALAR           => '50',
+			self::BACKLINKS_COLUMN_WIDTH_UNIT             => 'px',
 
-			self::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED => 'no',
-			self::BACKLINKS_COLUMN_MAX_WIDTH_SCALAR  => '140',
-			self::BACKLINKS_COLUMN_MAX_WIDTH_UNIT    => 'px',
+			self::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED      => 'no',
+			self::BACKLINKS_COLUMN_MAX_WIDTH_SCALAR       => '140',
+			self::BACKLINKS_COLUMN_MAX_WIDTH_UNIT         => 'px',
 
-			self::BACKLINKS_LINE_BREAKS_ENABLED      => 'no',
-			self::LINK_ELEMENT_ENABLED               => 'yes',
+			self::BACKLINKS_LINE_BREAKS_ENABLED           => 'no',
+			self::LINK_ELEMENT_ENABLED                    => 'yes',
 
 			// Footnotes in excerpts.
-			self::FOOTNOTES_IN_EXCERPT               => 'manual',
+			self::FOOTNOTES_IN_EXCERPT                    => 'manual',
 
 			// Footnotes love.
-			self::FOOTNOTES_LOVE                     => 'no',
+			self::FOOTNOTES_LOVE                          => 'no',
 
 			// Deprecated.
-			self::FOOTNOTES_EXPERT_MODE              => 'yes',
+			self::FOOTNOTES_EXPERT_MODE                   => 'yes',
 
 		),
 
@@ -1226,64 +1226,64 @@ class Settings {
 		'footnotes_storage_custom'     => array(
 
 			// Backlink symbol.
-			self::HYPERLINK_ARROW                    => 0,
-			self::HYPERLINK_ARROW_USER_DEFINED       => '',
+			self::HYPERLINK_ARROW                          => 0,
+			self::HYPERLINK_ARROW_USER_DEFINED             => '',
 
 			// Referrers.
-			self::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS => 'yes',
-			self::FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT => 'no',
-			self::FOOTNOTES_STYLING_BEFORE           => '[',
-			self::FOOTNOTES_STYLING_AFTER            => ']',
+			self::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS      => 'yes',
+			self::FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT    => 'no',
+			self::FOOTNOTES_STYLING_BEFORE                 => '[',
+			self::FOOTNOTES_STYLING_AFTER                  => ']',
 
 			// Referrers in labels.
-			self::FOOTNOTES_LABEL_ISSUE_SOLUTION     => 'none',
+			self::FOOTNOTES_LABEL_ISSUE_SOLUTION           => 'none',
 
 			// Tooltips.
-			self::FOOTNOTES_MOUSE_OVER_BOX_ENABLED   => 'yes',
-			self::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE => 'no',
+			self::FOOTNOTES_MOUSE_OVER_BOX_ENABLED         => 'yes',
+			self::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE     => 'no',
 
 			// Tooltip position.
-			self::FOOTNOTES_MOUSE_OVER_BOX_POSITION  => 'top center',
+			self::FOOTNOTES_MOUSE_OVER_BOX_POSITION        => 'top center',
 			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION => 'top right',
-			self::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X  => 0,
+			self::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X        => 0,
 			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X => -50,
-			self::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y  => -7,
+			self::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y        => -7,
 			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y => 24,
 
 			// Tooltip dimensions.
-			self::FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH => 450,
+			self::FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH       => 450,
 			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH => 400,
 
 			// Tooltip timing.
-			self::MOUSE_OVER_BOX_FADE_IN_DELAY       => 0,
-			self::MOUSE_OVER_BOX_FADE_IN_DURATION    => 200,
-			self::MOUSE_OVER_BOX_FADE_OUT_DELAY      => 400,
-			self::MOUSE_OVER_BOX_FADE_OUT_DURATION   => 200,
+			self::MOUSE_OVER_BOX_FADE_IN_DELAY             => 0,
+			self::MOUSE_OVER_BOX_FADE_IN_DURATION          => 200,
+			self::MOUSE_OVER_BOX_FADE_OUT_DELAY            => 400,
+			self::MOUSE_OVER_BOX_FADE_OUT_DURATION         => 200,
 
 			// Tooltip truncation.
 			self::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
-			self::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH => 200,
-			self::FOOTNOTES_TOOLTIP_READON_LABEL     => 'Continue reading',
+			self::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH  => 200,
+			self::FOOTNOTES_TOOLTIP_READON_LABEL           => 'Continue reading',
 
 			// Tooltip text.
-			self::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER => '[[/tooltip]]',
-			self::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE => 'no',
+			self::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER      => '[[/tooltip]]',
+			self::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE  => 'no',
 			self::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR => ' — ',
 
 			// Tooltip appearance.
-			self::MOUSE_OVER_BOX_FONT_SIZE_ENABLED   => 'yes',
-			self::MOUSE_OVER_BOX_FONT_SIZE_SCALAR    => 13,
-			self::MOUSE_OVER_BOX_FONT_SIZE_UNIT      => 'px',
+			self::MOUSE_OVER_BOX_FONT_SIZE_ENABLED         => 'yes',
+			self::MOUSE_OVER_BOX_FONT_SIZE_SCALAR          => 13,
+			self::MOUSE_OVER_BOX_FONT_SIZE_UNIT            => 'px',
 
-			self::FOOTNOTES_MOUSE_OVER_BOX_COLOR     => '#000000',
-			self::FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND => '#ffffff',
-			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH => 1,
-			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR => '#cccc99',
-			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS => 0,
-			self::FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR => '#666666',
+			self::FOOTNOTES_MOUSE_OVER_BOX_COLOR           => '#000000',
+			self::FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND      => '#ffffff',
+			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH    => 1,
+			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR    => '#cccc99',
+			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS   => 0,
+			self::FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR    => '#666666',
 
 			// Your existing Custom CSS code.
-			self::CUSTOM_CSS                         => '',
+			self::CUSTOM_CSS                               => '',
 
 		),
 
@@ -1291,19 +1291,19 @@ class Settings {
 		'footnotes_storage_expert'     => array(
 
 			// WordPress hooks with priority level.
-			self::EXPERT_LOOKUP_THE_TITLE    => '',
-			self::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
+			self::EXPERT_LOOKUP_THE_TITLE                  => '',
+			self::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL   => PHP_INT_MAX,
 
-			self::EXPERT_LOOKUP_THE_CONTENT  => 'checked',
+			self::EXPERT_LOOKUP_THE_CONTENT                => 'checked',
 			self::EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL => 98,
 
-			self::EXPERT_LOOKUP_THE_EXCERPT  => '',
+			self::EXPERT_LOOKUP_THE_EXCERPT                => '',
 			self::EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL => PHP_INT_MAX,
 
-			self::EXPERT_LOOKUP_WIDGET_TITLE => '',
+			self::EXPERT_LOOKUP_WIDGET_TITLE               => '',
 			self::EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL => PHP_INT_MAX,
 
-			self::EXPERT_LOOKUP_WIDGET_TEXT  => '',
+			self::EXPERT_LOOKUP_WIDGET_TEXT                => '',
 			self::EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL => 98,
 
 		),
@@ -1387,7 +1387,7 @@ class Settings {
 	private function load_all(): void {
 		// Clear current settings.
 		$this->settings = array();
-		$num_settings         = count( $this->container );
+		$num_settings   = count( $this->container );
 		for ( $i = 0; $i < $num_settings; $i++ ) {
 			// Load settings.
 			$this->settings = array_merge( $this->settings, $this->load( $i ) );

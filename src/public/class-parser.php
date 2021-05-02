@@ -389,7 +389,7 @@ class Parser {
 		}
 
 		// Reset stored footnotes when displaying the header.
-		self::$footnotes      = array();
+		self::$footnotes     = array();
 		self::$allow_love_me = true;
 	}
 
@@ -1071,7 +1071,7 @@ class Parser {
 		// Take a look if the LOVE ME slug should NOT be displayed on this page/post, remove the short code if found.
 		if ( strpos( $content, \footnotes\includes\Config::NO_LOVE_SLUG ) ) {
 			self::$allow_love_me = false;
-			$content              = str_replace( \footnotes\includes\Config::NO_LOVE_SLUG, '', $content );
+			$content             = str_replace( \footnotes\includes\Config::NO_LOVE_SLUG, '', $content );
 		}
 		// Return the content with replaced footnotes and optional reference container appended.
 		return $content;
@@ -1363,7 +1363,7 @@ class Parser {
 			self::$tooltip_shortcode        = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER );
 			self::$tooltip_shortcode_length = strlen( self::$tooltip_shortcode );
 			$tooltip_text_length            = strpos( $footnote_text, (string) self::$tooltip_shortcode );
-			$has_tooltip_text              = (bool) $tooltip_text_length;
+			$has_tooltip_text               = (bool) $tooltip_text_length;
 			$tooltip_text                   = $has_tooltip_text ? substr( $footnote_text, 0, $tooltip_text_length ) : '';
 
 			/*
@@ -1419,7 +1419,7 @@ class Parser {
 
 				// Display only a truncated footnote text if option enabled.
 				$enable_excerpt = Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED ) );
-				$max_length      = (int) Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH );
+				$max_length     = (int) Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH );
 
 				// Define excerpt text as footnote text by default.
 				$excerpt_text = $footnote_text;
@@ -2034,9 +2034,9 @@ class Parser {
 
 			// Get reference container item text if tooltip text goes separate.
 			$tooltip_text_length = strpos( $footnote_text, self::$tooltip_shortcode );
-			$has_tooltip_text   = (bool) $tooltip_text_length;
+			$has_tooltip_text    = (bool) $tooltip_text_length;
 			if ( $has_tooltip_text ) {
-				$not_tooltip_text           = substr( $footnote_text, ( $tooltip_text_length + self::$tooltip_shortcode_length ) );
+				$not_tooltip_text          = substr( $footnote_text, ( $tooltip_text_length + self::$tooltip_shortcode_length ) );
 				self::$mirror_tooltip_text = Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE ) );
 				if ( self::$mirror_tooltip_text ) {
 					$tooltip_text              = substr( $footnote_text, 0, $tooltip_text_length );

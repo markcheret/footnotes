@@ -6,6 +6,8 @@
         "cm": "npm run cz",
         "release": "./_tools/release.sh",
         "release:commit": "composer run release -- -c",
+        "deploy": "composer run build -- -v",
+        "deploy:dev": "./_tools/deploy-dev.sh -v",
         "build": "./_tools/build.sh",
         "lint": "composer run lint:php; npm run lint",
         "lint:fix": "composer run lint:php:fix; npm run lint:fix",

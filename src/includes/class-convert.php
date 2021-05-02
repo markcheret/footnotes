@@ -177,7 +177,7 @@ class Convert {
 	 * @todo  Review.
 	 * @todo  Single return type.
 	 */
-	public static function get_arrow( int $p_int_index = -1 ) {
+	public static function get_arrow( int $p_int_index = -1 ): string|array {
 		// Define all possible arrows.
 		$l_arr_arrows = array( '&#8593;', '&#8613;', '&#8607;', '&#8617;', '&#8626;', '&#8629;', '&#8657;', '&#8673;', '&#8679;', '&#65514;' );
 		// Convert index to an integer.

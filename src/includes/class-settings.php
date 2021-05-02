@@ -1344,7 +1344,6 @@ class Settings {
 	/**
 	 * Returns a singleton of this class.
 	 *
-	 * @return  Settings
 	 *
 	 * @since  1.5.0
 	 * @todo  Remove?
@@ -1432,7 +1431,6 @@ class Settings {
 	 *
 	 * @param  int   $p_int_index  Index of the Setting Container.
 	 * @param  array $p_arr_new_values  The new Settings value(s).
-	 * @return  bool
 	 *
 	 * @since  1.5.0
 	 */

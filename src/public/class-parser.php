@@ -792,7 +792,7 @@ class Parser {
 		$l_str_footnote_section_shortcode        = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE );
 		$l_int_footnote_section_shortcode_length = strlen( $l_str_footnote_section_shortcode );
 
-		if ( strpos( $p_str_content, (string) $l_str_footnote_section_shortcode ) === false ) {
+		if ( !str_contains( $p_str_content, (string) $l_str_footnote_section_shortcode ) ) {
 
 			// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 			// Appends the reference container if set to "post_end".
@@ -809,7 +809,7 @@ class Parser {
 				$l_int_section_end    = strpos( $l_str_rest_content, (string) $l_str_footnote_section_shortcode );
 				$l_arr_sections_raw[] = substr( $l_str_rest_content, 0, $l_int_section_end );
 				$l_str_rest_content   = substr( $l_str_rest_content, $l_int_section_end + $l_int_footnote_section_shortcode_length );
-			} while ( strpos( $l_str_rest_content, (string) $l_str_footnote_section_shortcode ) !== false );
+			} while ( str_contains( $l_str_rest_content, (string) $l_str_footnote_section_shortcode ) );
 			$l_arr_sections_raw[] = $l_str_rest_content;
 
 			foreach ( $l_arr_sections_raw as $l_str_section ) {
@@ -1033,7 +1033,6 @@ class Parser {
 	 * @param string $p_str_content  Any string that may contain footnotes to be replaced.
 	 * @param bool   $p_bool_output_references  Appends the Reference Container to the output if set to true, default true.
 	 * @param bool   $p_bool_hide_footnotes_text  Hide footnotes found in the string.
-	 * @return string
 	 */
 	public function exec( string $p_str_content, bool $p_bool_output_references = false, bool $p_bool_hide_footnotes_text = false ): string {
 
@@ -1156,7 +1155,6 @@ class Parser {
 	 *
 	 * @param string $p_str_content  Any content to be parsed for footnotes.
 	 * @param bool   $p_bool_hide_footnotes_text  Hide footnotes found in the string.
-	 * @return string
 	 */
 	public function search( string $p_str_content, bool $p_bool_hide_footnotes_text ): string {
 
@@ -1667,8 +1665,6 @@ class Parser {
 	 * Generates the reference container.
 	 *
 	 * @since 1.5.0
-	 *
-	 * @return string
 	 */
 	public function reference_container(): string {
 
@@ -1717,24 +1713,16 @@ class Parser {
 		 */
 		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_SEPARATOR_ENABLED ) ) ) {
 
-			// Check if it is input-configured.
-			$l_str_separator = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM );
-
 			if ( empty( $l_str_separator ) ) {
 
 				// If it is not, check which option is on.
 				$l_str_separator_option = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_SEPARATOR_OPTION );
-				switch ( $l_str_separator_option ) {
-					case 'comma':
-						$l_str_separator = ',';
-						break;
-					case 'semicolon':
-						$l_str_separator = ';';
-						break;
-					case 'en_dash':
-						$l_str_separator = '&nbsp;&#x2013;';
-						break;
-				}
+				$l_str_separator = match ($l_str_separator_option) {
+					'comma' => ',',
+					'semicolon' => ';',
+					'en_dash' => '&nbsp;&#x2013;',
+					default => Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_SEPARATOR_CUSTOM ),
+				};
 			}
 		} else {
 
@@ -1748,24 +1736,16 @@ class Parser {
 		 */
 		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_TERMINATOR_ENABLED ) ) ) {
 
-			// Check if it is input-configured.
-			$l_str_terminator = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM );
-
 			if ( empty( $l_str_terminator ) ) {
 
 				// If it is not, check which option is on.
 				$l_str_terminator_option = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_TERMINATOR_OPTION );
-				switch ( $l_str_terminator_option ) {
-					case 'period':
-						$l_str_terminator = '.';
-						break;
-					case 'parenthesis':
-						$l_str_terminator = ')';
-						break;
-					case 'colon':
-						$l_str_terminator = ':';
-						break;
-				}
+				$l_str_terminator = match ($l_str_terminator_option) {
+					'period' => '.',
+					'parenthesis' => ')',
+					'colon' => ':',
+					default => Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_TERMINATOR_CUSTOM ),
+				};
 			}
 		} else {
 

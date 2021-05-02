@@ -180,7 +180,7 @@ class Template {
 	 * @param  string $p_str_extension  The file extension of the template.
 	 * @return  string|bool  `false` or the template path
 	 */
-	public function get_template( string $p_str_file_type, string $p_str_file_name, string $p_str_extension = 'html' ) {
+	public function get_template( string $p_str_file_type, string $p_str_file_name, string $p_str_extension = 'html' ): string|bool {
 		$located = false;
 
 		/*

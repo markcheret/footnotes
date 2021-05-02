@@ -65,7 +65,6 @@ abstract class Engine {
 	 * Returns a Priority index. Lower numbers have a higher priority.
 	 *
 	 * @abstract
-	 * @return  int
 	 *
 	 * @since  1.5.0
 	 */
@@ -76,7 +75,6 @@ abstract class Engine {
 	 *
 	 * @abstract
 	 * @access  protected
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 */
@@ -87,7 +85,6 @@ abstract class Engine {
 	 *
 	 * @abstract
 	 * @access  protected
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 */
@@ -98,7 +95,6 @@ abstract class Engine {
 	 *
 	 * @abstract
 	 * @access  protected
-	 * @return  array
 	 *
 	 * @since  1.5.0
 	 */
@@ -109,7 +105,6 @@ abstract class Engine {
 	 *
 	 * @abstract
 	 * @access  protected
-	 * @return  array
 	 *
 	 * @since  1.5.0
 	 */
@@ -387,7 +382,6 @@ abstract class Engine {
 	 *
 	 * @access  protected
 	 * @param  string $p_str_text  Message to be surrounded with `<span>` tags.
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
@@ -402,7 +396,6 @@ abstract class Engine {
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Settings key.
 	 * @param  string $p_str_caption  Label caption.
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
@@ -434,7 +427,6 @@ abstract class Engine {
 	 * @param  int    $p_str_max_length  Maximum length of the input. Default length 999 chars.
 	 * @param  bool   $p_bool_readonly  Set the input to be read only. Default `false`.
 	 * @param  bool   $p_bool_hidden  Set the input to be hidden. Default `false`.
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
@@ -462,7 +454,6 @@ abstract class Engine {
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Setting key.
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
@@ -484,7 +475,6 @@ abstract class Engine {
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Setting key.
 	 * @param  array  $p_arr_options  Possible options.
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
@@ -519,7 +509,6 @@ abstract class Engine {
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Setting key.
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
@@ -541,7 +530,6 @@ abstract class Engine {
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name Setting key.
-	 * @return  string
 	 *
 	 * @since  1.5.6
 	 * @todo  Refactor HTML generation.
@@ -566,7 +554,6 @@ abstract class Engine {
 	 * @param  int    $p_in_min  Minimum value.
 	 * @param  int    $p_int_max  Maximum value.
 	 * @param  bool   $p_bool_deci  `true` if float, `false` if integer. Default `false`.
-	 * @return  string
 	 *
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.

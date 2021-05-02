@@ -572,8 +572,8 @@ abstract class Engine {
 				$p_in_min,
 				$p_int_max
 			);
-		} else {
-			return sprintf(
+		}
+		return sprintf(
 				'<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
 				$l_arr_data['name'],
 				$l_arr_data['id'],
@@ -581,7 +581,6 @@ abstract class Engine {
 				$p_in_min,
 				$p_int_max
 			);
-		}
 	}
 
 }

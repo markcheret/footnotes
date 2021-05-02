@@ -1231,7 +1231,7 @@ class Settings extends Engine {
 	 * @todo Review in light of admin/public split.
 	 */
 	public function help(): void {
-		$footnotes = new General\General( $this->plugin_name, 'foo' );
+		$general = new General\General( $this->plugin_name, 'foo' );
 
 		// Load footnotes starting and end tag.
 		$footnote_starting_tag = $this->load_setting( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_START );
@@ -1268,7 +1268,7 @@ class Settings extends Engine {
 				'end'            => $footnote_ending_tag['value'],
 				'example-code'   => $example,
 				'example-string' => '<br/>' . __( 'will be displayed as:', 'footnotes' ),
-				'example'        => $footnotes->task->exec( $example, true ),
+				'example'        => $general->task->exec( $example, true ),
 				// Translators: %1$s, %2$s: anchor element with hyperlink to the Support Forum.
 				'information'    => sprintf( __( 'For further information please check out our %1$sSupport Forum%2$s on WordPress.org.', 'footnotes' ), '<a href="https://wordpress.org/support/plugin/footnotes" target="_blank" class="footnote_plugin">', '</a>' ),
 			)
@@ -1282,7 +1282,7 @@ class Settings extends Engine {
 		 * the name of the filtered function.
 		 * When this callback function was renamed, this call went unnoticed.
 		 */
-		$footnotes->task->footnotes_output_head();
+		$general->task->footnotes_output_head();
 
 		// Display template with replaced placeholders.
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped

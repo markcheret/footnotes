@@ -168,9 +168,9 @@ class Core {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new i18n();
+		$i18n = new i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action( 'plugins_loaded', $i18n, 'load_plugin_textdomain' );
 
 	}
 
@@ -186,23 +186,23 @@ class Core {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Admin\Admin( $this->get_plugin_name(), $this->get_version() );
+		$admin = new Admin\Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
 
-		$this->loader->add_filter( 'plugin_action_links_footnotes/footnotes.php', $plugin_admin, 'action_links' );
+		$this->loader->add_filter( 'plugin_action_links_footnotes/footnotes.php', $admin, 'action_links' );
 
-		$this->loader->add_filter( 'mce_buttons', $plugin_admin->wysiwyg, 'new_visual_editor_button' );
-		$this->loader->add_action( 'admin_print_footer_scripts', $plugin_admin->wysiwyg, 'new_plain_text_editor_button' );
+		$this->loader->add_filter( 'mce_buttons', $admin->wysiwyg, 'new_visual_editor_button' );
+		$this->loader->add_action( 'admin_print_footer_scripts', $admin->wysiwyg, 'new_plain_text_editor_button' );
 
-		$this->loader->add_filter( 'mce_external_plugins', $plugin_admin->wysiwyg, 'include_scripts' );
+		$this->loader->add_filter( 'mce_external_plugins', $admin->wysiwyg, 'include_scripts' );
 
 		// phpcs:disable
 		// 'footnotes_getTags' must match its instance in wysiwyg-editor.js.
 		// 'footnotes_getTags' must match its instance in editor-button.html.
-		$this->loader->add_action( 'wp_ajax_nopriv_footnotes_getTags', $plugin_admin->wysiwyg, 'ajax_callback' );
-		$this->loader->add_action( 'wp_ajax_footnotes_getTags', $plugin_admin->wysiwyg, 'ajax_callback' );
+		$this->loader->add_action( 'wp_ajax_nopriv_footnotes_getTags', $admin->wysiwyg, 'ajax_callback' );
+		$this->loader->add_action( 'wp_ajax_footnotes_getTags', $admin->wysiwyg, 'ajax_callback' );
 		// phpcs:enable
 	}
 
@@ -217,12 +217,12 @@ class Core {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new General\General( $this->get_plugin_name(), $this->get_version() );
+		$general = new General\General( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $general, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $general, 'enqueue_scripts' );
 
-		$this->loader->add_action( 'widgets_init', $plugin_public, 'register_widgets' );
+		$this->loader->add_action( 'widgets_init', $general, 'register_widgets' );
 	}
 
 	/**

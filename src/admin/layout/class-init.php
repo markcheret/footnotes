@@ -43,7 +43,7 @@ class Init {
 	 *
 	 * @since  1.5.0
 	 */
-	private Settings $settings_page;
+	private Settings $settings;
 
 	/**
 	 * Initializes all WordPress hooks for the Plugin Settings.
@@ -64,7 +64,7 @@ class Init {
 	) {
 		$this->load_dependencies();
 
-		$this->settings_page = new Settings( $this->plugin_name );
+		$this->settings = new Settings( $this->plugin_name );
 
 		// Register hooks/actions.
 		add_action(
@@ -123,7 +123,7 @@ class Init {
 	 */
 	public function initialize_settings(): void {
 		Includes\Settings::instance()->register_settings();
-		$this->settings_page->register_sections();
+		$this->settings->register_sections();
 	}
 
 	/**
@@ -139,9 +139,9 @@ class Init {
 			\footnotes\includes\Config::PLUGIN_PUBLIC_NAME,
 			'manage_options',
 			self::MAIN_MENU_SLUG,
-			fn() => $this->settings_page->display_content()
+			fn() => $this->settings->display_content()
 		);
-		$this->settings_page->register_sub_page();
+		$this->settings->register_sub_page();
 	}
 
 	// phpcs:disable WordPress.Security.NonceVerification.Missing

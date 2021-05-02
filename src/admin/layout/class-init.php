@@ -69,11 +69,31 @@ class Init {
 		$this->settings_page = new Settings( $this->plugin_name );
 
 		// Register hooks/actions.
-		add_action( 'admin_menu', array( $this, 'register_options_submenu' ) );
-		add_action( 'admin_init', array( $this, 'initialize_settings' ) );
+		add_action(
+			'admin_menu',
+			function () {
+				return $this->register_options_submenu();
+			}
+		);
+		add_action(
+			'admin_init',
+			function () {
+				return $this->initialize_settings();
+			}
+		);
 		// Register AJAX callbacks for Plugin information.
-		add_action( 'wp_ajax_nopriv_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
-		add_action( 'wp_ajax_footnotes_get_plugin_info', array( $this, 'get_plugin_meta_information' ) );
+		add_action(
+			'wp_ajax_nopriv_footnotes_get_plugin_info',
+			function () {
+				return $this->get_plugin_meta_information();
+			}
+		);
+		add_action(
+			'wp_ajax_footnotes_get_plugin_info',
+			function () {
+				return $this->get_plugin_meta_information();
+			}
+		);
 	}
 
 	/**
@@ -126,10 +146,12 @@ class Init {
 		add_submenu_page(
 			'options-general.php',
 			'footnotes Settings',
-			Includes\Config::C_STR_PLUGIN_PUBLIC_NAME,
+			\footnotes\includes\Config::C_STR_PLUGIN_PUBLIC_NAME,
 			'manage_options',
 			self::C_STR_MAIN_MENU_SLUG,
-			array( $this->settings_page, 'display_content' )
+			function () {
+				return $this->settings_page->display_content();
+			}
 		);
 		$this->settings_page->register_sub_page();
 	}
@@ -173,7 +195,7 @@ class Init {
 			exit;
 		}
 
-		$l_int_num_ratings = array_key_exists( 'num_ratings', $l_arr_plugin ) ? intval( $l_arr_plugin['num_ratings'] ) : 0;
+		$l_int_num_ratings = array_key_exists( 'num_ratings', $l_arr_plugin ) ? (int) $l_arr_plugin['num_ratings'] : 0;
 		$l_int_rating      = array_key_exists( 'rating', $l_arr_plugin ) ? floatval( $l_arr_plugin['rating'] ) : 0.0;
 		$l_int_stars       = round( 5 * $l_int_rating / 100.0, 1 );
 

@@ -1226,7 +1226,7 @@ class Settings {
 		'footnotes_storage_custom'     => array(
 
 			// Backlink symbol.
-			self::C_STR_HYPERLINK_ARROW                    => '&#8593;',
+			self::C_STR_HYPERLINK_ARROW                    => 0,
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED       => '',
 
 			// Referrers.
@@ -1451,7 +1451,7 @@ class Settings {
 	 * @since  1.5.0
 	 */
 	public function get( $p_str_key ) {
-		return array_key_exists( $p_str_key, $this->a_arr_settings ) ? $this->a_arr_settings[ $p_str_key ] : null;
+		return $this->a_arr_settings[ $p_str_key ] ?? null;
 	}
 
 	/**

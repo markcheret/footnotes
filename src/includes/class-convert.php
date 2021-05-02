@@ -180,7 +180,7 @@ class Convert {
 		$l_arr_arrows = array( '&#8593;', '&#8613;', '&#8607;', '&#8617;', '&#8626;', '&#8629;', '&#8657;', '&#8673;', '&#8679;', '&#65514;' );
 		// Convert index to an integer.
 		if ( ! is_int( $p_int_index ) ) {
-			$p_int_index = intval( $p_int_index );
+			$p_int_index = (int) $p_int_index;
 		}
 		// Return the whole arrow array.
 		if ( $p_int_index < 0 || $p_int_index > count( $l_arr_arrows ) ) {

@@ -195,7 +195,9 @@ abstract class Engine {
 			$this->get_sub_page_title(),
 			'manage_options',
 			Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug(),
-			array( $this, 'display_content' )
+			function () {
+				return $this->display_content();
+			}
 		);
 	}
 
@@ -211,7 +213,9 @@ abstract class Engine {
 			add_settings_section(
 				$l_arr_section['id'],
 				'',
-				array( $this, 'Description' ),
+				function () {
+					return $this->description();
+				},
 				$l_arr_section['id']
 			);
 			$this->register_meta_boxes( $l_arr_section['id'] );
@@ -273,12 +277,10 @@ abstract class Engine {
 
 		// Store settings.
 		$l_bool_settings_updated = false;
-		if ( array_key_exists( 'save-settings', $_POST ) ) {
-			if ( 'save' === $_POST['save-settings'] ) {
-				unset( $_POST['save-settings'] );
-				unset( $_POST['submit'] );
-				$l_bool_settings_updated = $this->save_settings();
-			}
+		if ( array_key_exists( 'save-settings', $_POST ) && 'save' === $_POST['save-settings'] ) {
+			unset( $_POST['save-settings'] );
+			unset( $_POST['submit'] );
+			$l_bool_settings_updated = $this->save_settings();
 		}
 
 		// Display all sections and highlight the active section.
@@ -345,13 +347,8 @@ abstract class Engine {
 		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : key( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
-		foreach ( Includes\Settings::instance()->get_defaults( $l_arr_active_section['container'] ) as $l_str_key => $l_mixed_value ) {
-			if ( array_key_exists( $l_str_key, $_POST ) ) {
-				$l_arr_new_settings[ $l_str_key ] = wp_unslash( $_POST[ $l_str_key ] );
-			} else {
-				// Setting is not defined in the POST array, define it to avoid the Default value.
-				$l_arr_new_settings[ $l_str_key ] = '';
-			}
+		foreach ( array_keys( Includes\Settings::instance()->get_defaults( $l_arr_active_section['container'] ) ) as $l_str_key ) {
+			$l_arr_new_settings[ $l_str_key ] = array_key_exists( $l_str_key, $_POST ) ? wp_unslash( $_POST[ $l_str_key ] ) : '';
 		}
 		// Update settings.
 		return Includes\Settings::instance()->save_options( $l_arr_active_section['container'], $l_arr_new_settings );
@@ -389,8 +386,8 @@ abstract class Engine {
 		// Get current section.
 		reset( $this->a_arr_sections );
 		$p_arr_return          = array();
-		$p_arr_return['id']    = sprintf( '%s', $p_str_setting_key_name );
-		$p_arr_return['name']  = sprintf( '%s', $p_str_setting_key_name );
+		$p_arr_return['id']    = $p_str_setting_key_name;
+		$p_arr_return['name']  = $p_str_setting_key_name;
 		$p_arr_return['value'] = esc_attr( Includes\Settings::instance()->get( $p_str_setting_key_name ) );
 		return $p_arr_return;
 	}

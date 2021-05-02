@@ -17,7 +17,7 @@ namespace footnotes\includes;
  *
  * @todo Move to {@see Loader}.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-convert.php';
+require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
 
 /**
  * Class defining configurable plugin settings.

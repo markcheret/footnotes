@@ -90,14 +90,14 @@ class Admin {
 		/**
 		 * The class responsible for WYSIWYG editor integration.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wysiwyg.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-wysiwyg.php';
 
 		$this->wysiwyg = new WYSIWYG( $this->plugin_name );
 
 		/**
 		 * The class responsible for constructing the plugin dashboard page(s).
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/layout/class-init.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/layout/class-init.php';
 
 		new layout\Init( $this->plugin_name );
 	}

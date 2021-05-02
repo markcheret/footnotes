@@ -19,7 +19,7 @@ namespace footnotes\admin\layout;
 
 use footnotes\includes as Includes;
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-init.php';
+require_once plugin_dir_path( __DIR__ ) . 'layout/class-init.php';
 
 /**
  * Class to be extended by page layout sub-classes.

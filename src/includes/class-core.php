@@ -124,32 +124,32 @@ class Core {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-loader.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-i18n.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-i18n.php';
 
 		/**
 		 * The various utility classes.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-convert.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-template.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-config.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-settings.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-template.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-admin.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-general.php';
+		require_once plugin_dir_path( __DIR__ ) . 'public/class-general.php';
 
 		$this->loader = new Loader();
 

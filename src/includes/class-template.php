@@ -91,7 +91,7 @@ class Template {
 			return;
 		}
 
-		$this->plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
+		$this->plugin_directory = plugin_dir_path( __DIR__ );
 
 		$template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension );
 		if ( $template ) {

@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace footnotes\includes;
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
+require_once plugin_dir_path( __DIR__ ) . 'includes/class-config.php';
 
 /**
  * Class providing internationalization functionality.

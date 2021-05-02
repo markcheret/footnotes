@@ -23,7 +23,7 @@ use footnotes\general as General;
 /**
  * Provides the abstract class to be extended for page layouts.
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-engine.php';
+require_once plugin_dir_path( __DIR__ ) . 'layout/class-engine.php';
 
 /**
  * Class to initialise all defined page layouts.

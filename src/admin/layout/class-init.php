@@ -125,7 +125,7 @@ class Init {
 		/**
 		 * Represents the plugin settings dashboard page.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'layout/class-settings.php';
+		require_once plugin_dir_path( __DIR__ ) . 'layout/class-settings.php';
 	}
 
 	/**

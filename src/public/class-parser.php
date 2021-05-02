@@ -268,10 +268,10 @@ class Parser {
 	 */
 	public function __construct() {
 		// TODO: Reorg dependencies.
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-convert.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-settings.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-template.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-config.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-settings.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-template.php';
 
 		// TODO: Move to `General`.
 		$this->register_hooks();

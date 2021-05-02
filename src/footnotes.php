@@ -88,8 +88,14 @@ function deactivate_footnotes(): void {
 	includes\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_footnotes' );
-register_deactivation_hook( __FILE__, 'deactivate_footnotes' );
+/*
+ * TODO: currently these throw an error:
+ * Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be 
+ * a valid callback, function "deactivate_footnotes" not found or invalid 
+ * function name in /srv/www/wordpress-one/public_html/wp-includes/class-wp-hook.php:292
+ */
+//register_activation_hook( __FILE__, 'activate_footnotes' );
+//register_deactivation_hook( __FILE__, 'deactivate_footnotes' );
 
 /**
  * The core plugin class that defines internationalization, admin-specific and

@@ -26,26 +26,14 @@ use footnotes\includes as Includes;
 class WYSIWYG {
 
 	/**
-	 * The ID of this plugin.
-	 *
-	 * @access  private
-	 * @var  string  $plugin_name  The ID of this plugin.
-	 *
-	 * @since  2.8.0
-	 */
-	private $plugin_name;
-
-	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @param  string $plugin_name  The name of this plugin.
 	 *
 	 * @since  2.8.0
 	 */
-	public function __construct( $plugin_name ) {
-
-		$this->plugin_name = $plugin_name;
-
+	public function __construct()
+	{
 	}
 
 	/**

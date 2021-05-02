@@ -797,9 +797,7 @@ class Parser {
 			foreach ( $l_arr_sections_raw as $l_str_section ) {
 				$l_arr_sections_processed[] = self::exec( $l_str_section, true );
 			}
-
-			$p_str_content = implode( $l_arr_sections_processed );
-			return $p_str_content;
+			return implode( $l_arr_sections_processed );
 
 		}
 	}
@@ -1908,9 +1906,6 @@ class Parser {
 				$l_str_hard_link_address .= self::$a_str_post_container_id_compound;
 				$l_str_hard_link_address .= $l_str_footnote_id . '"';
 				$l_str_hard_link_address .= $l_str_use_backbutton_hint;
-
-				// Compose optional opening link tag with optional hard link, mandatory for instance.
-				self::$a_str_link_open_tag = '<a' . $l_str_hard_link_address;
 				self::$a_str_link_open_tag = ' class="footnote_hard_back_link">';
 
 			} else {

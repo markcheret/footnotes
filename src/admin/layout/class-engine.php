@@ -47,7 +47,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	protected $a_str_sub_page_hook = null;
+	protected $a_str_sub_page_hook;
 
 	/**
 	 * Stores all Sections for the child sub-page.
@@ -286,7 +286,6 @@ abstract class Engine {
 		echo '<h2 class="nav-tab-wrapper">';
 		// Iterate through all register sections.
 		foreach ( $this->a_arr_sections as $l_str_id => $l_arr_description ) {
-			$l_str_tab_active = ( $l_str_id === $l_arr_active_section['id'] ) ? ' nav-tab-active' : '';
 			echo sprintf(
 				'<a class="nav-tab%s" href="?page=%s&t=%s">%s</a>',
 				( $l_str_id === $l_arr_active_section['id'] ) ? ' nav-tab-active' : '',

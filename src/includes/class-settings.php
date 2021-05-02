@@ -1112,7 +1112,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 */
-	private static $a_obj_instance = null;
+	private static $a_obj_instance;
 
 	/**
 	 * Contains all Settings Container names.

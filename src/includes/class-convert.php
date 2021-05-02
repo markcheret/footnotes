@@ -52,7 +52,6 @@ class Convert {
 	 *
 	 * @param  int  $p_int_value  Value to be converted.
 	 * @param  bool $p_bool_upper_case  Whether to convert the value to upper-case.
-	 * @return  string
 	 *
 	 * @since  1.0-gamma
 	 * @todo  Replace with built-in char casting.
@@ -102,7 +101,6 @@ class Convert {
 	 *
 	 * @param  int  $p_int_value  Value to be converted.
 	 * @param  bool $p_bool_upper_case  Whether to convert the value to upper-case.
-	 * @return  string
 	 *
 	 * @since  1.0-gamma
 	 */

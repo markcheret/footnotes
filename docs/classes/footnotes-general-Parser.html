@@ -59,6 +59,14 @@
                                     </ul>
                         </section>
 
+        <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
+                        <ul class="phpdocumentor-list">
+                                    <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
+                            </ul>
+                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -84,6 +92,12 @@
     Parser
 
     
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/footnotes.html">footnotes</a></li>
+                            </ul>
+        </div>
     
     
     </h2>
@@ -91,7 +105,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 </aside>
 
             <p class="phpdocumentor-summary">Searches and replaces the footnotes and generates the reference container.</p>
@@ -137,154 +151,154 @@
 
 <dl class="phpdocumentor-table-of-contents">
                 <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_arr_footnotes">$a_arr_footnotes</a>
-    <span>
-                &nbsp;: array&lt;string|int, string&gt;            </span>
-</dt>
-<dd>Contains all footnotes found in the searched content.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_bool_allow_love_me">$a_bool_allow_love_me</a>
+    <a href="classes/footnotes-general-Parser.html#property_allow_love_me">$allow_love_me</a>
     <span>
                 &nbsp;: bool            </span>
 </dt>
 <dd>Flag if the display of &#039;LOVE FOOTNOTES&#039; is allowed on the current public page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_bool_hard_links_enabled">$a_bool_hard_links_enabled</a>
+    <a href="classes/footnotes-general-Parser.html#property_end_tag">$end_tag</a>
     <span>
-                &nbsp;: bool            </span>
-</dt>
-<dd>Hard links for AMP compatibility.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_bool_mirror_tooltip_text">$a_bool_mirror_tooltip_text</a>
-    <span>
-                &nbsp;: bool            </span>
-</dt>
-<dd>Whether to mirror the tooltip text in the reference container.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_bool_syntax_error_flag">$a_bool_syntax_error_flag</a>
-    <span>
-                &nbsp;: bool            </span>
-</dt>
-<dd>Footnote delimiter syntax validation enabled.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_int_post_id">$a_int_post_id</a>
-    <span>
-                &nbsp;: int            </span>
-</dt>
-<dd>Autoload a.k.a. infinite scroll, or archive view.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_int_reference_container_id">$a_int_reference_container_id</a>
-    <span>
-                &nbsp;: int            </span>
-</dt>
-<dd>Multiple reference containers in content and widgets.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_int_scroll_offset">$a_int_scroll_offset</a>
-    <span>
-                &nbsp;: int            </span>
-</dt>
-<dd>Scroll offset.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_int_tooltip_shortcode_length">$a_int_tooltip_shortcode_length</a>
-    <span>
-                &nbsp;: int            </span>
-</dt>
-<dd>The tooltip delimiter shortcode length.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_end_tag">$a_str_end_tag</a>
-    <span>
-                &nbsp;: string            </span>
+                &nbsp;: string|int            </span>
 </dt>
 <dd>Footnote delimiter end short code.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_end_tag_regex">$a_str_end_tag_regex</a>
+    <a href="classes/footnotes-general-Parser.html#property_end_tag_regex">$end_tag_regex</a>
     <span>
-                &nbsp;: string            </span>
+                &nbsp;: string|null            </span>
 </dt>
 <dd>Footnote delimiter end short code in RegEx format.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_footnote_link_slug">$a_str_footnote_link_slug</a>
+    <a href="classes/footnotes-general-Parser.html#property_footnote_link_slug">$footnote_link_slug</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>The footnote slug.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_link_close_tag">$a_str_link_close_tag</a>
+    <a href="classes/footnotes-general-Parser.html#property_footnotes">$footnotes</a>
+    <span>
+                &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+<dd>Contains all footnotes found in the searched content.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_hard_links_enabled">$hard_links_enabled</a>
+    <span>
+                &nbsp;: bool            </span>
+</dt>
+<dd>Hard links for AMP compatibility.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_link_close_tag">$link_close_tag</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>The closing tag.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_link_open_tag">$a_str_link_open_tag</a>
+    <a href="classes/footnotes-general-Parser.html#property_link_open_tag">$link_open_tag</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>The opening tag.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_link_span">$a_str_link_span</a>
+    <a href="classes/footnotes-general-Parser.html#property_link_span">$link_span</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>The span element name.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_post_container_id_compound">$a_str_post_container_id_compound</a>
+    <a href="classes/footnotes-general-Parser.html#property_mirror_tooltip_text">$mirror_tooltip_text</a>
+    <span>
+                &nbsp;: bool            </span>
+</dt>
+<dd>Whether to mirror the tooltip text in the reference container.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_post_container_id_compound">$post_container_id_compound</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>Contains the concatenated fragment ID base.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_prefix">$a_str_prefix</a>
+    <a href="classes/footnotes-general-Parser.html#property_post_id">$post_id</a>
+    <span>
+                &nbsp;: int            </span>
+</dt>
+<dd>Autoload a.k.a. infinite scroll, or archive view.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_prefix">$prefix</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>Prefix for the Footnote html element ID.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_referrer_link_slug">$a_str_referrer_link_slug</a>
+    <a href="classes/footnotes-general-Parser.html#property_reference_container_id">$reference_container_id</a>
+    <span>
+                &nbsp;: int            </span>
+</dt>
+<dd>Multiple reference containers in content and widgets.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_referrer_link_slug">$referrer_link_slug</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>The referrer slug.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_start_tag">$a_str_start_tag</a>
+    <a href="classes/footnotes-general-Parser.html#property_scroll_offset">$scroll_offset</a>
     <span>
-                &nbsp;: string            </span>
+                &nbsp;: int            </span>
+</dt>
+<dd>Scroll offset.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_start_tag">$start_tag</a>
+    <span>
+                &nbsp;: string|int            </span>
 </dt>
 <dd>Footnote delimiter start short code.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_start_tag_regex">$a_str_start_tag_regex</a>
+    <a href="classes/footnotes-general-Parser.html#property_start_tag_regex">$start_tag_regex</a>
     <span>
-                &nbsp;: string            </span>
+                &nbsp;: string|null            </span>
 </dt>
 <dd>Footnote delimiter start short code in RegEx format.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_tooltip_shortcode">$a_str_tooltip_shortcode</a>
+    <a href="classes/footnotes-general-Parser.html#property_syntax_error_flag">$syntax_error_flag</a>
+    <span>
+                &nbsp;: bool            </span>
+</dt>
+<dd>Footnote delimiter syntax validation enabled.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_tooltip_shortcode">$tooltip_shortcode</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd>The tooltip delimiter shortcode.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-general-Parser.html#property_tooltip_shortcode_length">$tooltip_shortcode_length</a>
+    <span>
+                &nbsp;: int            </span>
+</dt>
+<dd>The tooltip delimiter shortcode length.</dd>
+
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/footnotes-general-Parser.html#property_a_str_link_ids_separator">$a_str_link_ids_separator</a>
+    <a href="classes/footnotes-general-Parser.html#property_link_ids_separator">$link_ids_separator</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
@@ -342,14 +356,14 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/footnotes-general-Parser.html#method_footnotes_output_footer">footnotes_output_footer()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: void    </span>
 </dt>
 <dd>Displays the &#039;LOVE FOOTNOTES&#039; slug if enabled.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/footnotes-general-Parser.html#method_footnotes_output_head">footnotes_output_head()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: void    </span>
 </dt>
 <dd>Outputs the custom css to the header of the public page.</dd>
 
@@ -377,7 +391,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/footnotes-general-Parser.html#method_register_hooks">register_hooks()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: void    </span>
 </dt>
 <dd>Register WordPress hooks to replace Footnotes in the content of a public page.</dd>
 
@@ -391,7 +405,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/footnotes-general-Parser.html#method_unify_delimiters">unify_delimiters()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: string    </span>
 </dt>
 <dd>Brings the delimiters and unifies their various HTML escapement schemas.</dd>
 
@@ -414,63 +428,16 @@
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_arr_footnotes">
-        $a_arr_footnotes
-        <a href="classes/footnotes-general-Parser.html#property_a_arr_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_allow_love_me">
+        $allow_love_me
+        <a href="classes/footnotes-general-Parser.html#property_allow_love_me" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Contains all footnotes found in the searched content.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
-    <span class="phpdocumentor-signature__name">$a_arr_footnotes</span>
-     = <span class="phpdocumentor-signature__default-value">array()</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">1.5.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_allow_love_me">
-        $a_bool_allow_love_me
-        <a href="classes/footnotes-general-Parser.html#property_a_bool_allow_love_me" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 </aside>
 
         <p class="phpdocumentor-summary">Flag if the display of &#039;LOVE FOOTNOTES&#039; is allowed on the current public page.</p>
@@ -478,7 +445,7 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_allow_love_me</span>
+    <span class="phpdocumentor-signature__name">$allow_love_me</span>
      = <span class="phpdocumentor-signature__default-value">true</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -508,368 +475,24 @@
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_hard_links_enabled">
-        $a_bool_hard_links_enabled
-        <a href="classes/footnotes-general-Parser.html#property_a_bool_hard_links_enabled" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_end_tag">
+        $end_tag
+        <a href="classes/footnotes-general-Parser.html#property_end_tag" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">80</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Hard links for AMP compatibility.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_hard_links_enabled</span>
-     = <span class="phpdocumentor-signature__default-value">false</span></code>
-
-        <section class="phpdocumentor-description"><p>A property because used both in <abbr title="\footnotes\general\search()">search()</abbr> and <abbr title="\footnotes\general\reference_container()">reference_container()</abbr>.</p>
-</section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_mirror_tooltip_text">
-        $a_bool_mirror_tooltip_text
-        <a href="classes/footnotes-general-Parser.html#property_a_bool_mirror_tooltip_text" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">206</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Whether to mirror the tooltip text in the reference container.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_mirror_tooltip_text</span>
-     = <span class="phpdocumentor-signature__default-value">false</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.5.2</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_bool_syntax_error_flag">
-        $a_bool_syntax_error_flag
-        <a href="classes/footnotes-general-Parser.html#property_a_bool_syntax_error_flag" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">258</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Footnote delimiter syntax validation enabled.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$a_bool_syntax_error_flag</span>
-     = <span class="phpdocumentor-signature__default-value">true</span></code>
-
-        <section class="phpdocumentor-description"><p>The algorithm first checks for balanced footnote opening and closing tag short codes.
-The first encountered error triggers the display of a warning below the post title.</p>
-<p>Unbalanced short codes have caused significant trouble because they are hard to detect.
-Any compiler or other tool reports syntax errors in the first place. Footnotes' exception
-is considered a design flaw, and the feature is released as a bug fix after overdue 2.3.0
-released in urgency to provide AMP compat before 2021.</p>
-</section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.4.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_int_post_id">
-        $a_int_post_id
-        <a href="classes/footnotes-general-Parser.html#property_a_int_post_id" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">58</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Autoload a.k.a. infinite scroll, or archive view.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$a_int_post_id</span>
-     = <span class="phpdocumentor-signature__default-value">0</span></code>
-
-        <section class="phpdocumentor-description"><p>As multiple posts are appended to each other, functions and fragment IDs must be disambiguated.
-post ID to make everything unique wrt infinite scroll and archive view.</p>
-</section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.0.6</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_int_reference_container_id">
-        $a_int_reference_container_id
-        <a href="classes/footnotes-general-Parser.html#property_a_int_reference_container_id" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">70</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Multiple reference containers in content and widgets.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$a_int_reference_container_id</span>
-     = <span class="phpdocumentor-signature__default-value">1</span></code>
-
-        <section class="phpdocumentor-description"><p>This ID disambiguates multiple reference containers in a page
-as they may occur when the widget_text hook is active and the page
-is built with Elementor and has an accordion or similar toggle sections.</p>
-</section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.2.9</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_int_scroll_offset">
-        $a_int_scroll_offset
-        <a href="classes/footnotes-general-Parser.html#property_a_int_scroll_offset" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">127</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Scroll offset.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$a_int_scroll_offset</span>
-     = <span class="phpdocumentor-signature__default-value">34</span></code>
-
-        <section class="phpdocumentor-description"><p>Websites may use high fixed headers not contracting at scroll.
-Scroll offset may now need to get into inline CSS.
-Hence it needs to be loaded twice, because priority levels may not match.</p>
-</section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.1.4</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_int_tooltip_shortcode_length">
-        $a_int_tooltip_shortcode_length
-        <a href="classes/footnotes-general-Parser.html#property_a_int_tooltip_shortcode_length" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">198</span>
-</aside>
-
-        <p class="phpdocumentor-summary">The tooltip delimiter shortcode length.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$a_int_tooltip_shortcode_length</span>
-     = <span class="phpdocumentor-signature__default-value">12</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">2.5.2</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -public
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_a_str_end_tag">
-        $a_str_end_tag
-        <a href="classes/footnotes-general-Parser.html#property_a_str_end_tag" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">224</span>
+    <span class="phpdocumentor-element-found-in__line">213</span>
 </aside>
 
         <p class="phpdocumentor-summary">Footnote delimiter end short code.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_end_tag</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string|int</span>
+    <span class="phpdocumentor-signature__name">$end_tag</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -909,24 +532,24 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_end_tag_regex">
-        $a_str_end_tag_regex
-        <a href="classes/footnotes-general-Parser.html#property_a_str_end_tag_regex" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_end_tag_regex">
+        $end_tag_regex
+        <a href="classes/footnotes-general-Parser.html#property_end_tag_regex" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">242</span>
+    <span class="phpdocumentor-element-found-in__line">229</span>
 </aside>
 
         <p class="phpdocumentor-summary">Footnote delimiter end short code in RegEx format.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_end_tag_regex</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$end_tag_regex</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -966,16 +589,16 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_footnote_link_slug">
-        $a_str_footnote_link_slug
-        <a href="classes/footnotes-general-Parser.html#property_a_str_footnote_link_slug" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_footnote_link_slug">
+        $footnote_link_slug
+        <a href="classes/footnotes-general-Parser.html#property_footnote_link_slug" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">97</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 </aside>
 
         <p class="phpdocumentor-summary">The footnote slug.</p>
@@ -983,7 +606,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_footnote_link_slug</span>
+    <span class="phpdocumentor-signature__name">$footnote_link_slug</span>
      = <span class="phpdocumentor-signature__default-value">&#039;f&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1013,16 +636,111 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_link_close_tag">
-        $a_str_link_close_tag
-        <a href="classes/footnotes-general-Parser.html#property_a_str_link_close_tag" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_footnotes">
+        $footnotes
+        <a href="classes/footnotes-general-Parser.html#property_footnotes" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">173</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Contains all footnotes found in the searched content.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$footnotes</span>
+     = <span class="phpdocumentor-signature__default-value">array()</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.5.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_hard_links_enabled">
+        $hard_links_enabled
+        <a href="classes/footnotes-general-Parser.html#property_hard_links_enabled" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">78</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Hard links for AMP compatibility.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$hard_links_enabled</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
+
+        <section class="phpdocumentor-description"><p>A property because used both in <abbr title="\footnotes\general\search()">search()</abbr> and <abbr title="\footnotes\general\reference_container()">reference_container()</abbr>.</p>
+</section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.0.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_link_close_tag">
+        $link_close_tag
+        <a href="classes/footnotes-general-Parser.html#property_link_close_tag" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">166</span>
 </aside>
 
         <p class="phpdocumentor-summary">The closing tag.</p>
@@ -1030,7 +748,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_link_close_tag</span>
+    <span class="phpdocumentor-signature__name">$link_close_tag</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1069,16 +787,16 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_link_open_tag">
-        $a_str_link_open_tag
-        <a href="classes/footnotes-general-Parser.html#property_a_str_link_open_tag" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_link_open_tag">
+        $link_open_tag
+        <a href="classes/footnotes-general-Parser.html#property_link_open_tag" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">158</span>
 </aside>
 
         <p class="phpdocumentor-summary">The opening tag.</p>
@@ -1086,7 +804,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_link_open_tag</span>
+    <span class="phpdocumentor-signature__name">$link_open_tag</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1125,16 +843,16 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_link_span">
-        $a_str_link_span
-        <a href="classes/footnotes-general-Parser.html#property_a_str_link_span" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_link_span">
+        $link_span
+        <a href="classes/footnotes-general-Parser.html#property_link_span" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">155</span>
+    <span class="phpdocumentor-element-found-in__line">150</span>
 </aside>
 
         <p class="phpdocumentor-summary">The span element name.</p>
@@ -1142,7 +860,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_link_span</span>
+    <span class="phpdocumentor-signature__name">$link_span</span>
      = <span class="phpdocumentor-signature__default-value">&#039;span&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1181,16 +899,63 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_post_container_id_compound">
-        $a_str_post_container_id_compound
-        <a href="classes/footnotes-general-Parser.html#property_a_str_post_container_id_compound" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_mirror_tooltip_text">
+        $mirror_tooltip_text
+        <a href="classes/footnotes-general-Parser.html#property_mirror_tooltip_text" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">197</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Whether to mirror the tooltip text in the reference container.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$mirror_tooltip_text</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.5.2</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_post_container_id_compound">
+        $post_container_id_compound
+        <a href="classes/footnotes-general-Parser.html#property_post_container_id_compound" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">113</span>
 </aside>
 
         <p class="phpdocumentor-summary">Contains the concatenated fragment ID base.</p>
@@ -1198,7 +963,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_post_container_id_compound</span>
+    <span class="phpdocumentor-signature__name">$post_container_id_compound</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1228,9 +993,58 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_prefix">
-        $a_str_prefix
-        <a href="classes/footnotes-general-Parser.html#property_a_str_prefix" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_post_id">
+        $post_id
+        <a href="classes/footnotes-general-Parser.html#property_post_id" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">57</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Autoload a.k.a. infinite scroll, or archive view.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$post_id</span>
+     = <span class="phpdocumentor-signature__default-value">0</span></code>
+
+        <section class="phpdocumentor-description"><p>As multiple posts are appended to each other, functions and fragment IDs must be disambiguated.
+post ID to make everything unique wrt infinite scroll and archive view.</p>
+</section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.0.6</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_prefix">
+        $prefix
+        <a href="classes/footnotes-general-Parser.html#property_prefix" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1245,7 +1059,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_prefix</span>
+    <span class="phpdocumentor-signature__name">$prefix</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1275,16 +1089,66 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_referrer_link_slug">
-        $a_str_referrer_link_slug
-        <a href="classes/footnotes-general-Parser.html#property_a_str_referrer_link_slug" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_reference_container_id">
+        $reference_container_id
+        <a href="classes/footnotes-general-Parser.html#property_reference_container_id" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">88</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Multiple reference containers in content and widgets.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$reference_container_id</span>
+     = <span class="phpdocumentor-signature__default-value">1</span></code>
+
+        <section class="phpdocumentor-description"><p>This ID disambiguates multiple reference containers in a page
+as they may occur when the widget_text hook is active and the page
+is built with Elementor and has an accordion or similar toggle sections.</p>
+</section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.2.9</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_referrer_link_slug">
+        $referrer_link_slug
+        <a href="classes/footnotes-general-Parser.html#property_referrer_link_slug" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">86</span>
 </aside>
 
         <p class="phpdocumentor-summary">The referrer slug.</p>
@@ -1292,7 +1156,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_referrer_link_slug</span>
+    <span class="phpdocumentor-signature__name">$referrer_link_slug</span>
      = <span class="phpdocumentor-signature__default-value">&#039;r&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1322,24 +1186,74 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_start_tag">
-        $a_str_start_tag
-        <a href="classes/footnotes-general-Parser.html#property_a_str_start_tag" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_scroll_offset">
+        $scroll_offset
+        <a href="classes/footnotes-general-Parser.html#property_scroll_offset" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">215</span>
+    <span class="phpdocumentor-element-found-in__line">124</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Scroll offset.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$scroll_offset</span>
+     = <span class="phpdocumentor-signature__default-value">34</span></code>
+
+        <section class="phpdocumentor-description"><p>Websites may use high fixed headers not contracting at scroll.
+Scroll offset may now need to get into inline CSS.
+Hence it needs to be loaded twice, because priority levels may not match.</p>
+</section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.1.4</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_start_tag">
+        $start_tag
+        <a href="classes/footnotes-general-Parser.html#property_start_tag" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">205</span>
 </aside>
 
         <p class="phpdocumentor-summary">Footnote delimiter start short code.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_start_tag</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string|int</span>
+    <span class="phpdocumentor-signature__name">$start_tag</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1379,24 +1293,24 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_start_tag_regex">
-        $a_str_start_tag_regex
-        <a href="classes/footnotes-general-Parser.html#property_a_str_start_tag_regex" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_start_tag_regex">
+        $start_tag_regex
+        <a href="classes/footnotes-general-Parser.html#property_start_tag_regex" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">233</span>
+    <span class="phpdocumentor-element-found-in__line">221</span>
 </aside>
 
         <p class="phpdocumentor-summary">Footnote delimiter start short code in RegEx format.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_start_tag_regex</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$start_tag_regex</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1436,9 +1350,109 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -public
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_tooltip_shortcode">
-        $a_str_tooltip_shortcode
-        <a href="classes/footnotes-general-Parser.html#property_a_str_tooltip_shortcode" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_syntax_error_flag">
+        $syntax_error_flag
+        <a href="classes/footnotes-general-Parser.html#property_syntax_error_flag" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">244</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Footnote delimiter syntax validation enabled.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$syntax_error_flag</span>
+     = <span class="phpdocumentor-signature__default-value">true</span></code>
+
+        <section class="phpdocumentor-description"><p>The algorithm first checks for balanced footnote opening and closing tag short codes.
+The first encountered error triggers the display of a warning below the post title.</p>
+<p>Unbalanced short codes have caused significant trouble because they are hard to detect.
+Any compiler or other tool reports syntax errors in the first place. Footnotes' exception
+is considered a design flaw, and the feature is released as a bug fix after overdue 2.3.0
+released in urgency to provide AMP compat before 2021.</p>
+</section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.4.0</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_tooltip_shortcode">
+        $tooltip_shortcode
+        <a href="classes/footnotes-general-Parser.html#property_tooltip_shortcode" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">183</span>
+</aside>
+
+        <p class="phpdocumentor-summary">The tooltip delimiter shortcode.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$tooltip_shortcode</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;[[/tooltip]]&#039;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.5.2</span>
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_tooltip_shortcode_length">
+        $tooltip_shortcode_length
+        <a href="classes/footnotes-general-Parser.html#property_tooltip_shortcode_length" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1448,13 +1462,13 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <span class="phpdocumentor-element-found-in__line">190</span>
 </aside>
 
-        <p class="phpdocumentor-summary">The tooltip delimiter shortcode.</p>
+        <p class="phpdocumentor-summary">The tooltip delimiter shortcode length.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_tooltip_shortcode</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;[[/tooltip]]&#039;</span></code>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$tooltip_shortcode_length</span>
+     = <span class="phpdocumentor-signature__default-value">12</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -1483,16 +1497,16 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
             -private
             -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_a_str_link_ids_separator">
-        $a_str_link_ids_separator
-        <a href="classes/footnotes-general-Parser.html#property_a_str_link_ids_separator" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_link_ids_separator">
+        $link_ids_separator
+        <a href="classes/footnotes-general-Parser.html#property_link_ids_separator" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">106</span>
+    <span class="phpdocumentor-element-found-in__line">104</span>
 </aside>
 
         <p class="phpdocumentor-summary">The slug and identifier separator.</p>
@@ -1500,7 +1514,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$a_str_link_ids_separator</span>
+    <span class="phpdocumentor-signature__name">$link_ids_separator</span>
      = <span class="phpdocumentor-signature__default-value">&#039;+&#039;</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -1543,7 +1557,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">267</span>
+    <span class="phpdocumentor-element-found-in__line">253</span>
 </aside>
 
         <p class="phpdocumentor-summary">Initialize the class and set its properties.</p>
@@ -1610,21 +1624,21 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1022</span>
+    <span class="phpdocumentor-element-found-in__line">1037</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces all footnotes that occur in the given content.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">exec</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_output_references</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">exec</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$output_references</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$hide_footnotes_text</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1633,7 +1647,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_output_references</span>
+                <span class="phpdocumentor-signature__argument__name">$output_references</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1642,7 +1656,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span>
+                <span class="phpdocumentor-signature__argument__name">$hide_footnotes_text</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1689,21 +1703,21 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">771</span>
+    <span class="phpdocumentor-element-found-in__line">789</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the content of the current page/post.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">footnotes_in_content</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_in_content</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1733,7 +1747,7 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>$p_str_content  Content with replaced footnotes.</p>
+            <section class="phpdocumentor-description"><p>$content  Content with replaced footnotes.</p>
 </section>
 
     
@@ -1751,14 +1765,14 @@ Hence it needs to be loaded twice, because priority levels may not match.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">819</span>
+    <span class="phpdocumentor-element-found-in__line">835</span>
 </aside>
 
         <p class="phpdocumentor-summary">Processes existing excerpt or replaces it with a new one generated on the basis of the post.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">footnotes_in_excerpt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_excerpt</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_in_excerpt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$excerpt</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"><p>The input was already the processed excerpt, no more footnotes to search.
 But issue #65 brought up that manual excerpts can include processable footnotes.
@@ -1768,7 +1782,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_excerpt</span>
+                <span class="phpdocumentor-signature__argument__name">$excerpt</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1798,7 +1812,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>$p_str_excerpt  Processed or new excerpt.</p>
+            <section class="phpdocumentor-description"><p>$excerpt  Processed or new excerpt.</p>
 </section>
 
     
@@ -1816,21 +1830,21 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">758</span>
+    <span class="phpdocumentor-element-found-in__line">776</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the post/page title.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">footnotes_in_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_in_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1860,7 +1874,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>$p_str_content  Title with replaced footnotes.</p>
+            <section class="phpdocumentor-description"><p>$content  Title with replaced footnotes.</p>
 </section>
 
     
@@ -1878,21 +1892,21 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1005</span>
+    <span class="phpdocumentor-element-found-in__line">1021</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the content of the current widget.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">footnotes_in_widget_text</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_in_widget_text</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1922,7 +1936,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>$p_str_content  Content with replaced footnotes.</p>
+            <section class="phpdocumentor-description"><p>$content  Content with replaced footnotes.</p>
 </section>
 
     
@@ -1940,21 +1954,21 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">992</span>
+    <span class="phpdocumentor-element-found-in__line">1008</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces footnotes in the widget title.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">footnotes_in_widget_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_in_widget_title</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -1984,7 +1998,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>$p_str_content  Content with replaced footnotes.</p>
+            <section class="phpdocumentor-description"><p>$content  Content with replaced footnotes.</p>
 </section>
 
     
@@ -2002,14 +2016,14 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">699</span>
+    <span class="phpdocumentor-element-found-in__line">717</span>
 </aside>
 
         <p class="phpdocumentor-summary">Displays the &#039;LOVE FOOTNOTES&#039; slug if enabled.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">footnotes_output_footer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_output_footer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -2032,7 +2046,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -2051,14 +2065,14 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">380</span>
+    <span class="phpdocumentor-element-found-in__line">402</span>
 </aside>
 
         <p class="phpdocumentor-summary">Outputs the custom css to the header of the public page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">footnotes_output_head</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">footnotes_output_head</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -2090,7 +2104,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -2109,14 +2123,14 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">846</span>
+    <span class="phpdocumentor-element-found-in__line">862</span>
 </aside>
 
         <p class="phpdocumentor-summary">Generates excerpt on the basis of the post.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">generate_excerpt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">generate_excerpt</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"><p>Applies full WordPress excerpt processing.</p>
 </section>
@@ -2124,7 +2138,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2168,7 +2182,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>$p_str_content  An excerpt of the post.</p>
+            <section class="phpdocumentor-description"><p>$content  An excerpt of the post.</p>
 </section>
 
     
@@ -2186,14 +2200,14 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">891</span>
+    <span class="phpdocumentor-element-found-in__line">907</span>
 </aside>
 
         <p class="phpdocumentor-summary">Generates excerpt with footnotes on the basis of the post.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">generate_excerpt_with_footnotes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">generate_excerpt_with_footnotes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"><p>Does not apply full WordPress excerpt processing.</p>
 </section>
@@ -2201,7 +2215,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2248,7 +2262,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>$p_str_content  An excerpt of the post.</p>
+            <section class="phpdocumentor-description"><p>$content  An excerpt of the post.</p>
 </section>
 
     
@@ -2266,7 +2280,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1660</span>
+    <span class="phpdocumentor-element-found-in__line">1669</span>
 </aside>
 
         <p class="phpdocumentor-summary">Generates the reference container.</p>
@@ -2315,14 +2329,14 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">287</span>
+    <span class="phpdocumentor-element-found-in__line">273</span>
 </aside>
 
         <p class="phpdocumentor-summary">Register WordPress hooks to replace Footnotes in the content of a public page.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">register_hooks</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">register_hooks</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -2384,7 +2398,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -2403,21 +2417,21 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1144</span>
+    <span class="phpdocumentor-element-found-in__line">1159</span>
 </aside>
 
         <p class="phpdocumentor-summary">Replaces all footnotes in the given content and appends them to the static property.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">search</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">search</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$hide_footnotes_text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2426,7 +2440,7 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_bool_hide_footnotes_text</span>
+                <span class="phpdocumentor-signature__argument__name">$hide_footnotes_text</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2460,6 +2474,15 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
 </section>
 
                                     </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Decompose.</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -2482,14 +2505,14 @@ Default 'manual' is fallback and is backwards-compatible with the initial setup.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/public/class-parser.php"><a href="files/src-public-class-parser.html"><abbr title="src/public/class-parser.php">class-parser.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">1077</span>
+    <span class="phpdocumentor-element-found-in__line">1092</span>
 </aside>
 
         <p class="phpdocumentor-summary">Brings the delimiters and unifies their various HTML escapement schemas.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">unify_delimiters</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$p_str_content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">unify_delimiters</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"><p>While the Classic Editor (visual mode) escapes both pointy brackets,
 the Block Editor enforces balanced escapement only in code editor mode
@@ -2500,7 +2523,7 @@ does not escape the greater-than sign.</p>
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$p_str_content</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -2528,7 +2551,7 @@ does not escape the greater-than sign.</p>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 

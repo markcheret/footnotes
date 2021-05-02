@@ -12,7 +12,7 @@
  * @since  2.8.0  Rename file from `wysiwyg.php` to `class-footnotes-wysiwyg.php`,
  *                              move from `class/` sub-directory to `admin/`.
  */
- 
+
 declare(strict_types=1);
 
 namespace footnotes\admin;

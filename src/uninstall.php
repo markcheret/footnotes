@@ -16,6 +16,8 @@
  * @since  2.8.0
  */
 
+declare(strict_types=1);
+
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;

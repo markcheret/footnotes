@@ -27,6 +27,8 @@
  *              Renamed parent `class/` directory to `includes/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 use footnotes\general as General;

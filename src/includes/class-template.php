@@ -11,6 +11,8 @@
  *                              rename `class/` sub-directory to `includes/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 /**
@@ -120,7 +122,7 @@ class Template {
 		}
 		// Iterate through each placeholder and replace it with its value.
 		foreach ( $p_arr_placeholders as $l_str_placeholder => $l_str_value ) {
-			$this->a_str_replaced_content = str_replace( '[[' . $l_str_placeholder . ']]', $l_str_value, $this->a_str_replaced_content );
+			$this->a_str_replaced_content = str_replace( '[[' . $l_str_placeholder . ']]', (string) $l_str_value, $this->a_str_replaced_content );
 		}
 		// Success.
 		return true;

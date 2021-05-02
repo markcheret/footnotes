@@ -10,6 +10,8 @@
  * @since 1.5.0
  */
 
+declare(strict_types=1);
+
 namespace footnotes\general\Widget;
 
 use footnotes\includes as Includes;
@@ -36,7 +38,7 @@ abstract class Base extends \WP_Widget {
 	 *
 	 * @return  string
 	 */
-	abstract protected function get_id();
+	abstract protected function get_id(): string;
 
 	/**
 	 * Returns the Public name of child Widget to be displayed in the Configuration page.
@@ -46,7 +48,7 @@ abstract class Base extends \WP_Widget {
 	 *
 	 * @return  string
 	 */
-	abstract protected function get_name();
+	abstract protected function get_name(): string;
 
 	/**
 	 * Returns the Description of the child widget.
@@ -56,7 +58,7 @@ abstract class Base extends \WP_Widget {
 	 *
 	 * @return  string
 	 */
-	abstract protected function get_description();
+	abstract protected function get_description(): string;
 
 	/**
 	 * Returns the width of the Widget. Default width is 250 pixel.
@@ -65,7 +67,7 @@ abstract class Base extends \WP_Widget {
 	 *
 	 * @return  int
 	 */
-	protected function get_widget_width() {
+	protected function get_widget_width(): int {
 		return 250;
 	}
 

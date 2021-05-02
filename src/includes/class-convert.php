@@ -8,6 +8,8 @@
  *                              rename `class/` sub-directory to `includes/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 /**
@@ -40,7 +42,7 @@ class Convert {
 				return self::to_arabic_leading( $p_int_index );
 			case 'arabic_plain':
 			default:
-				return $p_int_index;
+				return (string) $p_int_index;
 		}
 	}
 

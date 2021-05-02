@@ -115,12 +115,12 @@ class Admin {
 			array(),
 			( PRODUCTION_ENV ) ? $this->version : filemtime(
 				plugin_dir_path(
-					 __FILE__ 
+					__FILE__
 				) . 'css/settings.css'
 			),
 			'all'
 		);
-		
+
 	}
 
 	/**
@@ -136,7 +136,7 @@ class Admin {
 			array(),
 			( PRODUCTION_ENV ) ? $this->version : filemtime(
 				plugin_dir_path(
-					__FILE__ 
+					__FILE__
 				) . 'js/wysiwyg-editor.js'
 			),
 			false

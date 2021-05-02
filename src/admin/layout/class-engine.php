@@ -583,7 +583,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_num_box( string  $p_str_setting_name, int $p_in_min, int $p_int_max, bool $p_bool_deci = false ): string {
+	protected function add_num_box( string $p_str_setting_name, int $p_in_min, int $p_int_max, bool $p_bool_deci = false ): string {
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
 

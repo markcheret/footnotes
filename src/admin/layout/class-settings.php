@@ -1231,8 +1231,8 @@ class Settings extends Engine {
 	 * @todo Review in light of admin/public split.
 	 */
 	public function help(): void {
-	  $footnotes = new General\General($this->plugin_name, "foo");
-		
+		$footnotes = new General\General( $this->plugin_name, 'foo' );
+
 		// Load footnotes starting and end tag.
 		$l_arr_footnote_starting_tag = $this->load_setting( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
 		$l_arr_footnote_ending_tag   = $this->load_setting( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END );

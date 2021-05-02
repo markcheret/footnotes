@@ -8,6 +8,8 @@
  *              Renamed parent `class/` directory to `includes/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 /**

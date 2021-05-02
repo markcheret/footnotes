@@ -29,6 +29,8 @@
  * @deprecated
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 /**

@@ -9,6 +9,8 @@
  *                              move from `class/` sub-directory to `public/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\general;
 
 use footnotes\includes as Includes;
@@ -284,7 +286,7 @@ class Parser {
 	 * @since 2.1.0  Remove @see 'the_post' support.
 	 * @todo Move to {@see General}.
 	 */
-	public function register_hooks() {
+	public function register_hooks(): void {
 		// Get values from settings.
 		$l_int_the_title_priority    = (int) Includes\Settings::instance()->get( \footnotes\includes\Settings::C_INT_EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL );
 		$l_int_the_content_priority  = (int) Includes\Settings::instance()->get( \footnotes\includes\Settings::C_INT_EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL );
@@ -431,7 +433,7 @@ class Parser {
 	 * @since 1.5.0
 	 * @todo Refactor to enqueue stylesheets properly in {@see General}.
 	 */
-	public function footnotes_output_head() {
+	public function footnotes_output_head(): void {
 
 		// Insert start tag without switching out of PHP.
 		echo "\r\n<style type=\"text/css\" media=\"all\">\r\n";
@@ -746,7 +748,7 @@ class Parser {
 	 *
 	 * @since 1.5.0
 	 */
-	public function footnotes_output_footer() {
+	public function footnotes_output_footer(): void {
 		if ( 'footer' === Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
 			echo $this->reference_container();
 		}
@@ -805,7 +807,7 @@ class Parser {
 	 * @param string $p_str_content  Title.
 	 * @return string  $p_str_content  Title with replaced footnotes.
 	 */
-	public function footnotes_in_title( $p_str_content ) {
+	public function footnotes_in_title( string $p_str_content ): string {
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, false );
 	}
@@ -818,7 +820,7 @@ class Parser {
 	 * @param string $p_str_content  Page/Post content.
 	 * @return string  $p_str_content  Content with replaced footnotes.
 	 */
-	public function footnotes_in_content( $p_str_content ) {
+	public function footnotes_in_content( string $p_str_content ): string {
 
 		$l_str_ref_container_position            = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_REFERENCE_CONTAINER_POSITION );
 		$l_str_footnote_section_shortcode        = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE );
@@ -864,7 +866,7 @@ class Parser {
 	 * @param string $p_str_excerpt  Excerpt content.
 	 * @return string  $p_str_excerpt  Processed or new excerpt.
 	 */
-	public function footnotes_in_excerpt( $p_str_excerpt ) {
+	public function footnotes_in_excerpt( string $p_str_excerpt ): string {
 		$l_str_excerpt_mode = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_IN_EXCERPT );
 
 		if ( 'yes' === $l_str_excerpt_mode ) {
@@ -891,7 +893,7 @@ class Parser {
 	 * @param string $p_str_content  The post.
 	 * @return string  $p_str_content  An excerpt of the post.
 	 */
-	public function generate_excerpt( $p_str_content ) {
+	public function generate_excerpt( string $p_str_content ): string {
 
 		// Discard existing excerpt and start on the basis of the post.
 		$p_str_content = get_the_content( get_the_id() );
@@ -936,7 +938,7 @@ class Parser {
 	 * @param string $p_str_content  The post.
 	 * @return string  $p_str_content  An excerpt of the post.
 	 */
-	public function generate_excerpt_with_footnotes( $p_str_content ) {
+	public function generate_excerpt_with_footnotes( string $p_str_content ): string {
 
 		// Discard existing excerpt and start on the basis of the post.
 		$p_str_content = get_the_content( get_the_id() );
@@ -1037,7 +1039,7 @@ class Parser {
 	 * @param string $p_str_content  Widget content.
 	 * @return string  $p_str_content  Content with replaced footnotes.
 	 */
-	public function footnotes_in_widget_title( $p_str_content ) {
+	public function footnotes_in_widget_title( string $p_str_content ): string {
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, false );
 	}
@@ -1050,7 +1052,7 @@ class Parser {
 	 * @param string $p_str_content  Widget content.
 	 * @return string  $p_str_content  Content with replaced footnotes.
 	 */
-	public function footnotes_in_widget_text( $p_str_content ) {
+	public function footnotes_in_widget_text( string $p_str_content ): string {
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
 		return $this->exec( $p_str_content, 'post_end' === Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_REFERENCE_CONTAINER_POSITION ) );
@@ -1067,7 +1069,7 @@ class Parser {
 	 * @param bool   $p_bool_hide_footnotes_text  Hide footnotes found in the string.
 	 * @return string
 	 */
-	public function exec( $p_str_content, $p_bool_output_references = false, $p_bool_hide_footnotes_text = false ) {
+	public function exec( string $p_str_content, bool $p_bool_output_references = false, bool $p_bool_hide_footnotes_text = false ): string {
 
 		// Process content.
 		$p_str_content = $this->search( $p_str_content, $p_bool_hide_footnotes_text );
@@ -1122,7 +1124,7 @@ class Parser {
 	 *
 	 * @param string $p_str_content  The footnote, including delimiters.
 	 */
-	public function unify_delimiters( $p_str_content ) {
+	public function unify_delimiters( string $p_str_content ): string {
 
 		// Get footnotes start and end tag short codes.
 		$l_str_starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
@@ -1184,12 +1186,13 @@ class Parser {
 	 *
 	 * @since 1.5.0
 	 * @todo Refactor to parse DOM rather than using RegEx.
+	 * @todo Decompose.
 	 *
 	 * @param string $p_str_content  Any content to be parsed for footnotes.
 	 * @param bool   $p_bool_hide_footnotes_text  Hide footnotes found in the string.
 	 * @return string
 	 */
-	public function search( $p_str_content, $p_bool_hide_footnotes_text ) {
+	public function search( string $p_str_content, bool $p_bool_hide_footnotes_text ): string {
 
 		// Get footnote delimiter shortcodes and unify them.
 		$p_str_content = self::unify_delimiters( $p_str_content );
@@ -1701,7 +1704,7 @@ class Parser {
 	 *
 	 * @return string
 	 */
-	public function reference_container() {
+	public function reference_container(): string {
 
 		// No footnotes have been replaced on this page.
 		if ( empty( self::$a_arr_footnotes ) ) {

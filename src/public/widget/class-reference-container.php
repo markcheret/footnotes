@@ -10,6 +10,9 @@
  * @since  1.5.0
  */
 
+// TODO: Disabled pending WPWidget AP review.
+/* declare(strict_types=1); */
+
 namespace footnotes\general\Widget;
 
 use footnotes\includes as Includes;
@@ -34,7 +37,7 @@ class Reference_Container extends Base {
 	 * @see  Includes\Footnotes::$plugin_name
 	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
-	private $plugin_name;
+	private string $plugin_name;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -43,9 +46,9 @@ class Reference_Container extends Base {
 	 *
 	 * @param  string $plugin_name  The name of this plugin.
 	 */
-	public function __construct( $plugin_name ) {
-		parent::__construct();
+	public function __construct( string $plugin_name ) {
 		$this->plugin_name = $plugin_name;
+		parent::__construct();
 	}
 
 	/**
@@ -56,7 +59,7 @@ class Reference_Container extends Base {
 	 *
 	 * @return  string
 	 */
-	protected function get_id() {
+	protected function get_id(): string {
 		return 'footnotes_widget';
 	}
 
@@ -68,7 +71,7 @@ class Reference_Container extends Base {
 	 *
 	 * @return  string
 	 */
-	protected function get_name() {
+	protected function get_name(): string {
 		return $this->plugin_name;
 	}
 
@@ -80,7 +83,7 @@ class Reference_Container extends Base {
 	 *
 	 * @return  string
 	 */
-	protected function get_description() {
+	protected function get_description(): string {
 		return __( 'The widget defines the position of the reference container if set to &ldquo;widget area&rdquo;.', 'footnotes' );
 	}
 

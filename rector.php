@@ -20,6 +20,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::SETS, [
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
+        SetList::TYPE_DECLARATION,
        // DowngradeSetList::PHP_80,
        // DowngradeSetList::PHP_74,
        // DowngradeSetList::PHP_73,

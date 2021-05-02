@@ -63,10 +63,8 @@ define( 'PRODUCTION_ENV', false );
  *
  * @since 2.8.0
  * @see includes\Activator::activate()
- *
- * @return void
  */
-function activate_footnotes() {
+function activate_footnotes(): void {
 	/**
 	 * Provides plugin activation functionality.
 	 */
@@ -80,10 +78,8 @@ function activate_footnotes() {
  *
  * @since 2.8.0
  * @see includes\Deactivator::deactivate()
- *
- * @return void
  */
-function deactivate_footnotes() {
+function deactivate_footnotes(): void {
 	/**
 	 * Provides plugin deactivation functionality.
 	 */
@@ -108,10 +104,8 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-core.php';
  * the plugin from this point in the file does not affect the page life cycle.
  *
  * @since 2.8.0
- *
- * @return void
  */
-function run_footnotes() {
+function run_footnotes(): void {
 	/**
 	 * The plugin core.
 	 *

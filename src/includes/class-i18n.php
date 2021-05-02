@@ -32,7 +32,7 @@ class i18n {
 	 * Load the plugin text domain for translation.
 	 *
 	 * @since  1.5.1
-	 * @since  2.8.0  Rename from `load()` to `load_plugin_textdomain()`. Remove unused `$p_str_language_code` parameter.
+	 * @since  2.8.0  Rename from `load()` to `load_plugin_textdomain()`. Remove unused `$language_code` parameter.
 	 *
 	 * @return void
 	 */

@@ -30,15 +30,15 @@ class WYSIWYG {
 	/**
 	 * Append a new Button to the WYSIWYG editor of Posts and Pages.
 	 *
-	 * @param  string[] $p_arr_buttons  Already-defined editor buttons.
+	 * @param  string[] $buttons  Already-defined editor buttons.
 	 * @return  string[]
 	 *
 	 * @since  1.5.0
 	 * @todo  Should this be `static`?
 	 */
-	public static function new_visual_editor_button( array $p_arr_buttons ): array {
-		$p_arr_buttons[] = 'footnotes';
-		return $p_arr_buttons;
+	public static function new_visual_editor_button( array $buttons ): array {
+		$buttons[] = 'footnotes';
+		return $buttons;
 	}
 
 	/**
@@ -47,24 +47,24 @@ class WYSIWYG {
 	 * @since  1.5.0
 	 */
 	public static function new_plain_text_editor_button(): void {
-		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'editor-button' );
+		$template = new Includes\Template( \footnotes\includes\Template::DASHBOARD, 'editor-button' );
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $l_obj_template->get_content();
+		echo $template->get_content();
 		// phpcs:enable
 	}
 
 	/**
 	 * Includes the Plugins WYSIWYG editor script.
 	 *
-	 * @param  string[] $p_arr_plugins  Scripts to be included by the editor.
+	 * @param  string[] $plugins  Scripts to be included by the editor.
 	 * @return  string[]
 	 *
 	 * @since  1.5.0
 	 * @todo  Should this be `static`?
 	 */
-	public static function include_scripts( array $p_arr_plugins ): array {
-		$p_arr_plugins['footnotes'] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
-		return $p_arr_plugins;
+	public static function include_scripts( array $plugins ): array {
+		$plugins['footnotes'] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
+		return $plugins;
 	}
 
 	/**
@@ -75,16 +75,16 @@ class WYSIWYG {
 	 */
 	public static function ajax_callback(): void {
 		// Get start and end tag for the footnotes short code.
-		$l_str_starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
-		$l_str_ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
-		if ( 'userdefined' === $l_str_starting_tag || 'userdefined' === $l_str_ending_tag ) {
-			$l_str_starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
-			$l_str_ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
+		$starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_START );
+		$ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_END );
+		if ( 'userdefined' === $starting_tag || 'userdefined' === $ending_tag ) {
+			$starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
+			$ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 		echo wp_json_encode(
 			array(
-				'start' => htmlspecialchars( $l_str_starting_tag ),
-				'end'   => htmlspecialchars( $l_str_ending_tag ),
+				'start' => htmlspecialchars( $starting_tag ),
+				'end'   => htmlspecialchars( $ending_tag ),
 			)
 		);
 		exit;

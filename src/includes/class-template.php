@@ -36,7 +36,7 @@ class Template {
 	 *
 	 * @var string
 	 */
-	const C_STR_DASHBOARD = 'admin/partials';
+	const DASHBOARD = 'admin/partials';
 
 	/**
 	 * Directory name for public partials.
@@ -45,21 +45,21 @@ class Template {
 	 *
 	 * @var string
 	 */
-	const C_STR_PUBLIC = 'public/partials';
+	const PUBLIC = 'public/partials';
 
 	/**
 	 * Contains the content of the template after initialize.
 	 *
 	 * @since  1.5.0
 	 */
-	private ?string $a_str_original_content = '';
+	private ?string $original_content = '';
 
 	/**
 	 * Contains the content of the template after initialize with replaced place holders.
 	 *
 	 * @since  1.5.0
 	 */
-	private string $a_str_replaced_content = '';
+	private string $replaced_content = '';
 
 	/**
 	 * Plugin Directory
@@ -74,22 +74,22 @@ class Template {
 	 * @since  1.5.0
 	 * @todo  Refactor templating.
 	 *
-	 * @param  string $p_str_file_type  Template file type.
-	 * @param  string $p_str_file_name  Template file name inside the `partials/` directory, without the file extension.
-	 * @param  string $p_str_extension  (optional) Template file extension (default: 'html').
+	 * @param  string $file_type  Template file type.
+	 * @param  string $file_name  Template file name inside the `partials/` directory, without the file extension.
+	 * @param  string $extension  (optional) Template file extension (default: 'html').
 	 * @return void
 	 */
-	public function __construct( string $p_str_file_type, string $p_str_file_name, string $p_str_extension = 'html' ) {
+	public function __construct( string $file_type, string $file_name, string $extension = 'html' ) {
 		// No template file type and/or file name set.
-		if ( empty( $p_str_file_type ) ) {
+		if ( empty( $file_type ) ) {
 			return;
 		}
-		if ( empty( $p_str_file_name ) ) {
+		if ( empty( $file_name ) ) {
 			return;
 		}
 		$this->plugin_directory = plugin_dir_path( __DIR__ );
 
-		$template = $this->get_template( $p_str_file_type, $p_str_file_name, $p_str_extension );
+		$template = $this->get_template( $file_type, $file_name, $extension );
 		if ( $template ) {
 			$this->process_template( $template );
 		} else {
@@ -104,21 +104,21 @@ class Template {
 	 * @since  1.5.0
 	 * @todo  Refactor templating.
 	 *
-	 * @param  string[] $p_arr_placeholders  Placeholders (key = placeholder, value = value).
+	 * @param  string[] $placeholders  Placeholders (key = placeholder, value = value).
 	 * @return  bool  `true` on Success, `false` if placeholders invalid.
 	 */
-	public function replace( array $p_arr_placeholders ): bool {
+	public function replace( array $placeholders ): bool {
 		// No placeholders set.
-		if ( empty( $p_arr_placeholders ) ) {
+		if ( empty( $placeholders ) ) {
 			return false;
 		}
 		// Template content is empty.
-		if ( empty( $this->a_str_replaced_content ) ) {
+		if ( empty( $this->replaced_content ) ) {
 			return false;
 		}
 		// Iterate through each placeholder and replace it with its value.
-		foreach ( $p_arr_placeholders as $l_str_placeholder => $l_str_value ) {
-			$this->a_str_replaced_content = str_replace( '[[' . $l_str_placeholder . ']]', (string) $l_str_value, $this->a_str_replaced_content );
+		foreach ( $placeholders as $placeholder => $value ) {
+			$this->replaced_content = str_replace( '[[' . $placeholder . ']]', (string) $value, $this->replaced_content );
 		}
 		// Success.
 		return true;
@@ -133,7 +133,7 @@ class Template {
 	 * @return void
 	 */
 	public function reload() {
-		$this->a_str_replaced_content = $this->a_str_original_content;
+		$this->replaced_content = $this->original_content;
 	}
 
 	/**
@@ -145,7 +145,7 @@ class Template {
 	 * @return  string  Template content with replaced placeholders.
 	 */
 	public function get_content(): string {
-		return $this->a_str_replaced_content;
+		return $this->replaced_content;
 	}
 
 	/**
@@ -159,14 +159,14 @@ class Template {
 	 */
 	public function process_template( string $template ) {
 		// phpcs:disable WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$this->a_str_original_content = preg_replace( '#<!--.+?-->#s', '', file_get_contents( $template ) );
+		$this->original_content = preg_replace( '#<!--.+?-->#s', '', file_get_contents( $template ) );
 		// phpcs:enable
-		$this->a_str_original_content = preg_replace( '#/\*\*.+?\*/#s', '', $this->a_str_original_content );
-		$this->a_str_original_content = str_replace( "\n", '', $this->a_str_original_content );
-		$this->a_str_original_content = str_replace( "\r", '', $this->a_str_original_content );
-		$this->a_str_original_content = str_replace( "\t", ' ', $this->a_str_original_content );
-		$this->a_str_original_content = preg_replace( '# +#', ' ', $this->a_str_original_content );
-		$this->a_str_original_content = str_replace( ' >', '>', $this->a_str_original_content );
+		$this->original_content = preg_replace( '#/\*\*.+?\*/#s', '', $this->original_content );
+		$this->original_content = str_replace( "\n", '', $this->original_content );
+		$this->original_content = str_replace( "\r", '', $this->original_content );
+		$this->original_content = str_replace( "\t", ' ', $this->original_content );
+		$this->original_content = preg_replace( '# +#', ' ', $this->original_content );
+		$this->original_content = str_replace( ' >', '>', $this->original_content );
 		$this->reload();
 	}
 
@@ -177,12 +177,12 @@ class Template {
 	 * @todo  Refactor templating.
 	 * @todo  Single return type.
 	 *
-	 * @param  string $p_str_file_type  The file type of the template.
-	 * @param  string $p_str_file_name  The file name of the template.
-	 * @param  string $p_str_extension  The file extension of the template.
+	 * @param  string $file_type  The file type of the template.
+	 * @param  string $file_name  The file name of the template.
+	 * @param  string $extension  The file extension of the template.
 	 * @return  string|bool  `false` or the template path
 	 */
-	public function get_template( string $p_str_file_type, string $p_str_file_name, string $p_str_extension = 'html' ): string|bool {
+	public function get_template( string $file_type, string $file_name, string $extension = 'html' ): string|bool {
 		$located = false;
 
 		/*
@@ -195,7 +195,7 @@ class Template {
 		 */
 		$template_directory = apply_filters( '', 'footnotes/' );
 		$custom_directory   = apply_filters( 'custom_template_directory', 'footnotes-custom/' );
-		$template_name      = $p_str_file_type . '/' . $p_str_file_name . '.' . $p_str_extension;
+		$template_name      = $file_type . '/' . $file_name . '.' . $extension;
 
 		// Look in active theme.
 		if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $template_directory . $template_name ) ) {

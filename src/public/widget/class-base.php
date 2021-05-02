@@ -77,11 +77,11 @@ abstract class Base extends \WP_Widget {
 	 * @since  1.5.0
 	 */
 	public function __construct() {
-		$l_arr_widget_options  = array(
+		$widget_options  = array(
 			'classname'   => __CLASS__,
 			'description' => $this->get_description(),
 		);
-		$l_arr_control_options = array(
+		$control_options = array(
 			'id_base' => strtolower( $this->get_id() ),
 			'width'   => $this->get_widget_width(),
 		);
@@ -89,8 +89,8 @@ abstract class Base extends \WP_Widget {
 		parent::__construct(
 			strtolower( $this->get_id() ), // Unique ID for the widget, has to be lowercase.
 			$this->get_name(), // Plugin name to be displayed.
-			$l_arr_widget_options, // Optional Widget Options.
-			$l_arr_control_options // Optional Widget Control Options.
+			$widget_options, // Optional Widget Options.
+			$control_options // Optional Widget Control Options.
 		);
 	}
 

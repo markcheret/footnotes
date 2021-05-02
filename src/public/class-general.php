@@ -61,7 +61,7 @@ class General {
 	 *
 	 * @var  Parser  $task  The Plugin task.
 	 */
-	public ?Parser $a_obj_task = null;
+	public ?Parser $task = null;
 
 	/**
 	 * Flag for using tooltips.
@@ -71,7 +71,7 @@ class General {
 	 *
 	 * @var  bool  $tooltips_enabled  Whether tooltips are enabled or not.
 	 */
-	public static $a_bool_tooltips_enabled = false;
+	public static $tooltips_enabled = false;
 
 	/**
 	 * Allows to determine whether alternative tooltips are enabled.
@@ -81,7 +81,7 @@ class General {
 	 *
 	 * @var  bool
 	 */
-	public static $a_bool_alternative_tooltips_enabled = false;
+	public static $alternative_tooltips_enabled = false;
 
 	/**
 	 * Allows to determine whether AMP compatibility mode is enabled.
@@ -91,7 +91,7 @@ class General {
 	 *
 	 * @var  bool
 	 */
-	public static $a_bool_amp_enabled = false;
+	public static $amp_enabled = false;
 
 	/**
 	 * Allows to determine the script mode among jQuery or plain JS.
@@ -101,7 +101,7 @@ class General {
 	 *
 	 * @var  string  ‘js’ to use plain JavaScript, ‘jquery’ to use jQuery.
 	 */
-	public static $a_str_script_mode = 'js';
+	public static $script_mode = 'js';
 
 	/**
 	 * Initialize the class and set its properties.
@@ -118,10 +118,10 @@ class General {
 		$this->load_dependencies();
 
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
-		self::$a_bool_amp_enabled                  = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
-		self::$a_bool_tooltips_enabled             = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$a_bool_alternative_tooltips_enabled = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		self::$a_str_script_mode                   = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		self::$amp_enabled                  = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
+		self::$tooltips_enabled             = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
+		self::$alternative_tooltips_enabled = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
+		self::$script_mode                   = Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
 	}
 
 	/**
@@ -146,7 +146,7 @@ class General {
 
 		$this->reference_container_widget = new Widget\Reference_Container( $this->plugin_name );
 
-		$this->a_obj_task = new Parser();
+		$this->task = new Parser();
 	}
 
 	/**
@@ -162,53 +162,53 @@ class General {
 	public function enqueue_styles(): void {
 		if ( PRODUCTION_ENV ) {
 			// Set tooltip mode for use in stylesheet name.
-			if ( self::$a_bool_tooltips_enabled ) {
+			if ( self::$tooltips_enabled ) {
 
-				if ( self::$a_bool_amp_enabled ) {
-					$l_str_tooltip_mode_short = 'ampt';
-					$l_str_tooltip_mode_long  = 'amp-tooltips';
+				if ( self::$amp_enabled ) {
+					$tooltip_mode_short = 'ampt';
+					$tooltip_mode_long  = 'amp-tooltips';
 
-				} elseif ( self::$a_bool_alternative_tooltips_enabled ) {
-					$l_str_tooltip_mode_short = 'altt';
-					$l_str_tooltip_mode_long  = 'alternative-tooltips';
+				} elseif ( self::$alternative_tooltips_enabled ) {
+					$tooltip_mode_short = 'altt';
+					$tooltip_mode_long  = 'alternative-tooltips';
 
 				} else {
-					$l_str_tooltip_mode_short = 'jqtt';
-					$l_str_tooltip_mode_long  = 'jquery-tooltips';
+					$tooltip_mode_short = 'jqtt';
+					$tooltip_mode_long  = 'jquery-tooltips';
 
 				}
 			} else {
-				$l_str_tooltip_mode_short = 'nott';
-				$l_str_tooltip_mode_long  = 'no-tooltips';
+				$tooltip_mode_short = 'nott';
+				$tooltip_mode_long  = 'no-tooltips';
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
-			$l_str_page_layout_option = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_PAGE_LAYOUT_SUPPORT );
-			switch ( $l_str_page_layout_option ) {
+			$page_layout_option = Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			switch ( $page_layout_option ) {
 				case 'reference-container':
-					$l_str_layout_mode = '1';
+					$layout_mode = '1';
 					break;
 				case 'entry-content':
-					$l_str_layout_mode = '2';
+					$layout_mode = '2';
 					break;
 				case 'main-content':
-					$l_str_layout_mode = '3';
+					$layout_mode = '3';
 					break;
 				case 'none':
 				default:
-					$l_str_layout_mode = '0';
+					$layout_mode = '0';
 					break;
 			}
 
 			// Enqueue the tailored united minified stylesheet.
 			wp_enqueue_style(
-				"footnotes-{$l_str_tooltip_mode_long}-pagelayout-{$l_str_page_layout_option}",
-				plugin_dir_url( __FILE__ ) . "css/footnotes-{$l_str_tooltip_mode_short}brpl{$l_str_layout_mode}.min.css",
+				"footnotes-{$tooltip_mode_long}-pagelayout-{$page_layout_option}",
+				plugin_dir_url( __FILE__ ) . "css/footnotes-{$tooltip_mode_short}brpl{$layout_mode}.min.css",
 				array(),
 				( PRODUCTION_ENV ) ? $this->version : filemtime(
 					plugin_dir_path(
 						__FILE__
-					) . "css/footnotes-{$l_str_tooltip_mode_short}brpl{$l_str_layout_mode}.min.css"
+					) . "css/footnotes-{$tooltip_mode_short}brpl{$layout_mode}.min.css"
 				),
 				'all'
 			);
@@ -247,15 +247,15 @@ class General {
 		 * After adding the alternative reference container, jQuery has become optional,
 		 * but still enabled by default.
 		 */
-		if ( ! self::$a_bool_amp_enabled ) {
+		if ( ! self::$amp_enabled ) {
 
-			if ( 'jquery' === self::$a_str_script_mode || ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) ) {
+			if ( 'jquery' === self::$script_mode || ( self::$tooltips_enabled && ! self::$alternative_tooltips_enabled ) ) {
 
 				wp_enqueue_script( 'jquery' );
 
 			}
 
-			if ( self::$a_bool_tooltips_enabled && ! self::$a_bool_alternative_tooltips_enabled ) {
+			if ( self::$tooltips_enabled && ! self::$alternative_tooltips_enabled ) {
 				/*
 				 * Enqueues the jQuery Tools library shipped with the plugin.
 				 *

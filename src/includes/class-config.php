@@ -55,7 +55,7 @@ class Config {
 	 *
 	 * @var string
 	 */
-	const C_STR_PLUGIN_PUBLIC_NAME = '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
+	const PLUGIN_PUBLIC_NAME = '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
 
 	/**
 	 * Public plugin name for use as a dashboard heading.
@@ -72,7 +72,7 @@ class Config {
 	 *
 	 * @var string
 	 */
-	const C_STR_PLUGIN_HEADING_NAME = '<span class="footnotes_logo_heading footnotes_logo_part1_heading">foot</span><span class="footnotes_logo_heading footnotes_logo_part2_heading">notes</span>';
+	const PLUGIN_HEADING_NAME = '<span class="footnotes_logo_heading footnotes_logo_part1_heading">foot</span><span class="footnotes_logo_heading footnotes_logo_part2_heading">notes</span>';
 
 	/**
 	 * HTML element for the ‘love’ symbol.
@@ -83,7 +83,7 @@ class Config {
 	 *
 	 * @var string
 	 */
-	const C_STR_LOVE_SYMBOL = '<span style="color:#ff6d3b; font-weight:bold;">&hearts;</span>';
+	const LOVE_SYMBOL = '<span style="color:#ff6d3b; font-weight:bold;">&hearts;</span>';
 
 	/**
 	 * HTML element for the ‘love’ symbol used in dashboard heading
@@ -94,7 +94,7 @@ class Config {
 	 *
 	 * @var string
 	 */
-	const C_STR_LOVE_SYMBOL_HEADING = '<span class="footnotes_heart_heading">&hearts;</span>';
+	const LOVE_SYMBOL_HEADING = '<span class="footnotes_heart_heading">&hearts;</span>';
 
 	/**
 	 * Shortcode to NOT display the ‘LOVE ME’ slug on certain pages.
@@ -105,5 +105,5 @@ class Config {
 	 *
 	 * @var string
 	 */
-	const C_STR_NO_LOVE_SLUG = '[[no footnotes: love]]';
+	const NO_LOVE_SLUG = '[[no footnotes: love]]';
 }

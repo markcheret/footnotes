@@ -165,6 +165,7 @@ class Init {
 	 * @since 1.5.0
 	 */
 	public function get_plugin_meta_information(): void {
+		$l_str_plugin_name = null;
 		// TODO: add nonce verification?
 
 		// Get plugin internal name from POST data.

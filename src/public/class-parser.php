@@ -1706,6 +1706,7 @@ class Parser {
 	 */
 	public function reference_container(): string {
 
+		$l_str_use_backbutton_hint = null;
 		// No footnotes have been replaced on this page.
 		if ( empty( self::$a_arr_footnotes ) ) {
 			return '';

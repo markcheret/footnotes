@@ -28,9 +28,9 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "phpcompatibility/php-compatibility": "*",
         "wp-coding-standards/wpcs": "^2.3",
-        "phpdocumentor/phpdocumentor": "^3.0",
         "marcocesarato/php-conventional-changelog": "^1.9",
-        "phpcompatibility/phpcompatibility-wp": "*"
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "rector/rector": "^0.10.16"
     },
     "prefer-stable": true
 }

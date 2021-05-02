@@ -13,6 +13,8 @@
  *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\admin\layout;
 
 use footnotes\includes as Includes;
@@ -37,7 +39,7 @@ abstract class Engine {
 	 *
 	 * @since  2.8.0
 	 */
-	protected $plugin_name;
+	protected string $plugin_name;
 
 	/**
 	 * Stores the Hook connection string for the child sub-page.
@@ -47,7 +49,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	protected $a_str_sub_page_hook;
+	protected ?string $a_str_sub_page_hook;
 
 	/**
 	 * Stores all Sections for the child sub-page.
@@ -57,7 +59,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	protected $a_arr_sections = array();
+	protected array $a_arr_sections = array();
 
 	/**
 	 * Returns a Priority index. Lower numbers have a higher priority.
@@ -67,7 +69,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	abstract public function get_priority();
+	abstract public function get_priority(): int;
 
 	/**
 	 * Returns the unique slug of the child sub-page.
@@ -78,7 +80,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	abstract protected function get_sub_page_slug();
+	abstract protected function get_sub_page_slug(): string;
 
 	/**
 	 * Returns the title of the child sub-page.
@@ -89,7 +91,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	abstract protected function get_sub_page_title();
+	abstract protected function get_sub_page_title(): string;
 
 	/**
 	 * Returns an array of all registered sections for a sub-page.
@@ -100,7 +102,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	abstract protected function get_sections();
+	abstract protected function get_sections(): array;
 
 	/**
 	 * Returns an array of all registered meta boxes.
@@ -111,7 +113,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	abstract protected function get_meta_boxes();
+	abstract protected function get_meta_boxes(): array;
 
 	/**
 	 * Returns an array describing a sub-page section.
@@ -134,7 +136,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor sections into their own class?
 	 */
-	protected function add_section( $p_str_id, $p_str_title, $p_int_settings_container_index, $p_bool_has_submit_button = true ) {
+	protected function add_section( string $p_str_id, string $p_str_title, int $p_int_settings_container_index, bool $p_bool_has_submit_button = true ): array {
 		return array(
 			'id'        => $this->plugin_name . '-' . $p_str_id,
 			'title'     => $p_str_title,
@@ -164,7 +166,7 @@ abstract class Engine {
 	 * @todo  Refactor meta boxes into their own class?
 	 * @todo  Pass actual functions rather than strings?
 	 */
-	protected function add_meta_box( $p_str_section_id, $p_str_id, $p_str_title, $p_str_callback_function_name ) {
+	protected function add_meta_box( string $p_str_section_id, string $p_str_id, string $p_str_title, string $p_str_callback_function_name ): array {
 		return array(
 			'parent'   => $this->plugin_name . '-' . $p_str_section_id,
 			'id'       => $p_str_id,
@@ -178,7 +180,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function register_sub_page() {
+	public function register_sub_page(): void {
 		global $submenu;
 
 		if ( array_key_exists( plugin_basename( Init::C_STR_MAIN_MENU_SLUG ), $submenu ) ) {
@@ -206,7 +208,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function register_sections() {
+	public function register_sections(): void {
 		foreach ( $this->get_sections() as $l_arr_section ) {
 			// Append tab to the tab-array.
 			$this->a_arr_sections[ $l_arr_section['id'] ] = $l_arr_section;
@@ -230,7 +232,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	private function register_meta_boxes( $p_str_parent_id ) {
+	private function register_meta_boxes( string $p_str_parent_id ): void {
 		// Iterate through each meta box.
 		foreach ( $this->get_meta_boxes() as $l_arr_meta_box ) {
 			if ( $p_str_parent_id !== $l_arr_meta_box['parent'] ) {
@@ -254,7 +256,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Move to {@see Includes\Admin}.
 	 */
-	private function append_scripts() {
+	private function append_scripts(): void {
 		wp_enqueue_script( 'postbox' );
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
@@ -267,7 +269,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Review nonce verification.
 	 */
-	public function display_content() {
+	public function display_content(): void {
 		$this->append_scripts();
 
 		// Get the current section.
@@ -337,7 +339,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Review nonce verification.
 	 */
-	private function save_settings() {
+	private function save_settings(): bool {
 		$l_arr_new_settings = array();
 
 		// TODO: add nonce verification.
@@ -361,7 +363,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Required? Should be `abstract`?
 	 */
-	public function description() {
+	public function description(): void {
 		// Default no description will be displayed.
 	}
 
@@ -382,7 +384,7 @@ abstract class Engine {
 	 * @since  2.5.11  Broken due to accidental removal of `esc_attr()` call.
 	 * @since  2.6.1  Restore `esc_attr()` call.
 	 */
-	protected function load_setting( $p_str_setting_key_name ) {
+	protected function load_setting( string $p_str_setting_key_name ): array {
 		// Get current section.
 		reset( $this->a_arr_sections );
 		$p_arr_return          = array();
@@ -393,7 +395,7 @@ abstract class Engine {
 	}
 
 	/**
-	 * Returns a simple text inside HTML `<span>` element.
+	 * Returns a simple text inside a 'span' element.
 	 *
 	 * @access  protected
 	 * @param  string $p_str_text  Message to be surrounded with `<span>` tags.
@@ -402,12 +404,12 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_text( $p_str_text ) {
+	protected function add_text( string $p_str_text ): string {
 		return sprintf( '<span>%s</span>', $p_str_text );
 	}
 
 	/**
-	 * Returns the HTML tag for an `<input>`/`<select>` label.
+	 * Returns the HTML tag for a 'label' element.
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Settings key.
@@ -417,7 +419,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_label( $p_str_setting_name, $p_str_caption ) {
+	protected function add_label( string $p_str_setting_name, string $p_str_caption ): string {
 		if ( empty( $p_str_caption ) ) {
 			return '';
 		}
@@ -437,7 +439,7 @@ abstract class Engine {
 	}
 
 	/**
-	 * Constructs the HTML for a text `<input>` element.
+	 * Constructs the HTML for a text 'input' element.
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Setting key.
@@ -449,7 +451,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_text_box( $p_str_setting_name, $p_str_max_length = 999, $p_bool_readonly = false, $p_bool_hidden = false ) {
+	protected function add_text_box( string $p_str_setting_name, int $p_str_max_length = 999, bool $p_bool_readonly = false, bool $p_bool_hidden = false ): string {
 		$l_str_style = '';
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
@@ -468,7 +470,7 @@ abstract class Engine {
 	}
 
 	/**
-	 * Constructs the HTML for a checkbox `<input>` element.
+	 * Constructs the HTML for a checkbox 'input' element.
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Setting key.
@@ -477,7 +479,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_checkbox( $p_str_setting_name ) {
+	protected function add_checkbox( string $p_str_setting_name ): string {
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(
@@ -489,7 +491,7 @@ abstract class Engine {
 	}
 
 	/**
-	 * Constructs the HTML for a `<select>` element.
+	 * Constructs the HTML for a 'select' element.
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Setting key.
@@ -499,7 +501,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_select_box( $p_str_setting_name, $p_arr_options ) {
+	protected function add_select_box( string $p_str_setting_name, array $p_arr_options ): string {
 		// Collect data for given settings field.
 		$l_arr_data    = $this->load_setting( $p_str_setting_name );
 		$l_str_options = '';
@@ -525,7 +527,7 @@ abstract class Engine {
 	}
 
 	/**
-	 * Constructs the HTML for a `<textarea>` element.
+	 * Constructs the HTML for a 'textarea' element.
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name  Setting key.
@@ -534,7 +536,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_textarea( $p_str_setting_name ) {
+	protected function add_textarea( $p_str_setting_name ): string {
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(
@@ -546,7 +548,7 @@ abstract class Engine {
 	}
 
 	/**
-	 * Constructs the HTML for a text `<input>` element with the colour selection
+	 * Constructs the HTML for a text 'input' element with the colour selection
 	 * class.
 	 *
 	 * @access  protected
@@ -557,7 +559,7 @@ abstract class Engine {
 	 * @todo  Refactor HTML generation.
 	 * @todo  Use proper colorpicker element.
 	 */
-	protected function add_color_selection( $p_str_setting_name ) {
+	protected function add_color_selection( string $p_str_setting_name ): string {
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
 		return sprintf(
@@ -569,7 +571,7 @@ abstract class Engine {
 	}
 
 	/**
-	 * Constructs the HTML for numeric `<input>` element.
+	 * Constructs the HTML for numeric 'input' element.
 	 *
 	 * @access  protected
 	 * @param  string $p_str_setting_name Setting key.
@@ -581,7 +583,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 * @todo  Refactor HTML generation.
 	 */
-	protected function add_num_box( $p_str_setting_name, $p_in_min, $p_int_max, $p_bool_deci = false ) {
+	protected function add_num_box( string  $p_str_setting_name, int $p_in_min, int $p_int_max, bool $p_bool_deci = false ): string {
 		// Collect data for given settings field.
 		$l_arr_data = $this->load_setting( $p_str_setting_name );
 

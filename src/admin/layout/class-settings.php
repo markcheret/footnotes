@@ -13,9 +13,12 @@
  *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\admin\layout;
 
 use footnotes\includes as Includes;
+use footnotes\general as General;
 
 /**
  * Provides the abstract class to be extended for page layouts.
@@ -38,7 +41,7 @@ class Settings extends Engine {
 	 * @since  2.8.0
 	 * @param  string $plugin_name  The name of this plugin.
 	 */
-	public function __construct( $plugin_name ) {
+	public function __construct( string $plugin_name ) {
 		$this->plugin_name = $plugin_name;
 	}
 
@@ -50,7 +53,7 @@ class Settings extends Engine {
 	 * @since  1.5.0
 	 * @return  int
 	 */
-	public function get_priority() {
+	public function get_priority(): int {
 		return 10;
 	}
 
@@ -60,7 +63,7 @@ class Settings extends Engine {
 	 * @since  1.5.0
 	 * @return  string
 	 */
-	protected function get_sub_page_slug() {
+	protected function get_sub_page_slug(): string {
 		return '-' . $this->plugin_name;
 	}
 
@@ -70,7 +73,7 @@ class Settings extends Engine {
 	 * @since  1.5.0
 	 * @return  string
 	 */
-	protected function get_sub_page_title() {
+	protected function get_sub_page_title(): string {
 		return \footnotes\includes\Config::C_STR_PLUGIN_PUBLIC_NAME;
 	}
 
@@ -83,7 +86,7 @@ class Settings extends Engine {
 	 * @since  1.5.0
 	 * @since  2.1.6  Remove conditional rendering of ‘Expert’ tab.
 	 */
-	protected function get_sections() {
+	protected function get_sections(): array {
 		$l_arr_tabs = array();
 
 		// Sync tab name with mirror in task.php.
@@ -94,7 +97,7 @@ class Settings extends Engine {
 
 		$l_arr_tabs[] = $this->add_section( 'expert', __( 'Scope and priority', 'footnotes' ), 2, true );
 		$l_arr_tabs[] = $this->add_section( 'customcss', __( 'Custom CSS', 'footnotes' ), 3, true );
-		$l_arr_tabs[] = $this->add_section( 'how-to', __( 'Quick start guide', 'footnotes' ), null, false );
+		$l_arr_tabs[] = $this->add_section( 'how-to', __( 'Quick start guide', 'footnotes' ), 4, false );
 
 		return $l_arr_tabs;
 	}
@@ -109,7 +112,7 @@ class Settings extends Engine {
 	 * @since  1.5.0
 	 * @since  2.2.0  Re-order and rename tabs.
 	 */
-	protected function get_meta_boxes() {
+	protected function get_meta_boxes(): array {
 		$l_arr_meta_boxes = array();
 
 		$l_arr_meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility', 'footnotes' ), 'amp_compat' );
@@ -153,7 +156,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.6.0  (release)
 	 */
-	public function amp_compat() {
+	public function amp_compat(): void {
 
 		// Load template file.
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'settings-amp' );
@@ -180,7 +183,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function reference_container() {
+	public function reference_container(): void {
 
 		// Options for the label element.
 		$l_arr_label_element = array(
@@ -355,7 +358,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function start_end() {
+	public function start_end(): void {
 		// Footnotes start tag short code options.
 		$l_arr_shortcode_start = array(
 			'(('                        => '((',
@@ -432,7 +435,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function numbering() {
+	public function numbering(): void {
 		// Define some space for the output.
 		$l_str_space = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 		// Options for the combination of identical footnotes.
@@ -477,7 +480,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function scrolling() {
+	public function scrolling(): void {
 
 		// Options for enabling scroll duration asymmetricity.
 		$l_arr_enable = array(
@@ -533,7 +536,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function hard_links() {
+	public function hard_links(): void {
 
 		// Options for enabling hard links for AMP compat.
 		$l_arr_enable = array(
@@ -585,7 +588,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function love() {
+	public function love(): void {
 		// Options for the acknowledgment display in the footer.
 		$l_arr_love = array(
 			// Logo only.
@@ -631,7 +634,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function excerpts() {
+	public function excerpts(): void {
 		// Options for options select box.
 		$l_arr_excerpt_mode = array(
 			'yes'    => __( 'Yes, generate excerpts from posts with effectively processed footnotes and other markup', 'footnotes' ),
@@ -663,7 +666,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function superscript() {
+	public function superscript(): void {
 		// Options for Yes/No select box.
 		$l_arr_enabled = array(
 			'yes' => __( 'Yes', 'footnotes' ),
@@ -708,7 +711,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.5.12
 	 */
-	public function label_solution() {
+	public function label_solution(): void {
 		// Options for the input label issue solution.
 		$l_arr_issue_solutions = array(
 			'none'       => __( '0. No problem or solved otherwise', 'footnotes' ),
@@ -737,7 +740,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.2
 	 */
-	public function mouseover_box() {
+	public function mouseover_box(): void {
 		// Options for Yes/No select box.
 		$l_arr_enabled = array(
 			'yes' => __( 'Yes', 'footnotes' ),
@@ -773,7 +776,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function mouseover_box_position() {
+	public function mouseover_box_position(): void {
 
 		// Options for the Mouse-over box position.
 		$l_arr_position = array(
@@ -828,7 +831,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function mouseover_box_dimensions() {
+	public function mouseover_box_dimensions(): void {
 
 		// Load template file.
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'mouse-over-box-dimensions' );
@@ -854,7 +857,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function mouseover_box_timing() {
+	public function mouseover_box_timing(): void {
 
 		// Load template file.
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'mouse-over-box-timing' );
@@ -891,7 +894,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function mouseover_box_truncation() {
+	public function mouseover_box_truncation(): void {
 		// Options for Yes/No select box.
 		$l_arr_enabled = array(
 			'yes' => __( 'Yes', 'footnotes' ),
@@ -928,7 +931,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function mouseover_box_text() {
+	public function mouseover_box_text(): void {
 		// Options for Yes/No select box.
 		$l_arr_enabled = array(
 			'yes' => __( 'Yes', 'footnotes' ),
@@ -970,7 +973,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.0
 	 */
-	public function mouseover_box_appearance() {
+	public function mouseover_box_appearance(): void {
 		// Options for Yes/No select box.
 		$l_arr_enabled = array(
 			'yes' => __( 'Yes', 'footnotes' ),
@@ -1040,7 +1043,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function hyperlink_arrow() {
+	public function hyperlink_arrow(): void {
 		// Load template file.
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'customize-hyperlink-arrow' );
 		// Replace all placeholders.
@@ -1104,7 +1107,7 @@ class Settings extends Engine {
 	 * @since  2.2.2
 	 * @deprecated
 	 */
-	public function custom_css_migration() {
+	public function custom_css_migration(): void {
 
 		// Options for Yes/No select box.
 		$l_arr_enabled = array(
@@ -1140,7 +1143,7 @@ class Settings extends Engine {
 	 *
 	 * @since  2.2.2
 	 */
-	public function custom_css_new() {
+	public function custom_css_new(): void {
 		// Load template file.
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'customize-css-new' );
 		// Replace all placeholders.
@@ -1170,7 +1173,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.5
 	 */
-	public function lookup_hooks() {
+	public function lookup_hooks(): void {
 		// Load template file.
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'expert-lookup' );
 
@@ -1225,9 +1228,11 @@ class Settings extends Engine {
 	 * Displays a short introduction to the plugin.
 	 *
 	 * @since  1.5.0
+	 * @todo Review in light of admin/public split.
 	 */
-	public function Help() {
-		global $footnotes;
+	public function help(): void {
+	  $footnotes = new General\General($this->plugin_name, "foo");
+		
 		// Load footnotes starting and end tag.
 		$l_arr_footnote_starting_tag = $this->load_setting( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
 		$l_arr_footnote_ending_tag   = $this->load_setting( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
@@ -1290,7 +1295,7 @@ class Settings extends Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function donate() {
+	public function donate(): void {
 		// Load template file.
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'how-to-donate' );
 		// Replace all placeholders.

@@ -13,6 +13,8 @@
  *                              rename `dashboard/` sub-directory to `layout/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\admin\layout;
 
 use footnotes\includes as Includes;
@@ -33,7 +35,7 @@ class Init {
 	 *
 	 * @since  2.8.0
 	 */
-	private $plugin_name;
+	private string $plugin_name;
 
 	/**
 	 * Slug for the Plugin main menu.
@@ -51,7 +53,7 @@ class Init {
 	 *
 	 * @since  1.5.0
 	 */
-	private $settings_page;
+	private Settings $settings_page;
 
 	/**
 	 * Initializes all WordPress hooks for the Plugin Settings.
@@ -61,7 +63,7 @@ class Init {
 	 * @since  1.5.0
 	 * @since  2.8.0  Added `$plugin_name` parameter.
 	 */
-	public function __construct( $plugin_name ) {
+	public function __construct( string $plugin_name ) {
 		$this->plugin_name = $plugin_name;
 
 		$this->load_dependencies();
@@ -109,7 +111,7 @@ class Init {
 	 *
 	 * @since  2.8.0
 	 */
-	private function load_dependencies() {
+	private function load_dependencies(): void {
 		/**
 		 * Defines plugin constants.
 		 */
@@ -131,7 +133,7 @@ class Init {
 	 *
 	 * @since  1.5.0
 	 */
-	public function initialize_settings() {
+	public function initialize_settings(): void {
 		Includes\Settings::instance()->register_settings();
 		$this->settings_page->register_sections();
 	}
@@ -142,7 +144,7 @@ class Init {
 	 * @since  1.5.0
 	 * @see http://codex.wordpress.org/Function_Reference/add_menu_page
 	 */
-	public function register_options_submenu() {
+	public function register_options_submenu(): void {
 		add_submenu_page(
 			'options-general.php',
 			'footnotes Settings',
@@ -162,8 +164,8 @@ class Init {
 	 *
 	 * @since 1.5.0
 	 */
-	public function get_plugin_meta_information() {
-		// TODO: add nonce verification.
+	public function get_plugin_meta_information(): void {
+		// TODO: add nonce verification?
 
 		// Get plugin internal name from POST data.
 		if ( isset( $_POST['plugin'] ) ) {

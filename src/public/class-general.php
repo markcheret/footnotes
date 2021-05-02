@@ -204,11 +204,25 @@ class General {
 				array(),
 				( PRODUCTION_ENV ) ? $this->version : filemtime(
 					plugin_dir_path(
-						dirname( __FILE__ )
+						 __FILE__ 
 					) . "css/footnotes-{$l_str_tooltip_mode_short}brpl{$l_str_layout_mode}.min.css"
 				),
 				'all'
 			);
+		} else {
+			foreach (array('amp-tooltips', 'common', 'layout-entry-content', 'layout-main-content', 'layout-reference-container', 'tooltips', 'tooltips-alternative') as $val) {
+				wp_enqueue_style(
+					"footnotes-$val",
+					plugin_dir_url( __FILE__ ) . "css/dev-$val.css",
+					array(),
+					filemtime(
+						plugin_dir_path(
+							 __FILE__ 
+						) . "css/dev-$val.css"
+					),
+					'all'
+				);
+			}
 		}
 	}
 

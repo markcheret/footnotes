@@ -12,6 +12,8 @@
  * @since  2.8.0  Rename file from `wysiwyg.php` to `class-footnotes-wysiwyg.php`,
  *                              move from `class/` sub-directory to `admin/`.
  */
+ 
+declare(strict_types=1);
 
 namespace footnotes\admin;
 
@@ -34,7 +36,7 @@ class WYSIWYG {
 	 * @since  1.5.0
 	 * @todo  Should this be `static`?
 	 */
-	public static function new_visual_editor_button( $p_arr_buttons ) {
+	public static function new_visual_editor_button( array $p_arr_buttons ): array {
 		$p_arr_buttons[] = 'footnotes';
 		return $p_arr_buttons;
 	}
@@ -44,7 +46,7 @@ class WYSIWYG {
 	 *
 	 * @since  1.5.0
 	 */
-	public static function new_plain_text_editor_button() {
+	public static function new_plain_text_editor_button(): void {
 		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'editor-button' );
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $l_obj_template->get_content();
@@ -60,7 +62,7 @@ class WYSIWYG {
 	 * @since  1.5.0
 	 * @todo  Should this be `static`?
 	 */
-	public static function include_scripts( $p_arr_plugins ) {
+	public static function include_scripts( array $p_arr_plugins ): array {
 		$p_arr_plugins['footnotes'] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
 		return $p_arr_plugins;
 	}
@@ -71,7 +73,7 @@ class WYSIWYG {
 	 *
 	 * @since  1.5.0
 	 */
-	public static function ajax_callback() {
+	public static function ajax_callback(): void {
 		// Get start and end tag for the footnotes short code.
 		$l_str_starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
 		$l_str_ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END );

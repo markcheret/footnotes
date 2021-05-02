@@ -51,28 +51,22 @@ class Template {
 	 * Contains the content of the template after initialize.
 	 *
 	 * @since  1.5.0
-	 *
-	 * @var string
 	 */
-	private $a_str_original_content = '';
+	private ?string $a_str_original_content = '';
 
 	/**
 	 * Contains the content of the template after initialize with replaced place holders.
 	 *
 	 * @since  1.5.0
-	 *
-	 * @var string
 	 */
-	private $a_str_replaced_content = '';
+	private string $a_str_replaced_content = '';
 
 	/**
 	 * Plugin Directory
 	 *
 	 * @since  2.4.0d3
-	 *
-	 * @var  string
 	 */
-	public $plugin_directory;
+	public string $plugin_directory;
 
 	/**
 	 * Class Constructor. Reads and loads the template file without replace any placeholder.

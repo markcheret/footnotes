@@ -54,7 +54,7 @@ class Core {
 	 *
 	 * @var Loader $loader Maintains and registers all hooks for the plugin.
 	 */
-	protected $loader;
+	protected ?\footnotes\includes\Loader $loader = null;
 
 	/**
 	 * The unique identifier of this plugin
@@ -63,7 +63,7 @@ class Core {
 	 *
 	 * @var string $plugin_name The string used to uniquely identify this plugin.
 	 */
-	protected $plugin_name;
+	protected string $plugin_name;
 
 	/**
 	 * The current version of the plugin.
@@ -73,7 +73,7 @@ class Core {
 	 *
 	 * @var string $version The current version of the plugin.
 	 */
-	protected $version;
+	protected string $version;
 
 	/**
 	 * Builds the core of the plugin.

@@ -73,28 +73,20 @@ class Init {
 		// Register hooks/actions.
 		add_action(
 			'admin_menu',
-			function () {
-				return $this->register_options_submenu();
-			}
+			fn() => $this->register_options_submenu()
 		);
 		add_action(
 			'admin_init',
-			function () {
-				return $this->initialize_settings();
-			}
+			fn() => $this->initialize_settings()
 		);
 		// Register AJAX callbacks for Plugin information.
 		add_action(
 			'wp_ajax_nopriv_footnotes_get_plugin_info',
-			function () {
-				return $this->get_plugin_meta_information();
-			}
+			fn() => $this->get_plugin_meta_information()
 		);
 		add_action(
 			'wp_ajax_footnotes_get_plugin_info',
-			function () {
-				return $this->get_plugin_meta_information();
-			}
+			fn() => $this->get_plugin_meta_information()
 		);
 	}
 
@@ -151,9 +143,7 @@ class Init {
 			\footnotes\includes\Config::C_STR_PLUGIN_PUBLIC_NAME,
 			'manage_options',
 			self::C_STR_MAIN_MENU_SLUG,
-			function () {
-				return $this->settings_page->display_content();
-			}
+			fn() => $this->settings_page->display_content()
 		);
 		$this->settings_page->register_sub_page();
 	}

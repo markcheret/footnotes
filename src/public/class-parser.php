@@ -30,23 +30,21 @@ class Parser {
 	 * @since 1.5.0
 	 * @var string[]
 	 */
-	public static $a_arr_footnotes = array();
+	public static array $a_arr_footnotes = array();
 
 	/**
 	 * Flag if the display of 'LOVE FOOTNOTES' is allowed on the current public page.
 	 *
 	 * @since 1.5.0
-	 * @var bool
 	 */
-	public static $a_bool_allow_love_me = true;
+	public static bool $a_bool_allow_love_me = true;
 
 	/**
 	 * Prefix for the Footnote html element ID.
 	 *
 	 * @since 1.5.8
-	 * @var string
 	 */
-	public static $a_str_prefix = '';
+	public static string $a_str_prefix = '';
 
 	/**
 	 * Autoload a.k.a. infinite scroll, or archive view.
@@ -55,9 +53,8 @@ class Parser {
 	 * post ID to make everything unique wrt infinite scroll and archive view.
 	 *
 	 * @since 2.0.6
-	 * @var int
 	 */
-	public static $a_int_post_id = 0;
+	public static int $a_int_post_id = 0;
 
 	/**
 	 * Multiple reference containers in content and widgets.
@@ -69,7 +66,7 @@ class Parser {
 	 * @since 2.2.9
 	 * @var int   Incremented every time after a reference container is inserted.
 	 */
-	public static $a_int_reference_container_id = 1;
+	public static int $a_int_reference_container_id = 1;
 
 	/**
 	 * Hard links for AMP compatibility.
@@ -77,9 +74,8 @@ class Parser {
 	 * A property because used both in {@see search()} and {@see reference_container()}.
 	 *
 	 * @since 2.0.0
-	 * @var bool
 	 */
-	public static $a_bool_hard_links_enabled = false;
+	public static bool $a_bool_hard_links_enabled = false;
 
 	/**
 	 * The referrer slug.
@@ -124,9 +120,8 @@ class Parser {
 	 * Hence it needs to be loaded twice, because priority levels may not match.
 	 *
 	 * @since 2.1.4
-	 * @var int
 	 */
-	public static $a_int_scroll_offset = 34;
+	public static int $a_int_scroll_offset = 34;
 
 	/*
 	 * Optional link element for footnote referrers and backlinks
@@ -146,33 +141,29 @@ class Parser {
 	 * Yet styling these elements with the link color is not universally preferred, so that
 	 * the very presence of these link elements may need to be avoided.
 	 */
-
 	/**
 	 * The span element name.
 	 *
 	 * @since 2.3.0
 	 * @todo Remove.
-	 * @var string
 	 */
-	public static $a_str_link_span = 'span';
+	public static string $a_str_link_span = 'span';
 
 	/**
 	 * The opening tag.
 	 *
 	 * @since 2.3.0
 	 * @todo Remove.
-	 * @var string
 	 */
-	public static $a_str_link_open_tag = '';
+	public static string $a_str_link_open_tag = '';
 
 	/**
 	 * The closing tag.
 	 *
 	 * @since 2.3.0
 	 * @todo Remove.
-	 * @var string
 	 */
-	public static $a_str_link_close_tag = '';
+	public static string $a_str_link_close_tag = '';
 
 	/*
 	 * Dedicated tooltip text.
@@ -195,53 +186,47 @@ class Parser {
 	 * The tooltip delimiter shortcode length.
 	 *
 	 * @since 2.5.2
-	 * @var int
 	 */
-	public static $a_int_tooltip_shortcode_length = 12;
+	public static int $a_int_tooltip_shortcode_length = 12;
 
 	/**
 	 * Whether to mirror the tooltip text in the reference container.
 	 *
 	 * @since 2.5.2
-	 * @var bool
 	 */
-	public static $a_bool_mirror_tooltip_text = false;
+	public static bool $a_bool_mirror_tooltip_text = false;
 
 	/**
 	 * Footnote delimiter start short code.
 	 *
 	 * @since 1.5.0
 	 * @since 2.6.2  Move from constant to class property.
-	 * @var string
 	 */
-	public static $a_str_start_tag = '';
+	public static string|int $a_str_start_tag = '';
 
 	/**
 	 * Footnote delimiter end short code.
 	 *
 	 * @since 1.5.0
 	 * @since 2.6.2  Move from constant to class property.
-	 * @var string
 	 */
-	public static $a_str_end_tag = '';
+	public static string|int $a_str_end_tag = '';
 
 	/**
 	 * Footnote delimiter start short code in RegEx format.
 	 *
 	 * @since 2.4.0
 	 * @since 2.6.2  Move from global constant to class property.
-	 * @var string
 	 */
-	public static $a_str_start_tag_regex = '';
+	public static ?string $a_str_start_tag_regex = '';
 
 	/**
 	 * Footnote delimiter end short code in RegEx format.
 	 *
 	 * @since 2.4.0
 	 * @since 2.6.2  Move from global constant to class property.
-	 * @var string
 	 */
-	public static $a_str_end_tag_regex = '';
+	public static ?string $a_str_end_tag_regex = '';
 
 	/**
 	 * Footnote delimiter syntax validation enabled.
@@ -255,9 +240,8 @@ class Parser {
 	 * released in urgency to provide AMP compat before 2021.
 	 *
 	 * @since 2.4.0
-	 * @var bool
 	 */
-	public static $a_bool_syntax_error_flag = true;
+	public static bool $a_bool_syntax_error_flag = true;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -304,27 +288,21 @@ class Parser {
 		// Append custom css to the header.
 		add_filter(
 			'wp_head',
-			function () {
-				return $this->footnotes_output_head();
-			},
+			fn() => $this->footnotes_output_head(),
 			PHP_INT_MAX
 		);
 
 		// Append the love and share me slug to the footer.
 		add_filter(
 			'wp_footer',
-			function () {
-				return $this->footnotes_output_footer();
-			},
+			fn() => $this->footnotes_output_footer(),
 			PHP_INT_MAX
 		);
 
 		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_EXPERT_LOOKUP_THE_TITLE ) ) ) {
 			add_filter(
 				'the_title',
-				function ( string $p_str_content ) : string {
-					return $this->footnotes_in_title( $p_str_content );
-				},
+				fn(string $p_str_content): string => $this->footnotes_in_title( $p_str_content ),
 				$l_int_the_title_priority
 			);
 		}
@@ -333,9 +311,7 @@ class Parser {
 		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_EXPERT_LOOKUP_THE_CONTENT ) ) ) {
 			add_filter(
 				'the_content',
-				function ( string $p_str_content ) : string {
-					return $this->footnotes_in_content( $p_str_content );
-				},
+				fn(string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
 				$l_int_the_content_priority
 			);
 
@@ -353,9 +329,7 @@ class Parser {
 			 */
 			add_filter(
 				'term_description',
-				function ( string $p_str_content ) : string {
-					return $this->footnotes_in_content( $p_str_content );
-				},
+				fn(string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
 				$l_int_the_content_priority
 			);
 
@@ -371,9 +345,7 @@ class Parser {
 			 */
 			add_filter(
 				'pum_popup_content',
-				function ( string $p_str_content ) : string {
-					return $this->footnotes_in_content( $p_str_content );
-				},
+				fn(string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
 				$l_int_the_content_priority
 			);
 		}
@@ -389,9 +361,7 @@ class Parser {
 			 */
 			add_filter(
 				'the_excerpt',
-				function ( string $p_str_excerpt ) : string {
-					return $this->footnotes_in_excerpt( $p_str_excerpt );
-				},
+				fn(string $p_str_excerpt): string => $this->footnotes_in_excerpt( $p_str_excerpt ),
 				$l_int_the_excerpt_priority
 			);
 		}
@@ -402,9 +372,7 @@ class Parser {
 			 */
 			add_filter(
 				'widget_title',
-				function ( string $p_str_content ) : string {
-					return $this->footnotes_in_widget_title( $p_str_content );
-				},
+				fn(string $p_str_content): string => $this->footnotes_in_widget_title( $p_str_content ),
 				$l_int_widget_title_priority
 			);
 		}
@@ -415,9 +383,7 @@ class Parser {
 			 */
 			add_filter(
 				'widget_text',
-				function ( string $p_str_content ) : string {
-					return $this->footnotes_in_widget_text( $p_str_content );
-				},
+				fn(string $p_str_content): string => $this->footnotes_in_widget_text( $p_str_content ),
 				$l_int_widget_text_priority
 			);
 		}
@@ -968,7 +934,7 @@ class Parser {
 		);
 
 		// Prevent the footnotes from altering the excerpt: previously hard-coded '5ED84D6'.
-		$l_int_placeholder = '@' . wp_rand( 100000000, 2147483647 ) . '@';
+		$l_int_placeholder = '@' . wp_rand( 100_000_000, 2_147_483_647 ) . '@';
 		$p_str_content     = preg_replace(
 			'#' . self::$a_str_start_tag_regex . '.+?' . self::$a_str_end_tag_regex . '#',
 			$l_int_placeholder,
@@ -1305,7 +1271,7 @@ class Parser {
 		}
 
 		// Post ID to make everything unique wrt infinite scroll and archive view.
-		self::$a_int_post_id = get_the_id();
+		self::$a_int_post_id = (int) get_the_id();
 
 		/*
 		 * Empties the footnotes list every time Footnotes is run when the_content hook is called.

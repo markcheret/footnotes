@@ -49,7 +49,7 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	protected ?string $a_str_sub_page_hook;
+	protected ?string $a_str_sub_page_hook = null;
 
 	/**
 	 * Stores all Sections for the child sub-page.
@@ -197,9 +197,7 @@ abstract class Engine {
 			$this->get_sub_page_title(),
 			'manage_options',
 			Init::C_STR_MAIN_MENU_SLUG . $this->get_sub_page_slug(),
-			function () {
-				return $this->display_content();
-			}
+			fn() => $this->display_content()
 		);
 	}
 
@@ -215,9 +213,7 @@ abstract class Engine {
 			add_settings_section(
 				$l_arr_section['id'],
 				'',
-				function () {
-					return $this->description();
-				},
+				fn() => $this->description(),
 				$l_arr_section['id']
 			);
 			$this->register_meta_boxes( $l_arr_section['id'] );

@@ -1106,15 +1106,13 @@ class Settings {
 	/**********************************************************************
 	 *      SETTINGS STORAGE.
 	 **********************************************************************/
-
 	/**
 	 * Stores a singleton reference of this class.
 	 *
-	 * @var  Settings
 	 *
 	 * @since  1.5.0
 	 */
-	private static $a_obj_instance;
+	private static ?\footnotes\includes\Settings $a_obj_instance = null;
 
 	/**
 	 * Contains all Settings Container names.

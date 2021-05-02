@@ -54,7 +54,7 @@ class Core {
 	 *
 	 * @var Loader $loader Maintains and registers all hooks for the plugin.
 	 */
-	protected ?\footnotes\includes\Loader $loader = null;
+	protected \footnotes\includes\Loader $loader;
 
 	/**
 	 * The unique identifier of this plugin

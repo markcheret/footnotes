@@ -40,7 +40,7 @@ class i18n {
 		load_plugin_textdomain(
 			'footnotes',
 			false,
-			dirname(plugin_basename( __FILE__ ), 2) . '/languages/'
+			dirname( plugin_basename( __FILE__ ), 2 ) . '/languages/'
 		);
 	}
 

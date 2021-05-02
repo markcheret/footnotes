@@ -81,10 +81,10 @@ class Template {
 	 */
 	public function __construct( string $p_str_file_type, string $p_str_file_name, string $p_str_extension = 'html' ) {
 		// No template file type and/or file name set.
-		if (empty( $p_str_file_type )) {
+		if ( empty( $p_str_file_type ) ) {
 			return;
 		}
-		if (empty( $p_str_file_name )) {
+		if ( empty( $p_str_file_name ) ) {
 			return;
 		}
 		$this->plugin_directory = plugin_dir_path( __DIR__ );

@@ -48,19 +48,20 @@ class Init {
 	/**
 	 * Initializes all WordPress hooks for the Plugin Settings.
 	 *
-	 *
 	 * @since  1.5.0
 	 * @since  2.8.0  Added `$plugin_name` parameter.
 	 */
-	public function __construct( /**
-	 * The ID of this plugin.
-	 *
-	 * @access  private
-	 * @var  string  $plugin_name  The ID of this plugin.
-	 *
-	 * @since  2.8.0
-	 */
-	private string $plugin_name ) {
+	public function __construct( 
+		/**
+		 * The ID of this plugin.
+		 *
+		 * @access  private
+		 * @var  string  $plugin_name  The ID of this plugin.
+		 *
+		 * @since  2.8.0
+		 */
+		private string $plugin_name 
+	) {
 		$this->load_dependencies();
 
 		$this->settings_page = new Settings( $this->plugin_name );

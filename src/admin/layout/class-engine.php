@@ -328,7 +328,7 @@ abstract class Engine {
 	 * @todo  Review nonce verification.
 	 */
 	private function save_settings(): bool {
-		$l_arr_new_settings = array();
+		$l_arr_new_settings      = array();
 		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
@@ -574,13 +574,13 @@ abstract class Engine {
 			);
 		}
 		return sprintf(
-				'<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
-				$l_arr_data['name'],
-				$l_arr_data['id'],
-				$l_arr_data['value'],
-				$p_in_min,
-				$p_int_max
-			);
+			'<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
+			$l_arr_data['name'],
+			$l_arr_data['id'],
+			$l_arr_data['value'],
+			$p_in_min,
+			$p_int_max
+		);
 	}
 
 }

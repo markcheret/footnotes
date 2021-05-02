@@ -302,7 +302,7 @@ class Parser {
 		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_EXPERT_LOOKUP_THE_TITLE ) ) ) {
 			add_filter(
 				'the_title',
-				fn(string $p_str_content): string => $this->footnotes_in_title( $p_str_content ),
+				fn( string $p_str_content): string => $this->footnotes_in_title( $p_str_content ),
 				$l_int_the_title_priority
 			);
 		}
@@ -311,7 +311,7 @@ class Parser {
 		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_EXPERT_LOOKUP_THE_CONTENT ) ) ) {
 			add_filter(
 				'the_content',
-				fn(string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
+				fn( string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
 				$l_int_the_content_priority
 			);
 
@@ -329,7 +329,7 @@ class Parser {
 			 */
 			add_filter(
 				'term_description',
-				fn(string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
+				fn( string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
 				$l_int_the_content_priority
 			);
 
@@ -345,7 +345,7 @@ class Parser {
 			 */
 			add_filter(
 				'pum_popup_content',
-				fn(string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
+				fn( string $p_str_content): string => $this->footnotes_in_content( $p_str_content ),
 				$l_int_the_content_priority
 			);
 		}
@@ -361,7 +361,7 @@ class Parser {
 			 */
 			add_filter(
 				'the_excerpt',
-				fn(string $p_str_excerpt): string => $this->footnotes_in_excerpt( $p_str_excerpt ),
+				fn( string $p_str_excerpt): string => $this->footnotes_in_excerpt( $p_str_excerpt ),
 				$l_int_the_excerpt_priority
 			);
 		}
@@ -372,7 +372,7 @@ class Parser {
 			 */
 			add_filter(
 				'widget_title',
-				fn(string $p_str_content): string => $this->footnotes_in_widget_title( $p_str_content ),
+				fn( string $p_str_content): string => $this->footnotes_in_widget_title( $p_str_content ),
 				$l_int_widget_title_priority
 			);
 		}
@@ -383,7 +383,7 @@ class Parser {
 			 */
 			add_filter(
 				'widget_text',
-				fn(string $p_str_content): string => $this->footnotes_in_widget_text( $p_str_content ),
+				fn( string $p_str_content): string => $this->footnotes_in_widget_text( $p_str_content ),
 				$l_int_widget_text_priority
 			);
 		}
@@ -792,7 +792,7 @@ class Parser {
 		$l_str_footnote_section_shortcode        = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE );
 		$l_int_footnote_section_shortcode_length = strlen( $l_str_footnote_section_shortcode );
 
-		if ( !str_contains( $p_str_content, (string) $l_str_footnote_section_shortcode ) ) {
+		if ( ! str_contains( $p_str_content, (string) $l_str_footnote_section_shortcode ) ) {
 
 			// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 			// Appends the reference container if set to "post_end".
@@ -1717,7 +1717,7 @@ class Parser {
 
 				// If it is not, check which option is on.
 				$l_str_separator_option = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_SEPARATOR_OPTION );
-				$l_str_separator = match ($l_str_separator_option) {
+				$l_str_separator        = match ($l_str_separator_option) {
 					'comma' => ',',
 					'semicolon' => ';',
 					'en_dash' => '&nbsp;&#x2013;',
@@ -1740,7 +1740,7 @@ class Parser {
 
 				// If it is not, check which option is on.
 				$l_str_terminator_option = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_BACKLINKS_TERMINATOR_OPTION );
-				$l_str_terminator = match ($l_str_terminator_option) {
+				$l_str_terminator        = match ($l_str_terminator_option) {
 					'period' => '.',
 					'parenthesis' => ')',
 					'colon' => ':',

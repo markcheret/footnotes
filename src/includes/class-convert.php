@@ -185,10 +185,10 @@ class Convert {
 			$p_int_index = (int) $p_int_index;
 		}
 		// Return the whole arrow array.
-		if ($p_int_index < 0) {
+		if ( $p_int_index < 0 ) {
 			return $l_arr_arrows;
 		}
-		if ($p_int_index > count( $l_arr_arrows )) {
+		if ( $p_int_index > count( $l_arr_arrows ) ) {
 			return $l_arr_arrows;
 		}
 		// Return a single arrow.

@@ -1109,7 +1109,6 @@ class Settings {
 	/**
 	 * Stores a singleton reference of this class.
 	 *
-	 *
 	 * @since  1.5.0
 	 */
 	private static ?\footnotes\includes\Settings $a_obj_instance = null;
@@ -1343,7 +1342,6 @@ class Settings {
 
 	/**
 	 * Returns a singleton of this class.
-	 *
 	 *
 	 * @since  1.5.0
 	 * @todo  Remove?

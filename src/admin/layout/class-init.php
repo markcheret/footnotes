@@ -192,7 +192,7 @@ class Init {
 		// Get the body of the response.
 		$l_str_response = $l_arr_response['body'];
 		// Get plugin object.
-		$l_arr_plugin = json_decode( $l_str_response, true );
+		$l_arr_plugin = json_decode( $l_str_response, true, 512, JSON_THROW_ON_ERROR );
 		if ( empty( $l_arr_plugin ) ) {
 			echo wp_json_encode( array( 'error' => 'Error reading Plugin meta information.<br/>URL: ' . $l_str_url . '<br/>Response: ' . $l_str_response ) );
 			exit;

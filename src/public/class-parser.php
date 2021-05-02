@@ -826,7 +826,7 @@ class Parser {
 		$l_str_footnote_section_shortcode        = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTE_SECTION_SHORTCODE );
 		$l_int_footnote_section_shortcode_length = strlen( $l_str_footnote_section_shortcode );
 
-		if ( strpos( $p_str_content, $l_str_footnote_section_shortcode ) === false ) {
+		if ( strpos( $p_str_content, (string) $l_str_footnote_section_shortcode ) === false ) {
 
 			// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 			// Appends the reference container if set to "post_end".
@@ -840,10 +840,10 @@ class Parser {
 			$l_arr_sections_processed = array();
 
 			do {
-				$l_int_section_end    = strpos( $l_str_rest_content, $l_str_footnote_section_shortcode );
+				$l_int_section_end    = strpos( $l_str_rest_content, (string) $l_str_footnote_section_shortcode );
 				$l_arr_sections_raw[] = substr( $l_str_rest_content, 0, $l_int_section_end );
 				$l_str_rest_content   = substr( $l_str_rest_content, $l_int_section_end + $l_int_footnote_section_shortcode_length );
-			} while ( strpos( $l_str_rest_content, $l_str_footnote_section_shortcode ) !== false );
+			} while ( strpos( $l_str_rest_content, (string) $l_str_footnote_section_shortcode ) !== false );
 			$l_arr_sections_raw[] = $l_str_rest_content;
 
 			foreach ( $l_arr_sections_raw as $l_str_section ) {
@@ -1086,7 +1086,7 @@ class Parser {
 
 		if ( $p_bool_output_references ) {
 
-			if ( strpos( $p_str_content, $l_str_reference_container_position_shortcode ) ) {
+			if ( strpos( $p_str_content, (string) $l_str_reference_container_position_shortcode ) ) {
 
 				$p_str_content = str_replace( $l_str_reference_container_position_shortcode, $this->reference_container(), $p_str_content );
 
@@ -1398,7 +1398,7 @@ class Parser {
 			// Get tooltip text if present.
 			self::$a_str_tooltip_shortcode        = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER );
 			self::$a_int_tooltip_shortcode_length = strlen( self::$a_str_tooltip_shortcode );
-			$l_int_tooltip_text_length            = strpos( $l_str_footnote_text, self::$a_str_tooltip_shortcode );
+			$l_int_tooltip_text_length            = strpos( $l_str_footnote_text, (string) self::$a_str_tooltip_shortcode );
 			$l_bool_has_tooltip_text              = (bool) $l_int_tooltip_text_length;
 			$l_str_tooltip_text                   = $l_bool_has_tooltip_text ? substr( $l_str_footnote_text, 0, $l_int_tooltip_text_length ) : '';
 

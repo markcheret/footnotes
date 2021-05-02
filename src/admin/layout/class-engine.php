@@ -271,10 +271,7 @@ abstract class Engine {
 	 */
 	public function display_content(): void {
 		$this->append_scripts();
-
-		// Get the current section.
-		reset( $this->a_arr_sections );
-		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : key( $this->a_arr_sections );
+		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
 		// Store settings.
@@ -341,12 +338,7 @@ abstract class Engine {
 	 */
 	private function save_settings(): bool {
 		$l_arr_new_settings = array();
-
-		// TODO: add nonce verification.
-
-		// Get current section.
-		reset( $this->a_arr_sections );
-		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : key( $this->a_arr_sections );
+		$l_str_active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->a_arr_sections );
 		$l_arr_active_section    = $this->a_arr_sections[ $l_str_active_section_id ];
 
 		foreach ( array_keys( Includes\Settings::instance()->get_defaults( $l_arr_active_section['container'] ) ) as $l_str_key ) {

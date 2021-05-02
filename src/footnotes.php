@@ -25,6 +25,8 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
+declare(strict_types=1);
+
 namespace footnotes;
 
 // If this file is called directly, abort.
@@ -63,10 +65,8 @@ define( 'PRODUCTION_ENV', false );
  *
  * @since 2.8.0
  * @see includes\Activator::activate()
- *
- * @return void
  */
-function activate_footnotes() {
+function activate_footnotes(): void {
 	/**
 	 * Provides plugin activation functionality.
 	 */
@@ -80,10 +80,8 @@ function activate_footnotes() {
  *
  * @since 2.8.0
  * @see includes\Deactivator::deactivate()
- *
- * @return void
  */
-function deactivate_footnotes() {
+function deactivate_footnotes(): void {
 	/**
 	 * Provides plugin deactivation functionality.
 	 */
@@ -92,8 +90,15 @@ function deactivate_footnotes() {
 	includes\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_footnotes' );
-register_deactivation_hook( __FILE__, 'deactivate_footnotes' );
+/*
+ * TODO: currently these throw an error:
+ * Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be
+ * a valid callback, function "deactivate_footnotes" not found or invalid
+ * function name in /srv/www/wordpress-one/public_html/wp-includes/class-wp-hook.php:292
+ *
+ * register_activation_hook( __FILE__, 'activate_footnotes' );
+ * register_deactivation_hook( __FILE__, 'deactivate_footnotes' );
+ */
 
 /**
  * The core plugin class that defines internationalization, admin-specific and
@@ -108,10 +113,8 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-core.php';
  * the plugin from this point in the file does not affect the page life cycle.
  *
  * @since 2.8.0
- *
- * @return void
  */
-function run_footnotes() {
+function run_footnotes(): void {
 	/**
 	 * The plugin core.
 	 *

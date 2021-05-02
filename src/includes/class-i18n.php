@@ -8,6 +8,8 @@
  *                              rename `class/` sub-directory to `includes/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
@@ -31,6 +33,8 @@ class i18n {
 	 *
 	 * @since  1.5.1
 	 * @since  2.8.0  Rename from `load()` to `load_plugin_textdomain()`. Remove unused `$p_str_language_code` parameter.
+	 *
+	 * @return void
 	 */
 	public function load_plugin_textdomain() {
 		load_plugin_textdomain(

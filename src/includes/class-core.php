@@ -27,6 +27,8 @@
  *              Renamed parent `class/` directory to `includes/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 use footnotes\general as General;
@@ -86,11 +88,7 @@ class Core {
 	 * @return void
 	 */
 	public function __construct() {
-		if ( defined( 'PLUGIN_VERSION' ) ) {
-			$this->version = PLUGIN_VERSION;
-		} else {
-			$this->version = '0.0.0';
-		}
+		$this->version     = defined( 'PLUGIN_VERSION' ) ? PLUGIN_VERSION : '0.0.0';
 		$this->plugin_name = 'footnotes';
 
 		$this->load_dependencies();

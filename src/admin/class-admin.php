@@ -11,6 +11,8 @@
  * @since  2.8.0
  */
 
+declare(strict_types=1);
+
 namespace footnotes\admin;
 
 use footnotes\includes as Includes;
@@ -34,7 +36,7 @@ class Admin {
 	 * @see  Includes\Footnotes::$plugin_name
 	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
-	private $plugin_name;
+	private string $plugin_name;
 
 	/**
 	 * The version of this plugin.
@@ -44,7 +46,7 @@ class Admin {
 	 * @see  Includes\Footnotes::$version
 	 * @var  string  $version  The current version of this plugin.
 	 */
-	private $version;
+	private string $version;
 
 	/**
 	 * The WYSIWYG editor integration object.
@@ -52,7 +54,7 @@ class Admin {
 	 * @since  2.8.0
 	 * @var  WYSIWYG  $wysiwyg  The WYSIWYG editor integration object.
 	 */
-	public $wysiwyg;
+	public WYSIWYG $wysiwyg;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -62,7 +64,7 @@ class Admin {
 	 *
 	 * @since  2.8.0
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( string $plugin_name, string $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
@@ -84,7 +86,7 @@ class Admin {
 	 *
 	 * @since  2.8.0
 	 */
-	private function load_dependencies() {
+	private function load_dependencies(): void {
 		/**
 		 * The class responsible for WYSIWYG editor integration.
 		 */
@@ -105,7 +107,7 @@ class Admin {
 	 *
 	 * @since  2.8.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles(): void {
 
 		wp_enqueue_style(
 			$this->plugin_name,
@@ -113,11 +115,12 @@ class Admin {
 			array(),
 			( PRODUCTION_ENV ) ? $this->version : filemtime(
 				plugin_dir_path(
-					dirname( __FILE__ )
+					__FILE__
 				) . 'css/settings.css'
 			),
 			'all'
 		);
+
 	}
 
 	/**
@@ -125,7 +128,7 @@ class Admin {
 	 *
 	 * @since  2.8.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts(): void {
 
 		wp_enqueue_script(
 			$this->plugin_name,
@@ -133,7 +136,7 @@ class Admin {
 			array(),
 			( PRODUCTION_ENV ) ? $this->version : filemtime(
 				plugin_dir_path(
-					dirname( __FILE__ )
+					__FILE__
 				) . 'js/wysiwyg-editor.js'
 			),
 			false

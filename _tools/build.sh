@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Add transpilation to PHP 7.4
+
 echo "Building Plugin..."
 
 # Moves everything including the style sheets over to `dist/`
@@ -33,8 +35,8 @@ rm -r dist/*/{js,css}/*[^\.min].{js,css}
 echo "Minification complete."
 
 if [[ $1 == "-v" ]]; then
-	rm -rf ../VVV/www/wordpress-one/public_html/wp-content/plugins/footnotes
-	mv dist footnotes && mv footnotes ../VVV/www/wordpress-one/public_html/wp-content/plugins
+	rm -rf ../VVV/www/wordpress-two/public_html/wp-content/plugins/footnotes
+	mv dist footnotes && mv footnotes ../VVV/www/wordpress-two/public_html/wp-content/plugins
 fi
 
 echo "Build complete."

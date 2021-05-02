@@ -8,6 +8,8 @@
  *              Renamed parent `class/` directory to `includes/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 /**
@@ -1112,7 +1114,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 */
-	private static $a_obj_instance = null;
+	private static $a_obj_instance;
 
 	/**
 	 * Contains all Settings Container names.
@@ -1123,7 +1125,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 */
-	private $a_arr_container = array(
+	private array $a_arr_container = array(
 		'footnotes_storage',
 		'footnotes_storage_custom',
 		'footnotes_storage_expert',
@@ -1136,10 +1138,11 @@ class Settings {
 	 * @since  1.5.0
 	 * @todo  Review. Why are the constants just initialised with these values?
 	 *              At the very least, we should stop using ‘yes’ to mean `true` etc.
+	 * @todo Create `PreferencesSet` class.
 	 *
 	 * @var  (string|int)[]
 	 */
-	private $a_arr_default = array(
+	private array $a_arr_default = array(
 
 		// General settings.
 		'footnotes_storage'            => array(
@@ -1226,7 +1229,7 @@ class Settings {
 		'footnotes_storage_custom'     => array(
 
 			// Backlink symbol.
-			self::C_STR_HYPERLINK_ARROW                    => '&#8593;',
+			self::C_STR_HYPERLINK_ARROW                    => 0,
 			self::C_STR_HYPERLINK_ARROW_USER_DEFINED       => '',
 
 			// Referrers.
@@ -1327,8 +1330,9 @@ class Settings {
 	 * @var  (string|int)[]
 	 *
 	 * @since  1.5.0
+	 * @todo Create `PreferencesSet` class.
 	 */
-	private $a_arr_settings = array();
+	private array $a_arr_settings = array();
 
 	/**
 	 * Loads all Settings from each WordPress Settings Container.
@@ -1347,7 +1351,7 @@ class Settings {
 	 * @since  1.5.0
 	 * @todo  Remove?
 	 */
-	public static function instance() {
+	public static function instance(): self {
 		// No instance defined yet, load it.
 		if ( ! self::$a_obj_instance ) {
 			self::$a_obj_instance = new self();
@@ -1360,11 +1364,11 @@ class Settings {
 	 * Returns the name of a specified Settings Container.
 	 *
 	 * @param  int $p_int_index  Settings Container index.
-	 * @return  str  Settings Container name.
+	 * @return  string  Settings Container name.
 	 *
 	 * @since  1.5.0
 	 */
-	public function get_container( $p_int_index ) {
+	public function get_container( int $p_int_index ): string {
 		return $this->a_arr_container[ $p_int_index ];
 	}
 
@@ -1376,7 +1380,7 @@ class Settings {
 	 *
 	 * @since  1.5.6
 	 */
-	public function get_defaults( $p_int_index ) {
+	public function get_defaults( int $p_int_index ): array {
 		return $this->a_arr_default[ $this->a_arr_container[ $p_int_index ] ];
 	}
 
@@ -1385,7 +1389,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 */
-	private function load_all() {
+	private function load_all(): void {
 		// Clear current settings.
 		$this->a_arr_settings = array();
 		$num_settings         = count( $this->a_arr_container );
@@ -1403,7 +1407,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 */
-	private function load( $p_int_index ) {
+	private function load( int $p_int_index ): array {
 		// Load all settings from container.
 		$l_arr_options = get_option( $this->get_container( $p_int_index ) );
 		// Load all default settings.
@@ -1434,7 +1438,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 */
-	public function save_options( $p_int_index, $p_arr_new_values ) {
+	public function save_options( int $p_int_index, array $p_arr_new_values ): bool {
 		if ( update_option( $this->get_container( $p_int_index ), $p_arr_new_values ) ) {
 			$this->load_all();
 			return true;
@@ -1449,9 +1453,10 @@ class Settings {
 	 * @return  string|int|null  Setting value, or `null` if setting key is invalid.
 	 *
 	 * @since  1.5.0
+	 * @todo Add return type.
 	 */
-	public function get( $p_str_key ) {
-		return array_key_exists( $p_str_key, $this->a_arr_settings ) ? $this->a_arr_settings[ $p_str_key ] : null;
+	public function get( string $p_str_key ) {
+		return $this->a_arr_settings[ $p_str_key ] ?? null;
 	}
 
 	/**
@@ -1461,7 +1466,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 */
-	public function register_settings() {
+	public function register_settings(): void {
 		// Register all settings.
 		$num_settings = count( $this->a_arr_container );
 		for ( $i = 0; $i < $num_settings; $i++ ) {

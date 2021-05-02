@@ -6,6 +6,8 @@
  * @since 2.8.0
  */
 
+declare(strict_types=1);
+
 namespace footnotes\includes;
 
 /**
@@ -24,6 +26,8 @@ class Deactivator {
 	 * Currently NOP.
 	 *
 	 * @since 2.8.0
+	 *
+	 * @return void
 	 */
 	public static function deactivate() {
 		// Nothing yet.

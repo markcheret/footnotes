@@ -6,6 +6,8 @@
  * @since 2.8.0
  */
 
+declare(strict_types=1);
+
 namespace footnotes\general;
 
 use footnotes\includes as Includes;
@@ -29,7 +31,7 @@ class General {
 	 * @access  private
 	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
-	private $plugin_name;
+	private string $plugin_name;
 
 	/**
 	 * The version of this plugin.
@@ -39,7 +41,7 @@ class General {
 	 * @access  private
 	 * @var  string  $version  The current version of this plugin.
 	 */
-	private $version;
+	private string $version;
 
 	/**
 	 * The reference container widget.
@@ -48,17 +50,18 @@ class General {
 	 *
 	 * @var  Widget\Reference_Container  $reference_container_widget  The reference container widget
 	 */
-	private $reference_container_widget;
+	private Widget\Reference_Container $reference_container_widget;
 
 	/**
 	 * The footnote parser.
 	 *
 	 * @since  1.5.0
 	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @todo Review null init.
 	 *
 	 * @var  Parser  $task  The Plugin task.
 	 */
-	public $a_obj_task = null;
+	public ?Parser $a_obj_task = null;
 
 	/**
 	 * Flag for using tooltips.
@@ -107,7 +110,7 @@ class General {
 	 * @param  string $plugin_name  The name of this plugin.
 	 * @param  string $version  The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( string $plugin_name, string $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
@@ -132,7 +135,7 @@ class General {
 	 *
 	 * @since  2.8.0
 	 */
-	private function load_dependencies() {
+	private function load_dependencies(): void {
 		// TODO: neaten up and document once placements and names are settled.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-settings.php';
@@ -156,7 +159,7 @@ class General {
 	 * @since  2.5.5  Change stylesheet schema.
 	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles(): void {
 		if ( PRODUCTION_ENV ) {
 			// Set tooltip mode for use in stylesheet name.
 			if ( self::$a_bool_tooltips_enabled ) {
@@ -204,11 +207,25 @@ class General {
 				array(),
 				( PRODUCTION_ENV ) ? $this->version : filemtime(
 					plugin_dir_path(
-						dirname( __FILE__ )
+						__FILE__
 					) . "css/footnotes-{$l_str_tooltip_mode_short}brpl{$l_str_layout_mode}.min.css"
 				),
 				'all'
 			);
+		} else {
+			foreach ( array( 'amp-tooltips', 'common', 'layout-entry-content', 'layout-main-content', 'layout-reference-container', 'tooltips', 'tooltips-alternative' ) as $val ) {
+				wp_enqueue_style(
+					"footnotes-$val",
+					plugin_dir_url( __FILE__ ) . "css/dev-$val.css",
+					array(),
+					filemtime(
+						plugin_dir_path(
+							__FILE__
+						) . "css/dev-$val.css"
+					),
+					'all'
+				);
+			}
 		}
 	}
 
@@ -221,7 +238,7 @@ class General {
 	 * @since  2.5.6  Add jQuery dependency.
 	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts(): void {
 		/*
 		 * Enqueues the jQuery library registered by WordPress.
 		 *
@@ -270,7 +287,7 @@ class General {
 	 * @since  1.5.0
 	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
 	 */
-	public function register_widgets() {
+	public function register_widgets(): void {
 		register_widget( $this->reference_container_widget );
 	}
 }

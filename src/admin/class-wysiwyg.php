@@ -13,6 +13,8 @@
  *                              move from `class/` sub-directory to `admin/`.
  */
 
+declare(strict_types=1);
+
 namespace footnotes\admin;
 
 use footnotes\includes as Includes;
@@ -26,29 +28,6 @@ use footnotes\includes as Includes;
 class WYSIWYG {
 
 	/**
-	 * The ID of this plugin.
-	 *
-	 * @access  private
-	 * @var  string  $plugin_name  The ID of this plugin.
-	 *
-	 * @since  2.8.0
-	 */
-	private $plugin_name;
-
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @param  string $plugin_name  The name of this plugin.
-	 *
-	 * @since  2.8.0
-	 */
-	public function __construct( $plugin_name ) {
-
-		$this->plugin_name = $plugin_name;
-
-	}
-
-	/**
 	 * Append a new Button to the WYSIWYG editor of Posts and Pages.
 	 *
 	 * @param  string[] $p_arr_buttons  Already-defined editor buttons.
@@ -57,8 +36,8 @@ class WYSIWYG {
 	 * @since  1.5.0
 	 * @todo  Should this be `static`?
 	 */
-	public static function new_visual_editor_button( $p_arr_buttons ) {
-		array_push( $p_arr_buttons, 'footnotes' );
+	public static function new_visual_editor_button( array $p_arr_buttons ): array {
+		$p_arr_buttons[] = 'footnotes';
 		return $p_arr_buttons;
 	}
 
@@ -67,8 +46,8 @@ class WYSIWYG {
 	 *
 	 * @since  1.5.0
 	 */
-	public static function new_plain_text_editor_button() {
-		$l_obj_template = new Includes\Template( Includes\Template::C_STR_DASHBOARD, 'editor-button' );
+	public static function new_plain_text_editor_button(): void {
+		$l_obj_template = new Includes\Template( \footnotes\includes\Template::C_STR_DASHBOARD, 'editor-button' );
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $l_obj_template->get_content();
 		// phpcs:enable
@@ -83,7 +62,7 @@ class WYSIWYG {
 	 * @since  1.5.0
 	 * @todo  Should this be `static`?
 	 */
-	public static function include_scripts( $p_arr_plugins ) {
+	public static function include_scripts( array $p_arr_plugins ): array {
 		$p_arr_plugins['footnotes'] = plugins_url( '/../admin/js/wysiwyg-editor' . ( ( PRODUCTION_ENV ) ? '.min' : '' ) . '.js', __FILE__ );
 		return $p_arr_plugins;
 	}
@@ -94,13 +73,13 @@ class WYSIWYG {
 	 *
 	 * @since  1.5.0
 	 */
-	public static function ajax_callback() {
+	public static function ajax_callback(): void {
 		// Get start and end tag for the footnotes short code.
-		$l_str_starting_tag = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
-		$l_str_ending_tag   = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
+		$l_str_starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START );
+		$l_str_ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END );
 		if ( 'userdefined' === $l_str_starting_tag || 'userdefined' === $l_str_ending_tag ) {
-			$l_str_starting_tag = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
-			$l_str_ending_tag   = Includes\Settings::instance()->get( Includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
+			$l_str_starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
+			$l_str_ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::C_STR_FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 		echo wp_json_encode(
 			array(

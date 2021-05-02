@@ -41,23 +41,25 @@ class Admin {
 	 *
 	 * @since  2.8.0
 	 */
-	public function __construct( /**
-								  * The ID of this plugin.
-								  *
-								  * @access  private
-								  * @since  2.8.0
-								  * @see  Includes\Footnotes::$plugin_name
-								  * @var  string  $plugin_name  The ID of this plugin.
-								  */
-	private string $plugin_name, /**
-								  * The version of this plugin.
-								  *
-								  * @access  private
-								  * @since  2.8.0
-								  * @see  Includes\Footnotes::$version
-								  * @var  string  $version  The current version of this plugin.
-								  */
-	private string $version ) {
+	public function __construct(
+		/**
+		 * The ID of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Includes\Footnotes::$plugin_name
+		 */
+		private string $plugin_name,
+
+		/**
+		 * The version of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Includes\Footnotes::$version
+		 */
+		private string $version
+	) {
 
 		$this->load_dependencies();
 

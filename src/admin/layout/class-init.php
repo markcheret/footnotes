@@ -51,7 +51,7 @@ class Init {
 	 * @since  1.5.0
 	 * @since  2.8.0  Added `$plugin_name` parameter.
 	 */
-	public function __construct( 
+	public function __construct(
 		/**
 		 * The ID of this plugin.
 		 *
@@ -60,7 +60,7 @@ class Init {
 		 *
 		 * @since  2.8.0
 		 */
-		private string $plugin_name 
+		private string $plugin_name
 	) {
 		$this->load_dependencies();
 

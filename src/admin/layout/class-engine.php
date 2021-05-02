@@ -416,7 +416,7 @@ abstract class Engine {
 	 */
 	protected function add_select_box( string $setting_name, array $options ): string {
 		// Collect data for given settings field.
-		$data    = $this->load_setting( $setting_name );
+		$data           = $this->load_setting( $setting_name );
 		$select_options = '';
 
 		// Loop through all array keys.

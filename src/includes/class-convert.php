@@ -22,16 +22,16 @@ class Convert {
 	 *
 	 * @param  int    $p_int_index  Index to be converted.
 	 * @param  string $p_str_convert_style  Counter style to use.
-	 * @return  string  Converted  Index converted to the defined counter style.
+	 * @return  string  The index converted to the defined counter style.
 	 *
 	 * @since  1.5.0
 	 */
-	public static function index( $p_int_index, $p_str_convert_style = 'arabic_plain' ) {
+	public static function index( int $p_int_index, string $p_str_convert_style = 'arabic_plain' ): string {
 		switch ( $p_str_convert_style ) {
-			case 'romanic':
-				return self::to_romanic( $p_int_index, true );
+			case 'roman':
+				return self::to_roman( $p_int_index, true );
 			case 'roman_low':
-				return self::to_romanic( $p_int_index, false );
+				return self::to_roman( $p_int_index, false );
 			case 'latin_high':
 				return self::to_latin( $p_int_index, true );
 			case 'latin_low':
@@ -57,7 +57,7 @@ class Convert {
 	 * @since  1.0-gamma
 	 * @todo  Replace with built-in char casting.
 	 */
-	private static function to_latin( $p_int_value, $p_bool_upper_case ) {
+	private static function to_latin( int $p_int_value, bool $p_bool_upper_case ): string {
 		// Output string.
 		$l_str_return = '';
 		$l_int_offset = 0;
@@ -89,7 +89,7 @@ class Convert {
 	 * @since  1.0-gamma
 	 * @todo  Replace with built-in string formatting.
 	 */
-	private static function to_arabic_leading( $p_int_value ) {
+	private static function to_arabic_leading( int $p_int_value ): string {
 		// Add a leading 0 if number lower then 10.
 		if ( $p_int_value < 10 ) {
 			return '0' . $p_int_value;
@@ -106,9 +106,9 @@ class Convert {
 	 *
 	 * @since  1.0-gamma
 	 */
-	private static function to_romanic( $p_int_value, $p_bool_upper_case ) {
-		// Table containing all necessary romanic letters.
-		$l_arr_romanic_letters = array(
+	private static function to_roman( int $p_int_value, bool $p_bool_upper_case ): string {
+		// Table containing all necessary roman letters.
+		$l_arr_roman_numerals = array(
 			'M'  => 1000,
 			'CM' => 900,
 			'D'  => 500,
@@ -127,15 +127,15 @@ class Convert {
 		$l_str_return = '';
 		// Iterate through integer value until it is reduced to 0.
 		while ( $p_int_value > 0 ) {
-			foreach ( $l_arr_romanic_letters as $l_str_romanic => $l_int_arabic ) {
+			foreach ( $l_arr_roman_numerals as $l_str_roman => $l_int_arabic ) {
 				if ( $p_int_value >= $l_int_arabic ) {
 					$p_int_value  -= $l_int_arabic;
-					$l_str_return .= $l_str_romanic;
+					$l_str_return .= $l_str_roman;
 					break;
 				}
 			}
 		}
-		// Return romanic letters as string.
+		// Return roman letters as string.
 		if ( $p_bool_upper_case ) {
 			return strtoupper( $l_str_return );
 		}
@@ -151,7 +151,7 @@ class Convert {
 	 * @since  1.0-beta
 	 * @todo  Replace with built-in type casting.
 	 */
-	public static function to_bool( $p_str_value ) {
+	public static function to_bool( string $p_str_value ): bool {
 		// Convert string to lower-case to make it easier.
 		$p_str_value = strtolower( $p_str_value );
 		// Check if string seems to contain a "true" value.
@@ -171,12 +171,13 @@ class Convert {
 	 * Get an HTML array short code depending on Arrow-Array key index.
 	 *
 	 * @param  int $p_int_index Index representing the arrow. If empty, all arrows are specified.
-	 * @return  array|string  Array of all arrows if index is empty, otherwise HTML tag of a specific arrow.
+	 * @return  string|string[]  Array of all arrows if index is empty, otherwise HTML tag of a specific arrow.
 	 *
 	 * @since  1.3.2
 	 * @todo  Review.
+	 * @todo  Single return type.
 	 */
-	public static function get_arrow( $p_int_index = -1 ) {
+	public static function get_arrow( int $p_int_index = -1 ) {
 		// Define all possible arrows.
 		$l_arr_arrows = array( '&#8593;', '&#8613;', '&#8607;', '&#8617;', '&#8626;', '&#8629;', '&#8657;', '&#8673;', '&#8679;', '&#65514;' );
 		// Convert index to an integer.
@@ -196,6 +197,7 @@ class Convert {
 	 * Displays a variable.
 	 *
 	 * @param  mixed $p_mixed_value  The variable to display.
+	 * @return void
 	 *
 	 * @since  1.5.0
 	 * @todo  Replace with proper logging/debug functions.

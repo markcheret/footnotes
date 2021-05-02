@@ -24,6 +24,8 @@ class Deactivator {
 	 * Currently NOP.
 	 *
 	 * @since 2.8.0
+	 *
+	 * @return void
 	 */
 	public static function deactivate() {
 		// Nothing yet.

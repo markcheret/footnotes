@@ -77,8 +77,7 @@ class Settings extends Engine {
 	/**
 	 * Returns an array of all registered sections for the sub-page.
 	 *
-	 * @see  Engine::add_section()  For more information on the
-	 *                                                                                     section array format.
+	 * @see  Engine::add_section()  For more information on the section array format.
 	 * @return  array[]  All of the registered sections.
 	 *
 	 * @since  1.5.0

@@ -121,7 +121,7 @@ abstract class Engine {
 	 * @param  string $p_str_title  Title of the section.
 	 * @param  int    $p_int_settings_container_index  Settings Container index.
 	 * @param  bool   $p_bool_has_submit_button  Whether a ‘Submit’ button should
-	 *                                                                                   be displayed for this section. Default `true`.
+	 *                                           be displayed for this section. Default `true`.
 	 * @return  array  {
 	 *     A dashboard section.
 	 *

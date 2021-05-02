@@ -417,11 +417,11 @@ abstract class Engine {
 	protected function add_select_box( string $setting_name, array $options ): string {
 		// Collect data for given settings field.
 		$data    = $this->load_setting( $setting_name );
-		$options = '';
+		$select_options = '';
 
 		// Loop through all array keys.
 		foreach ( $options as $value => $caption ) {
-			$options .= sprintf(
+			$select_options .= sprintf(
 				'<option value="%s" %s>%s</option>',
 				$value,
 				// Only check for equality, not identity, WRT backlink symbol arrows.
@@ -435,7 +435,7 @@ abstract class Engine {
 			'<select name="%s" id="%s">%s</select>',
 			$data['name'],
 			$data['id'],
-			$options
+			$select_options
 		);
 	}
 

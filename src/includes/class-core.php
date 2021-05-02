@@ -98,6 +98,44 @@ class Core {
 	}
 
 	/**
+	 * Runs the loader to execute all of the hooks with WordPress.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return void
+	 */
+	public function run() {
+		$this->loader->run();
+	}
+
+	/**
+	 * Gets the name of the plugin used to uniquely identify it within the
+	 * context of WordPress and to define internationalization functionality.
+	 *
+	 * @since 2.8.0
+	 */
+	public function get_plugin_name(): string {
+		return $this->plugin_name;
+	}
+
+	/**
+	 * Returns a reference to the class that orchestrates the hooks with the plugin.
+	 *
+	 * @since 2.8.0
+	 */
+	public function get_loader(): Loader {
+		return $this->loader;
+	}
+
+	/**
+	 * Gets the version number of the plugin.
+	 *
+	 * @since 2.8.0
+	 */
+	public function get_version(): string {
+		return $this->version;
+	}
+	/**
 	 * Load the required dependencies for this plugin.
 	 *
 	 * Includes the following files that make up the plugin:
@@ -154,7 +192,6 @@ class Core {
 		$this->loader = new Loader();
 
 	}
-
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
@@ -173,7 +210,6 @@ class Core {
 		$this->loader->add_action( 'plugins_loaded', $i18n, 'load_plugin_textdomain' );
 
 	}
-
 	/**
 	 * Register all of the hooks related to the admin area functionality of the
 	 * plugin.
@@ -205,7 +241,6 @@ class Core {
 		$this->loader->add_action( 'wp_ajax_footnotes_getTags', $admin->wysiwyg, 'ajax_callback' );
 		// phpcs:enable
 	}
-
 	/**
 	 * Register all of the hooks related to the public-facing functionality of
 	 * the plugin.
@@ -223,44 +258,5 @@ class Core {
 		$this->loader->add_action( 'wp_enqueue_scripts', $general, 'enqueue_scripts' );
 
 		$this->loader->add_action( 'widgets_init', $general, 'register_widgets' );
-	}
-
-	/**
-	 * Runs the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since 1.5.0
-	 *
-	 * @return void
-	 */
-	public function run() {
-		$this->loader->run();
-	}
-
-	/**
-	 * Gets the name of the plugin used to uniquely identify it within the
-	 * context of WordPress and to define internationalization functionality.
-	 *
-	 * @since 2.8.0
-	 */
-	public function get_plugin_name(): string {
-		return $this->plugin_name;
-	}
-
-	/**
-	 * Returns a reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since 2.8.0
-	 */
-	public function get_loader(): Loader {
-		return $this->loader;
-	}
-
-	/**
-	 * Gets the version number of the plugin.
-	 *
-	 * @since 2.8.0
-	 */
-	public function get_version(): string {
-		return $this->version;
 	}
 }

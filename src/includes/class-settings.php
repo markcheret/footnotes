@@ -1103,16 +1103,6 @@ class Settings {
 	 */
 	const FOOTNOTE_SECTION_SHORTCODE = 'footnotes_inputfield_section_shortcode';
 
-	/**********************************************************************
-	 *      SETTINGS STORAGE.
-	 **********************************************************************/
-	/**
-	 * Stores a singleton reference of this class.
-	 *
-	 * @since  1.5.0
-	 */
-	private static ?\footnotes\includes\Settings $instance = null;
-
 	/**
 	 * Contains all Settings Container names.
 	 *
@@ -1330,6 +1320,15 @@ class Settings {
 	 * @todo Create `PreferencesSet` class.
 	 */
 	private array $settings = array();
+	/**********************************************************************
+	 *      SETTINGS STORAGE.
+	 **********************************************************************/
+	/**
+	 * Stores a singleton reference of this class.
+	 *
+	 * @since  1.5.0
+	 */
+	private static ?\footnotes\includes\Settings $instance = null;
 
 	/**
 	 * Loads all Settings from each WordPress Settings Container.
@@ -1338,21 +1337,6 @@ class Settings {
 	 */
 	private function __construct() {
 		$this->load_all();
-	}
-
-	/**
-	 * Returns a singleton of this class.
-	 *
-	 * @since  1.5.0
-	 * @todo  Remove?
-	 */
-	public static function instance(): self {
-		// No instance defined yet, load it.
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		// Return a singleton of this class.
-		return self::$instance;
 	}
 
 	/**
@@ -1377,51 +1361,6 @@ class Settings {
 	 */
 	public function get_defaults( int $index ): array {
 		return $this->default[ $this->container[ $index ] ];
-	}
-
-	/**
-	 * Loads all Settings from each Settings container.
-	 *
-	 * @since  1.5.0
-	 */
-	private function load_all(): void {
-		// Clear current settings.
-		$this->settings = array();
-		$num_settings   = count( $this->container );
-		for ( $i = 0; $i < $num_settings; $i++ ) {
-			// Load settings.
-			$this->settings = array_merge( $this->settings, $this->load( $i ) );
-		}
-	}
-
-	/**
-	 * Loads all settings from specified Settings Containers.
-	 *
-	 * @param  int $index  Settings container index.
-	 * @return  (string|int)[]  Loaded settings (or defaults if specified container is empty).
-	 *
-	 * @since  1.5.0
-	 */
-	private function load( int $index ): array {
-		// Load all settings from container.
-		$options = get_option( $this->get_container( $index ) );
-		// Load all default settings.
-		$default = $this->default[ $this->get_container( $index ) ];
-
-		// No settings found, set them to their default value.
-		if ( empty( $options ) ) {
-			return $default;
-		}
-		// Iterate through all available settings ( = default values).
-		foreach ( $default as $key => $value ) {
-			// Available setting not found in the container.
-			if ( ! array_key_exists( $key, $options ) ) {
-				// Define the setting with its default value.
-				$options[ $key ] = $value;
-			}
-		}
-		// Return settings loaded from Container.
-		return $options;
 	}
 
 	/**
@@ -1466,5 +1405,62 @@ class Settings {
 		for ( $i = 0; $i < $num_settings; $i++ ) {
 			register_setting( $this->get_container( $i ), $this->get_container( $i ) );
 		}
+	}
+	/**
+	 * Returns a singleton of this class.
+	 *
+	 * @since  1.5.0
+	 * @todo  Remove?
+	 */
+	public static function instance(): self {
+		// No instance defined yet, load it.
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+		// Return a singleton of this class.
+		return self::$instance;
+	}
+	/**
+	 * Loads all Settings from each Settings container.
+	 *
+	 * @since  1.5.0
+	 */
+	private function load_all(): void {
+		// Clear current settings.
+		$this->settings = array();
+		$num_settings   = count( $this->container );
+		for ( $i = 0; $i < $num_settings; $i++ ) {
+			// Load settings.
+			$this->settings = array_merge( $this->settings, $this->load( $i ) );
+		}
+	}
+	/**
+	 * Loads all settings from specified Settings Containers.
+	 *
+	 * @param  int $index  Settings container index.
+	 * @return  (string|int)[]  Loaded settings (or defaults if specified container is empty).
+	 *
+	 * @since  1.5.0
+	 */
+	private function load( int $index ): array {
+		// Load all settings from container.
+		$options = get_option( $this->get_container( $index ) );
+		// Load all default settings.
+		$default = $this->default[ $this->get_container( $index ) ];
+
+		// No settings found, set them to their default value.
+		if ( empty( $options ) ) {
+			return $default;
+		}
+		// Iterate through all available settings ( = default values).
+		foreach ( $default as $key => $value ) {
+			// Available setting not found in the container.
+			if ( ! array_key_exists( $key, $options ) ) {
+				// Define the setting with its default value.
+				$options[ $key ] = $value;
+			}
+		}
+		// Return settings loaded from Container.
+		return $options;
 	}
 }

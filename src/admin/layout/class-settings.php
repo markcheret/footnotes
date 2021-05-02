@@ -58,100 +58,6 @@ class Settings extends Engine {
 	}
 
 	/**
-	 * Returns the unique slug of the sub-page.
-	 *
-	 * @since  1.5.0
-	 * @return  string
-	 */
-	protected function get_sub_page_slug(): string {
-		return '-' . $this->plugin_name;
-	}
-
-	/**
-	 * Returns the title of the sub-page.
-	 *
-	 * @since  1.5.0
-	 * @return  string
-	 */
-	protected function get_sub_page_title(): string {
-		return \footnotes\includes\Config::PLUGIN_PUBLIC_NAME;
-	}
-
-	/**
-	 * Returns an array of all registered sections for the sub-page.
-	 *
-	 * @see  Engine::add_section()  For more information on the section array format.
-	 * @return  array[]  All of the registered sections.
-	 *
-	 * @since  1.5.0
-	 * @since  2.1.6  Remove conditional rendering of ‘Expert’ tab.
-	 */
-	protected function get_sections(): array {
-		$tabs = array();
-
-		// Sync tab name with mirror in task.php.
-		$tabs[] = $this->add_section( 'settings', __( 'General settings', 'footnotes' ), 0, true );
-
-		// Sync tab name with mirror in public function custom_css_migration().
-		$tabs[] = $this->add_section( 'customize', __( 'Referrers and tooltips', 'footnotes' ), 1, true );
-
-		$tabs[] = $this->add_section( 'expert', __( 'Scope and priority', 'footnotes' ), 2, true );
-		$tabs[] = $this->add_section( 'customcss', __( 'Custom CSS', 'footnotes' ), 3, true );
-		$tabs[] = $this->add_section( 'how-to', __( 'Quick start guide', 'footnotes' ), 4, false );
-
-		return $tabs;
-	}
-
-	/**
-	 * Returns an array of all registered meta boxes for each section of the sub-page.
-	 *
-	 * @see  Engine::add_meta_box()  For more information on the
-	 *                                                                                      meta box array format.
-	 * @return  array[]  All of the registered meta boxes.
-	 *
-	 * @since  1.5.0
-	 * @since  2.2.0  Re-order and rename tabs.
-	 */
-	protected function get_meta_boxes(): array {
-		$meta_boxes = array();
-
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility', 'footnotes' ), 'amp_compat' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'start-end', __( 'Footnote start and end short codes', 'footnotes' ), 'start_end' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'numbering' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'scrolling' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'hard-links', __( 'URL fragment ID configuration', 'footnotes' ), 'hard_links' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'reference-container', __( 'Reference container', 'footnotes' ), 'reference_container' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'excerpts', __( 'Footnotes in excerpts', 'footnotes' ), 'excerpts' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'love', \footnotes\includes\Config::PLUGIN_HEADING_NAME . '&nbsp;' . \footnotes\includes\Config::LOVE_SYMBOL_HEADING, 'love' );
-
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'hyperlink-arrow', __( 'Backlink symbol', 'footnotes' ), 'hyperlink_arrow' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrers', 'footnotes' ), 'superscript' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'label-solution', __( 'Referrers in labels', 'footnotes' ), 'label_solution' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box', __( 'Tooltips', 'footnotes' ), 'mouseover_box' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-position', __( 'Tooltip position', 'footnotes' ), 'mouseover_box_position' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-dimensions', __( 'Tooltip dimensions', 'footnotes' ), 'mouseover_box_dimensions' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-timing', __( 'Tooltip timing', 'footnotes' ), 'mouseover_box_timing' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-truncation', __( 'Tooltip truncation', 'footnotes' ), 'mouseover_box_truncation' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-text', __( 'Tooltip text', 'footnotes' ), 'mouseover_box_text' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-appearance', __( 'Tooltip appearance', 'footnotes' ), 'mouseover_box_appearance' );
-		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
-			$meta_boxes[] = $this->add_meta_box( 'customize', 'custom-css', __( 'Your existing Custom CSS code', 'footnotes' ), 'custom_css' );
-		}
-
-		$meta_boxes[] = $this->add_meta_box( 'expert', 'lookup', __( 'WordPress hooks with priority level', 'footnotes' ), 'lookup_hooks' );
-
-		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
-			$meta_boxes[] = $this->add_meta_box( 'customcss', 'custom-css-migration', __( 'Your existing Custom CSS code', 'footnotes' ), 'custom_css_migration' );
-		}
-		$meta_boxes[] = $this->add_meta_box( 'customcss', 'custom-css-new', __( 'Custom CSS', 'footnotes' ), 'custom_css_new' );
-
-		$meta_boxes[] = $this->add_meta_box( 'how-to', 'help', __( 'Brief introduction: How to use the plugin', 'footnotes' ), 'help' );
-		$meta_boxes[] = $this->add_meta_box( 'how-to', 'donate', __( 'Help us to improve our Plugin', 'footnotes' ), 'donate' );
-
-		return $meta_boxes;
-	}
-
-	/**
 	 * Displays the AMP compatibility mode option.
 	 *
 	 * @since  2.6.0  (release)
@@ -1308,5 +1214,95 @@ class Settings extends Engine {
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $template->get_content();
 		// phpcs:enable
+	}
+	/**
+	 * Returns the unique slug of the sub-page.
+	 *
+	 * @since  1.5.0
+	 * @return  string
+	 */
+	protected function get_sub_page_slug(): string {
+		return '-' . $this->plugin_name;
+	}
+	/**
+	 * Returns the title of the sub-page.
+	 *
+	 * @since  1.5.0
+	 * @return  string
+	 */
+	protected function get_sub_page_title(): string {
+		return \footnotes\includes\Config::PLUGIN_PUBLIC_NAME;
+	}
+	/**
+	 * Returns an array of all registered sections for the sub-page.
+	 *
+	 * @see  Engine::add_section()  For more information on the section array format.
+	 * @return  array[]  All of the registered sections.
+	 *
+	 * @since  1.5.0
+	 * @since  2.1.6  Remove conditional rendering of ‘Expert’ tab.
+	 */
+	protected function get_sections(): array {
+		$tabs = array();
+
+		// Sync tab name with mirror in task.php.
+		$tabs[] = $this->add_section( 'settings', __( 'General settings', 'footnotes' ), 0, true );
+
+		// Sync tab name with mirror in public function custom_css_migration().
+		$tabs[] = $this->add_section( 'customize', __( 'Referrers and tooltips', 'footnotes' ), 1, true );
+
+		$tabs[] = $this->add_section( 'expert', __( 'Scope and priority', 'footnotes' ), 2, true );
+		$tabs[] = $this->add_section( 'customcss', __( 'Custom CSS', 'footnotes' ), 3, true );
+		$tabs[] = $this->add_section( 'how-to', __( 'Quick start guide', 'footnotes' ), 4, false );
+
+		return $tabs;
+	}
+	/**
+	 * Returns an array of all registered meta boxes for each section of the sub-page.
+	 *
+	 * @see  Engine::add_meta_box()  For more information on the
+	 *                                                                                      meta box array format.
+	 * @return  array[]  All of the registered meta boxes.
+	 *
+	 * @since  1.5.0
+	 * @since  2.2.0  Re-order and rename tabs.
+	 */
+	protected function get_meta_boxes(): array {
+		$meta_boxes = array();
+
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility', 'footnotes' ), 'amp_compat' );
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'start-end', __( 'Footnote start and end short codes', 'footnotes' ), 'start_end' );
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'numbering' );
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'scrolling' );
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'hard-links', __( 'URL fragment ID configuration', 'footnotes' ), 'hard_links' );
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'reference-container', __( 'Reference container', 'footnotes' ), 'reference_container' );
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'excerpts', __( 'Footnotes in excerpts', 'footnotes' ), 'excerpts' );
+		$meta_boxes[] = $this->add_meta_box( 'settings', 'love', \footnotes\includes\Config::PLUGIN_HEADING_NAME . '&nbsp;' . \footnotes\includes\Config::LOVE_SYMBOL_HEADING, 'love' );
+
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'hyperlink-arrow', __( 'Backlink symbol', 'footnotes' ), 'hyperlink_arrow' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrers', 'footnotes' ), 'superscript' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'label-solution', __( 'Referrers in labels', 'footnotes' ), 'label_solution' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box', __( 'Tooltips', 'footnotes' ), 'mouseover_box' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-position', __( 'Tooltip position', 'footnotes' ), 'mouseover_box_position' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-dimensions', __( 'Tooltip dimensions', 'footnotes' ), 'mouseover_box_dimensions' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-timing', __( 'Tooltip timing', 'footnotes' ), 'mouseover_box_timing' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-truncation', __( 'Tooltip truncation', 'footnotes' ), 'mouseover_box_truncation' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-text', __( 'Tooltip text', 'footnotes' ), 'mouseover_box_text' );
+		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-appearance', __( 'Tooltip appearance', 'footnotes' ), 'mouseover_box_appearance' );
+		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
+			$meta_boxes[] = $this->add_meta_box( 'customize', 'custom-css', __( 'Your existing Custom CSS code', 'footnotes' ), 'custom_css' );
+		}
+
+		$meta_boxes[] = $this->add_meta_box( 'expert', 'lookup', __( 'WordPress hooks with priority level', 'footnotes' ), 'lookup_hooks' );
+
+		if ( Includes\Convert::to_bool( Includes\Settings::instance()->get( \footnotes\includes\Settings::CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
+			$meta_boxes[] = $this->add_meta_box( 'customcss', 'custom-css-migration', __( 'Your existing Custom CSS code', 'footnotes' ), 'custom_css_migration' );
+		}
+		$meta_boxes[] = $this->add_meta_box( 'customcss', 'custom-css-new', __( 'Custom CSS', 'footnotes' ), 'custom_css_new' );
+
+		$meta_boxes[] = $this->add_meta_box( 'how-to', 'help', __( 'Brief introduction: How to use the plugin', 'footnotes' ), 'help' );
+		$meta_boxes[] = $this->add_meta_box( 'how-to', 'donate', __( 'Help us to improve our Plugin', 'footnotes' ), 'donate' );
+
+		return $meta_boxes;
 	}
 }

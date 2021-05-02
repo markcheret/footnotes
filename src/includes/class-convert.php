@@ -47,102 +47,6 @@ class Convert {
 	}
 
 	/**
-	 * Converts an integer into Latin ASCII characters, either lower or upper-case.
-	 *
-	 * This function works from values A–ZZ (meaning there is a limit of 676
-	 * gootnotes per Page).
-	 *
-	 * @param  int  $value  Value to be converted.
-	 * @param  bool $upper_case  Whether to convert the value to upper-case.
-	 *
-	 * @since  1.0-gamma
-	 * @todo  Replace with built-in char casting.
-	 */
-	private static function to_latin( int $value, bool $upper_case ): string {
-		// Output string.
-		$return = '';
-		$offset = 0;
-		// Check if the value is higher then 26 = Z.
-		while ( $value > 26 ) {
-			// Increase offset and reduce counter.
-			$offset++;
-			$value -= 26;
-		}
-		// If offset set (more then Z), then add a new letter in front.
-		if ( $offset > 0 ) {
-			$return = chr( $offset + 64 );
-		}
-		// Add the origin letter.
-		$return .= chr( $value + 64 );
-		// Return the latin character representing the integer.
-		if ( $upper_case ) {
-			return strtoupper( $return );
-		}
-		return strtolower( $return );
-	}
-
-	/**
-	 * Converts an integer to a leading-0 integer.
-	 *
-	 * @param  int $value  Value to be converted.
-	 * @return  string  Value with a leading zero.
-	 *
-	 * @since  1.0-gamma
-	 * @todo  Replace with built-in string formatting.
-	 */
-	private static function to_arabic_leading( int $value ): string {
-		// Add a leading 0 if number lower then 10.
-		if ( $value < 10 ) {
-			return '0' . $value;
-		}
-		return $value;
-	}
-
-	/**
-	 * Converts an integer to a Roman numeral.
-	 *
-	 * @param  int  $value  Value to be converted.
-	 * @param  bool $upper_case  Whether to convert the value to upper-case.
-	 *
-	 * @since  1.0-gamma
-	 */
-	private static function to_roman( int $value, bool $upper_case ): string {
-		// Table containing all necessary roman letters.
-		$roman_numerals = array(
-			'M'  => 1000,
-			'CM' => 900,
-			'D'  => 500,
-			'CD' => 400,
-			'C'  => 100,
-			'XC' => 90,
-			'L'  => 50,
-			'XL' => 40,
-			'X'  => 10,
-			'IX' => 9,
-			'V'  => 5,
-			'IV' => 4,
-			'I'  => 1,
-		);
-		// Return value.
-		$return = '';
-		// Iterate through integer value until it is reduced to 0.
-		while ( $value > 0 ) {
-			foreach ( $roman_numerals as $roman => $arabic ) {
-				if ( $value >= $arabic ) {
-					$value  -= $arabic;
-					$return .= $roman;
-					break;
-				}
-			}
-		}
-		// Return roman letters as string.
-		if ( $upper_case ) {
-			return strtoupper( $return );
-		}
-		return strtolower( $return );
-	}
-
-	/**
 	 * Converts a string depending on its value to a boolean.
 	 *
 	 * @param  string $value  String to be converted to boolean.
@@ -229,6 +133,99 @@ class Convert {
 			var_dump( $p_mixed_value );
 		}
 		echo '<br/>';
+	}
+	/**
+	 * Converts an integer into Latin ASCII characters, either lower or upper-case.
+	 *
+	 * This function works from values A–ZZ (meaning there is a limit of 676
+	 * gootnotes per Page).
+	 *
+	 * @param  int  $value  Value to be converted.
+	 * @param  bool $upper_case  Whether to convert the value to upper-case.
+	 *
+	 * @since  1.0-gamma
+	 * @todo  Replace with built-in char casting.
+	 */
+	private static function to_latin( int $value, bool $upper_case ): string {
+		// Output string.
+		$return = '';
+		$offset = 0;
+		// Check if the value is higher then 26 = Z.
+		while ( $value > 26 ) {
+			// Increase offset and reduce counter.
+			$offset++;
+			$value -= 26;
+		}
+		// If offset set (more then Z), then add a new letter in front.
+		if ( $offset > 0 ) {
+			$return = chr( $offset + 64 );
+		}
+		// Add the origin letter.
+		$return .= chr( $value + 64 );
+		// Return the latin character representing the integer.
+		if ( $upper_case ) {
+			return strtoupper( $return );
+		}
+		return strtolower( $return );
+	}
+	/**
+	 * Converts an integer to a leading-0 integer.
+	 *
+	 * @param  int $value  Value to be converted.
+	 * @return  string  Value with a leading zero.
+	 *
+	 * @since  1.0-gamma
+	 * @todo  Replace with built-in string formatting.
+	 */
+	private static function to_arabic_leading( int $value ): string {
+		// Add a leading 0 if number lower then 10.
+		if ( $value < 10 ) {
+			return '0' . $value;
+		}
+		return $value;
+	}
+	/**
+	 * Converts an integer to a Roman numeral.
+	 *
+	 * @param  int  $value  Value to be converted.
+	 * @param  bool $upper_case  Whether to convert the value to upper-case.
+	 *
+	 * @since  1.0-gamma
+	 */
+	private static function to_roman( int $value, bool $upper_case ): string {
+		// Table containing all necessary roman letters.
+		$roman_numerals = array(
+			'M'  => 1000,
+			'CM' => 900,
+			'D'  => 500,
+			'CD' => 400,
+			'C'  => 100,
+			'XC' => 90,
+			'L'  => 50,
+			'XL' => 40,
+			'X'  => 10,
+			'IX' => 9,
+			'V'  => 5,
+			'IV' => 4,
+			'I'  => 1,
+		);
+		// Return value.
+		$return = '';
+		// Iterate through integer value until it is reduced to 0.
+		while ( $value > 0 ) {
+			foreach ( $roman_numerals as $roman => $arabic ) {
+				if ( $value >= $arabic ) {
+					$value  -= $arabic;
+					$return .= $roman;
+					break;
+				}
+			}
+		}
+		// Return roman letters as string.
+		if ( $upper_case ) {
+			return strtoupper( $return );
+		}
+		return strtolower( $return );
 	}
 	// phpcs:enable WordPress.PHP.DevelopmentFunctions.error_log_var_dump, WordPress.PHP.DevelopmentFunctions.error_log_print_r
 }

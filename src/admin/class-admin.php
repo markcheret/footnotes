@@ -66,35 +66,6 @@ class Admin {
 	}
 
 	/**
-	 * Load the required admin-specific dependencies.
-	 *
-	 * Includes the following files that provide the admin-specific functionality
-	 * of this plugin:
-	 *
-	 * - {@see WYSIWYG}: Provides plugin integration with the WYSIWYG editor.
-	 * - {@see layout\Settings}: Defines the plugin dashboard page(s).
-	 *
-	 * @access  private
-	 *
-	 * @since  2.8.0
-	 */
-	private function load_dependencies(): void {
-		/**
-		 * The class responsible for WYSIWYG editor integration.
-		 */
-		require_once plugin_dir_path( __DIR__ ) . 'admin/class-wysiwyg.php';
-
-		$this->wysiwyg = new WYSIWYG( $this->plugin_name );
-
-		/**
-		 * The class responsible for constructing the plugin dashboard page(s).
-		 */
-		require_once plugin_dir_path( __DIR__ ) . 'admin/layout/class-init.php';
-
-		new layout\Init( $this->plugin_name );
-	}
-
-	/**
 	 * Register the stylesheets for the admin area.
 	 *
 	 * @since  2.8.0
@@ -153,6 +124,34 @@ class Admin {
 		// Append link to the PayPal donate function.
 		$plugin_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
 		return $plugin_links;
+	}
+	/**
+	 * Load the required admin-specific dependencies.
+	 *
+	 * Includes the following files that provide the admin-specific functionality
+	 * of this plugin:
+	 *
+	 * - {@see WYSIWYG}: Provides plugin integration with the WYSIWYG editor.
+	 * - {@see layout\Settings}: Defines the plugin dashboard page(s).
+	 *
+	 * @access  private
+	 *
+	 * @since  2.8.0
+	 */
+	private function load_dependencies(): void {
+		/**
+		 * The class responsible for WYSIWYG editor integration.
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-wysiwyg.php';
+
+		$this->wysiwyg = new WYSIWYG( $this->plugin_name );
+
+		/**
+		 * The class responsible for constructing the plugin dashboard page(s).
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'admin/layout/class-init.php';
+
+		new layout\Init( $this->plugin_name );
 	}
 
 }

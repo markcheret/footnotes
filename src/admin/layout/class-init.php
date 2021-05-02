@@ -87,36 +87,6 @@ class Init {
 	}
 
 	/**
-	 * Load the required dependencies for the layouts pages.
-	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - {@see Includes\Config}: defines plugin constants;
-	 * - {@see Includes\Settings}: defines configurable plugin settings; and
-	 * - {@see Settings}: defines the plugin settings page.
-	 *
-	 * @access  private
-	 *
-	 * @since  2.8.0
-	 */
-	private function load_dependencies(): void {
-		/**
-		 * Defines plugin constants.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-config.php';
-
-		/**
-		 * Defines configurable plugin settings.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-settings.php';
-
-		/**
-		 * Represents the plugin settings dashboard page.
-		 */
-		require_once plugin_dir_path( __DIR__ ) . 'layout/class-settings.php';
-	}
-
-	/**
 	 * Registers the settings and initialises the settings page.
 	 *
 	 * @since  1.5.0
@@ -206,6 +176,35 @@ class Init {
 			)
 		);
 		exit;
+	}
+	/**
+	 * Load the required dependencies for the layouts pages.
+	 *
+	 * Include the following files that make up the plugin:
+	 *
+	 * - {@see Includes\Config}: defines plugin constants;
+	 * - {@see Includes\Settings}: defines configurable plugin settings; and
+	 * - {@see Settings}: defines the plugin settings page.
+	 *
+	 * @access  private
+	 *
+	 * @since  2.8.0
+	 */
+	private function load_dependencies(): void {
+		/**
+		 * Defines plugin constants.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-config.php';
+
+		/**
+		 * Defines configurable plugin settings.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-settings.php';
+
+		/**
+		 * Represents the plugin settings dashboard page.
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'layout/class-settings.php';
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
 }

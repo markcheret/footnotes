@@ -46,6 +46,12 @@ class Template {
 	 * @var string
 	 */
 	const PUBLIC = 'public/partials';
+	/**
+	 * Plugin Directory
+	 *
+	 * @since  2.4.0d3
+	 */
+	public string $plugin_directory;
 
 	/**
 	 * Contains the content of the template after initialize.
@@ -60,13 +66,6 @@ class Template {
 	 * @since  1.5.0
 	 */
 	private string $replaced_content = '';
-
-	/**
-	 * Plugin Directory
-	 *
-	 * @since  2.4.0d3
-	 */
-	public string $plugin_directory;
 
 	/**
 	 * Class Constructor. Reads and loads the template file without replace any placeholder.

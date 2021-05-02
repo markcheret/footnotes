@@ -69,6 +69,121 @@ abstract class Engine {
 	 * @since  1.5.0
 	 */
 	abstract public function get_priority(): int;
+	/**
+	 * Registers a sub-page.
+	 *
+	 * @since  1.5.0
+	 */
+	public function register_sub_page(): void {
+		global $submenu;
+
+		if ( array_key_exists( plugin_basename( Init::MAIN_MENU_SLUG ), $submenu ) ) {
+			foreach ( $submenu[ plugin_basename( Init::MAIN_MENU_SLUG ) ] as $sub_menu ) {
+				if ( plugin_basename( Init::MAIN_MENU_SLUG . $this->get_sub_page_slug() ) === $sub_menu[2] ) {
+					remove_submenu_page( Init::MAIN_MENU_SLUG, Init::MAIN_MENU_SLUG . $this->get_sub_page_slug() );
+				}
+			}
+		}
+
+		$this->sub_page_hook = add_submenu_page(
+			Init::MAIN_MENU_SLUG,
+			$this->get_sub_page_title(),
+			$this->get_sub_page_title(),
+			'manage_options',
+			Init::MAIN_MENU_SLUG . $this->get_sub_page_slug(),
+			fn() => $this->display_content()
+		);
+	}
+	/**
+	 * Registers all sections for a sub-page.
+	 *
+	 * @since  1.5.0
+	 */
+	public function register_sections(): void {
+		foreach ( $this->get_sections() as $section ) {
+			// Append tab to the tab-array.
+			$this->sections[ $section['id'] ] = $section;
+			add_settings_section(
+				$section['id'],
+				'',
+				fn() => $this->description(),
+				$section['id']
+			);
+			$this->register_meta_boxes( $section['id'] );
+		}
+	}
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	/**
+	 * Displays the content of specific sub-page.
+	 *
+	 * @since  1.5.0
+	 * @todo  Review nonce verification.
+	 */
+	public function display_content(): void {
+		$this->append_scripts();
+		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
+		$active_section    = $this->sections[ $active_section_id ];
+
+		// Store settings.
+		$settings_updated = false;
+		if ( array_key_exists( 'save-settings', $_POST ) && 'save' === $_POST['save-settings'] ) {
+			unset( $_POST['save-settings'] );
+			unset( $_POST['submit'] );
+			$settings_updated = $this->save_settings();
+		}
+
+		// Display all sections and highlight the active section.
+		echo '<div class="wrap">';
+		echo '<h2 class="nav-tab-wrapper">';
+		// Iterate through all register sections.
+		foreach ( $this->sections as $id => $description ) {
+			echo sprintf(
+				'<a class="nav-tab%s" href="?page=%s&t=%s">%s</a>',
+				( $id === $active_section['id'] ) ? ' nav-tab-active' : '',
+				Init::MAIN_MENU_SLUG,
+				$id,
+				$description['title']
+			);
+		}
+		echo '</h2><br/>';
+
+		if ( $settings_updated ) {
+			echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', 'footnotes' ) );
+		}
+
+		// Form to submit the active section.
+		echo '<!--suppress HtmlUnknownTarget --><form method="post" action="">';
+		echo '<input type="hidden" name="save-settings" value="save" />';
+		// Outputs the settings field of the active section.
+		do_settings_sections( $active_section['id'] );
+		do_meta_boxes( $active_section['id'], 'main', null );
+
+		// Add submit button to active section if defined.
+		if ( $active_section['submit'] ) {
+			submit_button();
+		}
+		echo '</form>';
+		echo '</div>';
+
+		// Echo JavaScript for the expand/collapse function of the meta boxes.
+		echo '<script type="text/javascript">';
+		echo 'jQuery(document).ready(function ($) {';
+		echo 'jQuery(".footnotes-color-picker").wpColorPicker();';
+		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
+		echo "postboxes.add_postbox_toggles('" . $this->sub_page_hook . "');";
+		echo '});';
+		echo '</script>';
+	}
+	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	/**
+	 * Output the description of a section. May be overwritten in any section.
+	 *
+	 * @since  1.5.0
+	 * @todo  Required? Should be `abstract`?
+	 */
+	public function description(): void {
+		// Default no description will be displayed.
+	}
 
 	/**
 	 * Returns the unique slug of the child sub-page.
@@ -168,186 +283,6 @@ abstract class Engine {
 			'title'    => $title,
 			'callback' => $callback_function_name,
 		);
-	}
-
-	/**
-	 * Registers a sub-page.
-	 *
-	 * @since  1.5.0
-	 */
-	public function register_sub_page(): void {
-		global $submenu;
-
-		if ( array_key_exists( plugin_basename( Init::MAIN_MENU_SLUG ), $submenu ) ) {
-			foreach ( $submenu[ plugin_basename( Init::MAIN_MENU_SLUG ) ] as $sub_menu ) {
-				if ( plugin_basename( Init::MAIN_MENU_SLUG . $this->get_sub_page_slug() ) === $sub_menu[2] ) {
-					remove_submenu_page( Init::MAIN_MENU_SLUG, Init::MAIN_MENU_SLUG . $this->get_sub_page_slug() );
-				}
-			}
-		}
-
-		$this->sub_page_hook = add_submenu_page(
-			Init::MAIN_MENU_SLUG,
-			$this->get_sub_page_title(),
-			$this->get_sub_page_title(),
-			'manage_options',
-			Init::MAIN_MENU_SLUG . $this->get_sub_page_slug(),
-			fn() => $this->display_content()
-		);
-	}
-
-	/**
-	 * Registers all sections for a sub-page.
-	 *
-	 * @since  1.5.0
-	 */
-	public function register_sections(): void {
-		foreach ( $this->get_sections() as $section ) {
-			// Append tab to the tab-array.
-			$this->sections[ $section['id'] ] = $section;
-			add_settings_section(
-				$section['id'],
-				'',
-				fn() => $this->description(),
-				$section['id']
-			);
-			$this->register_meta_boxes( $section['id'] );
-		}
-	}
-
-	/**
-	 * Registers all Meta boxes for a sub-page.
-	 *
-	 * @access  private
-	 * @param  string $parent_id  Parent section unique ID.
-	 *
-	 * @since  1.5.0
-	 */
-	private function register_meta_boxes( string $parent_id ): void {
-		// Iterate through each meta box.
-		foreach ( $this->get_meta_boxes() as $meta_box ) {
-			if ( $parent_id !== $meta_box['parent'] ) {
-				continue;
-			}
-			add_meta_box(
-				$parent_id . '-' . $meta_box['id'],
-				$meta_box['title'],
-				array( $this, $meta_box['callback'] ),
-				$parent_id,
-				'main'
-			);
-		}
-	}
-
-	/**
-	 * Append JavaScript and CSS files for specific sub-page.
-	 *
-	 * @access  private
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to {@see Includes\Admin}.
-	 */
-	private function append_scripts(): void {
-		wp_enqueue_script( 'postbox' );
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_script( 'wp-color-picker' );
-	}
-
-	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-	/**
-	 * Displays the content of specific sub-page.
-	 *
-	 * @since  1.5.0
-	 * @todo  Review nonce verification.
-	 */
-	public function display_content(): void {
-		$this->append_scripts();
-		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
-		$active_section    = $this->sections[ $active_section_id ];
-
-		// Store settings.
-		$settings_updated = false;
-		if ( array_key_exists( 'save-settings', $_POST ) && 'save' === $_POST['save-settings'] ) {
-			unset( $_POST['save-settings'] );
-			unset( $_POST['submit'] );
-			$settings_updated = $this->save_settings();
-		}
-
-		// Display all sections and highlight the active section.
-		echo '<div class="wrap">';
-		echo '<h2 class="nav-tab-wrapper">';
-		// Iterate through all register sections.
-		foreach ( $this->sections as $id => $description ) {
-			echo sprintf(
-				'<a class="nav-tab%s" href="?page=%s&t=%s">%s</a>',
-				( $id === $active_section['id'] ) ? ' nav-tab-active' : '',
-				Init::MAIN_MENU_SLUG,
-				$id,
-				$description['title']
-			);
-		}
-		echo '</h2><br/>';
-
-		if ( $settings_updated ) {
-			echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', 'footnotes' ) );
-		}
-
-		// Form to submit the active section.
-		echo '<!--suppress HtmlUnknownTarget --><form method="post" action="">';
-		echo '<input type="hidden" name="save-settings" value="save" />';
-		// Outputs the settings field of the active section.
-		do_settings_sections( $active_section['id'] );
-		do_meta_boxes( $active_section['id'], 'main', null );
-
-		// Add submit button to active section if defined.
-		if ( $active_section['submit'] ) {
-			submit_button();
-		}
-		echo '</form>';
-		echo '</div>';
-
-		// Echo JavaScript for the expand/collapse function of the meta boxes.
-		echo '<script type="text/javascript">';
-		echo 'jQuery(document).ready(function ($) {';
-		echo 'jQuery(".footnotes-color-picker").wpColorPicker();';
-		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
-		echo "postboxes.add_postbox_toggles('" . $this->sub_page_hook . "');";
-		echo '});';
-		echo '</script>';
-	}
-	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-
-	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-	/**
-	 * Save all plugin settings.
-	 *
-	 * @access  private
-	 * @return  bool  `true` on save success, else `false`.
-	 *
-	 * @since  1.5.0
-	 * @todo  Review nonce verification.
-	 */
-	private function save_settings(): bool {
-		$new_settings      = array();
-		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
-		$active_section    = $this->sections[ $active_section_id ];
-
-		foreach ( array_keys( Includes\Settings::instance()->get_defaults( $active_section['container'] ) ) as $key ) {
-			$new_settings[ $key ] = array_key_exists( $key, $_POST ) ? wp_unslash( $_POST[ $key ] ) : '';
-		}
-		// Update settings.
-		return Includes\Settings::instance()->save_options( $active_section['container'], $new_settings );
-	}
-	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-
-	/**
-	 * Output the description of a section. May be overwritten in any section.
-	 *
-	 * @since  1.5.0
-	 * @todo  Required? Should be `abstract`?
-	 */
-	public function description(): void {
-		// Default no description will be displayed.
 	}
 
 	/**
@@ -581,6 +516,64 @@ abstract class Engine {
 			$p_in_min,
 			$max
 		);
+	}
+	/**
+	 * Registers all Meta boxes for a sub-page.
+	 *
+	 * @access  private
+	 * @param  string $parent_id  Parent section unique ID.
+	 *
+	 * @since  1.5.0
+	 */
+	private function register_meta_boxes( string $parent_id ): void {
+		// Iterate through each meta box.
+		foreach ( $this->get_meta_boxes() as $meta_box ) {
+			if ( $parent_id !== $meta_box['parent'] ) {
+				continue;
+			}
+			add_meta_box(
+				$parent_id . '-' . $meta_box['id'],
+				$meta_box['title'],
+				array( $this, $meta_box['callback'] ),
+				$parent_id,
+				'main'
+			);
+		}
+	}
+	/**
+	 * Append JavaScript and CSS files for specific sub-page.
+	 *
+	 * @access  private
+	 *
+	 * @since  1.5.0
+	 * @todo  Move to {@see Includes\Admin}.
+	 */
+	private function append_scripts(): void {
+		wp_enqueue_script( 'postbox' );
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+	}
+	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	/**
+	 * Save all plugin settings.
+	 *
+	 * @access  private
+	 * @return  bool  `true` on save success, else `false`.
+	 *
+	 * @since  1.5.0
+	 * @todo  Review nonce verification.
+	 */
+	private function save_settings(): bool {
+		$new_settings      = array();
+		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
+		$active_section    = $this->sections[ $active_section_id ];
+
+		foreach ( array_keys( Includes\Settings::instance()->get_defaults( $active_section['container'] ) ) as $key ) {
+			$new_settings[ $key ] = array_key_exists( $key, $_POST ) ? wp_unslash( $_POST[ $key ] ) : '';
+		}
+		// Update settings.
+		return Includes\Settings::instance()->save_options( $active_section['container'], $new_settings );
 	}
 
 }

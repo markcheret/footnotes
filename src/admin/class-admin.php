@@ -29,26 +29,6 @@ use footnotes\includes as Includes;
 class Admin {
 
 	/**
-	 * The ID of this plugin.
-	 *
-	 * @access  private
-	 * @since  2.8.0
-	 * @see  Includes\Footnotes::$plugin_name
-	 * @var  string  $plugin_name  The ID of this plugin.
-	 */
-	private string $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @access  private
-	 * @since  2.8.0
-	 * @see  Includes\Footnotes::$version
-	 * @var  string  $version  The current version of this plugin.
-	 */
-	private string $version;
-
-	/**
 	 * The WYSIWYG editor integration object.
 	 *
 	 * @since  2.8.0
@@ -58,48 +38,31 @@ class Admin {
 
 	/**
 	 * Initialize the class and set its properties.
-
-	 * @param  string $plugin_name  The name of this plugin.
-	 * @param  string $version  The version of this plugin.
 	 *
 	 * @since  2.8.0
 	 */
-	public function __construct( string $plugin_name, string $version ) {
+	public function __construct(
+		/**
+		 * The ID of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Includes\Footnotes::$plugin_name
+		 */
+		private string $plugin_name,
 
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
+		/**
+		 * The version of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Includes\Footnotes::$version
+		 */
+		private string $version
+	) {
 
 		$this->load_dependencies();
 
-	}
-
-	/**
-	 * Load the required admin-specific dependencies.
-	 *
-	 * Includes the following files that provide the admin-specific functionality
-	 * of this plugin:
-	 *
-	 * - {@see WYSIWYG}: Provides plugin integration with the WYSIWYG editor.
-	 * - {@see layout\Settings}: Defines the plugin dashboard page(s).
-	 *
-	 * @access  private
-	 *
-	 * @since  2.8.0
-	 */
-	private function load_dependencies(): void {
-		/**
-		 * The class responsible for WYSIWYG editor integration.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wysiwyg.php';
-
-		$this->wysiwyg = new WYSIWYG( $this->plugin_name );
-
-		/**
-		 * The class responsible for constructing the plugin dashboard page(s).
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/layout/class-init.php';
-
-		new layout\Init( $this->plugin_name );
 	}
 
 	/**
@@ -161,6 +124,34 @@ class Admin {
 		// Append link to the PayPal donate function.
 		$plugin_links[] = sprintf( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ" target="_blank">%s</a>', __( 'Donate', 'footnotes' ) );
 		return $plugin_links;
+	}
+	/**
+	 * Load the required admin-specific dependencies.
+	 *
+	 * Includes the following files that provide the admin-specific functionality
+	 * of this plugin:
+	 *
+	 * - {@see WYSIWYG}: Provides plugin integration with the WYSIWYG editor.
+	 * - {@see layout\Settings}: Defines the plugin dashboard page(s).
+	 *
+	 * @access  private
+	 *
+	 * @since  2.8.0
+	 */
+	private function load_dependencies(): void {
+		/**
+		 * The class responsible for WYSIWYG editor integration.
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-wysiwyg.php';
+
+		$this->wysiwyg = new WYSIWYG( $this->plugin_name );
+
+		/**
+		 * The class responsible for constructing the plugin dashboard page(s).
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'admin/layout/class-init.php';
+
+		new layout\Init( $this->plugin_name );
 	}
 
 }

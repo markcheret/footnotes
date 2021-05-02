@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace footnotes\includes;
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-config.php';
+require_once plugin_dir_path( __DIR__ ) . 'includes/class-config.php';
 
 /**
  * Class providing internationalization functionality.
@@ -32,7 +32,7 @@ class i18n {
 	 * Load the plugin text domain for translation.
 	 *
 	 * @since  1.5.1
-	 * @since  2.8.0  Rename from `load()` to `load_plugin_textdomain()`. Remove unused `$p_str_language_code` parameter.
+	 * @since  2.8.0  Rename from `load()` to `load_plugin_textdomain()`. Remove unused `$language_code` parameter.
 	 *
 	 * @return void
 	 */
@@ -40,7 +40,7 @@ class i18n {
 		load_plugin_textdomain(
 			'footnotes',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname( plugin_basename( __FILE__ ), 2 ) . '/languages/'
 		);
 	}
 

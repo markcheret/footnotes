@@ -31,7 +31,7 @@ class Loader {
 	 *
 	 * @var  (string|int|object)[][]  $actions  The actions registered with WordPress to fire when the plugin loads.
 	 */
-	protected $actions;
+	protected array $actions;
 
 	/**
 	 * The array of filters registered with WordPress.
@@ -41,7 +41,7 @@ class Loader {
 	 *
 	 * @var  (string|int|object)[][]  $filters  The filters registered with WordPress to fire when the plugin loads.
 	 */
-	protected $filters;
+	protected array $filters;
 
 	/**
 	 * Initialize the collections used to maintain the actions and filters.
@@ -92,6 +92,25 @@ class Loader {
 	}
 
 	/**
+	 * Registers the filters and actions with WordPress.
+	 *
+	 * @since  2.8.0
+	 * @see  Loader::add()  For more information on the hook array format.
+	 *
+	 * @return void
+	 */
+	public function run() {
+
+		foreach ( $this->filters as $filter ) {
+			add_filter( $filter['hook'], array( $filter['component'], $filter['callback'] ), $filter['priority'], $filter['accepted_args'] );
+		}
+
+		foreach ( $this->actions as $action ) {
+			add_action( $action['hook'], array( $action['component'], $action['callback'] ), $action['priority'], $action['accepted_args'] );
+		}
+
+	}
+	/**
 	 * A utility function that is used to register the actions and hooks into a single
 	 * collection.
 	 *
@@ -124,26 +143,6 @@ class Loader {
 		);
 
 		return $hooks;
-
-	}
-
-	/**
-	 * Registers the filters and actions with WordPress.
-	 *
-	 * @since  2.8.0
-	 * @see  Loader::add()  For more information on the hook array format.
-	 *
-	 * @return void
-	 */
-	public function run() {
-
-		foreach ( $this->filters as $hook ) {
-			add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
-		}
-
-		foreach ( $this->actions as $hook ) {
-			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
-		}
 
 	}
 

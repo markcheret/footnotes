@@ -111,9 +111,9 @@ class Reference_Container extends Base {
 	public function widget( $args, $instance ) {
 		global $footnotes;
 		// Reference container positioning is set to "widget area".
-		if ( 'widget' === Includes\Settings::instance()->get( Includes\Settings::C_STR_REFERENCE_CONTAINER_POSITION ) ) {
+		if ( 'widget' === Includes\Settings::instance()->get( Includes\Settings::REFERENCE_CONTAINER_POSITION ) ) {
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo $footnotes->a_obj_task->reference_container();
+			echo $footnotes->task->reference_container();
 			// phpcs:enable
 		}
 	}

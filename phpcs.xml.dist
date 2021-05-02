@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
+    <description>The coding standard for PHP_CodeSniffer itself.</description>
+
+    <file>src</file>
+		
+		<exclude-pattern>index.php</exclude-pattern>
+
+		<arg name="extensions" value="php"/>
+ 		<arg name="encoding" value="utf-8"/>
+    <arg name="colors"/>
+    <arg name="parallel" value="75"/>
+    <arg value="sp"/>
+    
+    <config name="testVersion" value="8.0"/>
+    
+ 		<rule ref="WordPress"/>
+ 		<rule ref="PHPCompatibilityWP"/>
+ 		
+ 		<!-- `WordPress` is incompatible with PHP 8.0 -->
+ 		<rule ref="WordPress">
+ 			<exclude name="Squiz.PHP.CommentedOutCode.Found"/>
+			<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+			<exclude name="Squiz.Commenting.VariableComment.Missing"/>
+			<exclude name="Squiz.Commenting.VariableComment.MissingVar"/>
+			<exclude name="Generic.PHP.Syntax.PHPSyntax"/>
+		</rule>
+
+</ruleset>
+

@@ -92,8 +92,8 @@ _NB: `npm` can also be used in place of `composer`._
 
 #### PHP
 
-PHP code must follow the [WordPress PHP Coding Standards][wpcs-php] and be
-compatible with PHP 7.0+.
+PHP code must follow the [WordPress PHP Coding Standards][wpcs-php]. PHP code
+is written for compatability with PHP 8.0.
 
 1. Run `composer run lint:php` to lint all PHP files with
   [PHP CodeSniffer][phpcs]; and
@@ -159,6 +159,8 @@ the `git push` command.
 ### Tooling
 
 HTML documentation of the codebase is generated using [phpDocumentor][phpdocumentor].
+Due to conflicts, this cannot be included as a project dependency. Please install
+the package globally by following the steps on the site.
 
 phpDocumentor configuration settings are found in `phpdoc.dist.xml`.
 

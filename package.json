@@ -65,6 +65,7 @@
     "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
     "stylelint": "^13.12.0",
+    "stylelint-a11y": "^1.2.3",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-wordpress": "^17.0.0",
@@ -77,9 +78,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "stylelint-a11y": "^1.2.3"
   },
   "eslintConfig": {
     "env": {

@@ -690,22 +690,18 @@ class Parser {
 		 * for transparency. It isn’t indented though (the PHP open tag neither).
 		 */
 		if ( General::$alternative_tooltips_enabled ) {
-
-			// Start internal script.
-			?>
-<script content="text/javascript">
-	function footnote_tooltip_show(footnote_tooltip_id) {
-		document.getElementById(footnote_tooltip_id).classList.remove('hidden');
-		document.getElementById(footnote_tooltip_id).classList.add('shown');
-	}
-	function footnote_tooltip_hide(footnote_tooltip_id) {
-		document.getElementById(footnote_tooltip_id).classList.remove('shown');
-		document.getElementById(footnote_tooltip_id).classList.add('hidden');
-	}
-</script>
-			<?php
-			// Indenting this PHP open tag would mess up the page source.
-			// End internal script.
+			echo ('
+				<script content="text/javascript">
+				function footnote_tooltip_show(footnote_tooltip_id) {
+				document.getElementById(footnote_tooltip_id).classList.remove("hidden");
+				document.getElementById(footnote_tooltip_id).classList.add("shown");
+				}
+				function footnote_tooltip_hide(footnote_tooltip_id) {
+				document.getElementById(footnote_tooltip_id).classList.remove("shown");
+				document.getElementById(footnote_tooltip_id).classList.add("hidden");
+				}
+				</script>
+			');
 		};
 	}
 
@@ -792,7 +788,9 @@ class Parser {
 		$footnote_section_shortcode        = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTE_SECTION_SHORTCODE );
 		$footnote_section_shortcode_length = strlen( $footnote_section_shortcode );
 
-		if ( ! str_contains( $content, (string) $footnote_section_shortcode ) ) {
+		// TODO: Replace with `str_contains()`, but currently breaks Rector downgrade.
+		// https://github.com/rectorphp/rector/issues/6315
+		if ( ! strpos( $content, (string) $footnote_section_shortcode ) ) {
 
 			// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 			// Appends the reference container if set to "post_end".
@@ -809,7 +807,9 @@ class Parser {
 				$section_end    = strpos( $rest_content, (string) $footnote_section_shortcode );
 				$sections_raw[] = substr( $rest_content, 0, $section_end );
 				$rest_content   = substr( $rest_content, $section_end + $footnote_section_shortcode_length );
-			} while ( str_contains( $rest_content, (string) $footnote_section_shortcode ) );
+			// TODO: Replace with `str_contains()`, but currently breaks Rector downgrade.
+			// https://github.com/rectorphp/rector/issues/6315
+			} while ( strpos( $rest_content, (string) $footnote_section_shortcode ) );
 			$sections_raw[] = $rest_content;
 
 			foreach ( $sections_raw as $section ) {
@@ -1717,12 +1717,23 @@ class Parser {
 
 				// If it is not, check which option is on.
 				$separator_option = Includes\Settings::instance()->get( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_OPTION );
-				$separator        = match ($separator_option) {
-					'comma' => ',',
-					'semicolon' => ';',
-					'en_dash' => '&nbsp;&#x2013;',
-					default => Includes\Settings::instance()->get( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_CUSTOM ),
-				};
+				// TODO: replace with `match` (but currently it breaks the Rector
+				// downgrade to PHP 7.4.
+				// https://github.com/rectorphp/rector/issues/6315
+				switch ($separator_option) {
+					case 'comma':
+						$separator = ',';
+						break;
+					case 'semicolon':
+						$separator = ';';
+						break;
+					case 'en_dash':
+						$separator = '&nbsp;&#x2013;';
+						break;
+					default:
+						$separator = Includes\Settings::instance()->get( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_CUSTOM );
+						break;
+				}
 			}
 		} else {
 
@@ -1740,12 +1751,23 @@ class Parser {
 
 				// If it is not, check which option is on.
 				$terminator_option = Includes\Settings::instance()->get( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_OPTION );
-				$terminator        = match ($terminator_option) {
-					'period' => '.',
-					'parenthesis' => ')',
-					'colon' => ':',
-					default => Includes\Settings::instance()->get( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_CUSTOM ),
-				};
+				// TODO: replace with `match` (but currently it breaks the Rector
+				// downgrade to PHP 7.4.
+				// https://github.com/rectorphp/rector/issues/6315
+				switch ($terminator_option) {
+					case 'period':
+						$terminator = '.';
+						break;
+					case 'parenthesis':
+						$terminator = ')';
+						break;
+					case 'colon':
+						$terminator = ':';
+						break;
+					default:
+						$terminator = Includes\Settings::instance()->get( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_CUSTOM );
+						break;
+				}
 			}
 		} else {
 

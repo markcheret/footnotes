@@ -34,6 +34,10 @@ echo "Deleting unminified files from `dist/`..."
 rm -r dist/*/{js,css}/*[^\.min].{js,css}
 echo "Minification complete."
 
+echo "Downgrading to PHP 7.4..."
+./vendor/bin/rector process
+echo "Downgrading complete."
+
 if [[ $1 == "-v" ]]; then
 	rm -rf ../VVV/www/wordpress-two/public_html/wp-content/plugins/footnotes
 	mv dist footnotes && mv footnotes ../VVV/www/wordpress-two/public_html/wp-content/plugins

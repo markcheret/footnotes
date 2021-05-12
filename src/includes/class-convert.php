@@ -75,7 +75,7 @@ class Convert {
 	 * Get an HTML array short code depending on Arrow-Array key index.
 	 *
 	 * @param  int $index Index representing the arrow. If empty, all arrows are specified.
-	 * @return  string|string[]  Array of all arrows if index is empty, otherwise HTML tag of a specific arrow.
+	 * @return string|string[] Array of all arrows if index is empty, otherwise HTML tag of a specific arrow.
 	 *
 	 * @since  1.3.2
 	 * @todo  Review.

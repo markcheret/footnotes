@@ -1345,16 +1345,16 @@
         },
         {
             "name": "marcocesarato/php-conventional-changelog",
-            "version": "1.10.2",
+            "version": "1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcocesarato/php-conventional-changelog.git",
-                "reference": "1ae4b4207cb3ef133336beb80c9129f513814ae2"
+                "reference": "03607fc4366bcda26bb498d4666fc16179e3f53e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcocesarato/php-conventional-changelog/zipball/1ae4b4207cb3ef133336beb80c9129f513814ae2",
-                "reference": "1ae4b4207cb3ef133336beb80c9129f513814ae2",
+                "url": "https://api.github.com/repos/marcocesarato/php-conventional-changelog/zipball/03607fc4366bcda26bb498d4666fc16179e3f53e",
+                "reference": "03607fc4366bcda26bb498d4666fc16179e3f53e",
                 "shasum": ""
             },
             "require": {
@@ -1413,9 +1413,9 @@
             ],
             "support": {
                 "issues": "https://github.com/marcocesarato/php-conventional-changelog/issues",
-                "source": "https://github.com/marcocesarato/php-conventional-changelog/tree/v1.10.2"
+                "source": "https://github.com/marcocesarato/php-conventional-changelog/tree/v1.10.3"
             },
-            "time": "2021-04-16T09:03:46+00:00"
+            "time": "2021-05-11T16:16:27+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2740,16 +2740,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "35f039df40a3b335ebf310f244cb242b3a83ac8d"
+                "reference": "90374b8ed059325b49a29b55b3f8bb4062c87629"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/35f039df40a3b335ebf310f244cb242b3a83ac8d",
-                "reference": "35f039df40a3b335ebf310f244cb242b3a83ac8d",
+                "url": "https://api.github.com/repos/symfony/console/zipball/90374b8ed059325b49a29b55b3f8bb4062c87629",
+                "reference": "90374b8ed059325b49a29b55b3f8bb4062c87629",
                 "shasum": ""
             },
             "require": {
@@ -2817,7 +2817,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.2.6"
+                "source": "https://github.com/symfony/console/tree/v5.2.7"
             },
             "funding": [
                 {
@@ -2833,7 +2833,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-28T09:42:18+00:00"
+            "time": "2021-04-19T14:07:32+00:00"
         },
         {
             "name": "symfony/contracts",

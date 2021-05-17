@@ -55,7 +55,9 @@ class Convert {
 	 * @since  1.0-beta
 	 * @todo  Replace with built-in type casting.
 	 */
-	public static function to_bool( string $value ): bool {
+	public static function to_bool( string|null $value ): bool {
+		if (!$value) return false;
+		
 		// Convert string to lower-case to make it easier.
 		$value = strtolower( $value );
 		// Check if string seems to contain a "true" value.

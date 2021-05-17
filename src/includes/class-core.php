@@ -157,6 +157,7 @@ class Core {
 	 * @return void
 	 */
 	private function load_dependencies() {
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-settings.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -175,7 +176,6 @@ class Core {
 		 */
 		require_once plugin_dir_path( __DIR__ ) . 'includes/class-config.php';
 		require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
-		require_once plugin_dir_path( __DIR__ ) . 'includes/class-settings.php';
 		require_once plugin_dir_path( __DIR__ ) . 'includes/class-template.php';
 
 		/**

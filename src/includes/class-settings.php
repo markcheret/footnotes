@@ -1,6 +1,6 @@
 <?php // phpcs:disable Squiz.Commenting.FileComment.Missing
 /**
- * File providing the `Setting` class.
+ * File providing the `Settings` class.
  *
  * @package footnotes
  * @since 1.5.0
@@ -18,6 +18,8 @@ namespace footnotes\includes;
  * @todo Move to {@see Loader}.
  */
 require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
+
+use footnotes\includes\settings\GeneralSettingsSection;
 
 /**
  * Class defining configurable plugin settings.
@@ -1104,15 +1106,16 @@ class Settings {
 	const FOOTNOTE_SECTION_SHORTCODE = 'footnotes_inputfield_section_shortcode';
 
 	/**
-	 * Contains all Settings Container names.
+	 * Contains all Settings option group slugs.
 	 *
-	 * These are the storage container names, one per dashboard tab.
+	 * Each option group relates to a single tab on the admin. dashboard.
 	 *
 	 * @var  string[]
 	 *
 	 * @since  1.5.0
+	 * @since  2.8.0  Renamed from `container` to `option_groups`.
 	 */
-	private array $container = array(
+	private array $option_groups = array(
 		'footnotes_storage',
 		'footnotes_storage_custom',
 		'footnotes_storage_expert',
@@ -1129,7 +1132,7 @@ class Settings {
 	 *
 	 * @var  (string|int)[]
 	 */
-	private array $default = array(
+	private array $default_settings = array(
 
 		// General settings.
 		'footnotes_storage'            => array(
@@ -1164,7 +1167,21 @@ class Settings {
 			self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT         => 'Alt+ ←',
 
 			// Reference container.
-			self::REFERENCE_CONTAINER_NAME                => 'References',
+			self::REFERENCE_CONTAINER_NAME                => array(
+				'title' => 'Reference container title',
+				'setting_args' => array (
+					'type' => 'string',
+					'description' => 'The title of the reference container',
+					'default' => 'References',
+				),
+				'field_args' => array (
+					'name' => self::REFERENCE_CONTAINER_NAME,
+					'label_for' => self::REFERENCE_CONTAINER_NAME,
+					'type' => 'text',
+					'value' => 'References',
+					'description' => 'The title of the reference container',
+				),
+			),
 			self::REFERENCE_CONTAINER_LABEL_ELEMENT       => 'p',
 			self::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER => 'yes',
 			self::REFERENCE_CONTAINER_COLLAPSE            => 'no',
@@ -1281,7 +1298,7 @@ class Settings {
 		'footnotes_storage_expert'     => array(
 
 			// WordPress hooks with priority level.
-			self::EXPERT_LOOKUP_THE_TITLE                  => '',
+			self::EXPERT_LOOKUP_THE_TITLE                  => "",
 			self::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL   => PHP_INT_MAX,
 
 			self::EXPERT_LOOKUP_THE_CONTENT                => 'checked',
@@ -1319,7 +1336,10 @@ class Settings {
 	 * @since  1.5.0
 	 * @todo Create `PreferencesSet` class.
 	 */
-	private array $settings = array();
+	public array $settings = array();
+	
+	public GeneralSettingsSection $general_settings;
+	
 	/**********************************************************************
 	 *      SETTINGS STORAGE.
 	 **********************************************************************/
@@ -1336,7 +1356,11 @@ class Settings {
 	 * @since  1.5.0
 	 */
 	private function __construct() {
-		$this->load_all();
+		$this->load_options();
+		
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-general-settings-section.php';
+		
+		$this->general_settings = new GeneralSettingsSection('footnotes_storage', 'footnotes-settings', 'General Settings');
 	}
 
 	/**
@@ -1348,7 +1372,7 @@ class Settings {
 	 * @since  1.5.0
 	 */
 	public function get_container( int $index ): string {
-		return $this->container[ $index ];
+		return $this->option_groups[ $index ];
 	}
 
 	/**
@@ -1360,7 +1384,7 @@ class Settings {
 	 * @since  1.5.6
 	 */
 	public function get_defaults( int $index ): array {
-		return $this->default[ $this->container[ $index ] ];
+		return $this->default[ $this->option_groups[ $index ] ];
 	}
 
 	/**
@@ -1398,14 +1422,21 @@ class Settings {
 	 * The Settings Container label will be the same as the Settings Container name.
 	 *
 	 * @since  1.5.0
+	 * @todo  Only register current tab?
 	 */
 	public function register_settings(): void {
-		// Register all settings.
-		$num_settings = count( $this->container );
-		for ( $i = 0; $i < $num_settings; $i++ ) {
-			register_setting( $this->get_container( $i ), $this->get_container( $i ) );
+		// Register all settings.	
+		foreach ($this->default_settings as $option_groups_name => $option_groups_values) {
+			foreach ($option_groups_values as $setting_name => $setting_value) {
+				if (!is_array($setting_value)) {
+					register_setting( $option_groups_name, $setting_name );
+				} else {
+					register_setting( $option_groups_name, $setting_name, $setting_value['setting_args']);
+				}
+			}
 		}
 	}
+	
 	/**
 	 * Returns a singleton of this class.
 	 *
@@ -1421,46 +1452,46 @@ class Settings {
 		return self::$instance;
 	}
 	/**
-	 * Loads all Settings from each Settings container.
+	 * Loads all settings from each option group.
 	 *
 	 * @since  1.5.0
+	 * @since  2.8.0  Renamed from `load_all()` to `load_options()`.
 	 */
-	private function load_all(): void {
+	private function load_options(): void {
 		// Clear current settings.
 		$this->settings = array();
-		$num_settings   = count( $this->container );
-		for ( $i = 0; $i < $num_settings; $i++ ) {
-			// Load settings.
-			$this->settings = array_merge( $this->settings, $this->load( $i ) );
+		
+		foreach ($this->option_groups as $option_group) {
+			$this->settings[$option_group] = $this->load_option( $option_group );
 		}
 	}
+	
 	/**
-	 * Loads all settings from specified Settings Containers.
+	 * Loads all settings from a given option group.
 	 *
-	 * @param  int $index  Settings container index.
-	 * @return  (string|int)[]  Loaded settings (or defaults if specified container is empty).
+	 * @param  string  $option_group  Option group slug.
+	 * @return  (string|int)[]  Loaded settings (or defaults if specified option group is empty).
 	 *
 	 * @since  1.5.0
+	 * @since  2.8.0  Renamed from `load()` to `load_option()`.
 	 */
-	private function load( int $index ): array {
-		// Load all settings from container.
-		$options = get_option( $this->get_container( $index ) );
-		// Load all default settings.
-		$default = $this->default[ $this->get_container( $index ) ];
-
+	private function load_option(string $option_group): array {
+		// Load all settings from option group.
+		$options = get_option( $option_group );
+		
 		// No settings found, set them to their default value.
 		if ( empty( $options ) ) {
-			return $default;
+			return $this->default_settings[$option_group];
 		}
-		// Iterate through all available settings ( = default values).
-		foreach ( $default as $key => $value ) {
-			// Available setting not found in the container.
-			if ( ! array_key_exists( $key, $options ) ) {
+				
+		foreach ( $this->default_settings[$option_group] as $setting_name => $setting_value ) {
+			// Available setting not found in the option group.
+			if ( ! array_key_exists( $setting_name, $options ) ) {
 				// Define the setting with its default value.
-				$options[ $key ] = $value;
+				$options[ $setting_name ] = $setting_value;
 			}
 		}
-		// Return settings loaded from Container.
+		// Return settings loaded from option group.
 		return $options;
 	}
 }

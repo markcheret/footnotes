@@ -93,7 +93,10 @@ class Init {
 	 */
 	public function initialize_settings(): void {
 		Includes\Settings::instance()->register_settings();
-		$this->settings->register_sections();
+		
+		Includes\Settings::instance()->general_settings->add_settings_section();
+		$this->settings->add_settings_sections();
+		$this->settings->add_settings_fields();
 	}
 
 	/**
@@ -103,8 +106,7 @@ class Init {
 	 * @see http://codex.wordpress.org/Function_Reference/add_menu_page
 	 */
 	public function register_options_submenu(): void {
-		add_submenu_page(
-			'options-general.php',
+		add_options_page(
 			'footnotes Settings',
 			\footnotes\includes\Config::PLUGIN_PUBLIC_NAME,
 			'manage_options',

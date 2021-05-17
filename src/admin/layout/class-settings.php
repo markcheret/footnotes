@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace footnotes\admin\layout;
 
+require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-settings.php';
+
 use footnotes\includes as Includes;
 use footnotes\general as General;
 
@@ -56,6 +58,165 @@ class Settings extends Engine {
 	public function get_priority(): int {
 		return 10;
 	}
+	
+	public function add_settings_fields(): void {
+		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
+		$active_section    = $this->sections[ $active_section_id ];
+		
+		switch ($active_section->get_section_slug()) {
+			case 'footnotes-settings':
+				$this->add_general_settings_fields();
+				break;
+			case 'footnotes-customize':
+				$this->add_customize_settings_fields();
+				break;
+			case 'footnotes-expert':
+				$this->add_expert_settings_fields();
+				break;
+			case 'footnotes-customcss':
+				$this->add_customcss_settings_fields();
+				break;
+			case 'footnotes-how-to':
+				print_r("Demo goes here");
+				break;
+			default: print_r("ERR: section not found");
+		}		
+	}
+	
+	public function add_general_settings_fields(): void {
+		// Options for the label element.
+		$label_element_options = array(
+			'p'  => __( 'paragraph', 'footnotes' ),
+			'h2' => __( 'heading 2', 'footnotes' ),
+			'h3' => __( 'heading 3', 'footnotes' ),
+			'h4' => __( 'heading 4', 'footnotes' ),
+			'h5' => __( 'heading 5', 'footnotes' ),
+			'h6' => __( 'heading 6', 'footnotes' ),
+		);
+		// Options for the positioning of the reference container.
+		$positions_options = array(
+			'post_end' => __( 'at the end of the post', 'footnotes' ),
+			'widget'   => __( 'in the widget area', 'footnotes' ),
+			'footer'   => __( 'in the footer', 'footnotes' ),
+		);
+		// Basic responsive page layout options.
+		$page_layout_options = array(
+			'none'                => __( 'No', 'footnotes' ),
+			'reference-container' => __( 'to the reference container exclusively', 'footnotes' ),
+			'entry-content'       => __( 'to the div element starting below the post title', 'footnotes' ),
+			'main-content'        => __( 'to the main element including the post title', 'footnotes' ),
+		);
+		
+		// Options for the separating punctuation between backlinks.
+		$separators_options = array(
+			// Unicode character names are conventionally uppercase.
+			'comma'     => __( 'COMMA', 'footnotes' ),
+			'semicolon' => __( 'SEMICOLON', 'footnotes' ),
+			'en_dash'   => __( 'EN DASH', 'footnotes' ),
+		);
+
+		/*
+		 * Options for the terminating punctuation after backlinks.
+		 * The Unicode name of RIGHT PARENTHESIS was originally more accurate because.
+		 * This character is bidi-mirrored. Let's use the Unicode 1.0 name.
+		 * The wrong names were enforced in spite of Unicode, that subsequently scrambled to correct.
+		 */
+		$terminators_options = array(
+			'period'      => __( 'FULL STOP', 'footnotes' ),
+			// Unicode 1.0 name of RIGHT PARENTHESIS (represented as a left parenthesis in right-to-left scripts).
+			'parenthesis' => __( 'CLOSING PARENTHESIS', 'footnotes' ),
+			'colon'       => __( 'COLON', 'footnotes' ),
+		);
+		// Options for the first column width (per cent is a ratio, not a unit).
+		$width_units_options = array(
+			'%'   => __( 'per cent', 'footnotes' ),
+			'px'  => __( 'pixels', 'footnotes' ),
+			'rem' => __( 'root em', 'footnotes' ),
+			'em'  => __( 'em', 'footnotes' ),
+			'vw'  => __( 'viewport width', 'footnotes' ),
+		);
+		// Options for reference container script mode.
+		$script_mode_options = array(
+			'jquery' => __( 'jQuery', 'footnotes' ),
+			'js'     => __( 'plain JavaScript', 'footnotes' ),
+		);
+		// Options for Yes/No select box.
+		$enabled_options = array(
+			'yes' => __( 'Yes', 'footnotes' ),
+			'no'  => __( 'No', 'footnotes' ),
+		);
+		
+		Includes\Settings::instance()->general_settings->add_settings_fields($this);
+		
+		/*
+		add_settings_field(
+			\footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_ELEMENT, 
+			__( 'Heading\'s HTML element', 'footnotes' ),
+			array ($this, 'new_add_select_box'),
+			'footnotes',
+			'footnotes-settings',
+			array( 
+				'name' =>  \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_ELEMENT,
+				'label_for' => \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_ELEMENT,
+				'value' => get_option(\footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_ELEMENT),
+				'options' => $label_element_options
+			)
+		);
+		
+		add_settings_field(
+			\footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER, 
+			__( 'Border under the heading', 'footnotes' ),
+			array ($this, 'new_add_select_box'),
+			'footnotes',
+			'footnotes-settings',
+			array( 
+				'name' =>  \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER,
+				'label_for' => \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER,
+				'value' => get_option(\footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER),
+				'options' => $enabled_options
+			)
+		);
+		
+		add_settings_field(
+			\footnotes\includes\Settings::REFERENCE_CONTAINER_COLLAPSE, 
+			__( 'Collapse by default', 'footnotes' ),
+			array ($this, 'new_add_select_box'),
+			'footnotes',
+			'footnotes-settings',
+			array( 
+				'name' =>  \footnotes\includes\Settings::REFERENCE_CONTAINER_COLLAPSE,
+				'label_for' => \footnotes\includes\Settings::REFERENCE_CONTAINER_COLLAPSE,
+				'value' => get_option(\footnotes\includes\Settings::REFERENCE_CONTAINER_COLLAPSE),
+				'options' => $enabled_options
+			)
+		);
+		
+		add_settings_field(
+			\footnotes\includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, 
+			__( 'Script mode', 'footnotes' ),
+			array ($this, 'new_add_select_box'),
+			'footnotes',
+			'footnotes-settings',
+			array( 
+				'name' =>  \footnotes\includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE,
+				'label_for' => \footnotes\includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE,
+				'value' => get_option(\footnotes\includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE),
+				'options' => $script_mode_options,
+				'description' => __( 'The plain JavaScript mode will enable hard links with configurable scroll offset', 'footnotes')
+			)
+		);*/
+	}
+	
+	public function setting_field_callback( array $args ): void {		
+		if (isset($args['type'])) {
+			switch($args['type']) {
+				case 'text':
+					$this->new_add_text_box($args);
+					return;
+				default: return;
+			}
+		} else return;
+	}
 
 	/**
 	 * Displays the AMP compatibility mode option.
@@ -90,91 +251,17 @@ class Settings extends Engine {
 	 * @since  1.5.0
 	 */
 	public function reference_container(): void {
-
-		// Options for the label element.
-		$label_element = array(
-			'p'  => __( 'paragraph', 'footnotes' ),
-			'h2' => __( 'heading 2', 'footnotes' ),
-			'h3' => __( 'heading 3', 'footnotes' ),
-			'h4' => __( 'heading 4', 'footnotes' ),
-			'h5' => __( 'heading 5', 'footnotes' ),
-			'h6' => __( 'heading 6', 'footnotes' ),
-		);
-		// Options for the positioning of the reference container.
-		$positions = array(
-			'post_end' => __( 'at the end of the post', 'footnotes' ),
-			'widget'   => __( 'in the widget area', 'footnotes' ),
-			'footer'   => __( 'in the footer', 'footnotes' ),
-		);
-		// Basic responsive page layout options.
-		$page_layout_options = array(
-			'none'                => __( 'No', 'footnotes' ),
-			'reference-container' => __( 'to the reference container exclusively', 'footnotes' ),
-			'entry-content'       => __( 'to the div element starting below the post title', 'footnotes' ),
-			'main-content'        => __( 'to the main element including the post title', 'footnotes' ),
-		);
-		// Options for the separating punctuation between backlinks.
-			$separators = array(
-				// Unicode character names are conventionally uppercase.
-				'comma'     => __( 'COMMA', 'footnotes' ),
-				'semicolon' => __( 'SEMICOLON', 'footnotes' ),
-				'en_dash'   => __( 'EN DASH', 'footnotes' ),
-			);
-
-			/*
-			 * Options for the terminating punctuation after backlinks.
-			 * The Unicode name of RIGHT PARENTHESIS was originally more accurate because.
-			 * This character is bidi-mirrored. Let's use the Unicode 1.0 name.
-			 * The wrong names were enforced in spite of Unicode, that subsequently scrambled to correct.
-			 */
-			$terminators = array(
-				'period'      => __( 'FULL STOP', 'footnotes' ),
-				// Unicode 1.0 name of RIGHT PARENTHESIS (represented as a left parenthesis in right-to-left scripts).
-				'parenthesis' => __( 'CLOSING PARENTHESIS', 'footnotes' ),
-				'colon'       => __( 'COLON', 'footnotes' ),
-			);
-			// Options for the first column width (per cent is a ratio, not a unit).
-			$width_units = array(
-				'%'   => __( 'per cent', 'footnotes' ),
-				'px'  => __( 'pixels', 'footnotes' ),
-				'rem' => __( 'root em', 'footnotes' ),
-				'em'  => __( 'em', 'footnotes' ),
-				'vw'  => __( 'viewport width', 'footnotes' ),
-			);
-			// Options for reference container script mode.
-			$script_mode = array(
-				'jquery' => __( 'jQuery', 'footnotes' ),
-				'js'     => __( 'plain JavaScript', 'footnotes' ),
-			);
-			// Options for Yes/No select box.
-			$enabled = array(
-				'yes' => __( 'Yes', 'footnotes' ),
-				'no'  => __( 'No', 'footnotes' ),
-			);
-
+			
+				
+				
+			
 			// Load template file.
 			$template = new Includes\Template( \footnotes\includes\Template::DASHBOARD, 'settings-reference-container' );
 			// Replace all placeholders.
 			$template->replace(
 				array(
-					'label-name'           => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_NAME, __( 'Heading:', 'footnotes' ) ),
-					'name'                 => $this->add_text_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_NAME ),
-
-					'label-element'        => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_ELEMENT, __( 'Heading\'s HTML element:', 'footnotes' ) ),
-					'element'              => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_ELEMENT, $label_element ),
-
-					'label-border'         => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER, __( 'Border under the heading:', 'footnotes' ) ),
-					'border'               => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER, $enabled ),
-
-					'label-collapse'       => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_COLLAPSE, __( 'Collapse by default:', 'footnotes' ) ),
-					'collapse'             => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_COLLAPSE, $enabled ),
-
-					'label-script'         => $this->add_label( \footnotes\includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, __( 'Script mode:', 'footnotes' ) ),
-					'script'               => $this->add_select_box( \footnotes\includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE, $script_mode ),
-					'notice-script'        => __( 'The plain JavaScript mode will enable hard links with configurable scroll offset.', 'footnotes' ),
-
 					'label-position'       => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_POSITION, __( 'Default position:', 'footnotes' ) ),
-					'position'             => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_POSITION, $positions ),
+					'position'             => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_POSITION, $positions_options ),
 					// Translators: %s: at the end of the post.
 					'notice-position'      => sprintf( __( 'To use the position or section shortcode, please set the position to: %s', 'footnotes' ), '<span style="font-style: normal;">' . __( 'at the end of the post', 'footnotes' ) . '</span>' ),
 
@@ -187,7 +274,7 @@ class Settings extends Engine {
 					'notice-section'       => __( 'If present in the content, any shortcode in this text box will delimit a section terminated by a reference container.', 'footnotes' ),
 
 					'label-startpage'      => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_START_PAGE_ENABLE, __( 'Display on start page too:', 'footnotes' ) ),
-					'startpage'            => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_START_PAGE_ENABLE, $enabled ),
+					'startpage'            => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_START_PAGE_ENABLE, $enabled_options ),
 
 					'label-margin-top'     => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_TOP_MARGIN, __( 'Top margin:', 'footnotes' ) ),
 					'margin-top'           => $this->add_num_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_TOP_MARGIN, -500, 500 ),
@@ -202,53 +289,53 @@ class Settings extends Engine {
 					'notice-page-layout'   => __( 'Most themes don\'t need this fix.', 'footnotes' ),
 
 					'label-url-wrap'       => $this->add_label( \footnotes\includes\Settings::FOOTNOTE_URL_WRAP_ENABLED, __( 'Allow URLs to line-wrap anywhere:', 'footnotes' ) ),
-					'url-wrap'             => $this->add_select_box( \footnotes\includes\Settings::FOOTNOTE_URL_WRAP_ENABLED, $enabled ),
+					'url-wrap'             => $this->add_select_box( \footnotes\includes\Settings::FOOTNOTE_URL_WRAP_ENABLED, $enabled_options ),
 					'notice-url-wrap'      => __( 'Unicode-conformant browsers don\'t need this fix.', 'footnotes' ),
 
 					'label-symbol'         => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, __( 'Display a backlink symbol:', 'footnotes' ) ),
-					'symbol-enable'        => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, $enabled ),
+					'symbol-enable'        => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE, $enabled_options ),
 					'notice-symbol'        => __( 'Please choose or input the symbol at the top of the next dashboard tab.', 'footnotes' ),
 
 					'label-switch'         => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, __( 'Symbol appended, not prepended:', 'footnotes' ) ),
-					'switch'               => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $enabled ),
+					'switch'               => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH, $enabled_options ),
 
 					'label-3column'        => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, __( 'Backlink symbol in an extra column:', 'footnotes' ) ),
-					'3column'              => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, $enabled ),
+					'3column'              => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE, $enabled_options ),
 					'notice-3column'       => __( 'This legacy layout is available if identical footnotes are not combined.', 'footnotes' ),
 
 					'label-row-borders'    => $this->add_label( \footnotes\includes\Settings::REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, __( 'Borders around the table rows:', 'footnotes' ) ),
-					'row-borders'          => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, $enabled ),
+					'row-borders'          => $this->add_select_box( \footnotes\includes\Settings::REFERENCE_CONTAINER_ROW_BORDERS_ENABLE, $enabled_options ),
 
 					'label-separator'      => $this->add_label( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_ENABLED, __( 'Add a separator when enumerating backlinks:', 'footnotes' ) ),
-					'separator-enable'     => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_ENABLED, $enabled ),
-					'separator-options'    => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_OPTION, $separators ),
+					'separator-enable'     => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_ENABLED, $enabled_options ),
+					'separator-options'    => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_OPTION, $separators_options ),
 					'separator-custom'     => $this->add_text_box( \footnotes\includes\Settings::BACKLINKS_SEPARATOR_CUSTOM ),
 					'notice-separator'     => __( 'Your input overrides the selection.', 'footnotes' ),
 
 					'label-terminator'     => $this->add_label( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_ENABLED, __( 'Add a terminal punctuation to backlinks:', 'footnotes' ) ),
-					'terminator-enable'    => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_ENABLED, $enabled ),
-					'terminator-options'   => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_OPTION, $terminators ),
+					'terminator-enable'    => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_ENABLED, $enabled_options ),
+					'terminator-options'   => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_OPTION, $terminators_options ),
 					'terminator-custom'    => $this->add_text_box( \footnotes\includes\Settings::BACKLINKS_TERMINATOR_CUSTOM ),
 					'notice-terminator'    => __( 'Your input overrides the selection.', 'footnotes' ),
 
 					'label-width'          => $this->add_label( \footnotes\includes\Settings::BACKLINKS_COLUMN_WIDTH_ENABLED, __( 'Set backlinks column width:', 'footnotes' ) ),
-					'width-enable'         => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_WIDTH_ENABLED, $enabled ),
+					'width-enable'         => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_WIDTH_ENABLED, $enabled_options ),
 					'width-scalar'         => $this->add_num_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_WIDTH_SCALAR, 0, 500, true ),
-					'width-unit'           => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_WIDTH_UNIT, $width_units ),
+					'width-unit'           => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_WIDTH_UNIT, $width_units_options ),
 					'notice-width'         => __( 'Absolute width in pixels doesn\'t need to be accurate to the tenth, but relative width in rem or em may.', 'footnotes' ),
 
 					'label-max-width'      => $this->add_label( \footnotes\includes\Settings::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED, __( 'Set backlinks column maximum width:', 'footnotes' ) ),
-					'max-width-enable'     => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED, $enabled ),
+					'max-width-enable'     => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED, $enabled_options ),
 					'max-width-scalar'     => $this->add_num_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_MAX_WIDTH_SCALAR, 0, 500, true ),
-					'max-width-unit'       => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_MAX_WIDTH_UNIT, $width_units ),
+					'max-width-unit'       => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_COLUMN_MAX_WIDTH_UNIT, $width_units_options ),
 					'notice-max-width'     => __( 'Absolute width in pixels doesn\'t need to be accurate to the tenth, but relative width in rem or em may.', 'footnotes' ),
 
 					'label-line-break'     => $this->add_label( \footnotes\includes\Settings::BACKLINKS_LINE_BREAKS_ENABLED, __( 'Stack backlinks when enumerating:', 'footnotes' ) ),
-					'line-break'           => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_LINE_BREAKS_ENABLED, $enabled ),
+					'line-break'           => $this->add_select_box( \footnotes\includes\Settings::BACKLINKS_LINE_BREAKS_ENABLED, $enabled_options ),
 					'notice-line-break'    => __( 'This option adds a line break before each added backlink when identical footnotes are combined.', 'footnotes' ),
 
 					'label-link'           => $this->add_label( \footnotes\includes\Settings::LINK_ELEMENT_ENABLED, __( 'Use the link element for referrers and backlinks:', 'footnotes' ) ),
-					'link'                 => $this->add_select_box( \footnotes\includes\Settings::LINK_ELEMENT_ENABLED, $enabled ),
+					'link'                 => $this->add_select_box( \footnotes\includes\Settings::LINK_ELEMENT_ENABLED, $enabled_options ),
 					'notice-link'          => __( 'The link element is needed to apply the theme\'s link color.', 'footnotes' ),
 					'description-link'     => __( 'If the link element is not desired for styling, a simple span is used instead when the above is set to No.', 'footnotes' ),
 				)

@@ -99,18 +99,21 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function register_sections(): void {
-		foreach ( $this->get_sections() as $section ) {
+	public function add_settings_sections(): void {
+		$this->sections[Includes\Settings::instance()->general_settings->get_section_slug()] = Includes\Settings::instance()->general_settings;
+		
+		/*foreach ( $this->get_sections() as $section ) {
 			// Append tab to the tab-array.
 			$this->sections[ $section['id'] ] = $section;
 			add_settings_section(
 				$section['id'],
 				'',
 				fn() => $this->description(),
-				$section['id']
+				'footnotes'
 			);
-			$this->register_meta_boxes( $section['id'] );
-		}
+			$this->add_settings_fields();
+			//$this->register_meta_boxes( $section['id'] );
+		}*/
 	}
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
@@ -120,7 +123,68 @@ abstract class Engine {
 	 * @todo  Review nonce verification.
 	 */
 	public function display_content(): void {
-		$this->append_scripts();
+		// check user capabilities
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+    
+    $active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
+		$active_section    = $this->sections[ $active_section_id ];
+ 
+    ?>
+    <div class="wrap">
+        <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+        <h2 class="nav-tab-wrapper">
+				<?php foreach ( $this->sections as $section_slug => $section ): ?>
+					<a 
+						class="nav-tab<?php echo ( $section_slug === $active_section->get_section_slug() ) ? ' nav-tab-active' : '' ?>"
+						href="?page=<?php echo Init::MAIN_MENU_SLUG ?>&t=<?php echo $section_slug ?>">
+						<?php echo $section->get_title(); ?>	
+					</a>
+				<?php endforeach; ?>
+				</h2>
+				<?php
+				// add error/update messages
+ 
+				// check if the user have submitted the settings
+				// WordPress will add the "settings-updated" $_GET parameter to the url
+				if ( isset( $_GET['settings-updated'] ) ) {
+				    // add settings saved message with the class of "updated"
+				    add_settings_error( 'footnotes_messages', 'footnotes_message', __( 'Settings Saved', 'footnotes' ), 'updated' );
+				}
+		 
+				// show error/update messages
+				settings_errors( 'footnotes_messages' );
+				?>
+        <form action="options.php" method="post">
+            <?php
+            // output security fields for the registered setting "footnotes"
+            settings_fields( 'footnotes' );
+            
+            global $wp_settings_sections, $wp_settings_fields;
+            echo "<pre>";
+            //print_r($wp_settings_sections);
+            /*$section = (array) $wp_settings_sections['footnotes'];
+            print_r($section);
+            print_r($section['title']);
+            print_r(!isset($wp_settings_fields));
+            print_r(!isset($wp_settings_fields[ 'footnotes' ]));
+            print_r(!isset($wp_settings_fields[ 'footnotes' ][ $section['id'] ]));*/
+            echo "</pre>";
+            
+            // output setting sections and their fields
+            // (sections are registered for "footnotes", each field is registered to a specific section)
+            do_settings_sections( 'footnotes' );
+            
+						//do_meta_boxes( $active_section['id'], 'main', null );
+						
+            // output save settings button
+            submit_button( 'Save Settings' );
+            ?>
+        </form>
+    </div>
+    <?php
+		/*$this->append_scripts();
 		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
 		$active_section    = $this->sections[ $active_section_id ];
 
@@ -163,16 +227,7 @@ abstract class Engine {
 			submit_button();
 		}
 		echo '</form>';
-		echo '</div>';
-
-		// Echo JavaScript for the expand/collapse function of the meta boxes.
-		echo '<script type="text/javascript">';
-		echo 'jQuery(document).ready(function ($) {';
-		echo 'jQuery(".footnotes-color-picker").wpColorPicker();';
-		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
-		echo "postboxes.add_postbox_toggles('" . $this->sub_page_hook . "');";
-		echo '});';
-		echo '</script>';
+		echo '</div>';*/
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
@@ -182,7 +237,7 @@ abstract class Engine {
 	 * @todo  Required? Should be `abstract`?
 	 */
 	public function description(): void {
-		// Default no description will be displayed.
+		// Nothing yet.
 	}
 
 	/**
@@ -224,6 +279,9 @@ abstract class Engine {
 	 * @since  1.5.0
 	 */
 	abstract protected function get_meta_boxes(): array;
+	
+	
+	abstract protected function add_settings_fields(): void;
 
 	/**
 	 * Returns an array describing a sub-page section.
@@ -368,20 +426,31 @@ abstract class Engine {
 	 */
 	protected function add_text_box( string $setting_name, int $max_length = 999, bool $readonly = false, bool $hidden = false ): string {
 		$style = '';
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
 		if ( $hidden ) {
 			$style .= 'display:none;';
 		}
 		return sprintf(
 			'<input type="text" name="%s" id="%s" maxlength="%d" style="%s" value="%s" %s/>',
-			$data['name'],
-			$data['id'],
+			$setting_name,
+			$setting_name,
 			$max_length,
 			$style,
-			$data['value'],
+			get_option($setting_name),
 			$readonly ? 'readonly="readonly"' : ''
 		);
+	}
+	public function new_add_text_box( array $args ): void {
+		extract( $args );
+				
+		echo ( sprintf(
+			'<input type="text" name="%s" id="%s" maxlength="%d" style="%s" value="%s" %s/>',
+			$name,
+			$name,
+			$max_length ?? 999,
+			$style ?? '',
+			$value,
+			isset($readonly) ? 'readonly="readonly"' : ''
+		) );
 	}
 
 	/**
@@ -438,7 +507,32 @@ abstract class Engine {
 			$select_options
 		);
 	}
+	public function new_add_select_box( array $args ): void {
+		$select_options = '';
+		$setting_value   = ( !isset( $options[$args['name']] ) ) 
+                ? null : $options[$args['name']];
 
+		// Loop through all array keys.
+		foreach ( $args['options'] as $option_value => $caption ) {
+			$select_options .= sprintf(
+				'<option value="%s" %s>%s</option>',
+				$option_value,
+				// Only check for equality, not identity, WRT backlink symbol arrows.
+				// phpcs:disable WordPress.PHP.StrictComparisons.LooseComparison
+				$option_value == $setting_value ?  'selected' : '',
+				// phpcs:enable WordPress.PHP.StrictComparisons.LooseComparison
+				$caption
+			);
+		}
+		
+		echo ( sprintf(
+			'<select name="%s" id="%s">%s</select>',
+			$args['name'],
+			$args['name'],
+			$select_options
+		) );
+	}
+	
 	/**
 	 * Constructs the HTML for a 'textarea' element.
 	 *

@@ -6,8 +6,8 @@
  * the admin- and the public-facing sides of the plugin.
  *
  * The primary entry point is {@see Footnotes}, which uses {@see Loader}
- * to initialise {@see i18n} for internationalization, {@see Admin\Admin} for
- * admin-specific functionality and {@see General\General} for public-facing
+ * to initialise {@see i18n} for internationalization, {@see Admin} for
+ * admin-specific functionality and {@see General} for public-facing
  * functionality.
  *
  * It also includes various utility classes:
@@ -31,8 +31,8 @@ declare(strict_types=1);
 
 namespace footnotes\includes;
 
-use footnotes\general as General;
-use footnotes\admin as Admin;
+use footnotes\admin\Admin;
+use footnotes\general\General;
 
 /**
  * Class providing core plugin functionality.
@@ -43,7 +43,7 @@ use footnotes\admin as Admin;
  * @package footnotes
  * @since 1.5.0
  * @since 2.8.0 Renamed class from `Footnotes` to `Core`.
- *                          Moved under `footnotes\includes` namespace.
+ *              Moved under `footnotes\includes` namespace.
  */
 class Core {
 	/**
@@ -54,7 +54,7 @@ class Core {
 	 *
 	 * @var Loader $loader Maintains and registers all hooks for the plugin.
 	 */
-	protected \footnotes\includes\Loader $loader;
+	protected Loader $loader;
 
 	/**
 	 * The unique identifier of this plugin
@@ -146,8 +146,8 @@ class Core {
 	 * - {@see Convert}: provides conversion methods;
 	 * - {@see Settings}: defines customisable plugin settings;
 	 * - {@see Template}: handles template rendering;
-	 * - {@see Admin\Admin}: defines all hooks for the admin area; and
-	 * - {@see General\Public}: defines all hooks for the public side of the site.
+	 * - {@see Admin}: defines all hooks for the admin area; and
+	 * - {@see General}: defines all hooks for the public side of the site.
 	 *
 	 * Creates an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -215,14 +215,14 @@ class Core {
 	 * plugin.
 	 *
 	 * @since 1.5.0
-	 * @since 2.8.0 Moved hook registrations from various classes into `Admin\Admin`.
-	 * @see Admin\Admin Defines admin functionality.
+	 * @since 2.8.0 Moved hook registrations from various classes into `Admin`.
+	 * @see Admin Defines admin functionality.
 	 *
 	 * @return void
 	 */
 	private function define_admin_hooks() {
 
-		$admin = new Admin\Admin( $this->get_plugin_name(), $this->get_version() );
+		$admin = new Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
@@ -246,13 +246,13 @@ class Core {
 	 * the plugin.
 	 *
 	 * @since 2.8.0
-	 * @see General\General Defines public-facing functionality.
+	 * @see General Defines public-facing functionality.
 	 *
 	 * @return void
 	 */
 	private function define_public_hooks() {
 
-		$general = new General\General( $this->get_plugin_name(), $this->get_version() );
+		$general = new General( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $general, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $general, 'enqueue_scripts' );

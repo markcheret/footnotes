@@ -15,7 +15,8 @@
 
 namespace footnotes\general\Widget;
 
-use footnotes\includes as Includes;
+use footnotes\includes\{Footnotes, Settings};
+use const footnotes\includes\settings\general\ReferenceContainerSettingsGroup\REFERENCE_CONTAINER_POSITION;
 
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-base.php';
 
@@ -34,7 +35,7 @@ class Reference_Container extends Base {
 	 *
 	 * @access  private
 	 * @since  2.8.0
-	 * @see  Includes\Footnotes::$plugin_name
+	 * @see  Footnotes::$plugin_name
 	 * @var  string  $plugin_name  The ID of this plugin.
 	 */
 	private string $plugin_name;
@@ -111,7 +112,7 @@ class Reference_Container extends Base {
 	public function widget( $args, $instance ) {
 		global $footnotes;
 		// Reference container positioning is set to "widget area".
-		if ( 'widget' === Includes\Settings::instance()->get( Includes\Settings::REFERENCE_CONTAINER_POSITION ) ) {
+		if ( 'widget' === Settings::instance()->get( REFERENCE_CONTAINER_POSITION ) ) {
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $footnotes->task->reference_container();
 			// phpcs:enable

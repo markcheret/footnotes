@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace footnotes\admin;
 
-use footnotes\includes as Includes;
+use footnotes\includes\{Settings, Template};
 
 /**
  * Class providing WYSIWYG editor intergration for the plugin.
@@ -47,7 +47,7 @@ class WYSIWYG {
 	 * @since  1.5.0
 	 */
 	public static function new_plain_text_editor_button(): void {
-		$template = new Includes\Template( \footnotes\includes\Template::DASHBOARD, 'editor-button' );
+		$template = new Template( Template::DASHBOARD, 'editor-button' );
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $template->get_content();
 		// phpcs:enable
@@ -75,11 +75,11 @@ class WYSIWYG {
 	 */
 	public static function ajax_callback(): void {
 		// Get start and end tag for the footnotes short code.
-		$starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_START );
-		$ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_END );
+		$starting_tag = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_START );
+		$ending_tag   = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_END );
 		if ( 'userdefined' === $starting_tag || 'userdefined' === $ending_tag ) {
-			$starting_tag = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
-			$ending_tag   = Includes\Settings::instance()->get( \footnotes\includes\Settings::FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
+			$starting_tag = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
+			$ending_tag   = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
 		}
 		echo wp_json_encode(
 			array(

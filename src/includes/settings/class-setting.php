@@ -10,13 +10,15 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings;
 
+use footnotes\includes\Settings;
+
 /**
  * Class defining a configurable plugin setting.
  *
  * @package footnotes
  * @since 2.8.0
  */
-class Setting {		
+class Setting {			
 	/**
 	 * Setting value.
 	 *

@@ -12,9 +12,9 @@ namespace footnotes\includes\settings\general;
 
 require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
 
+use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
-use footnotes\admin\layout\Settings as SettingsLayout;
 
 /**
  * Class defining the reference container settings.

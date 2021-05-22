@@ -15,7 +15,7 @@ declare(strict_types=1);
 
 namespace footnotes\admin;
 
-use footnotes\includes as Includes;
+use footnotes\includes\Footnotes;
 
 /**
  * Class provide all admin-specific functionality of the plugin.
@@ -47,7 +47,7 @@ class Admin {
 		 *
 		 * @access  private
 		 * @since  2.8.0
-		 * @see  Includes\Footnotes::$plugin_name
+		 * @see  Footnotes::$plugin_name
 		 */
 		private string $plugin_name,
 
@@ -56,7 +56,7 @@ class Admin {
 		 *
 		 * @access  private
 		 * @since  2.8.0
-		 * @see  Includes\Footnotes::$version
+		 * @see  Footnotes::$version
 		 */
 		private string $version
 	) {

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace footnotes\includes;
 
+use footnotes\includes\settings\Setting;
+
 /**
  * Provides data conversion methods.
  *
@@ -19,7 +21,12 @@ namespace footnotes\includes;
  */
 require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
 
-use footnotes\includes\settings\GeneralSettingsSection;
+use footnotes\includes\settings\{
+	GeneralSettingsSection, 
+	ReferrersAndTooltipsSettingsSection, 
+	ScopeAndPrioritySettingsSection, 
+	CustomCSSSettingsSection
+};
 
 /**
  * Class defining configurable plugin settings.

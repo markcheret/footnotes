@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace footnotes\admin\layout;
 
-use footnotes\includes as Includes;
+use footnotes\includes\{Settings, Config};
 
 /**
  * Class to initialise all defined page layouts.
@@ -43,7 +43,7 @@ class Init {
 	 *
 	 * @since  1.5.0
 	 */
-	private Settings $settings;
+	private SettingsPage $settings;
 
 	/**
 	 * Initializes all WordPress hooks for the Plugin Settings.
@@ -64,7 +64,7 @@ class Init {
 	) {
 		$this->load_dependencies();
 
-		$this->settings = new Settings( $this->plugin_name );
+		$this->settings = new SettingsPage( $this->plugin_name );
 
 		// Register hooks/actions.
 		add_action(
@@ -92,9 +92,9 @@ class Init {
 	 * @since  1.5.0
 	 */
 	public function initialize_settings(): void {
-		Includes\Settings::instance()->register_settings();
+		Settings::instance()->register_settings();
 		
-		Includes\Settings::instance()->general_settings->add_settings_section();
+		Settings::instance()->settings_sections['general']->add_settings_section();
 		$this->settings->add_settings_sections();
 		$this->settings->add_settings_fields();
 	}
@@ -108,7 +108,7 @@ class Init {
 	public function register_options_submenu(): void {
 		add_options_page(
 			'footnotes Settings',
-			\footnotes\includes\Config::PLUGIN_PUBLIC_NAME,
+			Config::PLUGIN_PUBLIC_NAME,
 			'manage_options',
 			self::MAIN_MENU_SLUG,
 			fn() => $this->settings->display_content()
@@ -184,8 +184,8 @@ class Init {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - {@see Includes\Config}: defines plugin constants;
-	 * - {@see Includes\Settings}: defines configurable plugin settings; and
+	 * - {@see Config}: defines plugin constants;
+	 * - {@see Settings}: defines configurable plugin settings; and
 	 * - {@see Settings}: defines the plugin settings page.
 	 *
 	 * @access  private
@@ -206,7 +206,7 @@ class Init {
 		/**
 		 * Represents the plugin settings dashboard page.
 		 */
-		require_once plugin_dir_path( __DIR__ ) . 'layout/class-settings.php';
+		require_once plugin_dir_path( __DIR__ ) . 'layout/class-settings-page.php';
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
 }

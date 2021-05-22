@@ -9,15 +9,15 @@
  *
  * @package  footnotes
  * @since  1.5.0
- * @since  2.8.0  Rename file from `layout.php` to `class-footnotes-layout-engine.php`,
- *                              rename `dashboard/` sub-directory to `layout/`.
+ * @since  2.8.0  Rename file from `layout.php` to `class-engine.php`,
+ *                rename `dashboard/` sub-directory to `layout/`.
  */
 
 declare(strict_types=1);
 
 namespace footnotes\admin\layout;
 
-use footnotes\includes as Includes;
+use footnotes\includes\{Settings, Convert, Admin};
 
 require_once plugin_dir_path( __DIR__ ) . 'layout/class-init.php';
 
@@ -100,7 +100,7 @@ abstract class Engine {
 	 * @since  1.5.0
 	 */
 	public function add_settings_sections(): void {
-		$this->sections[Includes\Settings::instance()->general_settings->get_section_slug()] = Includes\Settings::instance()->general_settings;
+		$this->sections[Settings::instance()->settings_sections['general']->get_section_slug()] = Settings::instance()->settings_sections['general'];
 		
 		/*foreach ( $this->get_sections() as $section ) {
 			// Append tab to the tab-array.
@@ -366,7 +366,7 @@ abstract class Engine {
 		$return          = array();
 		$return['id']    = $setting_key_name;
 		$return['name']  = $setting_key_name;
-		$return['value'] = esc_attr( Includes\Settings::instance()->get( $setting_key_name ) );
+		$return['value'] = esc_attr( Settings::instance()->get( $setting_key_name ) );
 		return $return;
 	}
 
@@ -469,7 +469,7 @@ abstract class Engine {
 			'<input type="checkbox" name="%s" id="%s" %s/>',
 			$data['name'],
 			$data['id'],
-			Includes\Convert::to_bool( $data['value'] ) ? 'checked="checked"' : ''
+			Convert::to_bool( $data['value'] ) ? 'checked="checked"' : ''
 		);
 	}
 
@@ -640,7 +640,7 @@ abstract class Engine {
 	 * @access  private
 	 *
 	 * @since  1.5.0
-	 * @todo  Move to {@see Includes\Admin}.
+	 * @todo  Move to {@see Admin}.
 	 */
 	private function append_scripts(): void {
 		wp_enqueue_script( 'postbox' );
@@ -663,11 +663,11 @@ abstract class Engine {
 		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
 		$active_section    = $this->sections[ $active_section_id ];
 
-		foreach ( array_keys( Includes\Settings::instance()->get_defaults( $active_section['container'] ) ) as $key ) {
+		foreach ( array_keys( Settings::instance()->get_defaults( $active_section['container'] ) ) as $key ) {
 			$new_settings[ $key ] = array_key_exists( $key, $_POST ) ? wp_unslash( $_POST[ $key ] ) : '';
 		}
 		// Update settings.
-		return Includes\Settings::instance()->save_options( $active_section['container'], $new_settings );
+		return Settings::instance()->save_options( $active_section['container'], $new_settings );
 	}
 
 }

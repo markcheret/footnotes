@@ -68,4 +68,33 @@ abstract class SettingsGroup {
 	protected abstract function add_settings(array $options): void;
 	
 	protected abstract function add_settings_fields(Layout\Settings $component): void;
+	
+	public function get_setting(string $setting_key): ?Setting {
+		foreach ($this->settings as $setting) {
+			if ($setting->key === $setting_key) return $setting;
+		}
+		
+		return null;
+	}
+
+	public function get_options(): array {
+		$options = array();
+		
+		foreach ($this->settings as $setting) {
+			$options[$setting->key] = $setting->get_value();
+		}
+		
+		return $options;
+	}
+
+	public function get_setting_value(string $setting_key) {
+		$setting = $this->get_setting($setting_key);
+
+		if (! $setting) return null;
+		else return $setting->value ?? $setting->default_value;
+	}
+
+	public function set_setting_value(string $setting_key, $value): bool {
+		return $this->get_setting($setting_key)->set_value($value);
+	}
 }

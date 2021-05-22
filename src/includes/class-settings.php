@@ -38,44 +38,20 @@ use footnotes\includes\settings\{
  */
 class Settings {
 	/**
-	 * Settings container key for the label of the reference container.
+	 * Options for the custom width units (per cent is a ratio, not a unit).
 	 *
-	 * @var  string
+	 * @var  array
 	 *
-	 * @since  1.5.0
+	 * @since  2.8.0
 	 */
-	const REFERENCE_CONTAINER_NAME = 'footnote_inputfield_references_label';
-
-	/**
-	 * Settings container key to collapse the reference container by default.
-	 *
-	 * The string is converted to Boolean false if 'no', true if 'yes'.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor to use sane typing.
-	 */
-	const REFERENCE_CONTAINER_COLLAPSE = 'footnote_inputfield_collapse_references';
-
-	/**
-	 * Settings container key for the position of the reference container.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 */
-	const REFERENCE_CONTAINER_POSITION = 'footnote_inputfield_reference_container_place';
-
-	/**
-	 * Settings container key for combining identical footnotes.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 */
-	const COMBINE_IDENTICAL_FOOTNOTES = 'footnote_inputfield_combine_identical';
-
+	const WIDTH_UNIT_OPTIONS = array(
+		'%'   => 'per cent',
+		'px'  => 'pixels',
+		'rem' => 'root em',
+		'em'  => 'em',
+		'vw'  => 'viewport width',
+	);
+	
 	/**
 	 * Settings container key for the short code of the footnote's start.
 	 *
@@ -289,21 +265,6 @@ class Settings {
 	const EXPERT_LOOKUP_WIDGET_TEXT = 'footnote_inputfield_expert_lookup_widget_text';
 
 	/**
-	 * Settings container key for the Expert mode.
-	 *
-	 * Since the removal of the `the_post` hook, the tab is no danger zone any longer.
-	 * All users, not experts only, need to be able to control relative positioning.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.5
-	 * @since  2.1.6  Setting deprecated.
-	 * @deprecated
-	 * @todo  Un-deprecate.
-	 */
-	const FOOTNOTES_EXPERT_MODE = 'footnote_inputfield_enable_expert_mode';
-
-	/**
 	 * Settings container key for the mouse-over box to define the color.
 	 *
 	 * @var  string
@@ -446,33 +407,6 @@ class Settings {
 	const FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS = 'footnotes_inputfield_referrer_superscript_tags';
 
 	/**
-	 * Settings container key to enable the display of a backlink symbol.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.1
-	 */
-	const REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE = 'footnotes_inputfield_reference_container_backlink_symbol_enable';
-
-	/**
-	 * Settings container key to not display the reference container on the homepage.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.1
-	 */
-	const REFERENCE_CONTAINER_START_PAGE_ENABLE = 'footnotes_inputfield_reference_container_start_page_enable';
-
-	/**
-	 * Settings container key to enable the legacy layout of the reference container.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.1
-	 */
-	const REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE = 'footnotes_inputfield_reference_container_3column_layout_enable';
-
-	/**
 	 * Settings container key to get the backlink symbol switch side.
 	 *
 	 * @var  string
@@ -543,136 +477,6 @@ class Settings {
 	const EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_excerpt_priority_level';
 
 	/**
-	 * Settings container key for the link element option.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const LINK_ELEMENT_ENABLED = 'footnote_inputfield_link_element_enabled';
-
-	/**
-	 * Settings container key to enable the presence of a backlink separator.
-	 *
-	 * Backlink separators and terminators are often not preferred, but a choice
-	 * should be provided along with the ability to customize.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_SEPARATOR_ENABLED = 'footnotes_inputfield_backlinks_separator_enabled';
-
-	/**
-	 * Settings container key for the backlink separator options.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_SEPARATOR_OPTION = 'footnotes_inputfield_backlinks_separator_option';
-
-	/**
-	 * Settings container key for a custom backlink separator.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_SEPARATOR_CUSTOM = 'footnotes_inputfield_backlinks_separator_custom';
-
-	/**
-	 * Settings container key to enable the presence of a backlink terminator.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_TERMINATOR_ENABLED = 'footnotes_inputfield_backlinks_terminator_enabled';
-
-	/**
-	 * Settings container key for the backlink terminator options.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_TERMINATOR_OPTION = 'footnotes_inputfield_backlinks_terminator_option';
-
-	/**
-	 * Settings container key for a custom backlink terminator.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_TERMINATOR_CUSTOM = 'footnotes_inputfield_backlinks_terminator_custom';
-
-	/**
-	 * Settings container key to enable the backlinks column width.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_COLUMN_WIDTH_ENABLED = 'footnotes_inputfield_backlinks_column_width_enabled';
-
-	/**
-	 * Settings container key for the backlinks column width scalar.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_COLUMN_WIDTH_SCALAR = 'footnotes_inputfield_backlinks_column_width_scalar';
-
-	/**
-	 * Settings container key for the backlinks column width unit.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_COLUMN_WIDTH_UNIT = 'footnotes_inputfield_backlinks_column_width_unit';
-
-	/**
-	 * Settings container key to enable a max width for the backlinks column.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_COLUMN_MAX_WIDTH_ENABLED = 'footnotes_inputfield_backlinks_column_max_width_enabled';
-
-	/**
-	 * Settings container key for the backlinks column max width scalar.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_COLUMN_MAX_WIDTH_SCALAR = 'footnotes_inputfield_backlinks_column_max_width_scalar';
-
-	/**
-	 * Settings container key for the backlinks column max width unit.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const BACKLINKS_COLUMN_MAX_WIDTH_UNIT = 'footnotes_inputfield_backlinks_column_max_width_unit';
-
-	/**
-	 * Settings container key to enable line breaks between backlinks.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 * Whether a <br /> tag is inserted.
-	 */
-	const BACKLINKS_LINE_BREAKS_ENABLED = 'footnotes_inputfield_backlinks_line_breaks_enabled';
-
-	/**
 	 * Settings container key to enable setting the tooltip font size.
 	 *
 	 * @var  string
@@ -702,18 +506,7 @@ class Settings {
 	 * @since  2.1.4
 	 */
 	const MOUSE_OVER_BOX_FONT_SIZE_UNIT = 'footnotes_inputfield_mouse_over_box_font_size_unit';
-
-	/**
-	 * Settings container key for basic responsive page layout support options.
-	 *
-	 * Whether to concatenate an additional stylesheet.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 */
-	const FOOTNOTES_PAGE_LAYOUT_SUPPORT = 'footnotes_inputfield_page_layout_support';
-
+	
 	/**
 	 * Settings container key for scroll offset.
 	 *
@@ -767,19 +560,7 @@ class Settings {
 	 * @since  2.1.4
 	 */
 	const MOUSE_OVER_BOX_FADE_OUT_DURATION = 'footnotes_inputfield_mouse_over_box_fade_out_duration';
-
-	/**
-	 * Settings container key for URL wrap option.
-	 *
-	 * This is made optional because it causes weird line breaks. Unicode-compliant
-	 * browsers break URLs at slashes.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.6
-	 */
-	const FOOTNOTE_URL_WRAP_ENABLED = 'footnote_inputfield_url_wrap_enabled';
-
+	
 	/**
 	 * Settings container key for reference container position shortcode.
 	 *
@@ -850,52 +631,6 @@ class Settings {
 	 * @since  2.2.5
 	 */
 	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH = 'footnotes_inputfield_alternative_mouse_over_box_width';
-
-
-	/**
-	 * Settings container key for the reference container label element.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.2.5
-	 */
-	const REFERENCE_CONTAINER_LABEL_ELEMENT = 'footnotes_inputfield_reference_container_label_element';
-
-	/**
-	 * Settings container key to enable the reference container label bottom border.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.2.5
-	 */
-	const REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER = 'footnotes_inputfield_reference_container_label_bottom_border';
-
-	/**
-	 * Settings container key to enable reference container table row borders.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.2.10
-	 */
-	const REFERENCE_CONTAINER_ROW_BORDERS_ENABLE = 'footnotes_inputfield_reference_container_row_borders_enable';
-
-	/**
-	 * Settings container key for reference container top margin.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.3.0
-	 */
-	const REFERENCE_CONTAINER_TOP_MARGIN = 'footnotes_inputfield_reference_container_top_margin';
-
-	/**
-	 * Settings container key for reference container bottom margin.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.3.0
-	 */
-	const REFERENCE_CONTAINER_BOTTOM_MARGIN = 'footnotes_inputfield_reference_container_bottom_margin';
 
 	/**
 	 * Settings container key to enable hard links.
@@ -1022,15 +757,6 @@ class Settings {
 	const FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT = 'footnotes_inputfield_referrers_normal_superscript';
 
 	/**
-	 * Settings container key to select the script mode for the reference container.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.6
-	 */
-	const FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE = 'footnotes_inputfield_reference_container_script_mode';
-
-	/**
 	 * Settings container key to enable AMP compatibility mode.
 	 *
 	 * @var  string
@@ -1104,15 +830,6 @@ class Settings {
 	const FOOTNOTES_CSS_SMOOTH_SCROLLING = 'footnotes_inputfield_css_smooth_scrolling';
 
 	/**
-	 * Settings container key for the footnote section shortcode.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.7.0
-	 */
-	const FOOTNOTE_SECTION_SHORTCODE = 'footnotes_inputfield_section_shortcode';
-
-	/**
 	 * Contains all Settings option group slugs.
 	 *
 	 * Each option group relates to a single tab on the admin. dashboard.
@@ -1120,9 +837,9 @@ class Settings {
 	 * @var  string[]
 	 *
 	 * @since  1.5.0
-	 * @since  2.8.0  Renamed from `container` to `option_groups`.
+	 * @since  2.8.0  Renamed from `container` to `options_group_slugs`.
 	 */
-	private array $option_groups = array(
+	private array $options_group_slugs = array(
 		'footnotes_storage',
 		'footnotes_storage_custom',
 		'footnotes_storage_expert',
@@ -1133,9 +850,10 @@ class Settings {
 	 * Contains all default values for each Settings Container.
 	 *
 	 * @since  1.5.0
-	 * @todo  Review. Why are the constants just initialised with these values?
-	 *              At the very least, we should stop using ‘yes’ to mean `true` etc.
-	 * @todo Create `PreferencesSet` class.
+	 * @since  2.8.0  Rename from `default` to `default_settings`.
+	 * @deprecated
+	 *
+	 * @todo  Move to new setting definitions.
 	 *
 	 * @var  (string|int)[]
 	 */
@@ -1156,7 +874,7 @@ class Settings {
 
 			// Footnotes numbering.
 			self::FOOTNOTES_COUNTER_STYLE                 => 'arabic_plain',
-			self::COMBINE_IDENTICAL_FOOTNOTES             => 'yes',
+			//self::COMBINE_IDENTICAL_FOOTNOTES             => 'yes',
 
 			// Scrolling behavior.
 			self::FOOTNOTES_CSS_SMOOTH_SCROLLING          => 'no',
@@ -1173,67 +891,11 @@ class Settings {
 			self::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE       => 'yes',
 			self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT         => 'Alt+ ←',
 
-			// Reference container.
-			self::REFERENCE_CONTAINER_NAME                => array(
-				'title' => 'Reference container title',
-				'setting_args' => array (
-					'type' => 'string',
-					'description' => 'The title of the reference container',
-					'default' => 'References',
-				),
-				'field_args' => array (
-					'name' => self::REFERENCE_CONTAINER_NAME,
-					'label_for' => self::REFERENCE_CONTAINER_NAME,
-					'type' => 'text',
-					'value' => 'References',
-					'description' => 'The title of the reference container',
-				),
-			),
-			self::REFERENCE_CONTAINER_LABEL_ELEMENT       => 'p',
-			self::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER => 'yes',
-			self::REFERENCE_CONTAINER_COLLAPSE            => 'no',
-			self::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE => 'jquery',
-			self::REFERENCE_CONTAINER_POSITION            => 'post_end',
-			self::REFERENCE_CONTAINER_POSITION_SHORTCODE  => '[[references]]',
-			self::FOOTNOTE_SECTION_SHORTCODE              => '[[/footnotesection]]',
-			self::REFERENCE_CONTAINER_START_PAGE_ENABLE   => 'yes',
-			self::REFERENCE_CONTAINER_TOP_MARGIN          => 24,
-			self::REFERENCE_CONTAINER_BOTTOM_MARGIN       => 0,
-			self::FOOTNOTES_PAGE_LAYOUT_SUPPORT           => 'none',
-			self::FOOTNOTE_URL_WRAP_ENABLED               => 'yes',
-			self::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE => 'yes',
-			self::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH => 'no',
-			self::REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE => 'no',
-			self::REFERENCE_CONTAINER_ROW_BORDERS_ENABLE  => 'no',
-
-			self::BACKLINKS_SEPARATOR_ENABLED             => 'yes',
-			self::BACKLINKS_SEPARATOR_OPTION              => 'comma',
-			self::BACKLINKS_SEPARATOR_CUSTOM              => '',
-
-			self::BACKLINKS_TERMINATOR_ENABLED            => 'no',
-			self::BACKLINKS_TERMINATOR_OPTION             => 'full_stop',
-			self::BACKLINKS_TERMINATOR_CUSTOM             => '',
-
-			self::BACKLINKS_COLUMN_WIDTH_ENABLED          => 'no',
-			self::BACKLINKS_COLUMN_WIDTH_SCALAR           => '50',
-			self::BACKLINKS_COLUMN_WIDTH_UNIT             => 'px',
-
-			self::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED      => 'no',
-			self::BACKLINKS_COLUMN_MAX_WIDTH_SCALAR       => '140',
-			self::BACKLINKS_COLUMN_MAX_WIDTH_UNIT         => 'px',
-
-			self::BACKLINKS_LINE_BREAKS_ENABLED           => 'no',
-			self::LINK_ELEMENT_ENABLED                    => 'yes',
-
 			// Footnotes in excerpts.
 			self::FOOTNOTES_IN_EXCERPT                    => 'manual',
 
 			// Footnotes love.
 			self::FOOTNOTES_LOVE                          => 'no',
-
-			// Deprecated.
-			self::FOOTNOTES_EXPERT_MODE                   => 'yes',
-
 		),
 
 		// Referrers and tooltips.
@@ -1341,45 +1003,80 @@ class Settings {
 	 * @var  (string|int)[]
 	 *
 	 * @since  1.5.0
-	 * @todo Create `PreferencesSet` class.
+	 * @deprecated
 	 */
 	public array $settings = array();
 	
-	public GeneralSettingsSection $general_settings;
+	/**
+	 * Contains each section of settings.
+	 *
+	 * @var  SettingsSection[]
+	 *
+	 * @since  2.8.0
+	 */
+	public $settings_sections = array();
 	
 	/**********************************************************************
 	 *      SETTINGS STORAGE.
 	 **********************************************************************/
+	 
 	/**
 	 * Stores a singleton reference of this class.
 	 *
 	 * @since  1.5.0
 	 */
-	private static ?\footnotes\includes\Settings $instance = null;
+	private static ?Settings $instance = null;
 
 	/**
 	 * Loads all Settings from each WordPress Settings Container.
 	 *
 	 * @since  1.5.0
 	 */
-	private function __construct() {
-		$this->load_options();
-		
+	public function __construct() {		
 		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-general-settings-section.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-referrers-and-tooltips-settings-section.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-scope-and-priority-settings-section.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-custom-css-settings-section.php';
 		
-		$this->general_settings = new GeneralSettingsSection('footnotes_storage', 'footnotes-settings', 'General Settings');
+		$this->settings_sections = array(
+			'general' => new GeneralSettingsSection('footnotes_storage', 'footnotes-settings', 'General Settings'),
+			'referrers_and_tooltips' => new ReferrersAndTooltipsSettingsSection('footnotes_storage_custom', 'footnotes-customize', 'Referrers and Tooltips'),
+			'scope_and_priority' => new ScopeAndPrioritySettingsSection('footnotes_storage_expert', 'footnotes-expert', 'Scope and Priority'),
+			'custom_css' => new CustomCSSSettingsSection('footnotes_storage_custom_css', 'footnotes-customcss', 'Custom CSS'),
+		);
+	}
+	
+	/**
+	 * Retrieve a setting by its key.
+	 *
+	 * @param  string  $setting_key  The key of the setting to search for.
+	 * @return  ?Setting Either the setting object, or `null` if non exists.
+	 *
+	 * @since  2.8.0
+	 *
+	 * @todo  This is an _O(n)_ linear search. Explore more scaleable alternatives.
+	 */
+	public function get_setting( string $setting_key ): ?Setting {		
+		foreach ($this->settings_sections as $settings_section) {
+			$setting = $settings_section->get_setting($setting_key);
+			
+			if ($setting) return $setting;
+		}
+		
+		return null;
 	}
 
 	/**
 	 * Returns the name of a specified Settings Container.
 	 *
-	 * @param  int $index  Settings Container index.
-	 * @return  string  Settings Container name.
+	 * @param  int $index  Options group index.
+	 * @return  string  Options group slug name.
 	 *
 	 * @since  1.5.0
+	 * @since  2.8.0  Renamed from `get_container()` to `get_options_group_slug()`.
 	 */
-	public function get_container( int $index ): string {
-		return $this->option_groups[ $index ];
+	public function get_options_group_slug( int $index ): string {
+		return $this->options_group_slugs[ $index ];
 	}
 
 	/**
@@ -1389,25 +1086,42 @@ class Settings {
 	 * @return  (string|int)[]  Settings Container default value(s).
 	 *
 	 * @since  1.5.6
+	 * @deprecated
 	 */
 	public function get_defaults( int $index ): array {
-		return $this->default[ $this->option_groups[ $index ] ];
+		return $this->default_settings[ $this->get_options_group_slug[ $index ] ];
 	}
 
 	/**
 	 * Updates a whole Setting Container on save.
 	 *
-	 * @param  int   $index  Index of the Setting Container.
-	 * @param  array $new_values  The new Settings value(s).
+	 * @param  string  $options_group_slug  Options group slug to save.
+	 * @param  array  $new_values  The new Settings value(s).
 	 *
 	 * @since  1.5.0
+	 * @since  2.8.0  Change first parameter type from `int` to `string`.
 	 */
-	public function save_options( int $index, array $new_values ): bool {
-		if ( update_option( $this->get_container( $index ), $new_values ) ) {
-			$this->load_all();
+	public function save_options( string $options_group_slug, array $new_values ): bool {
+		if ( update_option( $options_group_slug, $new_values ) ) {
+			foreach ($this->settings_sections as $settings_section) {
+				if ($settings_section->get_options_group_slug() === $options_group_slug) {
+					$settings_section->load_options_group();
+				}
+			}
 			return true;
 		}
 		return false;
+	}
+	
+	
+	protected function load_options_group(): void {
+		$options_group = get_option($this->options_group_slug);
+		
+		if (!! $options_group) {
+			foreach ($options_group as $setting_key => $setting_value) {
+				$this->set_setting_value($setting_key, $setting_value);
+			}
+		}
 	}
 
 	/**
@@ -1433,12 +1147,12 @@ class Settings {
 	 */
 	public function register_settings(): void {
 		// Register all settings.	
-		foreach ($this->default_settings as $option_groups_name => $option_groups_values) {
-			foreach ($option_groups_values as $setting_name => $setting_value) {
+		foreach ($this->default_settings as $options_groups_name => $options_groups_values) {
+			foreach ($options_groups_values as $setting_name => $setting_value) {
 				if (!is_array($setting_value)) {
-					register_setting( $option_groups_name, $setting_name );
+					register_setting( $options_groups_name, $setting_name );
 				} else {
-					register_setting( $option_groups_name, $setting_name, $setting_value['setting_args']);
+					register_setting( $options_groups_name, $setting_name, $setting_value['setting_args']);
 				}
 			}
 		}
@@ -1468,37 +1182,38 @@ class Settings {
 		// Clear current settings.
 		$this->settings = array();
 		
-		foreach ($this->option_groups as $option_group) {
-			$this->settings[$option_group] = $this->load_option( $option_group );
+		foreach ($this->options_group_slugs as $options_group_slug) {
+			$this->settings[$options_group_slug] = $this->load_option( $options_group_slug );
 		}
 	}
 	
 	/**
 	 * Loads all settings from a given option group.
 	 *
-	 * @param  string  $option_group  Option group slug.
+	 * @param  string  $options_group  Option group slug.
 	 * @return  (string|int)[]  Loaded settings (or defaults if specified option group is empty).
 	 *
 	 * @since  1.5.0
 	 * @since  2.8.0  Renamed from `load()` to `load_option()`.
 	 */
-	private function load_option(string $option_group): array {
+	private function load_option(string $options_group_slug): array {
 		// Load all settings from option group.
-		$options = get_option( $option_group );
+		$options_group = get_option( $options_group_slug );
 		
 		// No settings found, set them to their default value.
-		if ( empty( $options ) ) {
-			return $this->default_settings[$option_group];
+		if ( empty( $options_group ) ) {
+			print_r("Options group ".$options_group_slug." is empty!");
+			return $this->default_settings[$options_group_slug];
 		}
 				
-		foreach ( $this->default_settings[$option_group] as $setting_name => $setting_value ) {
+		foreach ( $this->default_settings[$options_group_slug] as $setting_name => $setting_value ) {
 			// Available setting not found in the option group.
-			if ( ! array_key_exists( $setting_name, $options ) ) {
+			if ( ! array_key_exists( $setting_name, $options_group ) ) {
 				// Define the setting with its default value.
-				$options[ $setting_name ] = $setting_value;
+				$options_group[ $setting_name ] = $setting_value;
 			}
 		}
 		// Return settings loaded from option group.
-		return $options;
+		return $options_group;
 	}
 }

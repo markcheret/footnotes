@@ -1,6 +1,6 @@
 <?php
 /**
- * File providing the `CustomCSSSettingsSection` class.
+ * File providing the `ScopeAndPrioritySettingsSection` class.
  *
  * @package footnotes
  * @since 2.8.0
@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace footnotes\includes\settings;
+namespace footnotes\includes\settings\scopeandpriority;
 
 require_once plugin_dir_path( __DIR__ ) . 'settings/class-settings-section.php';
 
 // Import settings groups.
-//use footnotes\includes\settings\custom-css\...;
+//use footnotes\includes\settings\scope-and-priority\...;
 
 /**
  * Class defining plugin referrer and tooltips settings.
@@ -21,7 +21,7 @@ require_once plugin_dir_path( __DIR__ ) . 'settings/class-settings-section.php';
  * @package footnotes
  * @since 2.8.0
  */
-class CustomCSSSettingsSection extends SettingsSection {	
+class ScopeAndPrioritySettingsSection extends SettingsSection {	
 	/**
 	 * The groups of settings within this section.
 	 *
@@ -50,7 +50,7 @@ class CustomCSSSettingsSection extends SettingsSection {
 	protected function load_dependencies(): void {
 		require_once plugin_dir_path( __DIR__ ) . 'settings/class-setting.php';
 		// Require settings groups.
-		//require_once plugin_dir_path( __DIR__ ) . 'settings/custom-css/...';
+		//require_once plugin_dir_path( __DIR__ ) . 'settings/scope-and-priority/...';
 	}
 	
 	protected function add_settings_groups(): void {

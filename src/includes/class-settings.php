@@ -21,12 +21,10 @@ use footnotes\includes\settings\Setting;
  */
 require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
 
-use footnotes\includes\settings\{
-	GeneralSettingsSection, 
-	ReferrersAndTooltipsSettingsSection, 
-	ScopeAndPrioritySettingsSection, 
-	CustomCSSSettingsSection
-};
+use footnotes\includes\settings\general\GeneralSettingsSection;
+use footnotes\includes\settings\referrersandtooltips\ReferrersAndTooltipsSettingsSection;
+use footnotes\includes\settings\scopeandpriority\ScopeAndPrioritySettingsSection;
+use footnotes\includes\settings\customcss\CustomCSSSettingsSection;
 
 /**
  * Class defining configurable plugin settings.
@@ -43,6 +41,7 @@ class Settings {
 	 * @var  array
 	 *
 	 * @since  2.8.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const WIDTH_UNIT_OPTIONS = array(
 		'%'   => 'per cent',
@@ -58,6 +57,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SHORT_CODE_START = 'footnote_inputfield_placeholder_start';
 
@@ -67,6 +67,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SHORT_CODE_END = 'footnote_inputfield_placeholder_end';
 
@@ -76,6 +77,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SHORT_CODE_START_USER_DEFINED = 'footnote_inputfield_placeholder_start_user_defined';
 
@@ -85,6 +87,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SHORT_CODE_END_USER_DEFINED = 'footnote_inputfield_placeholder_end_user_defined';
 
@@ -94,6 +97,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_COUNTER_STYLE = 'footnote_inputfield_counter_style';
 
@@ -103,6 +107,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const HYPERLINK_ARROW = 'footnote_inputfield_custom_hyperlink_symbol';
 
@@ -112,6 +117,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const HYPERLINK_ARROW_USER_DEFINED = 'footnote_inputfield_custom_hyperlink_symbol_user';
 
@@ -123,6 +129,7 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 * @since  2.6.3  Enabled by default.
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
 
@@ -137,6 +144,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_STYLING_BEFORE = 'footnote_inputfield_custom_styling_before';
 
@@ -146,6 +154,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_STYLING_AFTER = 'footnote_inputfield_custom_styling_after';
 
@@ -155,6 +164,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const CUSTOM_CSS = 'footnote_inputfield_custom_css';
 
@@ -164,6 +174,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_LOVE = 'footnote_inputfield_love';
 
@@ -173,6 +184,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.2
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_ENABLED = 'footnote_inputfield_custom_mouse_over_box_enabled';
 
@@ -185,6 +197,7 @@ class Settings {
 	 * @todo  The mouse-over content truncation should be enabled by default to raise
 	 *              awareness of the functionality, prevent the screen from being filled on
 	 *              mouse-over, and allow the use of ‘Continue Reading’ functionality.
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = 'footnote_inputfield_custom_mouse_over_box_excerpt_enabled';
 
@@ -197,6 +210,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  1.5.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = 'footnote_inputfield_custom_mouse_over_box_excerpt_length';
 
@@ -217,6 +231,7 @@ class Settings {
 	 * @todo  In titles, footnotes are still buggy, because WordPress uses the
 	 *              title string in menus and in the title element, but Footnotes doesn't
 	 *              delete footnotes in them.
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_THE_TITLE = 'footnote_inputfield_expert_lookup_the_title';
 
@@ -226,6 +241,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_THE_CONTENT = 'footnote_inputfield_expert_lookup_the_content';
 
@@ -238,6 +254,7 @@ class Settings {
 	 *
 	 * @since  1.5.5
 	 * @since  2.6.3  Enable by default.
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_THE_EXCERPT = 'footnote_inputfield_expert_lookup_the_excerpt';
 
@@ -247,6 +264,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_WIDGET_TITLE = 'footnote_inputfield_expert_lookup_widget_title';
 
@@ -261,6 +279,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_WIDGET_TEXT = 'footnote_inputfield_expert_lookup_widget_text';
 
@@ -272,6 +291,7 @@ class Settings {
 	 * @see FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND
 	 *
 	 * @since  1.5.6
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_COLOR = 'footnote_inputfield_custom_mouse_over_box_color';
 
@@ -288,6 +308,7 @@ class Settings {
 	 * @see FOOTNOTES_MOUSE_OVER_BOX_COLOR
 	 *
 	 * @since  1.5.6
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = 'footnote_inputfield_custom_mouse_over_box_background';
 
@@ -297,6 +318,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  1.5.6
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH = 'footnote_inputfield_custom_mouse_over_box_border_width';
 
@@ -306,6 +328,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.6
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR = 'footnote_inputfield_custom_mouse_over_box_border_color';
 
@@ -315,6 +338,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  1.5.6
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS = 'footnote_inputfield_custom_mouse_over_box_border_radius';
 
@@ -328,6 +352,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  1.5.6
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = 'footnote_inputfield_custom_mouse_over_box_max_width';
 
@@ -341,6 +366,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.7
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_POSITION = 'footnote_inputfield_custom_mouse_over_box_position';
 
@@ -350,6 +376,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  1.5.7
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X = 'footnote_inputfield_custom_mouse_over_box_offset_x';
 
@@ -362,6 +389,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  1.5.7
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y = 'footnote_inputfield_custom_mouse_over_box_offset_y';
 
@@ -371,6 +399,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  1.5.8
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR = 'footnote_inputfield_custom_mouse_over_box_shadow_color';
 
@@ -380,6 +409,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.1.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_TOOLTIP_READON_LABEL = 'footnote_inputfield_readon_label';
 
@@ -394,6 +424,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.1.1
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE = 'footnote_inputfield_custom_mouse_over_box_alternative';
 
@@ -403,6 +434,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.1.1
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS = 'footnotes_inputfield_referrer_superscript_tags';
 
@@ -412,6 +444,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.1.1
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH = 'footnotes_inputfield_reference_container_backlink_symbol_switch';
 
@@ -437,6 +470,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.0.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_content_priority_level';
 
@@ -446,6 +480,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.2
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_title_priority_level';
 
@@ -455,6 +490,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.2
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_widget_title_priority_level';
 
@@ -464,6 +500,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.2
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_widget_text_priority_level';
 
@@ -473,6 +510,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.2
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_excerpt_priority_level';
 
@@ -486,6 +524,7 @@ class Settings {
 	 * Tooltip font size reset to legacy by default since 2.1.4;
 	 * Was set to inherit since 2.1.1 as it overrode custom CSS,
 	 * Called mouse over box not tooltip for consistency.
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FONT_SIZE_ENABLED = 'footnotes_inputfield_mouse_over_box_font_size_enabled';
 
@@ -495,6 +534,7 @@ class Settings {
 	 * @var  float
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FONT_SIZE_SCALAR = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
 
@@ -504,6 +544,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FONT_SIZE_UNIT = 'footnotes_inputfield_mouse_over_box_font_size_unit';
 	
@@ -513,6 +554,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SCROLL_OFFSET = 'footnotes_inputfield_scroll_offset';
 
@@ -522,6 +564,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SCROLL_DURATION = 'footnotes_inputfield_scroll_duration';
 
@@ -531,6 +574,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FADE_IN_DELAY = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
 
@@ -540,6 +584,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FADE_IN_DURATION = 'footnotes_inputfield_mouse_over_box_fade_in_duration';
 
@@ -549,6 +594,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FADE_OUT_DELAY = 'footnotes_inputfield_mouse_over_box_fade_out_delay';
 
@@ -558,6 +604,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.1.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FADE_OUT_DURATION = 'footnotes_inputfield_mouse_over_box_fade_out_duration';
 	
@@ -567,6 +614,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.2.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const REFERENCE_CONTAINER_POSITION_SHORTCODE = 'footnote_inputfield_reference_container_position_shortcode';
 
@@ -576,6 +624,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.2.2
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const CUSTOM_CSS_NEW = 'footnote_inputfield_custom_css_new';
 
@@ -591,6 +640,7 @@ class Settings {
 	 * @since  2.2.2
 	 * @since  2.3.0  Swap migration Boolean, meaning ‘show legacy’ instead of
 	 *                              ‘migration complete’, due to storage data structure constraints.
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const CUSTOM_CSS_LEGACY_ENABLE = 'footnote_inputfield_custom_css_legacy_enable';
 
@@ -602,6 +652,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.2.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION = 'footnotes_inputfield_alternative_mouse_over_box_position';
 
@@ -611,6 +662,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.2.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X = 'footnotes_inputfield_alternative_mouse_over_box_offset_x';
 
@@ -620,6 +672,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.2.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y = 'footnotes_inputfield_alternative_mouse_over_box_offset_y';
 
@@ -629,6 +682,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.2.5
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH = 'footnotes_inputfield_alternative_mouse_over_box_width';
 
@@ -640,6 +694,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.3.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_HARD_LINKS_ENABLE = 'footnotes_inputfield_hard_links_enable';
 
@@ -649,6 +704,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.3.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const REFERRER_FRAGMENT_ID_SLUG = 'footnotes_inputfield_referrer_fragment_id_slug';
 
@@ -658,6 +714,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.3.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTE_FRAGMENT_ID_SLUG = 'footnotes_inputfield_footnote_fragment_id_slug';
 
@@ -667,6 +724,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.3.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const HARD_LINK_IDS_SEPARATOR = 'footnotes_inputfield_hard_link_ids_separator';
 
@@ -676,6 +734,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.4.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = 'footnotes_inputfield_shortcode_syntax_validation_enable';
 
@@ -692,6 +751,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.5.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_BACKLINK_TOOLTIP_ENABLE = 'footnotes_inputfield_backlink_tooltip_enable';
 
@@ -701,6 +761,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.5.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_BACKLINK_TOOLTIP_TEXT = 'footnotes_inputfield_backlink_tooltip_text';
 
@@ -718,6 +779,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.5.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER = 'footnotes_inputfield_tooltip_excerpt_delimiter';
 
@@ -734,6 +796,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.5.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE = 'footnotes_inputfield_tooltip_excerpt_mirror_enable';
 
@@ -744,6 +807,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.5.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR = 'footnotes_inputfield_tooltip_excerpt_mirror_separator';
 
@@ -753,6 +817,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.5.4
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT = 'footnotes_inputfield_referrers_normal_superscript';
 
@@ -762,6 +827,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.6.0
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_AMP_COMPATIBILITY_ENABLE = 'footnotes_inputfield_amp_compatibility_enable';
 
@@ -771,6 +837,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.5.11
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY = 'footnotes_inputfield_scroll_duration_asymmetricity';
 
@@ -780,6 +847,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.5.11
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SCROLL_DOWN_DURATION = 'footnotes_inputfield_scroll_down_duration';
 
@@ -789,6 +857,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.5.11
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SCROLL_DOWN_DELAY = 'footnotes_inputfield_scroll_down_delay';
 
@@ -798,6 +867,7 @@ class Settings {
 	 * @var  int
 	 *
 	 * @since  2.5.11
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_SCROLL_UP_DELAY = 'footnotes_inputfield_scroll_up_delay';
 
@@ -815,6 +885,7 @@ class Settings {
 	 *
 	 * @since  2.5.12
 	 * @todo  Review, remove?
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_LABEL_ISSUE_SOLUTION = 'footnotes_inputfield_label_issue_solution';
 
@@ -826,6 +897,7 @@ class Settings {
 	 * @var  string
 	 *
 	 * @since  2.5.12
+	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_CSS_SMOOTH_SCROLLING = 'footnotes_inputfield_css_smooth_scrolling';
 
@@ -849,13 +921,13 @@ class Settings {
 	/**
 	 * Contains all default values for each Settings Container.
 	 *
+	 * @var  (string|int)[]
+	 *
 	 * @since  1.5.0
 	 * @since  2.8.0  Rename from `default` to `default_settings`.
 	 * @deprecated
 	 *
-	 * @todo  Move to new setting definitions.
-	 *
-	 * @var  (string|int)[]
+	 * @todo  Delete.
 	 */
 	private array $default_settings = array(
 
@@ -1004,6 +1076,8 @@ class Settings {
 	 *
 	 * @since  1.5.0
 	 * @deprecated
+	 *
+	 * @todo  Delete.
 	 */
 	public array $settings = array();
 	
@@ -1024,6 +1098,8 @@ class Settings {
 	 * Stores a singleton reference of this class.
 	 *
 	 * @since  1.5.0
+	 *
+	 * @todo  Still needed?
 	 */
 	private static ?Settings $instance = null;
 
@@ -1033,10 +1109,7 @@ class Settings {
 	 * @since  1.5.0
 	 */
 	public function __construct() {		
-		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-general-settings-section.php';
-		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-referrers-and-tooltips-settings-section.php';
-		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-scope-and-priority-settings-section.php';
-		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-custom-css-settings-section.php';
+		$this->load_dependencies();
 		
 		$this->settings_sections = array(
 			'general' => new GeneralSettingsSection('footnotes_storage', 'footnotes-settings', 'General Settings'),
@@ -1044,6 +1117,29 @@ class Settings {
 			'scope_and_priority' => new ScopeAndPrioritySettingsSection('footnotes_storage_expert', 'footnotes-expert', 'Scope and Priority'),
 			'custom_css' => new CustomCSSSettingsSection('footnotes_storage_custom_css', 'footnotes-customcss', 'Custom CSS'),
 		);
+	}
+	
+	/**
+	 * Load the required dependencies for this file.
+	 *
+	 * Includes the following files that make up the plugin:
+	 *
+	 * - {@see GeneralSettingsSection}: provides general plugin settings;
+	 * - {@see ReferrersAndTooltipsSettingsSection}: provides settings for
+	 *   customising the plugin's created referrers and tooltips;
+	 * - {@see ScopeAndPrioritySettingsSection}: defines plugin scope and priority
+	 *   settings; and
+	 * - {@see CustomCSSSettingsSection}: provides custom CSS settings.
+	 *
+	 * @since 2.8.0
+	 *
+	 * @return void
+	 */
+	protected function load_dependencies(): void {
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/general/class-general-settings-section.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/referrers-and-tooltips/class-referrers-and-tooltips-settings-section.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/scope-and-priority/class-scope-and-priority-settings-section.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/custom-css/class-custom-css-settings-section.php';
 	}
 	
 	/**

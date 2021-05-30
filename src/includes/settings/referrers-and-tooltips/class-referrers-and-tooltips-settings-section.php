@@ -1,6 +1,6 @@
 <?php
 /**
- * File providing the `GeneralSettingsSection` class.
+ * File providing the `ReferrersAndTooltipsSettingsSection` class.
  *
  * @package footnotes
  * @since 2.8.0
@@ -8,19 +8,20 @@
 
 declare(strict_types=1);
 
-namespace footnotes\includes\settings;
+namespace footnotes\includes\settings\referrersandtooltips;
 
 require_once plugin_dir_path( __DIR__ ) . 'settings/class-settings-section.php';
 
-use footnotes\includes\settings\general\ReferenceContainerSettingsGroup;
+// Import settings groups.
+//use footnotes\includes\settings\referrers-and-tooltips\...;
 
 /**
- * Class defining general plugin settings.
+ * Class defining plugin referrer and tooltips settings.
  *
  * @package footnotes
  * @since 2.8.0
  */
-class GeneralSettingsSection extends SettingsSection {	
+class ReferrersAndTooltipsSettingsSection extends SettingsSection {	
 	/**
 	 * The groups of settings within this section.
 	 *
@@ -48,12 +49,14 @@ class GeneralSettingsSection extends SettingsSection {
 	
 	protected function load_dependencies(): void {
 		require_once plugin_dir_path( __DIR__ ) . 'settings/class-setting.php';
-		require_once plugin_dir_path( __DIR__ ) . 'settings/general/class-reference-container-settings-group.php';
+		// Require settings groups.
+		//require_once plugin_dir_path( __DIR__ ) . 'settings/referrers-and-tooltips/...';
 	}
 	
 	protected function add_settings_groups(): void {
 		$this->settings_groups = array (
-			ReferenceContainerSettingsGroup::GROUP_ID => new ReferenceContainerSettingsGroup($this->options_group_slug, $this->section_slug),
+			// Add settings groups.
+			//...::GROUP_ID => new ...($this->options_group_slug, $this->section_slug),
 		);
 	}
 }

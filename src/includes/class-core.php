@@ -135,6 +135,7 @@ class Core {
 	public function get_version(): string {
 		return $this->version;
 	}
+	
 	/**
 	 * Load the required dependencies for this plugin.
 	 *

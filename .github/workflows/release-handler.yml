@@ -51,13 +51,13 @@ jobs:
         uses: montudor/action-zip@v0.1.0
         with:
           args: zip -X -r footnotes-${{ github.event.release.tag_name }}.zip footnotes
-"""
-      - name: Upload archive as artifact
-        uses: actions/upload-artifact@v2
-        with:
-            name: footnotes-${{ github.event.release.tag_name }}
-            path: footnotes-${{ github.event.release.tag_name }}.zip
-"""         
+
+      #- name: Upload archive as artifact
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #      name: footnotes-${{ github.event.release.tag_name }}
+      #      path: footnotes-${{ github.event.release.tag_name }}.zip
+         
       - name: Upload archive to release
         uses: JasonEtco/upload-to-release@master
         with:

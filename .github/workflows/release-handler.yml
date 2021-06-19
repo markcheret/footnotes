@@ -1,5 +1,5 @@
 # This workflow handles GitHub releases and pre-releases.
-# It builds the Plugin, adds an archive artifact to the
+# It builds the Plugin, zips up an archive to add to the
 # release entry on GitHub and (in the case of a full release)
 # pushes the release to the WP Plugin Directory SVN repo.
 

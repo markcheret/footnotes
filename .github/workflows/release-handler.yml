@@ -1,13 +1,17 @@
-name: Pre-release Handler
+# This workflow handles GitHub releases and pre-releases.
+# It builds the Plugin, adds an archive artifact to the
+# release entry on GitHub and (in the case of a full release)
+# pushes the release to the WP Plugin Directory SVN repo.
+
+name: Release Handler
 
 on:
   release:
     types: [published]
 
 jobs:
-  build:
+  build_plugin:
     name: Build the Plugin for pre-release
-    if: "github.event.release.prerelease"
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +30,12 @@ jobs:
         run: |
           mv dist/ footnotes/
 
+  create_archive:
+    name: Create an archive for the release and add it to GitHub
+    runs-on: ubuntu-latest
+    needs: build_plugin
+
+    steps:
       - name: Create release archive
         uses: montudor/action-zip@v0.1.0
         with:
@@ -44,10 +54,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      #- name: Deploy release to Wordpress.org 
-      #  uses: 10up/action-wordpress-plugin-deploy@stable
-      #  with:
-      #    generate-zip: true
-      #  env:
-      #    SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-      #    SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+  release_to_svn:
+    name: Push the release to the WordPress Plugin Directory repo.
+    if: "!github.event.release.prerelease"
+    runs-on: ubuntu-latest
+    needs: create_archive
+
+    steps:
+      - name: Deploy release to Wordpress.org 
+        id: deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: footnotes/branches/svn-test
+          ASSETS_DIR: assets

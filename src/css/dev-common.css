@@ -607,3 +607,12 @@ Link color set to inherit, so referrers/numbers are not grayed out.
 .footnotes_logo_part2 {
 	color: #545f5a;
 }
+
+/** Fix for screen readers,
+@reporter @markhillyer
+@contributor @pewgeuges
+@link https://wordpress.org/support/topic/backlink-reference-number-font-weight/
+*/
+.footnote_plugin_index {
+	font-weight: normal;
+}

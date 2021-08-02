@@ -113,7 +113,17 @@ require_once dirname( __FILE__ ) . '/includes.php';
 $l_str_plugin_file = 'footnotes/footnotes.php';
 add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'Footnotes_Hooks', 'get_plugin_links' ), 10, 2 );
 
-// Initialize the Plugin.
-$g_obj_mci_footnotes = new Footnotes();
-// Run the Plugin.
-$g_obj_mci_footnotes->run();
+/**
+ * Initialises and runs the Plugin.
+ *
+ * This takes place after the `plugins_loaded` hook, so that
+ * other Plugins may filter options.
+ *
+ * @since 2.7.4
+ */
+add_action( 'plugins_loaded', function() {
+	// Initialize the Plugin.
+	$g_obj_mci_footnotes = new Footnotes();
+	// Run the Plugin.
+	$g_obj_mci_footnotes->run();
+});

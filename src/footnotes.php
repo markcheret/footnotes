@@ -121,9 +121,12 @@ add_filter( "plugin_action_links_{$l_str_plugin_file}", array( 'Footnotes_Hooks'
  *
  * @since 2.7.4
  */
-add_action( 'plugins_loaded', function() {
-	// Initialize the Plugin.
-	$g_obj_mci_footnotes = new Footnotes();
-	// Run the Plugin.
-	$g_obj_mci_footnotes->run();
-});
+add_action(
+	'plugins_loaded',
+	function() {
+		// Initialize the Plugin.
+		$g_obj_mci_footnotes = new Footnotes();
+		// Run the Plugin.
+		$g_obj_mci_footnotes->run();
+	}
+);

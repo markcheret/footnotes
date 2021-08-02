@@ -45,7 +45,6 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 	const COMBINE_IDENTICAL_FOOTNOTES = array(
 		'key' => 'footnote_inputfield_combine_identical',
 		'name' => 'Combine Identical Footnotes',
-		'description' => 'Whether to combine identical footnotes.',
 		'default_value' => true,
 		'type' => 'boolean',
 		'input_type' => 'checkbox'

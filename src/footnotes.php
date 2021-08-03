@@ -18,7 +18,7 @@
  * Requires at least: 3.9
  * Requires PHP: 7.0
  * Author: Mark Cheret
- * Author URI: https://cheret.org/footnotes
+ * Author URI: https://cheret.tech/footnotes
  * Text Domain: footnotes
  * Domain Path: /languages
  * License: GPL v3
@@ -111,6 +111,8 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-core.php';
  *
  * Since everything within the plugin is registered via hooks, then kicking off
  * the plugin from this point in the file does not affect the page life cycle.
+ * This takes place after the `plugins_loaded` hook, so that other Plugins may
+ * filter options.
  *
  * @since 2.8.0
  */
@@ -124,4 +126,4 @@ function run_footnotes(): void {
 	$footnotes = new includes\Core();
 	$footnotes->run();
 }
-run_footnotes();
+add_action( 'plugins_loaded', run_footnotes() );

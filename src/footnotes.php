@@ -18,7 +18,7 @@
  * Requires at least: 3.9
  * Requires PHP: 7.0
  * Author: Mark Cheret
- * Author URI: https://cheret.org/footnotes
+ * Author URI: https://cheret.tech/footnotes
  * Text Domain: footnotes
  * Domain Path: /languages
  * License: GPL v3

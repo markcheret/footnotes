@@ -18,24 +18,7 @@ use footnotes\admin\layout as Layout;
  * @package footnotes
  * @since 2.8.0
  */
-abstract class SettingsGroup {		
-	/**
-	 * Setting section slug.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.8.0
-	 */
-	protected string $options_group_slug;
-	/**
-	 * Setting section slug.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.8.0
-	 */
-	protected string $section_slug;
-		
+abstract class SettingsGroup {				
 	/**
 	 * Setting group ID.
 	 *
@@ -63,11 +46,77 @@ abstract class SettingsGroup {
 	 */
 	protected array $settings;
 	
-	protected abstract function load_dependencies(): void;
+	public function __construct(
+		/**
+		 * Setting options group slug.
+		 *
+		 * @var  string
+		 *
+		 * @since  2.8.0
+		 */
+		protected string $options_group_slug,	
+		
+		/**
+		 * Setting section slug.
+		 *
+		 * @var  string
+		 *
+		 * @since  2.8.0
+		 */
+		protected string $section_slug
+	) {		
+		$this->load_dependencies();
+		
+		$this->add_settings( get_option( $this->options_group_slug ) );
+	}
 	
-	protected abstract function add_settings(array $options): void;
+	protected function load_dependencies(): void {
+		require_once plugin_dir_path( __DIR__ ) . 'settings/class-setting.php';
+	}
 	
-	protected abstract function add_settings_fields(Layout\Settings $component): void;
+	protected abstract function add_settings(array|false $options): void;
+	
+	protected function add_setting(array $setting): Setting {
+		extract( $setting );
+		
+		return new Setting(
+			self::GROUP_ID, 
+			$this->options_group_slug, 
+			$this->section_slug,
+			$key,
+			$name,
+			$description ?? null,
+			$default_value ?? null,
+			$type,
+			$input_type,
+			$input_options ?? null,
+			$input_max ?? null,
+			$input_min ?? null,
+			$enabled_by['key'] ?? null,
+			$overridden_by['key'] ?? null
+		);
+	}
+	
+	protected function load_values(array|false $options): void {
+	  if ( ! $options ) return;
+		
+		foreach ( $options as $setting_key => $setting_value ) {
+			$this->settings[$setting_key]->set_value( $setting_value );
+		}
+	}
+	
+	public function add_settings_fields(Layout\SettingsPage $component): void {
+		foreach ($this->settings as $setting) {			
+			add_settings_field(
+				$setting->key, 
+				__( $setting->name, 'footnotes' ),
+				array ($component, 'setting_field_callback'),
+				'footnotes',
+				$setting->get_section_slug(),
+				$setting->get_setting_field_args()
+			);
+		}
+	}
 	
 	public function get_setting(string $setting_key): ?Setting {
 		foreach ($this->settings as $setting) {

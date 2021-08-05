@@ -182,7 +182,8 @@ class Setting {
 	
 	private function is_disabled_or_overridden(): ?bool {		
 		if ($this->enabled_by) {
-			if (!Settings::instance()->get_setting($this->enabled_by)->value) return true;
+		  $enabled_by_value = Settings::instance()->get_setting($this->enabled_by)->value;
+			if ((!$enabled_by_value || $enabled_by_value !== 'userdefined')) return true;
 			
 			if (!$this->overridden_by) return false;
 			else if (isset(Settings::instance()->get_setting($this->overridden_by)->value)) return true;

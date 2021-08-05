@@ -55,7 +55,9 @@ abstract class SettingsSection {
 	 */
 	protected array $settings_groups;
 	
-	protected abstract function load_dependencies(): void;
+	protected function load_dependencies(): void {
+		require_once plugin_dir_path( __DIR__ ) . 'settings/class-setting.php';
+	}
 	
 	public function load_options_group(): void {
 		$options_group = get_option($this->options_group_slug);

@@ -10,8 +10,9 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\scopeandpriority;
 
-require_once plugin_dir_path( __DIR__ ) . 'settings/class-settings-section.php';
+require_once plugin_dir_path( __DIR__ ) . 'class-settings-section.php';
 
+use footnotes\includes\settings\SettingsSection;
 // Import settings groups.
 //use footnotes\includes\settings\scope-and-priority\...;
 
@@ -48,9 +49,9 @@ class ScopeAndPrioritySettingsSection extends SettingsSection {
 	}
 	
 	protected function load_dependencies(): void {
-		require_once plugin_dir_path( __DIR__ ) . 'settings/class-setting.php';
-		// Require settings groups.
-		//require_once plugin_dir_path( __DIR__ ) . 'settings/scope-and-priority/...';
+	  parent::load_dependencies();
+	  
+		//require_once plugin_dir_path( __DIR__ ) . 'general/class-reference-container-settings-group.php';
 	}
 	
 	protected function add_settings_groups(): void {

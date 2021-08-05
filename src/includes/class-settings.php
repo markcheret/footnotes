@@ -50,46 +50,6 @@ class Settings {
 		'em'  => 'em',
 		'vw'  => 'viewport width',
 	);
-	
-	/**
-	 * Settings container key for the short code of the footnote's start.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SHORT_CODE_START = 'footnote_inputfield_placeholder_start';
-
-	/**
-	 * Settings container key for the short code of the footnote's end.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SHORT_CODE_END = 'footnote_inputfield_placeholder_end';
-
-	/**
-	 * Settings container key for the user-defined short code of the footnotes start.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SHORT_CODE_START_USER_DEFINED = 'footnote_inputfield_placeholder_start_user_defined';
-
-	/**
-	 * Settings container key for the user-defined short code of the footnotes end.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SHORT_CODE_END_USER_DEFINED = 'footnote_inputfield_placeholder_end_user_defined';
 
 	/**
 	 * Settings container key for the counter style of the footnotes.
@@ -547,26 +507,6 @@ class Settings {
 	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const MOUSE_OVER_BOX_FONT_SIZE_UNIT = 'footnotes_inputfield_mouse_over_box_font_size_unit';
-	
-	/**
-	 * Settings container key for scroll offset.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SCROLL_OFFSET = 'footnotes_inputfield_scroll_offset';
-
-	/**
-	 * Settings container key for scroll duration.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SCROLL_DURATION = 'footnotes_inputfield_scroll_duration';
 
 	/**
 	 * Settings container key for tooltip display fade-in delay.
@@ -729,16 +669,6 @@ class Settings {
 	const HARD_LINK_IDS_SEPARATOR = 'footnotes_inputfield_hard_link_ids_separator';
 
 	/**
-	 * Settings container key to enable shortcode syntax validation.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.4.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE = 'footnotes_inputfield_shortcode_syntax_validation_enable';
-
-	/**
 	 * Settings container key to enable backlink tooltips.
 	 *
 	 * When hard links are enabled, clicks on the backlinks are logged in the
@@ -832,46 +762,6 @@ class Settings {
 	const FOOTNOTES_AMP_COMPATIBILITY_ENABLE = 'footnotes_inputfield_amp_compatibility_enable';
 
 	/**
-	 * Settings container key for scroll duration asymmetricity.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.5.11
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY = 'footnotes_inputfield_scroll_duration_asymmetricity';
-
-	/**
-	 * Settings container key for scroll-down duration.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.5.11
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SCROLL_DOWN_DURATION = 'footnotes_inputfield_scroll_down_duration';
-
-	/**
-	 * Settings container key for scroll-down delay.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.5.11
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SCROLL_DOWN_DELAY = 'footnotes_inputfield_scroll_down_delay';
-
-	/**
-	 * Settings container key for scroll-up delay.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.5.11
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_SCROLL_UP_DELAY = 'footnotes_inputfield_scroll_up_delay';
-
-	/**
 	 * Settings container key to set the solution of the input element label issue.
 	 *
 	 * If hard links are not enabled, clicking a referrer in an input element label
@@ -888,18 +778,6 @@ class Settings {
 	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_LABEL_ISSUE_SOLUTION = 'footnotes_inputfield_label_issue_solution';
-
-	/**
-	 * Settings container key to enable CSS smooth scrolling.
-	 *
-	 * Native smooth scrolling only works in recent browsers.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.12
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_CSS_SMOOTH_SCROLLING = 'footnotes_inputfield_css_smooth_scrolling';
 
 	/**
 	 * Contains all Settings option group slugs.
@@ -937,25 +815,10 @@ class Settings {
 			// AMP compatibility.
 			self::FOOTNOTES_AMP_COMPATIBILITY_ENABLE      => '',
 
-			// Footnote start and end short codes.
-			self::FOOTNOTES_SHORT_CODE_START              => '((',
-			self::FOOTNOTES_SHORT_CODE_END                => '))',
-			self::FOOTNOTES_SHORT_CODE_START_USER_DEFINED => '',
-			self::FOOTNOTES_SHORT_CODE_END_USER_DEFINED   => '',
-			self::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE => 'yes',
-
 			// Footnotes numbering.
 			self::FOOTNOTES_COUNTER_STYLE                 => 'arabic_plain',
 			//self::COMBINE_IDENTICAL_FOOTNOTES             => 'yes',
 
-			// Scrolling behavior.
-			self::FOOTNOTES_CSS_SMOOTH_SCROLLING          => 'no',
-			self::FOOTNOTES_SCROLL_OFFSET                 => 20,
-			self::FOOTNOTES_SCROLL_DURATION               => 380,
-			self::FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY => 'no',
-			self::FOOTNOTES_SCROLL_DOWN_DURATION          => 150,
-			self::FOOTNOTES_SCROLL_DOWN_DELAY             => 0,
-			self::FOOTNOTES_SCROLL_UP_DELAY               => 0,
 			self::FOOTNOTES_HARD_LINKS_ENABLE             => 'no',
 			self::REFERRER_FRAGMENT_ID_SLUG               => 'r',
 			self::FOOTNOTE_FRAGMENT_ID_SLUG               => 'f',

@@ -92,5 +92,3 @@ tmp/
 !mstile-*.png
 !safari-pinned-tab.svg
 !site.webmanifest
-
-src/includes/settings/class-TEMP-settings-group.php

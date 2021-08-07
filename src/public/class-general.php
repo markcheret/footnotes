@@ -11,13 +11,16 @@ declare(strict_types=1);
 namespace footnotes\general;
 		
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/settings/general/class-reference-container-settings-group.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/settings/general/class-scrolling-settings-group.php';
 
 use footnotes\includes\{Footnotes, Convert, Settings};
 
-use const footnotes\includes\settings\general\ReferenceContainerSettingsGroup\{
-	FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE,
-	FOOTNOTES_PAGE_LAYOUT_SUPPORT
-};
+/**
+ * @todo Replace with constant imports.
+ */
+use footnotes\includes\settings\general\ReferenceContainerSettingsGroup;
+use footnotes\includes\settings\general\AMPCompatSettingsGroup;
+use footnotes\includes\settings\referrersandtooltips\TooltipsSettingsGroup;
 
 /**
  * Class provide all public-facing functionality of the plugin.
@@ -125,10 +128,10 @@ class General {
 		$this->load_dependencies();
 
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
-		self::$amp_enabled                  = Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
-		self::$tooltips_enabled             = Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$alternative_tooltips_enabled = Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		self::$script_mode                  = Settings::instance()->get( 'foo'/*FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE*/ );
+		self::$amp_enabled                  = Settings::instance()->get_setting( AMPCompatSettingsGroup::FOOTNOTES_AMP_COMPATIBILITY_ENABLE['key'] )->get_value();
+		self::$tooltips_enabled             = Settings::instance()->get_setting( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ENABLED['key'] )->get_value();
+		self::$alternative_tooltips_enabled = Settings::instance()->get_setting( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE['key'] )->get_value();
+		self::$script_mode                  = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE['key'] );
 	}
 
 	/**
@@ -155,7 +158,7 @@ class General {
 
 		$this->task = new Parser();
 	}
-
+	
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *

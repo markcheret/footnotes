@@ -473,6 +473,17 @@ abstract class Engine {
 		);
 	}
 	
+	protected function add_input_color( array $args ): void {
+		extract( $args );
+		
+		echo sprintf(
+			'<input type="color" name="%s" id="%s"%s/>',
+			$name,
+			$name,
+			$disabled ? ' disabled': ''
+		);
+	}
+	
 
 	/**************************************************************************
 	 * NEW METHODS END

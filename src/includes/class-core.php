@@ -114,8 +114,9 @@ class Core {
 	 *
 	 * @since 2.8.0
 	 */
-	public function get_plugin_name(): string {
-		return $this->plugin_name;
+	public function get_plugin_name(bool $html = false): string {
+	  if ( ! $html ) return $this->plugin_name;
+	  else return '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
 	}
 
 	/**

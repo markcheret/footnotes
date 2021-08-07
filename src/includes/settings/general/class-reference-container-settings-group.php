@@ -33,24 +33,6 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 	const GROUP_ID = 'reference-container';
 
 	/**
-	 * Settings container key for combining identical footnotes.
-	 *
-	 * @var  array
-	 *
-	 * @since  1.5.0
-	 * @since  2.8.0  Move from `Settings` to `ReferenceContainerSettingsGroup`.
-	 *                Convert from `string` to `array`.
-	 *                Convert setting data type from `string` to `boolean`.
-	 */
-	const COMBINE_IDENTICAL_FOOTNOTES = array(
-		'key'           => 'footnote_inputfield_combine_identical',
-		'name'          => 'Combine Identical Footnotes',
-		'default_value' => true,
-		'type'          => 'boolean',
-		'input_type'    => 'checkbox',
-	);
-
-	/**
 	 * Settings container key for the label of the reference container.
 	 *
 	 * @var  array
@@ -731,7 +713,6 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::REFERENCE_CONTAINER_NAME['key']          => $this->add_setting( self::REFERENCE_CONTAINER_NAME ),
-			self::COMBINE_IDENTICAL_FOOTNOTES['key']       => $this->add_setting( self::COMBINE_IDENTICAL_FOOTNOTES ),
 			self::REFERENCE_CONTAINER_NAME['key']          => $this->add_setting( self::REFERENCE_CONTAINER_NAME ),
 			self::REFERENCE_CONTAINER_LABEL_ELEMENT['key'] => $this->add_setting( self::REFERENCE_CONTAINER_LABEL_ELEMENT ),
 			self::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER['key'] => $this->add_setting( self::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER ),

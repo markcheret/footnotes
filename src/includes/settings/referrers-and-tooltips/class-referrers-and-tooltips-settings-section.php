@@ -14,9 +14,6 @@ require_once plugin_dir_path( __DIR__ ) . 'class-settings-section.php';
 
 use footnotes\includes\settings\SettingsSection;
 
-// Import settings groups.
-//use footnotes\includes\settings\referrers-and-tooltips\...;
-
 /**
  * Class defining plugin referrer and tooltips settings.
  *
@@ -52,13 +49,30 @@ class ReferrersAndTooltipsSettingsSection extends SettingsSection {
 	protected function load_dependencies(): void {
 	  parent::load_dependencies();
 	  
-		//require_once plugin_dir_path( __DIR__ ) . 'general/class-reference-container-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-backlink-symbol-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-referrers-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-referrers-in-labels-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-tooltips-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-tooltip-appearance-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-tooltip-dimensions-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-tooltip-position-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-tooltip-text-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-tooltip-timing-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'referrers-and-tooltips/class-tooltip-truncation-settings-group.php';
 	}
 	
 	protected function add_settings_groups(): void {
 		$this->settings_groups = array (
-			// Add settings groups.
-			//...::GROUP_ID => new ...($this->options_group_slug, $this->section_slug),
+			BacklinkSymbolSettingsGroup::GROUP_ID => new BacklinkSymbolSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			ReferrersSettingsGroup::GROUP_ID => new ReferrersSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			ReferrersInLabelsSettingsGroup::GROUP_ID => new ReferrersInLabelsSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			TooltipsSettingsGroup::GROUP_ID => new TooltipsSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			TooltipAppearanceSettingsGroup::GROUP_ID => new TooltipAppearanceSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			TooltipDimensionsSettingsGroup::GROUP_ID => new TooltipDimensionsSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			TooltipPositionSettingsGroup::GROUP_ID => new TooltipPositionSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			TooltipTextSettingsGroup::GROUP_ID => new TooltipTextSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			TooltipTimingSettingsGroup::GROUP_ID => new TooltipTimingSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			TooltipTruncationSettingsGroup::GROUP_ID => new TooltipTruncationSettingsGroup( $this->options_group_slug, $this->section_slug ),
 		);
 	}
 }

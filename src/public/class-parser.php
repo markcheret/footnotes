@@ -14,37 +14,30 @@ declare(strict_types=1);
 namespace footnotes\general;
 
 use footnotes\includes\{Settings, Convert, Template};
-use const footnotes\includes\settings\general\ReferenceContainerSettingsGroup\{
-	COMBINE_IDENTICAL_FOOTNOTES,
-	REFERENCE_CONTAINER_NAME,
-	REFERENCE_CONTAINER_LABEL_ELEMENT,
-	REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER,
-	REFERENCE_CONTAINER_COLLAPSE,
-	REFERENCE_CONTAINER_START_PAGE_ENABLE,
-	REFERENCE_CONTAINER_TOP_MARGIN,
-	REFERENCE_CONTAINER_BOTTOM_MARGIN,
-	REFERENCE_CONTAINER_ROW_BORDERS_ENABLE,
-	BACKLINKS_COLUMN_WIDTH_ENABLED,
-	BACKLINKS_COLUMN_WIDTH_SCALAR,
-	BACKLINKS_COLUMN_WIDTH_UNIT,
-	BACKLINKS_COLUMN_MAX_WIDTH_ENABLED,
-	BACKLINKS_COLUMN_MAX_WIDTH_SCALAR,
-	BACKLINKS_COLUMN_MAX_WIDTH_UNIT,
-	REFERENCE_CONTAINER_POSITION,
-	FOOTNOTE_SECTION_SHORTCODE,
-	REFERENCE_CONTAINER_POSITION_SHORTCODE,
-	FOOTNOTE_URL_WRAP_ENABLED,
-	LINK_ELEMENT_ENABLED,
-	REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE,
-	REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH,
-	BACKLINKS_SEPARATOR_ENABLED,
-	BACKLINKS_SEPARATOR_OPTION,
-	BACKLINKS_SEPARATOR_CUSTOM,
-	BACKLINKS_TERMINATOR_ENABLED,
-	BACKLINKS_TERMINATOR_OPTION,
-	BACKLINKS_TERMINATOR_CUSTOM,
-	REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE,
-	BACKLINKS_LINE_BREAKS_ENABLED
+
+/**
+ * @todo Replace with constant imports.
+ */
+use footnotes\includes\settings\general\{
+  ExcerptsSettingsGroup,
+  HardLinksSettingsGroup,
+  LoveSettingsGroup,
+  NumberingSettingsGroup,
+  ReferenceContainerSettingsGroup,
+  ScrollingSettingsGroup,
+  ShortcodeSettingsGroup,
+};
+use footnotes\includes\settings\referrersandtooltips\{
+  BacklinkSymbolSettingsGroup,
+  ReferrersSettingsGroup,
+  ReferrersInLabelsSettingsGroup,
+  TooltipsSettingsGroup,
+  TooltipAppearanceSettingsGroup,
+  TooltipDimensionsSettingsGroup,
+  TooltipPositionSettingsGroup,
+  TooltipTextSettingsGroup,
+  TooltipTimingSettingsGroup,
+  TooltipTruncationSettingsGroup
 };
 
 /**
@@ -441,7 +434,7 @@ class Parser {
 		 *
 		 * Native smooth scrolling only works in recent browsers.
 		 */
-		if ( Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_CSS_SMOOTH_SCROLLING ) ) ) {
+		if ( Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_CSS_SMOOTH_SCROLLING['key'] )->get_value() ) {
 			echo "html {scroll-behavior: smooth;}\r\n";
 		}
 
@@ -451,7 +444,7 @@ class Parser {
 		 * Cannot be included in external stylesheet, as it is only optional.
 		 * The scope is variable too: referrers only, or all superscript elements.
 		 */
-		$normalize_superscript = Settings::instance()->get( Settings::FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT );
+		$normalize_superscript = Settings::instance()->get_setting( ReferrersSettingsGroup::FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT['key'] )->get_value();
 		if ( 'no' !== $normalize_superscript ) {
 			if ( 'all' === $normalize_superscript ) {
 				echo 'sup {';
@@ -462,14 +455,14 @@ class Parser {
 		}
 
 		// Reference container display on home page.
-		if ( ! Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_START_PAGE_ENABLE['key'] ) ) ) {
+		if ( ! ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_START_PAGE_ENABLE['key'] )->get_value() ) ) {
 
 			echo ".home .footnotes_reference_container { display: none; }\r\n";
 		}
 
 		// Reference container top and bottom margins.
-		$reference_container_top_margin    = (int) Settings::instance()->get( REFERENCE_CONTAINER_TOP_MARGIN['key'] );
-		$reference_container_bottom_margin = (int) Settings::instance()->get( REFERENCE_CONTAINER_BOTTOM_MARGIN['key'] );
+		$reference_container_top_margin    = (int) Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_TOP_MARGIN['key'] )->get_value();
+		$reference_container_bottom_margin = (int) Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_BOTTOM_MARGIN['key'] )->get_value();
 		echo '.footnotes_reference_container {margin-top: ';
 		echo empty( $reference_container_top_margin ) ? '0' : $reference_container_top_margin;
 		echo 'px !important; margin-bottom: ';
@@ -477,9 +470,9 @@ class Parser {
 		echo "px !important;}\r\n";
 
 		// Reference container label bottom border.
-		if ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER['key'] ) ) ) {
+		if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER['key'] )->get_value() ) ) {
 			echo '.footnote_container_prepare > ';
-			echo Settings::instance()->get( REFERENCE_CONTAINER_LABEL_ELEMENT );
+			echo Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_ELEMENT['key'] )->get_value() ;
 			echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
 		}
 
@@ -492,7 +485,7 @@ class Parser {
 		 * issues as browsers won’t reload these style sheets after settings are
 		 * changed while the version string is not.
 		 */
-		if ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_ROW_BORDERS_ENABLE['key'] ) ) ) {
+		if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_ROW_BORDERS_ENABLE['key'] )->get_value() ) ) {
 			echo '.footnotes_table, .footnotes_plugin_reference_row {';
 			echo 'border: 1px solid #060606;';
 			echo " !important;}\r\n";
@@ -502,16 +495,16 @@ class Parser {
 		}
 
 		// Ref container first column width and max-width.
-		$column_width_enabled     = Convert::to_bool( Settings::instance()->get( BACKLINKS_COLUMN_WIDTH_ENABLED['key'] ) );
-		$column_max_width_enabled = Convert::to_bool( Settings::instance()->get( BACKLINKS_COLUMN_MAX_WIDTH_ENABLED['key'] ) );
+		$column_width_enabled     = ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_COLUMN_WIDTH_ENABLED['key'] )->get_value() );
+		$column_max_width_enabled = ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED['key'] )->get_value() );
 
 		if ( $column_width_enabled || $column_max_width_enabled ) {
 			echo '.footnote-reference-container { table-layout: fixed; }';
 			echo '.footnote_plugin_index, .footnote_plugin_index_combi {';
 
 			if ( $column_width_enabled ) {
-				$column_width_scalar = Settings::instance()->get( BACKLINKS_COLUMN_WIDTH_SCALAR['key'] );
-				$column_width_unit   = Settings::instance()->get( BACKLINKS_COLUMN_WIDTH_UNIT['key'] );
+				$column_width_scalar = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_COLUMN_WIDTH_SCALAR['key'] )->get_value();
+				$column_width_unit   = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_COLUMN_WIDTH_UNIT['key'] )->get_value();
 
 				if ( ! empty( $column_width_scalar ) ) {
 					if ( '%' === $column_width_unit && $column_width_scalar > 100 ) {
@@ -525,8 +518,8 @@ class Parser {
 			}
 
 			if ( $column_max_width_enabled ) {
-				$column_max_width_scalar = Settings::instance()->get( BACKLINKS_COLUMN_MAX_WIDTH_SCALAR['key'] );
-				$column_max_width_unit   = Settings::instance()->get( BACKLINKS_COLUMN_MAX_WIDTH_UNIT['key'] );
+				$column_max_width_scalar = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_COLUMN_MAX_WIDTH_SCALAR['key'] )->get_value();
+				$column_max_width_unit   = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_COLUMN_MAX_WIDTH_UNIT['key'] )->get_value();
 
 				if ( ! empty( $column_max_width_scalar ) ) {
 					if ( '%' === $column_max_width_unit && $column_max_width_scalar > 100 ) {
@@ -543,14 +536,14 @@ class Parser {
 		}
 
 		// Hard links scroll offset.
-		self::$hard_links_enabled = Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_HARD_LINKS_ENABLE ) );
+		self::$hard_links_enabled = Settings::instance()->get_setting( HardLinksSettingsGroup::FOOTNOTES_HARD_LINKS_ENABLE['key'] )->get_value();
 
 		// Correct hard links enabled status depending on AMP-compatible or alternative reference container enabled status.
 		if ( General::$amp_enabled || 'jquery' !== General::$script_mode ) {
 			self::$hard_links_enabled = true;
 		}
 
-		self::$scroll_offset = (int) Settings::instance()->get( Settings::FOOTNOTES_SCROLL_OFFSET );
+		self::$scroll_offset = (int)Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_SCROLL_OFFSET['key'] )->get_value();
 		if ( self::$hard_links_enabled ) {
 			echo '.footnote_referrer_anchor, .footnote_item_anchor {bottom: ';
 			echo self::$scroll_offset;
@@ -563,46 +556,46 @@ class Parser {
 
 			// Tooltip appearance: Tooltip font size.
 			echo ' font-size: ';
-			if ( Convert::to_bool( Settings::instance()->get( Settings::MOUSE_OVER_BOX_FONT_SIZE_ENABLED ) ) ) {
-				echo Settings::instance()->get( Settings::MOUSE_OVER_BOX_FONT_SIZE_SCALAR );
-				echo Settings::instance()->get( Settings::MOUSE_OVER_BOX_FONT_SIZE_UNIT );
+			if ( Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::MOUSE_OVER_BOX_FONT_SIZE_ENABLED['key'] )->get_value() ) {
+				echo Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::MOUSE_OVER_BOX_FONT_SIZE_SCALAR['key'] )->get_value();
+				echo Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::MOUSE_OVER_BOX_FONT_SIZE_UNIT['key'] )->get_value();
 			} else {
 				echo 'inherit';
 			}
 			echo ' !important;';
 
 			// Tooltip Text color.
-			$color = Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_COLOR );
+			$color = Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_COLOR['key'] )->get_value();
 			if ( ! empty( $color ) ) {
 				printf( ' color: %s !important;', $color );
 			}
 
 			// Tooltip Background color.
-			$background = Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND );
+			$background = Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND['key'] )->get_value();
 			if ( ! empty( $background ) ) {
 				printf( ' background-color: %s !important;', $background );
 			}
 
 			// Tooltip Border width.
-			$border_width = Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH );
+			$border_width = Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH['key'] )->get_value();
 			if ( ! empty( $border_width ) && (int) $border_width > 0 ) {
 				printf( ' border-width: %dpx !important; border-style: solid !important;', $border_width );
 			}
 
 			// Tooltip Border color.
-			$border_color = Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR );
+			$border_color = Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR['key'] )->get_value();
 			if ( ! empty( $border_color ) ) {
 				printf( ' border-color: %s !important;', $border_color );
 			}
 
 			// Tooltip Corner radius.
-			$border_radius = Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS );
+			$border_radius = Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS['key'] )->get_value();
 			if ( ! empty( $border_radius ) && (int) $border_radius > 0 ) {
 				printf( ' border-radius: %dpx !important;', $border_radius );
 			}
 
 			// Tooltip Shadow color.
-			$box_shadow_color = Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR );
+			$box_shadow_color = Settings::instance()->get_setting( TooltipAppearanceSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR['key'] )->get_value();
 			if ( ! empty( $box_shadow_color ) ) {
 				printf( ' -webkit-box-shadow: 2px 2px 11px %s;', $box_shadow_color );
 				printf( ' -moz-box-shadow: 2px 2px 11px %s;', $box_shadow_color );
@@ -616,7 +609,7 @@ class Parser {
 				 *
 				 * Position and timing of jQuery tooltips are script-defined.
 				 */
-				$max_width = Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH );
+				$max_width = Settings::instance()->get_setting( TooltipDimensionsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH['key'] )->get_value();
 				if ( ! empty( $max_width ) && (int) $max_width > 0 ) {
 					printf( ' max-width: %dpx !important;', $max_width );
 				}
@@ -627,7 +620,7 @@ class Parser {
 				echo "}\r\n";
 
 				// Dimensions.
-				$alternative_tooltip_width = (int) Settings::instance()->get( Settings::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH );
+				$alternative_tooltip_width = (int) Settings::instance()->get_setting( TooltipDimensionsSettingsGroup::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH['key'] )->get_value();
 				echo '.footnote_tooltip.position {';
 				echo ' width: max-content; ';
 
@@ -635,8 +628,8 @@ class Parser {
 				echo ' max-width: ' . $alternative_tooltip_width . 'px;';
 
 				// Position.
-				$alternative_position = Settings::instance()->get( Settings::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION );
-				$offset_x             = (int) Settings::instance()->get( Settings::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X );
+				$alternative_position = Settings::instance()->get_setting( TooltipPositionSettingsGroup::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION['key'] )->get_value();
+				$offset_x             = (int) Settings::instance()->get_setting( TooltipPositionSettingsGroup::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X['key'] )->get_value();
 
 				if ( 'top left' === $alternative_position || 'bottom left' === $alternative_position ) {
 					echo ' right: ' . ( empty( $offset_x ) ? 0 : $offset_x ) . 'px;';
@@ -644,7 +637,7 @@ class Parser {
 					echo ' left: ' . ( empty( $offset_x ) ? 0 : $offset_x ) . 'px;';
 				}
 
-				$offset_y = (int) Settings::instance()->get( Settings::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y );
+				$offset_y = (int) Settings::instance()->get_setting( TooltipPositionSettingsGroup::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y['key'] )->get_value();
 
 				if ( 'top left' === $alternative_position || 'top right' === $alternative_position ) {
 					echo ' bottom: ' . ( empty( $offset_y ) ? 0 : $offset_y ) . 'px;';
@@ -654,13 +647,13 @@ class Parser {
 				echo "}\r\n";
 
 				// Timing.
-				$fade_in_delay     = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_IN_DELAY );
+				$fade_in_delay     = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_IN_DELAY['key'] )->get_value();
 				$fade_in_delay     = empty( $fade_in_delay ) ? '0' : $fade_in_delay;
-				$fade_in_duration  = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_IN_DURATION );
+				$fade_in_duration  = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_IN_DURATION['key'] )->get_value();
 				$fade_in_duration  = empty( $fade_in_duration ) ? '0' : $fade_in_duration;
-				$fade_out_delay    = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_OUT_DELAY );
+				$fade_out_delay    = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_OUT_DELAY['key'] )->get_value();
 				$fade_out_delay    = empty( $fade_out_delay ) ? '0' : $fade_out_delay;
-				$fade_out_duration = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_OUT_DURATION );
+				$fade_out_duration = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_OUT_DURATION['key'] )->get_value();
 				$fade_out_duration = empty( $fade_out_duration ) ? '0' : $fade_out_duration;
 
 				/*
@@ -743,11 +736,11 @@ class Parser {
 	 * @since 1.5.0
 	 */
 	public function footnotes_output_footer(): void {
-		if ( 'footer' === Settings::instance()->get( REFERENCE_CONTAINER_POSITION['key'] ) ) {
+		if ( 'footer' === Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_POSITION['key'] )->get_value() ) {
 			echo $this->reference_container();
 		}
 		// Get setting for love and share this plugin.
-		$love_me_index = Settings::instance()->get( Settings::FOOTNOTES_LOVE );
+		$love_me_index = Settings::instance()->get_setting( LoveSettingsGroup::FOOTNOTES_LOVE['key'] )->get_value();
 		// Check if the admin allows to add a link to the footer.
 		if ( empty( $love_me_index ) || 'no' === strtolower( $love_me_index ) || ! self::$allow_love_me ) {
 			return;
@@ -816,8 +809,8 @@ class Parser {
 	 */
 	public function footnotes_in_content( string $content ): string {
 
-		$ref_container_position            = Settings::instance()->get( REFERENCE_CONTAINER_POSITION['key'] );
-		$footnote_section_shortcode        = Settings::instance()->get( FOOTNOTE_SECTION_SHORTCODE['key'] );
+		$ref_container_position            = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_POSITION['key'] )->get_value();
+		$footnote_section_shortcode        = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::FOOTNOTE_SECTION_SHORTCODE['key'] )->get_value();
 		$footnote_section_shortcode_length = strlen( $footnote_section_shortcode );
 
 		// TODO: Replace with `str_contains()`, but currently breaks Rector downgrade.
@@ -865,7 +858,7 @@ class Parser {
 	 * @return string  $excerpt  Processed or new excerpt.
 	 */
 	public function footnotes_in_excerpt( string $excerpt ): string {
-		$excerpt_mode = Settings::instance()->get( Settings::FOOTNOTES_IN_EXCERPT );
+		$excerpt_mode = Settings::instance()->get_setting( ExcerptsSettingsGroup::FOOTNOTES_IN_EXCERPT['key'] )->get_value();
 
 		if ( 'yes' === $excerpt_mode ) {
 			return $this->generate_excerpt_with_footnotes( $excerpt );
@@ -1053,7 +1046,7 @@ class Parser {
 	public function footnotes_in_widget_text( string $content ): string {
 		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		// Appends the reference container if set to "post_end".
-		return $this->exec( $content, 'post_end' === Settings::instance()->get( REFERENCE_CONTAINER_POSITION['key'] ) );
+		return $this->exec( $content, 'post_end' === Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_POSITION['key'] )->get_value() );
 		// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
 	}
 
@@ -1067,7 +1060,6 @@ class Parser {
 	 * @param bool   $hide_footnotes_text  Hide footnotes found in the string.
 	 */
 	public function exec( string $content, bool $output_references = false, bool $hide_footnotes_text = false ): string {
-
 		// Process content.
 		$content = $this->search( $content, $hide_footnotes_text );
 
@@ -1076,7 +1068,7 @@ class Parser {
 		 */
 
 		// Append the reference container or insert at shortcode.
-		$reference_container_position_shortcode = Settings::instance()->get( REFERENCE_CONTAINER_POSITION_SHORTCODE['key'] );
+		$reference_container_position_shortcode = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_POSITION_SHORTCODE['key'] )->get_value();
 		if ( empty( $reference_container_position_shortcode ) ) {
 			$reference_container_position_shortcode = '[[references]]';
 		}
@@ -1124,11 +1116,11 @@ class Parser {
 	public function unify_delimiters( string $content ): string {
 
 		// Get footnotes start and end tag short codes.
-		$starting_tag = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_START );
-		$ending_tag   = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_END );
+		$starting_tag = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_START )->get_value();
+		$ending_tag   = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_END )->get_value();
 		if ( 'userdefined' === $starting_tag || 'userdefined' === $ending_tag ) {
-			$starting_tag = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_START_USER_DEFINED );
-			$ending_tag   = Settings::instance()->get( Settings::FOOTNOTES_SHORT_CODE_END_USER_DEFINED );
+			$starting_tag = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_START_USER_DEFINED )->get_value();
+			$ending_tag   = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_END_USER_DEFINED )->get_value();
 		}
 
 		// If any footnotes short code is empty, return the content without changes.
@@ -1192,6 +1184,8 @@ class Parser {
 
 		// Get footnote delimiter shortcodes and unify them.
 		$content = self::unify_delimiters( $content );
+		print_r('FOO');
+		print_r($content);
 
 		/*
 		 * Checks for balanced footnote delimiters; delimiter syntax validation.
@@ -1201,7 +1195,7 @@ class Parser {
 		 */
 
 		// If enabled.
-		if ( Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ) ) ) {
+		if ( Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE['key'] ->get_value()) ) {
 
 			// Apply different regex depending on whether start shortcode is double/triple opening parenthesis.
 			if ( '((' === self::$start_tag || '(((' === self::$start_tag ) {
@@ -1270,7 +1264,7 @@ class Parser {
 		} while ( preg_match( $value_regex, $content ) );
 
 		// Optionally moves footnotes outside at the end of the label element.
-		$label_issue_solution = Settings::instance()->get( Settings::FOOTNOTES_LABEL_ISSUE_SOLUTION );
+		$label_issue_solution = Settings::instance()->get_setting( ReferrersInLabelsSettingsGroup::FOOTNOTES_LABEL_ISSUE_SOLUTION['key'] )->get_value();
 
 		if ( 'move' === $label_issue_solution ) {
 
@@ -1341,7 +1335,7 @@ class Parser {
 			if ( General::$amp_enabled ) {
 
 				// Whether first clicking a referrer needs to expand the reference container.
-				if ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_COLLAPSE['key'] ) ) ) {
+				if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_COLLAPSE['key'] )->get_value() ) ) {
 
 					// Load 'public/partials/amp-footnote-expand.html'.
 					$template = new Template( Template::PUBLIC, 'amp-footnote-expand' );
@@ -1392,7 +1386,7 @@ class Parser {
 			$footnote_text = substr( $content, $pos_start + strlen( self::$start_tag ), $length - strlen( self::$start_tag ) );
 
 			// Get tooltip text if present.
-			self::$tooltip_shortcode        = Settings::instance()->get( Settings::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER );
+			self::$tooltip_shortcode        = Settings::instance()->get_setting( TooltipTextSettingsGroup::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER['key'] )->get_value();
 			self::$tooltip_shortcode_length = strlen( self::$tooltip_shortcode );
 			$tooltip_text_length            = strpos( $footnote_text, (string) self::$tooltip_shortcode );
 			$has_tooltip_text               = (bool) $tooltip_text_length;
@@ -1416,7 +1410,7 @@ class Parser {
 			 *
 			 * TODO: Split into own method.
 			 */
-			if ( Convert::to_bool( Settings::instance()->get( FOOTNOTE_URL_WRAP_ENABLED['key'] ) ) ) {
+			if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::FOOTNOTE_URL_WRAP_ENABLED['key'] )->get_value() ) ) {
 
 				$footnote_text = preg_replace(
 					'#(?<![-\w\.!~\*\'\(\);]=[\'"])(?<![-\w\.!~\*\'\(\);]=[\'"] )(?<![-\w\.!~\*\'\(\);]=[\'"]  )(?<![-\w\.!~\*\'\(\);]=)(?<!/)((ht|f)tps?://[^\\s<]+)#',
@@ -1432,9 +1426,9 @@ class Parser {
 			if ( self::$hard_links_enabled ) {
 
 				// Get the configurable parts.
-				self::$referrer_link_slug = Settings::instance()->get( Settings::REFERRER_FRAGMENT_ID_SLUG );
-				self::$footnote_link_slug = Settings::instance()->get( Settings::FOOTNOTE_FRAGMENT_ID_SLUG );
-				self::$link_ids_separator = Settings::instance()->get( Settings::HARD_LINK_IDS_SEPARATOR );
+				self::$referrer_link_slug = Settings::instance()->get_setting( HardLinksSettingsGroup::REFERRER_FRAGMENT_ID_SLUG['key'] )->get_value();
+				self::$footnote_link_slug = Settings::instance()->get_setting( HardLinksSettingsGroup::FOOTNOTE_FRAGMENT_ID_SLUG['key'] )->get_value();
+				self::$link_ids_separator = Settings::instance()->get_setting( HardLinksSettingsGroup::HARD_LINK_IDS_SEPARATOR['key'] )->get_value();
 
 				// Streamline ID concatenation.
 				self::$post_container_id_compound  = self::$link_ids_separator;
@@ -1447,11 +1441,11 @@ class Parser {
 
 			// Display the footnote referrers and the tooltips.
 			if ( ! $hide_footnotes_text ) {
-				$index = Convert::index( $footnote_index, Settings::instance()->get( Settings::FOOTNOTES_COUNTER_STYLE ) );
+				$index = Convert::index( $footnote_index, Settings::instance()->get_setting( NumberingSettingsGroup::FOOTNOTES_COUNTER_STYLE['key'] )->get_value() );
 
 				// Display only a truncated footnote text if option enabled.
-				$enable_excerpt = Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED ) );
-				$max_length     = (int) Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH );
+				$enable_excerpt = Settings::instance()->get_setting( TooltipTruncationSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED['key'] )->get_value();
+				$max_length     = Settings::instance()->get_setting( TooltipTruncationSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH['key'] )->get_value();
 
 				// Define excerpt text as footnote text by default.
 				$excerpt_text = $footnote_text;
@@ -1477,7 +1471,7 @@ class Parser {
 						if ( General::$amp_enabled ) {
 
 							// If the reference container is also collapsed by default.
-							if ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_COLLAPSE['key'] ) ) ) {
+							if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_COLLAPSE['key'] )->get_value() ) ) {
 
 								$excerpt_text .= ' on="tap:footnote_references_container_';
 								$excerpt_text .= self::$post_id . '_' . self::$reference_container_id;
@@ -1511,7 +1505,7 @@ class Parser {
 						$excerpt_text .= '>';
 
 						// Configurable read-on button label.
-						$excerpt_text .= Settings::instance()->get( Settings::FOOTNOTES_TOOLTIP_READON_LABEL );
+						$excerpt_text .= Settings::instance()->get_setting( TooltipTruncationSettingsGroup::FOOTNOTES_TOOLTIP_READON_LABEL['key'] )->get_value();
 
 						$excerpt_text .= self::$hard_links_enabled ? '</a>' : '</span>';
 					}
@@ -1522,7 +1516,7 @@ class Parser {
 				 *
 				 * Define the HTML element to use for the referrers.
 				 */
-				if ( Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS ) ) ) {
+				if ( Settings::instance()->get_setting( ReferrersSettingsGroup::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS['key'] )->get_value() ) {
 
 					$sup_span = 'sup';
 
@@ -1565,7 +1559,7 @@ class Parser {
 					$referrer_anchor_element = '';
 
 					// The link element is set independently as it may be needed for styling.
-					if ( Convert::to_bool( Settings::instance()->get( LINK_ELEMENT_ENABLED['key'] ) ) ) {
+					if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::LINK_ELEMENT_ENABLED['key'] )->get_value() ) ) {
 
 						self::$link_span      = 'a';
 						self::$link_open_tag  = '<a>';
@@ -1609,9 +1603,9 @@ class Parser {
 						'note_id'        => $index,
 						'hard-link'      => $footnote_link_argument,
 						'sup-span'       => $sup_span,
-						'before'         => Settings::instance()->get( Settings::FOOTNOTES_STYLING_BEFORE ),
+						'before'         => Settings::instance()->get_setting( ReferrersSettingsGroup::FOOTNOTES_STYLING_BEFORE['key'] )->get_value(),
 						'index'          => $index,
-						'after'          => Settings::instance()->get( Settings::FOOTNOTES_STYLING_AFTER ),
+						'after'          => Settings::instance()->get_setting( ReferrersSettingsGroup::FOOTNOTES_STYLING_AFTER['key'] )->get_value(),
 						'anchor-element' => $referrer_anchor_element,
 						'style'          => $tooltip_style,
 						'text'           => $tooltip_content,
@@ -1625,12 +1619,12 @@ class Parser {
 				// If tooltips are enabled but neither AMP nor alternative are.
 				if ( General::$tooltips_enabled && ! General::$amp_enabled && ! General::$alternative_tooltips_enabled ) {
 
-					$offset_y          = (int) Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y );
-					$offset_x          = (int) Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X );
-					$fade_in_delay     = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_IN_DELAY );
-					$fade_in_duration  = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_IN_DURATION );
-					$fade_out_delay    = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_OUT_DELAY );
-					$fade_out_duration = (int) Settings::instance()->get( Settings::MOUSE_OVER_BOX_FADE_OUT_DURATION );
+					$offset_y          = Settings::instance()->get_setting( TooltipPositionSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y['key'] )->get_value();
+					$offset_x          = Settings::instance()->get_setting( TooltipPositionSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X['key'] )->get_value();
+					$fade_in_delay     = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_IN_DELAY['key'] )->get_value();
+					$fade_in_duration  = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_IN_DURATION['key'] )->get_value();
+					$fade_out_delay    = Settings::instance()->get_settingget( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_OUT_DELAY['key'] )->get_value();
+					$fade_out_duration = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_OUT_DURATION['key'] )->get_value();
 
 					// Fill in 'public/partials/tooltip.html'.
 					$template_tooltip->replace(
@@ -1638,7 +1632,7 @@ class Parser {
 							'post_id'           => self::$post_id,
 							'container_id'      => self::$reference_container_id,
 							'note_id'           => $index,
-							'position'          => Settings::instance()->get( Settings::FOOTNOTES_MOUSE_OVER_BOX_POSITION ),
+							'position'          => Settings::instance()->get_setting( TooltipPositionSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_POSITION['key'] )->get_value(),
 							'offset-y'          => empty( $offset_y ) ? 0 : $offset_y,
 							'offset-x'          => empty( $offset_x ) ? 0 : $offset_x,
 							'fade-in-delay'     => empty( $fade_in_delay ) ? 0 : $fade_in_delay,
@@ -1711,16 +1705,16 @@ class Parser {
 		 */
 
 		// If the backlink symbol is enabled.
-		if ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE['key'] ) ) ) {
+		if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE['key'] )->get_value() ) ) {
 
 			// Get html arrow.
-			$arrow = Convert::get_arrow( Settings::instance()->get( Settings::HYPERLINK_ARROW ) );
+			$arrow = Convert::get_arrow( Settings::instance()->get_setting( BacklinkSymbolSettingsGroup::HYPERLINK_ARROW['key'] )->get_value() );
 			// Set html arrow to the first one if invalid index defined.
 			if ( is_array( $arrow ) ) {
 				$arrow = Convert::get_arrow( 0 );
 			}
 			// Get user defined arrow.
-			$arrow_user_defined = Settings::instance()->get( Settings::HYPERLINK_ARROW_USER_DEFINED );
+			$arrow_user_defined = Settings::instance()->get_setting( BacklinkSymbolSettingsGroup::HYPERLINK_ARROW_USER_DEFINED['key'] )->get_value();
 			if ( ! empty( $arrow_user_defined ) ) {
 				$arrow = $arrow_user_defined;
 			}
@@ -1743,12 +1737,12 @@ class Parser {
 		 * Initially an appended comma was hard-coded in this algorithm for enumerations.
 		 * The comma in enumerations is not universally preferred.
 		 */
-		if ( Convert::to_bool( Settings::instance()->get( BACKLINKS_SEPARATOR_ENABLED['key'] ) ) ) {
+		if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_SEPARATOR_ENABLED['key'] )->get_value() ) ) {
 
 			if ( empty( $separator ) ) {
 
 				// If it is not, check which option is on.
-				$separator_option = Settings::instance()->get( BACKLINKS_SEPARATOR_OPTION['key'] );
+				$separator_option = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_SEPARATOR_OPTION['key'] )->get_value();
 				// TODO: replace with `match` (but currently it breaks the Rector
 				// downgrade to PHP 7.4.
 				// https://github.com/rectorphp/rector/issues/6315
@@ -1763,7 +1757,7 @@ class Parser {
 						$separator = '&nbsp;&#x2013;';
 						break;
 					default:
-						$separator = Settings::instance()->get( BACKLINKS_SEPARATOR_CUSTOM['key'] );
+						$separator = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_SEPARATOR_CUSTOM['key'] )->get_value();
 						break;
 				}
 			}
@@ -1777,12 +1771,12 @@ class Parser {
 		 *
 		 * Initially a dot was appended in the table row template.
 		 */
-		if ( Convert::to_bool( Settings::instance()->get( BACKLINKS_TERMINATOR_ENABLED['key'] ) ) ) {
+		if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_TERMINATOR_ENABLED['key'] )->get_value() ) ) {
 
 			if ( empty( $terminator ) ) {
 
 				// If it is not, check which option is on.
-				$terminator_option = Settings::instance()->get( BACKLINKS_TERMINATOR_OPTION['key'] );
+				$terminator_option = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_TERMINATOR_OPTION['key'] )->get_value();
 				// TODO: replace with `match` (but currently it breaks the Rector
 				// downgrade to PHP 7.4.
 				// https://github.com/rectorphp/rector/issues/6315
@@ -1797,7 +1791,7 @@ class Parser {
 						$terminator = ':';
 						break;
 					default:
-						$terminator = Settings::instance()->get( BACKLINKS_TERMINATOR_CUSTOM['key'] );
+						$terminator = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_TERMINATOR_CUSTOM['key'] )->get_value();
 						break;
 				}
 			}
@@ -1814,7 +1808,7 @@ class Parser {
 		 * Variable number length and proportional character width require explicit line breaks.
 		 * Otherwise, an ordinary space character offering a line break opportunity is inserted.
 		 */
-		$line_break = Convert::to_bool( Settings::instance()->get( BACKLINKS_LINE_BREAKS_ENABLED['key'] ) ) ? '<br />' : ' ';
+		$line_break = ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::BACKLINKS_LINE_BREAKS_ENABLED['key'] )->get_value() ) ? '<br />' : ' ';
 
 		/*
 		 * Line breaks for source readability.
@@ -1828,7 +1822,7 @@ class Parser {
 		/*
 		 * Reference container table row template load.
 		 */
-		$combine_identical_footnotes = Convert::to_bool( Settings::instance()->get( COMBINE_IDENTICAL_FOOTNOTES['key'] ) );
+		$combine_identical_footnotes = ( Settings::instance()->get_setting( NumberingSettingsGroup::COMBINE_IDENTICAL_FOOTNOTES['key'] )->get_value() );
 
 		// AMP compatibility requires a full set of AMP compatible table row templates.
 		if ( General::$amp_enabled ) {
@@ -1836,9 +1830,9 @@ class Parser {
 			if ( $combine_identical_footnotes ) {
 				// The combining template allows for backlink clusters and supports cell clicking for single notes.
 				$template = new Template( Template::PUBLIC, 'amp-reference-container-body-combi' );
-			} elseif ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE['key'] ) ) ) {
+			} elseif ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE['key'] )->get_value() ) ) {
 				$template = new Template( Template::PUBLIC, 'amp-reference-container-body-3column' );
-			} elseif ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH['key'] ) ) ) {
+			} elseif ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH['key'] )->get_value() ) ) {
 				$template = new Template( Template::PUBLIC, 'amp-reference-container-body-switch' );
 			} else {
 
@@ -1849,9 +1843,9 @@ class Parser {
 		} elseif ( $combine_identical_footnotes ) {
 			// The combining template allows for backlink clusters and supports cell clicking for single notes.
 			$template = new Template( Template::PUBLIC, 'reference-container-body-combi' );
-		} elseif ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE['key'] ) ) ) {
+		} elseif ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_3COLUMN_LAYOUT_ENABLE['key'] )->get_value() ) ) {
 			$template = new Template( Template::PUBLIC, 'reference-container-body-3column' );
-		} elseif ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH['key'] ) ) ) {
+		} elseif ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH['key'] )->get_value() ) ) {
 			$template = new Template( Template::PUBLIC, 'reference-container-body-switch' );
 		} else {
 
@@ -1863,7 +1857,7 @@ class Parser {
 		/*
 		 * Switch backlink symbol and footnote number.
 		 */
-		$symbol_switch = Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH['key'] ) );
+		$symbol_switch = ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_BACKLINK_SYMBOL_SWITCH['key'] )->get_value() );
 
 		// Loop through all footnotes found in the page.
 		$num_footnotes = count( self::$footnotes );
@@ -1883,7 +1877,7 @@ class Parser {
 
 			// Get the footnote index string and.
 			// Keep supporting legacy index placeholder.
-			$footnote_id = Convert::index( ( $index + 1 ), Settings::instance()->get( Settings::FOOTNOTES_COUNTER_STYLE ) );
+			$footnote_id = Convert::index( $index + 1, Settings::instance()->get_setting( NumberingSettingsGroup::FOOTNOTES_COUNTER_STYLE['key'] )->get_value() );
 
 			/**
 			 * Case of only one backlink per table row.
@@ -1903,9 +1897,9 @@ class Parser {
 				 *
 				 * @since 2.5.4
 				 */
-				if ( Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE ) ) ) {
+				if ( Settings::instance()->get_setting( HardLinksSettingsGroup::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE['key'] )->get_value() ) {
 					$use_backbutton_hint  = ' title="';
-					$use_backbutton_hint .= Settings::instance()->get( Settings::FOOTNOTES_BACKLINK_TOOLTIP_TEXT );
+					$use_backbutton_hint .= Settings::instance()->get_setting( HardLinksSettingsGroup::FOOTNOTES_BACKLINK_TOOLTIP_TEXT['key'] )->get_value();
 					$use_backbutton_hint .= '"';
 				} else {
 					$use_backbutton_hint = '';
@@ -2028,7 +2022,7 @@ class Parser {
 							$flag_combined = true;
 
 							// Update the footnote ID.
-							$footnote_id = Convert::index( ( $check_index + 1 ), Settings::instance()->get( Settings::FOOTNOTES_COUNTER_STYLE ) );
+							$footnote_id = Convert::index( ( $check_index + 1 ), Settings::instance()->get_setting( NumberingSettingsGroup::FOOTNOTES_COUNTER_STYLE['key'] )->get_value() );
 
 							// Resume composing the backlinks enumeration.
 							$footnote_backlinks .= "$separator</";
@@ -2091,10 +2085,10 @@ class Parser {
 			$has_tooltip_text    = (bool) $tooltip_text_length;
 			if ( $has_tooltip_text ) {
 				$not_tooltip_text          = substr( $footnote_text, ( $tooltip_text_length + self::$tooltip_shortcode_length ) );
-				self::$mirror_tooltip_text = Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE ) );
+				self::$mirror_tooltip_text = Settings::instance()->get_setting( TooltipTextSettingsGroup::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE['key'] )->get_value();
 				if ( self::$mirror_tooltip_text ) {
 					$tooltip_text              = substr( $footnote_text, 0, $tooltip_text_length );
-					$reference_text_introducer = Settings::instance()->get( Settings::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR );
+					$reference_text_introducer = Settings::instance()->get_setting( TooltipTextSettingsGroup::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR['key'] )->get_value();
 					$reference_text            = $tooltip_text . $reference_text_introducer . $not_tooltip_text;
 				} else {
 					$reference_text = $not_tooltip_text;
@@ -2113,7 +2107,7 @@ class Parser {
 					// Used in standard layout W/O COMBINED FOOTNOTES.
 					'post_id'        => self::$post_id,
 					'container_id'   => self::$reference_container_id,
-					'note_id'        => Convert::index( $first_footnote_index, Settings::instance()->get( Settings::FOOTNOTES_COUNTER_STYLE ) ),
+					'note_id'        => Convert::index( $first_footnote_index, Settings::instance()->get_setting( NumberingSettingsGroup::FOOTNOTES_COUNTER_STYLE['key'] )->get_value() ),
 					'link-start'     => self::$link_open_tag,
 					'link-end'       => self::$link_close_tag,
 					'link-span'      => self::$link_span,
@@ -2141,11 +2135,11 @@ class Parser {
 
 		}
 
-		// Call again for robustness when priority levels don’t match any longer.
-		self::$scroll_offset = (int) Settings::instance()->get( Settings::FOOTNOTES_SCROLL_OFFSET );
+		// Call again for robustness when priority levels don't match any longer.
+		self::$scroll_offset = Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_SCROLL_OFFSET['key'] )->get_value();
 
 		// Streamline.
-		$collapse_default = Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_COLLAPSE['key'] ) );
+		$collapse_default = ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_COLLAPSE['key'] )->get_value() );
 
 		/*
 		 * Reference container label.
@@ -2154,14 +2148,14 @@ class Parser {
 		 * In case of empty label that would apply to the left half button character.
 		 * Hence the point in setting an empty label to U+202F NARROW NO-BREAK SPACE.
 		 */
-		$reference_container_label = Settings::instance()->get( REFERENCE_CONTAINER_NAME['key'] );
+		$reference_container_label = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_NAME['key'] )->get_value();
 
 		// Select the reference container template.
 		// Whether AMP compatibility mode is enabled.
 		if ( General::$amp_enabled ) {
 
 			// Whether the reference container is collapsed by default.
-			if ( Convert::to_bool( Settings::instance()->get( REFERENCE_CONTAINER_COLLAPSE['key'] ) ) ) {
+			if ( ( Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_COLLAPSE['key'] )->get_value() ) ) {
 
 				// Load 'public/partials/amp-reference-container-collapsed.html'.
 				$template_container = new Template( Template::PUBLIC, 'amp-reference-container-collapsed' );
@@ -2191,11 +2185,11 @@ class Parser {
 		if ( 'jquery' === General::$script_mode ) {
 
 			$scroll_offset      = ( self::$scroll_offset / 100 );
-			$scroll_up_duration = (int) Settings::instance()->get( Settings::FOOTNOTES_SCROLL_DURATION );
+			$scroll_up_duration = Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_SCROLL_DURATION['key'] )->get_value();
 
-			if ( Convert::to_bool( Settings::instance()->get( Settings::FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY ) ) ) {
+			if ( Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY['key'] )->get_value() ) {
 
-				$scroll_down_duration = (int) Settings::instance()->get( Settings::FOOTNOTES_SCROLL_DOWN_DURATION );
+				$scroll_down_duration = Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_SCROLL_DOWN_DURATION['key'] )->get_value();
 
 			} else {
 
@@ -2203,8 +2197,8 @@ class Parser {
 
 			}
 
-			$scroll_down_delay = (int) Settings::instance()->get( Settings::FOOTNOTES_SCROLL_DOWN_DELAY );
-			$scroll_up_delay   = (int) Settings::instance()->get( Settings::FOOTNOTES_SCROLL_UP_DELAY );
+			$scroll_down_delay = Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_SCROLL_DOWN_DELAY['key'] )->get_value();
+			$scroll_up_delay   = Settings::instance()->get_setting( ScrollingSettingsGroup::FOOTNOTES_SCROLL_UP_DELAY['key'] )->get_value();
 
 		}
 
@@ -2212,7 +2206,7 @@ class Parser {
 			array(
 				'post_id'              => self::$post_id,
 				'container_id'         => self::$reference_container_id,
-				'element'              => Settings::instance()->get( REFERENCE_CONTAINER_LABEL_ELEMENT ),
+				'element'              => Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_ELEMENT ),
 				'name'                 => empty( $reference_container_label ) ? '&#x202F;' : $reference_container_label,
 				'button-style'         => $collapse_default ? '' : 'display: none;',
 				'style'                => $collapse_default ? 'display: none;' : '',

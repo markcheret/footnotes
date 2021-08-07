@@ -95,6 +95,10 @@ class Init {
 		Settings::instance()->register_settings();
 		
 		Settings::instance()->settings_sections['general']->add_settings_section();
+		Settings::instance()->settings_sections['referrers_and_tooltips']->add_settings_section();
+		Settings::instance()->settings_sections['scope_and_priority']->add_settings_section();
+		Settings::instance()->settings_sections['custom_css']->add_settings_section();
+		
 		$this->settings->add_settings_sections();
 		$this->settings->add_settings_fields();
 	}

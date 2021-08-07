@@ -32,7 +32,7 @@ use footnotes\includes\settings\customcss\CustomCSSSettingsSection;
  * @package footnotes
  * @since 1.5.0
  * @since 2.8.0 Renamed class from `Footnotes_Settings` to `Settings`.
- *                          Moved under `footnotes\includes` namespace.
+ *        Moved under `footnotes\includes` namespace.
  */
 class Settings {
 	/**
@@ -52,73 +52,6 @@ class Settings {
 	);
 
 	/**
-	 * Settings container key for the counter style of the footnotes.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_COUNTER_STYLE = 'footnote_inputfield_counter_style';
-
-	/**
-	 * Settings container key for the backlink symbol selection.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const HYPERLINK_ARROW = 'footnote_inputfield_custom_hyperlink_symbol';
-
-	/**
-	 * Settings container key for the user-defined backlink symbol.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const HYPERLINK_ARROW_USER_DEFINED = 'footnote_inputfield_custom_hyperlink_symbol_user';
-
-	/**
-	 * Settings container key to look for footnotes in post excerpts.
-	 *
-	 * @see  EXPERT_LOOKUP_THE_EXCERPT
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @since  2.6.3  Enabled by default.
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_IN_EXCERPT = 'footnote_inputfield_search_in_excerpt';
-
-	/**
-	 * Settings container key for the string before the footnote referrer.
-	 *
-	 * The default footnote referrer surroundings should be square brackets, as
-	 * in English or US American typesetting, for better UX thanks to a more
-	 * button-like appearance, as well as for stylistic consistency with the
-	 * expand-collapse button.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_STYLING_BEFORE = 'footnote_inputfield_custom_styling_before';
-
-	/**
-	 * Settings container key for the string after the footnote referrer.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_STYLING_AFTER = 'footnote_inputfield_custom_styling_after';
-
-	/**
 	 * Settings container key for the Custom CSS.
 	 *
 	 * @var  string
@@ -127,53 +60,7 @@ class Settings {
 	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const CUSTOM_CSS = 'footnote_inputfield_custom_css';
-
-	/**
-	 * Settings container key for the ‘I love footnotes’ text.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_LOVE = 'footnote_inputfield_love';
-
-	/**
-	 * Settings container key to enable the mouse-over box.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.2
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_ENABLED = 'footnote_inputfield_custom_mouse_over_box_enabled';
-
-	/**
-	 * Settings container key to enable tooltip truncation.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.4
-	 * @todo  The mouse-over content truncation should be enabled by default to raise
-	 *              awareness of the functionality, prevent the screen from being filled on
-	 *              mouse-over, and allow the use of ‘Continue Reading’ functionality.
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED = 'footnote_inputfield_custom_mouse_over_box_excerpt_enabled';
-
-	/**
-	 * Settings container key for the mouse-over box to define the max. length of
-	 * the enabled excerpt.
-	 *
-	 * The default truncation length is 200 chars.
-	 *
-	 * @var  int
-	 *
-	 * @since  1.5.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH = 'footnote_inputfield_custom_mouse_over_box_excerpt_length';
-
+	
 	/**
 	 * Settings container key to enable the `the_title` hook.
 	 *
@@ -244,65 +131,6 @@ class Settings {
 	const EXPERT_LOOKUP_WIDGET_TEXT = 'footnote_inputfield_expert_lookup_widget_text';
 
 	/**
-	 * Settings container key for the mouse-over box to define the color.
-	 *
-	 * @var  string
-	 *
-	 * @see FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND
-	 *
-	 * @since  1.5.6
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_COLOR = 'footnote_inputfield_custom_mouse_over_box_color';
-
-	/**
-	 * Settings container key for the mouse-over box to define the background color.
-	 *
-	 * Theme default background color is best, but theme default background color
-	 * doesn't seem to exist.
-	 *
-	 * The default is currently `#ffffff` with `#000000` as the text color.
-	 *
-	 * @var  string
-	 *
-	 * @see FOOTNOTES_MOUSE_OVER_BOX_COLOR
-	 *
-	 * @since  1.5.6
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND = 'footnote_inputfield_custom_mouse_over_box_background';
-
-	/**
-	 * Settings container key for the mouse-over box to define the border width.
-	 *
-	 * @var  int
-	 *
-	 * @since  1.5.6
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH = 'footnote_inputfield_custom_mouse_over_box_border_width';
-
-	/**
-	 * Settings container key for the mouse-over box to define the border color.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.6
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR = 'footnote_inputfield_custom_mouse_over_box_border_color';
-
-	/**
-	 * Settings container key for the mouse-over box to define the border radius.
-	 *
-	 * @var  int
-	 *
-	 * @since  1.5.6
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS = 'footnote_inputfield_custom_mouse_over_box_border_radius';
-
-	/**
 	 * Settings container key for the mouse-over box to define the max. width.
 	 *
 	 * The width should be limited to start with, for the box to have shape.
@@ -315,88 +143,6 @@ class Settings {
 	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH = 'footnote_inputfield_custom_mouse_over_box_max_width';
-
-	/**
-	 * Settings container key for the mouse-over box to define the position.
-	 *
-	 * The default position should not be lateral because of the risk
-	 * the box gets squeezed between note anchor at line end and window edge,
-	 * and top because reading at the bottom of the window is more likely.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.7
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_POSITION = 'footnote_inputfield_custom_mouse_over_box_position';
-
-	/**
-	 * Settings container key for the mouse-over box to define the _x_-offset.
-	 *
-	 * @var  int
-	 *
-	 * @since  1.5.7
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X = 'footnote_inputfield_custom_mouse_over_box_offset_x';
-
-	/**
-	 * Settings container key for the mouse-over box to define the _y_-offset.
-	 *
-	 * The vertical offset must be negative for the box not to cover the current
-	 * line of text.
-	 *
-	 * @var  int
-	 *
-	 * @since  1.5.7
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y = 'footnote_inputfield_custom_mouse_over_box_offset_y';
-
-	/**
-	 * Settings container key for the mouse-over box to define the box-shadow color.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.8
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR = 'footnote_inputfield_custom_mouse_over_box_shadow_color';
-
-	/**
-	 * Settings container key for the label of the Read-on button in truncated tooltips.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_TOOLTIP_READON_LABEL = 'footnote_inputfield_readon_label';
-
-	/**
-	 * Settings container key to enable the alternative tooltips.
-	 *
-	 * These alternative tooltips work around a website-related jQuery UI
-	 * outage. They are low-script but use the AMP-incompatible `onmouseover`
-	 * and `onmouseout` arguments, along with CSS transitions for fade-in/out.
-	 * The very small script is inserted after the plugin's internal stylesheet.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.1
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE = 'footnote_inputfield_custom_mouse_over_box_alternative';
-
-	/**
-	 * Settings container key for the referrer element.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.1
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS = 'footnotes_inputfield_referrer_superscript_tags';
 
 	/**
 	 * Settings container key to get the backlink symbol switch side.
@@ -473,80 +219,6 @@ class Settings {
 	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
 	 */
 	const EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL = 'footnote_inputfield_expert_lookup_the_excerpt_priority_level';
-
-	/**
-	 * Settings container key to enable setting the tooltip font size.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 *
-	 * Tooltip font size reset to legacy by default since 2.1.4;
-	 * Was set to inherit since 2.1.1 as it overrode custom CSS,
-	 * Called mouse over box not tooltip for consistency.
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const MOUSE_OVER_BOX_FONT_SIZE_ENABLED = 'footnotes_inputfield_mouse_over_box_font_size_enabled';
-
-	/**
-	 * Settings container key for the scalar value of the tooltip font size.
-	 *
-	 * @var  float
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const MOUSE_OVER_BOX_FONT_SIZE_SCALAR = 'footnotes_inputfield_mouse_over_box_font_size_scalar';
-
-	/**
-	 * Settings container key for the unit of the tooltip font size.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const MOUSE_OVER_BOX_FONT_SIZE_UNIT = 'footnotes_inputfield_mouse_over_box_font_size_unit';
-
-	/**
-	 * Settings container key for tooltip display fade-in delay.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const MOUSE_OVER_BOX_FADE_IN_DELAY = 'footnotes_inputfield_mouse_over_box_fade_in_delay';
-
-	/**
-	 * Settings container key for tooltip display fade-in duration.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const MOUSE_OVER_BOX_FADE_IN_DURATION = 'footnotes_inputfield_mouse_over_box_fade_in_duration';
-
-	/**
-	 * Settings container key for tooltip display fade-out delay.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const MOUSE_OVER_BOX_FADE_OUT_DELAY = 'footnotes_inputfield_mouse_over_box_fade_out_delay';
-
-	/**
-	 * Settings container key for tooltip display fade-out duration.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.1.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const MOUSE_OVER_BOX_FADE_OUT_DURATION = 'footnotes_inputfield_mouse_over_box_fade_out_duration';
 	
 	/**
 	 * Settings container key for reference container position shortcode.
@@ -585,201 +257,6 @@ class Settings {
 	const CUSTOM_CSS_LEGACY_ENABLE = 'footnote_inputfield_custom_css_legacy_enable';
 
 	/**
-	 * Settings container key for alternative tooltip position.
-	 *
-	 * Fixed-width is for alternative tooltips, cannot reuse `max-width` nor offsets.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.2.5
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION = 'footnotes_inputfield_alternative_mouse_over_box_position';
-
-	/**
-	 * Settings container key for alternative tooltip _x_-offset.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.2.5
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X = 'footnotes_inputfield_alternative_mouse_over_box_offset_x';
-
-	/**
-	 * Settings container key for alternative tooltip _y_-offset.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.2.5
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y = 'footnotes_inputfield_alternative_mouse_over_box_offset_y';
-
-	/**
-	 * Settings container key for alternative tooltip width.
-	 *
-	 * @var  int
-	 *
-	 * @since  2.2.5
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH = 'footnotes_inputfield_alternative_mouse_over_box_width';
-
-	/**
-	 * Settings container key to enable hard links.
-	 *
-	 * When the alternative reference container is enabled, hard links are too.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.3.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_HARD_LINKS_ENABLE = 'footnotes_inputfield_hard_links_enable';
-
-	/**
-	 * Settings container key for the fragment ID slug in referrers.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.3.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const REFERRER_FRAGMENT_ID_SLUG = 'footnotes_inputfield_referrer_fragment_id_slug';
-
-	/**
-	 * Settings container key for the fragment ID slug in footnotes.
-
-	 * @var  string
-	 *
-	 * @since  2.3.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTE_FRAGMENT_ID_SLUG = 'footnotes_inputfield_footnote_fragment_id_slug';
-
-	/**
-	 * Settings container key for the ID separator in fragment IDs.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.3.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const HARD_LINK_IDS_SEPARATOR = 'footnotes_inputfield_hard_link_ids_separator';
-
-	/**
-	 * Settings container key to enable backlink tooltips.
-	 *
-	 * When hard links are enabled, clicks on the backlinks are logged in the
-	 * browsing history, along with clicks on the referrers.
-	 * This tooltip hints to use the backbutton instead, so the history gets
-	 * streamlined again.
-	 * See {@link https://wordpress.org/support/topic/making-it-amp-compatible/#post-13837359
-	 * here} for more information.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_BACKLINK_TOOLTIP_ENABLE = 'footnotes_inputfield_backlink_tooltip_enable';
-
-	/**
-	 * Settings container key to configure the backlink tooltip.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_BACKLINK_TOOLTIP_TEXT = 'footnotes_inputfield_backlink_tooltip_text';
-
-	/**
-	 * Settings container key to configure the tooltip excerpt delimiter.
-	 *
-	 * The first implementation used a fixed shortcode provided in the changelog,
-	 * but footnotes should have freely-configurable shortcodes.
-	 *
-	 * Tooltips can display another content than the footnote entry in the
-	 * reference container. The trigger is a shortcode in the footnote text
-	 * separating the tooltip text from the note. That is consistent with what
-	 * WordPress does for excerpts.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER = 'footnotes_inputfield_tooltip_excerpt_delimiter';
-
-	/**
-	 * Settings container key to enable mirroring the tooltip excerpt in the
-	 * reference container.
-	 *
-	 * Tooltips, even jQuery-driven, may be hard to consult on mobiles.
-	 * This option allows users to read the tooltip content in the reference
-	 * container too. See {@link https://wordpress.org/support/topic/change-tooltip-text/#post-13935050
-	 * here} for more information, and {@link https://wordpress.org/support/topic/change-tooltip-text/#post-13935488
-	 * here} for why this must not be the default behavior.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE = 'footnotes_inputfield_tooltip_excerpt_mirror_enable';
-
-	/**
-	 * Settings container key to configure the tooltip excerpt separator in the
-	 * reference container.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR = 'footnotes_inputfield_tooltip_excerpt_mirror_separator';
-
-	/**
-	 * Settings container key to enable superscript style normalization.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.4
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT = 'footnotes_inputfield_referrers_normal_superscript';
-
-	/**
-	 * Settings container key to enable AMP compatibility mode.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.6.0
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_AMP_COMPATIBILITY_ENABLE = 'footnotes_inputfield_amp_compatibility_enable';
-
-	/**
-	 * Settings container key to set the solution of the input element label issue.
-	 *
-	 * If hard links are not enabled, clicking a referrer in an input element label
-	 * toggles the state of the input element the label is connected to.
-	 * Beside hard links, other solutions include moving footnotes off the label and
-	 * append them, or disconnecting this label from the input element (discouraged).
-	 * See {@link https://wordpress.org/support/topic/compatibility-issue-with-wpforms/#post-14212318
-	 * here} for more information.
-	 *
-	 * @var  string
-	 *
-	 * @since  2.5.12
-	 * @todo  Review, remove?
-	 * @todo  Move to `SettingsSection`/`SettingsGroup`.
-	 */
-	const FOOTNOTES_LABEL_ISSUE_SOLUTION = 'footnotes_inputfield_label_issue_solution';
-
-	/**
 	 * Contains all Settings option group slugs.
 	 *
 	 * Each option group relates to a single tab on the admin. dashboard.
@@ -805,94 +282,13 @@ class Settings {
 	 * @since  2.8.0  Rename from `default` to `default_settings`.
 	 * @deprecated
 	 *
-	 * @todo  Delete.
+	 * @todo  Delete once moved to `SettingsSection`/`SettingsGroup`s.
 	 */
 	private array $default_settings = array(
-
-		// General settings.
-		'footnotes_storage'            => array(
-
-			// AMP compatibility.
-			self::FOOTNOTES_AMP_COMPATIBILITY_ENABLE      => '',
-
-			// Footnotes numbering.
-			self::FOOTNOTES_COUNTER_STYLE                 => 'arabic_plain',
-			//self::COMBINE_IDENTICAL_FOOTNOTES             => 'yes',
-
-			self::FOOTNOTES_HARD_LINKS_ENABLE             => 'no',
-			self::REFERRER_FRAGMENT_ID_SLUG               => 'r',
-			self::FOOTNOTE_FRAGMENT_ID_SLUG               => 'f',
-			self::HARD_LINK_IDS_SEPARATOR                 => '+',
-			self::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE       => 'yes',
-			self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT         => 'Alt+ ←',
-
-			// Footnotes in excerpts.
-			self::FOOTNOTES_IN_EXCERPT                    => 'manual',
-
-			// Footnotes love.
-			self::FOOTNOTES_LOVE                          => 'no',
-		),
-
+	
 		// Referrers and tooltips.
 		'footnotes_storage_custom'     => array(
-
-			// Backlink symbol.
-			self::HYPERLINK_ARROW                          => 0,
-			self::HYPERLINK_ARROW_USER_DEFINED             => '',
-
-			// Referrers.
-			self::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS      => 'yes',
-			self::FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT    => 'no',
-			self::FOOTNOTES_STYLING_BEFORE                 => '[',
-			self::FOOTNOTES_STYLING_AFTER                  => ']',
-
-			// Referrers in labels.
-			self::FOOTNOTES_LABEL_ISSUE_SOLUTION           => 'none',
-
-			// Tooltips.
-			self::FOOTNOTES_MOUSE_OVER_BOX_ENABLED         => 'yes',
-			self::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE     => 'no',
-
-			// Tooltip position.
-			self::FOOTNOTES_MOUSE_OVER_BOX_POSITION        => 'top center',
-			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_POSITION => 'top right',
-			self::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X        => 0,
-			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_X => -50,
-			self::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_Y        => -7,
-			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_OFFSET_Y => 24,
-
-			// Tooltip dimensions.
-			self::FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH       => 450,
-			self::FOOTNOTES_ALTERNATIVE_MOUSE_OVER_BOX_WIDTH => 400,
-
-			// Tooltip timing.
-			self::MOUSE_OVER_BOX_FADE_IN_DELAY             => 0,
-			self::MOUSE_OVER_BOX_FADE_IN_DURATION          => 200,
-			self::MOUSE_OVER_BOX_FADE_OUT_DELAY            => 400,
-			self::MOUSE_OVER_BOX_FADE_OUT_DURATION         => 200,
-
-			// Tooltip truncation.
-			self::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_ENABLED => 'yes',
-			self::FOOTNOTES_MOUSE_OVER_BOX_EXCERPT_LENGTH  => 200,
-			self::FOOTNOTES_TOOLTIP_READON_LABEL           => 'Continue reading',
-
-			// Tooltip text.
-			self::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER      => '[[/tooltip]]',
-			self::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_ENABLE  => 'no',
-			self::FOOTNOTES_TOOLTIP_EXCERPT_MIRROR_SEPARATOR => ' — ',
-
-			// Tooltip appearance.
-			self::MOUSE_OVER_BOX_FONT_SIZE_ENABLED         => 'yes',
-			self::MOUSE_OVER_BOX_FONT_SIZE_SCALAR          => 13,
-			self::MOUSE_OVER_BOX_FONT_SIZE_UNIT            => 'px',
-
-			self::FOOTNOTES_MOUSE_OVER_BOX_COLOR           => '#000000',
-			self::FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND      => '#ffffff',
-			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH    => 1,
-			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR    => '#cccc99',
-			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_RADIUS   => 0,
-			self::FOOTNOTES_MOUSE_OVER_BOX_SHADOW_COLOR    => '#666666',
-
+		
 			// Your existing Custom CSS code.
 			self::CUSTOM_CSS                               => '',
 
@@ -940,7 +336,7 @@ class Settings {
 	 * @since  1.5.0
 	 * @deprecated
 	 *
-	 * @todo  Delete.
+	 * @todo  Delete once all `SettingsSection`/`SettingsGroup`s set up.
 	 */
 	public array $settings = array();
 	
@@ -1072,7 +468,6 @@ class Settings {
 		return false;
 	}
 	
-	
 	protected function load_options_group(): void {
 		$options_group = get_option($this->options_group_slug);
 		
@@ -1131,6 +526,7 @@ class Settings {
 		// Return a singleton of this class.
 		return self::$instance;
 	}
+	
 	/**
 	 * Loads all settings from each option group.
 	 *

@@ -26,7 +26,16 @@ abstract class SettingsGroup {
 	 *
 	 * @since  2.8.0
 	 */
-	const GROUP_ID = '';
+	const GROUP_ID = 'undefined';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'undefined';
 	
 	/**
 	 * The setting classes.
@@ -105,7 +114,7 @@ abstract class SettingsGroup {
 		}
 	}
 	
-	public function add_settings_fields(Layout\SettingsPage $component): void {
+	public function add_settings_fields(Layout\SettingsPage $component): void {	  
 		foreach ($this->settings as $setting) {			
 			add_settings_field(
 				$setting->key, 

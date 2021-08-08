@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace footnotes\general;
 
-use footnotes\includes\{Settings, Convert, Template};
+use footnotes\includes\{Settings, Config, Convert, Template};
 
 /**
  * @todo Replace with constant imports.
@@ -39,6 +39,8 @@ use footnotes\includes\settings\referrersandtooltips\{
   TooltipTimingSettingsGroup,
   TooltipTruncationSettingsGroup
 };
+use footnotes\includes\settings\scopeandpriority\WordPressHooksSettingsGroup;
+use footnotes\includes\settings\customcss\CustomCSSSettingsGroup;
 
 /**
  * Searches and replaces the footnotes and generates the reference container.
@@ -297,11 +299,11 @@ class Parser {
 	 */
 	public function register_hooks(): void {
 		// Get values from settings.
-		$the_title_priority    = (int) Settings::instance()->get( Settings::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL );
-		$the_content_priority  = (int) Settings::instance()->get( Settings::EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL );
-		$the_excerpt_priority  = (int) Settings::instance()->get( Settings::EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL );
-		$widget_title_priority = (int) Settings::instance()->get( Settings::EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL );
-		$widget_text_priority  = (int) Settings::instance()->get( Settings::EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL );
+		$the_title_priority    = Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL['key'] )->get_value();
+		$the_content_priority  = Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL['key'] )->get_value();
+		$the_excerpt_priority  = Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL['key'] )->get_value();
+		$widget_title_priority = Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL['key'] )->get_value();
+		$widget_text_priority  = Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL['key'] )->get_value();
 
 		// PHP_INT_MAX can be set by -1.
 		$the_title_priority    = ( -1 === $the_title_priority ) ? PHP_INT_MAX : $the_title_priority;
@@ -324,7 +326,7 @@ class Parser {
 			PHP_INT_MAX
 		);
 
-		if ( Convert::to_bool( Settings::instance()->get( Settings::EXPERT_LOOKUP_THE_TITLE ) ) ) {
+		if ( Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_THE_TITLE['key'] )->get_value() ) {
 			add_filter(
 				'the_title',
 				fn( string $content): string => $this->footnotes_in_title( $content ),
@@ -333,7 +335,7 @@ class Parser {
 		}
 
 		// Configurable priority level for reference container relative positioning; default 98.
-		if ( Convert::to_bool( Settings::instance()->get( Settings::EXPERT_LOOKUP_THE_CONTENT ) ) ) {
+		if ( Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_THE_CONTENT['key'] )->get_value() ) {
 			add_filter(
 				'the_content',
 				fn( string $content): string => $this->footnotes_in_content( $content ),
@@ -375,7 +377,7 @@ class Parser {
 			);
 		}
 
-		if ( Convert::to_bool( Settings::instance()->get( Settings::EXPERT_LOOKUP_THE_EXCERPT ) ) ) {
+		if ( Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_THE_EXCERPT['key'] )->get_value() ) {
 			/**
 			 * Adds a filter to the excerpt hook.
 			 *
@@ -391,7 +393,7 @@ class Parser {
 			);
 		}
 
-		if ( Convert::to_bool( Settings::instance()->get( Settings::EXPERT_LOOKUP_WIDGET_TITLE ) ) ) {
+		if ( Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_WIDGET_TITLE['key'] )->get_value() ) {
 			/**
 			 * TODO
 			 */
@@ -402,7 +404,7 @@ class Parser {
 			);
 		}
 
-		if ( Convert::to_bool( Settings::instance()->get( Settings::EXPERT_LOOKUP_WIDGET_TEXT ) ) ) {
+		if ( Settings::instance()->get_setting( WordPressHooksSettingsGroup::EXPERT_LOOKUP_WIDGET_TEXT['key'] )->get_value() ) {
 			/**
 			 * TODO
 			 */
@@ -699,11 +701,7 @@ class Parser {
 		 * Set custom CSS to override settings, not conversely.
 		 * Legacy Custom CSS is used until it’s set to disappear after dashboard tab migration.
 		 */
-		if ( Convert::to_bool( Settings::instance()->get( Settings::CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
-			echo Settings::instance()->get( Settings::CUSTOM_CSS );
-			echo "\r\n";
-		}
-		echo Settings::instance()->get( Settings::CUSTOM_CSS_NEW );
+		echo Settings::instance()->get_setting( CustomCSSSettingsGroup::CUSTOM_CSS['key'] )->get_value();
 
 		// Insert end tag without switching out of PHP.
 		echo "\r\n</style>\r\n";
@@ -1116,11 +1114,11 @@ class Parser {
 	public function unify_delimiters( string $content ): string {
 
 		// Get footnotes start and end tag short codes.
-		$starting_tag = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_START )->get_value();
-		$ending_tag   = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_END )->get_value();
+		$starting_tag = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_START['key'] )->get_value();
+		$ending_tag   = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_END['key'] )->get_value();
 		if ( 'userdefined' === $starting_tag || 'userdefined' === $ending_tag ) {
-			$starting_tag = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_START_USER_DEFINED )->get_value();
-			$ending_tag   = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_END_USER_DEFINED )->get_value();
+			$starting_tag = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_START_USER_DEFINED['key'] )->get_value();
+			$ending_tag   = Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTES_SHORT_CODE_END_USER_DEFINED['key'] )->get_value();
 		}
 
 		// If any footnotes short code is empty, return the content without changes.
@@ -1184,8 +1182,6 @@ class Parser {
 
 		// Get footnote delimiter shortcodes and unify them.
 		$content = self::unify_delimiters( $content );
-		print_r('FOO');
-		print_r($content);
 
 		/*
 		 * Checks for balanced footnote delimiters; delimiter syntax validation.
@@ -1195,7 +1191,7 @@ class Parser {
 		 */
 
 		// If enabled.
-		if ( Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE['key'] ->get_value()) ) {
+		if ( Settings::instance()->get_setting( ShortcodeSettingsGroup::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE['key']) ->get_value() ) {
 
 			// Apply different regex depending on whether start shortcode is double/triple opening parenthesis.
 			if ( '((' === self::$start_tag || '(((' === self::$start_tag ) {
@@ -1623,7 +1619,7 @@ class Parser {
 					$offset_x          = Settings::instance()->get_setting( TooltipPositionSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_OFFSET_X['key'] )->get_value();
 					$fade_in_delay     = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_IN_DELAY['key'] )->get_value();
 					$fade_in_duration  = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_IN_DURATION['key'] )->get_value();
-					$fade_out_delay    = Settings::instance()->get_settingget( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_OUT_DELAY['key'] )->get_value();
+					$fade_out_delay    = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_OUT_DELAY['key'] )->get_value();
 					$fade_out_duration = Settings::instance()->get_setting( TooltipTimingSettingsGroup::MOUSE_OVER_BOX_FADE_OUT_DURATION['key'] )->get_value();
 
 					// Fill in 'public/partials/tooltip.html'.
@@ -2206,7 +2202,7 @@ class Parser {
 			array(
 				'post_id'              => self::$post_id,
 				'container_id'         => self::$reference_container_id,
-				'element'              => Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_ELEMENT ),
+				'element'              => Settings::instance()->get_setting( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_ELEMENT['key'] )->get_value(),
 				'name'                 => empty( $reference_container_label ) ? '&#x202F;' : $reference_container_label,
 				'button-style'         => $collapse_default ? '' : 'display: none;',
 				'style'                => $collapse_default ? 'display: none;' : '',

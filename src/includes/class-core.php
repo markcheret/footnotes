@@ -192,7 +192,6 @@ class Core {
 		require_once plugin_dir_path( __DIR__ ) . 'public/class-general.php';
 
 		$this->loader = new Loader();
-
 	}
 	/**
 	 * Define the locale for this plugin for internationalization.

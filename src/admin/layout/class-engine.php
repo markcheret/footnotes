@@ -416,6 +416,20 @@ abstract class Engine {
 			isset($readonly) ? ' readonly="readonly"' : '',
 			$disabled ? ' disabled': ''
 		) );
+	} 
+	
+	protected function add_input_textarea( array $args ): void {
+		extract( $args );
+				
+		echo ( sprintf(
+			'<textarea name="%s" id="%s" rows="4" cols="50" style="%s" %s%s>%s</textarea>',
+			$name,
+			$name,
+			$style ?? '',
+			isset($readonly) ? ' readonly="readonly"' : '',
+			$disabled ? ' disabled': '',
+			$value,
+		) );
 	}
 	
 	protected function add_input_number( array $args ): void {
@@ -484,7 +498,6 @@ abstract class Engine {
 		);
 	}
 	
-
 	/**************************************************************************
 	 * NEW METHODS END
 	 **************************************************************************/

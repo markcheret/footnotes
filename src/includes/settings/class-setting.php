@@ -18,7 +18,55 @@ use footnotes\includes\Settings;
  * @package footnotes
  * @since 2.8.0
  */
-class Setting {			
+class Setting {	
+	/**
+	 * Options for the custom width units (per cent is a ratio, not a unit).
+	 *
+	 * @var  array
+	 *
+	 * @since  2.8.0
+	 */
+	const WIDTH_UNIT_OPTIONS = array(
+		'%'   => 'per cent',
+		'px'  => 'pixels',
+		'rem' => 'root em',
+		'em'  => 'em',
+		'vw'  => 'viewport width',
+	);
+	
+	/**
+	 * Options for the custom font size units (per cent is a ratio, not a unit).
+	 *
+	 * @var  array
+	 *
+	 * @since  2.8.0
+	 */
+	const FONT_SIZE_UNIT_OPTIONS = array( 
+		  'em'  => 'em',
+			'rem' => 'rem',
+			'px'  => 'pixels',
+			'pt'  => 'points',
+			'pc'  => 'picas',
+			'mm'  => 'millimeters',
+			'%'   => 'per cent',
+	);
+	
+	/**
+	 * Options for the HTML text elements.
+	 *
+	 * @var  array
+	 *
+	 * @since  2.8.0
+	 */
+	const TEXT_ELEMENT_OPTIONS = array(
+			'p'  => 'paragraph',
+			'h2' => 'heading 2',
+			'h3' => 'heading 3',
+			'h4' => 'heading 4',
+			'h5' => 'heading 5',
+			'h6' => 'heading 6',
+	);
+	
 	/**
 	 * Setting value.
 	 *

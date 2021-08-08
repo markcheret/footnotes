@@ -64,14 +64,7 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 		'default_value' => 'p',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => array(
-			'p'  => 'paragraph',
-			'h2' => 'heading 2',
-			'h3' => 'heading 3',
-			'h4' => 'heading 4',
-			'h5' => 'heading 5',
-			'h6' => 'heading 6',
-		),
+		'input_options' => Setting::TEXT_ELEMENT_OPTIONS
 	);
 
 	/**
@@ -577,7 +570,7 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 		'default_value' => 'px',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => Settings::WIDTH_UNIT_OPTIONS,
+		'input_options' => Setting::WIDTH_UNIT_OPTIONS,
 		'enabled_by'    => self::BACKLINKS_COLUMN_WIDTH_ENABLED,
 	);
 
@@ -644,7 +637,7 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 		'default_value' => 'px',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => Settings::WIDTH_UNIT_OPTIONS,
+		'input_options' => Setting::WIDTH_UNIT_OPTIONS,
 		'enabled_by'    => self::BACKLINKS_COLUMN_MAX_WIDTH_ENABLED,
 	);
 
@@ -688,28 +681,6 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 		'input_type'    => 'checkbox',
 	);
 
-	/**
-	 * Settings container key for the Expert mode.
-	 *
-	 * Since the removal of the `the_post` hook, the tab is no danger zone any longer.
-	 * All users, not experts only, need to be able to control relative positioning.
-	 *
-	 * @var  string
-	 *
-	 * @since  1.5.5
-	 * @since  2.1.6  Setting deprecated.
-	 * @deprecated
-	 * @todo  Un-deprecate or delete.
-	 */
-	const FOOTNOTES_EXPERT_MODE = array(
-		'key'           => 'footnote_inputfield_enable_expert_mode',
-		'name'          => 'Expert Mode',
-		'description'   => 'DEPRECATED',
-		'default_value' => true,
-		'type'          => 'boolean',
-		'input_type'    => 'checkbox',
-	);
-
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::REFERENCE_CONTAINER_NAME['key']          => $this->add_setting( self::REFERENCE_CONTAINER_NAME ),
@@ -744,7 +715,6 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 			self::BACKLINKS_COLUMN_MAX_WIDTH_UNIT['key']   => $this->add_setting( self::BACKLINKS_COLUMN_MAX_WIDTH_UNIT ),
 			self::BACKLINKS_LINE_BREAKS_ENABLED['key']     => $this->add_setting( self::BACKLINKS_LINE_BREAKS_ENABLED ),
 			self::LINK_ELEMENT_ENABLED['key']              => $this->add_setting( self::LINK_ELEMENT_ENABLED ),
-			self::FOOTNOTES_EXPERT_MODE['key']             => $this->add_setting( self::FOOTNOTES_EXPERT_MODE ),
 		);
 
 		$this->load_values( $options );

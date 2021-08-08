@@ -109,9 +109,12 @@ abstract class SettingsGroup {
 	protected function load_values(array|false $options): void {
 	  if ( ! $options ) return;
 		
+		// TODO remove unfound settings from option
 		foreach ( $options as $setting_key => $setting_value ) {
-			$this->settings[$setting_key]->set_value( $setting_value );
-		}
+		  $setting = $this->settings[$setting_key];
+		  if ($setting) $setting->set_value( $setting_value );
+		  else trigger_error("Setting with key {$setting_key} not found, skipping...", E_USER_WARNING);  
+	  }
 	}
 	
 	public function add_settings_fields(Layout\SettingsPage $component): void {	  

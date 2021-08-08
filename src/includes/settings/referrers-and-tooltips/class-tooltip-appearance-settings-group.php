@@ -90,15 +90,7 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'default_value' => 'px',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => array( 
-		  'em'  => 'em',
-			'rem' => 'rem',
-			'px'  => 'pixels',
-			'pt'  => 'points',
-			'pc'  => 'picas',
-			'mm'  => 'millimeters',
-			'%'   => 'per cent',
-		),
+		'input_options' => Setting::FONT_SIZE_UNIT_OPTIONS
 	);
 
 	/**

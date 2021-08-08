@@ -97,6 +97,9 @@ class SettingsPage extends Engine {
 				case 'text':
 					$this->add_input_text($args);
 					return;
+				case 'textarea':
+					$this->add_input_textarea($args);
+					return;
 				case 'number':
 					$this->add_input_number($args);
 					return;
@@ -117,169 +120,7 @@ class SettingsPage extends Engine {
 	/**************************************************************************
 	 * NEW METHODS END
 	 **************************************************************************/
-
-	/**
-	 * Displays the Custom CSS box.
-	 *
-	 * @since  1.5.0
-	 */
-	public function custom_css() {
-		// Load template file.
-		$template = new Template( Template::DASHBOARD, 'customize-css' );
-		// Replace all placeholders.
-		$template->replace(
-			array(
-				'label-css'       => $this->add_label( Settings::CUSTOM_CSS, __( 'Your existing Custom CSS code:', 'footnotes' ) ),
-				'css'             => $this->add_textarea( Settings::CUSTOM_CSS ),
-				'description-css' => __( 'Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe, and the code remains valid while visible. Please copy-paste the content into the new text area under the new tab.', 'footnotes' ),
-
-				// phpcs:disable Squiz.PHP.CommentedOutCode.Found
-				// CSS classes are listed in the template.
-				// Localized notices are dropped to ease translators' task.
-
-				// "label-class-1" => ".footnote_plugin_tooltip_text",.
-				// "class-1" => $this->add_text(__("superscript, Footnotes index", $this->plugin_name)),.
-
-				// "label-class-2" => ".footnote_tooltip",.
-				// "class-2" => $this->add_text(__("mouse-over box, tooltip for each superscript", $this->plugin_name)),.
-
-				// "label-class-3" => ".footnote_plugin_index",.
-				// "class-3" => $this->add_text(__("1st column of the Reference Container, Footnotes index", $this->plugin_name)),.
-
-				// "label-class-4" => ".footnote_plugin_text",.
-				// "class-4" => $this->add_text(__("2nd column of the Reference Container, Footnote text", $this->plugin_name)).
-				// phpcs:enable
-			)
-		);
-		// Display template with replaced placeholders.
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $template->get_content();
-		// phpcs:enable
-	}
-
-	/**
-	 * Displays transitional legacy Custom CSS box.
-	 *
-	 * @since  2.2.2
-	 * @deprecated
-	 */
-	public function custom_css_migration(): void {
-
-		// Options for Yes/No select box.
-		$enabled = array(
-			'yes' => __( 'Yes', 'footnotes' ),
-			'no'  => __( 'No', 'footnotes' ),
-		);
-
-		// Load template file.
-		$template = new Template( Template::DASHBOARD, 'customize-css-migration' );
-		// Replace all placeholders.
-		$template->replace(
-			array(
-				'label-css'               => $this->add_label( Settings::CUSTOM_CSS, __( 'Your existing Custom CSS code:', 'footnotes' ) ),
-				'css'                     => $this->add_textarea( Settings::CUSTOM_CSS ),
-				'description-css'         => __( 'Custom CSS migrates to a dedicated tab. This text area is intended to keep your data safe, and the code remains valid while visible. Please copy-paste the content into the new text area below. Set Show legacy to No. Save twice.', 'footnotes' ),
-
-				'label-show-legacy'       => $this->add_label( Settings::CUSTOM_CSS_LEGACY_ENABLE, 'Show legacy Custom CSS settings containers:' ),
-				'show-legacy'             => $this->add_select_box( Settings::CUSTOM_CSS_LEGACY_ENABLE, $enabled ),
-				'notice-show-legacy'      => __( 'Please set to No when you are done migrating, for the legacy Custom CSS containers to disappear.', 'footnotes' ),
-				// Translators: %s: Referres and tooltips.
-				'description-show-legacy' => sprintf( __( 'The legacy Custom CSS under the %s tab and its mirror here are emptied, and the select box saved as No, when the settings tab is saved while the settings container is not displayed.', 'footnotes' ), __( 'Referrers and tooltips', 'footnotes' ) ),
-
-			)
-		);
-		// Display template with replaced placeholders.
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $template->get_content();
-		// phpcs:enable
-	}
-
-	/**
-	 * Displays the new Custom CSS box.
-	 *
-	 * @since  2.2.2
-	 */
-	public function custom_css_new(): void {
-		// Load template file.
-		$template = new Template( Template::DASHBOARD, 'customize-css-new' );
-		// Replace all placeholders.
-		$template->replace(
-			array(
-				'css'      => $this->add_textarea( Settings::CUSTOM_CSS_NEW ),
-
-				'headline' => $this->add_text( __( 'Recommended CSS classes:', 'footnotes' ) ),
-
-			)
-		);
-		// Display template with replaced placeholders.
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $template->get_content();
-		// phpcs:enable
-	}
-
-	/**
-	 * Displays available Hooks to look for Footnote short codes.
-	 *
-	 * Priority level was initially a hard-coded default
-	 * shows ‘9223372036854775807’ in the numbox
-	 * empty should be interpreted as `PHP_INT_MAX`,
-	 * but a numbox cannot be set to empty, see {@link https://github.com/Modernizr/Modernizr/issues/171
-	 * here}
-	 * define -1 as `PHP_INT_MAX` instead
-	 *
-	 * @since  1.5.5
-	 */
-	public function lookup_hooks(): void {
-		// Load template file.
-		$template = new Template( Template::DASHBOARD, 'expert-lookup' );
-
-		// Replace all placeholders.
-		$template->replace(
-			array(
-				'description-1'         => __( 'The priority level determines whether Footnotes is executed timely before other plugins, and how the reference container is positioned relative to other features.', 'footnotes' ),
-				// Translators: 1: 99; 2: 1200.
-				'description-2'         => sprintf( __( 'For the_content, this figure must be lower than %1$d so that certain strings added by a plugin running at %1$d may not be mistaken as a footnote. This makes also sure that the reference container displays above a feature inserted by a plugin running at %2$d.', 'footnotes' ), 99, 1200 ),
-				// Translators: 1: PHP_INT_MAX; 2: 0; 3: -1; 4: 'PHP_INT_MAX'.
-				'description-3'         => sprintf( __( '%1$d is lowest priority, %2$d is highest. To set priority level to lowest, set it to %3$d, interpreted as %1$d, the constant %4$s.', 'footnotes' ), PHP_INT_MAX, 0, -1, 'PHP_INT_MAX' ),
-				'description-4'         => __( 'The widget_text hook must be enabled either when footnotes are present in theme text widgets, or when Elementor accordions or toggles shall have a reference container per section. If they should not, this hook must be disabled.', 'footnotes' ),
-
-				'head-hook'             => __( 'WordPress hook function name', 'footnotes' ),
-				'head-checkbox'         => __( 'Activate', 'footnotes' ),
-				'head-numbox'           => __( 'Priority level', 'footnotes' ),
-				'head-url'              => __( 'WordPress documentation', 'footnotes' ),
-
-				'label-the-title'       => $this->add_label( Settings::EXPERT_LOOKUP_THE_TITLE, 'the_title' ),
-				'the-title'             => $this->add_checkbox( Settings::EXPERT_LOOKUP_THE_TITLE ),
-				'priority-the-title'    => $this->add_num_box( Settings::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
-				'url-the-title'         => 'https://developer.wordpress.org/reference/hooks/the_title/',
-
-				'label-the-content'     => $this->add_label( Settings::EXPERT_LOOKUP_THE_CONTENT, 'the_content' ),
-				'the-content'           => $this->add_checkbox( Settings::EXPERT_LOOKUP_THE_CONTENT ),
-				'priority-the-content'  => $this->add_num_box( Settings::EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
-				'url-the-content'       => 'https://developer.wordpress.org/reference/hooks/the_content/',
-
-				'label-the-excerpt'     => $this->add_label( Settings::EXPERT_LOOKUP_THE_EXCERPT, 'the_excerpt' ),
-				'the-excerpt'           => $this->add_checkbox( Settings::EXPERT_LOOKUP_THE_EXCERPT ),
-				'priority-the-excerpt'  => $this->add_num_box( Settings::EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
-				'url-the-excerpt'       => 'https://developer.wordpress.org/reference/functions/the_excerpt/',
-
-				'label-widget-title'    => $this->add_label( Settings::EXPERT_LOOKUP_WIDGET_TITLE, 'widget_title' ),
-				'widget-title'          => $this->add_checkbox( Settings::EXPERT_LOOKUP_WIDGET_TITLE ),
-				'priority-widget-title' => $this->add_num_box( Settings::EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
-				'url-widget-title'      => 'https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_title',
-
-				'label-widget-text'     => $this->add_label( Settings::EXPERT_LOOKUP_WIDGET_TEXT, 'widget_text' ),
-				'widget-text'           => $this->add_checkbox( Settings::EXPERT_LOOKUP_WIDGET_TEXT ),
-				'priority-widget-text'  => $this->add_num_box( Settings::EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL, -1, PHP_INT_MAX ),
-				'url-widget-text'       => 'https://codex.wordpress.org/Plugin_API/Filter_Reference/widget_text',
-			)
-		);
-		// Display template with replaced placeholders.
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $template->get_content();
-		// phpcs:enable
-	}
-
+	 
 	/**
 	 * Displays a short introduction to the plugin.
 	 *
@@ -419,34 +260,6 @@ class SettingsPage extends Engine {
 	 */
 	protected function get_meta_boxes(): array {
 		$meta_boxes = array();
-
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'amp-compat', __( 'AMP compatibility', 'footnotes' ), 'amp_compat' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'numbering', __( 'Footnotes numbering', 'footnotes' ), 'numbering' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'scrolling', __( 'Scrolling behavior', 'footnotes' ), 'scrolling' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'hard-links', __( 'URL fragment ID configuration', 'footnotes' ), 'hard_links' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'reference-container', __( 'Reference container', 'footnotes' ), 'reference_container' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'excerpts', __( 'Footnotes in excerpts', 'footnotes' ), 'excerpts' );
-		$meta_boxes[] = $this->add_meta_box( 'settings', 'love', Config::PLUGIN_HEADING_NAME . '&nbsp;' . Config::LOVE_SYMBOL_HEADING, 'love' );
-
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'superscript', __( 'Referrers', 'footnotes' ), 'superscript' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'label-solution', __( 'Referrers in labels', 'footnotes' ), 'label_solution' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box', __( 'Tooltips', 'footnotes' ), 'mouseover_box' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-position', __( 'Tooltip position', 'footnotes' ), 'mouseover_box_position' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-dimensions', __( 'Tooltip dimensions', 'footnotes' ), 'mouseover_box_dimensions' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-timing', __( 'Tooltip timing', 'footnotes' ), 'mouseover_box_timing' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-truncation', __( 'Tooltip truncation', 'footnotes' ), 'mouseover_box_truncation' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-text', __( 'Tooltip text', 'footnotes' ), 'mouseover_box_text' );
-		$meta_boxes[] = $this->add_meta_box( 'customize', 'mouse-over-box-appearance', __( 'Tooltip appearance', 'footnotes' ), 'mouseover_box_appearance' );
-		if ( Convert::to_bool( Settings::instance()->get( Settings::CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
-			$meta_boxes[] = $this->add_meta_box( 'customize', 'custom-css', __( 'Your existing Custom CSS code', 'footnotes' ), 'custom_css' );
-		}
-
-		$meta_boxes[] = $this->add_meta_box( 'expert', 'lookup', __( 'WordPress hooks with priority level', 'footnotes' ), 'lookup_hooks' );
-
-		if ( Convert::to_bool( Settings::instance()->get( Settings::CUSTOM_CSS_LEGACY_ENABLE ) ) ) {
-			$meta_boxes[] = $this->add_meta_box( 'customcss', 'custom-css-migration', __( 'Your existing Custom CSS code', 'footnotes' ), 'custom_css_migration' );
-		}
-		$meta_boxes[] = $this->add_meta_box( 'customcss', 'custom-css-new', __( 'Custom CSS', 'footnotes' ), 'custom_css_new' );
 
 		$meta_boxes[] = $this->add_meta_box( 'how-to', 'help', __( 'Brief introduction: How to use the plugin', 'footnotes' ), 'help' );
 		$meta_boxes[] = $this->add_meta_box( 'how-to', 'donate', __( 'Help us to improve our Plugin', 'footnotes' ), 'donate' );

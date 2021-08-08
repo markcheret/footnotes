@@ -35,6 +35,8 @@ class TooltipDimensionsSettingsGroup extends SettingsGroup {
 	/**
 	 * Settings container key for the mouse-over box to define the max. width.
 	 *
+	 * The width should be limited to start with, for the box to have shape.
+	 *
 	 * @var  array
 	 *
 	 * @since  1.5.6

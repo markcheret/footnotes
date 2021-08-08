@@ -91,9 +91,7 @@ class Init {
 	 *
 	 * @since  1.5.0
 	 */
-	public function initialize_settings(): void {
-		Settings::instance()->register_settings();
-		
+	public function initialize_settings(): void {		
 		Settings::instance()->settings_sections['general']->add_settings_section();
 		Settings::instance()->settings_sections['referrers_and_tooltips']->add_settings_section();
 		Settings::instance()->settings_sections['scope_and_priority']->add_settings_section();

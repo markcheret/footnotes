@@ -15,7 +15,7 @@ require_once plugin_dir_path( __DIR__ ) . 'class-settings-section.php';
 use footnotes\includes\settings\SettingsSection;
 
 // Import settings groups.
-//use footnotes\includes\settings\custom-css\...;
+use footnotes\includes\settings\customcss\CustomCSSSettingsGroup;
 
 /**
  * Class defining plugin referrer and tooltips settings.
@@ -52,13 +52,12 @@ class CustomCSSSettingsSection extends SettingsSection {
 	protected function load_dependencies(): void {
 	  parent::load_dependencies();
 	  
-		//require_once plugin_dir_path( __DIR__ ) . 'general/class-reference-container-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'custom-css/class-custom-css-settings-group.php';
 	}
 	
 	protected function add_settings_groups(): void {
 		$this->settings_groups = array (
-			// Add settings groups.
-			//...::GROUP_ID => new ...($this->options_group_slug, $this->section_slug),
+			CustomCSSSettingsGroup::GROUP_ID => new CustomCSSSettingsGroup($this->options_group_slug, $this->section_slug),
 		);
 	}
 }

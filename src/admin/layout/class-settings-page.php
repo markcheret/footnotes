@@ -43,11 +43,27 @@ class SettingsPage extends Engine {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since  2.8.0
-	 * @param  string $plugin_name  The name of this plugin.
 	 */
-	public function __construct( string $plugin_name ) {
-		$this->plugin_name = $plugin_name;
-	}
+	public function __construct(
+		/**
+		 * The ID of this plugin.
+		 *
+		 * @access  private
+		 * @var  string  $plugin_name  The ID of this plugin.
+		 *
+		 * @since  2.8.0
+		 */
+		protected string $plugin_name,
+		
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		protected Settings $settings	
+  ) {
+  }
 
 	/**
 	 * Returns a priority index.
@@ -71,16 +87,16 @@ class SettingsPage extends Engine {
 		
 		switch ($active_section->get_section_slug()) {
 			case 'footnotes-settings':
-				Settings::instance()->settings_sections['general']->add_settings_fields($this);
+				$this->settings->settings_sections['general']->add_settings_fields($this);
 				break;
 			case 'footnotes-customize':
-				Settings::instance()->settings_sections['referrers_and_tooltips']->add_settings_fields($this);
+				$this->settings->settings_sections['referrers_and_tooltips']->add_settings_fields($this);
 				break;
 			case 'footnotes-expert':
-				Settings::instance()->settings_sections['scope_and_priority']->add_settings_fields($this);
+				$this->settings->settings_sections['scope_and_priority']->add_settings_fields($this);
 				break;
 			case 'footnotes-customcss':
-				Settings::instance()->settings_sections['custom_css']->add_settings_fields($this);
+				$this->settings->settings_sections['custom_css']->add_settings_fields($this);
 				break;
 			case 'footnotes-how-to':
 				print_r("Demo goes here");
@@ -98,13 +114,13 @@ class SettingsPage extends Engine {
 					$this->add_input_text($args);
 					return;
 				case 'textarea':
-					$this->add_input_textarea($args);
+					$this->add_textarea($args);
 					return;
 				case 'number':
 					$this->add_input_number($args);
 					return;
 				case 'select':
-					$this->add_input_select($args);
+					$this->add_select($args);
 					return;
 				case 'checkbox':
 					$this->add_input_checkbox($args);

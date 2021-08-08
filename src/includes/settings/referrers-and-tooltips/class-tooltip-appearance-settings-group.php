@@ -68,11 +68,11 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'key'           => 'footnotes_inputfield_mouse_over_box_font_size_scalar',
 		'name'          => 'Font Size',
 		'description'   => 'By default, the font size is set to equal the surrounding text.',
-		'default_value' => 13,
+		'default_value' => 13.0,
 		'type'          => 'number',
 		'input_type'    => 'number',
-		'input_max'     => 50,
-		'input_min'     => 0
+		'input_max'     => 50.0,
+		'input_min'     => 0.0
 	);
 
 	/**
@@ -147,11 +147,11 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'key'           => 'footnote_inputfield_custom_mouse_over_box_border_width',
 		'name'          => 'Border Width',
 		'description'   => 'pixels; 0 for borderless',
-		'default_value' => 1,
+		'default_value' => 1.0,
 		'type'          => 'number',
 		'input_type'    => 'number',
-		'input_max' => 4,
-		'input_min' => 0,
+		'input_max' => 4.0,
+		'input_min' => 0.0,
 	);
 
 	/**

@@ -34,26 +34,6 @@ use footnotes\includes\settings\referrersandtooltips\TooltipsSettingsGroup;
 class General {
 
 	/**
-	 * The ID of this plugin.
-	 *
-	 * @since  2.8.0
-
-	 * @access  private
-	 * @var  string  $plugin_name  The ID of this plugin.
-	 */
-	private string $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since  2.8.0
-
-	 * @access  private
-	 * @var  string  $version  The current version of this plugin.
-	 */
-	private string $version;
-
-	/**
 	 * The reference container widget.
 	 *
 	 * @since  2.8.0
@@ -120,18 +100,41 @@ class General {
 	 * @param  string $plugin_name  The name of this plugin.
 	 * @param  string $version  The version of this plugin.
 	 */
-	public function __construct( string $plugin_name, string $version ) {
+	public function __construct(
+		/**
+		 * The ID of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Footnotes::$plugin_name
+		 */
+		private string $plugin_name,
 
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
+		/**
+		 * The version of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Footnotes::$version
+		 */
+		private string $version,
+		
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		private Settings $settings	
+  ) {
 
 		$this->load_dependencies();
 
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
-		self::$amp_enabled                  = Settings::instance()->get_setting( AMPCompatSettingsGroup::FOOTNOTES_AMP_COMPATIBILITY_ENABLE['key'] )->get_value();
-		self::$tooltips_enabled             = Settings::instance()->get_setting( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ENABLED['key'] )->get_value();
-		self::$alternative_tooltips_enabled = Settings::instance()->get_setting( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE['key'] )->get_value();
-		self::$script_mode                  = Settings::instance()->get_setting( ReferenceContainerSettingsGroup::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE['key'] );
+		self::$amp_enabled                  = $this->settings->get_setting_value( AMPCompatSettingsGroup::FOOTNOTES_AMP_COMPATIBILITY_ENABLE['key'] );
+		self::$tooltips_enabled             = $this->settings->get_setting_value( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ENABLED['key'] );
+		self::$alternative_tooltips_enabled = $this->settings->get_setting_value( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE['key'] );
+		self::$script_mode                  = $this->settings->get_setting_value( ReferenceContainerSettingsGroup::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE['key'] );
 	}
 
 	/**
@@ -156,7 +159,7 @@ class General {
 
 		$this->reference_container_widget = new Widget\Reference_Container( $this->plugin_name );
 
-		$this->task = new Parser();
+		$this->task = new Parser($this->settings);
 	}
 	
 	/**
@@ -193,7 +196,7 @@ class General {
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
-			$page_layout_option = Settings::instance()->get( FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			$page_layout_option = $this->settings->get( FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			switch ( $page_layout_option ) {
 				case 'reference-container':
 					$layout_mode = '1';

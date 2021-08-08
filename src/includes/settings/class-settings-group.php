@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings;
 
+use footnotes\includes\Settings;
 use footnotes\admin\layout as Layout;
 
 /**
@@ -47,7 +48,7 @@ abstract class SettingsGroup {
 	protected array $setting_classes;
 	
 	/**
-	 * The general settings.
+	 * The settings in this group.
 	 *
 	 * @var  Setting[]
 	 *
@@ -72,7 +73,15 @@ abstract class SettingsGroup {
 		 *
 		 * @since  2.8.0
 		 */
-		protected string $section_slug
+		protected string $section_slug,
+		
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		protected Settings $settings_obj
 	) {		
 		$this->load_dependencies();
 		
@@ -102,7 +111,8 @@ abstract class SettingsGroup {
 			$input_max ?? null,
 			$input_min ?? null,
 			$enabled_by['key'] ?? null,
-			$overridden_by['key'] ?? null
+			$overridden_by['key'] ?? null,
+			$this->settings_obj
 		);
 	}
 	
@@ -111,9 +121,8 @@ abstract class SettingsGroup {
 		
 		// TODO remove unfound settings from option
 		foreach ( $options as $setting_key => $setting_value ) {
-		  $setting = $this->settings[$setting_key];
-		  if ($setting) $setting->set_value( $setting_value );
-		  else trigger_error("Setting with key {$setting_key} not found, skipping...", E_USER_WARNING);  
+		  if ( array_key_exists( $setting_key, $this->settings ) )
+		    $this->settings[$setting_key]->set_value( $setting_value );
 	  }
 	}
 	

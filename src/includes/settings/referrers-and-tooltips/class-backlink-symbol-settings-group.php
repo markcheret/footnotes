@@ -40,27 +40,28 @@ class BacklinkSymbolSettingsGroup extends SettingsGroup {
 	 * @since  1.5.0
 	 * @since  2.8.0  Move from `Settings` to `ReferenceContainerSettingsGroup`.
 	 *                Convert from `string` to `array`.
+	 *                Convert setting data type from `string` to `int`.
 	 */
 	const HYPERLINK_ARROW = array(
 		'key'           => 'footnote_inputfield_custom_hyperlink_symbol',
 		'name'          => 'Select the Backlink Symbol',
 		'description'   => 'This symbol is used in the reference container. But this setting pre-existed under this tab and cannot be moved to another one.',
 		'default_value' => 0,
-		'type'          => 'string',
+		'type'          => 'number',
 		'input_type'    => 'select',
-		'input_options' => array( 
-		  '&#8593;', 
-		  '&#8613;', 
-		  '&#8607;', 
-		  '&#8617;', 
-		  '&#8626;', 
-		  '&#8629;', 
-		  '&#8657;', 
-		  '&#8673;', 
-		  '&#8679;', 
-		  '&#65514;' 
-		),
-		//'overridden_by' => self::HYPERLINK_ARROW_USER_DEFINED,
+	  'input_options' => array( 
+      '&#8593;', 
+      '&#8613;', 
+      '&#8607;', 
+      '&#8617;', 
+      '&#8626;', 
+      '&#8629;', 
+      '&#8657;', 
+      '&#8673;', 
+      '&#8679;', 
+      '&#65514;' 
+    ),
+		'overridden_by' => self::HYPERLINK_ARROW_USER_DEFINED,
 	);
 	
 	/**
@@ -78,7 +79,6 @@ class BacklinkSymbolSettingsGroup extends SettingsGroup {
 		'description'   => 'Your input overrides the selection.',
 		'type'          => 'string',
 		'input_type'    => 'text',
-		'enabled_by'    => self::HYPERLINK_ARROW
 	);
 
 	protected function add_settings( array|false $options ): void {

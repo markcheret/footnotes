@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace footnotes\includes;
 
+use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 
 /**
@@ -32,7 +33,7 @@ use footnotes\includes\settings\customcss\CustomCSSSettingsSection;
  * @package footnotes
  * @since 1.5.0
  * @since 2.8.0 Renamed class from `Footnotes_Settings` to `Settings`.
- *        Moved under `footnotes\includes` namespace.
+ *              Moved under `footnotes\includes` namespace.
  */
 class Settings {
 
@@ -65,15 +66,6 @@ class Settings {
 	/**********************************************************************
 	 *      SETTINGS STORAGE.
 	 **********************************************************************/
-	 
-	/**
-	 * Stores a singleton reference of this class.
-	 *
-	 * @since  1.5.0
-	 *
-	 * @todo  Still needed?
-	 */
-	private static ?Settings $instance = null;
 
 	/**
 	 * Loads all Settings from each WordPress Settings Container.
@@ -84,10 +76,10 @@ class Settings {
 		$this->load_dependencies();
 		
 		$this->settings_sections = array(
-			'general' => new GeneralSettingsSection('footnotes_storage', 'footnotes-settings', 'General Settings'),
-			'referrers_and_tooltips' => new ReferrersAndTooltipsSettingsSection('footnotes_storage_custom', 'footnotes-customize', 'Referrers and Tooltips'),
-			'scope_and_priority' => new ScopeAndPrioritySettingsSection('footnotes_storage_expert', 'footnotes-expert', 'Scope and Priority'),
-			'custom_css' => new CustomCSSSettingsSection('footnotes_storage_custom_css', 'footnotes-customcss', 'Custom CSS'),
+			'general' => new GeneralSettingsSection('footnotes_storage', 'footnotes-settings', 'General Settings', $this ),
+			'referrers_and_tooltips' => new ReferrersAndTooltipsSettingsSection('footnotes_storage_custom', 'footnotes-customize', 'Referrers and Tooltips', $this),
+			'scope_and_priority' => new ScopeAndPrioritySettingsSection('footnotes_storage_expert', 'footnotes-expert', 'Scope and Priority', $this),
+			'custom_css' => new CustomCSSSettingsSection('footnotes_storage_custom_css', 'footnotes-customcss', 'Custom CSS', $this),
 		);
 	}
 	
@@ -118,7 +110,7 @@ class Settings {
 	 * Retrieve a setting by its key.
 	 *
 	 * @param  string  $setting_key  The key of the setting to search for.
-	 * @return  ?Setting Either the setting object, or `null` if non exists.
+	 * @return  ?Setting Either the setting object, or `null` if none exists.
 	 *
 	 * @since  2.8.0
 	 *
@@ -129,6 +121,48 @@ class Settings {
 			$setting = $settings_section->get_setting($setting_key);
 			
 			if ($setting) return $setting;
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Retrieve a setting's value by its key.
+	 *
+	 * @param  string  $setting_key  The key of the setting to search for.
+	 * @return  mixed Either the setting's value, or `null` if the setting does not exist.
+	 *
+	 * @since  2.8.0
+	 *
+	 * @todo  This is an _O(n)_ linear search. Explore more scaleable alternatives.
+	 * @todo  How to handle settings with a value of `null`?
+	 */
+	public function get_setting_value( string $setting_key ): mixed {		
+		foreach ($this->settings_sections as $settings_section) {
+			$setting = $settings_section->get_setting($setting_key);
+			
+			if ($setting) return $setting->get_value();
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Retrieve a setting's defaultvalue by its key.
+	 *
+	 * @param  string  $setting_key  The key of the setting to search for.
+	 * @return  mixed Either the setting's default value, or `null` if the setting does not exist.
+	 *
+	 * @since  2.8.0
+	 *
+	 * @todo  This is an _O(n)_ linear search. Explore more scaleable alternatives.
+	 * @todo  How to handle settings with a default value of `null`?
+	 */
+	public function get_setting_default_value( string $setting_key ): mixed {		
+		foreach ($this->settings_sections as $settings_section) {
+			$setting = $settings_section->get_setting($setting_key);
+			
+			if ($setting) return $setting->get_default_value();
 		}
 		
 		return null;
@@ -148,19 +182,6 @@ class Settings {
 	}
 
 	/**
-	 * Returns the default value(s) of a specific Settings Container.
-	 *
-	 * @param  int $index  Settings Container index.
-	 * @return  (string|int)[]  Settings Container default value(s).
-	 *
-	 * @since  1.5.6
-	 * @deprecated
-	 */
-	public function get_defaults( int $index ): array {
-		return $this->default_settings[ $this->get_options_group_slug[ $index ] ];
-	}
-
-	/**
 	 * Updates a whole Setting Container on save.
 	 *
 	 * @param  string  $options_group_slug  Options group slug to save.
@@ -169,7 +190,7 @@ class Settings {
 	 * @since  1.5.0
 	 * @since  2.8.0  Change first parameter type from `int` to `string`.
 	 */
-	public function save_options( string $options_group_slug, array $new_values ): bool {
+	public function save_options_group( string $options_group_slug, array $new_values ): bool {
 		if ( update_option( $options_group_slug, $new_values ) ) {
 			foreach ($this->settings_sections as $settings_section) {
 				if ($settings_section->get_options_group_slug() === $options_group_slug) {
@@ -181,86 +202,23 @@ class Settings {
 		return false;
 	}
 	
-	protected function load_options_group(): void {
-		$options_group = get_option($this->options_group_slug);
-		
-		if (!! $options_group) {
-			foreach ($options_group as $setting_key => $setting_value) {
-				$this->set_setting_value($setting_key, $setting_value);
-			}
-		}
-	}
-
-	/**
-	 * Returns the value of specified Setting.
-	 *
-	 * @param  string $key  Setting key.
-	 * @return  string|int|null  Setting value, or `null` if setting key is invalid.
-	 *
-	 * @since  1.5.0
-	 * @todo Add return type.
-	 */
-	public function get( string $key ) {
-		return $this->settings[ $key ] ?? null;
-	}
-
-	/**
-	 * Returns a singleton of this class.
-	 *
-	 * @since  1.5.0
-	 * @todo  Remove?
-	 */
-	public static function instance(): self {
-		// No instance defined yet, load it.
-		if ( ! self::$instance ) {
-			self::$instance = new self();
-		}
-		// Return a singleton of this class.
-		return self::$instance;
-	}
-	
 	/**
 	 * Loads all settings from each option group.
 	 *
 	 * @since  1.5.0
-	 * @since  2.8.0  Renamed from `load_all()` to `load_options()`.
+	 * @since  2.8.0  Renamed from `load_all()` to `load_options_groups()`.
 	 */
-	private function load_options(): void {
-		// Clear current settings.
-		$this->settings = array();
+	protected function load_options_groups(): void {
+	  foreach ($this->options_group_slug as $options_group_slug) {
+		  $options_group = get_option($options_group_slug);
 		
-		foreach ($this->options_group_slugs as $options_group_slug) {
-			$this->settings[$options_group_slug] = $this->load_option( $options_group_slug );
+		  if (!! $options_group) {
+		    foreach ($this->settings_sections as $settings_section) {
+				  if ($settings_section->get_options_group_slug() === $options_group_slug) {
+					  $settings_section->load_options_group();
+				  }
+			  }
+		  }
 		}
-	}
-	
-	/**
-	 * Loads all settings from a given option group.
-	 *
-	 * @param  string  $options_group  Option group slug.
-	 * @return  (string|int)[]  Loaded settings (or defaults if specified option group is empty).
-	 *
-	 * @since  1.5.0
-	 * @since  2.8.0  Renamed from `load()` to `load_option()`.
-	 */
-	private function load_option(string $options_group_slug): array {
-		// Load all settings from option group.
-		$options_group = get_option( $options_group_slug );
-		
-		// No settings found, set them to their default value.
-		if ( empty( $options_group ) ) {
-			print_r("Options group ".$options_group_slug." is empty!");
-			return $this->default_settings[$options_group_slug];
-		}
-				
-		foreach ( $this->default_settings[$options_group_slug] as $setting_name => $setting_value ) {
-			// Available setting not found in the option group.
-			if ( ! array_key_exists( $setting_name, $options_group ) ) {
-				// Define the setting with its default value.
-				$options_group[ $setting_name ] = $setting_value;
-			}
-		}
-		// Return settings loaded from option group.
-		return $options_group;
 	}
 }

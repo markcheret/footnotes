@@ -69,8 +69,8 @@ class ScrollingSettingsGroup extends SettingsGroup {
 		'default_value' => 0,
 		'type'          => 'integer',
 		'input_type'    => 'number',
-		'input_max'     => 0,
-		'input_min'     => 20000,
+		'input_max'     => 20000,
+		'input_min'     => 0,
 	);
 
 	/**
@@ -89,8 +89,8 @@ class ScrollingSettingsGroup extends SettingsGroup {
 		'default_value' => 0,
 		'type'          => 'integer',
 		'input_type'    => 'number',
-		'input_max'     => 0,
-		'input_min'     => 20000,
+		'input_max'     => 20000,
+		'input_min'     => 0,
 	);
 
 	/**
@@ -109,8 +109,8 @@ class ScrollingSettingsGroup extends SettingsGroup {
 		'default_value' => 20,
 		'type'          => 'integer',
 		'input_type'    => 'number',
-		'input_max'     => 0,
-		'input_min'     => 100,
+		'input_max'     => 100,
+		'input_min'     => 0,
 	);
 
 	/**
@@ -129,8 +129,8 @@ class ScrollingSettingsGroup extends SettingsGroup {
 		'default_value' => 380,
 		'type'          => 'integer',
 		'input_type'    => 'number',
-		'input_max'     => 0,
-		'input_min'     => 20000,
+		'input_max'     => 20000,
+		'input_min'     => 0,
 	);
 
 	/**
@@ -168,8 +168,8 @@ class ScrollingSettingsGroup extends SettingsGroup {
 		'default_value' => 150,
 		'type'          => 'integer',
 		'input_type'    => 'number',
-		'input_max'     => 0,
-		'input_min'     => 20000,
+		'input_max'     => 20000,
+		'input_min'     => 0,
 		'enabled_by'    => self::FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY,
 	);
 

@@ -12,7 +12,10 @@ namespace footnotes\includes\settings\general;
 
 require_once plugin_dir_path( __DIR__ ) . 'class-settings-section.php';
 
+use footnotes\includes\Settings;
+
 use footnotes\includes\settings\SettingsSection;
+
 use footnotes\includes\settings\general\ReferenceContainerSettingsGroup;
 use footnotes\includes\settings\general\ScrollingSettingsGroup;
 use footnotes\includes\settings\general\ShortcodeSettingsGroup;
@@ -41,7 +44,15 @@ class GeneralSettingsSection extends SettingsSection {
 	public function __construct(
 		$options_group_slug,
 		$section_slug,
-		$title
+		$title,
+		
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		protected Settings $settings
 	) {
 		$this->options_group_slug = $options_group_slug;
 		$this->section_slug       = $section_slug;
@@ -69,14 +80,14 @@ class GeneralSettingsSection extends SettingsSection {
 
 	protected function add_settings_groups(): void {
 		$this->settings_groups = array(
-			AMPCompatSettingsGroup::GROUP_ID          => new AMPCompatSettingsGroup( $this->options_group_slug, $this->section_slug ),
-			ReferenceContainerSettingsGroup::GROUP_ID => new ReferenceContainerSettingsGroup( $this->options_group_slug, $this->section_slug ),
-			ScrollingSettingsGroup::GROUP_ID          => new ScrollingSettingsGroup( $this->options_group_slug, $this->section_slug ),
-			ShortcodeSettingsGroup::GROUP_ID          => new ShortcodeSettingsGroup( $this->options_group_slug, $this->section_slug ),
-			NumberingSettingsGroup::GROUP_ID          => new NumberingSettingsGroup( $this->options_group_slug, $this->section_slug ),
-			HardLinksSettingsGroup::GROUP_ID          => new HardLinksSettingsGroup( $this->options_group_slug, $this->section_slug ),
-			ExcerptsSettingsGroup::GROUP_ID           => new ExcerptsSettingsGroup( $this->options_group_slug, $this->section_slug ),
-			LoveSettingsGroup::GROUP_ID               => new LoveSettingsGroup( $this->options_group_slug, $this->section_slug ),
+			AMPCompatSettingsGroup::GROUP_ID          => new AMPCompatSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
+			ReferenceContainerSettingsGroup::GROUP_ID => new ReferenceContainerSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
+			ScrollingSettingsGroup::GROUP_ID          => new ScrollingSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
+			ShortcodeSettingsGroup::GROUP_ID          => new ShortcodeSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
+			NumberingSettingsGroup::GROUP_ID          => new NumberingSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
+			HardLinksSettingsGroup::GROUP_ID          => new HardLinksSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
+			ExcerptsSettingsGroup::GROUP_ID           => new ExcerptsSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
+			LoveSettingsGroup::GROUP_ID               => new LoveSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
 		);
 	}
 }

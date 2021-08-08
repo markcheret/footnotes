@@ -12,6 +12,8 @@ namespace footnotes\includes\settings\scopeandpriority;
 
 require_once plugin_dir_path( __DIR__ ) . 'class-settings-section.php';
 
+use footnotes\includes\Settings;
+
 use footnotes\includes\settings\SettingsSection;
 
 use footnotes\includes\settings\scopeandpriority\WordPressHooksSettingsGroup;
@@ -35,7 +37,15 @@ class ScopeAndPrioritySettingsSection extends SettingsSection {
 	public function __construct(
 		$options_group_slug,
 		$section_slug,
-		$title
+		$title,
+		
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		private Settings $settings
 	) {
 		$this->options_group_slug = $options_group_slug;
 		$this->section_slug = $section_slug;
@@ -56,7 +66,7 @@ class ScopeAndPrioritySettingsSection extends SettingsSection {
 	
 	protected function add_settings_groups(): void {
 		$this->settings_groups = array (
-			WordPressHooksSettingsGroup::GROUP_ID => new WordPressHooksSettingsGroup($this->options_group_slug, $this->section_slug),
+			WordPressHooksSettingsGroup::GROUP_ID => new WordPressHooksSettingsGroup($this->options_group_slug, $this->section_slug, $this->settings ),
 		);
 	}
 }

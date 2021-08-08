@@ -101,10 +101,10 @@ abstract class Engine {
 	 */
 	public function add_settings_sections(): void {
 		$this->sections = array(
-			Settings::instance()->settings_sections['general']->get_section_slug() => Settings::instance()->settings_sections['general'],
-			Settings::instance()->settings_sections['referrers_and_tooltips']->get_section_slug() => Settings::instance()->settings_sections['referrers_and_tooltips'],
-			Settings::instance()->settings_sections['scope_and_priority']->get_section_slug() => Settings::instance()->settings_sections['scope_and_priority'],
-			Settings::instance()->settings_sections['custom_css']->get_section_slug() => Settings::instance()->settings_sections['custom_css'],
+			$this->settings->settings_sections['general']->get_section_slug() => $this->settings->settings_sections['general'],
+			$this->settings->settings_sections['referrers_and_tooltips']->get_section_slug() => $this->settings->settings_sections['referrers_and_tooltips'],
+			$this->settings->settings_sections['scope_and_priority']->get_section_slug() => $this->settings->settings_sections['scope_and_priority'],
+			$this->settings->settings_sections['custom_css']->get_section_slug() => $this->settings->settings_sections['custom_css'],
 		);
 		
 		/*foreach ( $this->get_sections() as $section ) {
@@ -325,7 +325,7 @@ abstract class Engine {
 		$return          = array();
 		$return['id']    = $setting_key_name;
 		$return['name']  = $setting_key_name;
-		$return['value'] = esc_attr( Settings::instance()->get( $setting_key_name ) );
+		$return['value'] = esc_attr( $this->settings->get( $setting_key_name ) );
 		return $return;
 	}
 
@@ -370,39 +370,21 @@ abstract class Engine {
 		 */
 		return sprintf( '<label for="%s">%s</label>', $setting_name, $caption );
 	}
-
-	/**
-	 * Constructs the HTML for a text 'input' element.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name  Setting key.
-	 * @param  int    $max_length  Maximum length of the input. Default length 999 chars.
-	 * @param  bool   $readonly  Set the input to be read only. Default `false`.
-	 * @param  bool   $hidden  Set the input to be hidden. Default `false`.
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
-	 */
-	protected function add_text_box( string $setting_name, int $max_length = 999, bool $readonly = false, bool $hidden = false ): string {
-		$style = '';
-		if ( $hidden ) {
-			$style .= 'display:none;';
-		}
-		return sprintf(
-			'<input type="text" name="%s" id="%s" maxlength="%d" style="%s" value="%s" %s/>',
-			$setting_name,
-			$setting_name,
-			$max_length,
-			$style,
-			get_option($setting_name),
-			$readonly ? 'readonly="readonly"' : ''
-		);
-	}
 	
 	/**************************************************************************
 	 * NEW METHODS
 	 **************************************************************************/
 	 
+	/**
+	 * Constructs the HTML for a text 'input' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.0
+	 * @since  2.8.0  Rename function from 'add_text_box' to 'add_input_text'.
+	 *                Replace multiple arguments with single 'args' array.
+	 */
 	protected function add_input_text( array $args ): void {
 		extract( $args );
 				
@@ -418,7 +400,16 @@ abstract class Engine {
 		) );
 	} 
 	
-	protected function add_input_textarea( array $args ): void {
+	/**
+	 * Constructs the HTML for a 'textarea' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.0
+	 * @since  2.8.0  Replace 'p_str_setting_name' argument with 'args' array.
+	 */
+	protected function add_textarea( array $args ): void {
 		extract( $args );
 				
 		echo ( sprintf(
@@ -432,22 +423,44 @@ abstract class Engine {
 		) );
 	}
 	
+	/**
+	 * Constructs the HTML for a numeric 'input' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.0
+	 * @since  2.1.4  Add step argument and 'number_format()' to allow decimals
+	 * @since  2.8.0  Rename function from 'add_num_box' to 'add_input_number'.
+	 *                Replace multiple arguments with single 'args' array.
+	 */
 	protected function add_input_number( array $args ): void {
 		extract( $args );
 				
 		echo ( sprintf(
-			'<input type="number" name="%s" id="%s"%s%s value="%s"%s%s/>',
+			'<input type="number" name="%s" id="%s"%s%s value="%s"%s%s%s/>',
 			$name,
 			$name,
 			isset($max) ? ' max="'.$max.'"' : '',
 			isset($min) ? ' min="'.$min.'"' : '',
-			$value,
+			is_float($value) ? number_format( $value, 1 ) : $value,
+			is_float($value) ? ' step="0.1"' : '',
 			isset($readonly) ? ' readonly="readonly"' : '',
 			$disabled ? ' disabled': ''
 		) );
 	}
-	
-	protected function add_input_select( array $args ): void {
+
+	/**
+	 * Constructs the HTML for a 'select' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.0
+	 * @since  2.8.0  Rename function from 'add_select_box' to 'add_select'.
+	 *                Replace multiple arguments with single 'args' array.
+	 */
+	protected function add_select( array $args ): void {
 		extract( $args );
 		
 		if (!isset($options)) trigger_error("No options passed to 'select' element.", E_USER_ERROR);
@@ -459,8 +472,9 @@ abstract class Engine {
 				'<option value="%s"%s>%s</option>',
 				$option_value,
 				// Only check for equality, not identity, WRT backlink symbol arrows.
+				// TODO convert to strict comparison
 				// phpcs:disable WordPress.PHP.StrictComparisons.LooseComparison
-				$option_value == $value ? ' selected' : '',
+				$value == $option_value ? ' selected' : '',
 				// phpcs:enable WordPress.PHP.StrictComparisons.LooseComparison
 				$option_text
 			);
@@ -475,6 +489,16 @@ abstract class Engine {
 		) );
 	}
 	
+	/**
+	 * Constructs the HTML for a checkbox 'input' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.0
+	 * @since  2.8.0  Rename function from 'add_checkbox' to 'add_input_checkbox'.
+	 *                Replace 'p_str_setting_name' argument with 'args' array.
+	 */
 	protected function add_input_checkbox( array $args ): void {
 		extract( $args );
 		
@@ -487,6 +511,16 @@ abstract class Engine {
 		);
 	}
 	
+	/**
+	 * Constructs the HTML for a color 'input' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.6
+	 * @since  2.8.0  Rename function from 'add_color_selection' to 'add_input_color'.
+	 *                Replace 'p_str_setting_name' argument with 'args' array.
+	 */
 	protected function add_input_color( array $args ): void {
 		extract( $args );
 		
@@ -498,143 +532,10 @@ abstract class Engine {
 		);
 	}
 	
-	/**************************************************************************
-	 * NEW METHODS END
-	 **************************************************************************/
-
-	/**
-	 * Constructs the HTML for a checkbox 'input' element.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name  Setting key.
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
-	 */
-	protected function add_checkbox( string $setting_name ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-		return sprintf(
-			'<input type="checkbox" name="%s" id="%s" %s/>',
-			$data['name'],
-			$data['id'],
-			Convert::to_bool( $data['value'] ) ? 'checked="checked"' : ''
-		);
-	}
-
-	/**
-	 * Constructs the HTML for a 'select' element.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name  Setting key.
-	 * @param  array  $options  Possible options.
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
-	 */
-	protected function add_select_box( string $setting_name, array $options ): string {
-		// Collect data for given settings field.
-		$data           = $this->load_setting( $setting_name );
-		$select_options = '';
-
-		// Loop through all array keys.
-		foreach ( $options as $value => $caption ) {
-			$select_options .= sprintf(
-				'<option value="%s" %s>%s</option>',
-				$value,
-				// Only check for equality, not identity, WRT backlink symbol arrows.
-				// phpcs:disable WordPress.PHP.StrictComparisons.LooseComparison
-				$value == $data['value'] ? 'selected' : '',
-				// phpcs:enable WordPress.PHP.StrictComparisons.LooseComparison
-				$caption
-			);
-		}
-		return sprintf(
-			'<select name="%s" id="%s">%s</select>',
-			$data['name'],
-			$data['id'],
-			$select_options
-		);
-	}
-	
-	/**
-	 * Constructs the HTML for a 'textarea' element.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name  Setting key.
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
-	 */
-	protected function add_textarea( $setting_name ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-		return sprintf(
-			'<textarea name="%s" id="%s">%s</textarea>',
-			$data['name'],
-			$data['id'],
-			$data['value']
-		);
-	}
-
-	/**
-	 * Constructs the HTML for a text 'input' element with the colour selection
-	 * class.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name Setting key.
-	 *
-	 * @since  1.5.6
-	 * @todo  Refactor HTML generation.
-	 * @todo  Use proper colorpicker element.
-	 */
-	protected function add_color_selection( string $setting_name ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-		return sprintf(
-			'<input type="text" name="%s" id="%s" class="footnotes-color-picker" value="%s"/>',
-			$data['name'],
-			$data['id'],
-			$data['value']
-		);
-	}
-
-	/**
-	 * Constructs the HTML for numeric 'input' element.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name Setting key.
-	 * @param  int    $p_in_min  Minimum value.
-	 * @param  int    $max  Maximum value.
-	 * @param  bool   $deci  `true` if float, `false` if integer. Default `false`.
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
-	 */
-	protected function add_num_box( string $setting_name, int $p_in_min, int $max, bool $deci = false ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-
-		if ( $deci ) {
-			$value = number_format( floatval( $data['value'] ), 1 );
-			return sprintf(
-				'<input type="number" name="%s" id="%s" value="%s" step="0.1" min="%d" max="%d"/>',
-				$data['name'],
-				$data['id'],
-				$value,
-				$p_in_min,
-				$max
-			);
-		}
-		return sprintf(
-			'<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
-			$data['name'],
-			$data['id'],
-			$data['value'],
-			$p_in_min,
-			$max
-		);
-	}
+	/******************************
+   *  OLD METHODS
+   ******************************/
+   
 	/**
 	 * Registers all Meta boxes for a sub-page.
 	 *
@@ -674,14 +575,16 @@ abstract class Engine {
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	
 	/**
-	 * Save all plugin settings.
+	 * Save plugin settings.
 	 *
 	 * @access  private
 	 * @return  bool  `true` on save success, else `false`.
 	 *
 	 * @since  1.5.0
 	 * @todo  Review nonce verification.
+	 * @todo  New settings require a page refresh to render correctly. Fix.
 	 */
 	private function save_settings(): bool {
 		$new_settings      = array();
@@ -693,7 +596,7 @@ abstract class Engine {
 		}
 		
 		// Update settings.
-		return Settings::instance()->save_options( $active_section->get_options_group_slug(), $new_settings );
+		return $this->settings->save_options_group( $active_section->get_options_group_slug(), $new_settings );
 	}
 
 }

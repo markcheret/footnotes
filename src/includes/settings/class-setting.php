@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings;
 
-use footnotes\includes\Settings;
+use footnotes\includes\{Core, Settings};
 
 /**
  * Class defining a configurable plugin setting.
@@ -74,7 +74,7 @@ class Setting {
 	 *
 	 * @since  2.8.0
 	 */
-	protected $value;
+	protected mixed $value;
 
 	public function __construct(
 		/**
@@ -136,7 +136,7 @@ class Setting {
 		 *
 		 * @since  2.8.0
 		 */
-		private $default_value,
+		private mixed $default_value,
 		
 		/**
 		 * Setting data type.
@@ -172,7 +172,7 @@ class Setting {
 		 *
 		 * @since  2.8.0
 		 */
-		private ?int $input_max,
+		private int|float|null $input_max,
 		
 		/**
 		 * Setting input field min. value (for 'number' inputs).
@@ -181,7 +181,7 @@ class Setting {
 		 *
 		 * @since  2.8.0
 		 */
-		private ?int $input_min,
+		private int|float|null $input_min,
 		
 		/**
 		 * The setting for whether this setting is enabled or not.
@@ -199,7 +199,15 @@ class Setting {
 		 *
 		 * @since  2.8.0
 		 */
-		private ?string $overridden_by,
+		private ?string $overridden_by,	
+		
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		private Settings $settings
 	) {
 		$this->value = $this->default_value;
 		
@@ -214,6 +222,9 @@ class Setting {
 		);
 	}
 	
+	/**
+	 *
+	 */
 	public function get_setting_field_args(): array {
 		return array (
 			'name' => $this->key,
@@ -229,13 +240,24 @@ class Setting {
 	}
 	
 	private function is_disabled_or_overridden(): ?bool {		
-		if ($this->enabled_by) {
-		  $enabled_by_value = Settings::instance()->get_setting($this->enabled_by)->value;
-			if ((!$enabled_by_value || $enabled_by_value !== 'userdefined')) return true;
-			
-			if (!$this->overridden_by) return false;
-			else if (isset(Settings::instance()->get_setting($this->overridden_by)->value)) return true;
-			else return false;
+		if (isset($this->enabled_by)) {
+		  $enabled_by_value = $this->settings->get_setting_value($this->enabled_by);
+			$is_enabled = (isset($enabled_by_value) || 'userdefined' === $enabled_by_value);
+		}
+		
+		if (isset($this->overridden_by)) {
+		  $overridden_by_value = $this->settings->get_setting_value($this->overridden_by);
+      $is_overridden = !(null === $overridden_by_value || '' === $overridden_by_value);
+		}
+		
+		if (isset($is_enabled) || isset($is_overridden)) {
+		  if (isset($is_enabled) && !$is_enabled) return true;
+		  
+		  if (isset($is_enabled) && $is_enabled && (isset($is_overridden) && !$is_overridden)) return false;
+		  
+		  if (isset($is_overridden) && $is_overridden) return true;
+		  
+		  return false;
 		} else return null;
 	}
 	
@@ -248,16 +270,29 @@ class Setting {
 	}
 	
 	/**
-	 * @todo  Add type safety.
+	 * 
 	 */
-	public function get_value() {
+	public function get_value(): mixed {
 		return $this->value ?? $this->default_value ?? null;
 	}
 	
 	/**
-	 * @todo  Add type safety.
+	 * 
 	 */
-	public function set_value($value): bool {
+	public function get_default_value(): mixed {
+		return $this->default_value ?? null;
+	}
+	
+	/**
+	 * 
+	 */
+	public function get_input_options(): ?array {
+		return $this->input_options ?? null;
+	}
+	
+	/**
+	 */
+	public function set_value(mixed $value): bool {
 		$this->value = $value;
 		return true;
 	}

@@ -86,10 +86,7 @@ class Convert {
 	public static function get_arrow( int $index = -1 ): string|array {
 		// Define all possible arrows.
 		$arrows = array( '&#8593;', '&#8613;', '&#8607;', '&#8617;', '&#8626;', '&#8629;', '&#8657;', '&#8673;', '&#8679;', '&#65514;' );
-		// Convert index to an integer.
-		if ( ! is_int( $index ) ) {
-			$index = (int) $index;
-		}
+		
 		// Return the whole arrow array.
 		if ( $index < 0 ) {
 			return $arrows;

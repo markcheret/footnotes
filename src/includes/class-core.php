@@ -74,6 +74,14 @@ class Core {
 	 * @var string $version The current version of the plugin.
 	 */
 	protected string $version;
+	
+	/**
+	 * The plugin settings object.
+	 *
+	 * @access  private
+	 * @since  2.8.0
+	 */
+	public Settings $settings;
 
 	/**
 	 * Builds the core of the plugin.
@@ -93,6 +101,7 @@ class Core {
 
 		$this->load_dependencies();
 		$this->set_locale();
+	  $this->settings = new Settings();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 	}
@@ -223,7 +232,7 @@ class Core {
 	 */
 	private function define_admin_hooks() {
 
-		$admin = new Admin( $this->get_plugin_name(), $this->get_version() );
+		$admin = new Admin( $this->get_plugin_name(), $this->get_version(), $this->settings );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
@@ -253,7 +262,7 @@ class Core {
 	 */
 	private function define_public_hooks() {
 
-		$general = new General( $this->get_plugin_name(), $this->get_version() );
+		$general = new General( $this->get_plugin_name(), $this->get_version(), $this->settings );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $general, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $general, 'enqueue_scripts' );

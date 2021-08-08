@@ -12,9 +12,10 @@ namespace footnotes\includes\settings\customcss;
 
 require_once plugin_dir_path( __DIR__ ) . 'class-settings-section.php';
 
+use footnotes\includes\Settings;
+
 use footnotes\includes\settings\SettingsSection;
 
-// Import settings groups.
 use footnotes\includes\settings\customcss\CustomCSSSettingsGroup;
 
 /**
@@ -36,7 +37,15 @@ class CustomCSSSettingsSection extends SettingsSection {
 	public function __construct(
 		$options_group_slug,
 		$section_slug,
-		$title
+		$title,
+		
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		private Settings $settings
 	) {
 		$this->options_group_slug = $options_group_slug;
 		$this->section_slug = $section_slug;
@@ -57,7 +66,7 @@ class CustomCSSSettingsSection extends SettingsSection {
 	
 	protected function add_settings_groups(): void {
 		$this->settings_groups = array (
-			CustomCSSSettingsGroup::GROUP_ID => new CustomCSSSettingsGroup($this->options_group_slug, $this->section_slug),
+			CustomCSSSettingsGroup::GROUP_ID => new CustomCSSSettingsGroup($this->options_group_slug, $this->section_slug, $this->settings ),
 		);
 	}
 }

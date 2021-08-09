@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace footnotes\includes\settings;
 
 use footnotes\includes\Settings;
-use footnotes\admin\layout as Layout;
+use footnotes\admin\layout\SettingsPage;
 
 /**
  * Class defining a group of plugin settings within a section.
@@ -56,6 +56,11 @@ abstract class SettingsGroup {
 	 */
 	protected array $settings;
 	
+	/**
+	 * Constructs the settings section.
+	 *
+	 * @since  2.8.0
+	 */
 	public function __construct(
 		/**
 		 * Setting options group slug.
@@ -88,12 +93,38 @@ abstract class SettingsGroup {
 		$this->add_settings( get_option( $this->options_group_slug ) );
 	}
 	
+	/**
+	 * Load the required dependencies.
+	 *
+	 * Include the following files that provide the settings for this plugin:
+	 *
+	 * - {@see Setting}: defines individual settings.
+	 *
+	 * @since  2.8.0
+	 */
 	protected function load_dependencies(): void {
 		require_once plugin_dir_path( __DIR__ ) . 'settings/class-setting.php';
 	}
 	
+	/**
+	 * Add the settings for this settings group.
+	 *
+	 * @abstract
+	 * @param  array<string,mixed>|false  $options  Saved values for the settings in this group. 'False' if none exist.
+	 * @return  void
+	 *
+	 * @since  2.8.0
+	 */
 	protected abstract function add_settings(array|false $options): void;
 	
+	/**
+	 * Constructs settings from the provided details.
+	 *
+	 * @param  array<string,mixed>  $setting  The setting details.
+	 * @return  Setting  The constructed setting object.
+	 *
+	 * @since  2.8.0
+	 */
 	protected function add_setting(array $setting): Setting {
 		extract( $setting );
 		
@@ -116,17 +147,33 @@ abstract class SettingsGroup {
 		);
 	}
 	
+	/**
+	 * Load the values for this settings group.
+	 *
+	 * @param  array<string,mixed>|false  $options  Saved values for the settings in this group. 'False' if none exist.
+	 * @return  void
+	 *
+	 * @since  2.8.0
+   * @todo Remove settings from options group when not found.
+	 */
 	protected function load_values(array|false $options): void {
 	  if ( ! $options ) return;
 		
-		// TODO remove unfound settings from option
 		foreach ( $options as $setting_key => $setting_value ) {
 		  if ( array_key_exists( $setting_key, $this->settings ) )
 		    $this->settings[$setting_key]->set_value( $setting_value );
 	  }
 	}
 	
-	public function add_settings_fields(Layout\SettingsPage $component): void {	  
+	/**
+	 * Adds all the settings fields for this group to the admin. dashboard.
+	 *
+	 * @param  SettingsPage  $component  The admin. dashboard settings page.
+	 * @return  void
+	 *
+	 * @since  2.8.0
+	 */
+	public function add_settings_fields(SettingsPage $component): void {	  
 		foreach ($this->settings as $setting) {			
 			add_settings_field(
 				$setting->key, 
@@ -139,6 +186,9 @@ abstract class SettingsGroup {
 		}
 	}
 	
+	/**
+	 * @see Settings::get_setting()
+	 */
 	public function get_setting(string $setting_key): ?Setting {
 		foreach ($this->settings as $setting) {
 			if ($setting->key === $setting_key) return $setting;
@@ -146,7 +196,10 @@ abstract class SettingsGroup {
 		
 		return null;
 	}
-
+	
+	/**
+	 * @see SettingsSection::get_options()
+	 */
 	public function get_options(): array {
 		$options = array();
 		
@@ -157,6 +210,9 @@ abstract class SettingsGroup {
 		return $options;
 	}
 
+	/**
+	 * @see Settings::get_setting_value()
+	 */
 	public function get_setting_value(string $setting_key) {
 		$setting = $this->get_setting($setting_key);
 
@@ -164,6 +220,9 @@ abstract class SettingsGroup {
 		else return $setting->value ?? $setting->default_value;
 	}
 
+	/**
+	 * @see Settings::set_setting_value()
+	 */
 	public function set_setting_value(string $setting_key, $value): bool {
 		return $this->get_setting($setting_key)->set_value($value);
 	}

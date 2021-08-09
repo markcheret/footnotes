@@ -9,9 +9,6 @@
 declare(strict_types=1);
 
 namespace footnotes\general;
-		
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/settings/general/class-reference-container-settings-group.php';
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/settings/general/class-scrolling-settings-group.php';
 
 use footnotes\includes\{Footnotes, Convert, Settings};
 

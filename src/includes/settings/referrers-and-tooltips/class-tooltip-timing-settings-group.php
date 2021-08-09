@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\referrersandtooltips;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class TooltipTimingSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-timing';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Tooltip Timing';
 
 	/**
 	 * Settings container key for tooltip display fade-in delay.
@@ -112,6 +119,9 @@ class TooltipTimingSettingsGroup extends SettingsGroup {
 		'input_min'     => 0,
 	);
 		
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::MOUSE_OVER_BOX_FADE_IN_DELAY['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FADE_IN_DELAY ),

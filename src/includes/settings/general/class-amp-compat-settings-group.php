@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\general;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Footnotes;
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
@@ -42,7 +40,7 @@ class AMPCompatSettingsGroup extends SettingsGroup {
 	 *
 	 * @since  2.8.0
 	 */
-	const GROUP_NAME = 'AMP Compatiblility (unsupported)';
+	const GROUP_NAME = 'AMP Compatiblility (deprecated)';
 
 	/**
 	 * Settings container key to enable AMP compatibility mode.
@@ -63,6 +61,9 @@ class AMPCompatSettingsGroup extends SettingsGroup {
 		'input_type'    => 'checkbox',
 	);
 	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_AMP_COMPATIBILITY_ENABLE['key'] => $this->add_setting( self::FOOTNOTES_AMP_COMPATIBILITY_ENABLE ),

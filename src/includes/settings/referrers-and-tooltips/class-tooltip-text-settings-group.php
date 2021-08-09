@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\referrersandtooltips;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class TooltipTextSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-text';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Tooltip Text';
 
 	/**
 	 * Settings container key to configure the tooltip excerpt delimiter.
@@ -103,6 +110,9 @@ class TooltipTextSettingsGroup extends SettingsGroup {
 		'input_type'    => 'text',
 	);
 		
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER['key'] => $this->add_setting( self::FOOTNOTES_TOOLTIP_EXCERPT_DELIMITER ),

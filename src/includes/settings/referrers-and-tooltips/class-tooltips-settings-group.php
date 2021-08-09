@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\referrersandtooltips;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class TooltipsSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltips';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Tooltips';
 
 	/**
 	 * Settings container key to enable the mouse-over box.
@@ -75,6 +82,9 @@ class TooltipsSettingsGroup extends SettingsGroup {
 		'input_type'    => 'checkbox',
 	);
 		
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_MOUSE_OVER_BOX_ENABLED['key'] => $this->add_setting( self::FOOTNOTES_MOUSE_OVER_BOX_ENABLED ),

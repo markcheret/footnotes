@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\general;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Footnotes;
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
@@ -64,7 +62,10 @@ class ExcerptsSettingsGroup extends SettingsGroup {
 			'manual' => 'Yes but run the process only to display tooltips in manual excerpts with footnote short codes'
 		),
 	);
-
+	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_IN_EXCERPT['key'] => $this->add_setting( self::FOOTNOTES_IN_EXCERPT ),

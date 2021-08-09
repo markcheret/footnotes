@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\referrersandtooltips;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class TooltipDimensionsSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-dimensions';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Tooltip Dimensions';
 
 	/**
 	 * Settings container key for the mouse-over box to define the max. width.
@@ -70,6 +77,9 @@ class TooltipDimensionsSettingsGroup extends SettingsGroup {
 		'input_type'    => 'number',
 	);
 		
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH['key'] => $this->add_setting( self::FOOTNOTES_MOUSE_OVER_BOX_MAX_WIDTH ),

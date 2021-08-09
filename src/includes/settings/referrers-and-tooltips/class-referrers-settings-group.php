@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\referrersandtooltips;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class ReferrersSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'referrers';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Referrers';
 
 	/**
 	 * Settings container key for the referrer element.
@@ -131,6 +138,9 @@ class ReferrersSettingsGroup extends SettingsGroup {
 		'input_type'    => 'checkbox',
 	);
 	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS['key'] => $this->add_setting( self::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS ),

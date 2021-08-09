@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\general;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'reference-container';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Reference Container';
 
 	/**
 	 * Settings container key for the label of the reference container.
@@ -680,7 +687,10 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 		'type'          => 'boolean',
 		'input_type'    => 'checkbox',
 	);
-
+	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::REFERENCE_CONTAINER_NAME['key']          => $this->add_setting( self::REFERENCE_CONTAINER_NAME ),

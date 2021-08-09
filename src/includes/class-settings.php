@@ -15,13 +15,6 @@ namespace footnotes\includes;
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 
-/**
- * Provides data conversion methods.
- *
- * @todo Move to {@see Loader}.
- */
-require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
-
 use footnotes\includes\settings\general\GeneralSettingsSection;
 use footnotes\includes\settings\referrersandtooltips\ReferrersAndTooltipsSettingsSection;
 use footnotes\includes\settings\scopeandpriority\ScopeAndPrioritySettingsSection;
@@ -62,10 +55,6 @@ class Settings {
 	 * @since  2.8.0
 	 */
 	public $settings_sections = array();
-	
-	/**********************************************************************
-	 *      SETTINGS STORAGE.
-	 **********************************************************************/
 
 	/**
 	 * Loads all Settings from each WordPress Settings Container.
@@ -88,6 +77,9 @@ class Settings {
 	 *
 	 * Includes the following files that make up the plugin:
 	 *
+	 * - {@see SettingsSection}: defines a section of settings groups;
+	 * - {@see SettingsGroup}: defines a group of settings;
+	 * - {@see Setting}: defines a single setting;
 	 * - {@see GeneralSettingsSection}: provides general plugin settings;
 	 * - {@see ReferrersAndTooltipsSettingsSection}: provides settings for
 	 *   customising the plugin's created referrers and tooltips;
@@ -100,6 +92,10 @@ class Settings {
 	 * @return void
 	 */
 	protected function load_dependencies(): void {
+    require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-settings-section.php';
+    require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-settings-group.php';
+    require_once plugin_dir_path( __DIR__ ) . 'includes/settings/class-setting.php';
+    
 		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/general/class-general-settings-section.php';
 		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/referrers-and-tooltips/class-referrers-and-tooltips-settings-section.php';
 		require_once plugin_dir_path( __DIR__ ) . 'includes/settings/scope-and-priority/class-scope-and-priority-settings-section.php';
@@ -148,7 +144,7 @@ class Settings {
 	}
 	
 	/**
-	 * Retrieve a setting's defaultvalue by its key.
+	 * Retrieve a setting's default value by its key.
 	 *
 	 * @param  string  $setting_key  The key of the setting to search for.
 	 * @return  mixed Either the setting's default value, or `null` if the setting does not exist.
@@ -166,6 +162,28 @@ class Settings {
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * Set a setting's value by its key.
+	 *
+	 * @param  string  $setting_key  The key of the setting to search for.
+	 * @param  mixed  $setting_value  The new value to set.
+	 * @return  mixed  'True' if the value was successfully set. 'False' otherwise.
+	 *
+	 * @since  2.8.0
+	 *
+	 * @todo  This is an _O(n)_ linear search. Explore more scaleable alternatives.
+	 * @todo  How to handle settings with a value of `null`?
+	 */
+	public function set_setting_value( string $setting_key, mixed $setting_value ): ?bool {		
+		foreach ($this->settings_sections as $settings_section) {
+			$setting = $settings_section->get_setting($setting_key);
+			
+			if ($setting) return $setting->set_value( $setting_value );
+		}
+		
+		return false;
 	}
 
 	/**

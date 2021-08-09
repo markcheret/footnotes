@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\general;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Footnotes;
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
@@ -24,7 +22,22 @@ use footnotes\includes\settings\SettingsGroup;
  * @since 2.8.0
  */
 class LoveSettingsGroup extends SettingsGroup {
+	/**
+	 * The HTML 'love' symbol.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
 	const LOVE_SYMBOL = '<span style="color:#ff6d3b; font-weight:bold;">&hearts;</span>';
+	
+	/**
+	 * The HTML Plugin logogram.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
 	const PLUGIN_SYMBOL = '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
 	
 	/**
@@ -43,7 +56,7 @@ class LoveSettingsGroup extends SettingsGroup {
 	 *
 	 * @since  2.8.0
 	 */
-	const GROUP_NAME = self::LOVE_SYMBOL . ' Love';
+	const GROUP_NAME = self::PLUGIN_SYMBOL . ' ' . self::LOVE_SYMBOL;
 
 	/**
 	 * Settings container key for the ‘I love footnotes’ text.
@@ -99,7 +112,10 @@ class LoveSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'text',
 	);
-
+	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_LOVE['key'] => $this->add_setting( self::FOOTNOTES_LOVE ),

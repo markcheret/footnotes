@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\general;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class ShortcodeSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'shortcode';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Footnote Start and End Short Codes';
 
 	/**
 	 * Settings container key to enable shortcode syntax validation.
@@ -141,7 +148,10 @@ class ShortcodeSettingsGroup extends SettingsGroup {
 		'input_type' => 'text',
 		'enabled_by' => self::FOOTNOTES_SHORT_CODE_END,
 	);
-
+	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE['key'] => $this->add_setting( self::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE ),

@@ -21,7 +21,6 @@ require_once plugin_dir_path( dirname( __FILE__, 2 ) ) . 'includes/class-setting
 
 use footnotes\includes\{Template, Settings, Parser, Config, Convert};
 use footnotes\general\General;
-use const footnotes\settings\general\ReferenceContainerSettingsGroup\{COMBINE_IDENTICAL_FOOTNOTES};
 
 /**
  * Provides the abstract class to be extended for page layouts.

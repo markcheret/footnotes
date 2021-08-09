@@ -76,6 +76,11 @@ class Setting {
 	 */
 	protected mixed $value;
 
+	/**
+	 * Constructs the setting.
+	 *
+	 * @since  2.8.0
+	 */
 	public function __construct(
 		/**
 		 * Setting group ID.
@@ -204,7 +209,8 @@ class Setting {
 		/**
 		 * The plugin settings object.
 		 *
-		 * @access  private
+		 * @var  Settings
+		 *
 		 * @since  2.8.0
 		 */
 		private Settings $settings
@@ -214,6 +220,15 @@ class Setting {
 		register_setting( $this->options_group_slug, $this->key, $this->get_setting_args());
 	}
 	
+	/**
+	 * Get the args for registering the settings with WordPress.
+	 *
+	 * @see register_setting()
+	 *
+	 * @return array The setting field args.
+	 *
+	 * @since 2.8.0
+	 */
 	public function get_setting_args(): array {
 		return array (
 			'type' => $this->type,
@@ -223,7 +238,13 @@ class Setting {
 	}
 	
 	/**
+	 * Get the args for rendering setting fields on the admin. dashboard.
 	 *
+	 * @see add_settings_field()
+	 *
+	 * @return array The setting field args.
+	 *
+	 * @since 2.8.0
 	 */
 	public function get_setting_field_args(): array {
 		return array (
@@ -239,6 +260,15 @@ class Setting {
 		);
 	}
 	
+	/**
+	 * Check whether a setting is enabled and/or overridden.
+	 *
+	 * @return ?bool 'True' if the setting is disabled or overridden.
+	 *               'False' if it could be, but isn't currently.
+	 *               'None' if the setting is not enabled/overridden by another.
+	 *
+	 * @since 2.8.0
+	 */
 	private function is_disabled_or_overridden(): ?bool {		
 		if (isset($this->enabled_by)) {
 		  $enabled_by_value = $this->settings->get_setting_value($this->enabled_by);
@@ -261,36 +291,68 @@ class Setting {
 		} else return null;
 	}
 	
+	/**
+	 * Gets the slug of the setting's options group.
+	 *
+	 * @return string The options group slug.
+	 *
+	 * @since 2.8.0
+	 */
 	public function get_options_group_slug(): string {
 		return $this->options_group_slug;
 	}
 	
+	/**
+	 * Gets the slug of the setting's section.
+	 *
+	 * @return string The section slug.
+	 *
+	 * @since 2.8.0
+	 */
 	public function get_section_slug(): string {
 		return $this->section_slug;
 	}
 	
 	/**
-	 * 
+	 * Gets the value of the setting.
+	 *
+	 * @return  mixed  The value of the setting, or the default value if none is set. 'None' if neither are set.
+	 *
+	 * @since 2.8.0
 	 */
 	public function get_value(): mixed {
 		return $this->value ?? $this->default_value ?? null;
 	}
 	
 	/**
-	 * 
+	 * Gets the default value of the setting.
+	 *
+	 * @return  mixed  The default value of the setting. 'None' if one is not set.
+	 *
+	 * @since 2.8.0
 	 */
 	public function get_default_value(): mixed {
 		return $this->default_value ?? null;
 	}
 	
 	/**
-	 * 
+	 * Gets the input options of the setting.
+	 *
+	 * @return  ?array  The possible options of the setting. 'None' if no options are set.
+	 *
+	 * @since 2.8.0
 	 */
 	public function get_input_options(): ?array {
 		return $this->input_options ?? null;
 	}
 	
 	/**
+	 * Sets the value of the setting.
+	 *
+	 * @param mixed $value The new value to set.
+	 * @return bool 'True' if the value was successfully set. 'False' otherwise.
+	 *
+	 * @since 2.8.0
 	 */
 	public function set_value(mixed $value): bool {
 		$this->value = $value;

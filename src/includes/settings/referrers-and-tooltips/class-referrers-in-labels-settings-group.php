@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\referrersandtooltips;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class ReferrersInLabelsSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'referrers-in-label';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Referrers in Labels';
 
 	/**
 	 * Settings container key to set the solution of the input element label issue.
@@ -62,7 +69,10 @@ class ReferrersInLabelsSettingsGroup extends SettingsGroup {
 		  'disconnect' =>  'B. Labels with footnotes are disconnected from input element (discouraged)'
 		),
 	);
-		
+	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::FOOTNOTES_LABEL_ISSUE_SOLUTION['key'] => $this->add_setting( self::FOOTNOTES_LABEL_ISSUE_SOLUTION ),

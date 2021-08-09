@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace footnotes\includes\settings\general;
 
-require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-
 use footnotes\includes\Settings;
 use footnotes\includes\settings\Setting;
 use footnotes\includes\settings\SettingsGroup;
@@ -31,6 +29,15 @@ class NumberingSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'numbering';
+	
+	/**
+	 * Setting group name.
+	 *
+	 * @var  string
+	 *
+	 * @since  2.8.0
+	 */
+	const GROUP_NAME = 'Footnotes Numbering';
 
 	/**
 	 * Settings container key for combining identical footnotes.
@@ -78,7 +85,10 @@ class NumberingSettingsGroup extends SettingsGroup {
 			'roman_low'      => 'lowercase Roman numerals (i, ii, iii, iv, v, &hellip;)',
 		),
 	);
-
+	
+	/**
+	 * @see SettingsGroup::add_settings()
+	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::COMBINE_IDENTICAL_FOOTNOTES['key'] => $this->add_setting( self::COMBINE_IDENTICAL_FOOTNOTES ),

@@ -53,16 +53,16 @@ class SettingsPage extends Engine {
 		 * @since  2.8.0
 		 */
 		protected string $plugin_name,
-		
+
 		/**
 		 * The plugin settings object.
 		 *
 		 * @access  private
 		 * @since  2.8.0
 		 */
-		protected Settings $settings	
-  ) {
-  }
+		protected Settings $settings
+	) {
+	}
 
 	/**
 	 * Returns a priority index.
@@ -75,67 +75,71 @@ class SettingsPage extends Engine {
 	public function get_priority(): int {
 		return 10;
 	}
-	
+
 	/**************************************************************************
 	 * NEW METHODS
 	 **************************************************************************/
-	 
+
 	public function add_settings_fields(): void {
 		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
 		$active_section    = $this->sections[ $active_section_id ];
-		
-		switch ($active_section->get_section_slug()) {
+
+		switch ( $active_section->get_section_slug() ) {
 			case 'footnotes-settings':
-				$this->settings->settings_sections['general']->add_settings_fields($this);
+				$this->settings->settings_sections['general']->add_settings_fields( $this );
 				break;
 			case 'footnotes-customize':
-				$this->settings->settings_sections['referrers_and_tooltips']->add_settings_fields($this);
+				$this->settings->settings_sections['referrers_and_tooltips']->add_settings_fields( $this );
 				break;
 			case 'footnotes-expert':
-				$this->settings->settings_sections['scope_and_priority']->add_settings_fields($this);
+				$this->settings->settings_sections['scope_and_priority']->add_settings_fields( $this );
 				break;
 			case 'footnotes-customcss':
-				$this->settings->settings_sections['custom_css']->add_settings_fields($this);
+				$this->settings->settings_sections['custom_css']->add_settings_fields( $this );
 				break;
 			case 'footnotes-how-to':
-				print_r("Demo goes here");
+				print_r( 'Demo goes here' );
 				break;
-			default: print_r("ERR: section not found");
-		}		
+			default:
+				print_r( 'ERR: section not found' );
+		}
 	}
-	
-	public function setting_field_callback( array $args ): void {		
-		if (isset($args['type'])) {
+
+	public function setting_field_callback( array $args ): void {
+		if ( isset( $args['type'] ) ) {
 			echo $args['description'] . '</td><td>';
-			
-			switch($args['type']) {
+
+			switch ( $args['type'] ) {
 				case 'text':
-					$this->add_input_text($args);
+					$this->add_input_text( $args );
 					return;
 				case 'textarea':
-					$this->add_textarea($args);
+					$this->add_textarea( $args );
 					return;
 				case 'number':
-					$this->add_input_number($args);
+					$this->add_input_number( $args );
 					return;
 				case 'select':
-					$this->add_select($args);
+					$this->add_select( $args );
 					return;
 				case 'checkbox':
-					$this->add_input_checkbox($args);
+					$this->add_input_checkbox( $args );
 					return;
 				case 'color':
-					$this->add_input_color($args);
+					$this->add_input_color( $args );
 					return;
-				default: trigger_error("Unknown setting type.", E_USER_ERROR);
+				default:
+					trigger_error( 'Unknown setting type.', E_USER_ERROR );
 			}
-		} else trigger_error("No setting type.", E_USER_ERROR);
+		} else {
+			trigger_error( 'No setting type.', E_USER_ERROR );
+		}
 	}
 
 	/**************************************************************************
 	 * NEW METHODS END
 	 **************************************************************************/
-	 
+
 	/**
 	 * Displays a short introduction to the plugin.
 	 *

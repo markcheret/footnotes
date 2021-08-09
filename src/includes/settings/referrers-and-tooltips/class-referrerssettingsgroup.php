@@ -29,7 +29,7 @@ class ReferrersSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'referrers';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -56,7 +56,7 @@ class ReferrersSettingsGroup extends SettingsGroup {
 		'type'          => 'boolean',
 		'input_type'    => 'checkbox',
 	);
-	
+
 	/**
 	 * Settings container key to enable superscript style normalization.
 	 *
@@ -73,13 +73,13 @@ class ReferrersSettingsGroup extends SettingsGroup {
 		'default_value' => 'no',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => array( 
-		  'no'  =>  'No',
-		  'referrers' => 'Footnote referrers',
-		  'all' =>  'All superscript elements'
+		'input_options' => array(
+			'no'        => 'No',
+			'referrers' => 'Footnote referrers',
+			'all'       => 'All superscript elements',
 		),
 	);
-	
+
 	/**
 	 * Settings container key for the string before the footnote referrer.
 	 *
@@ -101,7 +101,7 @@ class ReferrersSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'text',
 	);
-	
+
 	/**
 	 * Settings container key for the string after the footnote referrer.
 	 *
@@ -118,7 +118,7 @@ class ReferrersSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'text',
 	);
-	
+
 	/**
 	 * Settings container key
 	 *
@@ -137,8 +137,10 @@ class ReferrersSettingsGroup extends SettingsGroup {
 		'type'          => 'boolean',
 		'input_type'    => 'checkbox',
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
@@ -146,8 +148,8 @@ class ReferrersSettingsGroup extends SettingsGroup {
 			self::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS['key'] => $this->add_setting( self::FOOTNOTES_REFERRER_SUPERSCRIPT_TAGS ),
 			self::FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT['key'] => $this->add_setting( self::FOOTNOTE_REFERRERS_NORMAL_SUPERSCRIPT ),
 			self::FOOTNOTES_STYLING_BEFORE['key'] => $this->add_setting( self::FOOTNOTES_STYLING_BEFORE ),
-			self::FOOTNOTES_STYLING_AFTER['key'] => $this->add_setting( self::FOOTNOTES_STYLING_AFTER ),
-			self::LINK_ELEMENT_ENABLED['key'] => $this->add_setting( self::LINK_ELEMENT_ENABLED ),
+			self::FOOTNOTES_STYLING_AFTER['key']  => $this->add_setting( self::FOOTNOTES_STYLING_AFTER ),
+			self::LINK_ELEMENT_ENABLED['key']     => $this->add_setting( self::LINK_ELEMENT_ENABLED ),
 		);
 
 		$this->load_values( $options );

@@ -29,7 +29,7 @@ class ScrollingSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'scrolling';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -179,8 +179,10 @@ class ScrollingSettingsGroup extends SettingsGroup {
 		'input_min'     => 0,
 		'enabled_by'    => self::FOOTNOTES_SCROLL_DURATION_ASYMMETRICITY,
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

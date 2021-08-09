@@ -29,7 +29,7 @@ class CustomCSSSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	public const GROUP_ID = 'custom-css';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -49,28 +49,15 @@ class CustomCSSSettingsGroup extends SettingsGroup {
 	 *                Convert from `string` to `array`.
 	 */
 	public const CUSTOM_CSS = array(
-		'key'           => 'footnote_inputfield_custom_css_new',
-		'name'          => 'Your Existing Custom CSS Code',
-		'type'          => 'string',
-		'input_type'    => 'textarea',
+		'key'        => 'footnote_inputfield_custom_css_new',
+		'name'       => 'Your Existing Custom CSS Code',
+		'type'       => 'string',
+		'input_type' => 'textarea',
 	);
-	
+
 	/**
-	 * Load the required dependencies.
+	 * Add the settings for this settings group.
 	 *
-	 * Include the following files that provide the settings for this plugin:
-	 *
-	 * - {@see SettingsGroup}: defines a group of settings.
-	 *
-	 * @see SettingsGroup::load_dependencies()
-	 */
-	protected function load_dependencies(): void {
-	  parent::load_dependencies();
-	  
-    require_once plugin_dir_path( __DIR__ ) . 'class-settings-group.php';
-	}
-	
-	/**
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

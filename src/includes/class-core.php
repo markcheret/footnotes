@@ -74,7 +74,7 @@ class Core {
 	 * @var string $version The current version of the plugin.
 	 */
 	protected string $version;
-	
+
 	/**
 	 * The plugin settings object.
 	 *
@@ -101,7 +101,7 @@ class Core {
 
 		$this->load_dependencies();
 		$this->set_locale();
-	  $this->settings = new Settings();
+		$this->settings = new Settings();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 	}
@@ -123,9 +123,12 @@ class Core {
 	 *
 	 * @since 2.8.0
 	 */
-	public function get_plugin_name(bool $html = false): string {
-	  if ( ! $html ) return $this->plugin_name;
-	  else return '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
+	public function get_plugin_name( bool $html = false ): string {
+		if ( ! $html ) {
+			return $this->plugin_name;
+		} else {
+			return '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
+		}
 	}
 
 	/**
@@ -145,7 +148,7 @@ class Core {
 	public function get_version(): string {
 		return $this->version;
 	}
-	
+
 	/**
 	 * Load the required dependencies for this plugin.
 	 *

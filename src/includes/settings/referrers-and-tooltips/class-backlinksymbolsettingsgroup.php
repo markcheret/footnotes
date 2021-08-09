@@ -29,7 +29,7 @@ class BacklinkSymbolSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'backlink-symbol';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -56,21 +56,21 @@ class BacklinkSymbolSettingsGroup extends SettingsGroup {
 		'default_value' => 0,
 		'type'          => 'number',
 		'input_type'    => 'select',
-	  'input_options' => array( 
-      '&#8593;', 
-      '&#8613;', 
-      '&#8607;', 
-      '&#8617;', 
-      '&#8626;', 
-      '&#8629;', 
-      '&#8657;', 
-      '&#8673;', 
-      '&#8679;', 
-      '&#65514;' 
-    ),
+		'input_options' => array(
+			'&#8593;',
+			'&#8613;',
+			'&#8607;',
+			'&#8617;',
+			'&#8626;',
+			'&#8629;',
+			'&#8657;',
+			'&#8673;',
+			'&#8679;',
+			'&#65514;',
+		),
 		'overridden_by' => self::HYPERLINK_ARROW_USER_DEFINED,
 	);
-	
+
 	/**
 	 * Settings container key for the user-defined backlink symbol.
 	 *
@@ -81,19 +81,21 @@ class BacklinkSymbolSettingsGroup extends SettingsGroup {
 	 *                Convert from `string` to `array`.
 	 */
 	const HYPERLINK_ARROW_USER_DEFINED = array(
-		'key'           => 'footnote_inputfield_custom_hyperlink_symbol_user',
-		'name'          => 'Input the Backlink Symbol',
-		'description'   => 'Your input overrides the selection.',
-		'type'          => 'string',
-		'input_type'    => 'text',
+		'key'         => 'footnote_inputfield_custom_hyperlink_symbol_user',
+		'name'        => 'Input the Backlink Symbol',
+		'description' => 'Your input overrides the selection.',
+		'type'        => 'string',
+		'input_type'  => 'text',
 	);
-		
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
-			self::HYPERLINK_ARROW['key'] => $this->add_setting( self::HYPERLINK_ARROW ),
+			self::HYPERLINK_ARROW['key']              => $this->add_setting( self::HYPERLINK_ARROW ),
 			self::HYPERLINK_ARROW_USER_DEFINED['key'] => $this->add_setting( self::HYPERLINK_ARROW_USER_DEFINED ),
 		);
 

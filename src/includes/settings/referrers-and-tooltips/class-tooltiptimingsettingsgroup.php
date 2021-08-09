@@ -29,7 +29,7 @@ class TooltipTimingSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-timing';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -118,15 +118,17 @@ class TooltipTimingSettingsGroup extends SettingsGroup {
 		'input_max'     => 20000,
 		'input_min'     => 0,
 	);
-		
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
-			self::MOUSE_OVER_BOX_FADE_IN_DELAY['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FADE_IN_DELAY ),
-			self::MOUSE_OVER_BOX_FADE_IN_DURATION['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FADE_IN_DURATION ),
-			self::MOUSE_OVER_BOX_FADE_OUT_DELAY['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FADE_OUT_DELAY ),
+			self::MOUSE_OVER_BOX_FADE_IN_DELAY['key']     => $this->add_setting( self::MOUSE_OVER_BOX_FADE_IN_DELAY ),
+			self::MOUSE_OVER_BOX_FADE_IN_DURATION['key']  => $this->add_setting( self::MOUSE_OVER_BOX_FADE_IN_DURATION ),
+			self::MOUSE_OVER_BOX_FADE_OUT_DELAY['key']    => $this->add_setting( self::MOUSE_OVER_BOX_FADE_OUT_DELAY ),
 			self::MOUSE_OVER_BOX_FADE_OUT_DURATION['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FADE_OUT_DURATION ),
 		);
 

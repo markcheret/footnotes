@@ -41,9 +41,9 @@ class GeneralSettingsSection extends SettingsSection {
 	/**
 	 * Constructs the settings section.
 	 *
-	 * @param string options_group_slug The slug of the settings section's options group.
-	 * @param string section_slug The slug of the settings section.
-	 * @param string title The name of the settings section.
+	 * @param string $options_group_slug The slug of the settings section's options group.
+	 * @param string $section_slug The slug of the settings section.
+	 * @param string $title The name of the settings section.
 	 *
 	 * @since  2.8.0
 	 */
@@ -51,7 +51,7 @@ class GeneralSettingsSection extends SettingsSection {
 		$options_group_slug,
 		$section_slug,
 		$title,
-		
+
 		/**
 		 * The plugin settings object.
 		 *
@@ -91,17 +91,19 @@ class GeneralSettingsSection extends SettingsSection {
 	protected function load_dependencies(): void {
 		parent::load_dependencies();
 
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-reference-container-settings-group.php';
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-scrolling-settings-group.php';
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-shortcode-settings-group.php';
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-numbering-settings-group.php';
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-hard-links-settings-group.php';
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-love-settings-group.php';
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-excerpts-settings-group.php';
-		require_once plugin_dir_path( __DIR__ ) . 'general/class-amp-compat-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-referencecontainersettingsgroup.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-scrollingsettingsgroup.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-shortcodesettingsgroup.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-numberingsettingsgroup.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-hardlinkssettingsgroup.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-lovesettingsgroup.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-excerptssettingsgroup.php';
+		require_once plugin_dir_path( __DIR__ ) . 'general/class-ampcompatsettingsgroup.php';
 	}
-	
+
 	/**
+	 * Add the settings groups for this settings section.
+	 *
 	 * @see SettingsSection::add_settings_groups()
 	 */
 	protected function add_settings_groups(): void {

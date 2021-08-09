@@ -30,7 +30,7 @@ class LoveSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const LOVE_SYMBOL = '<span style="color:#ff6d3b; font-weight:bold;">&hearts;</span>';
-	
+
 	/**
 	 * The HTML Plugin logogram.
 	 *
@@ -39,7 +39,7 @@ class LoveSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const PLUGIN_SYMBOL = '<span class="footnotes_logo footnotes_logo_part1">foot</span><span class="footnotes_logo footnotes_logo_part2">notes</span>';
-	
+
 	/**
 	 * Setting group ID.
 	 *
@@ -48,7 +48,7 @@ class LoveSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'love';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -74,7 +74,7 @@ class LoveSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'select',
 		'input_options' => array(
-		 	// Logo only.
+			// Logo only.
 			'text-3' => self::PLUGIN_SYMBOL,
 			// Logo followed by heart symbol.
 			'text-4' => self::PLUGIN_SYMBOL . ' ' . self::LOVE_SYMBOL,
@@ -93,9 +93,9 @@ class LoveSettingsGroup extends SettingsGroup {
 			'no'     => 'no display of any mention in the footer',
 		),
 	);
-	
+
 	/**
-	 * Settings container key for the shortcode to NOT display the ‘LOVE ME’ slug 
+	 * Settings container key for the shortcode to NOT display the ‘LOVE ME’ slug
 	 * on certain pages.
 	 *
 	 * @var  array
@@ -112,13 +112,15 @@ class LoveSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'text',
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
-			self::FOOTNOTES_LOVE['key'] => $this->add_setting( self::FOOTNOTES_LOVE ),
+			self::FOOTNOTES_LOVE['key']         => $this->add_setting( self::FOOTNOTES_LOVE ),
 			self::FOOTNOTES_NO_LOVE_SLUG['key'] => $this->add_setting( self::FOOTNOTES_NO_LOVE_SLUG ),
 		);
 

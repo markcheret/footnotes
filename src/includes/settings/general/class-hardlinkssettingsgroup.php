@@ -29,7 +29,7 @@ class HardLinksSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'hard-links';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -157,18 +157,20 @@ class HardLinksSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'text',
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
-			self::FOOTNOTES_HARD_LINKS_ENABLE['key'] => $this->add_setting( self::FOOTNOTES_HARD_LINKS_ENABLE ),
-			self::REFERRER_FRAGMENT_ID_SLUG['key'] => $this->add_setting( self::REFERRER_FRAGMENT_ID_SLUG ),
-			self::FOOTNOTE_FRAGMENT_ID_SLUG['key'] => $this->add_setting( self::FOOTNOTE_FRAGMENT_ID_SLUG ),
-			self::HARD_LINK_IDS_SEPARATOR['key'] => $this->add_setting( self::HARD_LINK_IDS_SEPARATOR ),
+			self::FOOTNOTES_HARD_LINKS_ENABLE['key']       => $this->add_setting( self::FOOTNOTES_HARD_LINKS_ENABLE ),
+			self::REFERRER_FRAGMENT_ID_SLUG['key']         => $this->add_setting( self::REFERRER_FRAGMENT_ID_SLUG ),
+			self::FOOTNOTE_FRAGMENT_ID_SLUG['key']         => $this->add_setting( self::FOOTNOTE_FRAGMENT_ID_SLUG ),
+			self::HARD_LINK_IDS_SEPARATOR['key']           => $this->add_setting( self::HARD_LINK_IDS_SEPARATOR ),
 			self::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE['key'] => $this->add_setting( self::FOOTNOTES_BACKLINK_TOOLTIP_ENABLE ),
-			self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT['key'] => $this->add_setting( self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT ),
+			self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT['key']   => $this->add_setting( self::FOOTNOTES_BACKLINK_TOOLTIP_TEXT ),
 		);
 
 		$this->load_values( $options );

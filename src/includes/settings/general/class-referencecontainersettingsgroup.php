@@ -29,7 +29,7 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'reference-container';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -71,7 +71,7 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 		'default_value' => 'p',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => Setting::TEXT_ELEMENT_OPTIONS
+		'input_options' => Setting::TEXT_ELEMENT_OPTIONS,
 	);
 
 	/**
@@ -687,8 +687,10 @@ class ReferenceContainerSettingsGroup extends SettingsGroup {
 		'type'          => 'boolean',
 		'input_type'    => 'checkbox',
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

@@ -12,9 +12,7 @@ namespace footnotes\general;
 
 use footnotes\includes\{Footnotes, Convert, Settings};
 
-/**
- * @todo Replace with constant imports.
- */
+/* TODO Replace with constant imports. */
 use footnotes\includes\settings\general\ReferenceContainerSettingsGroup;
 use footnotes\includes\settings\general\AMPCompatSettingsGroup;
 use footnotes\includes\settings\referrersandtooltips\TooltipsSettingsGroup;
@@ -115,15 +113,15 @@ class General {
 		 * @see  Footnotes::$version
 		 */
 		private string $version,
-		
+
 		/**
 		 * The plugin settings object.
 		 *
 		 * @access  private
 		 * @since  2.8.0
 		 */
-		private Settings $settings	
-  ) {
+		private Settings $settings
+	) {
 
 		$this->load_dependencies();
 
@@ -156,9 +154,9 @@ class General {
 
 		$this->reference_container_widget = new Widget\Reference_Container( $this->plugin_name );
 
-		$this->task = new Parser($this->settings);
+		$this->task = new Parser( $this->settings );
 	}
-	
+
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *

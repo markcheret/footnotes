@@ -29,7 +29,7 @@ class ShortcodeSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'shortcode';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -148,8 +148,10 @@ class ShortcodeSettingsGroup extends SettingsGroup {
 		'input_type' => 'text',
 		'enabled_by' => self::FOOTNOTES_SHORT_CODE_END,
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

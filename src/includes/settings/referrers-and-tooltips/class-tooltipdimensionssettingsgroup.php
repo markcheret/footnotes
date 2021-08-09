@@ -29,7 +29,7 @@ class TooltipDimensionsSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-dimensions';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -59,7 +59,7 @@ class TooltipDimensionsSettingsGroup extends SettingsGroup {
 		'type'          => 'number',
 		'input_type'    => 'number',
 	);
-	
+
 	/**
 	 * Settings container key for alternative tooltip width.
 	 *
@@ -76,8 +76,10 @@ class TooltipDimensionsSettingsGroup extends SettingsGroup {
 		'type'          => 'number',
 		'input_type'    => 'number',
 	);
-		
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

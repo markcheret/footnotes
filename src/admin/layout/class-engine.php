@@ -106,20 +106,8 @@ abstract class Engine {
 			$this->settings->settings_sections['scope_and_priority']->get_section_slug() => $this->settings->settings_sections['scope_and_priority'],
 			$this->settings->settings_sections['custom_css']->get_section_slug() => $this->settings->settings_sections['custom_css'],
 		);
-		
-		/*foreach ( $this->get_sections() as $section ) {
-			// Append tab to the tab-array.
-			$this->sections[ $section['id'] ] = $section;
-			add_settings_section(
-				$section['id'],
-				'',
-				fn() => $this->description(),
-				'footnotes'
-			);
-			$this->add_settings_fields();
-			//$this->register_meta_boxes( $section['id'] );
-		}*/
 	}
+	
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
 	 * Displays the content of specific sub-page.
@@ -129,14 +117,14 @@ abstract class Engine {
 	 */
 	public function display_content(): void {
 		// check user capabilities
-    if ( ! current_user_can( 'manage_options' ) ) {
-        return;
-    }
-    
-    $active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
 		$active_section    = $this->sections[ $active_section_id ];
- 	
- 		// Store settings.
+
+		// Store settings.
 		$settings_updated = false;
 		if ( array_key_exists( 'save-settings', $_POST ) ) {
 			if ( 'save' === $_POST['save-settings'] ) {
@@ -145,50 +133,51 @@ abstract class Engine {
 				$settings_updated = $this->save_settings();
 			}
 		}
-		
-    ?>
-    <div class="wrap">
-      <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-      <h2 class="nav-tab-wrapper">
-			<?php foreach ( $this->sections as $section_slug => $section ): ?>
+
+		?>
+	<div class="wrap">
+	  <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+	  <h2 class="nav-tab-wrapper">
+			<?php foreach ( $this->sections as $section_slug => $section ) : ?>
 				<a 
-					class="nav-tab<?php echo ( $section_slug === $active_section->get_section_slug() ) ? ' nav-tab-active' : '' ?>"
-					href="?page=<?php echo Init::MAIN_MENU_SLUG ?>&t=<?php echo $section_slug ?>">
+					class="nav-tab<?php echo ( $section_slug === $active_section->get_section_slug() ) ? ' nav-tab-active' : ''; ?>"
+					href="?page=<?php echo Init::MAIN_MENU_SLUG; ?>&t=<?php echo $section_slug; ?>">
 					<?php echo $section->get_title(); ?>	
 				</a>
 			<?php endforeach; ?>
 			</h2>
 			<?php
-	 
-		 	if ( $settings_updated ) {
+
+			if ( $settings_updated ) {
 				echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', 'footnotes' ) );
 			}
-			
+
 			// show error/update messages
 			settings_errors( 'footnotes_messages' );
 			?>
-      <form action="" method="post">
-      	<input type="hidden" name="save-settings" value="save" />
-        <?php												
-        // output security fields for the registered setting "footnotes"
-        settings_fields( 'footnotes' );
-        
-        // output setting sections and their fields
-        // (sections are registered for "footnotes", each field is registered to a specific section)
-        do_settings_sections( 'footnotes' );
-        
-				//do_meta_boxes( $active_section['id'], 'main', null );
-				
+	  <form action="" method="post">
+		  <input type="hidden" name="save-settings" value="save" />
+		<?php
+		// output security fields for the registered setting "footnotes"
+		settings_fields( 'footnotes' );
+
+		// output setting sections and their fields
+		// (sections are registered for "footnotes", each field is registered to a specific section)
+		do_settings_sections( 'footnotes' );
+
+				// do_meta_boxes( $active_section['id'], 'main', null );
+
 				// Add submit button to active section if defined.
-				//if ( $l_arr_active_section['submit'] ) {
+				// if ( $l_arr_active_section['submit'] ) {
 					submit_button();
-				//}
-        ?>
-      </form>
-    </div>
-    <?php
+				// }
+		?>
+	  </form>
+	</div>
+		<?php
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	
 	/**
 	 * Output the description of a section. May be overwritten in any section.
 	 *
@@ -238,8 +227,8 @@ abstract class Engine {
 	 * @since  1.5.0
 	 */
 	abstract protected function get_meta_boxes(): array;
-	
-	
+
+
 	abstract protected function add_settings_fields(): void;
 
 	/**
@@ -370,11 +359,11 @@ abstract class Engine {
 		 */
 		return sprintf( '<label for="%s">%s</label>', $setting_name, $caption );
 	}
-	
+
 	/**************************************************************************
 	 * NEW METHODS
 	 **************************************************************************/
-	 
+
 	/**
 	 * Constructs the HTML for a text 'input' element.
 	 *
@@ -387,7 +376,7 @@ abstract class Engine {
 	 */
 	protected function add_input_text( array $args ): void {
 		extract( $args );
-				
+
 		echo ( sprintf(
 			'<input type="text" name="%s" id="%s" maxlength="%d" style="%s" value="%s"%s%s/>',
 			$name,
@@ -395,11 +384,11 @@ abstract class Engine {
 			$max_length ?? 999,
 			$style ?? '',
 			$value,
-			isset($readonly) ? ' readonly="readonly"' : '',
-			$disabled ? ' disabled': ''
+			isset( $readonly ) ? ' readonly="readonly"' : '',
+			$disabled ? ' disabled' : ''
 		) );
-	} 
-	
+	}
+
 	/**
 	 * Constructs the HTML for a 'textarea' element.
 	 *
@@ -411,18 +400,18 @@ abstract class Engine {
 	 */
 	protected function add_textarea( array $args ): void {
 		extract( $args );
-				
+
 		echo ( sprintf(
 			'<textarea name="%s" id="%s" rows="4" cols="50" style="%s" %s%s>%s</textarea>',
 			$name,
 			$name,
 			$style ?? '',
-			isset($readonly) ? ' readonly="readonly"' : '',
-			$disabled ? ' disabled': '',
+			isset( $readonly ) ? ' readonly="readonly"' : '',
+			$disabled ? ' disabled' : '',
 			$value,
 		) );
 	}
-	
+
 	/**
 	 * Constructs the HTML for a numeric 'input' element.
 	 *
@@ -436,17 +425,17 @@ abstract class Engine {
 	 */
 	protected function add_input_number( array $args ): void {
 		extract( $args );
-				
+
 		echo ( sprintf(
 			'<input type="number" name="%s" id="%s"%s%s value="%s"%s%s%s/>',
 			$name,
 			$name,
-			isset($max) ? ' max="'.$max.'"' : '',
-			isset($min) ? ' min="'.$min.'"' : '',
-			is_float($value) ? number_format( $value, 1 ) : $value,
-			is_float($value) ? ' step="0.1"' : '',
-			isset($readonly) ? ' readonly="readonly"' : '',
-			$disabled ? ' disabled': ''
+			isset( $max ) ? ' max="' . $max . '"' : '',
+			isset( $min ) ? ' min="' . $min . '"' : '',
+			is_float( $value ) ? number_format( $value, 1 ) : $value,
+			is_float( $value ) ? ' step="0.1"' : '',
+			isset( $readonly ) ? ' readonly="readonly"' : '',
+			$disabled ? ' disabled' : ''
 		) );
 	}
 
@@ -462,9 +451,11 @@ abstract class Engine {
 	 */
 	protected function add_select( array $args ): void {
 		extract( $args );
-		
-		if (!isset($options)) trigger_error("No options passed to 'select' element.", E_USER_ERROR);
-		
+
+		if ( ! isset( $options ) ) {
+			trigger_error( "No options passed to 'select' element.", E_USER_ERROR );
+		}
+
 		$select_options = '';
 		// Loop through all array keys.
 		foreach ( $options as $option_value => $option_text ) {
@@ -479,16 +470,16 @@ abstract class Engine {
 				$option_text
 			);
 		}
-		
+
 		echo ( sprintf(
 			'<select name="%s" id="%s"%s>%s</select>',
 			$name,
 			$name,
-			$disabled ? ' disabled': '',
+			$disabled ? ' disabled' : '',
 			$select_options
 		) );
 	}
-	
+
 	/**
 	 * Constructs the HTML for a checkbox 'input' element.
 	 *
@@ -501,16 +492,16 @@ abstract class Engine {
 	 */
 	protected function add_input_checkbox( array $args ): void {
 		extract( $args );
-		
+
 		echo sprintf(
 			'<input type="checkbox" name="%s" id="%s"%s%s/>',
 			$name,
 			$name,
 			$value ? ' checked="checked"' : '',
-			$disabled ? ' disabled': ''
+			$disabled ? ' disabled' : ''
 		);
 	}
-	
+
 	/**
 	 * Constructs the HTML for a color 'input' element.
 	 *
@@ -523,19 +514,19 @@ abstract class Engine {
 	 */
 	protected function add_input_color( array $args ): void {
 		extract( $args );
-		
+
 		echo sprintf(
 			'<input type="color" name="%s" id="%s"%s/>',
 			$name,
 			$name,
-			$disabled ? ' disabled': ''
+			$disabled ? ' disabled' : ''
 		);
 	}
-	
+
 	/******************************
-   *  OLD METHODS
-   ******************************/
-   
+	 *  OLD METHODS
+	 ******************************/
+
 	/**
 	 * Registers all Meta boxes for a sub-page.
 	 *
@@ -573,9 +564,9 @@ abstract class Engine {
 		wp_enqueue_script( 'wp-color-picker' );
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-	
+
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-	
+
 	/**
 	 * Save plugin settings.
 	 *
@@ -594,7 +585,7 @@ abstract class Engine {
 		foreach ( array_keys( $active_section->get_options() ) as $setting_key ) {
 			$new_settings[ $setting_key ] = array_key_exists( $setting_key, $_POST ) ? wp_unslash( $_POST[ $setting_key ] ) : '';
 		}
-		
+
 		// Update settings.
 		return $this->settings->save_options_group( $active_section->get_options_group_slug(), $new_settings );
 	}

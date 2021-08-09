@@ -29,7 +29,7 @@ class ReferrersInLabelsSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'referrers-in-label';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -63,14 +63,16 @@ class ReferrersInLabelsSettingsGroup extends SettingsGroup {
 		'default_value' => 'none',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => array( 
-		  'none'  =>  '0. No problem or solved otherwise',
-		  'move' => 'A. Footnotes are moved out and appended after the label\'s end (recommended)',
-		  'disconnect' =>  'B. Labels with footnotes are disconnected from input element (discouraged)'
+		'input_options' => array(
+			'none'       => '0. No problem or solved otherwise',
+			'move'       => 'A. Footnotes are moved out and appended after the label\'s end (recommended)',
+			'disconnect' => 'B. Labels with footnotes are disconnected from input element (discouraged)',
 		),
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

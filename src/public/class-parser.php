@@ -15,29 +15,27 @@ namespace footnotes\general;
 
 use footnotes\includes\{Settings, Config, Convert, Template};
 
-/**
- * @todo Replace with constant imports.
- */
+/* TODO Replace with constant imports. */
 use footnotes\includes\settings\general\{
-  ExcerptsSettingsGroup,
-  HardLinksSettingsGroup,
-  LoveSettingsGroup,
-  NumberingSettingsGroup,
-  ReferenceContainerSettingsGroup,
-  ScrollingSettingsGroup,
-  ShortcodeSettingsGroup,
+	ExcerptsSettingsGroup,
+	HardLinksSettingsGroup,
+	LoveSettingsGroup,
+	NumberingSettingsGroup,
+	ReferenceContainerSettingsGroup,
+	ScrollingSettingsGroup,
+	ShortcodeSettingsGroup,
 };
 use footnotes\includes\settings\referrersandtooltips\{
-  BacklinkSymbolSettingsGroup,
-  ReferrersSettingsGroup,
-  ReferrersInLabelsSettingsGroup,
-  TooltipsSettingsGroup,
-  TooltipAppearanceSettingsGroup,
-  TooltipDimensionsSettingsGroup,
-  TooltipPositionSettingsGroup,
-  TooltipTextSettingsGroup,
-  TooltipTimingSettingsGroup,
-  TooltipTruncationSettingsGroup
+	BacklinkSymbolSettingsGroup,
+	ReferrersSettingsGroup,
+	ReferrersInLabelsSettingsGroup,
+	TooltipsSettingsGroup,
+	TooltipAppearanceSettingsGroup,
+	TooltipDimensionsSettingsGroup,
+	TooltipPositionSettingsGroup,
+	TooltipTextSettingsGroup,
+	TooltipTimingSettingsGroup,
+	TooltipTruncationSettingsGroup
 };
 use footnotes\includes\settings\scopeandpriority\WordPressHooksSettingsGroup;
 use footnotes\includes\settings\customcss\CustomCSSSettingsGroup;
@@ -49,7 +47,7 @@ use footnotes\includes\settings\customcss\CustomCSSSettingsGroup;
  * @since 1.5.0
  * @since 2.8.0 Rename class from `Footnotes_Task` to `Parser`.
  */
-class Parser {  
+class Parser {
 	/**
 	 * Contains all footnotes found in the searched content.
 	 *
@@ -276,15 +274,15 @@ class Parser {
 	 * @todo Reorganise dependencies.
 	 * @todo Move call to `register_hooks()` to {@see General}.
 	 */
-	public function __construct(		
+	public function __construct(
 		/**
 		 * The plugin settings object.
 		 *
 		 * @access  private
 		 * @since  2.8.0
 		 */
-		private Settings $settings	
-  ) {
+		private Settings $settings
+	) {
 		// TODO: Reorg dependencies.
 		require_once plugin_dir_path( __DIR__ ) . 'includes/class-config.php';
 		require_once plugin_dir_path( __DIR__ ) . 'includes/class-convert.php';
@@ -481,7 +479,7 @@ class Parser {
 		// Reference container label bottom border.
 		if ( ( $this->settings->get_setting_value( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_BOTTOM_BORDER['key'] ) ) ) {
 			echo '.footnote_container_prepare > ';
-			echo $this->settings->get_setting_value( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_ELEMENT['key'] ) ;
+			echo $this->settings->get_setting_value( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_LABEL_ELEMENT['key'] );
 			echo " {border-bottom: 1px solid #aaaaaa !important;}\r\n";
 		}
 
@@ -545,7 +543,7 @@ class Parser {
 		}
 
 		// Hard links scroll offset.
-		// TODO: remove cast
+		// TODO: remove cast.
 		self::$hard_links_enabled = (bool) $this->settings->get_setting_value( HardLinksSettingsGroup::FOOTNOTES_HARD_LINKS_ENABLE['key'] );
 
 		// Correct hard links enabled status depending on AMP-compatible or alternative reference container enabled status.
@@ -721,7 +719,7 @@ class Parser {
 		 * for transparency. It isn’t indented though (the PHP open tag neither).
 		 */
 		if ( General::$alternative_tooltips_enabled ) {
-			echo ('
+			echo ( '
 				<script content="text/javascript">
 				function footnote_tooltip_show(footnote_tooltip_id) {
 				document.getElementById(footnote_tooltip_id).classList.remove("hidden");
@@ -732,7 +730,7 @@ class Parser {
 				document.getElementById(footnote_tooltip_id).classList.add("hidden");
 				}
 				</script>
-			');
+			' );
 		};
 	}
 
@@ -820,7 +818,7 @@ class Parser {
 		$footnote_section_shortcode_length = strlen( $footnote_section_shortcode );
 
 		// TODO: Replace with `str_contains()`, but currently breaks Rector downgrade.
-		// https://github.com/rectorphp/rector/issues/6315
+		// <https://github.com/rectorphp/rector/issues/6315>.
 		if ( ! strpos( $content, (string) $footnote_section_shortcode ) ) {
 
 			// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
@@ -838,8 +836,8 @@ class Parser {
 				$section_end    = strpos( $rest_content, (string) $footnote_section_shortcode );
 				$sections_raw[] = substr( $rest_content, 0, $section_end );
 				$rest_content   = substr( $rest_content, $section_end + $footnote_section_shortcode_length );
-			// TODO: Replace with `str_contains()`, but currently breaks Rector downgrade.
-			// https://github.com/rectorphp/rector/issues/6315
+				// TODO: Replace with `str_contains()`, but currently breaks Rector downgrade.
+				// <https://github.com/rectorphp/rector/issues/6315>.
 			} while ( strpos( $rest_content, (string) $footnote_section_shortcode ) );
 			$sections_raw[] = $rest_content;
 
@@ -1199,7 +1197,7 @@ class Parser {
 		 */
 
 		// If enabled.
-		if ( $this->settings->get_setting( ShortcodeSettingsGroup::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE['key']) ->get_value() ) {
+		if ( $this->settings->get_setting( ShortcodeSettingsGroup::FOOTNOTE_SHORTCODE_SYNTAX_VALIDATION_ENABLE['key'] )->get_value() ) {
 
 			// Apply different regex depending on whether start shortcode is double/triple opening parenthesis.
 			if ( '((' === self::$start_tag || '(((' === self::$start_tag ) {
@@ -1709,12 +1707,12 @@ class Parser {
 		 */
 
 		// If the backlink symbol is enabled.
-		if ( $this->settings->get_setting_value( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE['key'] )) {
-		  $arrow_setting = $this->settings->get_setting( BacklinkSymbolSettingsGroup::HYPERLINK_ARROW['key']);
-		  
+		if ( $this->settings->get_setting_value( ReferenceContainerSettingsGroup::REFERENCE_CONTAINER_BACKLINK_SYMBOL_ENABLE['key'] ) ) {
+			$arrow_setting = $this->settings->get_setting( BacklinkSymbolSettingsGroup::HYPERLINK_ARROW['key'] );
+
 			// Get html arrow.
-			$arrow = $arrow_setting->get_input_options()[$arrow_setting->get_value() || 0];
-			
+			$arrow = $arrow_setting->get_input_options()[ $arrow_setting->get_value() || 0 ];
+
 			// Get user defined arrow.
 			$arrow_user_defined = $this->settings->get_setting_value( BacklinkSymbolSettingsGroup::HYPERLINK_ARROW_USER_DEFINED['key'] );
 			if ( ! empty( $arrow_user_defined ) ) {
@@ -1745,10 +1743,9 @@ class Parser {
 
 				// If it is not, check which option is on.
 				$separator_option = $this->settings->get_setting_value( ReferenceContainerSettingsGroup::BACKLINKS_SEPARATOR_OPTION['key'] );
-				// TODO: replace with `match` (but currently it breaks the Rector
-				// downgrade to PHP 7.4.
-				// https://github.com/rectorphp/rector/issues/6315
-				switch ($separator_option) {
+				// TODO: replace with `match` (but currently it breaks the Rector downgrade to PHP 7.4.
+				// <https://github.com/rectorphp/rector/issues/6315>.
+				switch ( $separator_option ) {
 					case 'comma':
 						$separator = ',';
 						break;
@@ -1779,10 +1776,9 @@ class Parser {
 
 				// If it is not, check which option is on.
 				$terminator_option = $this->settings->get_setting_value( ReferenceContainerSettingsGroup::BACKLINKS_TERMINATOR_OPTION['key'] );
-				// TODO: replace with `match` (but currently it breaks the Rector
-				// downgrade to PHP 7.4.
-				// https://github.com/rectorphp/rector/issues/6315
-				switch ($terminator_option) {
+				// TODO: replace with `match` (but currently it breaks the Rector downgrade to PHP 7.4.
+				// <https://github.com/rectorphp/rector/issues/6315>.
+				switch ( $terminator_option ) {
 					case 'period':
 						$terminator = '.';
 						break;
@@ -2138,7 +2134,7 @@ class Parser {
 		}
 
 		// Call again for robustness when priority levels don't match any longer.
-		// TODO: remove cast
+		// TODO: remove cast.
 		self::$scroll_offset = (int) $this->settings->get_setting_value( ScrollingSettingsGroup::FOOTNOTES_SCROLL_OFFSET['key'] );
 
 		// Streamline.

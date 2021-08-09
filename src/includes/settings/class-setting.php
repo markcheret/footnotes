@@ -18,7 +18,7 @@ use footnotes\includes\{Core, Settings};
  * @package footnotes
  * @since 2.8.0
  */
-class Setting {	
+class Setting {
 	/**
 	 * Options for the custom width units (per cent is a ratio, not a unit).
 	 *
@@ -33,7 +33,7 @@ class Setting {
 		'em'  => 'em',
 		'vw'  => 'viewport width',
 	);
-	
+
 	/**
 	 * Options for the custom font size units (per cent is a ratio, not a unit).
 	 *
@@ -41,16 +41,16 @@ class Setting {
 	 *
 	 * @since  2.8.0
 	 */
-	const FONT_SIZE_UNIT_OPTIONS = array( 
-		  'em'  => 'em',
-			'rem' => 'rem',
-			'px'  => 'pixels',
-			'pt'  => 'points',
-			'pc'  => 'picas',
-			'mm'  => 'millimeters',
-			'%'   => 'per cent',
+	const FONT_SIZE_UNIT_OPTIONS = array(
+		'em'  => 'em',
+		'rem' => 'rem',
+		'px'  => 'pixels',
+		'pt'  => 'points',
+		'pc'  => 'picas',
+		'mm'  => 'millimeters',
+		'%'   => 'per cent',
 	);
-	
+
 	/**
 	 * Options for the HTML text elements.
 	 *
@@ -59,14 +59,14 @@ class Setting {
 	 * @since  2.8.0
 	 */
 	const TEXT_ELEMENT_OPTIONS = array(
-			'p'  => 'paragraph',
-			'h2' => 'heading 2',
-			'h3' => 'heading 3',
-			'h4' => 'heading 4',
-			'h5' => 'heading 5',
-			'h6' => 'heading 6',
+		'p'  => 'paragraph',
+		'h2' => 'heading 2',
+		'h3' => 'heading 3',
+		'h4' => 'heading 4',
+		'h5' => 'heading 5',
+		'h6' => 'heading 6',
 	);
-	
+
 	/**
 	 * Setting value.
 	 *
@@ -74,7 +74,7 @@ class Setting {
 	 *
 	 * @since  2.8.0
 	 */
-	protected mixed $value;
+	protected $value;
 
 	/**
 	 * Constructs the setting.
@@ -97,7 +97,7 @@ class Setting {
 		 *
 		 * @since  2.8.0
 		 */
-		private string $options_group_slug,	
+		private string $options_group_slug,
 		/**
 		 * Setting section slug.
 		 *
@@ -106,7 +106,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private string $section_slug,
-		
+
 		/**
 		 * Setting slug.
 		 *
@@ -124,7 +124,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		public string $name,
-		
+
 		/**
 		 * Setting description.
 		 *
@@ -133,7 +133,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		public ?string $description,
-		
+
 		/**
 		 * Setting default value.
 		 *
@@ -142,7 +142,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private mixed $default_value,
-		
+
 		/**
 		 * Setting data type.
 		 *
@@ -151,7 +151,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private string $type,
-		
+
 		/**
 		 * Setting input field type.
 		 *
@@ -160,7 +160,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private string $input_type,
-		
+
 		/**
 		 * Setting input field options (for 'select' inputs).
 		 *
@@ -169,7 +169,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private ?array $input_options,
-		
+
 		/**
 		 * Setting input field max. value (for 'number' inputs).
 		 *
@@ -178,7 +178,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private int|float|null $input_max,
-		
+
 		/**
 		 * Setting input field min. value (for 'number' inputs).
 		 *
@@ -187,7 +187,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private int|float|null $input_min,
-		
+
 		/**
 		 * The setting for whether this setting is enabled or not.
 		 *
@@ -196,7 +196,7 @@ class Setting {
 		 * @since  2.8.0
 		 */
 		private ?string $enabled_by,
-		
+
 		/**
 		 * Any setting that overrides this setting.
 		 *
@@ -204,8 +204,8 @@ class Setting {
 		 *
 		 * @since  2.8.0
 		 */
-		private ?string $overridden_by,	
-		
+		private ?string $overridden_by,
+
 		/**
 		 * The plugin settings object.
 		 *
@@ -216,10 +216,10 @@ class Setting {
 		private Settings $settings
 	) {
 		$this->value = $this->default_value;
-		
-		register_setting( $this->options_group_slug, $this->key, $this->get_setting_args());
+
+		register_setting( $this->options_group_slug, $this->key, $this->get_setting_args() );
 	}
-	
+
 	/**
 	 * Get the args for registering the settings with WordPress.
 	 *
@@ -230,13 +230,13 @@ class Setting {
 	 * @since 2.8.0
 	 */
 	public function get_setting_args(): array {
-		return array (
-			'type' => $this->type,
+		return array(
+			'type'        => $this->type,
 			'description' => $this->description,
-			'default' => $this->default_value,
+			'default'     => $this->default_value,
 		);
 	}
-	
+
 	/**
 	 * Get the args for rendering setting fields on the admin. dashboard.
 	 *
@@ -247,19 +247,19 @@ class Setting {
 	 * @since 2.8.0
 	 */
 	public function get_setting_field_args(): array {
-		return array (
-			'name' => $this->key,
-			'label_for' => $this->key,
-			'value' => $this->value,
+		return array(
+			'name'        => $this->key,
+			'label_for'   => $this->key,
+			'value'       => $this->value,
 			'description' => $this->description,
-			'type' => $this->input_type,
-			'options' => $this->input_options,
-			'max' => $this->input_max,
-			'min' => $this->input_min,
-			'disabled' => $this->is_disabled_or_overridden()
+			'type'        => $this->input_type,
+			'options'     => $this->input_options,
+			'max'         => $this->input_max,
+			'min'         => $this->input_min,
+			'disabled'    => $this->is_disabled_or_overridden(),
 		);
 	}
-	
+
 	/**
 	 * Check whether a setting is enabled and/or overridden.
 	 *
@@ -269,28 +269,36 @@ class Setting {
 	 *
 	 * @since 2.8.0
 	 */
-	private function is_disabled_or_overridden(): ?bool {		
-		if (isset($this->enabled_by)) {
-		  $enabled_by_value = $this->settings->get_setting_value($this->enabled_by);
-			$is_enabled = (isset($enabled_by_value) || 'userdefined' === $enabled_by_value);
+	private function is_disabled_or_overridden(): ?bool {
+		if ( isset( $this->enabled_by ) ) {
+			$enabled_by_value = $this->settings->get_setting_value( $this->enabled_by );
+			$is_enabled       = ( isset( $enabled_by_value ) || 'userdefined' === $enabled_by_value );
 		}
-		
-		if (isset($this->overridden_by)) {
-		  $overridden_by_value = $this->settings->get_setting_value($this->overridden_by);
-      $is_overridden = !(null === $overridden_by_value || '' === $overridden_by_value);
+
+		if ( isset( $this->overridden_by ) ) {
+			$overridden_by_value = $this->settings->get_setting_value( $this->overridden_by );
+			$is_overridden       = ! ( null === $overridden_by_value || '' === $overridden_by_value );
 		}
-		
-		if (isset($is_enabled) || isset($is_overridden)) {
-		  if (isset($is_enabled) && !$is_enabled) return true;
-		  
-		  if (isset($is_enabled) && $is_enabled && (isset($is_overridden) && !$is_overridden)) return false;
-		  
-		  if (isset($is_overridden) && $is_overridden) return true;
-		  
-		  return false;
-		} else return null;
+
+		if ( isset( $is_enabled ) || isset( $is_overridden ) ) {
+			if ( isset( $is_enabled ) && ! $is_enabled ) {
+				return true;
+			}
+
+			if ( isset( $is_enabled ) && $is_enabled && ( isset( $is_overridden ) && ! $is_overridden ) ) {
+				return false;
+			}
+
+			if ( isset( $is_overridden ) && $is_overridden ) {
+				return true;
+			}
+
+			return false;
+		} else {
+			return null;
+		}
 	}
-	
+
 	/**
 	 * Gets the slug of the setting's options group.
 	 *
@@ -301,7 +309,7 @@ class Setting {
 	public function get_options_group_slug(): string {
 		return $this->options_group_slug;
 	}
-	
+
 	/**
 	 * Gets the slug of the setting's section.
 	 *
@@ -312,7 +320,7 @@ class Setting {
 	public function get_section_slug(): string {
 		return $this->section_slug;
 	}
-	
+
 	/**
 	 * Gets the value of the setting.
 	 *
@@ -323,7 +331,7 @@ class Setting {
 	public function get_value(): mixed {
 		return $this->value ?? $this->default_value ?? null;
 	}
-	
+
 	/**
 	 * Gets the default value of the setting.
 	 *
@@ -334,7 +342,7 @@ class Setting {
 	public function get_default_value(): mixed {
 		return $this->default_value ?? null;
 	}
-	
+
 	/**
 	 * Gets the input options of the setting.
 	 *
@@ -345,7 +353,7 @@ class Setting {
 	public function get_input_options(): ?array {
 		return $this->input_options ?? null;
 	}
-	
+
 	/**
 	 * Sets the value of the setting.
 	 *
@@ -354,7 +362,7 @@ class Setting {
 	 *
 	 * @since 2.8.0
 	 */
-	public function set_value(mixed $value): bool {
+	public function set_value( $value ): bool {
 		$this->value = $value;
 		return true;
 	}

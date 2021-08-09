@@ -29,7 +29,7 @@ class TooltipPositionSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-position';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -59,7 +59,7 @@ class TooltipPositionSettingsGroup extends SettingsGroup {
 		'default_value' => 'top center',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => array( 
+		'input_options' => array(
 			'top left'      => 'top left',
 			'top center'    => 'top center',
 			'top right'     => 'top right',
@@ -88,11 +88,11 @@ class TooltipPositionSettingsGroup extends SettingsGroup {
 		'default_value' => 'top right',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => array( 
-			'top left'      => 'top left',
-			'top right'     => 'top right',
-			'bottom right'  => 'bottom right',
-			'bottom left'   => 'bottom left',
+		'input_options' => array(
+			'top left'     => 'top left',
+			'top right'    => 'top right',
+			'bottom right' => 'bottom right',
+			'bottom left'  => 'bottom left',
 		),
 	);
 
@@ -170,8 +170,10 @@ class TooltipPositionSettingsGroup extends SettingsGroup {
 		'type'          => 'number',
 		'input_type'    => 'number',
 	);
-		
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

@@ -32,7 +32,7 @@ class AMPCompatSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'amp-compat';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -60,8 +60,10 @@ class AMPCompatSettingsGroup extends SettingsGroup {
 		'type'          => 'boolean',
 		'input_type'    => 'checkbox',
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

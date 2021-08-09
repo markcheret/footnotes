@@ -29,7 +29,7 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-appearance';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -79,7 +79,7 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'type'          => 'number',
 		'input_type'    => 'number',
 		'input_max'     => 50.0,
-		'input_min'     => 0.0
+		'input_min'     => 0.0,
 	);
 
 	/**
@@ -97,7 +97,7 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'default_value' => 'px',
 		'type'          => 'string',
 		'input_type'    => 'select',
-		'input_options' => Setting::FONT_SIZE_UNIT_OPTIONS
+		'input_options' => Setting::FONT_SIZE_UNIT_OPTIONS,
 	);
 
 	/**
@@ -140,7 +140,7 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'color',
 	);
-	
+
 	/**
 	 * Settings container key for the mouse-over box to define the border width.
 	 *
@@ -157,8 +157,8 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'default_value' => 1.0,
 		'type'          => 'number',
 		'input_type'    => 'number',
-		'input_max' => 4.0,
-		'input_min' => 0.0,
+		'input_max'     => 4.0,
+		'input_min'     => 0.0,
 	);
 
 	/**
@@ -178,7 +178,7 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'color',
 	);
-	
+
 	/**
 	 * Settings container key for the mouse-over box to define the border radius.
 	 *
@@ -195,8 +195,8 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'default_value' => 0,
 		'type'          => 'number',
 		'input_type'    => 'number',
-		'input_max' => 500,
-		'input_min' => 0,
+		'input_max'     => 500,
+		'input_min'     => 0,
 	);
 
 	/**
@@ -216,16 +216,18 @@ class TooltipAppearanceSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'color',
 	);
-		
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::MOUSE_OVER_BOX_FONT_SIZE_ENABLED['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FONT_SIZE_ENABLED ),
-			self::MOUSE_OVER_BOX_FONT_SIZE_SCALAR['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FONT_SIZE_SCALAR ),
-			self::MOUSE_OVER_BOX_FONT_SIZE_UNIT['key'] => $this->add_setting( self::MOUSE_OVER_BOX_FONT_SIZE_UNIT ),
-			self::FOOTNOTES_MOUSE_OVER_BOX_COLOR['key'] => $this->add_setting( self::FOOTNOTES_MOUSE_OVER_BOX_COLOR ),
+			self::MOUSE_OVER_BOX_FONT_SIZE_SCALAR['key']  => $this->add_setting( self::MOUSE_OVER_BOX_FONT_SIZE_SCALAR ),
+			self::MOUSE_OVER_BOX_FONT_SIZE_UNIT['key']    => $this->add_setting( self::MOUSE_OVER_BOX_FONT_SIZE_UNIT ),
+			self::FOOTNOTES_MOUSE_OVER_BOX_COLOR['key']   => $this->add_setting( self::FOOTNOTES_MOUSE_OVER_BOX_COLOR ),
 			self::FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND['key'] => $this->add_setting( self::FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND ),
 			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH['key'] => $this->add_setting( self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_WIDTH ),
 			self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR['key'] => $this->add_setting( self::FOOTNOTES_MOUSE_OVER_BOX_BORDER_COLOR ),

@@ -61,14 +61,14 @@ class Init {
 		 * @since  2.8.0
 		 */
 		private string $plugin_name,
-		
+
 		/**
 		 * The plugin settings object.
 		 *
 		 * @access  private
 		 * @since  2.8.0
 		 */
-		private Settings $settings	
+		private Settings $settings
 	) {
 		$this->load_dependencies();
 
@@ -99,12 +99,12 @@ class Init {
 	 *
 	 * @since  1.5.0
 	 */
-	public function initialize_settings(): void {		
+	public function initialize_settings(): void {
 		$this->settings->settings_sections['general']->add_settings_section();
 		$this->settings->settings_sections['referrers_and_tooltips']->add_settings_section();
 		$this->settings->settings_sections['scope_and_priority']->add_settings_section();
 		$this->settings->settings_sections['custom_css']->add_settings_section();
-		
+
 		$this->settings_page->add_settings_sections();
 		$this->settings_page->add_settings_fields();
 	}

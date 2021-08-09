@@ -60,14 +60,14 @@ class Admin {
 		 * @see  Footnotes::$version
 		 */
 		private string $version,
-		
+
 		/**
 		 * The plugin settings object.
 		 *
 		 * @access  private
 		 * @since  2.8.0
 		 */
-		private Settings $settings		
+		private Settings $settings
 	) {
 
 		$this->load_dependencies();

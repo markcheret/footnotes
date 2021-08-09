@@ -29,7 +29,7 @@ class NumberingSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'numbering';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -42,7 +42,7 @@ class NumberingSettingsGroup extends SettingsGroup {
 	/**
 	 * Settings container key for combining identical footnotes.
 	 *
-	 * @link https://wordpress.org/support/topic/add-support-for-ibid-notation 
+	 * @link https://wordpress.org/support/topic/add-support-for-ibid-notation
 	 *       Support for Ibid. notation added thanks to @meglio.
 	 *
 	 * @var  array
@@ -60,7 +60,7 @@ class NumberingSettingsGroup extends SettingsGroup {
 		'type'          => 'boolean',
 		'input_type'    => 'checkbox',
 	);
-	
+
 	/**
 	 * Settings container key for the counter style of the footnotes.
 	 *
@@ -77,7 +77,7 @@ class NumberingSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'select',
 		'input_options' => array(
-		  'arabic_plain'   => 'plain Arabic numbers (1, 2, 3, 4, 5, &hellip;)',
+			'arabic_plain'   => 'plain Arabic numbers (1, 2, 3, 4, 5, &hellip;)',
 			'arabic_leading' => 'zero-padded Arabic numbers (01, 02, 03, 04, 05, &hellip;)',
 			'latin_low'      => 'lowercase Latin letters (a, b, c, d, e, &hellip;)',
 			'latin_high'     => 'uppercase Latin letters (A, B, C, D, E, &hellip;)',
@@ -85,14 +85,16 @@ class NumberingSettingsGroup extends SettingsGroup {
 			'roman_low'      => 'lowercase Roman numerals (i, ii, iii, iv, v, &hellip;)',
 		),
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
 			self::COMBINE_IDENTICAL_FOOTNOTES['key'] => $this->add_setting( self::COMBINE_IDENTICAL_FOOTNOTES ),
-			self::FOOTNOTES_COUNTER_STYLE['key'] => $this->add_setting( self::FOOTNOTES_COUNTER_STYLE ),
+			self::FOOTNOTES_COUNTER_STYLE['key']     => $this->add_setting( self::FOOTNOTES_COUNTER_STYLE ),
 		);
 
 		$this->load_values( $options );

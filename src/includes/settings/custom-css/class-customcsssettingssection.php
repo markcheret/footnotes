@@ -22,7 +22,7 @@ use footnotes\includes\settings\customcss\CustomCSSSettingsGroup;
  * @package footnotes
  * @since 2.8.0
  */
-class CustomCSSSettingsSection extends SettingsSection {	
+class CustomCSSSettingsSection extends SettingsSection {
 	/**
 	 * The groups of settings within this section.
 	 *
@@ -31,13 +31,13 @@ class CustomCSSSettingsSection extends SettingsSection {
 	 * @since  2.8.0
 	 */
 	protected array $settings_groups;
-	
+
 	/**
 	 * Constructs the settings section.
 	 *
-	 * @param string options_group_slug The slug of the settings section's options group.
-	 * @param string section_slug The slug of the settings section.
-	 * @param string title The name of the settings section.
+	 * @param string $options_group_slug The slug of the settings section's options group.
+	 * @param string $section_slug The slug of the settings section.
+	 * @param string $title The name of the settings section.
 	 *
 	 * @since  2.8.0
 	 */
@@ -45,7 +45,7 @@ class CustomCSSSettingsSection extends SettingsSection {
 		$options_group_slug,
 		$section_slug,
 		$title,
-		
+
 		/**
 		 * The plugin settings object.
 		 *
@@ -55,12 +55,12 @@ class CustomCSSSettingsSection extends SettingsSection {
 		private Settings $settings
 	) {
 		$this->options_group_slug = $options_group_slug;
-		$this->section_slug = $section_slug;
-		$this->title = $title;
-				
+		$this->section_slug       = $section_slug;
+		$this->title              = $title;
+
 		$this->load_dependencies();
-		
-		$this->add_settings_groups(get_option( $this->options_group_slug ));
+
+		$this->add_settings_groups( get_option( $this->options_group_slug ) );
 
 		$this->load_options_group();
 	}
@@ -76,19 +76,19 @@ class CustomCSSSettingsSection extends SettingsSection {
 	 * @see SettingsSection::load_dependencies()
 	 */
 	protected function load_dependencies(): void {
-	  parent::load_dependencies();
+		parent::load_dependencies();
 
-    require_once plugin_dir_path( __DIR__ ) . 'class-settings-section.php';
-	  
-		require_once plugin_dir_path( __DIR__ ) . 'custom-css/class-custom-css-settings-group.php';
+		require_once plugin_dir_path( __DIR__ ) . 'custom-css/class-customcsssettingsgroup.php';
 	}
-	
+
 	/**
+	 * Add the settings groups for this settings section.
+	 *
 	 * @see SettingsSection::add_settings_groups()
 	 */
 	protected function add_settings_groups(): void {
-		$this->settings_groups = array (
-			CustomCSSSettingsGroup::GROUP_ID => new CustomCSSSettingsGroup($this->options_group_slug, $this->section_slug, $this->settings ),
+		$this->settings_groups = array(
+			CustomCSSSettingsGroup::GROUP_ID => new CustomCSSSettingsGroup( $this->options_group_slug, $this->section_slug, $this->settings ),
 		);
 	}
 }

@@ -22,7 +22,7 @@ use footnotes\includes\settings\SettingsGroup;
  * @since 2.8.0
  */
 class ExcerptsSettingsGroup extends SettingsGroup {
-  /**
+	/**
 	 * Setting group ID.
 	 *
 	 * @var  string
@@ -30,7 +30,7 @@ class ExcerptsSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'excerpts';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -59,11 +59,13 @@ class ExcerptsSettingsGroup extends SettingsGroup {
 		'input_options' => array(
 			'yes'    => 'Yes, generate excerpts from posts with effectively processed footnotes and other markup',
 			'no'     => 'No, generate excerpts from posts but remove all footnotes and output plain text',
-			'manual' => 'Yes but run the process only to display tooltips in manual excerpts with footnote short codes'
+			'manual' => 'Yes but run the process only to display tooltips in manual excerpts with footnote short codes',
 		),
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

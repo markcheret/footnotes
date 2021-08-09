@@ -29,7 +29,7 @@ class TooltipTextSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-text';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -109,8 +109,10 @@ class TooltipTextSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'text',
 	);
-		
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

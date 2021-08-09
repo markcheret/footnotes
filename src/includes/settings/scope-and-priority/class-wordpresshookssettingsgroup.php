@@ -29,7 +29,7 @@ class WordPressHooksSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	public const GROUP_ID = 'wordpress-hooks';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -183,7 +183,7 @@ class WordPressHooksSettingsGroup extends SettingsGroup {
 		'input_max'     => PHP_INT_MAX,
 		'input_min'     => -1,
 	);
-	
+
 	/**
 	 * Settings container key to enable the `widget_title` hook.
 	 *
@@ -266,21 +266,23 @@ class WordPressHooksSettingsGroup extends SettingsGroup {
 		'input_max'     => PHP_INT_MAX,
 		'input_min'     => -1,
 	);
-	
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {
 		$this->settings = array(
-			self::EXPERT_LOOKUP_THE_TITLE['key'] => $this->add_setting( self::EXPERT_LOOKUP_THE_TITLE ),
+			self::EXPERT_LOOKUP_THE_TITLE['key']    => $this->add_setting( self::EXPERT_LOOKUP_THE_TITLE ),
 			self::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL['key'] => $this->add_setting( self::EXPERT_LOOKUP_THE_TITLE_PRIORITY_LEVEL ),
-			self::EXPERT_LOOKUP_THE_CONTENT['key'] => $this->add_setting( self::EXPERT_LOOKUP_THE_CONTENT ),
+			self::EXPERT_LOOKUP_THE_CONTENT['key']  => $this->add_setting( self::EXPERT_LOOKUP_THE_CONTENT ),
 			self::EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL['key'] => $this->add_setting( self::EXPERT_LOOKUP_THE_CONTENT_PRIORITY_LEVEL ),
-			self::EXPERT_LOOKUP_THE_EXCERPT['key'] => $this->add_setting( self::EXPERT_LOOKUP_THE_EXCERPT ),
+			self::EXPERT_LOOKUP_THE_EXCERPT['key']  => $this->add_setting( self::EXPERT_LOOKUP_THE_EXCERPT ),
 			self::EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL['key'] => $this->add_setting( self::EXPERT_LOOKUP_THE_EXCERPT_PRIORITY_LEVEL ),
 			self::EXPERT_LOOKUP_WIDGET_TITLE['key'] => $this->add_setting( self::EXPERT_LOOKUP_WIDGET_TITLE ),
 			self::EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL['key'] => $this->add_setting( self::EXPERT_LOOKUP_WIDGET_TITLE_PRIORITY_LEVEL ),
-			self::EXPERT_LOOKUP_WIDGET_TEXT['key'] => $this->add_setting( self::EXPERT_LOOKUP_WIDGET_TEXT ),
+			self::EXPERT_LOOKUP_WIDGET_TEXT['key']  => $this->add_setting( self::EXPERT_LOOKUP_WIDGET_TEXT ),
 			self::EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL['key'] => $this->add_setting( self::EXPERT_LOOKUP_WIDGET_TEXT_PRIORITY_LEVEL ),
 		);
 

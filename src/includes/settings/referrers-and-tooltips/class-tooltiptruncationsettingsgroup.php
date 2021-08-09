@@ -29,7 +29,7 @@ class TooltipTruncationSettingsGroup extends SettingsGroup {
 	 * @since  2.8.0
 	 */
 	const GROUP_ID = 'tooltip-truncation';
-	
+
 	/**
 	 * Setting group name.
 	 *
@@ -99,8 +99,10 @@ class TooltipTruncationSettingsGroup extends SettingsGroup {
 		'type'          => 'string',
 		'input_type'    => 'text',
 	);
-		
+
 	/**
+	 * Add the settings for this settings group.
+	 *
 	 * @see SettingsGroup::add_settings()
 	 */
 	protected function add_settings( array|false $options ): void {

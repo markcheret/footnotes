@@ -9,12 +9,16 @@
     <link rel="icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
-            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -49,10 +53,11 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -four phpdocumentor-sidebar">
-    
+        
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
                 <ul class="phpdocumentor-list">
                                             <li><a href="namespaces/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
                                             <li><a href="namespaces/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
@@ -62,8 +67,7 @@
 
         <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
                         <ul class="phpdocumentor-list">
                                     <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
                             </ul>
@@ -93,30 +97,13 @@
                 <h3>Table of Contents</h3>
         <table class="phpdocumentor-table_of_contents">
                             <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#src/admin/layout/class-settings.php">src/admin/layout/class-settings.php</a></td>
-                </tr>
-                            <tr>
                     <td class="phpdocumentor-cell"><a href="reports/deprecated.html#src/includes/class-config.php">src/includes/class-config.php</a></td>
                 </tr>
                             <tr>
-                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#src/includes/class-settings.php">src/includes/class-settings.php</a></td>
+                    <td class="phpdocumentor-cell"><a href="reports/deprecated.html#src/includes/settings/general/class-amp-compat-settings-group.php">src/includes/settings/general/class-amp-compat-settings-group.php</a></td>
                 </tr>
                     </table>
         
-                    <a id="src/admin/layout/class-settings.php"></a>
-            <h3><abbr title="src/admin/layout/class-settings.php">class-settings.php</abbr></h3>
-            <table>
-                <tr>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Element</th>
-                    <th class="phpdocumentor-heading">Reason</th>
-                </tr>
-                                                            <tr>
-                            <td class="phpdocumentor-cell">1016</td>
-                            <td class="phpdocumentor-cell"><a href="classes/footnotes-admin-layout-Settings.html#method_custom_css_migration"><abbr title="\footnotes\admin\layout\Settings::custom_css_migration()">Settings::custom_css_migration()</abbr></a></td>
-                            <td class="phpdocumentor-cell"></td>
-                        </tr>
-                                                </table>
                     <a id="src/includes/class-config.php"></a>
             <h3><abbr title="src/includes/class-config.php">class-config.php</abbr></h3>
             <table>
@@ -126,38 +113,38 @@
                     <th class="phpdocumentor-heading">Reason</th>
                 </tr>
                                                             <tr>
-                            <td class="phpdocumentor-cell">48</td>
+                            <td class="phpdocumentor-cell">51</td>
                             <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-Config.html"><abbr title="\footnotes\includes\Config">Config</abbr></a></td>
                             <td class="phpdocumentor-cell"></td>
                         </tr>
                                                                                 <tr>
-                            <td class="phpdocumentor-cell">58</td>
+                            <td class="phpdocumentor-cell">61</td>
                             <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-Config.html#constant_PLUGIN_PUBLIC_NAME"><abbr title="\footnotes\includes\Config::PLUGIN_PUBLIC_NAME">Config::PLUGIN_PUBLIC_NAME</abbr></a></td>
                             <td class="phpdocumentor-cell"></td>
                         </tr>
                                                                                 <tr>
-                            <td class="phpdocumentor-cell">75</td>
+                            <td class="phpdocumentor-cell">78</td>
                             <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-Config.html#constant_PLUGIN_HEADING_NAME"><abbr title="\footnotes\includes\Config::PLUGIN_HEADING_NAME">Config::PLUGIN_HEADING_NAME</abbr></a></td>
                             <td class="phpdocumentor-cell"></td>
                         </tr>
                                                                                 <tr>
-                            <td class="phpdocumentor-cell">86</td>
+                            <td class="phpdocumentor-cell">89</td>
                             <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-Config.html#constant_LOVE_SYMBOL"><abbr title="\footnotes\includes\Config::LOVE_SYMBOL">Config::LOVE_SYMBOL</abbr></a></td>
                             <td class="phpdocumentor-cell"></td>
                         </tr>
                                                                                 <tr>
-                            <td class="phpdocumentor-cell">97</td>
+                            <td class="phpdocumentor-cell">100</td>
                             <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-Config.html#constant_LOVE_SYMBOL_HEADING"><abbr title="\footnotes\includes\Config::LOVE_SYMBOL_HEADING">Config::LOVE_SYMBOL_HEADING</abbr></a></td>
                             <td class="phpdocumentor-cell"></td>
                         </tr>
                                                                                 <tr>
-                            <td class="phpdocumentor-cell">108</td>
+                            <td class="phpdocumentor-cell">111</td>
                             <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-Config.html#constant_NO_LOVE_SLUG"><abbr title="\footnotes\includes\Config::NO_LOVE_SLUG">Config::NO_LOVE_SLUG</abbr></a></td>
                             <td class="phpdocumentor-cell"></td>
                         </tr>
                                                 </table>
-                    <a id="src/includes/class-settings.php"></a>
-            <h3><abbr title="src/includes/class-settings.php">class-settings.php</abbr></h3>
+                    <a id="src/includes/settings/general/class-amp-compat-settings-group.php"></a>
+            <h3><abbr title="src/includes/settings/general/class-amp-compat-settings-group.php">class-amp-compat-settings-group.php</abbr></h3>
             <table>
                 <tr>
                     <th class="phpdocumentor-heading">Line</th>
@@ -165,8 +152,8 @@
                     <th class="phpdocumentor-heading">Reason</th>
                 </tr>
                                                             <tr>
-                            <td class="phpdocumentor-cell">295</td>
-                            <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-Settings.html#constant_FOOTNOTES_EXPERT_MODE"><abbr title="\footnotes\includes\Settings::FOOTNOTES_EXPERT_MODE">Settings::FOOTNOTES_EXPERT_MODE</abbr></a></td>
+                            <td class="phpdocumentor-cell">26</td>
+                            <td class="phpdocumentor-cell"><a href="classes/footnotes-includes-settings-general-AMPCompatSettingsGroup.html"><abbr title="\footnotes\includes\settings\general\AMPCompatSettingsGroup">AMPCompatSettingsGroup</abbr></a></td>
                             <td class="phpdocumentor-cell"></td>
                         </tr>
                                                 </table>
@@ -191,5 +178,9 @@
     <script>
         cssVars({});
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
 </body>
 </html>

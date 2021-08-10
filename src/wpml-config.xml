@@ -2,6 +2,7 @@
 	<admin-texts>
 		<key name="footnotes_storage">
 		    <key name="footnote_inputfield_references_label" />
+		    <key name="footnote_inputfield_readon_label" />
 		</key>
 	</admin-texts>
 </wpml-config>

@@ -1,0 +1,3 @@
+[submodule "footnotes.wiki"]
+	path = footnotes.wiki
+	url = git://github.com/markcheret/footnotes.wiki

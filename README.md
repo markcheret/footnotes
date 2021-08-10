@@ -83,7 +83,12 @@ Automated release deployments will be introduced soon.
 
 ## Testing
 
-Automated testing will be introduced soon.
+This repo. uses [PHPUnit](phpunit) to run automated tests.
+To run the full test suite, use `composer run test`.
+
+Test cases are found in the `tests/` directory.
+
+PHPUnit settings are available in the file `phpunit.xml`.
 
 ## Code Formatting
 
@@ -168,6 +173,7 @@ This project is licensed under the [GNU GPL v3][gpl-v3].
 [prettier]: https://prettier.io/
 [eslint]: https://eslint.org/
 [stylelint]: https://stylelint.io/
+[phpunit]: https://phpunit.de/
 [phpdocumentor]: https://phpdoc.org/
 [footnotes-docs]: https://markcheret.github.io/footnotes/
 [gpl-v3]: https://www.gnu.org/licenses/gpl-3.0.en.html

@@ -8,12 +8,16 @@
     <link rel="icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
-            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -48,10 +52,11 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -four phpdocumentor-sidebar">
-    
+        
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h4>
                 <ul class="phpdocumentor-list">
                                             <li><a href="namespaces/footnotes-admin.html"><abbr title="\footnotes\admin">admin</abbr></a></li>
                                             <li><a href="namespaces/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
@@ -61,8 +66,7 @@
 
         <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
-                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/footnotes.html"><abbr title="\footnotes">footnotes</abbr></a></h3>
                         <ul class="phpdocumentor-list">
                                     <li><a href="packages/footnotes-includes.html"><abbr title="\footnotes\includes">includes</abbr></a></li>
                             </ul>
@@ -106,11 +110,11 @@
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">30</span>
-</aside>
+
+    </aside>
 
             <p class="phpdocumentor-summary">Class defining configurable plugin settings.</p>
 
-    <section class="phpdocumentor-description"></section>
 
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -124,8 +128,7 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -993,7 +996,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">636</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable a max width for the backlinks column.</p>
 
@@ -1005,8 +1009,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1019,8 +1023,7 @@ reference container.</dd>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1035,7 +1038,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">645</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the backlinks column max width scalar.</p>
 
@@ -1047,8 +1051,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1061,8 +1065,7 @@ reference container.</dd>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1077,7 +1080,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">654</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the backlinks column max width unit.</p>
 
@@ -1089,8 +1093,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1103,8 +1107,7 @@ reference container.</dd>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1119,7 +1122,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">609</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the backlinks column width.</p>
 
@@ -1131,8 +1135,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1145,8 +1149,7 @@ reference container.</dd>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1161,7 +1164,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">618</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the backlinks column width scalar.</p>
 
@@ -1173,8 +1177,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1187,8 +1191,7 @@ reference container.</dd>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1203,7 +1206,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">627</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the backlinks column width unit.</p>
 
@@ -1215,8 +1219,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1229,8 +1233,7 @@ reference container.</dd>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1245,7 +1248,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">664</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable line breaks between backlinks.</p>
 
@@ -1257,8 +1261,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1288,7 +1292,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">573</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for a custom backlink separator.</p>
 
@@ -1300,8 +1305,8 @@ reference container.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1314,8 +1319,7 @@ reference container.</dd>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1330,7 +1334,8 @@ reference container.</dd>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">555</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the presence of a backlink separator.</p>
 
@@ -1347,6 +1352,7 @@ should be provided along with the ability to customize.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1358,8 +1364,7 @@ should be provided along with the ability to customize.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1374,7 +1379,8 @@ should be provided along with the ability to customize.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">564</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the backlink separator options.</p>
 
@@ -1386,8 +1392,8 @@ should be provided along with the ability to customize.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1400,8 +1406,7 @@ should be provided along with the ability to customize.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1416,7 +1421,8 @@ should be provided along with the ability to customize.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">600</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for a custom backlink terminator.</p>
 
@@ -1428,8 +1434,8 @@ should be provided along with the ability to customize.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1442,8 +1448,7 @@ should be provided along with the ability to customize.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1458,7 +1463,8 @@ should be provided along with the ability to customize.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">582</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the presence of a backlink terminator.</p>
 
@@ -1470,8 +1476,8 @@ should be provided along with the ability to customize.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1484,8 +1490,7 @@ should be provided along with the ability to customize.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1500,7 +1505,8 @@ should be provided along with the ability to customize.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">591</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the backlink terminator options.</p>
 
@@ -1512,8 +1518,8 @@ should be provided along with the ability to customize.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1526,8 +1532,7 @@ should be provided along with the ability to customize.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1542,7 +1547,8 @@ should be provided along with the ability to customize.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">68</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for combining identical footnotes.</p>
 
@@ -1554,8 +1560,8 @@ should be provided along with the ability to customize.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1568,8 +1574,7 @@ should be provided along with the ability to customize.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1584,7 +1589,8 @@ should be provided along with the ability to customize.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">174</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the Custom CSS.</p>
 
@@ -1596,8 +1602,8 @@ should be provided along with the ability to customize.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1610,8 +1616,7 @@ should be provided along with the ability to customize.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1626,7 +1631,8 @@ should be provided along with the ability to customize.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">805</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable display of legacy Custom CSS metaboxes.</p>
 
@@ -1643,6 +1649,7 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1654,8 +1661,7 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.2</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -1681,7 +1687,8 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">790</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the Custom CSS migrated to a dedicated tab.</p>
 
@@ -1693,8 +1700,8 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1707,8 +1714,7 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.2</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1723,7 +1729,8 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">245</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the `the_content` hook.</p>
 
@@ -1735,8 +1742,8 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1749,8 +1756,7 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1765,7 +1771,8 @@ because when saving, all missing constants are emptied, and <abbr title="\footno
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">498</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for `the_content` hook priority level.</p>
 
@@ -1791,6 +1798,7 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1802,8 +1810,7 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.0.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1818,7 +1825,8 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">257</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the `the_excerpt` hook.</p>
 
@@ -1830,8 +1838,8 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1844,8 +1852,7 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><abbr title="\footnotes\includes\FOOTNOTES_IN_EXCERPT">FOOTNOTES_IN_EXCERPT</abbr></span>
                                         
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -1853,8 +1860,7 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -1879,7 +1885,8 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">534</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for `the_excerpt` hook priority level.</p>
 
@@ -1891,8 +1898,8 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -1905,8 +1912,7 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.2</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -1921,7 +1927,8 @@ WebKit browsers don't allow it, so we must resort to -1.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">236</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the `the_title` hook.</p>
 
@@ -1941,6 +1948,7 @@ information).</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1952,8 +1960,7 @@ information).</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -1979,7 +1986,8 @@ delete footnotes in them.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">507</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for `the_title` hook priority level.</p>
 
@@ -1991,8 +1999,8 @@ delete footnotes in them.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2005,8 +2013,7 @@ delete footnotes in them.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.2</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2021,7 +2028,8 @@ delete footnotes in them.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">280</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the `widget_text` hook.</p>
 
@@ -2040,6 +2048,7 @@ in Elementor toggles.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2051,8 +2060,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2067,7 +2075,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">525</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for `widget_text` hook priority level.</p>
 
@@ -2079,8 +2088,8 @@ in Elementor toggles.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2093,8 +2102,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.2</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2109,7 +2117,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">266</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the `widget_title` hook.</p>
 
@@ -2121,8 +2130,8 @@ in Elementor toggles.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2135,8 +2144,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2151,7 +2159,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">516</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for `widget_title` hook priority level.</p>
 
@@ -2163,8 +2172,8 @@ in Elementor toggles.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2177,8 +2186,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.2</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2193,7 +2201,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">918</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the fragment ID slug in footnotes.</p>
 
@@ -2205,8 +2214,8 @@ in Elementor toggles.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2219,8 +2228,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2235,7 +2243,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1013</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable superscript style normalization.</p>
 
@@ -2247,8 +2256,8 @@ in Elementor toggles.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2261,8 +2270,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2277,7 +2285,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1104</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the footnote section shortcode.</p>
 
@@ -2289,8 +2298,8 @@ in Elementor toggles.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2303,8 +2312,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.7.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2319,7 +2327,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">936</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable shortcode syntax validation.</p>
 
@@ -2331,8 +2340,8 @@ in Elementor toggles.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2345,8 +2354,7 @@ in Elementor toggles.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.4.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2361,7 +2369,8 @@ in Elementor toggles.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">772</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for URL wrap option.</p>
 
@@ -2378,6 +2387,7 @@ browsers break URLs at slashes.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2389,8 +2399,7 @@ browsers break URLs at slashes.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2405,7 +2414,8 @@ browsers break URLs at slashes.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">825</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for alternative tooltip _x_-offset.</p>
 
@@ -2417,8 +2427,8 @@ browsers break URLs at slashes.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2431,8 +2441,7 @@ browsers break URLs at slashes.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2447,7 +2456,8 @@ browsers break URLs at slashes.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">834</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for alternative tooltip _y_-offset.</p>
 
@@ -2459,8 +2469,8 @@ browsers break URLs at slashes.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2473,8 +2483,7 @@ browsers break URLs at slashes.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2489,7 +2498,8 @@ browsers break URLs at slashes.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">816</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for alternative tooltip position.</p>
 
@@ -2505,6 +2515,7 @@ browsers break URLs at slashes.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2516,8 +2527,7 @@ browsers break URLs at slashes.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2532,7 +2542,8 @@ browsers break URLs at slashes.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">843</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for alternative tooltip width.</p>
 
@@ -2544,8 +2555,8 @@ browsers break URLs at slashes.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2558,8 +2569,7 @@ browsers break URLs at slashes.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2574,7 +2584,8 @@ browsers break URLs at slashes.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1031</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable AMP compatibility mode.</p>
 
@@ -2586,8 +2597,8 @@ browsers break URLs at slashes.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2600,8 +2611,7 @@ browsers break URLs at slashes.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.6.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2616,7 +2626,8 @@ browsers break URLs at slashes.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">952</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable backlink tooltips.</p>
 
@@ -2636,6 +2647,7 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2647,8 +2659,7 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2663,7 +2674,8 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">961</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to configure the backlink tooltip.</p>
 
@@ -2675,8 +2687,8 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2689,8 +2701,7 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2705,7 +2716,8 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">113</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the counter style of the footnotes.</p>
 
@@ -2717,8 +2729,8 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2731,8 +2743,7 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2747,7 +2758,8 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1095</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable CSS smooth scrolling.</p>
 
@@ -2763,6 +2775,7 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2774,8 +2787,7 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.12</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2790,7 +2802,8 @@ See <a href="https://wordpress.org/support/topic/making-it-amp-compatible/#post-
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">295</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the Expert mode.</p>
 
@@ -2807,6 +2820,7 @@ All users, not experts only, need to be able to control relative positioning.</p
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2818,8 +2832,7 @@ All users, not experts only, need to be able to control relative positioning.</p
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -2836,8 +2849,7 @@ All users, not experts only, need to be able to control relative positioning.</p
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -2861,7 +2873,8 @@ All users, not experts only, need to be able to control relative positioning.</p
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">900</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable hard links.</p>
 
@@ -2877,6 +2890,7 @@ All users, not experts only, need to be able to control relative positioning.</p
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2888,8 +2902,7 @@ All users, not experts only, need to be able to control relative positioning.</p
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -2904,7 +2917,8 @@ All users, not experts only, need to be able to control relative positioning.</p
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">142</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to look for footnotes in post excerpts.</p>
 
@@ -2916,8 +2930,8 @@ All users, not experts only, need to be able to control relative positioning.</p
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -2930,8 +2944,7 @@ All users, not experts only, need to be able to control relative positioning.</p
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><abbr title="\footnotes\includes\EXPERT_LOOKUP_THE_EXCERPT">EXPERT_LOOKUP_THE_EXCERPT</abbr></span>
                                         
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -2939,8 +2952,7 @@ All users, not experts only, need to be able to control relative positioning.</p
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -2965,7 +2977,8 @@ All users, not experts only, need to be able to control relative positioning.</p
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1084</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to set the solution of the input element label issue.</p>
 
@@ -2985,6 +2998,7 @@ See <a href="https://wordpress.org/support/topic/compatibility-issue-with-wpform
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2996,8 +3010,7 @@ See <a href="https://wordpress.org/support/topic/compatibility-issue-with-wpform
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.12</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -3021,7 +3034,8 @@ See <a href="https://wordpress.org/support/topic/compatibility-issue-with-wpform
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">183</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the ‘I love footnotes’ text.</p>
 
@@ -3033,8 +3047,8 @@ See <a href="https://wordpress.org/support/topic/compatibility-issue-with-wpform
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3047,8 +3061,7 @@ See <a href="https://wordpress.org/support/topic/compatibility-issue-with-wpform
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3063,7 +3076,8 @@ See <a href="https://wordpress.org/support/topic/compatibility-issue-with-wpform
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">428</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the alternative tooltips.</p>
 
@@ -3082,6 +3096,7 @@ The very small script is inserted after the plugin's internal stylesheet.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3093,8 +3108,7 @@ The very small script is inserted after the plugin's internal stylesheet.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.1</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3109,7 +3123,8 @@ The very small script is inserted after the plugin's internal stylesheet.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">322</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the background color.</p>
 
@@ -3127,6 +3142,7 @@ doesn't seem to exist.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3138,8 +3154,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><abbr title="\footnotes\includes\FOOTNOTES_MOUSE_OVER_BOX_COLOR">FOOTNOTES_MOUSE_OVER_BOX_COLOR</abbr></span>
                                         
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -3147,8 +3162,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3163,7 +3177,8 @@ doesn't seem to exist.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">340</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the border color.</p>
 
@@ -3175,8 +3190,8 @@ doesn't seem to exist.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3189,8 +3204,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3205,7 +3219,8 @@ doesn't seem to exist.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">349</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the border radius.</p>
 
@@ -3217,8 +3232,8 @@ doesn't seem to exist.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3231,8 +3246,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3247,7 +3261,8 @@ doesn't seem to exist.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">331</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the border width.</p>
 
@@ -3259,8 +3274,8 @@ doesn't seem to exist.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3273,8 +3288,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3289,7 +3303,8 @@ doesn't seem to exist.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">306</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the color.</p>
 
@@ -3301,8 +3316,8 @@ doesn't seem to exist.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3315,8 +3330,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><abbr title="\footnotes\includes\FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND">FOOTNOTES_MOUSE_OVER_BOX_BACKGROUND</abbr></span>
                                         
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">since</span>
@@ -3324,8 +3338,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3340,7 +3353,8 @@ doesn't seem to exist.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">192</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the mouse-over box.</p>
 
@@ -3352,8 +3366,8 @@ doesn't seem to exist.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3366,8 +3380,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.2</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3382,7 +3395,8 @@ doesn't seem to exist.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">204</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable tooltip truncation.</p>
 
@@ -3394,8 +3408,8 @@ doesn't seem to exist.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3408,8 +3422,7 @@ doesn't seem to exist.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -3435,7 +3448,8 @@ mouse-over, and allow the use of ‘Continue Reading’ functionality.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">216</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the max. length of
 the enabled excerpt.</p>
@@ -3452,6 +3466,7 @@ the enabled excerpt.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3463,8 +3478,7 @@ the enabled excerpt.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3479,7 +3493,8 @@ the enabled excerpt.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">362</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the max. width.</p>
 
@@ -3496,6 +3511,7 @@ the enabled excerpt.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3507,8 +3523,7 @@ the enabled excerpt.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3523,7 +3538,8 @@ the enabled excerpt.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">384</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the _x_-offset.</p>
 
@@ -3535,8 +3551,8 @@ the enabled excerpt.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3549,8 +3565,7 @@ the enabled excerpt.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.7</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3565,7 +3580,8 @@ the enabled excerpt.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">396</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the _y_-offset.</p>
 
@@ -3582,6 +3598,7 @@ line of text.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3593,8 +3610,7 @@ line of text.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.7</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3609,7 +3625,8 @@ line of text.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">375</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the position.</p>
 
@@ -3627,6 +3644,7 @@ and top because reading at the bottom of the window is more likely.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3638,8 +3656,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.7</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3654,7 +3671,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">405</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the mouse-over box to define the box-shadow color.</p>
 
@@ -3666,8 +3684,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3680,8 +3698,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.8</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3696,7 +3713,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">706</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for basic responsive page layout support options.</p>
 
@@ -3712,6 +3730,7 @@ and top because reading at the bottom of the window is more likely.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3723,8 +3742,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3739,7 +3757,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1022</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to select the script mode for the reference container.</p>
 
@@ -3751,8 +3770,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3765,8 +3784,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3781,7 +3799,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">437</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the referrer element.</p>
 
@@ -3793,8 +3812,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3807,8 +3826,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.1</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3823,7 +3841,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1058</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for scroll-down delay.</p>
 
@@ -3835,8 +3854,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3849,8 +3868,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.11</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3865,7 +3883,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1049</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for scroll-down duration.</p>
 
@@ -3877,8 +3896,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3891,8 +3910,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.11</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3907,7 +3925,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">724</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for scroll duration.</p>
 
@@ -3919,8 +3938,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3933,8 +3952,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3949,7 +3967,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1040</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for scroll duration asymmetricity.</p>
 
@@ -3961,8 +3980,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -3975,8 +3994,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.11</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -3991,7 +4009,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">715</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for scroll offset.</p>
 
@@ -4003,8 +4022,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4017,8 +4036,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4033,7 +4051,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1067</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for scroll-up delay.</p>
 
@@ -4045,8 +4064,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4059,8 +4078,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.11</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4075,7 +4093,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">86</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the short code of the footnote&#039;s end.</p>
 
@@ -4087,8 +4106,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4101,8 +4120,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4117,7 +4135,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">104</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the user-defined short code of the footnotes end.</p>
 
@@ -4129,8 +4148,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4143,8 +4162,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4159,7 +4177,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">77</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the short code of the footnote&#039;s start.</p>
 
@@ -4171,8 +4190,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4185,8 +4204,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4201,7 +4219,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">95</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the user-defined short code of the footnotes start.</p>
 
@@ -4213,8 +4232,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4227,8 +4246,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4243,7 +4261,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">165</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the string after the footnote referrer.</p>
 
@@ -4255,8 +4274,8 @@ and top because reading at the bottom of the window is more likely.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4269,8 +4288,7 @@ and top because reading at the bottom of the window is more likely.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4285,7 +4303,8 @@ and top because reading at the bottom of the window is more likely.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">156</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the string before the footnote referrer.</p>
 
@@ -4304,6 +4323,7 @@ expand-collapse button.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -4315,8 +4335,7 @@ expand-collapse button.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4331,7 +4350,8 @@ expand-collapse button.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">978</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to configure the tooltip excerpt delimiter.</p>
 
@@ -4352,6 +4372,7 @@ WordPress does for excerpts.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -4363,8 +4384,7 @@ WordPress does for excerpts.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4379,7 +4399,8 @@ WordPress does for excerpts.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">994</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable mirroring the tooltip excerpt in the
 reference container.</p>
@@ -4398,6 +4419,7 @@ container too. See <a href="https://wordpress.org/support/topic/change-tooltip-t
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -4409,8 +4431,7 @@ container too. See <a href="https://wordpress.org/support/topic/change-tooltip-t
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4425,7 +4446,8 @@ container too. See <a href="https://wordpress.org/support/topic/change-tooltip-t
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1004</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to configure the tooltip excerpt separator in the
 reference container.</p>
@@ -4438,8 +4460,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4452,8 +4474,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.5.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4468,7 +4489,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">414</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the label of the Read-on button in truncated tooltips.</p>
 
@@ -4480,8 +4502,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4494,8 +4516,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4510,7 +4531,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">927</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the ID separator in fragment IDs.</p>
 
@@ -4522,8 +4544,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4536,8 +4558,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4552,7 +4573,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">122</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the backlink symbol selection.</p>
 
@@ -4564,8 +4586,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4578,8 +4600,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4594,7 +4615,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">131</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the user-defined backlink symbol.</p>
 
@@ -4606,8 +4628,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4620,8 +4642,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4636,7 +4657,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">543</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the link element option.</p>
 
@@ -4648,8 +4670,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4662,8 +4684,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4678,7 +4699,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">733</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for tooltip display fade-in delay.</p>
 
@@ -4690,8 +4712,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4704,8 +4726,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4720,7 +4741,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">742</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for tooltip display fade-in duration.</p>
 
@@ -4732,8 +4754,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4746,8 +4768,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4762,7 +4783,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">751</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for tooltip display fade-out delay.</p>
 
@@ -4774,8 +4796,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4788,8 +4810,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4804,7 +4825,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">760</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for tooltip display fade-out duration.</p>
 
@@ -4816,8 +4838,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4830,8 +4852,7 @@ reference container.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4846,7 +4867,8 @@ reference container.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">677</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable setting the tooltip font size.</p>
 
@@ -4858,8 +4880,8 @@ reference container.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4891,7 +4913,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">686</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the scalar value of the tooltip font size.</p>
 
@@ -4903,8 +4926,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4917,8 +4940,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4933,7 +4955,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">695</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the unit of the tooltip font size.</p>
 
@@ -4945,8 +4968,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -4959,8 +4982,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.4</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -4975,7 +4997,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">464</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the legacy layout of the reference container.</p>
 
@@ -4987,8 +5010,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5001,8 +5024,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.1</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5017,7 +5039,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">446</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the display of a backlink symbol.</p>
 
@@ -5029,8 +5052,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5043,8 +5066,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.1</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5059,7 +5081,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">473</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to get the backlink symbol switch side.</p>
 
@@ -5071,8 +5094,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5085,8 +5108,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.1</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5101,7 +5123,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">889</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for reference container bottom margin.</p>
 
@@ -5113,8 +5136,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5127,8 +5150,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5143,7 +5165,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">50</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to collapse the reference container by default.</p>
 
@@ -5159,6 +5182,7 @@ Called mouse over box not tooltip for consistency.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -5170,8 +5194,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -5195,7 +5218,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">862</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable the reference container label bottom border.</p>
 
@@ -5207,8 +5231,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5221,8 +5245,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5237,7 +5260,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">853</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the reference container label element.</p>
 
@@ -5249,8 +5273,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5263,8 +5287,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.5</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5279,7 +5302,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">38</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the label of the reference container.</p>
 
@@ -5291,8 +5315,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5305,8 +5329,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5321,7 +5344,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">59</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the position of the reference container.</p>
 
@@ -5333,8 +5357,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5347,8 +5371,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5363,7 +5386,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">781</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for reference container position shortcode.</p>
 
@@ -5375,8 +5399,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5389,8 +5413,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5405,7 +5428,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">871</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to enable reference container table row borders.</p>
 
@@ -5417,8 +5441,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5431,8 +5455,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.2.10</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5447,7 +5470,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">455</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key to not display the reference container on the homepage.</p>
 
@@ -5459,8 +5483,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5473,8 +5497,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.1.1</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5489,7 +5512,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">880</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for reference container top margin.</p>
 
@@ -5501,8 +5525,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5515,8 +5539,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5531,7 +5554,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">909</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Settings container key for the fragment ID slug in referrers.</p>
 
@@ -5543,8 +5567,8 @@ Called mouse over box not tooltip for consistency.</p>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5557,8 +5581,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.3.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5588,7 +5611,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1115</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Contains all Settings Container names.</p>
 
@@ -5602,6 +5626,7 @@ Called mouse over box not tooltip for consistency.</p>
 </section>
 
     
+    
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
         <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
@@ -5613,8 +5638,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5636,7 +5660,8 @@ Called mouse over box not tooltip for consistency.</p>
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1132</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Contains all default values for each Settings Container.</p>
 
@@ -5785,8 +5810,8 @@ Called mouse over box not tooltip for consistency.</p>
     ),
 )</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5799,8 +5824,7 @@ Called mouse over box not tooltip for consistency.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -5841,7 +5865,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1331</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Stores a singleton reference of this class.</p>
 
@@ -5851,6 +5876,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__name">$instance</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
+    
         <section class="phpdocumentor-description"></section>
 
     
@@ -5865,8 +5891,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -5888,7 +5913,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1322</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Contains all Settings from each Settings Container.</p>
 
@@ -5898,8 +5924,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__name">$settings</span>
      = <span class="phpdocumentor-signature__default-value">array()</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -5912,8 +5938,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -5948,7 +5973,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1391</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Returns the value of specified Setting.</p>
 
@@ -5956,8 +5982,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">get</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|int|null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -5983,8 +6008,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -6019,7 +6043,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1350</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Returns the name of a specified Settings Container.</p>
 
@@ -6027,8 +6052,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">get_container</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$index</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -6054,8 +6078,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -6081,7 +6104,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1362</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Returns the default value(s) of a specific Settings Container.</p>
 
@@ -6089,8 +6113,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">get_defaults</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$index</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string|int&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -6116,8 +6139,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.6</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -6143,7 +6165,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1415</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Returns a singleton of this class.</p>
 
@@ -6151,8 +6174,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">instance</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -6166,8 +6188,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                                                 <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">todo</span>
@@ -6183,8 +6204,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">self</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -6201,7 +6221,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1402</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Register all Settings Containers for the plugin Settings Page in the Dashboard.</p>
 
@@ -6225,16 +6246,14 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -6251,7 +6270,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1374</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Updates a whole Setting Container on save.</p>
 
@@ -6259,8 +6279,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">save_options</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$index</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$new_values</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -6295,16 +6314,14 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -6321,7 +6338,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1338</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Loads all Settings from each WordPress Settings Container.</p>
 
@@ -6329,8 +6347,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">private</span>
                 <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -6344,16 +6361,14 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -6370,7 +6385,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1445</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Loads all settings from specified Settings Containers.</p>
 
@@ -6378,8 +6394,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">private</span>
                 <span class="phpdocumentor-signature__name">load</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$index</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string|int&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -6405,8 +6420,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
@@ -6432,7 +6446,8 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-settings.php"><a href="files/src-includes-class-settings.html"><abbr title="src/includes/class-settings.php">class-settings.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">1428</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Loads all Settings from each Settings container.</p>
 
@@ -6440,8 +6455,7 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <span class="phpdocumentor-signature__visibility">private</span>
                 <span class="phpdocumentor-signature__name">load_all</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -6455,19 +6469,79 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">1.5.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"></section>
-
+                                             
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
             </section>
+
+        
+    <script type="text/javascript">
+        function loadExternalCodeSnippets(line) {
+            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+                var language = 'php';
+
+                var code = document.createElement('code');
+                code.className = 'language-' + language;
+
+                pre.textContent = '';
+
+                pre.setAttribute('data-line', line)
+                code.textContent = 'Loading…';
+
+                pre.appendChild(code);
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', src, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+
+                            Prism.highlightElement(code);
+                        }
+                        else if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                        }
+                        else {
+                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
+                        }
+                    }
+                };
+
+                xhr.send(null);
+            });
+        }
+
+        var modals = document.querySelectorAll("[data-modal]");
+
+        modals.forEach(function (trigger) {
+            trigger.addEventListener("click", function (event) {
+                //event.preventDefault();
+                const modal = document.getElementById(trigger.dataset.modal);
+                modal.classList.add("phpdocumentor-modal__open");
+                loadExternalCodeSnippets(trigger.dataset.line)
+                const exits = modal.querySelectorAll("[data-exit-button]");
+                exits.forEach(function (exit) {
+                    exit.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        modal.classList.remove("phpdocumentor-modal__open");
+                    });
+                });
+            });
+        });
+    </script>
 
     </article>
                 <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
@@ -6490,5 +6564,9 @@ At the very least, we should stop using ‘yes’ to mean <code class="prettypri
     <script>
         cssVars({});
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
 </body>
 </html>

@@ -7,13 +7,17 @@
 >
   <paths>
     <output>docs</output>
+    <cache>docs/.cache</cache>
   </paths>
-  <version number="3.0">
+  <version number="latest">
     <api format="php">
       <source dsn=".">
         <path>src</path>
       </source>
 			<output>docs</output>
+      <ignore hidden="true" symlinks="true">
+        <path>**/index.php</path>
+      </ignore>
 			<extensions>
 		  	<extension>php</extension>
 			</extensions>

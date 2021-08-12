@@ -5,7 +5,7 @@
 
 ![GitHub contributors](https://img.shields.io/github/contributors/markcheret/footnotes?style=flat-square) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/markcheret/footnotes/2.7.3?style=flat-square) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/markcheret/footnotes?style=flat-square) ![issues](https://img.shields.io/github/issues/markcheret/footnotes?style=flat-square) ![PRs](https://img.shields.io/github/issues-pr/markcheret/footnotes?style=flat-square)
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/markcheret/footnotes?style=flat-square) [![OSSAR](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml) [![PHP Composer](https://github.com/markcheret/footnotes/actions/workflows/php.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/php.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/markcheret/footnotes?style=flat-square) [![OSSAR](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/ossar-analysis.yml) [![Code Linting](https://github.com/markcheret/footnotes/actions/workflows/php.yml/badge.svg)](https://github.com/markcheret/footnotes/actions/workflows/lint-code.yml)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![Coverage Status](https://coveralls.io/repos/github/markcheret/footnotes/badge.svg?branch=main)](https://coveralls.io/github/markcheret/footnotes?branch=main)
 <!-- markdownlint-enable MD013 -->
@@ -27,6 +27,7 @@ Featured on [wpmudev][wpmudev] — cheers for the review, folks!
 * [Features](#features)
 * [Getting Started](#getting-started)
 * [Documentation](#documentation)
+* [Testing](#testing)
 * [Acknowledgments](#acknowledgements)
 * [License](#license)
 * [Contact Information](#contact-information)
@@ -53,10 +54,19 @@ This Plugin provides:
 1. install all dependencies (`composer install`):
     * you will have to install `php-mbstring` manually if you do not already
       have it.
-
+      
 ## Documentation
 
 View the current docs [here][footnotes-docs].
+
+## Testing
+
+This repo. uses [PHPUnit](phpunit) to run automated tests. To run the full test 
+suite, use `composer run test`.
+
+Test cases are found in the `tests/` directory.
+
+PHPUnit settings are available in the file `phpunit.xml`.
 
 ## Acknowledgements
 
@@ -86,6 +96,7 @@ This project is licensed under the [GNU GPL v3][gpl-v3].
 [prettier]: https://prettier.io/
 [eslint]: https://eslint.org/
 [stylelint]: https://stylelint.io/
+[phpunit]: https://phpunit.de/
 [phpdocumentor]: https://phpdoc.org/
 [footnotes-docs]: https://markcheret.github.io/footnotes/
 [gpl-v3]: https://www.gnu.org/licenses/gpl-3.0.en.html

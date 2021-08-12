@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO: Add transpilation to PHP 7.4
-
 echo "Building Plugin..."
 
 # Moves everything including the style sheets over to `dist/`
@@ -39,6 +37,7 @@ echo "Downgrading to PHP 7.4..."
 echo "Downgrading complete."
 
 if [[ $1 == "-v" ]]; then
+	echo "Moving to VVV..."
 	rm -rf ../VVV/www/wordpress-two/public_html/wp-content/plugins/footnotes
 	mv dist footnotes && mv footnotes ../VVV/www/wordpress-two/public_html/wp-content/plugins
 fi

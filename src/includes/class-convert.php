@@ -55,7 +55,11 @@ class Convert {
 	 * @since  1.0-beta
 	 * @todo  Replace with built-in type casting.
 	 */
-	public static function to_bool( string $value ): bool {
+	public static function to_bool( ?string $value ): bool {
+		if ( ! $value ) {
+			return false;
+		}
+
 		// Convert string to lower-case to make it easier.
 		$value = strtolower( $value );
 		// Check if string seems to contain a "true" value.
@@ -84,10 +88,7 @@ class Convert {
 	public static function get_arrow( int $index = -1 ): string|array {
 		// Define all possible arrows.
 		$arrows = array( '&#8593;', '&#8613;', '&#8607;', '&#8617;', '&#8626;', '&#8629;', '&#8657;', '&#8673;', '&#8679;', '&#65514;' );
-		// Convert index to an integer.
-		if ( ! is_int( $index ) ) {
-			$index = (int) $index;
-		}
+
 		// Return the whole arrow array.
 		if ( $index < 0 ) {
 			return $arrows;

@@ -9,15 +9,15 @@
  *
  * @package  footnotes
  * @since  1.5.0
- * @since  2.8.0  Rename file from `layout.php` to `class-footnotes-layout-engine.php`,
- *                              rename `dashboard/` sub-directory to `layout/`.
+ * @since  2.8.0  Rename file from `layout.php` to `class-engine.php`,
+ *                rename `dashboard/` sub-directory to `layout/`.
  */
 
 declare(strict_types=1);
 
 namespace footnotes\admin\layout;
 
-use footnotes\includes as Includes;
+use footnotes\includes\{Settings, Convert, Admin};
 
 require_once plugin_dir_path( __DIR__ ) . 'layout/class-init.php';
 
@@ -99,19 +99,15 @@ abstract class Engine {
 	 *
 	 * @since  1.5.0
 	 */
-	public function register_sections(): void {
-		foreach ( $this->get_sections() as $section ) {
-			// Append tab to the tab-array.
-			$this->sections[ $section['id'] ] = $section;
-			add_settings_section(
-				$section['id'],
-				'',
-				fn() => $this->description(),
-				$section['id']
-			);
-			$this->register_meta_boxes( $section['id'] );
-		}
+	public function add_settings_sections(): void {
+		$this->sections = array(
+			$this->settings->settings_sections['general']->get_section_slug() => $this->settings->settings_sections['general'],
+			$this->settings->settings_sections['referrers_and_tooltips']->get_section_slug() => $this->settings->settings_sections['referrers_and_tooltips'],
+			$this->settings->settings_sections['scope_and_priority']->get_section_slug() => $this->settings->settings_sections['scope_and_priority'],
+			$this->settings->settings_sections['custom_css']->get_section_slug() => $this->settings->settings_sections['custom_css'],
+		);
 	}
+	
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 	/**
 	 * Displays the content of specific sub-page.
@@ -120,61 +116,68 @@ abstract class Engine {
 	 * @todo  Review nonce verification.
 	 */
 	public function display_content(): void {
-		$this->append_scripts();
+		// check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
 		$active_section    = $this->sections[ $active_section_id ];
 
 		// Store settings.
 		$settings_updated = false;
-		if ( array_key_exists( 'save-settings', $_POST ) && 'save' === $_POST['save-settings'] ) {
-			unset( $_POST['save-settings'] );
-			unset( $_POST['submit'] );
-			$settings_updated = $this->save_settings();
+		if ( array_key_exists( 'save-settings', $_POST ) ) {
+			if ( 'save' === $_POST['save-settings'] ) {
+				unset( $_POST['save-settings'] );
+				unset( $_POST['submit'] );
+				$settings_updated = $this->save_settings();
+			}
 		}
 
-		// Display all sections and highlight the active section.
-		echo '<div class="wrap">';
-		echo '<h2 class="nav-tab-wrapper">';
-		// Iterate through all register sections.
-		foreach ( $this->sections as $id => $description ) {
-			echo sprintf(
-				'<a class="nav-tab%s" href="?page=%s&t=%s">%s</a>',
-				( $id === $active_section['id'] ) ? ' nav-tab-active' : '',
-				Init::MAIN_MENU_SLUG,
-				$id,
-				$description['title']
-			);
-		}
-		echo '</h2><br/>';
+		?>
+	<div class="wrap">
+	  <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+	  <h2 class="nav-tab-wrapper">
+			<?php foreach ( $this->sections as $section_slug => $section ) : ?>
+				<a 
+					class="nav-tab<?php echo ( $section_slug === $active_section->get_section_slug() ) ? ' nav-tab-active' : ''; ?>"
+					href="?page=<?php echo Init::MAIN_MENU_SLUG; ?>&t=<?php echo $section_slug; ?>">
+					<?php echo $section->get_title(); ?>	
+				</a>
+			<?php endforeach; ?>
+			</h2>
+			<?php
 
-		if ( $settings_updated ) {
-			echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', 'footnotes' ) );
-		}
+			if ( $settings_updated ) {
+				echo sprintf( '<div id="message" class="updated">%s</div>', __( 'Settings saved', 'footnotes' ) );
+			}
 
-		// Form to submit the active section.
-		echo '<!--suppress HtmlUnknownTarget --><form method="post" action="">';
-		echo '<input type="hidden" name="save-settings" value="save" />';
-		// Outputs the settings field of the active section.
-		do_settings_sections( $active_section['id'] );
-		do_meta_boxes( $active_section['id'], 'main', null );
+			// show error/update messages
+			settings_errors( 'footnotes_messages' );
+			?>
+	  <form action="" method="post">
+		  <input type="hidden" name="save-settings" value="save" />
+		<?php
+		// output security fields for the registered setting "footnotes"
+		settings_fields( 'footnotes' );
 
-		// Add submit button to active section if defined.
-		if ( $active_section['submit'] ) {
-			submit_button();
-		}
-		echo '</form>';
-		echo '</div>';
+		// output setting sections and their fields
+		// (sections are registered for "footnotes", each field is registered to a specific section)
+		do_settings_sections( 'footnotes' );
 
-		// Echo JavaScript for the expand/collapse function of the meta boxes.
-		echo '<script type="text/javascript">';
-		echo 'jQuery(document).ready(function ($) {';
-		echo 'jQuery(".footnotes-color-picker").wpColorPicker();';
-		echo "jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');";
-		echo "postboxes.add_postbox_toggles('" . $this->sub_page_hook . "');";
-		echo '});';
-		echo '</script>';
+				// do_meta_boxes( $active_section['id'], 'main', null );
+
+				// Add submit button to active section if defined.
+				// if ( $l_arr_active_section['submit'] ) {
+					submit_button();
+				// }
+		?>
+	  </form>
+	</div>
+		<?php
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+	
 	/**
 	 * Output the description of a section. May be overwritten in any section.
 	 *
@@ -182,7 +185,7 @@ abstract class Engine {
 	 * @todo  Required? Should be `abstract`?
 	 */
 	public function description(): void {
-		// Default no description will be displayed.
+		// Nothing yet.
 	}
 
 	/**
@@ -224,6 +227,9 @@ abstract class Engine {
 	 * @since  1.5.0
 	 */
 	abstract protected function get_meta_boxes(): array;
+
+
+	abstract protected function add_settings_fields(): void;
 
 	/**
 	 * Returns an array describing a sub-page section.
@@ -308,7 +314,7 @@ abstract class Engine {
 		$return          = array();
 		$return['id']    = $setting_key_name;
 		$return['name']  = $setting_key_name;
-		$return['value'] = esc_attr( Includes\Settings::instance()->get( $setting_key_name ) );
+		$return['value'] = esc_attr( $this->settings->get( $setting_key_name ) );
 		return $return;
 	}
 
@@ -354,169 +360,173 @@ abstract class Engine {
 		return sprintf( '<label for="%s">%s</label>', $setting_name, $caption );
 	}
 
+	/**************************************************************************
+	 * NEW METHODS
+	 **************************************************************************/
+
 	/**
 	 * Constructs the HTML for a text 'input' element.
 	 *
 	 * @access  protected
-	 * @param  string $setting_name  Setting key.
-	 * @param  int    $max_length  Maximum length of the input. Default length 999 chars.
-	 * @param  bool   $readonly  Set the input to be read only. Default `false`.
-	 * @param  bool   $hidden  Set the input to be hidden. Default `false`.
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
 	 *
 	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
+	 * @since  2.8.0  Rename function from 'add_text_box' to 'add_input_text'.
+	 *                Replace multiple arguments with single 'args' array.
 	 */
-	protected function add_text_box( string $setting_name, int $max_length = 999, bool $readonly = false, bool $hidden = false ): string {
-		$style = '';
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-		if ( $hidden ) {
-			$style .= 'display:none;';
-		}
-		return sprintf(
-			'<input type="text" name="%s" id="%s" maxlength="%d" style="%s" value="%s" %s/>',
-			$data['name'],
-			$data['id'],
-			$max_length,
-			$style,
-			$data['value'],
-			$readonly ? 'readonly="readonly"' : ''
-		);
-	}
+	protected function add_input_text( array $args ): void {
+		extract( $args );
 
-	/**
-	 * Constructs the HTML for a checkbox 'input' element.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name  Setting key.
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
-	 */
-	protected function add_checkbox( string $setting_name ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-		return sprintf(
-			'<input type="checkbox" name="%s" id="%s" %s/>',
-			$data['name'],
-			$data['id'],
-			Includes\Convert::to_bool( $data['value'] ) ? 'checked="checked"' : ''
-		);
-	}
-
-	/**
-	 * Constructs the HTML for a 'select' element.
-	 *
-	 * @access  protected
-	 * @param  string $setting_name  Setting key.
-	 * @param  array  $options  Possible options.
-	 *
-	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
-	 */
-	protected function add_select_box( string $setting_name, array $options ): string {
-		// Collect data for given settings field.
-		$data           = $this->load_setting( $setting_name );
-		$select_options = '';
-
-		// Loop through all array keys.
-		foreach ( $options as $value => $caption ) {
-			$select_options .= sprintf(
-				'<option value="%s" %s>%s</option>',
-				$value,
-				// Only check for equality, not identity, WRT backlink symbol arrows.
-				// phpcs:disable WordPress.PHP.StrictComparisons.LooseComparison
-				$value == $data['value'] ? 'selected' : '',
-				// phpcs:enable WordPress.PHP.StrictComparisons.LooseComparison
-				$caption
-			);
-		}
-		return sprintf(
-			'<select name="%s" id="%s">%s</select>',
-			$data['name'],
-			$data['id'],
-			$select_options
-		);
+		echo ( sprintf(
+			'<input type="text" name="%s" id="%s" maxlength="%d" style="%s" value="%s"%s%s/>',
+			$name,
+			$name,
+			$max_length ?? 999,
+			$style ?? '',
+			$value,
+			isset( $readonly ) ? ' readonly="readonly"' : '',
+			$disabled ? ' disabled' : ''
+		) );
 	}
 
 	/**
 	 * Constructs the HTML for a 'textarea' element.
 	 *
 	 * @access  protected
-	 * @param  string $setting_name  Setting key.
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
 	 *
 	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
+	 * @since  2.8.0  Replace 'p_str_setting_name' argument with 'args' array.
 	 */
-	protected function add_textarea( $setting_name ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-		return sprintf(
-			'<textarea name="%s" id="%s">%s</textarea>',
-			$data['name'],
-			$data['id'],
-			$data['value']
-		);
+	protected function add_textarea( array $args ): void {
+		extract( $args );
+
+		echo ( sprintf(
+			'<textarea name="%s" id="%s" rows="4" cols="50" style="%s" %s%s>%s</textarea>',
+			$name,
+			$name,
+			$style ?? '',
+			isset( $readonly ) ? ' readonly="readonly"' : '',
+			$disabled ? ' disabled' : '',
+			$value,
+		) );
 	}
 
 	/**
-	 * Constructs the HTML for a text 'input' element with the colour selection
-	 * class.
+	 * Constructs the HTML for a numeric 'input' element.
 	 *
 	 * @access  protected
-	 * @param  string $setting_name Setting key.
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
 	 *
-	 * @since  1.5.6
-	 * @todo  Refactor HTML generation.
-	 * @todo  Use proper colorpicker element.
+	 * @since  1.5.0
+	 * @since  2.1.4  Add step argument and 'number_format()' to allow decimals
+	 * @since  2.8.0  Rename function from 'add_num_box' to 'add_input_number'.
+	 *                Replace multiple arguments with single 'args' array.
 	 */
-	protected function add_color_selection( string $setting_name ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
-		return sprintf(
-			'<input type="text" name="%s" id="%s" class="footnotes-color-picker" value="%s"/>',
-			$data['name'],
-			$data['id'],
-			$data['value']
-		);
+	protected function add_input_number( array $args ): void {
+		extract( $args );
+
+		echo ( sprintf(
+			'<input type="number" name="%s" id="%s"%s%s value="%s"%s%s%s/>',
+			$name,
+			$name,
+			isset( $max ) ? ' max="' . $max . '"' : '',
+			isset( $min ) ? ' min="' . $min . '"' : '',
+			is_float( $value ) ? number_format( $value, 1 ) : $value,
+			is_float( $value ) ? ' step="0.1"' : '',
+			isset( $readonly ) ? ' readonly="readonly"' : '',
+			$disabled ? ' disabled' : ''
+		) );
 	}
 
 	/**
-	 * Constructs the HTML for numeric 'input' element.
+	 * Constructs the HTML for a 'select' element.
 	 *
 	 * @access  protected
-	 * @param  string $setting_name Setting key.
-	 * @param  int    $p_in_min  Minimum value.
-	 * @param  int    $max  Maximum value.
-	 * @param  bool   $deci  `true` if float, `false` if integer. Default `false`.
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
 	 *
 	 * @since  1.5.0
-	 * @todo  Refactor HTML generation.
+	 * @since  2.8.0  Rename function from 'add_select_box' to 'add_select'.
+	 *                Replace multiple arguments with single 'args' array.
 	 */
-	protected function add_num_box( string $setting_name, int $p_in_min, int $max, bool $deci = false ): string {
-		// Collect data for given settings field.
-		$data = $this->load_setting( $setting_name );
+	protected function add_select( array $args ): void {
+		extract( $args );
 
-		if ( $deci ) {
-			$value = number_format( floatval( $data['value'] ), 1 );
-			return sprintf(
-				'<input type="number" name="%s" id="%s" value="%s" step="0.1" min="%d" max="%d"/>',
-				$data['name'],
-				$data['id'],
-				$value,
-				$p_in_min,
-				$max
+		if ( ! isset( $options ) ) {
+			trigger_error( "No options passed to 'select' element.", E_USER_ERROR );
+		}
+
+		$select_options = '';
+		// Loop through all array keys.
+		foreach ( $options as $option_value => $option_text ) {
+			$select_options .= sprintf(
+				'<option value="%s"%s>%s</option>',
+				$option_value,
+				// Only check for equality, not identity, WRT backlink symbol arrows.
+				// TODO convert to strict comparison
+				// phpcs:disable WordPress.PHP.StrictComparisons.LooseComparison
+				$value == $option_value ? ' selected' : '',
+				// phpcs:enable WordPress.PHP.StrictComparisons.LooseComparison
+				$option_text
 			);
 		}
-		return sprintf(
-			'<input type="number" name="%s" id="%s" value="%d" min="%d" max="%d"/>',
-			$data['name'],
-			$data['id'],
-			$data['value'],
-			$p_in_min,
-			$max
+
+		echo ( sprintf(
+			'<select name="%s" id="%s"%s>%s</select>',
+			$name,
+			$name,
+			$disabled ? ' disabled' : '',
+			$select_options
+		) );
+	}
+
+	/**
+	 * Constructs the HTML for a checkbox 'input' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.0
+	 * @since  2.8.0  Rename function from 'add_checkbox' to 'add_input_checkbox'.
+	 *                Replace 'p_str_setting_name' argument with 'args' array.
+	 */
+	protected function add_input_checkbox( array $args ): void {
+		extract( $args );
+
+		echo sprintf(
+			'<input type="checkbox" name="%s" id="%s"%s%s/>',
+			$name,
+			$name,
+			$value ? ' checked="checked"' : '',
+			$disabled ? ' disabled' : ''
 		);
 	}
+
+	/**
+	 * Constructs the HTML for a color 'input' element.
+	 *
+	 * @access  protected
+	 * @param  array $args Input arguments. @see {Setting::get_setting_field_args()}.
+	 *
+	 * @since  1.5.6
+	 * @since  2.8.0  Rename function from 'add_color_selection' to 'add_input_color'.
+	 *                Replace 'p_str_setting_name' argument with 'args' array.
+	 */
+	protected function add_input_color( array $args ): void {
+		extract( $args );
+
+		echo sprintf(
+			'<input type="color" name="%s" id="%s"%s/>',
+			$name,
+			$name,
+			$disabled ? ' disabled' : ''
+		);
+	}
+
+	/******************************
+	 *  OLD METHODS
+	 ******************************/
+
 	/**
 	 * Registers all Meta boxes for a sub-page.
 	 *
@@ -546,7 +556,7 @@ abstract class Engine {
 	 * @access  private
 	 *
 	 * @since  1.5.0
-	 * @todo  Move to {@see Includes\Admin}.
+	 * @todo  Move to {@see Admin}.
 	 */
 	private function append_scripts(): void {
 		wp_enqueue_script( 'postbox' );
@@ -554,26 +564,30 @@ abstract class Engine {
 		wp_enqueue_script( 'wp-color-picker' );
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
 	/**
-	 * Save all plugin settings.
+	 * Save plugin settings.
 	 *
 	 * @access  private
 	 * @return  bool  `true` on save success, else `false`.
 	 *
 	 * @since  1.5.0
 	 * @todo  Review nonce verification.
+	 * @todo  New settings require a page refresh to render correctly. Fix.
 	 */
 	private function save_settings(): bool {
 		$new_settings      = array();
 		$active_section_id = isset( $_GET['t'] ) ? wp_unslash( $_GET['t'] ) : array_key_first( $this->sections );
 		$active_section    = $this->sections[ $active_section_id ];
 
-		foreach ( array_keys( Includes\Settings::instance()->get_defaults( $active_section['container'] ) ) as $key ) {
-			$new_settings[ $key ] = array_key_exists( $key, $_POST ) ? wp_unslash( $_POST[ $key ] ) : '';
+		foreach ( array_keys( $active_section->get_options() ) as $setting_key ) {
+			$new_settings[ $setting_key ] = array_key_exists( $setting_key, $_POST ) ? wp_unslash( $_POST[ $setting_key ] ) : '';
 		}
+
 		// Update settings.
-		return Includes\Settings::instance()->save_options( $active_section['container'], $new_settings );
+		return $this->settings->save_options_group( $active_section->get_options_group_slug(), $new_settings );
 	}
 
 }

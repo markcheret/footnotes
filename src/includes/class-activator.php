@@ -6,8 +6,8 @@
  * the admin- and the public-facing sides of the plugin.
  *
  * The primary entry point is {@see Footnotes}, which uses {@see Loader}
- * to initialise {@see i18n} for internationalization, {@see Admin\Admin} for
- * admin-specific functionality and {@see General\General} for public-facing
+ * to initialise {@see i18n} for internationalization, {@see Admin} for
+ * admin-specific functionality and {@see General} for public-facing
  * functionality.
  *
  * It also includes various utility classes:
@@ -28,6 +28,9 @@
 declare(strict_types=1);
 
 namespace footnotes\includes;
+
+use footnotes\admin\Admin;
+use footnotes\general\General;
 
 /**
  * Class providing action(s) on plugin activation.

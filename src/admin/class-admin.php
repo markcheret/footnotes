@@ -15,7 +15,8 @@ declare(strict_types=1);
 
 namespace footnotes\admin;
 
-use footnotes\includes as Includes;
+use footnotes\admin\layout\Init as SettingsPageInit;
+use footnotes\includes\{Footnotes, Settings};
 
 /**
  * Class provide all admin-specific functionality of the plugin.
@@ -47,7 +48,7 @@ class Admin {
 		 *
 		 * @access  private
 		 * @since  2.8.0
-		 * @see  Includes\Footnotes::$plugin_name
+		 * @see  Footnotes::$plugin_name
 		 */
 		private string $plugin_name,
 
@@ -56,9 +57,17 @@ class Admin {
 		 *
 		 * @access  private
 		 * @since  2.8.0
-		 * @see  Includes\Footnotes::$version
+		 * @see  Footnotes::$version
 		 */
-		private string $version
+		private string $version,
+
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		private Settings $settings
 	) {
 
 		$this->load_dependencies();
@@ -151,7 +160,7 @@ class Admin {
 		 */
 		require_once plugin_dir_path( __DIR__ ) . 'admin/layout/class-init.php';
 
-		new layout\Init( $this->plugin_name );
+		new SettingsPageInit( $this->plugin_name, $this->settings );
 	}
 
 }

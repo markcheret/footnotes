@@ -157,7 +157,14 @@ Moved under <code class="prettyprint">footnotes\includes</code> namespace.</p>
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+                <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/footnotes-includes-Core.html#property_settings">$settings</a>
+    <span>
+                &nbsp;: <a href="classes/footnotes-includes-Settings.html"><abbr title="\footnotes\includes\Settings">Settings</abbr></a>            </span>
+</dt>
+<dd>The plugin settings object.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/footnotes-includes-Core.html#property_loader">$loader</a>
     <span>
                 &nbsp;: <a href="classes/footnotes-includes-Loader.html"><abbr title="\footnotes\includes\Loader">Loader</abbr></a>            </span>
@@ -257,6 +264,63 @@ the plugin.</dd>
             Properties
             <a href="classes/footnotes-includes-Core.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_settings">
+        $settings
+        <a href="classes/footnotes-includes-Core.html#property_settings" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">84</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">The plugin settings object.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/footnotes-includes-Settings.html"><abbr title="\footnotes\includes\Settings">Settings</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$settings</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">access</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>private</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">2.8.0</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+</article>
                     <article
         class="
             phpdocumentor-element
@@ -433,7 +497,7 @@ that power the plugin.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">98</span>
 
     </aside>
 
@@ -493,7 +557,7 @@ the admin area and the public-facing side of the site.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 
     </aside>
 
@@ -540,7 +604,7 @@ the admin area and the public-facing side of the site.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
@@ -549,10 +613,21 @@ context of WordPress and to define internationalization functionality.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">get_plugin_name</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">get_plugin_name</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$html</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$html</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -588,7 +663,7 @@ context of WordPress and to define internationalization functionality.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">135</span>
+    <span class="phpdocumentor-element-found-in__line">148</span>
 
     </aside>
 
@@ -635,7 +710,7 @@ context of WordPress and to define internationalization functionality.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">107</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
@@ -682,7 +757,7 @@ context of WordPress and to define internationalization functionality.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">223</span>
+    <span class="phpdocumentor-element-found-in__line">236</span>
 
     </aside>
 
@@ -715,7 +790,7 @@ plugin.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                             <span class="phpdocumentor-tag-link">2.8.0</span>
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>Moved hook registrations from various classes into <code class="prettyprint">Admin\Admin</code>.</p>
+                                                 <section class="phpdocumentor-description"><p>Moved hook registrations from various classes into <code class="prettyprint">Admin</code>.</p>
 </section>
 
                                     </dd>
@@ -750,7 +825,7 @@ plugin.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">253</span>
+    <span class="phpdocumentor-element-found-in__line">266</span>
 
     </aside>
 
@@ -808,7 +883,7 @@ the plugin.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">159</span>
+    <span class="phpdocumentor-element-found-in__line">173</span>
 
     </aside>
 
@@ -835,7 +910,7 @@ the plugin.</p>
 <li>
 <a href="classes/footnotes-admin-Admin.html"><abbr title="\footnotes\admin\Admin">Admin</abbr></a>: defines all hooks for the admin area; and</li>
 <li>
-<abbr title="\footnotes\general\Public">Public</abbr>: defines all hooks for the public side of the site.</li>
+<a href="classes/footnotes-general-General.html"><abbr title="\footnotes\general\General">General</abbr></a>: defines all hooks for the public side of the site.</li>
 </ul>
 <p>Creates an instance of the loader which will be used to register the hooks
 with WordPress.</p>
@@ -877,7 +952,7 @@ with WordPress.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/includes/class-core.php"><a href="files/src-includes-class-core.html"><abbr title="src/includes/class-core.php">class-core.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">206</span>
+    <span class="phpdocumentor-element-found-in__line">219</span>
 
     </aside>
 

@@ -10,7 +10,12 @@ declare(strict_types=1);
 
 namespace footnotes\general;
 
-use footnotes\includes as Includes;
+use footnotes\includes\{Footnotes, Convert, Settings};
+
+/* TODO Replace with constant imports. */
+use footnotes\includes\settings\general\ReferenceContainerSettingsGroup;
+use footnotes\includes\settings\general\AMPCompatSettingsGroup;
+use footnotes\includes\settings\referrersandtooltips\TooltipsSettingsGroup;
 
 /**
  * Class provide all public-facing functionality of the plugin.
@@ -22,26 +27,6 @@ use footnotes\includes as Includes;
  * @since 2.8.0
  */
 class General {
-
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since  2.8.0
-
-	 * @access  private
-	 * @var  string  $plugin_name  The ID of this plugin.
-	 */
-	private string $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since  2.8.0
-
-	 * @access  private
-	 * @var  string  $version  The current version of this plugin.
-	 */
-	private string $version;
 
 	/**
 	 * The reference container widget.
@@ -56,7 +41,7 @@ class General {
 	 * The footnote parser.
 	 *
 	 * @since  1.5.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 * @todo Review null init.
 	 *
 	 * @var  Parser  $task  The Plugin task.
@@ -67,7 +52,7 @@ class General {
 	 * Flag for using tooltips.
 	 *
 	 * @since  2.4.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 *
 	 * @var  bool  $tooltips_enabled  Whether tooltips are enabled or not.
 	 */
@@ -77,7 +62,7 @@ class General {
 	 * Allows to determine whether alternative tooltips are enabled.
 	 *
 	 * @since  2.1.1
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 *
 	 * @var  bool
 	 */
@@ -87,7 +72,7 @@ class General {
 	 * Allows to determine whether AMP compatibility mode is enabled.
 	 *
 	 * @since  2.6.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 *
 	 * @var  bool
 	 */
@@ -97,7 +82,7 @@ class General {
 	 * Allows to determine the script mode among jQuery or plain JS.
 	 *
 	 * @since  2.5.6
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 *
 	 * @var  string  ‘js’ to use plain JavaScript, ‘jquery’ to use jQuery.
 	 */
@@ -110,18 +95,41 @@ class General {
 	 * @param  string $plugin_name  The name of this plugin.
 	 * @param  string $version  The version of this plugin.
 	 */
-	public function __construct( string $plugin_name, string $version ) {
+	public function __construct(
+		/**
+		 * The ID of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Footnotes::$plugin_name
+		 */
+		private string $plugin_name,
 
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
+		/**
+		 * The version of this plugin.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 * @see  Footnotes::$version
+		 */
+		private string $version,
+
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		private Settings $settings
+	) {
 
 		$this->load_dependencies();
 
 		// Set conditions re-used for stylesheet enqueuing and in class/task.php.
-		self::$amp_enabled                  = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_AMP_COMPATIBILITY_ENABLE ) );
-		self::$tooltips_enabled             = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_ENABLED ) );
-		self::$alternative_tooltips_enabled = Includes\Convert::to_bool( Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE ) );
-		self::$script_mode                  = Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE );
+		self::$amp_enabled                  = $this->settings->get_setting_value( AMPCompatSettingsGroup::FOOTNOTES_AMP_COMPATIBILITY_ENABLE['key'] );
+		self::$tooltips_enabled             = $this->settings->get_setting_value( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ENABLED['key'] );
+		self::$alternative_tooltips_enabled = $this->settings->get_setting_value( TooltipsSettingsGroup::FOOTNOTES_MOUSE_OVER_BOX_ALTERNATIVE['key'] );
+		self::$script_mode                  = $this->settings->get_setting_value( ReferenceContainerSettingsGroup::FOOTNOTES_REFERENCE_CONTAINER_SCRIPT_MODE['key'] );
 	}
 
 	/**
@@ -146,7 +154,7 @@ class General {
 
 		$this->reference_container_widget = new Widget\Reference_Container( $this->plugin_name );
 
-		$this->task = new Parser();
+		$this->task = new Parser( $this->settings );
 	}
 
 	/**
@@ -157,7 +165,7 @@ class General {
 	 *
 	 * @since  1.5.0
 	 * @since  2.5.5  Change stylesheet schema.
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 */
 	public function enqueue_styles(): void {
 		if ( PRODUCTION_ENV ) {
@@ -183,7 +191,7 @@ class General {
 			}
 
 			// Set basic responsive page layout mode for use in stylesheet name.
-			$page_layout_option = Includes\Settings::instance()->get( Includes\Settings::FOOTNOTES_PAGE_LAYOUT_SUPPORT );
+			$page_layout_option = $this->settings->get( FOOTNOTES_PAGE_LAYOUT_SUPPORT );
 			switch ( $page_layout_option ) {
 				case 'reference-container':
 					$layout_mode = '1';
@@ -236,7 +244,7 @@ class General {
 	 * @since  2.0.0  Add jQueryUI dependency.
 	 * @since  2.1.2  Add jQuery Tools dependency.
 	 * @since  2.5.6  Add jQuery dependency.
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 */
 	public function enqueue_scripts(): void {
 		/*
@@ -285,7 +293,7 @@ class General {
 	 * Register the widget(s) for the public-facing side of the site.
 	 *
 	 * @since  1.5.0
-	 * @since  2.8.0  Moved from {@see Footnotes} to {@see Includes\Public}.
+	 * @since  2.8.0  Moved from {@see Footnotes} to {@see General}.
 	 */
 	public function register_widgets(): void {
 		register_widget( $this->reference_container_widget );

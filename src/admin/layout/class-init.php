@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace footnotes\admin\layout;
 
-use footnotes\includes as Includes;
+use footnotes\includes\{Settings, Config};
 
 /**
  * Class to initialise all defined page layouts.
@@ -43,7 +43,7 @@ class Init {
 	 *
 	 * @since  1.5.0
 	 */
-	private Settings $settings;
+	private SettingsPage $settings_page;
 
 	/**
 	 * Initializes all WordPress hooks for the Plugin Settings.
@@ -60,11 +60,19 @@ class Init {
 		 *
 		 * @since  2.8.0
 		 */
-		private string $plugin_name
+		private string $plugin_name,
+
+		/**
+		 * The plugin settings object.
+		 *
+		 * @access  private
+		 * @since  2.8.0
+		 */
+		private Settings $settings
 	) {
 		$this->load_dependencies();
 
-		$this->settings = new Settings( $this->plugin_name );
+		$this->settings_page = new SettingsPage( $this->plugin_name, $this->settings );
 
 		// Register hooks/actions.
 		add_action(
@@ -92,8 +100,13 @@ class Init {
 	 * @since  1.5.0
 	 */
 	public function initialize_settings(): void {
-		Includes\Settings::instance()->register_settings();
-		$this->settings->register_sections();
+		$this->settings->settings_sections['general']->add_settings_section();
+		$this->settings->settings_sections['referrers_and_tooltips']->add_settings_section();
+		$this->settings->settings_sections['scope_and_priority']->add_settings_section();
+		$this->settings->settings_sections['custom_css']->add_settings_section();
+
+		$this->settings_page->add_settings_sections();
+		$this->settings_page->add_settings_fields();
 	}
 
 	/**
@@ -103,15 +116,14 @@ class Init {
 	 * @see http://codex.wordpress.org/Function_Reference/add_menu_page
 	 */
 	public function register_options_submenu(): void {
-		add_submenu_page(
-			'options-general.php',
+		add_options_page(
 			'footnotes Settings',
-			\footnotes\includes\Config::PLUGIN_PUBLIC_NAME,
+			Config::PLUGIN_PUBLIC_NAME,
 			'manage_options',
 			self::MAIN_MENU_SLUG,
-			fn() => $this->settings->display_content()
+			fn() => $this->settings_page->display_content()
 		);
-		$this->settings->register_sub_page();
+		$this->settings_page->register_sub_page();
 	}
 
 	// phpcs:disable WordPress.Security.NonceVerification.Missing
@@ -182,8 +194,8 @@ class Init {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - {@see Includes\Config}: defines plugin constants;
-	 * - {@see Includes\Settings}: defines configurable plugin settings; and
+	 * - {@see Config}: defines plugin constants;
+	 * - {@see Settings}: defines configurable plugin settings; and
 	 * - {@see Settings}: defines the plugin settings page.
 	 *
 	 * @access  private
@@ -204,7 +216,7 @@ class Init {
 		/**
 		 * Represents the plugin settings dashboard page.
 		 */
-		require_once plugin_dir_path( __DIR__ ) . 'layout/class-settings.php';
+		require_once plugin_dir_path( __DIR__ ) . 'layout/class-settings-page.php';
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
 }

@@ -29,7 +29,7 @@
         "minify:js": "npm run minify:js"
     },
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
         "phpcompatibility/php-compatibility": "*",
         "wp-coding-standards/wpcs": "^2.3",
         "phpdocumentor/phpdocumentor": "^3.0",

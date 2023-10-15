@@ -3,9 +3,9 @@ Contributors: mark.cheret, lolzim, rumperuu, aricura, misfist, ericakfranz, mili
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z6CZDW8PPBBJ
 Tags: footnote, footnotes, bibliography, formatting, notes, Post, posts, reference, referencing
 Requires at least: 3.9
-Tested up to: 5.7.1
+Tested up to: 6.3.2
 Requires PHP: 7.0
-Stable Tag: 2.7.3
+Stable Tag: 2.8.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

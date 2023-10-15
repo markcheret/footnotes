@@ -5,7 +5,7 @@
  * Description: footnotes lets you easily add highly-customisable footnotes on your WordPress Pages and Posts.
  * Author: Mark Cheret
  * Author URI: https://cheret.tech/footnotes
- * Version: 2.7.3
+ * Version: 2.8.0
  * Text Domain: footnotes
  * Domain Path: /languages
  * Requires at least: 3.9
@@ -25,7 +25,7 @@
  * @since 2.5.3 (Hungarian)
  * @var str
  */
-define( 'C_STR_FOOTNOTES_VERSION', '2.7.3' );
+define( 'C_STR_FOOTNOTES_VERSION', '2.8.0' );
 
 /**
  * Defines the current environment ('development' or 'production').
@@ -39,7 +39,7 @@ define( 'C_STR_FOOTNOTES_VERSION', '2.7.3' );
  * Developing stylesheets is meant to be easier when this is set to false.
  * WARNING: This facility designed for development must NOT be used in production.
  */
-define( 'PRODUCTION_ENV', false );
+define( 'PRODUCTION_ENV', true );
 
 /**
  * - Bugfix: Codebase: revert to 2.5.8, thanks to @little-shiva @watershare @adjayabdg @staho @frav8 @voregnev @dsl225 @alexclassroom @a223123131 @codldmac bug reports.
